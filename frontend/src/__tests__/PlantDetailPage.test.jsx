@@ -120,6 +120,35 @@ describe('PlantDetailPage（TC-14 ~ TC-16）', () => {
     expect(screen.queryByText('葵花总是朝着太阳转。')).not.toBeInTheDocument();
   });
 
+  it('TC-18 仅 leaf 植物只渲染「叶」标签（Sprint 2 新增）', async () => {
+    const MAPLE = {
+      id: 'maple',
+      categories: ['leaf'],
+      name: { zh: '枫树', pinyin: 'fēng shù', en: 'Maple', ipa: '/ˈmeɪpl/' },
+      parts: {
+        leaf: {
+          name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
+          images: [{ type: 'illustration', url: '/images/plants/maple-leaf.svg' }],
+          description: '枫叶像小手掌，秋天变红。',
+        },
+      },
+    };
+    getPlant.mockResolvedValue(MAPLE);
+    renderDetail('maple');
+
+    expect(await screen.findByAltText('枫树的叶')).toBeInTheDocument();
+    expect(screen.getAllByRole('tab')).toHaveLength(1);
+    expect(screen.getByRole('tab', { name: '叶' })).toBeInTheDocument();
+  });
+
+  it('TC-20b 详情大图带 loading="lazy"', async () => {
+    getPlant.mockResolvedValue(SUNFLOWER);
+    renderDetail('sunflower');
+
+    const img = await screen.findByAltText('向日葵的花');
+    expect(img).toHaveAttribute('loading', 'lazy');
+  });
+
   it('附加：40401 显示友好提示「这株植物还没准备好哦」', async () => {
     getPlant.mockRejectedValue({ code: 40401, message: '植物不存在' });
     renderDetail('nope');

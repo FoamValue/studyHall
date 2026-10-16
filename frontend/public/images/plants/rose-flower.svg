@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <circle id="p" cx="256" cy="164" r="95" fill="#F48FB1" stroke="#D81B60" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#p"/>
+  <use href="#p" transform="rotate(72 256 256)"/>
+  <use href="#p" transform="rotate(144 256 256)"/>
+  <use href="#p" transform="rotate(216 256 256)"/>
+  <use href="#p" transform="rotate(288 256 256)"/>
+  <circle cx="256" cy="256" r="108" fill="#F06292" stroke="#D81B60" stroke-width="9"/>
+  <circle cx="256" cy="256" r="64" fill="#EC407A" stroke="#AD1457" stroke-width="8"/>
+  <path d="M256 232 C 274 232 286 244 286 258 C 286 276 272 288 254 288 C 230 288 214 272 216 248" fill="none" stroke="#AD1457" stroke-width="6" stroke-linecap="round"/>
+</svg>

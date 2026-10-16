@@ -1,0 +1,17 @@
+{
+  "id": "carnation",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "康乃馨", "pinyin": "kāng nǎi xīn", "en": "Carnation", "ipa": "/kɑːrˈneɪʃn/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/carnation-flower.svg" } ],
+      "description": "康乃馨花瓣边像小锯齿裙，粉粉的、红红的。它代表爱和感谢，送给妈妈最好啦。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/carnation-leaf.svg" } ],
+      "description": "康乃馨叶细细长长的，颜色有点灰绿。一对一对长在花杆上，托着漂亮的花。"
+    }
+  }
+}

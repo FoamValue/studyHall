@@ -4,10 +4,10 @@ server:
 spring:
   application:
     name: studyhall-plants
+  mongodb:
+    # 容器内由 SPRING_MONGODB_URI 覆盖（Spring Boot 4 属性名：spring.mongodb.uri）
+    uri: mongodb://localhost:27017/studyhall
   data:
-    mongodb:
-      # 容器内由 SPRING_DATA_MONGODB_URI 覆盖
-      uri: mongodb://localhost:27017/studyhall
     redis:
       # 容器内由 SPRING_DATA_REDIS_HOST / SPRING_DATA_REDIS_PORT 覆盖
       host: localhost

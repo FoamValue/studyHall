@@ -1,0 +1,17 @@
+{
+  "id": "pine",
+  "categories": ["leaf", "fruit"],
+  "name": { "zh": "松树", "pinyin": "sōng shù", "en": "Pine", "ipa": "/paɪn/" },
+  "parts": {
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/pine-leaf.svg" } ],
+      "description": "松叶细细尖尖，像一根根小针，也叫松针。冬天也不掉，一直是绿绿的。"
+    },
+    "fruit": {
+      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/pine-fruit.svg" } ],
+      "description": "松果像小宝塔，一层一层硬硬的。里面藏着松子，小松鼠最爱吃。"
+    }
+  }
+}

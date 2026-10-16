@@ -29,6 +29,8 @@ import org.testcontainers.utility.DockerImageName;
 import tools.jackson.databind.JavaType;
 import tools.jackson.databind.ObjectMapper;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +71,7 @@ class PlantApiIntegrationTest {
 
     @DynamicPropertySource
     static void containerProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.data.mongodb.uri", () -> MONGO.getReplicaSetUrl("studyhall_test"));
+        registry.add("spring.mongodb.uri", () -> MONGO.getReplicaSetUrl("studyhall_test"));
         registry.add("spring.data.redis.host", () -> REDIS.getHost());
         registry.add("spring.data.redis.port", () -> REDIS.getFirstMappedPort());
         registry.add("spring.datasource.url", () -> MYSQL.getJdbcUrl());
@@ -149,13 +151,13 @@ class PlantApiIntegrationTest {
         });
     }
 
-    /** TC-03 植物列表-全部：8 条种子，卡片字段齐全。 */
+    /** TC-03 植物列表-全部：条数等于 content/plants/ 实际文件数，卡片字段齐全。 */
     @Test
     void tc03_plantListShouldReturnAllSeeds() {
         List<String> expectedIds = plants.stream().map(Plant::id).toList();
         ApiResponse<List<PlantCard>> resp = get("/api/plants", listOf(PlantCard.class));
         assertThat(resp.code()).isZero();
-        assertThat(resp.data()).hasSize(8);
+        assertThat(resp.data()).hasSize(expectedIds.size());
         assertThat(resp.data()).extracting(PlantCard::id)
                 .containsExactlyInAnyOrderElementsOf(expectedIds);
         assertThat(resp.data()).allSatisfy(card -> {
@@ -212,7 +214,7 @@ class PlantApiIntegrationTest {
         assertThat(allusion.explain()).isNotBlank();
     }
 
-    /** TC-07 缺部位：银杏无 flower，列表封面回退到 leaf。 */
+    /** TC-07 缺部位：银杏无 flower，列表封面回退到 leaf；maple 仅 leaf（Sprint 2 新增）。 */
     @Test
     void tc07_missingPartShouldFallbackCoverImage() {
         ApiResponse<Plant> resp = get("/api/plants/ginkgo",
@@ -227,6 +229,12 @@ class PlantApiIntegrationTest {
                 .findFirst()
                 .orElseThrow();
         assertThat(ginkgo.coverImage()).isEqualTo("/images/plants/ginkgo-leaf.svg");
+
+        // Sprint 2 新增：maple 仅有 leaf 部位
+        ApiResponse<Plant> maple = get("/api/plants/maple",
+                objectMapper.getTypeFactory().constructType(Plant.class));
+        assertThat(maple.code()).isZero();
+        assertThat(maple.data().parts().keySet()).containsExactly("leaf");
     }
 
     /** TC-08 不存在的植物：code=40401。 */
@@ -271,5 +279,61 @@ class PlantApiIntegrationTest {
         assertThat(resp.getStatusCode().is2xxSuccessful()).isTrue();
         assertThat(resp.getHeaders().getFirst(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
                 .isEqualTo("http://localhost:5173");
+    }
+
+    /** TC-11 内容 schema 全量合规（Sprint 2 数据驱动）：categories = parts 键集合、每部位 ≥1 图、三语非空、allusion 有则三字段全。 */
+    @Test
+    void tc11_allContentFilesShouldMatchSchema() {
+        assertThat(plants).isNotEmpty();
+        for (Plant p : plants) {
+            assertThat(p.id()).isNotBlank();
+            assertThat(p.categories()).containsExactlyInAnyOrderElementsOf(p.parts().keySet());
+            assertThat(p.name().zh()).isNotBlank();
+            assertThat(p.name().pinyin()).isNotBlank();
+            assertThat(p.name().en()).isNotBlank();
+            assertThat(p.name().ipa()).startsWith("/");
+            p.parts().forEach((partCode, part) -> {
+                assertThat(part.name().zh()).isNotBlank();
+                assertThat(part.name().pinyin()).isNotBlank();
+                assertThat(part.name().en()).isNotBlank();
+                assertThat(part.images()).isNotEmpty();
+                part.images().forEach(img -> {
+                    assertThat(img.type()).isIn("illustration", "photo");
+                    assertThat(img.url()).startsWith("/images/plants/" + p.id() + "-");
+                });
+                assertThat(part.description()).isNotBlank();
+                if (part.allusion() != null) {
+                    assertThat(part.allusion().text()).isNotBlank();
+                    assertThat(part.allusion().source()).isNotBlank();
+                    assertThat(part.allusion().explain()).isNotBlank();
+                }
+            });
+        }
+    }
+
+    /** TC-12 图片资产齐备：JSON 引用的 illustration 图片在 frontend/public 下存在对应文件。 */
+    @Test
+    void tc12_illustrationAssetsShouldExistOnDisk() {
+        Path publicDir = ContentSeed.contentDir().resolve("../frontend/public").normalize();
+        assertThat(publicDir).isDirectory();
+        for (Plant p : plants) {
+            p.parts().forEach((partCode, part) ->
+                    part.images().stream()
+                            .filter(img -> img.type().equals("illustration"))
+                            .forEach(img -> {
+                                // url 形如 /images/plants/{id}-{part}.svg，去掉前导斜杠映射到 public 下
+                                Path file = publicDir.resolve(img.url().substring(1));
+                                assertThat(Files.isRegularFile(file))
+                                        .as("缺少图片资产 %s（植物 %s 部位 %s）", img.url(), p.id(), partCode)
+                                        .isTrue();
+                            }));
+        }
+    }
+
+    /** TC-13 SB4 属性名生效：上下文经由 spring.mongodb.uri 连接成功（本类全部用例通过即证明），并显式断言属性已注册。 */
+    @Test
+    void tc13_sb4MongoPropertyShouldBeRegistered() {
+        assertThat(environment.getProperty("spring.mongodb.uri")).startsWith("mongodb://");
+        assertThat(environment.getProperty("spring.data.mongodb.uri")).isNull();
     }
 }

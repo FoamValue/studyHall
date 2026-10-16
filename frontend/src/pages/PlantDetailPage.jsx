@@ -96,6 +96,7 @@ export default function PlantDetailPage() {
           className="part-img"
           src={current.images?.[0]?.url}
           alt={`${plant.name.zh}的${PART_LABELS[part]}`}
+          loading="lazy"
         />
         <p className="part-name-zh">{current.name?.zh}</p>
         <p className="part-name-sub">

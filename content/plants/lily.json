@@ -1,0 +1,17 @@
+{
+  "id": "lily",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "百合", "pinyin": "bǎi hé", "en": "Lily", "ipa": "/ˈlɪli/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/lily-flower.svg" } ],
+      "description": "百合花像小喇叭，白白的香香的。花瓣卷卷的往外翻，中间立着几根小天线。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/lily-leaf.svg" } ],
+      "description": "百合叶长长的，两头尖尖像柳叶。绿油油地围着花杆，排队站好。"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "cactus",
+  "categories": ["leaf", "flower"],
+  "name": { "zh": "仙人掌", "pinyin": "xiān rén zhǎng", "en": "Cactus", "ipa": "/ˈkæktəs/" },
+  "parts": {
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/cactus-leaf.svg" } ],
+      "description": "仙人掌的叶子变成了小刺，硬硬的扎手。这样就不会被小动物吃掉，还能保存水分。"
+    },
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/cactus-flower.svg" } ],
+      "description": "仙人掌也会开花，黄黄的、红红的，开在刺刺的头顶上。花期很短，要看运气哦。"
+    }
+  }
+}

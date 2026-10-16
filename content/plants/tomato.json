@@ -1,0 +1,22 @@
+{
+  "id": "tomato",
+  "categories": ["fruit", "flower", "leaf"],
+  "name": { "zh": "番茄", "pinyin": "fān qié", "en": "Tomato", "ipa": "/təˈmeɪtoʊ/" },
+  "parts": {
+    "fruit": {
+      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/tomato-fruit.svg" } ],
+      "description": "番茄红红的、圆圆的，像小灯笼。咬一口酸酸甜甜，里面还有小籽籽。"
+    },
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/tomato-flower.svg" } ],
+      "description": "番茄花黄黄的，小小的，像小星星。一簇一簇开在叶子中间。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/tomato-leaf.svg" } ],
+      "description": "番茄叶毛毛的，裂成好多小片。摸一摸有点扎手，闻起来有特别的味道。"
+    }
+  }
+}

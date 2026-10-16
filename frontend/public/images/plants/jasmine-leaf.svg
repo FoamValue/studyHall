@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="jl" cx="256" cy="256" rx="32" ry="56" fill="#66BB6A" stroke="#388E3C" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <path d="M140 380 L380 140" fill="none" stroke="#388E3C" stroke-width="10" stroke-linecap="round"/>
+  <use href="#jl" transform="translate(-34 126) rotate(-45 256 256)"/>
+  <use href="#jl" transform="translate(50 41) rotate(-45 256 256)"/>
+  <use href="#jl" transform="translate(-62 -13) rotate(-45 256 256)"/>
+  <use href="#jl" transform="translate(22 -97) rotate(-45 256 256)"/>
+  <use href="#jl" transform="translate(161 -153) rotate(45 256 256)"/>
+</svg>

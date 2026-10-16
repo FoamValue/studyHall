@@ -92,3 +92,25 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 ## 7. 后端测试（mvn test 必须全绿）
 - 集成测试使用 Testcontainers（mongo:8.0.4 / mysql:8.0 / redis:7，本地已有镜像自动复用，库名加 `_test`）。
 - 用例覆盖 QA 手册 TC-01 ~ TC-06 对应接口行为（分类、筛选、详情、缺部位、404、缓存命中、导入脚本幂等——导入幂等由脚本独立冒烟验证）。
+
+---
+
+# 后端开发设计文章 — Sprint 2（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-2-requirements.md |
+
+## S2-1. 技术债修复：SB4 Mongo 属性名
+- `application.yml`：`spring.data.mongodb.uri` → `spring.mongodb.uri`（Spring Boot 4 更名）；仅改默认属性路径，值不变。
+- docker-compose.yml 已用 `SPRING_MONGODB_URI`，不动。
+- 测试 PlantApiIntegrationTest 的 `@DynamicPropertySource` 注册项同步改为 `spring.mongodb.uri`（否则测试内连接失败）。
+
+## S2-2. 无 API 契约变更
+- 30 种植物仍一次全量返回；images[].type 新增 `photo` 语义，后端原样透传，无代码改动。
+
+## S2-3. 测试策略更新（配合 QA）
+- 植物数量断言从固定值改为动态：以 ContentSeed 从 content/ 实际读入的清单为准。
+- 新增数据驱动用例：遍历 content/plants/*.json 断言 schema 合规（categories 与 parts 键一致、每部位 ≥1 图、三语名称非空）。

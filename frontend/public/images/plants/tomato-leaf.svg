@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="tl" cx="256" cy="256" rx="35" ry="62" fill="#66BB6A" stroke="#388E3C" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <path d="M256 60 C 250 200 258 340 256 470" fill="none" stroke="#388E3C" stroke-width="8" stroke-linecap="round"/>
+  <use href="#tl" transform="translate(-88 -76) rotate(-35 256 256)"/>
+  <use href="#tl" transform="translate(88 -76) rotate(35 256 256)"/>
+  <use href="#tl" transform="translate(-98 48) rotate(-55 256 256)"/>
+  <use href="#tl" transform="translate(98 48) rotate(55 256 256)"/>
+  <use href="#tl" transform="translate(46.4 176.4) scale(0.6) rotate(-75 256 256)"/>
+  <use href="#tl" transform="translate(158.4 176.4) scale(0.6) rotate(75 256 256)"/>
+  <use href="#tl" transform="translate(-64 80) scale(1.25)"/>
+</svg>

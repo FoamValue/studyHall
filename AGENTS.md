@@ -57,7 +57,7 @@ docs/
 ```
 
 ## 五、项目当前状态
-- **阶段**：Sprint 1 完成（commit b8bb4e6，TC-01~TC-17 全绿放行）→ 等待开启 Sprint 2（内容扩容至 30 种 + AI 导入通道演练 + SB4 属性名修正）
-- **当前迭代**：无（Sprint 1 已交付）
-- **移交技术债（Sprint 2 处理）**：① backend application.yml 中 `spring.data.mongodb.uri` 为 SB4 旧属性名（compose 已用 SPRING_MONGODB_URI 规避）；② frontend/test-results/ 应加入 .gitignore
+- **阶段**：Sprint 2 完成（TC-01~TC-23 全绿放行）→ 等待开启 Sprint 3（扩容至 100 种、平板细节优化、按 PRD §7 逐条上线验收）
+- **当前迭代**：无（Sprint 2 已交付）
+- **移交技术债**：无（Sprint 1 遗留两项已在 Sprint 2 修复）
 - **更新人**：Master（每阶段推进后更新本节）

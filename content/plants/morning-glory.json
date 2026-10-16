@@ -1,0 +1,17 @@
+{
+  "id": "morning-glory",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "牵牛花", "pinyin": "qiān niú huā", "en": "Morning Glory", "ipa": "/ˈmɔːrnɪŋ ˈɡlɔːri/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/morning-glory-flower.svg" } ],
+      "description": "牵牛花像小喇叭，紫的、粉的、蓝的都有。早上开，太阳大了就合上。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/morning-glory-leaf.svg" } ],
+      "description": "牵牛花叶像小心心，绿绿的。它喜欢爬篱笆，叶子一层一层往上叠。"
+    }
+  }
+}

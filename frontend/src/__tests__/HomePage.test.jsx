@@ -82,4 +82,24 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     expect(await screen.findByText('这个分类还没有植物哦')).toBeInTheDocument();
     expect(screen.queryByText('向日葵')).not.toBeInTheDocument();
   });
+
+  it('TC-20 卡片图片带 loading="lazy"', async () => {
+    getPlants.mockResolvedValue([SUNFLOWER_CARD]);
+    renderHome();
+
+    const img = await screen.findByAltText('向日葵');
+    expect(img).toHaveAttribute('loading', 'lazy');
+  });
+
+  it('TC-21 30 条数据渲染无异常', async () => {
+    const cards = Array.from({ length: 30 }, (_, i) =>
+      card(`plant-${i}`, `植物${i}`, `zhí wù ${i}`, `Plant ${i}`, '/images/plants/sunflower-flower.svg', ['flower'])
+    );
+    getPlants.mockResolvedValue(cards);
+    renderHome();
+
+    expect(await screen.findByText('植物0')).toBeInTheDocument();
+    expect(screen.getByText('植物29')).toBeInTheDocument();
+    expect(document.querySelectorAll('.plant-card')).toHaveLength(30);
+  });
 });

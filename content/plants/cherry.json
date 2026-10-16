@@ -5,7 +5,7 @@
   "parts": {
     "flower": {
       "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/cherry-flower.svg" } ],
+      "images": [ { "type": "illustration", "url": "/images/plants/cherry-flower.svg" }, { "type": "photo", "url": "/images/plants/cherry-flower.svg" } ],
       "description": "樱花一簇一簇开满枝头，粉粉嫩嫩的。风一吹，花瓣像小雪片飘下来。"
     },
     "leaf": {

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="ml" cx="256" cy="256" rx="8" ry="16" fill="#66BB6A" stroke="#388E3C" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <path d="M140 420 C 220 330 300 240 384 138" fill="none" stroke="#388E3C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M200 360 L235.3 395.4" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(-53.2 123.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-36.2 106.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-41.2 135.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-24.2 118.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-29.2 147.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-12.2 130.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-17.1 159.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-0.1 142.9) rotate(45 256 256)"/>
+  <path d="M200 360 L164.7 324.6" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(-58.8 84.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-75.8 101.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-70.8 72.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-87.8 89.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-82.8 60.1) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-99.8 77.1) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-94.9 48.1) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-111.9 65.1) rotate(45 256 256)"/>
+  <path d="M256 300 L291.4 335.4" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(2.8 63.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(19.8 46.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(14.8 75.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(31.8 58.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(26.9 87.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(43.9 70.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(38.9 99.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(55.9 82.9) rotate(45 256 256)"/>
+  <path d="M256 300 L220.7 264.6" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(-2.8 24.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-19.8 41.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-14.8 12.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-31.8 29.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-26.8 0.1) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-43.8 17.1) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-38.9 -11.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(-55.9 5.1) rotate(45 256 256)"/>
+  <path d="M312 240 L347.4 275.4" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(58.8 3.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(75.8 -13.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(70.8 15.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(87.8 -1.2) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(82.9 27.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(99.9 10.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(94.9 39.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(111.9 22.9) rotate(45 256 256)"/>
+  <path d="M312 240 L276.6 204.7" fill="none" stroke="#43A047" stroke-width="5" stroke-linecap="round"/>
+  <use href="#ml" transform="translate(53.2 -35.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(36.2 -18.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(41.2 -47.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(24.2 -30.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(29.1 -59.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(12.1 -42.8) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(17.1 -71.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(0.1 -54.9) rotate(45 256 256)"/>
+  <use href="#ml" transform="translate(128 -124) rotate(45 256 256)"/>
+
+</svg>

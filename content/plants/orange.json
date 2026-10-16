@@ -1,0 +1,22 @@
+{
+  "id": "orange",
+  "categories": ["fruit", "flower", "leaf"],
+  "name": { "zh": "橙子", "pinyin": "chéng zi", "en": "Orange", "ipa": "/ˈɔːrɪndʒ/" },
+  "parts": {
+    "fruit": {
+      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/orange-fruit.svg" } ],
+      "description": "橙子圆圆的，橙黄橙黄的。剥开皮一瓣一瓣，酸酸甜甜的，汁水好多。"
+    },
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/orange-flower.svg" } ],
+      "description": "橙子花白白的，小小的，有五片花瓣。闻起来香香的，春天开满枝头。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/orange-leaf.svg" } ],
+      "description": "橙叶椭圆椭圆的，绿得发亮。揉一揉有清香味，一年四季都是绿的。"
+    }
+  }
+}

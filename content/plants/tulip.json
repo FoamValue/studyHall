@@ -1,0 +1,17 @@
+{
+  "id": "tulip",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "郁金香", "pinyin": "yù jīn xiāng", "en": "Tulip", "ipa": "/ˈtuːlɪp/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/tulip-flower.svg" } ],
+      "description": "郁金香像一个小酒杯，直直地站着。红的、黄的、紫的，像彩色蜡烛。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/tulip-leaf.svg" } ],
+      "description": "郁金香的叶子宽宽的，像绿舌头。贴着花杆往上长，保护着小酒杯。"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="bl" cx="256" cy="256" rx="14" ry="112" fill="#66BB6A" stroke="#388E3C" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <path d="M140 410 L245 305 M255 295 L360 190" fill="none" stroke="#43A047" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="250" cy="300" r="14" fill="#388E3C"/>
+  <use href="#bl" transform="translate(74 -41) rotate(43 256 256)"/>
+  <use href="#bl" transform="translate(34 -81) rotate(18 256 256)"/>
+  <use href="#bl" transform="translate(109 -1) rotate(69 256 256)"/>
+  <use href="#bl" transform="translate(140 147) scale(0.72) rotate(113 256 256)"/>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "id": "jasmine",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "茉莉花", "pinyin": "mò lì huā", "en": "Jasmine", "ipa": "/ˈdʒæzmɪn/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/jasmine-flower.svg" } ],
+      "description": "茉莉花小小的，白白的，像小星星。闻起来特别香，夏天晚上最香啦。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/jasmine-leaf.svg" } ],
+      "description": "茉莉叶椭圆椭圆的，两头尖尖。绿得油亮，托着白白的小香花。"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="plobe" cx="256" cy="268" rx="58" ry="105" fill="#66BB6A" stroke="#388E3C" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#plobe" transform="rotate(-48 256 380)"/>
+  <use href="#plobe" transform="rotate(48 256 380)"/>
+  <use href="#plobe"/>
+  <path d="M256 380 L256 170" fill="none" stroke="#2E7D32" stroke-width="7" stroke-linecap="round"/>
+  <path d="M256 300 C 232 294 210 284 192 270" fill="none" stroke="#2E7D32" stroke-width="6" stroke-linecap="round"/>
+  <path d="M256 300 C 280 294 302 284 320 270" fill="none" stroke="#2E7D32" stroke-width="6" stroke-linecap="round"/>
+  <path d="M256 380 L256 472" fill="none" stroke="#388E3C" stroke-width="10" stroke-linecap="round"/>
+</svg>

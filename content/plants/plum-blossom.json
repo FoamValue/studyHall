@@ -1,0 +1,22 @@
+{
+  "id": "plum-blossom",
+  "categories": ["flower", "leaf"],
+  "name": { "zh": "梅花", "pinyin": "méi huā", "en": "Plum Blossom", "ipa": "/plʌm ˈblɒsəm/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/plum-blossom-flower.svg" } ],
+      "description": "梅花小小的，五个花瓣，粉白粉白的。天冷的时候它偏要开，可勇敢啦。",
+      "allusion": {
+        "text": "墙角数枝梅，凌寒独自开。",
+        "source": "宋·王安石《梅花》",
+        "explain": "墙角有几枝梅花，天这么冷还自己开了，不怕冻。"
+      }
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/plum-blossom-leaf.svg" } ],
+      "description": "梅叶圆圆的，两头尖尖。春天花谢了才长出来，绿得发亮。"
+    }
+  }
+}

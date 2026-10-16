@@ -49,3 +49,23 @@ frontend/
 - Vitest + @testing-library/react + jsdom；mock api/client。
 - 用例对应 QA 手册 TC-07 ~ TC-09：分类筛选切换请求与渲染、详情部位切换、缺部位标签隐藏、典故有/无渲染。
 - 另需 `vite build` 通过。
+
+---
+
+# 前端开发设计文章 — Sprint 2（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-2-requirements.md |
+
+## S2-1. 体验打磨
+- 图片懒加载：PlantCard 缩略图与详情大图 `<img loading="lazy">`（详情同植物部位图仍预加载，切换即时）。
+- photo 类型图片：按 images 顺序渲染第一张，type 不影响 UI。
+
+## S2-2. 工程卫生
+- `frontend/.gitignore` 追加 `test-results/`。
+
+## S2-3. 测试更新（配合 QA）
+- 组件测试不依赖具体植物数量；新增用例：mock 30 条数据渲染无异常、缺部位（仅 leaf）植物详情只渲染叶标签。
