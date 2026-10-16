@@ -1,0 +1,21 @@
+{
+  "name": "studyhall",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "studyHall 植物小花园 —— 根目录脚本依赖（内容导入通道）",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "import-plants": "node scripts/import-plants.mjs"
+  },
+  "dependencies": {
+    "mongodb": "^6.20.0",
+    "mysql2": "^3.15.0",
+    "redis": "^5.8.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}

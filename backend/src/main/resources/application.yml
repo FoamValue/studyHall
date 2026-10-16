@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: studyhall-plants
+  data:
+    mongodb:
+      # 容器内由 SPRING_DATA_MONGODB_URI 覆盖
+      uri: mongodb://localhost:27017/studyhall
+    redis:
+      # 容器内由 SPRING_DATA_REDIS_HOST / SPRING_DATA_REDIS_PORT 覆盖
+      host: localhost
+      port: 6379
+  datasource:
+    # 容器内由 SPRING_DATASOURCE_URL / USERNAME / PASSWORD 覆盖
+    url: jdbc:mysql://localhost:3306/studyhall
+    username: studyhall
+    password: studyhall
+
+studyhall:
+  cache:
+    # Redis 缓存 TTL（秒），与设计文档 §4 的 600s 兜底一致
+    ttl-seconds: 600
+  cors:
+    # 开发态放行 Vite dev server，多个来源用英文逗号分隔
+    allowed-origins: http://localhost:5173

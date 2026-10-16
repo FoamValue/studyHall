@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="spetal" cx="256" cy="140" rx="53" ry="68" fill="#FFFFFF" stroke="#BCAAA4" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#spetal" transform="rotate(72 256 256)"/>
+  <use href="#spetal" transform="rotate(144 256 256)"/>
+  <use href="#spetal" transform="rotate(216 256 256)"/>
+  <use href="#spetal" transform="rotate(288 256 256)"/>
+  <use href="#spetal"/>
+  <circle cx="256" cy="256" r="40" fill="#FFCA28" stroke="#F9A825" stroke-width="8"/>
+  <circle cx="256" cy="200" r="7" fill="#F9A825"/>
+  <circle cx="296" cy="216" r="7" fill="#F9A825"/>
+  <circle cx="312" cy="256" r="7" fill="#F9A825"/>
+  <circle cx="296" cy="296" r="7" fill="#F9A825"/>
+  <circle cx="256" cy="312" r="7" fill="#F9A825"/>
+  <circle cx="216" cy="296" r="7" fill="#F9A825"/>
+  <circle cx="200" cy="256" r="7" fill="#F9A825"/>
+  <circle cx="216" cy="216" r="7" fill="#F9A825"/>
+</svg>

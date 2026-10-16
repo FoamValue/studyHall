@@ -1,0 +1,94 @@
+# 后端开发设计文章 — Sprint 1
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-16 |
+| 依据 | PRD v1.0 §8 技术约束、docs/product/iteration-1-requirements.md |
+
+## 1. 工程结构
+```
+backend/
+├── pom.xml                    # JDK 26 + Spring Boot（Central 当前兼容 JDK26 的稳定版）
+├── Dockerfile                 # 多阶段：maven:3.9-eclipse-temurin-26 构建 → eclipse-temurin:26-jre 运行
+└── src/main/java/com/studyhall/plants/
+    ├── PlantsApplication.java
+    ├── config/                # Mongo/Redis/MySQL 配置、CORS、全局异常
+    ├── controller/            # PlantController
+    ├── service/               # PlantService（含 Redis 缓存）
+    ├── repository/            # Mongo Repository + JdbcTemplate
+    ├── model/                 # Plant 文档模型、Category、ApiResponse
+    └── mysql/                 # ImportLog 实体与写入
+```
+
+## 2. 数据模型
+### MongoDB（库 `studyhall`，测试库 `studyhall_test`）
+**categories**：
+```json
+{ "code": "flower", "nameZh": "花朵", "pinyin": "huā duǒ", "nameEn": "Flower", "order": 1 }
+```
+首批：flower(花朵)、leaf(树叶)、fruit(果实)。
+
+**plants**（文档 schema，Sprint 1 唯一权威定义）：
+```json
+{
+  "id": "sunflower",
+  "categories": ["flower"],
+  "name": { "zh": "向日葵", "pinyin": "xiàng rì kuí", "en": "Sunflower", "ipa": "/ˈsʌnˌflaʊər/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/sunflower-flower.svg" } ],
+      "description": "低龄化中文说明，短句。",
+      "allusion": { "text": "典故原文（古诗词/成语）", "source": "出处", "explain": "一句低龄化白话解释" }
+    },
+    "leaf": { "..." : "同上结构" },
+    "fruit": { "..." : "同上结构" }
+  }
+}
+```
+- `parts` 键固定 ∈ {flower, leaf, fruit}，可缺省；`allusion` 可缺省。
+- 唯一索引：`id`。
+
+### MySQL（库 `studyhall`，测试库 `studyhall_test`）
+```sql
+CREATE TABLE import_log (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  source_file VARCHAR(255) NOT NULL,
+  plant_id VARCHAR(64) NOT NULL,
+  action VARCHAR(16) NOT NULL,           -- UPSERT / DELETE
+  imported_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## 3. API 契约（全部 GET，响应统一 `{ "code": 0, "data": ..., "message": "ok" }`）
+| 接口 | 返回 data |
+|---|---|
+| `GET /api/health` | `{"status":"UP"}` |
+| `GET /api/categories` | 按 order 升序的分类数组 |
+| `GET /api/plants?category=flower` | 卡片数组：`{id, name, coverImage, parts:[...部位code]}`；category 缺省=全部；非法 category 返回 code=40001 |
+| `GET /api/plants/{id}` | 完整植物文档；不存在返回 code=40401 |
+
+- coverImage 取 flower 缺省取 leaf 缺省取 fruit 的第一张图。
+
+## 4. Redis 缓存
+- key：`sh:categories`、`sh:plants:list:{category|all}`、`sh:plant:{id}`；TTL 600s；JSON 序列化。
+- 导入脚本导入后调用清缓存方式：脚本直接连 Redis `FLUSHDB` 限定前缀删除（SCAN `sh:*`）。
+
+## 5. 内容导入通道（AI 扩容）
+```
+content/
+├── categories.json          # 分类数组
+└── plants/sunflower.json    # 一植物一文件，schema 同 §2
+scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo → SCAN 清 Redis sh:* → 写 MySQL import_log
+```
+- 幂等：同 id 重复导入为覆盖（UPSERT）。
+- 运行：`node scripts/import-plants.mjs`，连接参数读环境变量 MONGO_URI/REDIS_URI/MYSQL_URI，缺省连 localhost。
+
+## 6. 配置
+- `application.yml` 默认本地开发值；容器内由环境变量覆盖（SPRING_DATA_MONGODB_URI、SPRING_DATA_REDIS_HOST/PORT、SPRING_DATASOURCE_URL/USERNAME/PASSWORD）。
+- CORS：开发态放行 Vite 5173；生产同源经 nginx 反代 `/api`。
+
+## 7. 后端测试（mvn test 必须全绿）
+- 集成测试使用 Testcontainers（mongo:8.0.4 / mysql:8.0 / redis:7，本地已有镜像自动复用，库名加 `_test`）。
+- 用例覆盖 QA 手册 TC-01 ~ TC-06 对应接口行为（分类、筛选、详情、缺部位、404、缓存命中、导入脚本幂等——导入幂等由脚本独立冒烟验证）。

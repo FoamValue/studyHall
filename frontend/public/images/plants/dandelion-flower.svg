@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="op" cx="256" cy="126" rx="19" ry="62" fill="#FFC107" stroke="#F57F17" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+    <ellipse id="ip" cx="256" cy="166" rx="17" ry="46" fill="#FFD54F" stroke="#F57F17" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#op" transform="rotate(22.5 256 256)"/>
+  <use href="#op" transform="rotate(45 256 256)"/>
+  <use href="#op" transform="rotate(67.5 256 256)"/>
+  <use href="#op" transform="rotate(90 256 256)"/>
+  <use href="#op" transform="rotate(112.5 256 256)"/>
+  <use href="#op" transform="rotate(135 256 256)"/>
+  <use href="#op" transform="rotate(157.5 256 256)"/>
+  <use href="#op" transform="rotate(180 256 256)"/>
+  <use href="#op" transform="rotate(202.5 256 256)"/>
+  <use href="#op" transform="rotate(225 256 256)"/>
+  <use href="#op" transform="rotate(247.5 256 256)"/>
+  <use href="#op" transform="rotate(270 256 256)"/>
+  <use href="#op" transform="rotate(292.5 256 256)"/>
+  <use href="#op" transform="rotate(315 256 256)"/>
+  <use href="#op" transform="rotate(337.5 256 256)"/>
+  <use href="#op"/>
+  <use href="#ip" transform="rotate(11.25 256 256)"/>
+  <use href="#ip" transform="rotate(33.75 256 256)"/>
+  <use href="#ip" transform="rotate(56.25 256 256)"/>
+  <use href="#ip" transform="rotate(78.75 256 256)"/>
+  <use href="#ip" transform="rotate(101.25 256 256)"/>
+  <use href="#ip" transform="rotate(123.75 256 256)"/>
+  <use href="#ip" transform="rotate(146.25 256 256)"/>
+  <use href="#ip" transform="rotate(168.75 256 256)"/>
+  <use href="#ip" transform="rotate(191.25 256 256)"/>
+  <use href="#ip" transform="rotate(213.75 256 256)"/>
+  <use href="#ip" transform="rotate(236.25 256 256)"/>
+  <use href="#ip" transform="rotate(258.75 256 256)"/>
+  <use href="#ip" transform="rotate(281.25 256 256)"/>
+  <use href="#ip" transform="rotate(303.75 256 256)"/>
+  <use href="#ip" transform="rotate(326.25 256 256)"/>
+  <use href="#ip" transform="rotate(348.75 256 256)"/>
+  <circle cx="256" cy="256" r="42" fill="#FFB300" stroke="#F57F17" stroke-width="8"/>
+</svg>

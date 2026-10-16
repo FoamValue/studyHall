@@ -1,0 +1,15 @@
+# Java / Maven
+backend/target/
+*.class
+
+# Node
+node_modules/
+
+# IDE / 系统
+.DS_Store
+*.iml
+.idea/
+.vscode/
+
+# 日志与临时文件
+*.log

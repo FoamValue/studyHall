@@ -1,0 +1,79 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: studyhall-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: studyhall          # 自动建库（审计表由导入脚本按需创建）
+      MYSQL_USER: studyhall
+      MYSQL_PASSWORD: studyhall
+    ports:
+      - "3306:3306"                      # 供宿主机执行 scripts/import-plants.mjs
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7
+    container_name: studyhall-redis
+    ports:
+      - "6379:6379"                      # 供宿主机执行导入脚本清缓存
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mongo:
+    image: mongo:8.0.4
+    container_name: studyhall-mongo
+    environment:
+      MONGO_INITDB_DATABASE: studyhall   # 首次写入时自动建库
+    ports:
+      - "27017:27017"                    # 供宿主机执行导入脚本
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    container_name: studyhall-backend
+    environment:
+      SPRING_MONGODB_URI: mongodb://mongo:27017/studyhall  # Spring Boot 4 属性：spring.mongodb.uri（原 spring.data.mongodb.uri 已更名）
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: "6379"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/studyhall
+      SPRING_DATASOURCE_USERNAME: studyhall
+      SPRING_DATASOURCE_PASSWORD: studyhall
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend                    # frontend/Dockerfile 由前端角色提供
+    container_name: studyhall-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:
+  redis-data:
+  mongo-data:

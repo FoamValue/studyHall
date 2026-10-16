@@ -1,0 +1,5 @@
+[
+  { "code": "flower", "nameZh": "花朵", "pinyin": "huā duǒ", "nameEn": "Flower", "order": 1 },
+  { "code": "leaf", "nameZh": "树叶", "pinyin": "shù yè", "nameEn": "Leaf", "order": 2 },
+  { "code": "fruit", "nameZh": "果实", "pinyin": "guǒ shí", "nameEn": "Fruit", "order": 3 }
+]

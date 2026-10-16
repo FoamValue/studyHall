@@ -1,0 +1,27 @@
+{
+  "id": "peach",
+  "categories": ["flower", "leaf", "fruit"],
+  "name": { "zh": "桃", "pinyin": "táo", "en": "Peach", "ipa": "/piːtʃ/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/peach-flower.svg" } ],
+      "description": "桃花粉粉的，有五个小花瓣。它先开花、后长叶，蜜蜂最爱来玩。",
+      "allusion": {
+        "text": "桃之夭夭，灼灼其华。",
+        "source": "《诗经·桃夭》",
+        "explain": "桃树开花开得又多又亮，粉红粉红的，就像春天在发光。"
+      }
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/peach-leaf.svg" } ],
+      "description": "桃叶细细长长的，像小船。边上有小小的锯齿，摸的时候要轻轻的。"
+    },
+    "fruit": {
+      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/peach-fruit.svg" } ],
+      "description": "桃子毛茸茸、甜甜的。咬开软软的果肉，里面有个硬硬的核，核里藏着种子。"
+    }
+  }
+}

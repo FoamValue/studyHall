@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <path id="opetal" d="M256 318 C 204 292 178 214 192 132 C 201 78 226 50 256 44 C 286 50 311 78 320 132 C 334 214 308 292 256 318 Z" fill="#FCE4EC" stroke="#F48FB1" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+    <path id="ipetal" d="M256 320 C 220 298 206 240 216 186 C 223 148 238 130 256 126 C 274 130 289 148 296 186 C 306 240 292 298 256 320 Z" fill="#F8BBD0" stroke="#F06292" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#opetal" transform="rotate(60 256 256)"/>
+  <use href="#opetal" transform="rotate(120 256 256)"/>
+  <use href="#opetal" transform="rotate(180 256 256)"/>
+  <use href="#opetal" transform="rotate(240 256 256)"/>
+  <use href="#opetal" transform="rotate(300 256 256)"/>
+  <use href="#opetal"/>
+  <use href="#ipetal" transform="rotate(-50 256 256)"/>
+  <use href="#ipetal" transform="rotate(50 256 256)"/>
+  <use href="#ipetal"/>
+  <circle cx="256" cy="256" r="58" fill="#FFCA28" stroke="#F9A825" stroke-width="9"/>
+  <circle cx="256" cy="256" r="8" fill="#8D6E63"/>
+  <circle cx="256" cy="226" r="7" fill="#8D6E63"/>
+  <circle cx="256" cy="286" r="7" fill="#8D6E63"/>
+  <circle cx="226" cy="241" r="7" fill="#8D6E63"/>
+  <circle cx="286" cy="241" r="7" fill="#8D6E63"/>
+  <circle cx="226" cy="271" r="7" fill="#8D6E63"/>
+  <circle cx="286" cy="271" r="7" fill="#8D6E63"/>
+</svg>

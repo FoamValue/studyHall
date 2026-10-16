@@ -1,0 +1,22 @@
+{
+  "id": "apple",
+  "categories": ["flower", "leaf", "fruit"],
+  "name": { "zh": "苹果", "pinyin": "píng guǒ", "en": "Apple", "ipa": "/ˈæpl/" },
+  "parts": {
+    "flower": {
+      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/apple-flower.svg" } ],
+      "description": "苹果花白白的，带一点粉，五个花瓣围成小圆圈，香香的。"
+    },
+    "leaf": {
+      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/apple-leaf.svg" } ],
+      "description": "苹果叶椭圆椭圆的，绿油油。正面亮亮的，边上也有小锯齿。"
+    },
+    "fruit": {
+      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
+      "images": [ { "type": "illustration", "url": "/images/plants/apple-fruit.svg" } ],
+      "description": "苹果圆滚滚、红红的，像小皮球。咬一口脆脆甜甜，里面藏着黑黑的小种子。"
+    }
+  }
+}

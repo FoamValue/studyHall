@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <g id="wisp">
+      <path d="M256 204 L256 92" fill="none" stroke="#90A4AE" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="256" cy="78" r="13" fill="#FFFFFF" stroke="#90A4AE" stroke-width="5"/>
+    </g>
+  </defs>
+  <use href="#wisp" transform="rotate(30 256 256)"/>
+  <use href="#wisp" transform="rotate(60 256 256)"/>
+  <use href="#wisp" transform="rotate(90 256 256)"/>
+  <use href="#wisp" transform="rotate(120 256 256)"/>
+  <use href="#wisp" transform="rotate(150 256 256)"/>
+  <use href="#wisp" transform="rotate(180 256 256)"/>
+  <use href="#wisp" transform="rotate(210 256 256)"/>
+  <use href="#wisp" transform="rotate(240 256 256)"/>
+  <use href="#wisp" transform="rotate(270 256 256)"/>
+  <use href="#wisp" transform="rotate(300 256 256)"/>
+  <use href="#wisp" transform="rotate(330 256 256)"/>
+  <use href="#wisp"/>
+  <circle cx="256" cy="256" r="50" fill="#8D6E63" stroke="#5D4037" stroke-width="9"/>
+  <g stroke="#90A4AE" stroke-width="5" stroke-linecap="round">
+    <path d="M428 110 L414 74" fill="none"/>
+    <path d="M432 108 L432 66" fill="none"/>
+    <path d="M436 110 L450 76" fill="none"/>
+    <path d="M62 130 L48 94" fill="none"/>
+    <path d="M66 128 L66 86" fill="none"/>
+    <path d="M70 130 L84 96" fill="none"/>
+    <path d="M444 334 L430 298" fill="none"/>
+    <path d="M448 332 L448 290" fill="none"/>
+    <path d="M452 334 L466 300" fill="none"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#90A4AE" stroke-width="5">
+    <circle cx="414" cy="66" r="9"/>
+    <circle cx="432" cy="58" r="9"/>
+    <circle cx="450" cy="68" r="9"/>
+    <circle cx="48" cy="86" r="9"/>
+    <circle cx="66" cy="78" r="9"/>
+    <circle cx="84" cy="88" r="9"/>
+    <circle cx="430" cy="290" r="9"/>
+    <circle cx="448" cy="282" r="9"/>
+    <circle cx="466" cy="292" r="9"/>
+  </g>
+  <ellipse cx="432" cy="124" rx="10" ry="16" transform="rotate(28 432 124)" fill="#8D6E63" stroke="#5D4037" stroke-width="5"/>
+  <ellipse cx="66" cy="144" rx="10" ry="16" transform="rotate(-28 66 144)" fill="#8D6E63" stroke="#5D4037" stroke-width="5"/>
+  <ellipse cx="448" cy="348" rx="10" ry="16" transform="rotate(20 448 348)" fill="#8D6E63" stroke="#5D4037" stroke-width="5"/>
+</svg>
