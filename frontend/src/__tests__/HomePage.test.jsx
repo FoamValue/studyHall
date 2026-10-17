@@ -146,4 +146,12 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     // 详情页拿到 category=flower 与其列表快照（1 株）
     expect(await screen.findByTestId('probe')).toHaveTextContent('flower|1');
   });
+
+  it('TC-45e 首页不渲染朗读喇叭（Sprint 5 新增）', async () => {
+    getPlants.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
+    renderHome();
+
+    expect(await screen.findByText('向日葵')).toBeInTheDocument();
+    expect(document.querySelectorAll('.speak-btn')).toHaveLength(0);
+  });
 });

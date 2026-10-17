@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getPlant, getPlants } from '../api/client';
 import usePlantNavigation from '../hooks/usePlantNavigation';
+import useSpeech from '../hooks/useSpeech';
 import PartSwitcher, { PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
 import AllusionCard from '../components/AllusionCard';
+import SpeakButton from '../components/SpeakButton';
 
 // 水平滑动触发换株的最小位移（px）
 const SWIPE_THRESHOLD = 60;
@@ -73,6 +75,30 @@ export default function PlantDetailPage() {
     category,
   });
 
+  // 语音朗读：只读名称本身（中文名 / 英文名各一个喇叭）
+  const { supported: canSpeak, speakingLang, speak, stop } = useSpeech();
+
+  // 换株时停止朗读（含浏览器前进 / 后退导致的路由变化），避免残音
+  const didMount = useRef(false);
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    stop();
+  }, [id, stop]);
+
+  // 切部位同样停止朗读
+  const handlePartChange = (nextPart) => {
+    stop();
+    setPart(nextPart);
+  };
+
+  const toggleSpeak = (text, lang) => {
+    if (speakingLang === lang) stop();
+    else speak(text, lang);
+  };
+
   // 键盘 ← / → 换植物（输入控件内忽略）
   useEffect(() => {
     const onKey = (e) => {
@@ -93,12 +119,15 @@ export default function PlantDetailPage() {
     return () => window.removeEventListener('keydown', onKey);
   }, [goPrev, goNext]);
 
-  // 系统全屏状态同步（Esc / 退出按钮都会触发）
+  // 系统全屏状态同步（Esc / 退出按钮都会触发）；全屏进出时停止朗读
   useEffect(() => {
-    const onChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
+    const onChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+      stop();
+    };
     document.addEventListener('fullscreenchange', onChange);
     return () => document.removeEventListener('fullscreenchange', onChange);
-  }, []);
+  }, [stop]);
 
   // 预加载：当前植物全部部位图 + 相邻植物封面图（即其默认部位大图）
   useEffect(() => {
@@ -186,7 +215,12 @@ export default function PlantDetailPage() {
       onTouchEnd={onTouchEnd}
     >
       <div className="imm-topbar">
-        <Link className="back-btn" to="/" state={{ category, restoreScroll: true }}>
+        <Link
+          className="back-btn"
+          to="/"
+          state={{ category, restoreScroll: true }}
+          onClick={stop}
+        >
           ← 回花园
         </Link>
         {canFullscreen ? (
@@ -218,14 +252,34 @@ export default function PlantDetailPage() {
       <div className="detail-body">
         <header className="detail-header">
           <p className="detail-pinyin">{plant.name.pinyin}</p>
-          <h1 className="detail-zh">{plant.name.zh}</h1>
-          <p className="detail-en">
-            {plant.name.en}
-            {plant.name.ipa ? <span className="detail-ipa">{plant.name.ipa}</span> : null}
-          </p>
+          <div className="detail-name-row">
+            <h1 className="detail-zh">{plant.name.zh}</h1>
+            {canSpeak ? (
+              <SpeakButton
+                text={plant.name.zh}
+                lang="zh"
+                speaking={speakingLang === 'zh'}
+                onToggle={toggleSpeak}
+              />
+            ) : null}
+          </div>
+          <div className="detail-name-row">
+            <p className="detail-en">
+              {plant.name.en}
+              {plant.name.ipa ? <span className="detail-ipa">{plant.name.ipa}</span> : null}
+            </p>
+            {canSpeak && plant.name.en ? (
+              <SpeakButton
+                text={plant.name.en}
+                lang="en"
+                speaking={speakingLang === 'en'}
+                onToggle={toggleSpeak}
+              />
+            ) : null}
+          </div>
         </header>
 
-        <PartSwitcher parts={plant.parts} value={part} onChange={setPart} />
+        <PartSwitcher parts={plant.parts} value={part} onChange={handlePartChange} />
 
         <div className="detail-main">
           <img

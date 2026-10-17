@@ -162,3 +162,27 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 
 ## S4-4. 交付结论
 - Sprint 4 后端交付物：本设计说明 + 顺序稳定性确认；无代码改动。
+
+---
+
+# 后端开发设计文章 — Sprint 5（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-5-requirements.md |
+
+## S5-1. 交付结论（J-7）：后端零代码变更
+- 语音朗读由前端复用浏览器原生 `SpeechSynthesis` 实现，**后端不参与**：不新增接口、不改返回结构、不进缓存链路。
+- 不改语料：`content/plants/*.json` 的 `name.zh` / `name.en` 即为朗读文本来源，无需新增字段（无「发音」数据需求）。
+- 不引入拼音 / 音标转语音的后端逻辑（拼音、音标本就不朗读）。
+
+## S5-2. 契约与缓存保持不变
+- `GET /api/plants`、`GET /api/plants/{id}` 契约不变；Redis key 约定（`sh:categories`、`sh:plants:list:*`、`sh:plant:*`）不变，TTL 600s 不变。
+- 导入脚本 `scripts/import-plants.mjs` 不变（无新增字段）。
+
+## S5-3. 测试策略
+- 后端**零代码变更**，`mvn test` 全量回归即可（TC-01~13、TC-24 数据驱动，数量自动跟随 `content/plants/`），无新增后端用例。
+- 全部新增 / 变更集中在前端（见 frontend-design S5-1~S5-6 与 QA 手册 TC-41 起）。
+

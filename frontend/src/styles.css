@@ -374,3 +374,39 @@ body {
     display: none;
   }
 }
+
+/* ===== 语音朗读喇叭（Sprint 5）===== */
+/* 名称行：名称与喇叭同一行居中（喇叭是 h1 的兄弟节点，不影响标题无障碍名） */
+.detail-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 朗读喇叭：热区 ≥56px，空闲白底描边，播放中实底高亮 */
+.speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-dark);
+  background: var(--color-card-bg);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.speak-btn.is-speaking {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.speak-btn:active {
+  transform: scale(0.94);
+}

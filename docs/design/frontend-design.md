@@ -150,3 +150,62 @@ frontend/
 - `PlantDetailPage.test.jsx`：mock 增加 `getPlants`；新增 TC-28~TC-32（邻株切换 / 首尾循环 / 换株后部位回落 / 全屏不可用降级 / 回花园入口存在）。
 - `HomePage.test.jsx`：TC-12 补充断言卡片 Link 的 `state` 含 `category` 与 `listIds`（原断言语义不变）。
 - `e2e/smoke.spec.js`：新增 TC-33~TC-35（三通道一致、首尾循环、全屏进出不丢位置）。
+
+---
+
+# 前端开发设计文章 — Sprint 5（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-5-requirements.md |
+
+## S5-1. 新增 `useSpeech`（自定义 Hook）
+- 位置：`frontend/src/hooks/useSpeech.js`。
+- 能力检测：`supported = typeof window !== 'undefined' && 'speechSynthesis' in window && typeof window.SpeechSynthesisUtterance === 'function'`；不支持时调用方不渲染喇叭。
+- 状态：`speakingLang`（`'zh' | 'en' | null`），用于按钮高亮与「再点停止」判定。
+- API：`{ supported, speakingLang, speak(text, lang), stop() }`。
+- `speak` 逻辑：
+  ```js
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang === 'en' ? 'en-US' : 'zh-CN';
+  u.rate = 0.8;
+  u.onend = u.onerror = () => setSpeakingLang(null);
+  window.speechSynthesis.cancel();     // 互斥：先停掉当前
+  window.speechSynthesis.speak(u);
+  setSpeakingLang(lang);
+  ```
+- `stop()`：`speechSynthesis.cancel()` + `setSpeakingLang(null)`。
+- 卸载清理：`useEffect(() => () => window.speechSynthesis?.cancel(), [])`，避免离开页面残音。
+- 「再点同一喇叭 = 停止」由调用方判定：`speakingLang === lang ? stop() : speak(text, lang)`。
+
+## S5-2. 详情页集成与场景自动停止
+- 中文名行渲染 `.speak-btn`（`lang='zh'`，文本 `plant.name.zh`）；英文名行渲染英文喇叭（`lang='en'`，文本 `plant.name.en`）；**`name.en` 为空则不渲染英文喇叭**。
+- 统一 `stop()` 的触发点：
+  - 植物 id 变化（换株）→ `useEffect(..., [id])`
+  - 部位切换 → `useEffect(..., [part])`
+  - 全屏进出 → `fullscreenchange` 回调内
+  - 回花园 → `.back-btn` 的 `onClick`
+  - 组件卸载 → 见 S5-1
+- `supported === false` 时整组喇叭不渲染，其余功能（换株、部位切换、全屏）不受影响。
+- 不自动播放：只在用户点击喇叭时 `speak`（满足浏览器「语音播放需用户手势」策略）。
+
+## S5-3. `SpeakButton` 组件
+- 位置：`frontend/src/components/SpeakButton.jsx`；props `{ text, lang, speaking, onToggle }`。
+- 渲染：`<button type="button" className="speak-btn" aria-label={lang === 'en' ? '朗读英文名' : '朗读中文名'} aria-pressed={speaking}>`；图标播放中显示「停止」，空闲显示「喇叭」（内联 SVG）。
+- 热区由样式保证 ≥56px。
+
+## S5-4. 样式增量（styles.css）
+- `.detail-name-row`：`display: flex; align-items: center; gap: 12px;`（名称 + 喇叭同一行）。
+- `.speak-btn`：`min-width: 56px; min-height: 56px; border-radius: 50%; display:inline-flex; align-items:center; justify-content:center;` 白底 + 主色描边；`.is-speaking` 时主色实底白图标。
+- 全屏态与横屏分栏复用同一样式；不遮挡 `.nav-btn`、`.imm-topbar`。
+
+## S5-5. 测试更新（配合 QA）
+- `PlantDetailPage.test.jsx`：`beforeEach` 注入 `window.speechSynthesis` mock（`speak` / `cancel` spy，`SpeechSynthesisUtterance` 构造 mock 记录 `text` / `lang` / `rate`），`afterEach` 还原；新增 TC-41~TC-45。
+- `e2e/`：新增 TC-46~TC-47（喇叭存在且热区 ≥56px；stub `speechSynthesis` 后点击触发调用）。
+
+## S5-6. 兼容与降级
+- Safari / iPadOS 要求用户手势触发，喇叭仅由点击触发，程序不自动播放。
+- 浏览器无中文 voice 时可能静音但调用仍成功：属能力边界，不做额外处理，真机音质由人工抽验。
+
