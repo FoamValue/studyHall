@@ -1,0 +1,45 @@
+{
+  "id": "cantaloupe",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "哈密瓜",
+    "pinyin": "hā mì guā",
+    "en": "Cantaloupe",
+    "ipa": "/ˈkæntəloʊp/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/cantaloupe-fruit.svg"
+        }
+      ],
+      "description": "哈密瓜圆圆的，皮上有网网花纹。果肉橙橙的，甜得像蜜。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/cantaloupe-leaf.svg"
+        }
+      ],
+      "description": "哈密瓜叶子圆圆的，像小扇子。叶子毛毛的，趴在地上长。"
+    }
+  }
+}

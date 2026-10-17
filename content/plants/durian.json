@@ -1,0 +1,45 @@
+{
+  "id": "durian",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "榴莲",
+    "pinyin": "liú lián",
+    "en": "Durian",
+    "ipa": "/ˈdʊriən/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/durian-fruit.svg"
+        }
+      ],
+      "description": "榴莲满身是尖尖的刺，闻着臭吃着香。果肉软软黄黄的，像奶油。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/durian-leaf.svg"
+        }
+      ],
+      "description": "榴莲叶子长长的，背面有点银色。叶子厚厚的，绿绿的。"
+    }
+  }
+}

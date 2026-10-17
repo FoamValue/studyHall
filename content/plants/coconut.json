@@ -1,0 +1,45 @@
+{
+  "id": "coconut",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "椰子",
+    "pinyin": "yē zi",
+    "en": "Coconut",
+    "ipa": "/ˈkoʊkənʌt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/coconut-fruit.svg"
+        }
+      ],
+      "description": "椰子外壳硬硬的，里面装着甜甜的椰子水。插根吸管就能喝。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/coconut-leaf.svg"
+        }
+      ],
+      "description": "椰子叶子又长又大，像绿色的大羽毛。风一吹哗啦啦响。"
+    }
+  }
+}

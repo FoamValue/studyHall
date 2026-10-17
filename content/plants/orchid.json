@@ -1,0 +1,45 @@
+{
+  "id": "orchid",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "蝴蝶兰",
+    "pinyin": "hú dié lán",
+    "en": "Orchid",
+    "ipa": "/ˈɔːrkɪd/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/orchid-flower.svg"
+        }
+      ],
+      "description": "蝴蝶兰的花瓣像一只只彩蝴蝶，停在枝头休息。它能开好久好久。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/orchid-leaf.svg"
+        }
+      ],
+      "description": "蝴蝶兰叶子又厚又绿，像绿色的小舌头。它从根上长出来，胖乎乎的。"
+    }
+  }
+}

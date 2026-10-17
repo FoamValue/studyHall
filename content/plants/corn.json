@@ -1,0 +1,45 @@
+{
+  "id": "corn",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "玉米",
+    "pinyin": "yù mǐ",
+    "en": "Corn",
+    "ipa": "/kɔːrn/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/corn-fruit.svg"
+        }
+      ],
+      "description": "玉米穿着绿外衣，剥开一排排金黄小牙齿。煮熟了甜甜的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/corn-leaf.svg"
+        }
+      ],
+      "description": "玉米叶子又长又宽，像绿色的大飘带。风一吹哗啦啦唱歌。"
+    }
+  }
+}

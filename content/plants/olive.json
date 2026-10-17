@@ -1,0 +1,45 @@
+{
+  "id": "olive",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "橄榄",
+    "pinyin": "gǎn lǎn",
+    "en": "Olive",
+    "ipa": "/ˈɑːlɪv/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/olive-fruit.svg"
+        }
+      ],
+      "description": "橄榄小小的、椭圆椭圆的，青的紫的都有。嚼一嚼，先苦后甜。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/olive-leaf.svg"
+        }
+      ],
+      "description": "橄榄叶子小小的，正面绿背面银白。风一吹，树叶一闪一闪。"
+    }
+  }
+}

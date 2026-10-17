@@ -1,0 +1,45 @@
+{
+  "id": "anemone",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "银莲花",
+    "pinyin": "yín lián huā",
+    "en": "Anemone",
+    "ipa": "/əˈneməni/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/anemone-flower.svg"
+        }
+      ],
+      "description": "银莲花白白的，风一吹就点头，所以也叫风花。花心有一圈小绒毛。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/anemone-leaf.svg"
+        }
+      ],
+      "description": "银莲花叶子像小鸭掌，分成好几瓣。绿绿的，贴着地长。"
+    }
+  }
+}

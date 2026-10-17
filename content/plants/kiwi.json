@@ -1,0 +1,45 @@
+{
+  "id": "kiwi",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "猕猴桃",
+    "pinyin": "mí hóu táo",
+    "en": "Kiwi",
+    "ipa": "/ˈkiːwiː/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/kiwi-fruit.svg"
+        }
+      ],
+      "description": "猕猴桃穿着棕色毛衣，里面绿绿的果肉藏着一排小黑籽。酸酸甜甜。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/kiwi-leaf.svg"
+        }
+      ],
+      "description": "猕猴桃叶子大大的，像绿色的小爱心。叶子背面有细细的绒毛。"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "forget-me-not",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "勿忘我",
+    "pinyin": "wù wàng wǒ",
+    "en": "Forget-me-not",
+    "ipa": "/fərˈɡet miː nɑːt/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/forget-me-not-flower.svg"
+        }
+      ],
+      "description": "勿忘我是小小的蓝花，花心黄黄的。它的名字是说：别忘记我呀。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/forget-me-not-leaf.svg"
+        }
+      ],
+      "description": "勿忘我叶子小小的，上面有细绒毛。灰绿灰绿的，真温柔。"
+    }
+  }
+}

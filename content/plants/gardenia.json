@@ -1,0 +1,50 @@
+{
+  "id": "gardenia",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "栀子花",
+    "pinyin": "zhī zi huā",
+    "en": "Gardenia",
+    "ipa": "/ɡɑːrˈdiːniə/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/gardenia-flower.svg"
+        }
+      ],
+      "description": "栀子花白白的，一层一层像奶油裙。香味甜甜的，常被大家别在衣襟上。",
+      "allusion": {
+        "text": "妇姑相唤浴蚕去，闲看中庭栀子花。",
+        "source": "王建《雨过山村》",
+        "explain": "村里姑姑嫂嫂忙着去养蚕，院子里的栀子花静静地开，白白的香香的。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/gardenia-leaf.svg"
+        }
+      ],
+      "description": "栀子叶子绿油油的，一年四季都不掉。叶片厚厚的，摸上去滑滑的。"
+    }
+  }
+}

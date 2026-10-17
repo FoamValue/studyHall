@@ -1,0 +1,45 @@
+{
+  "id": "dragon-fruit",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "火龙果",
+    "pinyin": "huǒ lóng guǒ",
+    "en": "Dragon Fruit",
+    "ipa": "/ˈdræɡən fruːt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/dragon-fruit-fruit.svg"
+        }
+      ],
+      "description": "火龙果穿着粉红的外衣，还长着绿色小鳞片。里面白白的果肉撒满小黑籽。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/dragon-fruit-leaf.svg"
+        }
+      ],
+      "description": "火龙果的叶子变成了绿绿的肉茎，像三条边的小柱子。它是仙人掌的亲戚。"
+    }
+  }
+}

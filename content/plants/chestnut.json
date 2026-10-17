@@ -1,0 +1,45 @@
+{
+  "id": "chestnut",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "板栗",
+    "pinyin": "bǎn lì",
+    "en": "Chestnut",
+    "ipa": "/ˈtʃesnʌt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/chestnut-fruit.svg"
+        }
+      ],
+      "description": "板栗住在带刺的小刺猬壳里。剥开壳，栗子棕红油亮，炒熟香喷喷。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/chestnut-leaf.svg"
+        }
+      ],
+      "description": "板栗叶子长长的，边上有尖尖锯齿。叶子排得整整齐齐。"
+    }
+  }
+}

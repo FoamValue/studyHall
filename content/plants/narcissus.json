@@ -1,0 +1,50 @@
+{
+  "id": "narcissus",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "水仙花",
+    "pinyin": "shuǐ xiān huā",
+    "en": "Narcissus",
+    "ipa": "/nɑːrˈsɪsəs/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/narcissus-flower.svg"
+        }
+      ],
+      "description": "水仙花白白的，中间有个金黄的小杯子。过年的时候它开得最香。",
+      "allusion": {
+        "text": "凌波仙子生尘袜，水上轻盈步微月。",
+        "source": "黄庭坚《王充道送水仙花五十枝》",
+        "explain": "诗人夸水仙花像在水上走路的仙女，脚步轻轻的，白裙子真优雅。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/narcissus-leaf.svg"
+        }
+      ],
+      "description": "水仙叶子扁扁长长的，像绿色的小带子。从白白的球茎里钻出来。"
+    }
+  }
+}

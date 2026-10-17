@@ -1,0 +1,45 @@
+{
+  "id": "geranium",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "天竺葵",
+    "pinyin": "tiān zhú kuí",
+    "en": "Geranium",
+    "ipa": "/dʒəˈreɪniəm/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/geranium-flower.svg"
+        }
+      ],
+      "description": "天竺葵开成一个个小花球，红的粉的像棒棒糖。它最喜欢晒太阳。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/geranium-leaf.svg"
+        }
+      ],
+      "description": "天竺葵叶子圆圆的，边上有波浪。摸一摸有股特别的味道，小蚊子不喜欢。"
+    }
+  }
+}

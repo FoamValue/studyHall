@@ -1,0 +1,45 @@
+{
+  "id": "cosmos",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "波斯菊",
+    "pinyin": "bō sī jú",
+    "en": "Cosmos",
+    "ipa": "/ˈkɑːzmoʊs/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/cosmos-flower.svg"
+        }
+      ],
+      "description": "波斯菊花瓣粉粉白白，像小姑娘的裙摆。风一吹，整片花田跳起舞。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/cosmos-leaf.svg"
+        }
+      ],
+      "description": "波斯菊叶子细细碎碎的，像绿色的小羽毛。风一吹轻轻摇。"
+    }
+  }
+}

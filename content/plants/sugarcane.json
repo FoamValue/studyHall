@@ -1,0 +1,45 @@
+{
+  "id": "sugarcane",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "甘蔗",
+    "pinyin": "gān zhe",
+    "en": "Sugarcane",
+    "ipa": "/ˈʃʊɡərkeɪn/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/sugarcane-fruit.svg"
+        }
+      ],
+      "description": "甘蔗一节一节长长的，像竹子。咬一口甜甜的，汁水真多。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/sugarcane-leaf.svg"
+        }
+      ],
+      "description": "甘蔗叶子又长又尖，像绿色的大刀。叶子边缘有点割手。"
+    }
+  }
+}

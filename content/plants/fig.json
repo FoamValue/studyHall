@@ -1,0 +1,45 @@
+{
+  "id": "fig",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "无花果",
+    "pinyin": "wú huā guǒ",
+    "en": "Fig",
+    "ipa": "/fɪɡ/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/fig-fruit.svg"
+        }
+      ],
+      "description": "无花果软软甜甜的，掰开里面藏着小花花。原来它的花躲在果子里面。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/fig-leaf.svg"
+        }
+      ],
+      "description": "无花果叶子大大的，像张开的手掌。叶子摸上去有点粗粗的。"
+    }
+  }
+}

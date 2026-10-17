@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -91,15 +92,30 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     expect(img).toHaveAttribute('loading', 'lazy');
   });
 
-  it('TC-21 30 条数据渲染无异常', async () => {
-    const cards = Array.from({ length: 30 }, (_, i) =>
+  it('TC-21 100 条数据渲染无异常', async () => {
+    const cards = Array.from({ length: 100 }, (_, i) =>
       card(`plant-${i}`, `植物${i}`, `zhí wù ${i}`, `Plant ${i}`, '/images/plants/sunflower-flower.svg', ['flower'])
     );
     getPlants.mockResolvedValue(cards);
     renderHome();
 
     expect(await screen.findByText('植物0')).toBeInTheDocument();
-    expect(screen.getByText('植物29')).toBeInTheDocument();
-    expect(document.querySelectorAll('.plant-card')).toHaveLength(30);
+    expect(screen.getByText('植物99')).toBeInTheDocument();
+    expect(document.querySelectorAll('.plant-card')).toHaveLength(100);
+  });
+
+  it('TC-25 触控目标：分类按钮使用 .filter-btn，且样式表 min-height ≥ 44px', async () => {
+    getPlants.mockResolvedValue([SUNFLOWER_CARD]);
+    renderHome();
+
+    // 结构断言：分类按钮全部带 filter-btn 类（部位按钮复用同类，见 PartSwitcher）
+    expect(await screen.findByRole('button', { name: '全部' })).toHaveClass('filter-btn');
+    expect(screen.getByRole('button', { name: '花朵' })).toHaveClass('filter-btn');
+
+    // 样式表规则断言：.filter-btn 的 min-height ≥ 44px（jsdom 不计算级联样式，直接读源文件）
+    const css = readFileSync('src/styles.css', 'utf-8');
+    const block = css.match(/\.filter-btn\s*\{[^}]*\}/s)[0];
+    const minHeight = Number(block.match(/min-height:\s*(\d+)px/)[1]);
+    expect(minHeight).toBeGreaterThanOrEqual(44);
   });
 });

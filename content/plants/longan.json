@@ -1,0 +1,45 @@
+{
+  "id": "longan",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "龙眼",
+    "pinyin": "lóng yǎn",
+    "en": "Longan",
+    "ipa": "/ˈlɑːŋɡən/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/longan-fruit.svg"
+        }
+      ],
+      "description": "龙眼圆圆的，壳薄薄的、土黄土黄的。剥开果肉像小龙的眼珠，甜甜的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/longan-leaf.svg"
+        }
+      ],
+      "description": "龙眼叶子长长的，绿油油一对对长着。一年四季都是绿的。"
+    }
+  }
+}

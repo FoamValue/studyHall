@@ -1,0 +1,45 @@
+{
+  "id": "eggplant",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "茄子",
+    "pinyin": "qié zi",
+    "en": "Eggplant",
+    "ipa": "/ˈeɡplænt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/eggplant-fruit.svg"
+        }
+      ],
+      "description": "茄子紫紫的、亮亮的，像穿紫袍的小胖子。煮熟了软软的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/eggplant-leaf.svg"
+        }
+      ],
+      "description": "茄子叶子大大的，边上有波浪。叶子上有小毛毛，还有点刺。"
+    }
+  }
+}

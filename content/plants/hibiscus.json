@@ -1,0 +1,50 @@
+{
+  "id": "hibiscus",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "芙蓉花",
+    "pinyin": "fú róng huā",
+    "en": "Hibiscus",
+    "ipa": "/hɪˈbɪskəs/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hibiscus-flower.svg"
+        }
+      ],
+      "description": "芙蓉花早上白白的，傍晚变粉红，像会变魔术。花朵大大的，真好看。",
+      "allusion": {
+        "text": "新开寒露丛，远比水间红。",
+        "source": "韩愈《木芙蓉》",
+        "explain": "天凉凉的寒露时节，木芙蓉刚刚开放，比夏天水边的荷花还要红艳。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hibiscus-leaf.svg"
+        }
+      ],
+      "description": "芙蓉叶子大大的，像一把小蒲扇。叶子上有小毛毛，摸起来软软的。"
+    }
+  }
+}

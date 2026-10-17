@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <circle id="p" cx="256" cy="166" r="82" fill="#F06292" stroke="#C2185B" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#p"/>
+  <use href="#p" transform="rotate(72 256 256)"/>
+  <use href="#p" transform="rotate(144 256 256)"/>
+  <use href="#p" transform="rotate(216 256 256)"/>
+  <use href="#p" transform="rotate(288 256 256)"/>
+  <circle cx="256" cy="256" r="40" fill="#FFFDE7" stroke="#F9A825" stroke-width="8"/>
+  <circle cx="256" cy="256" r="8" fill="#F9A825"/>
+  <circle cx="256.0" cy="234.0" r="5" fill="#F9A825"/>
+  <circle cx="236.9" cy="245.0" r="5" fill="#F9A825"/>
+  <circle cx="236.9" cy="267.0" r="5" fill="#F9A825"/>
+  <circle cx="256.0" cy="278.0" r="5" fill="#F9A825"/>
+  <circle cx="275.1" cy="267.0" r="5" fill="#F9A825"/>
+  <circle cx="275.1" cy="245.0" r="5" fill="#F9A825"/>
+  <line x1="276.0" y1="256.0" x2="340.0" y2="256.0" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="340.0" cy="256.0" r="6" fill="#E53935"/>
+  <line x1="266.0" y1="273.3" x2="298.0" y2="328.7" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="298.0" cy="328.7" r="6" fill="#E53935"/>
+  <line x1="246.0" y1="273.3" x2="214.0" y2="328.7" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="214.0" cy="328.7" r="6" fill="#E53935"/>
+  <line x1="236.0" y1="256.0" x2="172.0" y2="256.0" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="172.0" cy="256.0" r="6" fill="#E53935"/>
+  <line x1="246.0" y1="238.7" x2="214.0" y2="183.3" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="214.0" cy="183.3" r="6" fill="#E53935"/>
+  <line x1="266.0" y1="238.7" x2="298.0" y2="183.3" stroke="#F9A825" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="298.0" cy="183.3" r="6" fill="#E53935"/>
+
+</svg>

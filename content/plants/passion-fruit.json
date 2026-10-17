@@ -1,0 +1,45 @@
+{
+  "id": "passion-fruit",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "百香果",
+    "pinyin": "bǎi xiāng guǒ",
+    "en": "Passion Fruit",
+    "ipa": "/ˈpæʃən fruːt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/passion-fruit-fruit.svg"
+        }
+      ],
+      "description": "百香果圆圆的、紫紫的，切开里面金黄果汁好多籽。酸酸甜甜香香的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/passion-fruit-leaf.svg"
+        }
+      ],
+      "description": "百香果叶子像小鸭掌，分成三瓣。藤蔓上长着卷卷的须须。"
+    }
+  }
+}

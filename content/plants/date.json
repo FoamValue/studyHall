@@ -1,0 +1,45 @@
+{
+  "id": "date",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "椰枣",
+    "pinyin": "yē zǎo",
+    "en": "Date",
+    "ipa": "/deɪt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/date-fruit.svg"
+        }
+      ],
+      "description": "椰枣一串一串挂在树上，棕红棕红的。晒干后甜甜的像蜜糖。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/date-leaf.svg"
+        }
+      ],
+      "description": "椰枣叶子又长又大，像绿色的大羽毛。叶子边上有小刺。"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "blueberry",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "蓝莓",
+    "pinyin": "lán méi",
+    "en": "Blueberry",
+    "ipa": "/ˈbluːberi/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/blueberry-fruit.svg"
+        }
+      ],
+      "description": "蓝莓小小的、蓝蓝的，像一颗颗小宝石。表面有一层白白的粉。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/blueberry-leaf.svg"
+        }
+      ],
+      "description": "蓝莓叶子小小的，椭圆椭圆的。秋天叶子变红，像小火苗。"
+    }
+  }
+}

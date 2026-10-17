@@ -1,0 +1,45 @@
+{
+  "id": "peanut",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "花生",
+    "pinyin": "huā shēng",
+    "en": "Peanut",
+    "ipa": "/ˈpiːnʌt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/peanut-fruit.svg"
+        }
+      ],
+      "description": "花生住在泥土里，外壳像小葫芦。剥开两颗胖娃娃，香香脆脆。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/peanut-leaf.svg"
+        }
+      ],
+      "description": "花生叶子是四片小叶手拉手。晚上叶子会合起来睡觉觉。"
+    }
+  }
+}

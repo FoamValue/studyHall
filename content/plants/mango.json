@@ -1,0 +1,45 @@
+{
+  "id": "mango",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "芒果",
+    "pinyin": "máng guǒ",
+    "en": "Mango",
+    "ipa": "/ˈmæŋɡoʊ/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mango-fruit.svg"
+        }
+      ],
+      "description": "芒果黄黄的，像弯弯的小月亮。果肉软软的，甜甜的，香香的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mango-leaf.svg"
+        }
+      ],
+      "description": "芒果叶子长长的，绿得发亮。小叶子刚长出来是红褐色的。"
+    }
+  }
+}

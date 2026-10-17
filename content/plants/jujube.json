@@ -1,0 +1,45 @@
+{
+  "id": "jujube",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "枣",
+    "pinyin": "zǎo",
+    "en": "Jujube",
+    "ipa": "/ˈdʒuːdʒuːb/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/jujube-fruit.svg"
+        }
+      ],
+      "description": "枣子红红的、椭圆的，像一颗颗小玛瑙。脆脆甜甜的，晒干更甜。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/jujube-leaf.svg"
+        }
+      ],
+      "description": "枣树叶子小小的，亮亮的，一对一对长着。枝条上还有小刺。"
+    }
+  }
+}

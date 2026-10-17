@@ -114,3 +114,21 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 ## S2-3. 测试策略更新（配合 QA）
 - 植物数量断言从固定值改为动态：以 ContentSeed 从 content/ 实际读入的清单为准。
 - 新增数据驱动用例：遍历 content/plants/*.json 断言 schema 合规（categories 与 parts 键一致、每部位 ≥1 图、三语名称非空）。
+
+---
+
+# 后端开发设计文章 — Sprint 3（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-3-requirements.md |
+
+## S3-1. 无 API 契约变更
+- 100 种植物仍一次全量返回；列表接口无分页（PO 裁决，数据量小）。
+
+## S3-2. 测试策略更新（配合 QA）
+- TC-11 同一 JSON 遍历中并入 TC-24：description ≤ 80 字、不含拉丁字母（拼音/英文字段不在此列）。
+- TC-12 资产存在性检查自动覆盖 140 张新 SVG。
+- 导入幂等（TC-10）在 100 种规模下复验。

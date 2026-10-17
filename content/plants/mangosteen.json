@@ -1,0 +1,45 @@
+{
+  "id": "mangosteen",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "山竹",
+    "pinyin": "shān zhú",
+    "en": "Mangosteen",
+    "ipa": "/ˈmæŋɡəstiːn/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mangosteen-fruit.svg"
+        }
+      ],
+      "description": "山竹紫紫的外壳厚厚的，里面藏着几瓣白果肉。酸酸甜甜像小蒜瓣。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mangosteen-leaf.svg"
+        }
+      ],
+      "description": "山竹叶子椭圆厚厚的，绿得发亮。一对一对整整齐齐长着。"
+    }
+  }
+}

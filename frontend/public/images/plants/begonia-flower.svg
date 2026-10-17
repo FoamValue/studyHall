@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <circle id="p" cx="256" cy="166" r="82" fill="#F48FB1" stroke="#D81B60" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#p"/>
+  <use href="#p" transform="rotate(72 256 256)"/>
+  <use href="#p" transform="rotate(144 256 256)"/>
+  <use href="#p" transform="rotate(216 256 256)"/>
+  <use href="#p" transform="rotate(288 256 256)"/>
+  <circle cx="256" cy="256" r="40" fill="#FFECB3" stroke="#F9A825" stroke-width="8"/>
+  <circle cx="256" cy="256" r="8" fill="#F9A825"/>
+  <circle cx="256.0" cy="234.0" r="5" fill="#F9A825"/>
+  <circle cx="236.9" cy="245.0" r="5" fill="#F9A825"/>
+  <circle cx="236.9" cy="267.0" r="5" fill="#F9A825"/>
+  <circle cx="256.0" cy="278.0" r="5" fill="#F9A825"/>
+  <circle cx="275.1" cy="267.0" r="5" fill="#F9A825"/>
+  <circle cx="275.1" cy="245.0" r="5" fill="#F9A825"/>
+</svg>

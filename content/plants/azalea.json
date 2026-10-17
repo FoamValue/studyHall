@@ -1,0 +1,50 @@
+{
+  "id": "azalea",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "杜鹃花",
+    "pinyin": "dù juān huā",
+    "en": "Azalea",
+    "ipa": "/əˈzeɪliə/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/azalea-flower.svg"
+        }
+      ],
+      "description": "杜鹃花红红粉粉，开满山坡像铺了花毯子。它还有一个名字叫映山红。",
+      "allusion": {
+        "text": "蜀国曾闻子规鸟，宣城还见杜鹃花。",
+        "source": "李白《宣城见杜鹃花》",
+        "explain": "李白爷爷看到红红的杜鹃花，想起家乡的杜鹃鸟，花儿让他想家了。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/azalea-leaf.svg"
+        }
+      ],
+      "description": "杜鹃叶子小小的，椭圆椭圆的。叶子上有细细的绒毛，摸起来毛茸茸。"
+    }
+  }
+}

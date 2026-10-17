@@ -1,0 +1,45 @@
+{
+  "id": "chili",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "辣椒",
+    "pinyin": "là jiāo",
+    "en": "Chili",
+    "ipa": "/ˈtʃɪli/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/chili-fruit.svg"
+        }
+      ],
+      "description": "辣椒尖尖的，红红的像小灯笼。咬一口辣得直吐舌头。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/chili-leaf.svg"
+        }
+      ],
+      "description": "辣椒叶子小小的，尖尖的，绿绿的。叶子摸上去滑滑的。"
+    }
+  }
+}

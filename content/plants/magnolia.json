@@ -1,0 +1,50 @@
+{
+  "id": "magnolia",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "玉兰花",
+    "pinyin": "yù lán huā",
+    "en": "Magnolia",
+    "ipa": "/mæɡˈnoʊliə/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/magnolia-flower.svg"
+        }
+      ],
+      "description": "玉兰花大大的、白白的，像一只只小玉杯。它先开花后长叶，站在高高的枝头。",
+      "allusion": {
+        "text": "绰约新妆玉有辉，素娥千队雪成围。",
+        "source": "文徵明《玉兰》",
+        "explain": "玉兰花像刚打扮好的小仙女，一大片开起来，像白雪围成的队伍。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/magnolia-leaf.svg"
+        }
+      ],
+      "description": "玉兰叶子又大又圆，绿得发亮。秋天叶子变黄，一片片飘下来。"
+    }
+  }
+}

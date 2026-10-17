@@ -1,0 +1,45 @@
+{
+  "id": "iris",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "鸢尾花",
+    "pinyin": "yuān wěi huā",
+    "en": "Iris",
+    "ipa": "/ˈaɪrɪs/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/iris-flower.svg"
+        }
+      ],
+      "description": "鸢尾花紫紫的，花瓣像小旗子飘呀飘。远远看，像一只只紫蝴蝶。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/iris-leaf.svg"
+        }
+      ],
+      "description": "鸢尾叶子扁扁长长的，像绿色的宝剑。一排一排站得整整齐齐。"
+    }
+  }
+}

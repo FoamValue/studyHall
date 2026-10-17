@@ -1,0 +1,45 @@
+{
+  "id": "avocado",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "牛油果",
+    "pinyin": "niú yóu guǒ",
+    "en": "Avocado",
+    "ipa": "/ˌævəˈkɑːdoʊ/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/avocado-fruit.svg"
+        }
+      ],
+      "description": "牛油果深绿深绿的，像一颗大鸭梨。切开里面黄绿黄绿，还有一颗大核。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/avocado-leaf.svg"
+        }
+      ],
+      "description": "牛油果叶子长长的，绿得发亮。一年四季都是绿的。"
+    }
+  }
+}

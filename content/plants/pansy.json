@@ -1,0 +1,45 @@
+{
+  "id": "pansy",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "三色堇",
+    "pinyin": "sān sè jǐn",
+    "en": "Pansy",
+    "ipa": "/ˈpænzi/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/pansy-flower.svg"
+        }
+      ],
+      "description": "三色堇一朵花上有三种颜色，像一张小花脸。小朋友们都爱对着它笑。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/pansy-leaf.svg"
+        }
+      ],
+      "description": "三色堇叶子小小的，像绿色的小爱心。叶子边缘有圆圆的波浪。"
+    }
+  }
+}

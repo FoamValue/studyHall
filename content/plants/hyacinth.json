@@ -1,0 +1,45 @@
+{
+  "id": "hyacinth",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "风信子",
+    "pinyin": "fēng xìn zi",
+    "en": "Hyacinth",
+    "ipa": "/ˈhaɪəsɪnθ/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hyacinth-flower.svg"
+        }
+      ],
+      "description": "风信子的花挤成一个大花球，像彩色的小玉米。香味浓浓的，远远就能闻到。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hyacinth-leaf.svg"
+        }
+      ],
+      "description": "风信子叶子又厚又绿，像一把把小剑。它们围着花茎站得直直的。"
+    }
+  }
+}

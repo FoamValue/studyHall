@@ -1,0 +1,45 @@
+{
+  "id": "papaya",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "木瓜",
+    "pinyin": "mù guā",
+    "en": "Papaya",
+    "ipa": "/pəˈpaɪə/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/papaya-fruit.svg"
+        }
+      ],
+      "description": "木瓜长长的，熟了黄澄澄的。切开里面一排黑籽，果肉软软的、甜甜的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/papaya-leaf.svg"
+        }
+      ],
+      "description": "木瓜叶子像一把大伞，长在高高的树干顶。叶柄长长的。"
+    }
+  }
+}

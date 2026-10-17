@@ -1,0 +1,50 @@
+{
+  "id": "camellia",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "山茶花",
+    "pinyin": "shān chá huā",
+    "en": "Camellia",
+    "ipa": "/kəˈmiːliə/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/camellia-flower.svg"
+        }
+      ],
+      "description": "山茶花红红艳艳的，花瓣整整齐齐排着队。冷冷的冬天里开得真精神。",
+      "allusion": {
+        "text": "惟有山茶偏耐久，绿丛又放数枝红。",
+        "source": "陆游《山茶》",
+        "explain": "别的花怕冷躲起来了，山茶花却能开好久，绿叶中间又开出几枝红花。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/camellia-leaf.svg"
+        }
+      ],
+      "description": "山茶叶子厚厚的，边缘有小锯齿。叶面油亮油亮的，像打了蜡。"
+    }
+  }
+}

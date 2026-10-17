@@ -1,0 +1,50 @@
+{
+  "id": "peach-blossom",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "桃花",
+    "pinyin": "táo huā",
+    "en": "Peach Blossom",
+    "ipa": "/piːtʃ ˈblɑːsəm/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/peach-blossom-flower.svg"
+        }
+      ],
+      "description": "桃花粉粉的，有五片小花瓣。春风一吹，像一只只小蝴蝶停在枝头。",
+      "allusion": {
+        "text": "桃之夭夭，灼灼其华。",
+        "source": "《诗经·周南·桃夭》",
+        "explain": "桃树长得真茂盛，桃花开得红艳艳，像小姑娘的笑脸。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/peach-blossom-leaf.svg"
+        }
+      ],
+      "description": "桃叶细细长长的，像绿色的小船。边上有一排小小锯齿。"
+    }
+  }
+}

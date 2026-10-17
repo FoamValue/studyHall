@@ -1,0 +1,50 @@
+{
+  "id": "mulberry",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "桑葚",
+    "pinyin": "sāng shèn",
+    "en": "Mulberry",
+    "ipa": "/ˈmʌlberi/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mulberry-fruit.svg"
+        }
+      ],
+      "description": "桑葚紫紫的，一串串像小葡萄。吃完嘴巴变紫色，真好玩。",
+      "allusion": {
+        "text": "于嗟鸠兮，无食桑葚。",
+        "source": "《诗经·卫风·氓》",
+        "explain": "古人提醒小鸟：别贪吃桑葚哟，桑葚太甜，小鸟吃多了会晕乎乎的。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/mulberry-leaf.svg"
+        }
+      ],
+      "description": "桑叶大大的，像绿色的小爱心。蚕宝宝最爱吃桑叶了。"
+    }
+  }
+}

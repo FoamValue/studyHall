@@ -1,0 +1,45 @@
+{
+  "id": "walnut",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "核桃",
+    "pinyin": "hé tao",
+    "en": "Walnut",
+    "ipa": "/ˈwɔːlnʌt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/walnut-fruit.svg"
+        }
+      ],
+      "description": "核桃外壳硬硬的，像小脑袋。敲开里面的果仁，长得也像小小的大脑。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/walnut-leaf.svg"
+        }
+      ],
+      "description": "核桃叶子由好几片小叶组成，像大羽毛。叶子有股特别的香味。"
+    }
+  }
+}

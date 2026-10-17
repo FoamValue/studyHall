@@ -336,4 +336,21 @@ class PlantApiIntegrationTest {
         assertThat(environment.getProperty("spring.mongodb.uri")).startsWith("mongodb://");
         assertThat(environment.getProperty("spring.data.mongodb.uri")).isNull();
     }
+
+    /** TC-24 低龄化文案（Sprint 3 新增）：每部位说明 ≤80 字且不含拉丁字母（拼音/英文名字段不在此列）。 */
+    @Test
+    void tc24_descriptionsShouldBeToddlerFriendly() {
+        assertThat(plants).isNotEmpty();
+        for (Plant p : plants) {
+            p.parts().forEach((partCode, part) -> {
+                String desc = part.description();
+                assertThat(desc.codePointCount(0, desc.length()))
+                        .as("植物 %s 部位 %s 说明超过 80 字", p.id(), partCode)
+                        .isLessThanOrEqualTo(80);
+                assertThat(desc)
+                        .as("植物 %s 部位 %s 说明混入拉丁字母", p.id(), partCode)
+                        .doesNotContainPattern("[A-Za-z]");
+            });
+        }
+    }
 }

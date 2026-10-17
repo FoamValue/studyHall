@@ -1,0 +1,45 @@
+{
+  "id": "water-lily",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "睡莲",
+    "pinyin": "shuì lián",
+    "en": "Water Lily",
+    "ipa": "/ˈwɔːtər ˈlɪli/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/water-lily-flower.svg"
+        }
+      ],
+      "description": "睡莲漂在水面上开花，粉的白的像小公主。晚上它会合上花瓣睡觉觉。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/water-lily-leaf.svg"
+        }
+      ],
+      "description": "睡莲叶子圆圆的，像绿色的小圆盘。它漂在水上，给小青蛙当小床。"
+    }
+  }
+}

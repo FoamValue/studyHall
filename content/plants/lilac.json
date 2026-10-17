@@ -1,0 +1,50 @@
+{
+  "id": "lilac",
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "丁香花",
+    "pinyin": "dīng xiāng huā",
+    "en": "Lilac",
+    "ipa": "/ˈlaɪlək/"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lilac-flower.svg"
+        }
+      ],
+      "description": "丁香花小小的，一串一串开满枝头。紫紫白白的，香气能飘好远好远。",
+      "allusion": {
+        "text": "芭蕉不展丁香结，同向春风各自愁。",
+        "source": "李商隐《代赠》",
+        "explain": "丁香的小花苞紧紧抱着，像打了一个个小结，古人用它来说心里的想念。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lilac-leaf.svg"
+        }
+      ],
+      "description": "丁香叶子像一颗颗绿色的小爱心。摸一摸滑滑的，背面颜色浅一点。"
+    }
+  }
+}

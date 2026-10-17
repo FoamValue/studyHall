@@ -1,0 +1,50 @@
+{
+  "id": "pomegranate",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "石榴",
+    "pinyin": "shí liu",
+    "en": "Pomegranate",
+    "ipa": "/ˈpɑːmɪˌɡrænɪt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/pomegranate-fruit.svg"
+        }
+      ],
+      "description": "石榴圆圆的，咧开嘴笑，露出一排排红宝石。籽儿酸酸甜甜真好吃。",
+      "allusion": {
+        "text": "榴枝婀娜榴实繁，榴膜轻明榴子鲜。",
+        "source": "李商隐《石榴》",
+        "explain": "石榴枝条弯弯的真好看，果子结得满满的，薄膜里包着鲜红发亮的石榴籽。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/pomegranate-leaf.svg"
+        }
+      ],
+      "description": "石榴叶子小小的，一对一对长着。叶面亮亮的，像涂了油。"
+    }
+  }
+}

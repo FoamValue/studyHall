@@ -1,0 +1,50 @@
+{
+  "id": "lychee",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "荔枝",
+    "pinyin": "lì zhī",
+    "en": "Lychee",
+    "ipa": "/ˈliːtʃiː/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lychee-fruit.svg"
+        }
+      ],
+      "description": "荔枝穿着红红的小刺壳，剥开是白白甜甜的果肉，像一颗大水珠。",
+      "allusion": {
+        "text": "一骑红尘妃子笑，无人知是荔枝来。",
+        "source": "杜牧《过华清宫》",
+        "explain": "古时候为了让贵妃吃到新鲜荔枝，快马跑得飞快，贵妃看见马儿来了就知道荔枝到了。"
+      }
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lychee-leaf.svg"
+        }
+      ],
+      "description": "荔枝叶子长长的，一对一对排着。新叶子红红的，慢慢变绿。"
+    }
+  }
+}

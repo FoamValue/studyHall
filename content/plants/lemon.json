@@ -1,0 +1,45 @@
+{
+  "id": "lemon",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "柠檬",
+    "pinyin": "níng méng",
+    "en": "Lemon",
+    "ipa": "/ˈlemən/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lemon-fruit.svg"
+        }
+      ],
+      "description": "柠檬黄黄的，两头尖尖的。咬一口酸得眯眼睛，泡水喝香香的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/lemon-leaf.svg"
+        }
+      ],
+      "description": "柠檬叶子绿油油的，边缘有小波浪。揉一揉，有清新的香味。"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "starfruit",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "杨桃",
+    "pinyin": "yáng tao",
+    "en": "Starfruit",
+    "ipa": "/ˈstɑːrfruːt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/starfruit-fruit.svg"
+        }
+      ],
+      "description": "杨桃黄黄的，横着切开像一颗小星星。酸酸甜甜水分多。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/starfruit-leaf.svg"
+        }
+      ],
+      "description": "杨桃叶子由好多小叶排成羽毛状。晚上小叶会合起来睡觉。"
+    }
+  }
+}

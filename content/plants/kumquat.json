@@ -1,0 +1,45 @@
+{
+  "id": "kumquat",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "金桔",
+    "pinyin": "jīn jú",
+    "en": "Kumquat",
+    "ipa": "/ˈkʌmkwɑːt/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/kumquat-fruit.svg"
+        }
+      ],
+      "description": "金桔小小的、圆圆的，金黄金黄像小太阳。连皮一起吃，甜甜的。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/kumquat-leaf.svg"
+        }
+      ],
+      "description": "金桔叶子小小的，绿得发亮。叶子上有香香的小油点。"
+    }
+  }
+}

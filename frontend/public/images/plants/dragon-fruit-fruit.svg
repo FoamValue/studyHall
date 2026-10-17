@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <ellipse id="ds" cx="256" cy="71" rx="26" ry="58" fill="#AED581" stroke="#689F38" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+  </defs>
+  <use href="#ds"/>
+  <use href="#ds" transform="rotate(45 256 256)"/>
+  <use href="#ds" transform="rotate(90 256 256)"/>
+  <use href="#ds" transform="rotate(135 256 256)"/>
+  <use href="#ds" transform="rotate(180 256 256)"/>
+  <use href="#ds" transform="rotate(225 256 256)"/>
+  <use href="#ds" transform="rotate(270 256 256)"/>
+  <use href="#ds" transform="rotate(315 256 256)"/>
+  <ellipse cx="256" cy="256" rx="142" ry="168" fill="#EC407A" stroke="#AD1457" stroke-width="9"/>
+  <circle cx="216" cy="200" r="12" fill="#F8BBD0"/>
+</svg>

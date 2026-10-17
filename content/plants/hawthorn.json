@@ -1,0 +1,45 @@
+{
+  "id": "hawthorn",
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "山楂",
+    "pinyin": "shān zhā",
+    "en": "Hawthorn",
+    "ipa": "/ˈhɔːθɔːrn/"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hawthorn-fruit.svg"
+        }
+      ],
+      "description": "山楂红红的，像一颗颗小红果。酸酸的，做成糖葫芦可好吃啦。"
+    },
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "illustration",
+          "url": "/images/plants/hawthorn-leaf.svg"
+        }
+      ],
+      "description": "山楂叶子边上有小裂口，像小鸭掌。绿绿的，真好看。"
+    }
+  }
+}

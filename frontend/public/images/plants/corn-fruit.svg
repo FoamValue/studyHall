@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="cc"><ellipse cx="256" cy="250" rx="105" ry="185"/></clipPath>
+  </defs>
+  <ellipse cx="256" cy="250" rx="105" ry="185" fill="#FFCA28" stroke="#F57F17" stroke-width="9"/>
+  <g clip-path="url(#cc)">
+    <line x1="150" y1="100" x2="362" y2="100" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="136" x2="362" y2="136" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="172" x2="362" y2="172" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="208" x2="362" y2="208" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="244" x2="362" y2="244" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="280" x2="362" y2="280" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="316" x2="362" y2="316" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="352" x2="362" y2="352" stroke="#F57F17" stroke-width="4"/>
+    <line x1="150" y1="388" x2="362" y2="388" stroke="#F57F17" stroke-width="4"/>
+    <line x1="184" y1="70" x2="184" y2="430" stroke="#F57F17" stroke-width="4"/>
+    <line x1="220" y1="70" x2="220" y2="430" stroke="#F57F17" stroke-width="4"/>
+    <line x1="256" y1="70" x2="256" y2="430" stroke="#F57F17" stroke-width="4"/>
+    <line x1="292" y1="70" x2="292" y2="430" stroke="#F57F17" stroke-width="4"/>
+    <line x1="328" y1="70" x2="328" y2="430" stroke="#F57F17" stroke-width="4"/>
+  </g>
+  <path d="M190 400 C 150 430 130 460 126 492 C 170 480 200 452 214 420 Z" fill="#66BB6A" stroke="#388E3C" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M322 400 C 362 430 382 460 386 492 C 342 480 312 452 298 420 Z" fill="#66BB6A" stroke="#388E3C" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M240 70 C 236 50 230 40 220 32 M256 66 L256 30 M272 70 C 276 50 282 40 292 32" fill="none" stroke="#FF8F00" stroke-width="6" stroke-linecap="round"/>
+</svg>
