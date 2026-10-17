@@ -132,3 +132,33 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - TC-11 同一 JSON 遍历中并入 TC-24：description ≤ 80 字、不含拉丁字母（拼音/英文字段不在此列）。
 - TC-12 资产存在性检查自动覆盖 140 张新 SVG。
 - 导入幂等（TC-10）在 100 种规模下复验。
+
+---
+
+# 后端开发设计文章 — Sprint 4（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-4-requirements.md |
+
+## S4-1. 数据来源确认（J-6）：无接口变更
+- 详情页「相邻植物」由前端基于列表接口 `GET /api/plants`（可带 `?category=`）的顺序自行计算，**后端不新增接口、不改返回结构**。
+- 顺序稳定性确认（读现有实现）：
+  - 全部列表：`PlantService.getPlants(null)` → `plantRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))`，**按 `id` 升序稳定返回**。
+  - 分类列表：`plantRepository.findByCategoriesContains(category)` —— **未显式排序**，顺序取决于 Mongo 自然序。
+- 一致性结论：前端邻居始终由**同一份列表快照**计算（进入详情时由首页 `state` 传入，或深链接兜底拉一次），因此不依赖后端跨请求顺序稳定。**本迭代不改后端排序**（遵循最小改动，且不构成契约变更）。
+- 遗留建议（非阻塞，下迭代评估）：为分类列表补 `Sort.by(ASC, "id")`，使跨请求顺序也可预测。
+
+## S4-2. 缓存策略
+- 邻居列表复用现有 Redis 缓存：key `sh:plants:list:{category|all}`，TTL 600s，JSON 序列化（见 Sprint 1 §4）。
+- 深链接兜底拉「全部」列表命中 `sh:plants:list:all`，不产生额外数据库压力。
+- 导入脚本导入后仍 SCAN `sh:*` 清缓存，无需改动。
+
+## S4-3. 测试策略
+- 后端**零代码变更**，`mvn test` 全量回归即可（TC-01~13、TC-24 数据驱动，数量自动跟随 `content/plants/`）。
+- 新增/变更集中在前端，后端无新增测试用例。
+
+## S4-4. 交付结论
+- Sprint 4 后端交付物：本设计说明 + 顺序稳定性确认；无代码改动。

@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import { getCategories, getPlants } from '../api/client';
 
@@ -117,5 +117,33 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     const block = css.match(/\.filter-btn\s*\{[^}]*\}/s)[0];
     const minHeight = Number(block.match(/min-height:\s*(\d+)px/)[1]);
     expect(minHeight).toBeGreaterThanOrEqual(44);
+  });
+
+  it('TC-12b 点击卡片进详情时携带当前分类与列表快照（Sprint 4 新增）', async () => {
+    const user = userEvent.setup();
+    getPlants.mockImplementation((category) =>
+      category === 'flower' ? Promise.resolve([SUNFLOWER_CARD]) : Promise.resolve([SUNFLOWER_CARD, GINKGO_CARD])
+    );
+
+    // 探针路由：把详情页收到的 location.state 渲染成可断言文本
+    const StateProbe = () => {
+      const loc = useLocation();
+      return <div data-testid="probe">{`${loc.state?.category}|${loc.state?.list?.length}`}</div>;
+    };
+
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/plants/:id" element={<StateProbe />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    await user.click(await screen.findByRole('button', { name: '花朵' }));
+    await user.click(await screen.findByRole('link', { name: /向日葵/ }));
+
+    // 详情页拿到 category=flower 与其列表快照（1 株）
+    expect(await screen.findByTestId('probe')).toHaveTextContent('flower|1');
   });
 });

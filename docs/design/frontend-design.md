@@ -91,3 +91,62 @@ frontend/
 ## S3-3. 测试更新（配合 QA）
 - TC-21 mock 数据 30 → 100 条。
 - 新增 TC-25：触控目标 ≥44px 样式断言。
+
+---
+
+# 前端开发设计文章 — Sprint 4（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-4-requirements.md |
+
+## S4-1. 新增 `usePlantNavigation`（自定义 Hook）
+- 位置：`frontend/src/hooks/usePlantNavigation.js`。
+- 输入：`{ list, currentId, category }`；`list` 为「当前生效列表」的有序卡片数组（未知时为 null）。
+- 输出：`{ prevId, nextId, canPrev, canNext, goPrev, goNext }`。
+- 计算：`ids = list.map(p => p.id)`；`n = ids.length`；`i = ids.indexOf(currentId)`；
+  `prevId = ids[(i - 1 + n) % n]`，`nextId = ids[(i + 1) % n]`（首尾循环）；
+  `n <= 1` 或 `i < 0` 时 `prevId/nextId` 为 null，`canPrev/canNext` 为 false。
+- 导航：`goPrev/goNext` 用 `useNavigate()` 跳到 `/plants/{id}`，`state` 携带 `{ category, list }`，保证连续翻株时邻居来源不丢。
+- 顺序一致性：邻居始终由**同一份** `list` 快照计算（见 S4-2），不依赖后端两次请求顺序相同。
+
+## S4-2. 邻居列表来源与深链接兜底
+- 从首页进入：`PlantCard` 增加 `state={{ category, list }}`（`list` = 首页当前分类的卡片数组）。详情页读 `useLocation().state`。
+- 深链接兜底：`state` 缺失时，详情页用 `getPlants(category)` 拉一次列表得到 `list`（`category` 缺省 `'all'`）。
+- 单株/空列表：两侧按钮保留但 `disabled`（不隐藏，避免版式跳动）。
+
+## S4-3. 三通道换植物（行为一致）
+- 左右滑：沉浸式容器监听 `touchstart` / `touchend`，仅当水平位移 ≥ 60px 且 > 纵向位移时判定为滑动；右滑 = 上一株，左滑 = 下一株。
+- 两侧按钮：`.nav-btn`，`aria-label` 明确「上一株 / 下一株」。
+- 键盘：`keydown` 监听 `ArrowLeft/ArrowRight`，输入框内按键忽略。
+- 三通道共用 `goPrev/goNext`；越界即循环。
+
+## S4-4. 系统全屏（增强项）
+- 「全屏」按钮调用容器 `requestFullscreen()`；`fullscreenchange` 同步 `isFullscreen` 状态。
+- Esc / 「退出全屏」按钮：`document.exitFullscreen()` 回沉浸式态。
+- `!document.fullscreenEnabled` 时按钮不渲染，沉浸式态功能不受影响。
+- 全屏态与沉浸式态共用同一 DOM（仅样式差异），故植物/部位/浏览位置天然不丢。
+
+## S4-5. 预加载与切换无白屏
+- 保留现有「同植物全部部位图预加载」，追加预加载上一株/下一株卡片的 `coverImage`。
+- 切换植物时若目标数据未就绪，保留上一帧图片避免白屏，就绪后替换。
+
+## S4-6. 样式增量（styles.css）
+- `.detail-immersive`：`min-height: 100dvh`（回退 `100vh`）、`overflow: hidden`、纵向 flex；**页面级滚动条消除**。
+- `.imm-topbar`：左上「← 回花园」+ 右上「全屏」，绝对定位于顶部两角。
+- `.nav-btn`：两侧垂直居中固定，热区 ≥56px，圆角 16px，半透明底，不遮挡主体图片。
+- `.part-img`：`object-fit: contain` + 视口高度自适应上限（横屏约 `58vh`、竖屏约 `48vh`），**完整不裁切**；信息区在极小高度下允许局部滚动，但页面级不滚动。
+- 断点：`@media (orientation: landscape)` 允许图片区与文字区左右分栏，保证横屏可见性。
+- 首页 `.page`、站点标题样式不变。
+
+## S4-7. 首页状态记忆
+- `HomePage` 的 `category` 初值从 `location.state?.category` 取（回退 `'all'`）。
+- 从首页进详情前记录 `window.scrollY`；返回时（`location.state?.restoreScroll`）`useEffect` 恢复滚动位置。
+- 路由保持不变（`/` 与 `/plants/:id`），`category` 不上 URL。
+
+## S4-8. 测试更新（配合 QA）
+- `PlantDetailPage.test.jsx`：mock 增加 `getPlants`；新增 TC-28~TC-32（邻株切换 / 首尾循环 / 换株后部位回落 / 全屏不可用降级 / 回花园入口存在）。
+- `HomePage.test.jsx`：TC-12 补充断言卡片 Link 的 `state` 含 `category` 与 `listIds`（原断言语义不变）。
+- `e2e/smoke.spec.js`：新增 TC-33~TC-35（三通道一致、首尾循环、全屏进出不丢位置）。
