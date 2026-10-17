@@ -293,11 +293,6 @@ export default function PlantDetailPage() {
             loading="lazy"
           />
           <section className="part-content" aria-label={`${PART_LABELS[part]}的内容`}>
-            <p className="part-name-zh">{current.name?.zh}</p>
-            <p className="part-name-sub">
-              {current.name?.pinyin} · {current.name?.en}
-              {current.name?.ipa ? ` ${current.name.ipa}` : ''}
-            </p>
             <p className="part-desc">{current.description}</p>
             <AllusionCard allusion={current.allusion} />
           </section>

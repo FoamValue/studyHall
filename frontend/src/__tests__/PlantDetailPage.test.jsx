@@ -198,7 +198,8 @@ describe('PlantDetailPage（TC-14 ~ TC-16）', () => {
     // 内容区切换为果实：图片、部位名称、说明全部更新
     expect(await screen.findByAltText('向日葵的果')).toBeInTheDocument();
     expect(screen.getByText('葵花籽香香的，可以吃。')).toBeInTheDocument();
-    expect(screen.getByText('guǒ · fruit /fruːt/')).toBeInTheDocument();
+    // 部位名行（中文/拼音/英文/音标）已移除，部位语义只由切换按钮承载
+    expect(screen.queryByText('guǒ · fruit /fruːt/')).not.toBeInTheDocument();
     expect(screen.queryByAltText('向日葵的花')).not.toBeInTheDocument();
     expect(screen.queryByText('大大的花盘像小太阳。')).not.toBeInTheDocument();
   });
@@ -529,15 +530,23 @@ describe('详情页整屏不滚动（Sprint 6：TC-53 ~ TC-56，样式源文件�
   });
 });
 
-describe('横屏详情版式（Sprint 7：TC-60，样式源文件断言）', () => {
+describe('横屏详情版式（Sprint 7 TC-60 / Sprint 9 左图右文，样式源文件断言）', () => {
   const css = readFileSync('src/styles.css', 'utf-8');
 
-  it('TC-60 横屏图片宽度上限提升至 48% 且保持完整不裁切', () => {
+  it('TC-60 横屏为「左图 + 右文字」两栏，图片占 48% 栏宽且完整不裁切', () => {
     const landscape = css.match(/@media\s*\(orientation:\s*landscape\)\s*\{[\s\S]*?\n\}/)[0];
+    // 两栏骨架：左 48% 图栏 + 右自适应文字栏
+    const bodyBlock = landscape.match(/\.detail-body\s*\{[^}]*\}/s)[0];
+    expect(bodyBlock).toMatch(/grid-template-columns:\s*48%\s+minmax\(0,\s*1fr\)/);
+    // 拆掉中间层，让图片与文字直接落进两栏
+    expect(landscape.match(/\.detail-main\s*\{[^}]*\}/s)[0]).toContain('display: contents');
+    // 图片吃满左栏且完整不裁切
     const imgBlock = landscape.match(/\.part-img\s*\{[^}]*\}/s)[0];
-    expect(imgBlock).toMatch(/max-width:\s*48%/);
-    expect(landscape).not.toMatch(/max-width:\s*40%/);
+    expect(imgBlock).toMatch(/max-width:\s*100%/);
     expect(imgBlock).toContain('max-height: 100%');
+    expect(imgBlock).toContain('object-fit: contain');
+    // 不再出现旧版上限
+    expect(landscape).not.toMatch(/max-width:\s*40%/);
   });
 });
 

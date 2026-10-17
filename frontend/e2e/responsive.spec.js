@@ -129,19 +129,23 @@ const hOverflow = (page) =>
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
 
-// TC-61 横屏详情图片放大（突破旧 40% 上限）且无水平溢出
+// TC-61 横屏详情「左图 + 右文字」两栏：图片占满左栏且无溢出
 for (const viewport of [
   { width: 1024, height: 768 },
   { width: 1180, height: 820 },
 ]) {
-  test(`TC-61 横屏 ${viewport.width}x${viewport.height} 详情图片放大且无溢出`, async ({ page }) => {
+  test(`TC-61 横屏 ${viewport.width}x${viewport.height} 左图右文两栏且无溢出`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await enterFirstFlowerDetail(page);
 
-    const mainWidth = (await page.locator('.detail-main').boundingBox()).width;
+    // 细节：横屏下 .detail-body 已改为 grid，图片占左栏约 48% 宽（旧规则上限 40%）
+    const bodyWidth = (await page.locator('.detail-body').boundingBox()).width;
     const box = await page.locator('.part-img').boundingBox();
-    // 旧规则上限为容器宽 40%；修复后应明显超过该上限（≤ 48% 或受可用高度限制）
-    expect(box.width).toBeGreaterThan(mainWidth * 0.42);
+    expect(box.width).toBeGreaterThan(bodyWidth * 0.42);
+
+    // 右栏文字确实排在图片右侧（两栏不重叠）
+    const content = await page.locator('.part-content').boundingBox();
+    expect(content.x).toBeGreaterThanOrEqual(box.x + box.width);
 
     // 图片完整落在视口内（无水平/纵向溢出）
     const vp = page.viewportSize();

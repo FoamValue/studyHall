@@ -197,23 +197,11 @@ body {
   object-fit: contain; /* 完整不裁切 */
 }
 
-.part-name-zh {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 12px 0 4px;
-}
-
-.part-name-sub {
-  font-size: 16px;
-  color: var(--color-text-light);
-  margin: 0 0 16px;
-}
-
 .part-desc {
   font-size: 20px;
   line-height: 1.7;
   max-width: 640px;
-  margin: 0 auto;
+  margin: 8px auto 0;
 }
 
 /* 典故卡片：阳光黄底 + 圆点描边 + 大引号 */
@@ -360,19 +348,81 @@ body {
   object-fit: contain; /* 完整不裁切 */
 }
 
+/* Sprint 9：横屏整页改为「左图 + 右文字」两栏
+   左栏（48%）= 部位大图，垂直居中；右栏 = 植物名 + 部位切换 + 部位信息，统一左对齐。
+   竖屏仍保持「上图下文」单列版式（不做改动）。 */
 @media (orientation: landscape) {
-  .detail-main {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
+  .detail-body {
+    display: grid;
+    grid-template-columns: 48% minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    column-gap: 32px;
+    row-gap: 12px;
+    /* 基础规则里的 align-items:center 在 grid 下会把右栏文字块竖直居中，
+       这里显式改为 start，让右栏文字紧贴部位切换依次向下排。 */
+    align-items: start;
   }
 
-  /* Sprint 7：图片宽度上限 40% → 48%，更充分利用可用高度、减少左右留白 */
+  /* 拆掉中间层，让大图与部位信息直接落进两栏 */
+  .detail-main {
+    display: contents;
+  }
+
+  /* 左栏：大图吃满栏宽/栏高，完整不裁切 */
   .part-img {
-    flex: 0 0 auto;
+    grid-column: 1;
+    grid-row: 1 / -1;
+    justify-self: center;
+    align-self: center;
+    max-width: 100%;
     max-height: 100%;
-    max-width: 48%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain; /* 完整不裁切 */
+  }
+
+  /* 右栏第一行：植物名信息（左对齐） */
+  .detail-header {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
+
+  /* 名称行同样左对齐（基础规则在文件后段定义，故提升选择器权重） */
+  .detail-header .detail-name-row {
+    justify-content: flex-start;
+  }
+
+  /* 右栏第二行：部位切换（左对齐，去掉首页区块间距） */
+  .part-switcher {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  /* 右栏第三行：部位名称 + 说明 + 典故（左对齐，兜底局部滚动不传递到页面） */
+  .part-content {
+    grid-column: 2;
+    grid-row: 3;
+    min-width: 0;
+    min-height: 0;
+    max-height: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    text-align: left;
+  }
+
+  /* 两栏后正文右边界贴近视口，两侧切换按钮会压住左图与右栏文字。
+     故横屏把按钮降为 56px 纯箭头方钮，收进两侧 76px 留白内互不遮挡；
+     隐藏按钮文字不影响无障碍名（按钮自带 aria-label）。 */
+  .nav-btn {
+    width: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .nav-btn span {
+    display: none;
   }
 
   /* Sprint 7：竖向收紧头部信息区，把省下的高度让给图片（可读性优先，字号不降于本节下限） */
@@ -388,17 +438,6 @@ body {
 
   .detail-header .detail-en {
     font-size: 20px;
-  }
-
-  /* Sprint 6：文字占满图片右侧剩余宽度（flex 收缩吸收剩余空间，宽度不再固定 640） */
-  .part-content {
-    flex: 1 1 auto;
-    min-width: 0;
-    max-width: 640px;
-    max-height: 100%;
-    overflow: auto;
-    overscroll-behavior: contain;
-    text-align: left;
   }
 }
 
