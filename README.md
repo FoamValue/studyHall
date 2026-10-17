@@ -291,7 +291,7 @@ node scripts/import-plants.mjs
 | 动物 / 昆虫 / 恐龙图 | `/images/{animals\|insects\|dinosaurs}/{id}.jpg` |
 | 语音 | `/audio/{id}-zh.m4a`、`/audio/{id}-en.m4a`（AAC，中 / 英各一） |
 
-> 图片统一 1920×1920；恐龙一律为**完整骨架化石**照片（博物馆陈列风格）。
+> 图片统一 1600×1600（mozjpeg q82 渐进式）；恐龙一律为**完整骨架化石**照片（博物馆陈列风格）。
 
 ---
 
