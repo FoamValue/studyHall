@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/orchid-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/orchid-flower.jpg"
         }
       ],
       "description": "蝴蝶兰的花瓣像一只只彩蝴蝶，停在枝头休息。它能开好久好久。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/orchid-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/orchid-leaf.jpg"
         }
       ],
       "description": "蝴蝶兰叶子又厚又绿，像绿色的小舌头。它从根上长出来，胖乎乎的。"

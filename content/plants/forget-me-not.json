@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/forget-me-not-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/forget-me-not-flower.jpg"
         }
       ],
       "description": "勿忘我是小小的蓝花，花心黄黄的。它的名字是说：别忘记我呀。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/forget-me-not-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/forget-me-not-leaf.jpg"
         }
       ],
       "description": "勿忘我叶子小小的，上面有细绒毛。灰绿灰绿的，真温柔。"

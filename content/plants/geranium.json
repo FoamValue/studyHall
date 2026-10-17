@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/geranium-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/geranium-flower.jpg"
         }
       ],
       "description": "天竺葵开成一个个小花球，红的粉的像棒棒糖。它最喜欢晒太阳。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/geranium-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/geranium-leaf.jpg"
         }
       ],
       "description": "天竺葵叶子圆圆的，边上有波浪。摸一摸有股特别的味道，小蚊子不喜欢。"

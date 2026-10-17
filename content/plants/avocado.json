@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/avocado-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/avocado-fruit.jpg"
         }
       ],
       "description": "牛油果深绿深绿的，像一颗大鸭梨。切开里面黄绿黄绿，还有一颗大核。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/avocado-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/avocado-leaf.jpg"
         }
       ],
       "description": "牛油果叶子长长的，绿得发亮。一年四季都是绿的。"

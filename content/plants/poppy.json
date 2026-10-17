@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/poppy-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/poppy-flower.jpg"
         }
       ],
       "description": "虞美人的花瓣薄薄的，像彩色的小纸裙。风一吹，它就轻轻跳舞。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/poppy-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/poppy-leaf.jpg"
         }
       ],
       "description": "虞美人叶子毛茸茸的，边上有小裂口。它细细瘦瘦的，贴着地长。"

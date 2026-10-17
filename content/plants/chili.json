@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/chili-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/chili-fruit.jpg"
         }
       ],
       "description": "辣椒尖尖的，红红的像小灯笼。咬一口辣得直吐舌头。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/chili-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/chili-leaf.jpg"
         }
       ],
       "description": "辣椒叶子小小的，尖尖的，绿绿的。叶子摸上去滑滑的。"

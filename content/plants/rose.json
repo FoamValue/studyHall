@@ -1,16 +1,44 @@
 {
   "id": "rose",
-  "categories": ["flower", "leaf"],
-  "name": { "zh": "玫瑰", "pinyin": "méi guī", "en": "Rose", "ipa": "/roʊz/" },
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "玫瑰",
+    "pinyin": "méi guī",
+    "en": "Rose",
+    "ipa": "/roʊz/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/rose-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/rose-flower.jpg"
+        }
+      ],
       "description": "玫瑰花有好多层花瓣，红红的像小裙摆。闻起来香香的，摸上去软软的。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/rose-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/rose-leaf.jpg"
+        }
+      ],
       "description": "玫瑰叶边上有小锯齿，像小牙齿。它绿绿的，托着漂亮的花。"
     }
   }

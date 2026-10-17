@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/date-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/date-fruit.jpg"
         }
       ],
       "description": "椰枣一串一串挂在树上，棕红棕红的。晒干后甜甜的像蜜糖。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/date-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/date-leaf.jpg"
         }
       ],
       "description": "椰枣叶子又长又大，像绿色的大羽毛。叶子边上有小刺。"

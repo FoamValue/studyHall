@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pansy-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/pansy-flower.jpg"
         }
       ],
       "description": "三色堇一朵花上有三种颜色，像一张小花脸。小朋友们都爱对着它笑。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pansy-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/pansy-leaf.jpg"
         }
       ],
       "description": "三色堇叶子小小的，像绿色的小爱心。叶子边缘有圆圆的波浪。"

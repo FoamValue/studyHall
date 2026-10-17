@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/starfruit-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/starfruit-fruit.jpg"
         }
       ],
       "description": "杨桃黄黄的，横着切开像一颗小星星。酸酸甜甜水分多。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/starfruit-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/starfruit-leaf.jpg"
         }
       ],
       "description": "杨桃叶子由好多小叶排成羽毛状。晚上小叶会合起来睡觉。"

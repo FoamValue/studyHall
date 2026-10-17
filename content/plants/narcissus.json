@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/narcissus-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/narcissus-flower.jpg"
         }
       ],
       "description": "水仙花白白的，中间有个金黄的小杯子。过年的时候它开得最香。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/narcissus-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/narcissus-leaf.jpg"
         }
       ],
       "description": "水仙叶子扁扁长长的，像绿色的小带子。从白白的球茎里钻出来。"

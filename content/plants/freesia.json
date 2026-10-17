@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/freesia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/freesia-flower.jpg"
         }
       ],
       "description": "小苍兰的花像小喇叭，一排排歪着头开。香味清清的，真好闻。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/freesia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/freesia-leaf.jpg"
         }
       ],
       "description": "小苍兰叶子细细长长，像绿色的小剑。两片两片交叉着长。"

@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cucumber-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/cucumber-fruit.jpg"
         }
       ],
       "description": "黄瓜绿绿的、长长的，身上有小刺刺。咬一口脆脆的，真清爽。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cucumber-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/cucumber-leaf.jpg"
         }
       ],
       "description": "黄瓜叶子像绿色的小爱心，边上有小角。叶子毛毛的，大大的。"

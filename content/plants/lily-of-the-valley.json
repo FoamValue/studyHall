@@ -1,16 +1,44 @@
 {
   "id": "lily-of-the-valley",
-  "categories": ["flower", "leaf"],
-  "name": { "zh": "铃兰", "pinyin": "líng lán", "en": "Lily of the Valley", "ipa": "/ˈlɪli əv ðə ˈvæli/" },
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "铃兰",
+    "pinyin": "líng lán",
+    "en": "Lily of the Valley",
+    "ipa": "/ˈlɪli əv ðə ˈvæli/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/lily-of-the-valley-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lily-of-the-valley-flower.jpg"
+        }
+      ],
       "description": "铃兰的花白白的，像一串串小铃铛挂在弯弯的枝条上。风一吹，好像叮叮当当在唱歌。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/lily-of-the-valley-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lily-of-the-valley-leaf.jpg"
+        }
+      ],
       "description": "铃兰的叶子大大的、椭圆椭圆的，像一把绿色的小勺子，围着小铃铛花轻轻托着。"
     }
   }

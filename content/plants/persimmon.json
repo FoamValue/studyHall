@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/persimmon-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/persimmon-fruit.jpg"
         }
       ],
       "description": "柿子红红的，像小灯笼挂在树上。熟透了软软的，甜得像蜜。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/persimmon-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/persimmon-leaf.jpg"
         }
       ],
       "description": "柿子叶又大又圆，绿得发亮。秋天叶子变红，比花还好看。"

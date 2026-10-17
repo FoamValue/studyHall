@@ -26,8 +26,8 @@ const card = (id, zh, pinyin, en, cover, parts) => ({
   parts,
 });
 
-const SUNFLOWER_CARD = card('sunflower', '向日葵', 'xiàng rì kuí', 'Sunflower', '/images/plants/sunflower-flower.svg', ['flower', 'leaf', 'fruit']);
-const GINKGO_CARD = card('ginkgo', '银杏', 'yín xìng', 'Ginkgo', '/images/plants/ginkgo-leaf.svg', ['leaf', 'fruit']);
+const SUNFLOWER_CARD = card('sunflower', '向日葵', 'xiàng rì kuí', 'Sunflower', '/images/plants/sunflower-flower.jpg', ['flower', 'leaf', 'fruit']);
+const GINKGO_CARD = card('ginkgo', '银杏', 'yín xìng', 'Ginkgo', '/images/plants/ginkgo-leaf.jpg', ['leaf', 'fruit']);
 
 const renderHome = () =>
   render(
@@ -94,7 +94,7 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
 
   it('TC-21 100 条数据渲染无异常', async () => {
     const cards = Array.from({ length: 100 }, (_, i) =>
-      card(`plant-${i}`, `植物${i}`, `zhí wù ${i}`, `Plant ${i}`, '/images/plants/sunflower-flower.svg', ['flower'])
+      card(`plant-${i}`, `植物${i}`, `zhí wù ${i}`, `Plant ${i}`, '/images/plants/sunflower-flower.jpg', ['flower'])
     );
     getPlants.mockResolvedValue(cards);
     renderHome();

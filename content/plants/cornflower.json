@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cornflower-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/cornflower-flower.jpg"
         }
       ],
       "description": "矢车菊蓝蓝的，花瓣像一排小齿轮。它是田野里的蓝色小星星。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cornflower-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/cornflower-leaf.jpg"
         }
       ],
       "description": "矢车菊叶子细细长长的，灰绿灰绿的。叶子上有细细的小绒毛。"

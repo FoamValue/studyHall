@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pomegranate-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/pomegranate-fruit.jpg"
         }
       ],
       "description": "石榴圆圆的，咧开嘴笑，露出一排排红宝石。籽儿酸酸甜甜真好吃。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pomegranate-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/pomegranate-leaf.jpg"
         }
       ],
       "description": "石榴叶子小小的，一对一对长着。叶面亮亮的，像涂了油。"

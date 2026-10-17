@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lemon-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/lemon-fruit.jpg"
         }
       ],
       "description": "柠檬黄黄的，两头尖尖的。咬一口酸得眯眼睛，泡水喝香香的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lemon-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/lemon-leaf.jpg"
         }
       ],
       "description": "柠檬叶子绿油油的，边缘有小波浪。揉一揉，有清新的香味。"

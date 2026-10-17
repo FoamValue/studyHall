@@ -1,11 +1,28 @@
 {
   "id": "maple",
-  "categories": ["leaf"],
-  "name": { "zh": "枫树", "pinyin": "fēng shù", "en": "Maple", "ipa": "/ˈmeɪpl/" },
+  "categories": [
+    "leaf"
+  ],
+  "name": {
+    "zh": "枫树",
+    "pinyin": "fēng shù",
+    "en": "Maple",
+    "ipa": "/ˈmeɪpl/"
+  },
   "parts": {
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/maple-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/maple-leaf.jpg"
+        }
+      ],
       "description": "枫叶像小手掌，有五个尖尖角。秋天变成红红的，落下来像下红雨。"
     }
   }

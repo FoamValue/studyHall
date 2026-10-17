@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/coconut-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/coconut-fruit.jpg"
         }
       ],
       "description": "椰子外壳硬硬的，里面装着甜甜的椰子水。插根吸管就能喝。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/coconut-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/coconut-leaf.jpg"
         }
       ],
       "description": "椰子叶子又长又大，像绿色的大羽毛。风一吹哗啦啦响。"

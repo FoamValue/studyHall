@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/walnut-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/walnut-fruit.jpg"
         }
       ],
       "description": "核桃外壳硬硬的，像小脑袋。敲开里面的果仁，长得也像小小的大脑。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/walnut-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/walnut-leaf.jpg"
         }
       ],
       "description": "核桃叶子由好几片小叶组成，像大羽毛。叶子有股特别的香味。"

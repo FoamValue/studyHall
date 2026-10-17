@@ -1,11 +1,29 @@
 {
   "id": "ginkgo",
-  "categories": ["leaf", "fruit"],
-  "name": { "zh": "银杏", "pinyin": "yín xìng", "en": "Ginkgo", "ipa": "/ˈɡɪŋkoʊ/" },
+  "categories": [
+    "leaf",
+    "fruit"
+  ],
+  "name": {
+    "zh": "银杏",
+    "pinyin": "yín xìng",
+    "en": "Ginkgo",
+    "ipa": "/ˈɡɪŋkoʊ/"
+  },
   "parts": {
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/ginkgo-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/ginkgo-leaf.jpg"
+        }
+      ],
       "description": "银杏叶像一把小扇子，中间有个小缺口。秋天一到，整棵树都变金黄。",
       "allusion": {
         "text": "谁怜流落江湖上，玉骨冰肌未肯枯。",
@@ -14,8 +32,18 @@
       }
     },
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/ginkgo-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/ginkgo-fruit.jpg"
+        }
+      ],
       "description": "白果圆圆的，穿着橙黄色外衣。剥开里面是米白色的果仁，要煮熟才能吃哦。"
     }
   }

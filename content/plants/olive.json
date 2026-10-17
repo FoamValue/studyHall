@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/olive-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/olive-fruit.jpg"
         }
       ],
       "description": "橄榄小小的、椭圆椭圆的，青的紫的都有。嚼一嚼，先苦后甜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/olive-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/olive-leaf.jpg"
         }
       ],
       "description": "橄榄叶子小小的，正面绿背面银白。风一吹，树叶一闪一闪。"

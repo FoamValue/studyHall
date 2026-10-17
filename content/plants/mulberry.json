@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mulberry-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/mulberry-fruit.jpg"
         }
       ],
       "description": "桑葚紫紫的，一串串像小葡萄。吃完嘴巴变紫色，真好玩。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mulberry-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/mulberry-leaf.jpg"
         }
       ],
       "description": "桑叶大大的，像绿色的小爱心。蚕宝宝最爱吃桑叶了。"

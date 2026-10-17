@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/papaya-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/papaya-fruit.jpg"
         }
       ],
       "description": "木瓜长长的，熟了黄澄澄的。切开里面一排黑籽，果肉软软的、甜甜的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/papaya-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/papaya-leaf.jpg"
         }
       ],
       "description": "木瓜叶子像一把大伞，长在高高的树干顶。叶柄长长的。"

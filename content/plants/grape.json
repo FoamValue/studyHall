@@ -1,16 +1,44 @@
 {
   "id": "grape",
-  "categories": ["fruit", "leaf"],
-  "name": { "zh": "葡萄", "pinyin": "pú táo", "en": "Grape", "ipa": "/ɡreɪp/" },
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "葡萄",
+    "pinyin": "pú táo",
+    "en": "Grape",
+    "ipa": "/ɡreɪp/"
+  },
   "parts": {
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/grape-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/grape-fruit.jpg"
+        }
+      ],
       "description": "葡萄一颗一颗圆溜溜，紫紫的像小宝石。一大串挂在一起，甜甜的汁水多。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/grape-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/grape-leaf.jpg"
+        }
+      ],
       "description": "葡萄叶像小手掌，有五根小指头。爬在架子上，给葡萄串搭凉棚。"
     }
   }

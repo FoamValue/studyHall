@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/petunia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/petunia-flower.jpg"
         }
       ],
       "description": "矮牵牛的花像小喇叭，紫的粉的真热闹。开在花盆里，像小花瀑布。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/petunia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/petunia-leaf.jpg"
         }
       ],
       "description": "矮牵牛叶子小小的，摸起来有点黏。叶子软软的，绿绿的。"

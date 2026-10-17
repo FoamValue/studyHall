@@ -1,11 +1,28 @@
 {
   "id": "bamboo",
-  "categories": ["leaf"],
-  "name": { "zh": "竹子", "pinyin": "zhú zi", "en": "Bamboo", "ipa": "/ˌbæmˈbuː/" },
+  "categories": [
+    "leaf"
+  ],
+  "name": {
+    "zh": "竹子",
+    "pinyin": "zhú zi",
+    "en": "Bamboo",
+    "ipa": "/ˌbæmˈbuː/"
+  },
   "parts": {
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/bamboo-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/bamboo-leaf.jpg"
+        }
+      ],
       "description": "竹叶细细长长的，像小船。风一吹沙沙响，像在唱歌。",
       "allusion": {
         "text": "咬定青山不放松，立根原在破岩中。",

@@ -1,21 +1,60 @@
 {
   "id": "strawberry",
-  "categories": ["flower", "leaf", "fruit"],
-  "name": { "zh": "草莓", "pinyin": "cǎo méi", "en": "Strawberry", "ipa": "/ˈstrɔːbəri/" },
+  "categories": [
+    "flower",
+    "leaf",
+    "fruit"
+  ],
+  "name": {
+    "zh": "草莓",
+    "pinyin": "cǎo méi",
+    "en": "Strawberry",
+    "ipa": "/ˈstrɔːbəri/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/strawberry-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-flower.jpg"
+        }
+      ],
       "description": "草莓开白色小花，五个圆花瓣，中间是黄黄的小圆心，像小纽扣。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/strawberry-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-leaf.jpg"
+        }
+      ],
       "description": "草莓叶绿绿的，边上有锯齿，上面长着细细的绒毛，摸起来毛茸茸的。"
     },
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/strawberry-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-fruit.jpg"
+        }
+      ],
       "description": "草莓红红的，上面布满小芝麻点，那些小点点才是它真正的种子。咬一口，酸酸甜甜的。"
     }
   }

@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/raspberry-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/raspberry-fruit.jpg"
         }
       ],
       "description": "树莓红红的，像好多小珠子抱在一起。酸酸甜甜，软软的真好吃。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/raspberry-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/raspberry-leaf.jpg"
         }
       ],
       "description": "树莓叶子边上有小锯齿，背面白白的。叶子上有小绒毛。"

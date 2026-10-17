@@ -63,9 +63,9 @@ function validatePlant(plant, file) {
     if (!Array.isArray(part.images) || part.images.length === 0) err(`parts.${key}.images 至少 1 张`);
     for (const img of part.images) {
       if (!img.url) err(`parts.${key}.images 缺少 url`);
-      // 简笔画路径必须与 UI 命名规范一致：/images/plants/{id}-{part}.svg
-      if (img.type === "illustration" && img.url !== `/images/plants/${plant.id}-${key}.svg`) {
-        err(`parts.${key} 简笔画路径应为 /images/plants/${plant.id}-${key}.svg，当前是 ${img.url}`);
+      // 图片路径必须与 UI 命名规范一致：/images/plants/{id}-{part}.jpg
+      if (img.type === "photo" && img.url !== `/images/plants/${plant.id}-${key}.jpg`) {
+        err(`parts.${key} 图片路径应为 /images/plants/${plant.id}-${key}.jpg，当前是 ${img.url}`);
       }
     }
     if (part.description === undefined || part.description === "") err(`parts.${key} 缺少 description`);

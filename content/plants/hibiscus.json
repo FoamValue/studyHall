@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/hibiscus-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/hibiscus-flower.jpg"
         }
       ],
       "description": "芙蓉花早上白白的，傍晚变粉红，像会变魔术。花朵大大的，真好看。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/hibiscus-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/hibiscus-leaf.jpg"
         }
       ],
       "description": "芙蓉叶子大大的，像一把小蒲扇。叶子上有小毛毛，摸起来软软的。"

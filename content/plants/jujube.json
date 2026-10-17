@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/jujube-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/jujube-fruit.jpg"
         }
       ],
       "description": "枣子红红的、椭圆的，像一颗颗小玛瑙。脆脆甜甜的，晒干更甜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/jujube-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/jujube-leaf.jpg"
         }
       ],
       "description": "枣树叶子小小的，亮亮的，一对一对长着。枝条上还有小刺。"

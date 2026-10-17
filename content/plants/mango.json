@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mango-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/mango-fruit.jpg"
         }
       ],
       "description": "芒果黄黄的，像弯弯的小月亮。果肉软软的，甜甜的，香香的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mango-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/mango-leaf.jpg"
         }
       ],
       "description": "芒果叶子长长的，绿得发亮。小叶子刚长出来是红褐色的。"

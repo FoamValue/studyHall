@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/plum-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/plum-fruit.jpg"
         }
       ],
       "description": "李子圆圆的，紫的红黄的都有。皮上有一层白霜，咬一口酸酸甜甜。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/plum-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/plum-leaf.jpg"
         }
       ],
       "description": "李子叶长长的，边上有小锯齿。叶子薄薄的，绿绿的。"

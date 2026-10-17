@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/anemone-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/anemone-flower.jpg"
         }
       ],
       "description": "银莲花白白的，风一吹就点头，所以也叫风花。花心有一圈小绒毛。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/anemone-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/anemone-leaf.jpg"
         }
       ],
       "description": "银莲花叶子像小鸭掌，分成好几瓣。绿绿的，贴着地长。"

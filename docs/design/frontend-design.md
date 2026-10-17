@@ -13,7 +13,7 @@ frontend/
 ├── vite.config.js            # dev proxy: /api → http://localhost:8080
 ├── Dockerfile                # node:22 构建 → nginx:alpine 托管 dist + 反代 /api
 ├── nginx.conf                # 静态资源 + try_files + location /api 反代 backend:8080
-├── public/images/plants/     # 植物简笔画（UI 产出）
+├── public/images/plants/     # 植物部位写实照片（`.jpg`）
 └── src/
     ├── main.jsx / App.jsx    # Router: / 首页、/plants/:id 详情
     ├── api/client.js         # fetch 封装（统一 code!==0 抛错）
@@ -32,7 +32,7 @@ frontend/
 ### PlantDetailPage
 1. 顶部返回按钮 + 植物名称区：中文名（特大字）+ 拼音（标注于上方）+ 英文名 + 音标。
 2. 部位切换：大按钮组（花/叶/果，仅显示该植物存在的部位，`parts` 键顺序 flower→leaf→fruit），默认选中第一个。
-3. 部位内容区：大图（简笔画）+ 部位三语名称 + 低龄化说明（大字号）。
+3. 部位内容区：大图（写实照片）+ 部位三语名称 + 低龄化说明（大字号）。
 4. 典故卡片（AllusionCard，浅黄底）：原文 + 出处 + 白话解释；无典故不渲染。
 5. 数据缺失（40401）：显示友好错误页「这株植物还没准备好哦」。
 

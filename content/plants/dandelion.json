@@ -1,21 +1,60 @@
 {
   "id": "dandelion",
-  "categories": ["flower", "leaf", "fruit"],
-  "name": { "zh": "蒲公英", "pinyin": "pú gōng yīng", "en": "Dandelion", "ipa": "/ˈdændɪlaɪən/" },
+  "categories": [
+    "flower",
+    "leaf",
+    "fruit"
+  ],
+  "name": {
+    "zh": "蒲公英",
+    "pinyin": "pú gōng yīng",
+    "en": "Dandelion",
+    "ipa": "/ˈdændɪlaɪən/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/dandelion-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-flower.jpg"
+        }
+      ],
       "description": "蒲公英开黄色小花，像小太阳落在草地上。太阳出来它张开，天黑就合上。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/dandelion-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-leaf.jpg"
+        }
+      ],
       "description": "叶子贴着地面长，边上是尖尖的锯齿，像狮子的大牙齿。"
     },
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/dandelion-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-fruit.jpg"
+        }
+      ],
       "description": "黄花谢了，变成白色小绒球。吹一口气，小种子撑着降落伞飞走，落到哪里就在哪里发芽。"
     }
   }

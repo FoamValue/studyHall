@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/kapok-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/kapok-flower.jpg"
         }
       ],
       "description": "木棉花大大的、红红的，像小火炬举在枝头。花朵掉在地上也不蔫。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/kapok-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/kapok-leaf.jpg"
         }
       ],
       "description": "木棉叶子像张开的小手掌，几片小叶排在一起。秋天叶子变黄才掉。"

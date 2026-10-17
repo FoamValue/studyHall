@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/peach-blossom-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/peach-blossom-flower.jpg"
         }
       ],
       "description": "桃花粉粉的，有五片小花瓣。春风一吹，像一只只小蝴蝶停在枝头。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/peach-blossom-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/peach-blossom-leaf.jpg"
         }
       ],
       "description": "桃叶细细长长的，像绿色的小船。边上有一排小小锯齿。"

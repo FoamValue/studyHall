@@ -19,18 +19,18 @@ const SUNFLOWER = {
   parts: {
     flower: {
       name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
-      images: [{ type: 'illustration', url: '/images/plants/sunflower-flower.svg' }],
+      images: [{ type: 'photo', url: '/images/plants/sunflower-flower.jpg' }],
       description: '大大的花盘像小太阳。',
       allusion: { text: '更无柳絮因风起，惟有葵花向日倾。', source: '《客中初夏》', explain: '葵花总是朝着太阳转。' },
     },
     leaf: {
       name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
-      images: [{ type: 'illustration', url: '/images/plants/sunflower-leaf.svg' }],
+      images: [{ type: 'photo', url: '/images/plants/sunflower-leaf.jpg' }],
       description: '叶子绿绿的，像大手掌。',
     },
     fruit: {
       name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
-      images: [{ type: 'illustration', url: '/images/plants/sunflower-fruit.svg' }],
+      images: [{ type: 'photo', url: '/images/plants/sunflower-fruit.jpg' }],
       description: '葵花籽香香的，可以吃。',
     },
   },
@@ -44,12 +44,12 @@ const GINKGO = {
   parts: {
     leaf: {
       name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
-      images: [{ type: 'illustration', url: '/images/plants/ginkgo-leaf.svg' }],
+      images: [{ type: 'photo', url: '/images/plants/ginkgo-leaf.jpg' }],
       description: '叶子像一把把小扇子。',
     },
     fruit: {
       name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
-      images: [{ type: 'illustration', url: '/images/plants/ginkgo-fruit.svg' }],
+      images: [{ type: 'photo', url: '/images/plants/ginkgo-fruit.jpg' }],
       description: '白果圆圆的，穿着黄衣裳。',
     },
   },
@@ -128,7 +128,7 @@ describe('PlantDetailPage（TC-14 ~ TC-16）', () => {
       parts: {
         leaf: {
           name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
-          images: [{ type: 'illustration', url: '/images/plants/maple-leaf.svg' }],
+          images: [{ type: 'photo', url: '/images/plants/maple-leaf.jpg' }],
           description: '枫叶像小手掌，秋天变红。',
         },
       },

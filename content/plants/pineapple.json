@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pineapple-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/pineapple-fruit.jpg"
         }
       ],
       "description": "菠萝穿着带刺的盔甲，头顶绿油油的叶子帽。果肉酸酸甜甜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pineapple-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/pineapple-leaf.jpg"
         }
       ],
       "description": "菠萝叶子又长又硬，边上有小刺。它们围成一圈像绿色皇冠。"

@@ -1,16 +1,44 @@
 {
   "id": "cherry",
-  "categories": ["flower", "leaf"],
-  "name": { "zh": "樱花", "pinyin": "yīng huā", "en": "Cherry Blossom", "ipa": "/ˈtʃeri ˌblɑːsəm/" },
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "樱花",
+    "pinyin": "yīng huā",
+    "en": "Cherry Blossom",
+    "ipa": "/ˈtʃeri ˌblɑːsəm/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/cherry-flower.svg" }, { "type": "photo", "url": "/images/plants/cherry-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cherry-flower.jpg"
+        }
+      ],
       "description": "樱花一簇一簇开满枝头，粉粉嫩嫩的。风一吹，花瓣像小雪片飘下来。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/cherry-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cherry-leaf.jpg"
+        }
+      ],
       "description": "樱花树常常先开花、后长叶。新叶嫩绿嫩绿的，边上也有小锯齿。"
     }
   }

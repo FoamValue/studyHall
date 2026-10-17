@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/water-lily-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/water-lily-flower.jpg"
         }
       ],
       "description": "睡莲漂在水面上开花，粉的白的像小公主。晚上它会合上花瓣睡觉觉。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/water-lily-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/water-lily-leaf.jpg"
         }
       ],
       "description": "睡莲叶子圆圆的，像绿色的小圆盘。它漂在水上，给小青蛙当小床。"

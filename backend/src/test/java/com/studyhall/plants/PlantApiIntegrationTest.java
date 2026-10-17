@@ -206,7 +206,7 @@ class PlantApiIntegrationTest {
         assertThat(sunflower.parts().keySet()).containsExactlyInAnyOrder("flower", "leaf", "fruit");
         PlantPart flower = sunflower.parts().get("flower");
         assertThat(flower.description()).isNotBlank();
-        assertThat(flower.images().getFirst().url()).isEqualTo("/images/plants/sunflower-flower.svg");
+        assertThat(flower.images().getFirst().url()).isEqualTo("/images/plants/sunflower-flower.jpg");
         Allusion allusion = flower.allusion();
         assertThat(allusion).isNotNull();
         assertThat(allusion.text()).isNotBlank();
@@ -228,7 +228,7 @@ class PlantApiIntegrationTest {
                 .filter(card -> card.id().equals("ginkgo"))
                 .findFirst()
                 .orElseThrow();
-        assertThat(ginkgo.coverImage()).isEqualTo("/images/plants/ginkgo-leaf.svg");
+        assertThat(ginkgo.coverImage()).isEqualTo("/images/plants/ginkgo-leaf.jpg");
 
         // Sprint 2 新增：maple 仅有 leaf 部位
         ApiResponse<Plant> maple = get("/api/plants/maple",
@@ -311,17 +311,17 @@ class PlantApiIntegrationTest {
         }
     }
 
-    /** TC-12 图片资产齐备：JSON 引用的 illustration 图片在 frontend/public 下存在对应文件。 */
+    /** TC-12 图片资产齐备：JSON 引用的 photo 图片在 frontend/public 下存在对应文件。 */
     @Test
-    void tc12_illustrationAssetsShouldExistOnDisk() {
+    void tc12_photoAssetsShouldExistOnDisk() {
         Path publicDir = ContentSeed.contentDir().resolve("../frontend/public").normalize();
         assertThat(publicDir).isDirectory();
         for (Plant p : plants) {
             p.parts().forEach((partCode, part) ->
                     part.images().stream()
-                            .filter(img -> img.type().equals("illustration"))
+                            .filter(img -> img.type().equals("photo"))
                             .forEach(img -> {
-                                // url 形如 /images/plants/{id}-{part}.svg，去掉前导斜杠映射到 public 下
+                                // url 形如 /images/plants/{id}-{part}.jpg，去掉前导斜杠映射到 public 下
                                 Path file = publicDir.resolve(img.url().substring(1));
                                 assertThat(Files.isRegularFile(file))
                                         .as("缺少图片资产 %s（植物 %s 部位 %s）", img.url(), p.id(), partCode)

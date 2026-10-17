@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/marigold-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/marigold-flower.jpg"
         }
       ],
       "description": "金盏花金黄金黄的，像一个小金碗。太阳一晒，开得更加灿烂。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/marigold-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/marigold-leaf.jpg"
         }
       ],
       "description": "金盏花叶子绿绿的，边上有小锯齿。闻一闻，有一股特别的味道。"

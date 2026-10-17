@@ -1,16 +1,44 @@
 {
   "id": "mimosa",
-  "categories": ["leaf", "flower"],
-  "name": { "zh": "含羞草", "pinyin": "hán xiū cǎo", "en": "Mimosa", "ipa": "/mɪˈmoʊzə/" },
+  "categories": [
+    "leaf",
+    "flower"
+  ],
+  "name": {
+    "zh": "含羞草",
+    "pinyin": "hán xiū cǎo",
+    "en": "Mimosa",
+    "ipa": "/mɪˈmoʊzə/"
+  },
   "parts": {
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/mimosa-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mimosa-leaf.jpg"
+        }
+      ],
       "description": "含羞草的叶子像小羽毛，一排排小叶片。轻轻一碰，它就合起来，像在害羞。"
     },
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/mimosa-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mimosa-flower.jpg"
+        }
+      ],
       "description": "含羞草开粉色小绒球，毛茸茸的像小蒲公英。轻轻一吹，软软的。"
     }
   }

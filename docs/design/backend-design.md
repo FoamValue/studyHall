@@ -38,7 +38,7 @@ backend/
   "parts": {
     "flower": {
       "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/sunflower-flower.svg" } ],
+      "images": [ { "type": "photo", "url": "/images/plants/sunflower-flower.jpg" } ],
       "description": "低龄化中文说明，短句。",
       "allusion": { "text": "典故原文（古诗词/成语）", "source": "出处", "explain": "一句低龄化白话解释" }
     },

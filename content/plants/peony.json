@@ -1,11 +1,29 @@
 {
   "id": "peony",
-  "categories": ["flower", "leaf"],
-  "name": { "zh": "牡丹", "pinyin": "mǔ dān", "en": "Peony", "ipa": "/ˈpiːəni/" },
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "牡丹",
+    "pinyin": "mǔ dān",
+    "en": "Peony",
+    "ipa": "/ˈpiːəni/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/peony-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peony-flower.jpg"
+        }
+      ],
       "description": "牡丹花开得又大又圆，像小皮球。粉粉白白的，一层一层像小裙子。",
       "allusion": {
         "text": "唯有牡丹真国色，花开时节动京城。",
@@ -14,8 +32,18 @@
       }
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/peony-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peony-leaf.jpg"
+        }
+      ],
       "description": "牡丹叶分成好多小片，像小手掌。绿绿的，托着大大的花。"
     }
   }

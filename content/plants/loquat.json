@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/loquat-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/loquat-fruit.jpg"
         }
       ],
       "description": "枇杷黄黄的、圆圆的，皮上有细细绒毛。果肉软软的，酸酸甜甜。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/loquat-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/loquat-leaf.jpg"
         }
       ],
       "description": "枇杷叶子又长又大，背面有棕色绒毛。叶面有深深的叶脉。"

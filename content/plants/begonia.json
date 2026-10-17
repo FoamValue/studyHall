@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/begonia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/begonia-flower.jpg"
         }
       ],
       "description": "海棠花粉粉的，一簇一簇开得真热闹。花谢了还会结出小小的海棠果。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/begonia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/begonia-leaf.jpg"
         }
       ],
       "description": "海棠叶子圆圆的，边上有点歪，像害羞的小脸。叶面亮亮的，绿得可爱。"

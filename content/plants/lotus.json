@@ -1,11 +1,30 @@
 {
   "id": "lotus",
-  "categories": ["flower", "leaf", "fruit"],
-  "name": { "zh": "荷花", "pinyin": "hé huā", "en": "Lotus", "ipa": "/ˈloʊtəs/" },
+  "categories": [
+    "flower",
+    "leaf",
+    "fruit"
+  ],
+  "name": {
+    "zh": "荷花",
+    "pinyin": "hé huā",
+    "en": "Lotus",
+    "ipa": "/ˈloʊtəs/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/lotus-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lotus-flower.jpg"
+        }
+      ],
       "description": "荷花从水里钻出来，粉白粉白的，像穿着裙子站在水里。早上开，中午最好看。",
       "allusion": {
         "text": "接天莲叶无穷碧，映日荷花别样红。",
@@ -14,13 +33,33 @@
       }
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/lotus-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lotus-leaf.jpg"
+        }
+      ],
       "description": "荷叶圆圆大大的，像一把绿伞。水珠掉上去会滚来滚去，叶子也不会湿。"
     },
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/lotus-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lotus-fruit.jpg"
+        }
+      ],
       "description": "花瓣谢了，剩下小小的莲蓬，像花洒。莲子住在里面，剥开就是甜甜的果子。"
     }
   }

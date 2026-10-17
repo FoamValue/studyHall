@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/kiwi-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/kiwi-fruit.jpg"
         }
       ],
       "description": "猕猴桃穿着棕色毛衣，里面绿绿的果肉藏着一排小黑籽。酸酸甜甜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/kiwi-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/kiwi-leaf.jpg"
         }
       ],
       "description": "猕猴桃叶子大大的，像绿色的小爱心。叶子背面有细细的绒毛。"

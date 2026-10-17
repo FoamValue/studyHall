@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pumpkin-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/pumpkin-fruit.jpg"
         }
       ],
       "description": "南瓜胖胖的、黄黄的，像一个大灯笼。蒸熟了软软甜甜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/pumpkin-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/pumpkin-leaf.jpg"
         }
       ],
       "description": "南瓜叶子像大手掌，摸上去毛毛的。它趴在地上晒太阳。"

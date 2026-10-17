@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/gardenia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/gardenia-flower.jpg"
         }
       ],
       "description": "栀子花白白的，一层一层像奶油裙。香味甜甜的，常被大家别在衣襟上。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/gardenia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/gardenia-leaf.jpg"
         }
       ],
       "description": "栀子叶子绿油油的，一年四季都不掉。叶片厚厚的，摸上去滑滑的。"

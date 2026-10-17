@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/longan-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/longan-fruit.jpg"
         }
       ],
       "description": "龙眼圆圆的，壳薄薄的、土黄土黄的。剥开果肉像小龙的眼珠，甜甜的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/longan-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/longan-leaf.jpg"
         }
       ],
       "description": "龙眼叶子长长的，绿油油一对对长着。一年四季都是绿的。"

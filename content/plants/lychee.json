@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lychee-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/lychee-fruit.jpg"
         }
       ],
       "description": "荔枝穿着红红的小刺壳，剥开是白白甜甜的果肉，像一颗大水珠。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lychee-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/lychee-leaf.jpg"
         }
       ],
       "description": "荔枝叶子长长的，一对一对排着。新叶子红红的，慢慢变绿。"

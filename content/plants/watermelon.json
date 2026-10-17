@@ -1,16 +1,44 @@
 {
   "id": "watermelon",
-  "categories": ["fruit", "leaf"],
-  "name": { "zh": "西瓜", "pinyin": "xī guā", "en": "Watermelon", "ipa": "/ˈwɔːtərˌmelən/" },
+  "categories": [
+    "fruit",
+    "leaf"
+  ],
+  "name": {
+    "zh": "西瓜",
+    "pinyin": "xī guā",
+    "en": "Watermelon",
+    "ipa": "/ˈwɔːtərˌmelən/"
+  },
   "parts": {
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/watermelon-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/watermelon-fruit.jpg"
+        }
+      ],
       "description": "西瓜圆滚滚的，绿皮上有深绿条纹。切开红红的瓤，黑黑的籽，甜甜的汁水多。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/watermelon-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/watermelon-leaf.jpg"
+        }
+      ],
       "description": "西瓜叶裂成好多小片，像小手掌。趴在地上爬藤，给西瓜遮太阳。"
     }
   }

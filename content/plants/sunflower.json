@@ -1,11 +1,30 @@
 {
   "id": "sunflower",
-  "categories": ["flower", "leaf", "fruit"],
-  "name": { "zh": "向日葵", "pinyin": "xiàng rì kuí", "en": "Sunflower", "ipa": "/ˈsʌnˌflaʊər/" },
+  "categories": [
+    "flower",
+    "leaf",
+    "fruit"
+  ],
+  "name": {
+    "zh": "向日葵",
+    "pinyin": "xiàng rì kuí",
+    "en": "Sunflower",
+    "ipa": "/ˈsʌnˌflaʊər/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/sunflower-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-flower.jpg"
+        }
+      ],
       "description": "大大的花盘圆圆的，像金色的小太阳。它会跟着太阳转，所以叫向日葵。",
       "allusion": {
         "text": "青青园中葵，朝露待日晞。",
@@ -14,13 +33,33 @@
       }
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/sunflower-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-leaf.jpg"
+        }
+      ],
       "description": "叶子又宽又大，像绿色的手掌。它迎着太阳，帮花盘收集阳光。"
     },
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/sunflower-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-fruit.jpg"
+        }
+      ],
       "description": "花盘里排满了一颗颗葵花籽，这就是它的果实。炒香了可香啦，还能榨油。"
     }
   }

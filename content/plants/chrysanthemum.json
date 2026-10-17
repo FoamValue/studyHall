@@ -1,11 +1,29 @@
 {
   "id": "chrysanthemum",
-  "categories": ["flower", "leaf"],
-  "name": { "zh": "菊花", "pinyin": "jú huā", "en": "Chrysanthemum", "ipa": "/krɪˈsænθəməm/" },
+  "categories": [
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "菊花",
+    "pinyin": "jú huā",
+    "en": "Chrysanthemum",
+    "ipa": "/krɪˈsænθəməm/"
+  },
   "parts": {
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/chrysanthemum-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chrysanthemum-flower.jpg"
+        }
+      ],
       "description": "菊花的花瓣一丝一丝卷卷的，像小毛线球。有黄的、白的、紫的，秋天开最多。",
       "allusion": {
         "text": "采菊东篱下，悠然见南山。",
@@ -14,8 +32,18 @@
       }
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/chrysanthemum-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chrysanthemum-leaf.jpg"
+        }
+      ],
       "description": "菊叶裂成好多小片，边边有点锯齿。闻一闻，有淡淡的清香味。"
     }
   }

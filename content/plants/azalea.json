@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/azalea-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/azalea-flower.jpg"
         }
       ],
       "description": "杜鹃花红红粉粉，开满山坡像铺了花毯子。它还有一个名字叫映山红。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/azalea-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/azalea-leaf.jpg"
         }
       ],
       "description": "杜鹃叶子小小的，椭圆椭圆的。叶子上有细细的绒毛，摸起来毛茸茸。"

@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/durian-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/durian-fruit.jpg"
         }
       ],
       "description": "榴莲满身是尖尖的刺，闻着臭吃着香。果肉软软黄黄的，像奶油。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/durian-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/durian-leaf.jpg"
         }
       ],
       "description": "榴莲叶子长长的，背面有点银色。叶子厚厚的，绿绿的。"

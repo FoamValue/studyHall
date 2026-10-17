@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/corn-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/corn-fruit.jpg"
         }
       ],
       "description": "玉米穿着绿外衣，剥开一排排金黄小牙齿。煮熟了甜甜的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/corn-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/corn-leaf.jpg"
         }
       ],
       "description": "玉米叶子又长又宽，像绿色的大飘带。风一吹哗啦啦唱歌。"

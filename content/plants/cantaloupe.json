@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cantaloupe-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/cantaloupe-fruit.jpg"
         }
       ],
       "description": "哈密瓜圆圆的，皮上有网网花纹。果肉橙橙的，甜得像蜜。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cantaloupe-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/cantaloupe-leaf.jpg"
         }
       ],
       "description": "哈密瓜叶子圆圆的，像小扇子。叶子毛毛的，趴在地上长。"

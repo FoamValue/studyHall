@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lilac-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/lilac-flower.jpg"
         }
       ],
       "description": "丁香花小小的，一串一串开满枝头。紫紫白白的，香气能飘好远好远。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/lilac-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/lilac-leaf.jpg"
         }
       ],
       "description": "丁香叶子像一颗颗绿色的小爱心。摸一摸滑滑的，背面颜色浅一点。"

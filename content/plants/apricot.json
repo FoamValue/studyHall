@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/apricot-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/apricot-fruit.jpg"
         }
       ],
       "description": "杏子黄黄的、圆圆的，脸上有一条小缝。酸甜多汁，里面藏着硬核。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/apricot-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/apricot-leaf.jpg"
         }
       ],
       "description": "杏树叶圆圆的，边上有小锯齿。叶柄长长的，风一吹直点头。"

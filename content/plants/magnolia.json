@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/magnolia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/magnolia-flower.jpg"
         }
       ],
       "description": "玉兰花大大的、白白的，像一只只小玉杯。它先开花后长叶，站在高高的枝头。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/magnolia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/magnolia-leaf.jpg"
         }
       ],
       "description": "玉兰叶子又大又圆，绿得发亮。秋天叶子变黄，一片片飘下来。"

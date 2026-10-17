@@ -1,21 +1,60 @@
 {
   "id": "pear",
-  "categories": ["fruit", "flower", "leaf"],
-  "name": { "zh": "梨", "pinyin": "lí", "en": "Pear", "ipa": "/per/" },
+  "categories": [
+    "fruit",
+    "flower",
+    "leaf"
+  ],
+  "name": {
+    "zh": "梨",
+    "pinyin": "lí",
+    "en": "Pear",
+    "ipa": "/per/"
+  },
   "parts": {
     "fruit": {
-      "name": { "zh": "果", "pinyin": "guǒ", "en": "fruit", "ipa": "/fruːt/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/pear-fruit.svg" } ],
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pear-fruit.jpg"
+        }
+      ],
       "description": "梨上面小下面大，像小葫芦。黄黄的皮，白白的肉，甜甜的汁水多。"
     },
     "flower": {
-      "name": { "zh": "花", "pinyin": "huā", "en": "flower", "ipa": "/ˈflaʊər/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/pear-flower.svg" } ],
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pear-flower.jpg"
+        }
+      ],
       "description": "梨花白白的，五片小花瓣。春天开满一树，像落了一层雪。"
     },
     "leaf": {
-      "name": { "zh": "叶", "pinyin": "yè", "en": "leaf", "ipa": "/liːf/" },
-      "images": [ { "type": "illustration", "url": "/images/plants/pear-leaf.svg" } ],
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pear-leaf.jpg"
+        }
+      ],
       "description": "梨叶圆圆的，边边有点小锯齿。绿绿的，托着白白的花和黄黄的梨。"
     }
   }

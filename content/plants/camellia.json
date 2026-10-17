@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/camellia-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/camellia-flower.jpg"
         }
       ],
       "description": "山茶花红红艳艳的，花瓣整整齐齐排着队。冷冷的冬天里开得真精神。",
@@ -40,8 +40,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/camellia-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/camellia-leaf.jpg"
         }
       ],
       "description": "山茶叶子厚厚的，边缘有小锯齿。叶面油亮油亮的，像打了蜡。"

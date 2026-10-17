@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cosmos-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/cosmos-flower.jpg"
         }
       ],
       "description": "波斯菊花瓣粉粉白白，像小姑娘的裙摆。风一吹，整片花田跳起舞。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/cosmos-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/cosmos-leaf.jpg"
         }
       ],
       "description": "波斯菊叶子细细碎碎的，像绿色的小羽毛。风一吹轻轻摇。"

@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/hawthorn-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/hawthorn-fruit.jpg"
         }
       ],
       "description": "山楂红红的，像一颗颗小红果。酸酸的，做成糖葫芦可好吃啦。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/hawthorn-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/hawthorn-leaf.jpg"
         }
       ],
       "description": "山楂叶子边上有小裂口，像小鸭掌。绿绿的，真好看。"

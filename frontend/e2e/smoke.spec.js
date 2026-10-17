@@ -31,7 +31,7 @@ test('TC-22 首页→花朵→桃花→叶', async ({ page }) => {
 
   // 4. 切「叶」部位 → 显示叶内容
   await page.locator('[role="tab"]').filter({ hasText: /^叶$/ }).click();
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /peach-blossom-leaf\.svg$/);
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /peach-blossom-leaf\.jpg$/);
   await expect(page.locator('.part-img')).toHaveAttribute('alt', '桃花的叶');
 
   // 5. 页面无报错
@@ -59,7 +59,7 @@ test('TC-23 首页→树叶→枫树（仅叶标签）', async ({ page }) => {
   const tabs = page.locator('[role="tab"]');
   await expect(tabs).toHaveCount(1);
   await expect(tabs.first()).toHaveText(/^叶$/);
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /maple-leaf\.svg$/);
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /maple-leaf\.jpg$/);
 
   expect(problems).toEqual([]);
 });

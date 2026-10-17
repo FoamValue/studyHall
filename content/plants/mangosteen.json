@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mangosteen-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/mangosteen-fruit.jpg"
         }
       ],
       "description": "山竹紫紫的外壳厚厚的，里面藏着几瓣白果肉。酸酸甜甜像小蒜瓣。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/mangosteen-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/mangosteen-leaf.jpg"
         }
       ],
       "description": "山竹叶子椭圆厚厚的，绿得发亮。一对一对整整齐齐长着。"

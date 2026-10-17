@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/peanut-fruit.svg"
+          "type": "photo",
+          "url": "/images/plants/peanut-fruit.jpg"
         }
       ],
       "description": "花生住在泥土里，外壳像小葫芦。剥开两颗胖娃娃，香香脆脆。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/peanut-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/peanut-leaf.jpg"
         }
       ],
       "description": "花生叶子是四片小叶手拉手。晚上叶子会合起来睡觉觉。"

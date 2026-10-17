@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/honeysuckle-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/honeysuckle-flower.jpg"
         }
       ],
       "description": "金银花开花先白后黄，一根藤上金色银色都有。闻起来香香甜甜的。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/honeysuckle-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/honeysuckle-leaf.jpg"
         }
       ],
       "description": "金银花叶子一对一对长着，像一对对好朋友。叶子软软的，绿绿的。"

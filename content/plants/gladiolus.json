@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/gladiolus-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/gladiolus-flower.jpg"
         }
       ],
       "description": "剑兰的花沿着茎一串往上开，像小士兵排队。颜色有好多好多种。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/gladiolus-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/gladiolus-leaf.jpg"
         }
       ],
       "description": "剑兰叶子又长又直，像一把把宝剑。它们保护着花茎站得笔直。"

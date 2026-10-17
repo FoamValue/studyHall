@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/violet-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/violet-flower.jpg"
         }
       ],
       "description": "紫罗兰紫紫的，一朵朵挤在一起开。闻闻看，有一股甜甜的香味。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/violet-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/violet-leaf.jpg"
         }
       ],
       "description": "紫罗兰叶子圆圆的，边缘有点波浪。叶片毛茸茸的，摸起来软软的。"

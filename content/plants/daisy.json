@@ -20,8 +20,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/daisy-flower.svg"
+          "type": "photo",
+          "url": "/images/plants/daisy-flower.jpg"
         }
       ],
       "description": "雏菊白白的花瓣围着黄黄的花心，像一个小太阳。它矮矮的，开在草地上。"
@@ -35,8 +35,8 @@
       },
       "images": [
         {
-          "type": "illustration",
-          "url": "/images/plants/daisy-leaf.svg"
+          "type": "photo",
+          "url": "/images/plants/daisy-leaf.jpg"
         }
       ],
       "description": "雏菊叶子圆圆的，长在花的脚边。绿油油的，像一把把小勺子。"
