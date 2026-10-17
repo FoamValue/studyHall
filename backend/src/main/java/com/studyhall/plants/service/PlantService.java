@@ -15,6 +15,7 @@ import tools.jackson.databind.JavaType;
 import tools.jackson.databind.ObjectMapper;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -59,7 +60,7 @@ public class PlantService {
         if (category == null || category.isBlank()) {
             return cachedList(KEY_PLANT_LIST_PREFIX + "all", PlantCard.class,
                     () -> plantRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
-                            .stream().map(this::toCard).toList());
+                            .stream().map(plant -> toCard(plant, null)).toList());
         }
         // 分类合法性校验放在查缓存之前，非法分类不落缓存
         if (!categoryRepository.existsById(category)) {
@@ -67,7 +68,7 @@ public class PlantService {
         }
         return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,
                 () -> plantRepository.findByCategoriesContains(category)
-                        .stream().map(this::toCard).toList());
+                        .stream().map(plant -> toCard(plant, category)).toList());
     }
 
     public Plant getPlant(String id) {
@@ -82,8 +83,8 @@ public class PlantService {
         return plant;
     }
 
-    PlantCard toCard(Plant plant) {
-        return new PlantCard(plant.id(), plant.name(), coverImage(plant), partCodes(plant));
+    PlantCard toCard(Plant plant, String category) {
+        return new PlantCard(plant.id(), plant.name(), coverImage(plant, category), partCodes(plant));
     }
 
     private List<String> partCodes(Plant plant) {
@@ -93,12 +94,20 @@ public class PlantService {
         return PART_ORDER.stream().filter(plant.parts()::containsKey).toList();
     }
 
-    private String coverImage(Plant plant) {
+    /**
+     * 封面：请求带分类时优先取该分类对应部位的首图，缺失再按 flower → leaf → fruit 回退；
+     * 未指定分类（全部列表）保持原回退顺序。
+     */
+    private String coverImage(Plant plant, String category) {
         if (plant.parts() == null) {
             return null;
         }
-        // 封面回退：flower → leaf → fruit，各取第一张图
-        return PART_ORDER.stream()
+        List<String> order = new ArrayList<>(PART_ORDER);
+        if (category != null && plant.parts().containsKey(category)) {
+            order.remove(category);
+            order.addFirst(category);
+        }
+        return order.stream()
                 .map(plant.parts()::get)
                 .filter(part -> part != null && part.images() != null && !part.images().isEmpty())
                 .map(part -> part.images().getFirst().url())

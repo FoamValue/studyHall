@@ -353,4 +353,38 @@ class PlantApiIntegrationTest {
             });
         }
     }
+
+    /** TC-57 分类列表封面跟随分类（Sprint 7 / EX-1）：含花朵的植物在树叶/果实分类下取对应部位封面。 */
+    @Test
+    void tc57_categoryCoverImageShouldFollowCategory() {
+        ApiResponse<List<PlantCard>> leafList = get("/api/plants?category=leaf", listOf(PlantCard.class));
+        assertThat(leafList.code()).isZero();
+        assertThat(findCard(leafList.data(), "apple").coverImage())
+                .isEqualTo("/images/plants/apple-leaf.jpg");
+        assertThat(findCard(leafList.data(), "anemone").coverImage())
+                .isEqualTo("/images/plants/anemone-leaf.jpg");
+
+        ApiResponse<List<PlantCard>> fruitList = get("/api/plants?category=fruit", listOf(PlantCard.class));
+        assertThat(fruitList.code()).isZero();
+        assertThat(findCard(fruitList.data(), "apple").coverImage())
+                .isEqualTo("/images/plants/apple-fruit.jpg");
+    }
+
+    /** TC-58 「全部」与花朵分类封面回退顺序不变（回归 TC-07 语义，Sprint 7）。 */
+    @Test
+    void tc58_allAndFlowerCoverImageShouldKeepFallback() {
+        ApiResponse<List<PlantCard>> all = get("/api/plants", listOf(PlantCard.class));
+        assertThat(all.code()).isZero();
+        assertThat(findCard(all.data(), "ginkgo").coverImage()).isEqualTo("/images/plants/ginkgo-leaf.jpg");
+        assertThat(findCard(all.data(), "apple").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
+
+        ApiResponse<List<PlantCard>> flower = get("/api/plants?category=flower", listOf(PlantCard.class));
+        assertThat(flower.code()).isZero();
+        assertThat(findCard(flower.data(), "apple").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
+    }
+
+    private static PlantCard findCard(List<PlantCard> cards, String id) {
+        return cards.stream().filter(c -> c.id().equals(id)).findFirst()
+                .orElseThrow(() -> new AssertionError("列表缺少卡片 " + id));
+    }
 }

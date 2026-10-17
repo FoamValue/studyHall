@@ -503,3 +503,15 @@ describe('详情页整屏不滚动（Sprint 6：TC-53 ~ TC-56，样式源文件�
     expect(imgAll).toContain('max-height: 100%'); // 横屏覆盖：随容器高度
   });
 });
+
+describe('横屏详情版式（Sprint 7：TC-60，样式源文件断言）', () => {
+  const css = readFileSync('src/styles.css', 'utf-8');
+
+  it('TC-60 横屏图片宽度上限提升至 48% 且保持完整不裁切', () => {
+    const landscape = css.match(/@media\s*\(orientation:\s*landscape\)\s*\{[\s\S]*?\n\}/)[0];
+    const imgBlock = landscape.match(/\.part-img\s*\{[^}]*\}/s)[0];
+    expect(imgBlock).toMatch(/max-width:\s*48%/);
+    expect(landscape).not.toMatch(/max-width:\s*40%/);
+    expect(imgBlock).toContain('max-height: 100%');
+  });
+});

@@ -120,3 +120,50 @@ test('TC-52 长文案植物（含典故）不产生页面滚动且文字完整',
   const box = await allusion.boundingBox();
   expect(box.y + box.height).toBeLessThanOrEqual(1024 + 1);
 });
+
+// ===== Sprint 7 新增 E2E（TC-61 ~ TC-62）：横屏详情图片放大（EX-2） =====
+
+// 页面级水平溢出（文档宽度 - 视口宽度）
+const hOverflow = (page) =>
+  page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+  );
+
+// TC-61 横屏详情图片放大（突破旧 40% 上限）且无水平溢出
+for (const viewport of [
+  { width: 1024, height: 768 },
+  { width: 1180, height: 820 },
+]) {
+  test(`TC-61 横屏 ${viewport.width}x${viewport.height} 详情图片放大且无溢出`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await enterFirstFlowerDetail(page);
+
+    const mainWidth = (await page.locator('.detail-main').boundingBox()).width;
+    const box = await page.locator('.part-img').boundingBox();
+    // 旧规则上限为容器宽 40%；修复后应明显超过该上限（≤ 48% 或受可用高度限制）
+    expect(box.width).toBeGreaterThan(mainWidth * 0.42);
+
+    // 图片完整落在视口内（无水平/纵向溢出）
+    const vp = page.viewportSize();
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(vp.width + 1);
+    expect(await hOverflow(page)).toBeLessThanOrEqual(1);
+    expect(await pageOverflow(page)).toBeLessThanOrEqual(1);
+  });
+}
+
+// TC-62 横屏长文案植物（azalea）放大图片后文字仍不溢出
+test('TC-62 横屏长文案植物（azalea）图片放大后不溢出', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('/plants/azalea');
+  await expect(page.locator('.detail-zh')).toBeVisible();
+
+  expect(await pageOverflow(page)).toBeLessThanOrEqual(1);
+  expect(await hOverflow(page)).toBeLessThanOrEqual(1);
+
+  await expect(page.locator('.part-desc')).toBeVisible();
+  const allusion = page.locator('.allusion-text');
+  await expect(allusion).toBeVisible();
+  const box = await allusion.boundingBox();
+  expect(box.x + box.width).toBeLessThanOrEqual(1024 + 1);
+});

@@ -300,4 +300,52 @@ frontend/
 - 新增 `e2e/responsive.spec.js`：TC-48（横屏四视口一档）/ TC-49（竖屏）沉浸式「页面级溢出 ≤1 且内容区不可滚动」；TC-50 全屏态溢出与滚动不改变文档滚动位置；TC-51 图片 `object-fit: contain` 且不溢出视口；TC-52 长文案植物（azalea）含典故不产生页面滚动。
 - `PlantDetailPage.test.jsx`：新增 TC-53~TC-56 样式表规则断言（容器 `position: fixed; inset: 0`；内容区 `overflow: hidden`；`overscroll-behavior` 阻断链式传递；`.part-img` 可收缩 + 横屏 `max-height: 100%`）。
 
+---
+
+# 前端开发设计文章 — Sprint 7（PF 体验优化）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-7-requirements.md、docs/product/experience-triage-v1.md |
+| 范围 | 前端纯 CSS（`frontend/src/styles.css`）；不改 JSX 结构、路由、接口与语料 |
+
+## S7-1. 横屏详情图片放大（EX-2）
+```css
+@media (orientation: landscape) {
+  /* Sprint 7：图片宽度上限 40% → 48%，更充分利用可用高度、减少左右留白 */
+  .part-img { flex: 0 0 auto; max-height: 100%; max-width: 48%; }
+  /* 文字列继续吸收剩余宽度，避免重新引入水平溢出（Sprint 6 消除的 87px） */
+  .part-content { flex: 1 1 auto; min-width: 0; max-width: 640px; }
+}
+```
+- 仅调宽度上限；`aspect-ratio: 1/1` 与 `object-fit: contain` 不变，图片仍然完整不裁切。
+- 必须实测 1024×768 与 1180×820：图片像素宽度较修复前增大、页面级溢出为 0、无水平溢出；长文案（azalea）不溢出。
+
+## S7-2. 横屏头部收紧（EX-2，并入 F6）
+- 在横屏媒体查询内收紧详情头部的上下留白（如名称行 `.detail-name-row` 与头部容器的 `gap` / `margin`），把竖轴空间让给图片。
+- 底线：长文案仍完整可读、不溢出；字号不降低。
+- 仅在横屏生效，竖屏与既有版式不受影响。
+
+## S7-3. 卡片次级字号（EX-3）
+```css
+/* Sprint 7：卡片次级文字由 14px 提升至 16px，横屏更清晰 */
+.plant-card-pinyin,
+.plant-card-en { font-size: 16px; color: var(--color-text-light); }
+```
+
+## S7-4. 封面跟随分类（EX-1，后端提供，前端无改动）
+- 封面由后端清单接口按请求分类生成（见 backend-design S7-x）；前端 `HomePage` / `PlantCard` 无需改动，渲染逻辑与 `coverImage` 字段契约不变。
+
+## S7-5. 不回归
+- 不改 JSX：`PlantDetailPage.jsx` / `HomePage.jsx` / `PlantCard.jsx` 结构与逻辑均不动（EX-1 由后端承载）。
+- Sprint 6 约束继续成立：页面级溢出 0、内容区不可滚动、滚动不改变文档滚动位置。
+- US-6 / US-7 行为（换株、全屏、语音朗读）与既有热区（≥56px）不变。
+
+## S7-6. 测试更新（配合 QA）
+- 新增 `styles` 样式断言：TC-59（卡片次级字号 16px，读 `styles.css`）、TC-60（横屏 `.part-img` `max-width: 48%`）。
+- `e2e/responsive.spec.js`：新增 TC-61（横屏详情图片像素宽度增大且无水平溢出、页面级溢出 ≤ 1）、TC-62（长文案 azalea 不溢出）。
+- `e2e/smoke.spec.js`：新增 TC-63（分类页卡片封面 URL 与分类一致）。
+
 

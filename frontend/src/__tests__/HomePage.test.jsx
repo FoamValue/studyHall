@@ -154,4 +154,11 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     expect(await screen.findByText('向日葵')).toBeInTheDocument();
     expect(document.querySelectorAll('.speak-btn')).toHaveLength(0);
   });
+
+  it('TC-59 卡片次级文字（拼音/英文）字号 ≥16px（Sprint 7 新增，样式源文件断言）', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    const block = css.match(/\.plant-card-pinyin[\s\S]*?\.plant-card-en\s*\{[^}]*\}/s)[0];
+    const fontSize = Number(block.match(/font-size:\s*(\d+)px/)[1]);
+    expect(fontSize).toBeGreaterThanOrEqual(16);
+  });
 });

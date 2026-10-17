@@ -101,3 +101,14 @@ test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
   const height = await btn.evaluate((el) => el.getBoundingClientRect().height);
   expect(height).toBeGreaterThanOrEqual(44);
 });
+
+// TC-63 分类封面跟随分类（Sprint 7 / EX-1）：树叶分类下「苹果」封面为叶图，而非花朵照片
+test('TC-63 树叶分类下含花朵植物封面跟随分类', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
+  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 15000 });
+
+  // 苹果同时含花/叶/果，树叶分类下封面应为叶图（修复前会错误显示花朵照片）
+  const appleCover = page.locator('.plant-card', { hasText: '苹果' }).locator('img');
+  await expect(appleCover).toHaveAttribute('src', /apple-leaf\.jpg$/);
+});

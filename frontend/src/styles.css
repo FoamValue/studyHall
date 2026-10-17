@@ -125,7 +125,7 @@ body {
 
 .plant-card-pinyin,
 .plant-card-en {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-text-light);
 }
 
@@ -368,11 +368,26 @@ body {
     gap: 32px;
   }
 
-  /* Sprint 6：图片宽度固定为容器的 40%，不再参与收缩，避免水平溢出把内容推出视口 */
+  /* Sprint 7：图片宽度上限 40% → 48%，更充分利用可用高度、减少左右留白 */
   .part-img {
     flex: 0 0 auto;
     max-height: 100%;
-    max-width: 40%;
+    max-width: 48%;
+  }
+
+  /* Sprint 7：竖向收紧头部信息区，把省下的高度让给图片（可读性优先，字号不降于本节下限） */
+  .detail-header .detail-pinyin {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .detail-header .detail-zh {
+    font-size: 40px;
+    margin: 0 0 2px;
+  }
+
+  .detail-header .detail-en {
+    font-size: 20px;
   }
 
   /* Sprint 6：文字占满图片右侧剩余宽度（flex 收缩吸收剩余空间，宽度不再固定 640） */

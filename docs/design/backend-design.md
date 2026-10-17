@@ -69,7 +69,7 @@ CREATE TABLE import_log (
 | `GET /api/plants?category=flower` | 卡片数组：`{id, name, coverImage, parts:[...部位code]}`；category 缺省=全部；非法 category 返回 code=40001 |
 | `GET /api/plants/{id}` | 完整植物文档；不存在返回 code=40401 |
 
-- coverImage 取 flower 缺省取 leaf 缺省取 fruit 的第一张图。
+- coverImage：请求带 category 时**优先取该分类对应部位**的第一张图，缺失则按 flower → leaf 缺省取 leaf → fruit 回退；category 缺省（全部）按 flower → leaf → fruit 回退。（Sprint 7 修订，见 S7-1）
 
 ## 4. Redis 缓存
 - key：`sh:categories`、`sh:plants:list:{category|all}`、`sh:plant:{id}`；TTL 600s；JSON 序列化。
@@ -207,5 +207,38 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 ## S6-3. 测试策略
 - 后端**零代码变更**，`mvn test` 全量回归即可，无新增后端用例。
 - 全部新增 / 变更在前端（见 frontend-design S6-1~S6-7 与 QA 手册 TC-48 起）。
+
+---
+
+# 后端开发设计文章 — Sprint 7（PF 体验优化，EX-1）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-7-requirements.md、docs/product/experience-triage-v1.md |
+| 范围 | 仅清单卡片封面选择逻辑（EX-1）；EX-2 / EX-3 为前端样式，后端不参与 |
+
+## S7-1. 关键改动：封面跟随请求分类（EX-1，J-9）
+- **现状（问题）**：`PlantService.coverImage(plant)` 固定按 `flower → leaf → fruit` 回退，`toCard(plant)` 不接收分类 → 「树叶 / 果实」分类下含花朵的植物（如苹果、银莲花）仍返回花朵封面，与当前分类不符。
+- **目标**：请求带分类时，封面**优先取该分类对应部位的首图**；该植物无此部位时再按 `flower → leaf → fruit` 回退；`all`（未指定分类）维持原回退顺序。
+- **实现要点**：
+  - `getPlants(category)` 已有分类值，仅需**透传**到卡片生成：`findByCategoriesContains(category).stream().map(p -> toCard(p, category))`；`all` 分支传 `null`。
+  - 签名调整为 `toCard(Plant plant, String category)` 与 `coverImage(Plant plant, String category)`（可见性按现状保留包级 / 私有，供测试使用）。
+  - 封面顺序：`order = (category != null && plant.parts() 含 category) ? [category, 其余按 PART_ORDER] : PART_ORDER`；随后沿用现有「取首个非空部位的第一张图」逻辑。
+- **不改动**：缓存 key 约定（`sh:plants:list:{category|all}` 已按分类区分，新语义天然隔离）、`GET /api/plants` 响应结构（仍为 `{id, name, coverImage, parts}`）、语料 schema、导入脚本。
+
+## S7-2. 契约与缓存保持不变
+- `GET /api/plants`、`GET /api/plants/{id}`、`GET /api/categories` 契约不变；Redis key 与 TTL 600s 不变。
+- 「全部」列表封面语义不变（`flower → leaf → fruit` 回退），故既有 TC-07（银杏在全部列表回退到 leaf）等断言**保持成立**。
+
+## S7-3. 需同步更新的断言与文档
+- 核对 `PlantApiIntegrationTest`：TC-07（银杏全部列表封面 = `ginkgo-leaf.jpg`）不变；如需补充分类封面断言，新增用例（如 `?category=leaf` 下含花植物的封面为叶图）。
+- 更新 `PlantCard` 的 `coverImage` 字段注释（原述「flower→leaf→fruit」改为「按请求分类优先，缺失回退」）。
+- 同步更新本文档 §3 API 契约中「coverImage 取图」的说明。
+
+## S7-4. 测试策略
+- 新增后端用例：分类列表封面语义（对应 PRD §12.4 之 20）——用真实语料中「含花朵但被归入 leaf/fruit 分类」的植物（如 apple / anemone）断言 `?category=leaf` / `?category=fruit` 封面为对应部位图；`?category=flower` 或全部则维持回退顺序。
+- 其余 `mvn test` 全量回归（TC-01~13、TC-24 数据驱动）须全绿。
 
 
