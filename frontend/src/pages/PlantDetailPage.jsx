@@ -13,12 +13,22 @@ const SWIPE_THRESHOLD = 60;
 // 单图板块部位：动物/昆虫/恐龙条目 parts 恰 1 键且为该板块 code（Sprint 9）
 const SINGLE_IMAGE_KEYS = ['animal', 'insect', 'dinosaur'];
 
+// 返回入口文案按板块派生（Sprint 12 / EX-7）；未知板块回退「花园」
+const SECTION_HOME = {
+  plant: '花园',
+  animal: '动物世界',
+  insect: '昆虫角',
+  dinosaur: '恐龙园',
+};
+
 export default function PlantDetailPage() {
   const { id } = useParams();
   const location = useLocation();
   // 路由 state 携带当前板块/分类与列表快照；深链接进入时兜底为「植物 / 全部」
   const section = location.state?.section || 'plant';
   const category = location.state?.category || 'all';
+  // 返回文案随板块派生（Sprint 12 / EX-7）
+  const homeLabel = SECTION_HOME[section] || '花园';
 
   const containerRef = useRef(null);
   const touchStart = useRef(null);
@@ -202,7 +212,7 @@ export default function PlantDetailPage() {
       <main className="page">
         <p className="state-tip">这株植物还没准备好哦</p>
         <p style={{ textAlign: 'center' }}>
-          <Link className="back-btn" to="/">回花园看看</Link>
+          <Link className="back-btn" to="/">回{homeLabel}看看</Link>
         </p>
       </main>
     );
@@ -239,7 +249,7 @@ export default function PlantDetailPage() {
           state={{ section, category, restoreScroll: true }}
           onClick={stop}
         >
-          ← 回花园
+          ← 回{homeLabel}
         </Link>
         {canFullscreen ? (
           <button type="button" className="back-btn fullscreen-btn" onClick={toggleFullscreen}>

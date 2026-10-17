@@ -537,5 +537,70 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - E2E TC-114：板块总量「共 10 种」+ 10 卡 → 「共 **30** 种」+ `loadAllCards(page,30)`。
 - 其余前端用例（植物 100/53、滚动记忆、单图版式）不受影响。
 
+---
+
+# 前端开发设计文章 — Sprint 12（增量：v2.3 EX-7 返回文案派生 + EX-8 拼音字号对齐 + EX-9 首页按钮字号）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-18 |
+| 依据 | docs/product/iteration-12-requirements.md（Q1~Q6 冻结）、PRD §17（v2.3） |
+| 范围 | `PlantDetailPage.jsx`、`styles.css`；**不改**后端 / 接口契约 / 语料 / 路由 / 音频 |
+
+## S12-1. EX-7 返回文案按板块派生（`PlantDetailPage.jsx`）
+- 新增模块级常量映射（受控派生 + 兜底）：
+  ```js
+  // 返回入口文案按板块派生（Sprint 12 / EX-7）；未知板块回退「花园」
+  const SECTION_HOME = {
+    plant: '花园',
+    animal: '动物世界',
+    insect: '昆虫角',
+    dinosaur: '恐龙园',
+  };
+  ```
+- 在组件内取 `const homeLabel = SECTION_HOME[section] || '花园';`（`section` 已从 `location.state?.section || 'plant'` 派生）。
+- 正常态返回按钮：`← 回{homeLabel}`（替换硬编码「← 回花园」）；`to="/"` 与 `state={{ section, category, restoreScroll: true }}` **保持不变**。
+- 异常兜底（`status === 'notfound'`）：`回{homeLabel}看看`（替换硬编码「回花园看看」），`href` 仍 `/`。
+- 其余结构、样式类 `.back-btn`、点击 `onClick={stop}` 均不变。
+
+## S12-2. EX-8 横屏详情拼音字号（`styles.css`）
+- 在 `@media (orientation: landscape)` 分支内，把既有 `.detail-header .detail-pinyin { margin:0; font-size:16px }` 的 `font-size` 改为 **20px**（与 `.detail-header .detail-en` 同级）。
+- `margin:0`、字重、颜色不变；基础规则 `.detail-pinyin`（非横屏 20px）与竖屏分支**不动**。
+- 影响评估：横屏详情拼音行高由 ~22px 增至 ~28px（+6px），远小于竖轴余量（PF-B 实测 1024×768 底部留白 133px），不触发 Sprint 6 页面级溢出。
+
+## S12-3. EX-9 首页按钮字号（`styles.css`）
+- `.filter-btn` 为三处共用（`.section-nav` 板块 / `.category-filter` 分类 / `.part-switcher` 部位）。**不改基础块**，改为在基础块之后**新增限定规则**：
+  ```css
+  /* Sprint 12（EX-9）：首页板块 / 分类按钮文字加大（20px → 22px）；
+     详情部位切换（.part-switcher .filter-btn）保持 20px 不回归。 */
+  .section-nav .filter-btn,
+  .category-filter .filter-btn {
+    font-size: 22px;
+  }
+  ```
+- 放置位置：紧跟 `.filter-btn.selected` 之后（基础块同级），保证级联覆盖但**不覆盖** `.part-switcher`。
+- 尺寸 `min-height:56px`、`padding`、圆角、配色不变；`22px` 未达 UI 上限 24px，避免「恐龙」两字按钮视觉过满。
+
+## S12-4. 不回归
+- 路由 `/plants/:id`、`location.state`（section / category / restoreScroll）语义不变；US-6 沉浸换株、US-7 喇叭（预生成音频）、US-8 默认部位跟随分类、Sprint 6 无滚动红线、Sprint 10 增量加载与「共 N 种」均不受影响。
+- 后端 / 语料 / 图片 / 音频 / 接口契约**零改动**。
+
+## S12-5. 测试更新（配合 QA-29 / QA-30）
+- `PlantDetailPage.test.jsx`：新增 EX-7 四板块派生断言（`section:animal|insect|dinosaur` 详情返回文案正确、`href="/"`）；新增 EX-8 样式源断言（读 `styles.css`，切出 `@media (orientation: landscape)` 块内的 `.detail-header .detail-pinyin`，断言 `font-size` ≥20px）。
+- `HomePage.test.jsx`：新增 EX-9 样式源断言（断言存在 `.section-nav .filter-btn, .category-filter .filter-btn` 规则且 `font-size` ≥22px，且 `.filter-btn` 基础块仍 20px）。
+- `e2e/`：新增 TC-119~TC-121（动物 / 昆虫 / 恐龙详情返回文案派生 + `href="/"`）；既有 `/回花园/` 断言（植物）不改。
+
+---
+
+# 后端开发设计文章 — Sprint 12（增量：无）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-18 |
+| 结论 | **本迭代后端零改动**（J-16）。三项均为前端文案 / 样式；不涉接口契约、路由、语料、音频路径与排序逻辑。 |
+
+
 
 

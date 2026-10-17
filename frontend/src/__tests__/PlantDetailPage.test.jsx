@@ -789,3 +789,43 @@ describe('小知识可见标题与单图横屏版式（Sprint 10：TC-101 ~ TC-1
     expect(baseBlock).toMatch(/grid-template-columns:\s*48%\s+minmax\(0,\s*1fr\)/);
   });
 });
+
+describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Sprint 12：TC-119 ~ TC-122）', () => {
+  it('TC-119 返回文案按板块派生（植物/动物/昆虫/恐龙），href 仍为 /', async () => {
+    const cases = [
+      ['plant', /回花园/],
+      ['animal', /回动物世界/],
+      ['insect', /回昆虫角/],
+      ['dinosaur', /回恐龙园/],
+    ];
+    for (const [section, name] of cases) {
+      const { unmount } = renderDetail('sunflower', { section, category: 'all', list: [card(SUNFLOWER)] });
+      const back = await screen.findByRole('link', { name });
+      expect(back).toHaveAttribute('href', '/');
+      // 反向校验：非本板块文案不得出现
+      unmount();
+    }
+  });
+
+  it('TC-120 异常兜底文案按板块派生（动物 → 回动物世界看看）', async () => {
+    getPlant.mockImplementation(() =>
+      Promise.reject(Object.assign(new Error('not found'), { code: 40401 }))
+    );
+    renderDetail('__not_exist__', { section: 'animal', category: 'all' });
+
+    const back = await screen.findByRole('link', { name: /回动物世界看看/ });
+    expect(back).toHaveAttribute('href', '/');
+  });
+
+  it('TC-121 未知 section 回退「花园」', async () => {
+    renderDetail('sunflower', { section: 'xunknown', category: 'all', list: [card(SUNFLOWER)] });
+    expect(await screen.findByRole('link', { name: /回花园/ })).toBeInTheDocument();
+  });
+
+  it('TC-122 EX-8 横屏详情拼音字号 ≥20px（样式源断言）', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    const landscape = css.match(/@media\s*\(orientation:\s*landscape\)\s*\{[\s\S]*?\n\}/)[0];
+    const pinyin = landscape.match(/\.detail-header \.detail-pinyin\s*\{[^}]*\}/s)[0];
+    expect(Number(pinyin.match(/font-size:\s*(\d+)px/)[1])).toBeGreaterThanOrEqual(20);
+  });
+});

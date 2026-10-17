@@ -91,6 +91,13 @@ body {
   color: #fff;
 }
 
+/* Sprint 12（EX-9）：首页板块 / 分类按钮文字加大（20px → 22px）；
+   详情部位切换（.part-switcher .filter-btn）保持 20px 不回归。 */
+.section-nav .filter-btn,
+.category-filter .filter-btn {
+  font-size: 22px;
+}
+
 /* 植物网格：平板 3–4 列，桌面 4–6 列 */
 .plant-grid {
   display: grid;
@@ -460,10 +467,11 @@ body {
     display: none;
   }
 
-  /* Sprint 7：竖向收紧头部信息区，把省下的高度让给图片（可读性优先，字号不降于本节下限） */
+  /* Sprint 12（EX-8）：拼音对齐英文（16px → 20px），消除「拼音比英文小」的层级倒挂；
+     字重 / 颜色不变，仅横屏详情分支。 */
   .detail-header .detail-pinyin {
     margin: 0;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .detail-header .detail-zh {

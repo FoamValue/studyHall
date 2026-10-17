@@ -392,3 +392,22 @@ describe('首页增量加载与总量提示（Sprint 10：TC-106 ~ TC-108、TC-1
     expect(cardCount()).toBe(32);
   });
 });
+
+describe('首页板块 / 分类按钮字号（Sprint 12：TC-123 ~ TC-124）', () => {
+  it('TC-123 首页板块 / 分类按钮字号 ≥22px（样式源断言）', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    const rule = css.match(
+      /\.section-nav \.filter-btn,\s*\.category-filter \.filter-btn\s*\{[^}]*\}/s
+    )[0];
+    expect(Number(rule.match(/font-size:\s*(\d+)px/)[1])).toBeGreaterThanOrEqual(22);
+  });
+
+  it('TC-124 EX-9 不误伤详情部位按钮：.filter-btn 基础块仍 20px', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    // 基础块（不含后代选择器）字号保持 20px
+    const base = css.match(/\.filter-btn\s*\{[^}]*\}/s)[0];
+    expect(Number(base.match(/font-size:\s*(\d+)px/)[1])).toBe(20);
+    // 不存在 .part-switcher .filter-btn 的字号覆盖规则（保持继承基础 20px）
+    expect(css).not.toMatch(/\.part-switcher \.filter-btn\s*\{[^}]*font-size/s);
+  });
+});
