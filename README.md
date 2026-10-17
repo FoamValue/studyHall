@@ -11,6 +11,7 @@
 ![后端](https://img.shields.io/badge/后端-JDK%2026%20%2B%20Spring%20Boot%204-6DB33F)
 ![部署](https://img.shields.io/badge/部署-Docker%20Compose-2496ED)
 ![测试](https://img.shields.io/badge/门禁-后端21%20%2F%20前端67%20%2F%20E2E47-important)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </div>
 
@@ -167,12 +168,15 @@ npm install
 node scripts/import-plants.mjs
 ```
 
-完成后访问：
+### ✅ 部署完成，访问地址
 
-- 前台页面 → <http://localhost>
-- 后端健康检查 → <http://localhost:8080/api/health>（期望 `{"code":0,"data":{"status":"UP"},"message":"ok"}`）
+| 入口 | 地址 | 说明 |
+|---|---|---|
+| **前台页面** | <http://localhost> | 平板 / 电脑浏览器打开即用，推荐全屏体验 |
+| 后端健康检查 | <http://localhost:8080/api/health> | 期望返回 `{"code":0,"data":{"status":"UP"},"message":"ok"}` |
+| 局域网平板访问 | `http://<宿主机内网IP>`（如 `http://192.168.1.100`） | 无需任何额外配置，nginx 已同源托管页面、图片与语音 |
 
-> 局域网内其他平板访问时，把 `localhost` 换成宿主机内网 IP 即可。
+> 查询宿主机内网 IP：macOS 执行 `ipconfig getifaddr en0`，Windows 执行 `ipconfig`，Linux 执行 `hostname -I`。
 
 ### 6.2 本地开发
 
@@ -186,6 +190,15 @@ cd backend && mvn spring-boot:run
 # 3. 前端（Vite dev server，默认 5173，已配置 /api → localhost:8080 代理）
 cd frontend && npm install && npm run dev
 ```
+
+**开发模式访问地址**：
+
+| 入口 | 地址 |
+|---|---|
+| 前台页面（Vite dev server） | <http://localhost:5173> |
+| 后端直连 | <http://localhost:8080/api/health> |
+
+> 开发模式下页面由 Vite 提供，`/api` 请求自动代理到后端 8080；图片与语音由 `frontend/public/` 直接服务，与生产环境行为一致。
 
 ### 6.3 导入内容
 
@@ -373,12 +386,18 @@ node scripts/import-plants.mjs
 
 ## 十四、许可
 
-本项目目前**尚未指定开源许可协议**，仓库亦为私有仓库。如需使用、分发或二次开发，请先联系作者获得授权。
+本项目基于 [MIT License](LICENSE) 开源发布，版权所有 © 2026 陈鑫杰（[chenxinjie.cn](https://chenxinjie.cn)）。
+
+任何个人或组织均可自由使用、复制、修改、合并、出版、分发、再许可及销售本软件副本，唯一条件是在所有副本或实质性部分中保留原始版权声明与许可声明。本软件按「现状」提供，不附带任何明示或默示的担保。
+
+> 说明：`content/` 目录下的内容语料与 `frontend/public/` 下的图片、音频资产同样按 MIT 提供；其中恐龙板块采用完整骨架化石图片，仅作教育认知用途。
 
 ---
 
 <div align="center">
 
 **自然小图鉴 · Nature Guide** — 让孩子认识身边的真实世界 🌿
+
+© 2026 陈鑫杰 · [chenxinjie.cn](https://chenxinjie.cn) · 以 [MIT](LICENSE) 协议开源
 
 </div>

@@ -2,6 +2,7 @@
   "name": "studyhall",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "description": "studyHall 植物小花园 —— 根目录脚本依赖（内容导入通道）",
   "engines": {
