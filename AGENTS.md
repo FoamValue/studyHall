@@ -57,10 +57,12 @@ docs/
 ```
 
 ## 五、项目当前状态
-- **阶段**：v1.0 已发布并冻结（Sprint 1~3 完成）；v1.1 增量（Sprint 4）已交付；v1.2 增量（Sprint 5）已交付
+- **阶段**：v1.0 已发布并冻结（Sprint 1~3 完成）；v1.1 增量（Sprint 4）已交付；v1.2 增量（Sprint 5）已交付；v1.3 增量（Sprint 6）已交付
 - **图片资产（2026-10-17 修订）**：206 张部位图片由彩色简笔画全量替换为写实照片，语料 `images[].type=photo`、`url=/images/plants/{id}-{part}.jpg`；原 206 张 `.svg` 保留为回滚备份。门禁重跑全绿：后端 `mvn test` 退出码 0、前端 vitest 12/12 与 `vite build` 通过、导入两次幂等（总数 100、花朵 53/树叶 100/果实 53）、E2E 4/4。
-- **当前迭代**：无（Sprint 5 已完成交付：详情页中文名、英文名各配一个朗读喇叭，浏览器原生语音合成只读名称；中英互斥、切植物/切部位/离开详情/全屏进出自动停止、不支持时优雅降级；首页不放假）
-- **Sprint 5 门禁证据（2026-10-17）**：后端 `mvn test` 退出码 0；前端 `npx vitest run` 32/32（新增 TC-41~TC-45f）、`vite build` 成功；`docker compose up -d --build` 健康；导入连跑两次（Mongo 100 种/3 分类无重复、import_log 900→1100 即 delta +200、Redis `sh:*` 导入后 0）；`npx playwright test` 13/13（既有 11 + 新增 TC-46/TC-47）。后端零代码变更（本迭代纯前端）。
+- **当前迭代**：无（Sprint 6 已完成交付：修复 iPad Safari 上详情页仍出现纵向滚动条、滚动后退出全屏的缺陷。沉浸式容器改 `position: fixed; inset: 0` 脱离文档流铺满视口 → 页面高度恒等于视口、永无页面级滚动条；`.detail-body` 改 `overflow: hidden` 且与容器均设 `overscroll-behavior` 阻断滚动链式传递；图片与文字按剩余空间自适应（横屏图片固定容器宽 40%、文字吸收剩余宽度，并消除既有的横屏水平溢出 87px）。纯 CSS 修复，不改 JSX/路由/接口/语料）
+- **Sprint 6 门禁证据（2026-10-17）**：第 0 步语料校验 `OK total=100 flower=53 leaf=100 fruit=53`；后端 `mvn test` 退出码 0；前端 `npx vitest run` 36/36（新增 TC-53~TC-56）、`vite build` 成功；`docker compose up -d --build` 重建健康；导入连跑两次（Mongo 100 种/3 分类无重复、import_log delta +200、Redis `sh:*` 导入后 0）；`npx playwright test` 20/20（既有 13 + 新增 TC-48~TC-52）。后端零代码变更（本迭代纯前端 CSS）。
+- **已修复缺陷（Sprint 6）**：详情页整屏不滚动；顺带修复横屏 1024×768 下既有的水平溢出 87px（图片被推出屏幕、描述文字截断）。
+- **iPad 真机验收口径**：headless 无法复现 iPad Safari「滚动退出全屏」，以机制消除为验收口径（页面级溢出 0 + 内容区不可滚动 + 滚动不改变文档滚动位置）；真机行为由人工在 iPad 上抽验。
 - **后续入口**：新需求（含暂缓项问答、进度等恢复）须经 PO 与人工澄清后另立 Sprint
 - **移交技术债**：分类列表查询（`findByCategoriesContains`）未显式排序，跨请求顺序依赖 Mongo 自然序；前端已按同一份列表快照计算邻居规避影响，建议下迭代补 `Sort.by(ASC, "id")`（非阻塞，见 docs/design/backend-design.md S4-1）
 - **更新人**：Master（每阶段推进后更新本节）

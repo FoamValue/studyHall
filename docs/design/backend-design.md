@@ -186,3 +186,26 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - 后端**零代码变更**，`mvn test` 全量回归即可（TC-01~13、TC-24 数据驱动，数量自动跟随 `content/plants/`），无新增后端用例。
 - 全部新增 / 变更集中在前端（见 frontend-design S5-1~S5-6 与 QA 手册 TC-41 起）。
 
+---
+
+# 后端开发设计文章 — Sprint 6（增量）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-6-requirements.md |
+
+## S6-1. 交付结论（J-8）：后端零代码变更
+- 本迭代为详情页前端溢出策略修复（纯 CSS），**后端不参与**：不新增 / 不修改接口，不改返回结构，不改缓存链路。
+- 不改语料：`content/plants/*.json` 不变（不新增字段）。
+- 导入脚本 `scripts/import-plants.mjs` 不变。
+
+## S6-2. 契约与缓存保持不变
+- `GET /api/plants`、`GET /api/plants/{id}`、`GET /api/categories` 契约不变；Redis key 约定与 TTL 600s 不变。
+
+## S6-3. 测试策略
+- 后端**零代码变更**，`mvn test` 全量回归即可，无新增后端用例。
+- 全部新增 / 变更在前端（见 frontend-design S6-1~S6-7 与 QA 手册 TC-48 起）。
+
+

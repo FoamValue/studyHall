@@ -184,6 +184,8 @@ body {
 }
 
 .part-content {
+  flex: 0 0 auto; /* Sprint 6：文字不被压缩，空间不足时图片优先收缩 */
+  min-height: 0;
   text-align: center;
   max-width: 640px;
 }
@@ -254,11 +256,13 @@ body {
 }
 
 /* ===== 沉浸式详情（Sprint 4）===== */
+/* Sprint 6：脱离文档流铺满视口，页面高度恒等于视口 → 永无页面级滚动条，
+   也不再有滚动链式传递的落点（修复 iPad Safari 滚动退出全屏） */
 .detail-immersive {
-  position: relative;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden; /* 页面级无滚动条 */
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
   display: flex;
   padding: 68px 76px 16px;
   background: var(--color-page-bg);
@@ -320,12 +324,13 @@ body {
   right: 12px;
 }
 
-/* 内容区：内部可滚动，页面级不滚动 */
+/* 内容区：整屏不滚动（Sprint 6：改为不可滚动，并阻断滚动链式传递） */
 .detail-body {
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -333,14 +338,22 @@ body {
 }
 
 .detail-main {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   width: 100%;
+  /* 兜底：仅当极长文案在极端小屏放不下时内部滚动，且不传递到页面 */
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
+/* Sprint 6：图片不再写死视角高度，改为按剩余空间自适应收缩（完整不裁切） */
 .part-img {
+  flex: 0 1 auto;
+  min-height: 0;
   max-height: 44vh;
   max-width: 100%;
   aspect-ratio: 1 / 1;
@@ -355,12 +368,21 @@ body {
     gap: 32px;
   }
 
+  /* Sprint 6：图片宽度固定为容器的 40%，不再参与收缩，避免水平溢出把内容推出视口 */
   .part-img {
-    max-height: 64vh;
-    max-width: min(48vw, 64vh);
+    flex: 0 0 auto;
+    max-height: 100%;
+    max-width: 40%;
   }
 
+  /* Sprint 6：文字占满图片右侧剩余宽度（flex 收缩吸收剩余空间，宽度不再固定 640） */
   .part-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 640px;
+    max-height: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
     text-align: left;
   }
 }

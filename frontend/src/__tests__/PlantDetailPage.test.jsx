@@ -473,3 +473,33 @@ describe('PlantDetailPage 语音朗读（Sprint 5：TC-41 ~ TC-45f）', () => {
     expect(Number(block.match(/min-width:\s*(\d+)px/)[1])).toBeGreaterThanOrEqual(56);
   });
 });
+
+describe('详情页整屏不滚动（Sprint 6：TC-53 ~ TC-56，样式源文件断言）', () => {
+  const css = readFileSync('src/styles.css', 'utf-8');
+  const blocks = (sel) => [...css.matchAll(new RegExp(`${sel}\\s*\\{[^}]*\\}`, 'gs'))].map((m) => m[0]);
+
+  it('TC-53 沉浸式容器脱离文档流并铺满视口', () => {
+    const block = blocks('\\.detail-immersive')[0];
+    expect(block).toContain('position: fixed');
+    expect(block).toContain('inset: 0');
+    expect(block).not.toContain('100dvh');
+  });
+
+  it('TC-54 内容区不可滚动（overflow: hidden 而非 auto）', () => {
+    const block = blocks('\\.detail-body')[0];
+    expect(block).toContain('overflow: hidden');
+    expect(block).not.toMatch(/overflow:\s*auto/);
+  });
+
+  it('TC-55 滚动链式传递被阻断', () => {
+    expect(blocks('\\.detail-immersive')[0]).toContain('overscroll-behavior');
+    expect(blocks('\\.detail-body')[0]).toContain('overscroll-behavior: contain');
+  });
+
+  it('TC-56 图片按剩余空间自适应且完整不裁切', () => {
+    const imgAll = blocks('\\.part-img').join('\n');
+    expect(imgAll).toMatch(/flex:\s*0\s+1\s+auto/); // 可随剩余空间收缩
+    expect(imgAll).toContain('object-fit: contain');
+    expect(imgAll).toContain('max-height: 100%'); // 横屏覆盖：随容器高度
+  });
+});

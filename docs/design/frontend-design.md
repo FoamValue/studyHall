@@ -209,3 +209,95 @@ frontend/
 - Safari / iPadOS 要求用户手势触发，喇叭仅由点击触发，程序不自动播放。
 - 浏览器无中文 voice 时可能静音但调用仍成功：属能力边界，不做额外处理，真机音质由人工抽验。
 
+---
+
+# 前端开发设计文章 — Sprint 6（详情页整屏不滚动缺陷修复）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-6-requirements.md（方案 A） |
+| 范围 | 纯 CSS 修复（`frontend/src/styles.css`）；不改 JSX 结构、路由、接口与语料 |
+
+## S6-1. 缺陷与实测根因（修正 S4-6）
+- S4-6 原文写 `.detail-immersive` 用 `min-height: 100dvh`，实际代码为 `height: 100vh; height: 100dvh`，并约定「内容区内部可滚动」，该约定在 iPad Safari 上产生问题：
+  - 内容区 `.detail-body`（`overflow: auto`）出现纵向滚动条：横屏 78px、竖屏 130px；
+  - 滚动到边界后**滚动链式传递到页面**，页面滚动使 iPad Safari 退出全屏。
+- 实测（Playwright）溢出全部来自图片固定视角高度：横屏 `.part-img` 为 `64vh`（492px）＞ 内容区可用高度 446px；文字列实测最高约 397px，横竖屏可用高度内均可完整放下。
+
+## S6-2. 容器：脱离文档流并铺满视口
+```css
+.detail-immersive {
+  position: fixed;      /* 原为 relative */
+  inset: 0;             /* 取代 height: 100vh / 100dvh */
+  overflow: hidden;
+  overscroll-behavior: none;
+  display: flex;
+  padding: 68px 76px 16px;
+  background: var(--color-page-bg);
+}
+```
+- 容器高度恒等于视口、脱离文档流 → 文档高度恒等于视口，**永不产生页面级滚动条**，也不存在滚动链式传递的落点。
+- 全屏态下 UA 对 `:fullscreen` 的 `position: fixed; inset: 0` 与本规则天然一致，沉浸式与全屏态行为统一。
+
+## S6-3. 内容区：不可滚动
+```css
+.detail-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;          /* 原为 auto */
+  overscroll-behavior: contain;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+```
+
+## S6-4. 主体与图片：按剩余空间自适应
+```css
+.detail-main {
+  flex: 1 1 auto; min-height: 0;        /* 占满内容区剩余高度 */
+  overflow: auto; overscroll-behavior: contain;   /* 兜底：极端小屏下仅此处滚动，不传递到页面 */
+}
+
+.part-img {
+  flex: 0 1 auto;            /* 允许在空间不足时收缩 */
+  min-height: 0;
+  max-height: 44vh;          /* 竖屏视角上限；横屏被媒体查询覆盖 */
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;       /* 完整不裁切 */
+}
+
+@media (orientation: landscape) {
+  /* 图片宽度固定为容器 40%，不再参与收缩，避免水平溢出把内容推出视口 */
+  .part-img { flex: 0 0 auto; max-height: 100%; max-width: 40%; }
+  /* 文字占满图片右侧剩余宽度（吸收剩余空间），宽度不再写死 */
+  .part-content {
+    flex: 1 1 auto; min-width: 0; max-width: 640px;
+    max-height: 100%; overflow: auto; overscroll-behavior: contain;
+  }
+}
+```
+- 横屏：`.detail-main` 为行；图片按容器宽度 40% 固定、高度随可用高度自适应；文字列吸收剩余宽度 → 纵向与横向均无溢出。
+- 竖屏：`.detail-main` 为列；图片收缩让位给文字 → 无滚动条。
+- 修正背景（S6-4 补充）：横屏旧规则 `.part-img { max-height: 64vh; max-width: min(48vw, 64vh) }`（491px）+ `.part-content { max-width: 640px }` + gap 32 = 1163px ＞ 可用 872px，配合 `justify-content: center` 使图片被推到 `x=-11`、文字右边界溢出视口（实测 1024×768 水平溢出 87px，描述文字被截断）。新规则一并消除该隐患。
+
+## S6-5. 文字兜底滚动（极端场景）
+```css
+.part-content { flex: 0 0 auto; min-height: 0; }   /* 基础：文字不被压缩，空间不足时图片优先收缩 */
+```
+- 文字区默认不滚动；兜底滚动上移到 `.detail-main`（见 S6-4），仅当极长文案在极端小屏放不下时触发，`overscroll-behavior: contain` 保证不传递到页面 / 全屏。
+
+## S6-6. 断言口径（不受影响）
+- `object-fit: contain` 不变 → TC-38 / TC-40 的「图片完整」断言继续成立。
+- 页面级溢出断言（`documentElement.scrollHeight - clientHeight ≤ 1`）在修复后仍成立且更稳（文档高度 = 视口高度）。
+- 触控目标（`.nav-btn`、`.back-btn` 等 ≥56px）与横屏分栏规则不变 → TC-40 平板适配断言继续成立。
+- 不改 JSX：`PlantDetailPage.jsx` 结构、语音朗读与换株逻辑均不动。
+
+## S6-7. 测试更新（配合 QA）
+- `e2e/navigation.spec.js`：TC-38 / TC-40 的溢出断言保留（回归）。
+- 新增 `e2e/responsive.spec.js`：TC-48（横屏四视口一档）/ TC-49（竖屏）沉浸式「页面级溢出 ≤1 且内容区不可滚动」；TC-50 全屏态溢出与滚动不改变文档滚动位置；TC-51 图片 `object-fit: contain` 且不溢出视口；TC-52 长文案植物（azalea）含典故不产生页面滚动。
+- `PlantDetailPage.test.jsx`：新增 TC-53~TC-56 样式表规则断言（容器 `position: fixed; inset: 0`；内容区 `overflow: hidden`；`overscroll-behavior` 阻断链式传递；`.part-img` 可收缩 + 横屏 `max-height: 100%`）。
+
+
