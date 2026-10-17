@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { loadAllCards } from './helpers';
 
 // ===== Sprint 4 新增 E2E（TC-35 ~ TC-40）：沉浸式详情 / 连续换株 / 全屏 / 状态记忆 =====
 
@@ -8,7 +9,8 @@ async function enterFirstFlowerDetail(page) {
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 }); // 等花朵列表渲染完成
+  await loadAllCards(page, 53); // 增量加载：滚动至全量
+  await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();
@@ -62,7 +64,7 @@ test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
   const firstName = await cards.first().locator('img').getAttribute('alt');
   const lastName = await cards.last().locator('img').getAttribute('alt');
   expect(firstName).not.toBe(lastName);
@@ -76,7 +78,7 @@ test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
   // 末张 → 下一株 → 应循环回首张
   await page.goto('/');
   await filterGroup.getByText('花朵').click();
-  await expect(cards).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
   await cards.last().click();
   await expect(page.locator('.detail-zh')).toHaveText(lastName);
   await page.getByRole('button', { name: '下一株' }).click();
@@ -125,7 +127,7 @@ test('TC-39 回花园保住分类与滚动位置', async ({ page }) => {
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
 
   await page.evaluate(() => window.scrollTo(0, 1200));
   await cards.nth(12).click();

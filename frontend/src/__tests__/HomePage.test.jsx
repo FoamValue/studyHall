@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
@@ -49,6 +49,11 @@ beforeEach(() => {
   // 植物板块「全部」走 getPlantsBySection('plant')；默认空列表
   getPlantsBySection.mockResolvedValue([]);
   getPlants.mockResolvedValue([]);
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  sessionStorage.clear();
 });
 
 describe('HomePage（TC-11 ~ TC-13）', () => {
@@ -116,7 +121,8 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     renderHome();
 
     expect(await screen.findByText('植物0')).toBeInTheDocument();
-    expect(screen.getByText('植物99')).toBeInTheDocument();
+    // Sprint 10（EX-6）：jsdom 无 IntersectionObserver → 全量降级渲染；等待末条出现再断言计数
+    expect(await screen.findByText('植物99')).toBeInTheDocument();
     expect(document.querySelectorAll('.plant-card')).toHaveLength(100);
   });
 
@@ -291,5 +297,98 @@ describe('卡片标题按分类派生 deriveCardTitle（Sprint 8：TC-64）', ()
     expect(deriveCardTitle(plant('apple', '苹果'), 'all')).toBe('苹果');
     expect(deriveCardTitle(plant('peach-blossom', '桃花'), 'all')).toBe('桃花');
     expect(deriveCardTitle(plant('apple', '苹果'), undefined)).toBe('苹果');
+  });
+});
+
+describe('首页增量加载与总量提示（Sprint 10：TC-106 ~ TC-108、TC-108b）', () => {
+  const makeCards = (n) =>
+    Array.from({ length: n }, (_, i) =>
+      card(`plant-${i}`, `植物${i}`, `zhí wù ${i}`, `Plant ${i}`, '/images/plants/sunflower-flower.jpg', ['flower'])
+    );
+
+  // 可手动触发的 IntersectionObserver 桩：记录回调与观察元素，测试中显式派发进入视口
+  function stubIO() {
+    const callbacks = [];
+    class MockIO {
+      constructor(cb) {
+        callbacks.push(cb);
+      }
+      observe() {}
+      disconnect() {}
+      unobserve() {}
+    }
+    vi.stubGlobal('IntersectionObserver', MockIO);
+    return callbacks;
+  }
+
+  const cardCount = () => document.querySelectorAll('.plant-card').length;
+  const flush = async () => act(async () => {});
+
+  it('TC-106 「共 N 种」口径：全部 40 / 分类 7 / 板块 10', async () => {
+    const user = userEvent.setup();
+    getPlantsBySection.mockImplementation((section) =>
+      section === 'animal' ? Promise.resolve(makeCards(10)) : Promise.resolve(makeCards(40))
+    );
+    getPlants.mockResolvedValue(makeCards(7));
+    renderHome();
+
+    expect(await screen.findByText('共 40 种')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: '花朵' }));
+    expect(await screen.findByText('共 7 种')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: '动物' }));
+    expect(await screen.findByText('共 10 种')).toBeInTheDocument();
+  });
+
+  it('TC-107 无 IntersectionObserver 时首屏全量渲染（降级），不渲染哨兵', async () => {
+    // jsdom 默认无 IntersectionObserver → 走降级分支
+    getPlantsBySection.mockResolvedValue(makeCards(40));
+    renderHome();
+
+    expect(await screen.findByText('植物39')).toBeInTheDocument();
+    expect(cardCount()).toBe(40);
+    expect(document.querySelector('.load-sentinel')).not.toBeInTheDocument();
+  });
+
+  it('TC-108 哨兵进入视口逐页追加：16 → 32 → 40 后哨兵消失', async () => {
+    const callbacks = stubIO();
+    getPlantsBySection.mockResolvedValue(makeCards(40));
+    renderHome();
+
+    expect(await screen.findByText('共 40 种')).toBeInTheDocument();
+    // 首屏 16 张 + 哨兵存在
+    expect(cardCount()).toBe(16);
+    expect(document.querySelector('.load-sentinel')).toBeInTheDocument();
+
+    // 触发一次 → 追加到 32
+    await act(async () => {
+      callbacks.at(-1)([{ isIntersecting: true }]);
+    });
+    expect(cardCount()).toBe(32);
+
+    // 再次触发 → 到 40，哨兵消失
+    await act(async () => {
+      callbacks.at(-1)([{ isIntersecting: true }]);
+    });
+    expect(cardCount()).toBe(40);
+    expect(document.querySelector('.load-sentinel')).not.toBeInTheDocument();
+    await flush();
+  });
+
+  it('TC-108b 回花园按记录条数恢复，不退回首屏 16', async () => {
+    stubIO();
+    sessionStorage.setItem('sh:homeVisibleCount', '32');
+    getPlantsBySection.mockResolvedValue(makeCards(40));
+
+    render(
+      <MemoryRouter initialEntries={[{ pathname: '/', state: { restoreScroll: true } }]}>
+        <HomePage />
+      </MemoryRouter>
+    );
+
+    expect(await screen.findByText('共 40 种')).toBeInTheDocument();
+    // 初始渲染条数 = max(16, 32) = 32，而非首屏 16
+    expect(cardCount()).toBe(32);
   });
 });

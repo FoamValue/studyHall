@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { loadAllCards } from './helpers';
 
 // ===== Sprint 9 新增 E2E（TC-89 ~ TC-95，编号依 QA 手册 docs/qa/sprint-9-test-cases.md）=====
 // 覆盖：站点改名 / 四板块两级导航 / 单图详情无部位切换 / 恐龙骨架 / 预生成音频请求 / 排序稳定 / 植物「全部」限定板块
@@ -109,7 +110,8 @@ test('TC-94 板块列表顺序稳定（sort ASC）', async ({ page }) => {
 // TC-95 植物板块「全部」限定板块内（不混入动物/昆虫/恐龙）
 test('TC-95 植物板块「全部」仅植物条目', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 20000 });
+  // Sprint 10（EX-6）：植物「全部」改为增量加载，滚动至全量后再断言恰好 100 张
+  await loadAllCards(page, 100);
   await expect(page.locator('.plant-card-zh', { hasText: '大熊猫' })).toHaveCount(0);
   await expect(page.locator('.plant-card-zh', { hasText: '霸王龙' })).toHaveCount(0);
 });

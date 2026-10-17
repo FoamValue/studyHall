@@ -3,7 +3,7 @@
 | 项 | 内容 |
 |---|---|
 | 迭代目标 | 承接 [PF 浏览器体验报告 v2](file:///Users/chenxinjie/Mirror/github/studyHall/docs/experience/experience-review-v2.md) 与 [PO 体验裁决 v2](file:///Users/chenxinjie/Mirror/github/studyHall/docs/product/experience-triage-v2.md)，落地 PRD §15（增量 v2.1）采纳的 3 项：**EX-4** 让「小知识」称谓**真正对用户可见**、**EX-5** 让单图板块横屏详情主图吃掉竖向留白、**EX-6** 让首页植物板块改「首屏 + 滚动增量加载」并显示「共 N 种」 |
-| 状态 | ⏳ 阶段 1 完成，待进入阶段 2 |
+| 状态 | ✅ 已完成（2026-10-17 门禁全绿、QA 放行、Master commit） |
 | 依据 | [PRD.md](file:///Users/chenxinjie/Mirror/github/studyHall/docs/product/PRD.md) §15（增量 v2.1，验收 34~40） |
 | 类型 | 体验优化（**纯前端**：一个组件 + 横屏样式分支 + 首页加载策略），后端零改动 |
 | 内容基线 | 语料与资产**完全不动**（130 条目 / 6 分类 / 260 音频 / 266 图）；不改接口契约与路由 |
@@ -23,7 +23,7 @@
 | Sprint / 阶段 | 目标 | 状态 |
 |---|---|---|
 | Sprint 1~9 | v1.0 冻结 → v1.1~v1.5 增量 → v2.0 四板块能力先行 | ✅ |
-| **Sprint 10（本次）** | **v2.1 PF 体验回流：EX-4 / EX-5 / EX-6** | ⏳ 阶段 1 完成 |
+| **Sprint 10（本次）** | **v2.1 PF 体验回流：EX-4 / EX-5 / EX-6** | ✅ 已完成 |
 | Sprint 11+ | 内容分批扩容（动物 / 昆虫 / 恐龙 各扩至 ≤100 种，不改代码） | ⏳ |
 | 后续 | PF 阶段 5 二次回流；恐龙内容策略议题（须人工解冻 §14.6） | ⏳ |
 
@@ -80,4 +80,10 @@
 
 ## 七、迭代回顾（阶段 4 后补）
 
-_（待 Sprint 10 门禁结束后由 Master 填写）_
+**交付**：v2.1（纯前端）——EX-4 `AllusionCard` 新增用户可见标题「小知识」（字号 20px）；EX-5 单图板块（动物/昆虫/恐龙）横屏详情图片栏 48% → **64%**，仅新增 `.detail-body.single-image` 覆盖规则、植物 48% 版式不动；EX-6 首页植物板块改「首屏 16 + 滚动步进 16」增量加载 + 「共 N 种」总量提示，并新增会话内 `sh:homeVisibleCount` 记忆与回花园兜底补加载。
+
+**门禁证据（2026-10-17）**：语料 `total=130 / 分类 6`；后端 `mvn test` 退出码 0（21 用例回归，后端零改动）；前端 `npx vitest run` **67/67**（新增 TC-101~TC-108/108b 共 9 条，TC-21 稳妥化）、`vite build` 退出码 0；`docker compose up -d --build` 健康 `UP`；导入两次幂等（import_log 2520→2780，delta **+260 = 2×130**；Mongo 130 条目 / 6 分类；导入后立即 `redis sh:*` = 0）；`npx playwright test` **43/43**（既有 37 + TC-109~TC-114；TC-95 按增量加载更新）。
+
+**门禁发现并修复**：D10-1——共享 `loadAllCards` 早退条件单薄导致 TC-26 偶发失败，已改为「哨兵消失 且 已渲染条数 ≥ 预期」双条件（详见 `docs/qa/sprint-10-test-cases.md` §八）。
+
+**遗留 / 后续**：动物/昆虫/恐龙内容分批扩容至 ≤100（Sprint 11+，仅走导入通道不改代码）；恐龙写实复原图/骨架对照图待人工解冻 PRD §14.6；PF 阶段 5 二次回流。

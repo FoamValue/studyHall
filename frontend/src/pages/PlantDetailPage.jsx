@@ -267,7 +267,7 @@ export default function PlantDetailPage() {
         <span>下一株</span>→
       </button>
 
-      <div className="detail-body">
+      <div className={isSingleImage ? 'detail-body single-image' : 'detail-body'}>
         <header className="detail-header">
           <p className="detail-pinyin">{plant.name.pinyin}</p>
           <div className="detail-name-row">

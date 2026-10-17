@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import PlantDetailPage from '../pages/PlantDetailPage';
+import AllusionCard from '../components/AllusionCard';
 import { PART_ORDER, PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
 import { getPlant, getPlants, getPlantsBySection } from '../api/client';
 
@@ -736,5 +737,55 @@ describe('PART_ORDER / PART_LABELS 扩展（Sprint 9：TC-84）', () => {
     expect(getOrderedParts({ animal: {} })).toEqual(['animal']);
     expect(getOrderedParts({ insect: {}, animal: {} })).toEqual(['animal', 'insect']);
     expect(getOrderedParts({ flower: {}, leaf: {}, fruit: {} })).toEqual(['flower', 'leaf', 'fruit']);
+  });
+});
+
+describe('小知识可见标题与单图横屏版式（Sprint 10：TC-101 ~ TC-105）', () => {
+  const css = readFileSync('src/styles.css', 'utf-8');
+
+  it('TC-101 小知识卡片渲染用户可见标题「小知识」', () => {
+    render(<AllusionCard allusion={{ text: '大熊猫是我们中国的国宝。' }} />);
+
+    // 可见标题（此前仅 aria-label）
+    expect(screen.getByText('小知识')).toBeInTheDocument();
+    expect(screen.getByText('小知识')).toHaveClass('allusion-title');
+    // 无障碍名沿用「小知识」
+    expect(screen.getByRole('region', { name: '小知识' })).toBeInTheDocument();
+  });
+
+  it('TC-102 小知识标题字号 ≥20px（样式源文件断言）', () => {
+    const block = css.match(/\.allusion-title\s*\{[^}]*\}/s)[0];
+    expect(Number(block.match(/font-size:\s*(\d+)px/)[1])).toBeGreaterThanOrEqual(20);
+  });
+
+  it('TC-103 无内容不渲染（不回归）', () => {
+    const first = render(<AllusionCard allusion={null} />);
+    expect(first.container.querySelector('.allusion-card')).toBeNull();
+    first.unmount();
+
+    const second = render(<AllusionCard allusion={{}} />);
+    expect(second.container.querySelector('.allusion-card')).toBeNull();
+    expect(screen.queryByText('小知识')).not.toBeInTheDocument();
+  });
+
+  it('TC-104 单图分支容器类：单图含 single-image，植物三部位不含', async () => {
+    const single = renderDetail('giant-panda', { section: 'animal', list: [card(PANDA)] });
+    await screen.findByAltText('大熊猫');
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
+    single.unmount();
+
+    renderDetail('sunflower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
+    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(document.querySelector('.detail-body').className).toBe('detail-body');
+  });
+
+  it('TC-105 单图横屏栏宽 64%，植物横屏栏宽仍 48%（不回归）', () => {
+    const landscape = css.match(/@media\s*\(orientation:\s*landscape\)\s*\{[\s\S]*?\n\}/)[0];
+    const singleBlock = landscape.match(/\.detail-body\.single-image\s*\{[^}]*\}/s)[0];
+    expect(singleBlock).toMatch(/grid-template-columns:\s*64%\s+minmax\(0,\s*1fr\)/);
+
+    // 植物版式（不带 single-image）栏宽保持 48%
+    const baseBlock = landscape.match(/\.detail-body\s*\{[^}]*\}/s)[0];
+    expect(baseBlock).toMatch(/grid-template-columns:\s*48%\s+minmax\(0,\s*1fr\)/);
   });
 });

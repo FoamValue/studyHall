@@ -1,15 +1,16 @@
 import { test, expect } from '@playwright/test';
+import { loadAllCards } from './helpers';
 
 // ===== Sprint 6 新增 E2E（TC-48 ~ TC-52）：详情页整屏不滚动（iPad 为基准设备） =====
 
-// 进入「花朵」分类下的第一张卡片详情（等花朵列表渲染完成）
+// 进入「花朵」分类下的第一张卡片详情（先滚动加载全量，再点首张）
 async function enterFirstFlowerDetail(page) {
   await page.goto('/');
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
-  const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 });
-  await cards.first().click();
+  await loadAllCards(page, 53);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.locator('.plant-card').first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();
 }
 

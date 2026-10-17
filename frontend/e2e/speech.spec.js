@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { loadAllCards } from './helpers';
 
 // ===== Sprint 9：详情页名称预生成音频（.m4a）播放 =====
 
@@ -8,7 +9,8 @@ async function enterFirstFlowerDetail(page) {
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 }); // 等花朵列表渲染完成
+  await loadAllCards(page, 53); // 增量加载：滚动至全量
+  await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();

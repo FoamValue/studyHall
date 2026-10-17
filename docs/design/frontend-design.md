@@ -466,5 +466,53 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - `PlantDetailPage.test.jsx`：新增单图详情分支（不渲染 PartSwitcher、渲染大图与说明）、音频播放/停止/降级（stub `Audio`，断言无 `speechSynthesis` 调用）用例。
 - `e2e/`：新增站点标题、板块导航、单图详情无部位切换、音频请求可见、排序稳定性用例。
 
+---
+
+# 前端开发设计文章 — Sprint 10（增量：v2.1 小知识可见标题 + 单图横屏主图放大 + 首页增量加载）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-10-requirements.md（Q1~Q7 冻结）、PRD §15（v2.1） |
+| 范围 | `AllusionCard.jsx`、`PlantDetailPage.jsx`、`HomePage.jsx`、`styles.css`；**不改**后端 / 接口契约 / 语料 / 路由 |
+
+## S10-1. EX-4 小知识可见标题（`AllusionCard.jsx`）
+- 在卡片内 `<p className="allusion-title">小知识</p>`（置于引号装饰之后、正文之前），使称谓**用户可见**（当前仅有 `aria-label`）。
+- 保留 `aria-label="小知识"`（region 无障碍名不变，E2E 既有 `getByRole('region',{name:'小知识'})` 不受影响）。
+- 字号 ≥20px（Q6 冻结）；无 `allusion.text` 仍整卡不渲染（早退不变）。
+
+## S10-2. EX-5 单图横屏主图放大（`PlantDetailPage.jsx` + `styles.css`）
+- `PlantDetailPage` 已有 `isSingleImage`（`ordered.length === 1 && SINGLE_IMAGE_KEYS.includes(ordered[0])`）。给内容容器挂分支类：
+  `className={isSingleImage ? 'detail-body single-image' : 'detail-body'}`。
+- `styles.css` 在 `@media (orientation: landscape)` 内**新增**：
+  ```css
+  .detail-body.single-image {
+    grid-template-columns: 64% minmax(0, 1fr);
+  }
+  ```
+  既有 `.detail-body { grid-template-columns: 48% ... }` 保持不动 → **植物三部位版式不回归**（Q5 冻结）。
+- 图片规则不变（`aspect-ratio:1/1` + `object-fit:contain` + `max-*:100%`），渲染尺寸 = `min(栏宽, 可用高)`；1024×768 约 81%、1180×820 约 89% 可用高，均不溢出。
+
+## S10-3. EX-6 首页增量加载 + 「共 N 种」（`HomePage.jsx`）
+- 常量 `PAGE_SIZE = 16`；新增状态 `visibleCount`，渲染 `plants.slice(0, visibleCount)`。
+- 初始值：`location.state?.restoreScroll` 时取 `max(PAGE_SIZE, sessionStorage['sh:homeVisibleCount'])`，否则 `PAGE_SIZE`（Q4 冻结）。
+- **重置**：板块 / 分类切换时（首次挂载除外，用 ref 区分）`setVisibleCount(PAGE_SIZE)`。
+- **触发**：列表末尾 `visibleCount < plants.length` 时渲染 `.load-sentinel`（含 `.load-hint`「加载中…」）+ `IntersectionObserver`（`rootMargin:'200px'`）监听，进入视口则 `+PAGE_SIZE`（截断到全量）。
+- **降级**：`typeof IntersectionObserver === 'undefined'` 时，数据到达后直接 `setVisibleCount(data.length)` 全量渲染（jsdom / 极旧浏览器）。
+- **总量提示**：`plants?.length > 0` 时渲染 `<p className="list-count">共 {plants.length} 种</p>`（区块顶部右对齐）。
+- **滚动记忆兼容**：`visibleCount` 变化写入 `sessionStorage['sh:homeVisibleCount']`；滚动复位 effect 追加兜底——复位后若 `window.scrollY < 目标`，继续 `+PAGE_SIZE` 补加载直至覆盖或到全量再清理 `pendingScroll`。
+- 动物 / 昆虫 / 恐龙仅 10 条（< 16），首屏即全量，哨兵不渲染；总量提示统一展示。
+
+## S10-4. 不回归
+- `sort ASC + id ASC` 顺序语义不变（仍按接口返回顺序切片）。
+- 空态 / 加载态 / 错误态文案与结构不变。
+- US-6 沉浸换株、US-7 喇叭、US-8 默认部位跟随分类、Sprint 6 无滚动红线均不受影响。
+
+## S10-5. 测试更新（配合 QA-23 / QA-24）
+- `HomePage.test.jsx`：TC-21 断言稳妥化（`findByText('植物99')` 后再计数）；新增「共 N 种」与「哨兵存在 / 追加」用例（jsdom 无 IO 时走全量降级，用条数断言）。
+- `PlantDetailPage.test.jsx`：新增 `.allusion-title` 可见文案与样式断言；单图分支 `.detail-body.single-image` 类断言；植物分支不含 `single-image`。
+- `e2e/`：新增小知识可见标题、单图横屏主图占比、植物版式不回归、首页滚动增量至全量、「共 N 种」文案用例；既有 TC-95 改为滚动加载后断言 100 卡。
+
 
 

@@ -144,6 +144,28 @@ body {
   color: var(--color-text-light);
 }
 
+/* Sprint 10（EX-6）：列表总量提示（右对齐一行）与增量加载哨兵 */
+.list-count {
+  text-align: right;
+  font-size: 18px;
+  color: var(--color-text-light);
+  margin: 0 0 12px;
+}
+
+.load-sentinel {
+  grid-column: 1 / -1;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.load-hint {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
 /* 详情页 */
 .back-btn {
   display: inline-flex;
@@ -229,6 +251,13 @@ body {
   line-height: 1;
   color: var(--color-accent-border);
   font-family: Kaiti, STKaiti, serif;
+}
+
+.allusion-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 4px;
 }
 
 .allusion-text {
@@ -444,6 +473,12 @@ body {
 
   .detail-header .detail-en {
     font-size: 20px;
+  }
+
+  /* Sprint 10（EX-5）：单图板块（动物/昆虫/恐龙）无部位按钮约束，横屏放宽图片栏 48% → 64%，
+     让主图占可用高由约 61% 提升到 ≥80%。植物三部位版式沿用上方 48% 规则，不回归。 */
+  .detail-body.single-image {
+    grid-template-columns: 64% minmax(0, 1fr);
   }
 }
 

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { loadAllCards } from './helpers';
 
 // TC-22 浏览主流程冒烟（100 种规模）：首页 → 点「花朵」分类 → 点桃花卡片 → 切「叶」部位
 // 期望：详情显示桃花叶内容，全程无控制台错误（PRD §7-1/§7-2：无登录、2 次点击到达详情）
@@ -20,8 +21,7 @@ test('TC-22 首页→花朵→桃花→叶', async ({ page }) => {
 
   // 2. 点「花朵」→ 显示 flower 分类植物（53 种，无银杏、无枫树）
   await filterGroup.getByText('花朵').click();
-  const cards = page.locator('.plant-card');
-  await expect(cards).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
   await expect(page.locator('.plant-card', { hasText: '银杏' })).toHaveCount(0);
   await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
 
@@ -49,9 +49,9 @@ test('TC-23 首页→树叶→枫树（仅叶标签）', async ({ page }) => {
   await page.goto('/');
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
 
-  // 「树叶」分类 100 种全部可见
+  // 「树叶」分类 100 种全部可见（滚动加载全量）
   await filterGroup.getByText('树叶').click();
-  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 15000 });
+  await loadAllCards(page, 100);
 
   // 点枫树进详情：只有「叶」一个部位标签，无花/果
   await page.locator('.plant-card', { hasText: '枫树' }).click();
@@ -74,7 +74,7 @@ test('TC-26 首页→果实（53 种）', async ({ page }) => {
 
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
-  await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
   await expect(page.locator('.plant-card', { hasText: '白果' })).toHaveCount(1);   // 银杏卡片标题派生为「白果」
   await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
   await expect(page.locator('.plant-card', { hasText: '火龙果' })).toHaveCount(1);
@@ -106,7 +106,7 @@ test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
 test('TC-63 树叶分类下含花朵植物封面跟随分类', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
-  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 15000 });
+  await loadAllCards(page, 100);
 
   // 苹果同时含花/叶/果，树叶分类下封面应为叶图（修复前会错误显示花朵照片）
   const appleCover = page.locator('.plant-card', { hasText: '苹果' }).locator('img');
@@ -119,7 +119,7 @@ test('TC-63 树叶分类下含花朵植物封面跟随分类', async ({ page }) 
 test('TC-67 树叶分类苹果标题「苹果叶」且详情默认选叶', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
-  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 15000 });
+  await loadAllCards(page, 100);
 
   const appleCard = page.locator('.plant-card', { hasText: '苹果叶' });
   await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果叶');
@@ -138,7 +138,7 @@ test('TC-67 树叶分类苹果标题「苹果叶」且详情默认选叶', async
 test('TC-68 花朵分类苹果标题「苹果花」', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('花朵').click();
-  await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
 
   await expect(page.locator('.plant-card', { hasText: '苹果花' }).locator('.plant-card-zh')).toHaveText(
     '苹果花'
@@ -149,7 +149,7 @@ test('TC-68 花朵分类苹果标题「苹果花」', async ({ page }) => {
 test('TC-69 果实分类银杏标题「白果」', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
-  await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
+  await loadAllCards(page, 53);
 
   await expect(page.locator('.plant-card', { hasText: '白果' }).locator('.plant-card-zh')).toHaveText(
     '白果'
@@ -159,7 +159,7 @@ test('TC-69 果实分类银杏标题「白果」', async ({ page }) => {
 // TC-70 全部分类：苹果标题保持原名，详情默认仍为「花」（回归）
 test('TC-70 全部苹果标题原名且详情默认「花」', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
+  await loadAllCards(page, 100);
 
   const appleCard = page.locator('.plant-card', { hasText: '苹果' });
   await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果');

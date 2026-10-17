@@ -299,3 +299,17 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 
 
 
+
+---
+
+# 后端开发设计文章 — Sprint 10（增量：无）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 结论 | **本迭代后端零改动**（J-13） |
+
+- Sprint 10（v2.1）为纯前端体验回流（EX-4 / EX-5 / EX-6），不触碰后端代码。
+- **不改**：Controller / Service / Repository / Entity / MongoDB 语料结构、`/api/categories`、`/api/plants`、`/api/plants/{id}` 契约与响应骨架、缓存 key 规则、导入脚本。
+- 既有后端 21 用例（TC-01~TC-13、TC-24、TC-57/58、TC-71~TC-77）作为回归基线，退出码必须为 0。
