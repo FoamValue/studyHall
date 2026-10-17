@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 73,
   "name": {
     "zh": "桃花",
     "pinyin": "táo huā",
     "en": "Peach Blossom",
-    "ipa": "/piːtʃ ˈblɑːsəm/"
+    "ipa": "/piːtʃ ˈblɑːsəm/",
+    "audioZh": "/audio/peach-blossom-zh.m4a",
+    "audioEn": "/audio/peach-blossom-en.m4a"
   },
   "parts": {
     "flower": {

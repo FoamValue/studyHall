@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// ===== Sprint 5 新增 E2E（TC-46 ~ TC-47）：详情页名称朗读喇叭 =====
+// ===== Sprint 9：详情页名称预生成音频（.m4a）播放 =====
 
 // 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名（Sprint 8 起卡片标题按分类派生，故取卡片图 alt 的原名）
 async function enterFirstFlowerDetail(page) {
@@ -32,37 +32,36 @@ test('TC-46 详情页中/英朗读喇叭存在且热区 ≥56px', async ({ page 
   }
 });
 
-// TC-47 点喇叭触发朗读调用；离开详情页时停止
-test('TC-47 点喇叭触发朗读，离开详情页时停止', async ({ page }) => {
-  // headless 环境无真实语音：stub 语音合成，记录被朗读的文本与 cancel 次数
+// TC-47 点喇叭播放预生成音频；离开详情页时停止（pause）
+test('TC-47 点喇叭播放预生成音频，离开详情页时暂停', async ({ page }) => {
+  // headless 环境无真实音频：桩 HTMLAudioElement，记录被播放的 src 与 pause 次数
   await page.addInitScript(() => {
-    window.__spoken = [];
-    window.__cancelCount = 0;
-    Object.defineProperty(window, 'speechSynthesis', {
-      configurable: true,
-      value: {
-        speak: (u) => {
-          window.__spoken.push(u.text);
-        },
-        cancel: () => {
-          window.__cancelCount += 1;
-        },
-        getVoices: () => [],
-      },
-    });
-    window.SpeechSynthesisUtterance = function SpeechSynthesisUtterance(text) {
-      this.text = text;
+    window.__played = [];
+    window.__pauseCount = 0;
+    window.Audio = function MockAudio(src) {
+      this.src = src || '';
+      this.currentTime = 0;
+      this.play = () => {
+        window.__played.push(this.src);
+        return Promise.resolve();
+      };
+      this.pause = () => {
+        window.__pauseCount += 1;
+      };
     };
   });
 
-  const name = await enterFirstFlowerDetail(page);
+  await enterFirstFlowerDetail(page);
   await page.getByRole('button', { name: '朗读中文名' }).click();
 
-  await expect.poll(() => page.evaluate(() => window.__spoken.length)).toBeGreaterThan(0);
-  expect(await page.evaluate(() => window.__spoken[window.__spoken.length - 1])).toBe(name);
+  await expect.poll(() => page.evaluate(() => window.__played.length)).toBeGreaterThan(0);
+  // 播放的是名称读音（.m4a），而非语音合成
+  expect(await page.evaluate(() => window.__played[window.__played.length - 1])).toMatch(
+    /-zh\.m4a$/
+  );
 
-  // 播放中离开详情页 → 立即停止
-  const cancelBefore = await page.evaluate(() => window.__cancelCount);
+  // 播放中离开详情页 → 立即停止（pause）
+  const pauseBefore = await page.evaluate(() => window.__pauseCount);
   await page.getByRole('link', { name: /回花园/ }).click();
-  await expect.poll(() => page.evaluate(() => window.__cancelCount)).toBeGreaterThan(cancelBefore);
+  await expect.poll(() => page.evaluate(() => window.__pauseCount)).toBeGreaterThan(pauseBefore);
 });

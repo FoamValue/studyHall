@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 3,
   "name": {
     "zh": "杏",
     "pinyin": "xìng",
     "en": "Apricot",
-    "ipa": "/ˈeɪprɪkɑːt/"
+    "ipa": "/ˈeɪprɪkɑːt/",
+    "audioZh": "/audio/apricot-zh.m4a",
+    "audioEn": "/audio/apricot-en.m4a"
   },
   "parts": {
     "fruit": {

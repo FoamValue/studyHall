@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 61,
   "name": {
     "zh": "金盏花",
     "pinyin": "jīn zhǎn huā",
     "en": "Marigold",
-    "ipa": "/ˈmærɪɡoʊld/"
+    "ipa": "/ˈmærɪɡoʊld/",
+    "audioZh": "/audio/marigold-zh.m4a",
+    "audioEn": "/audio/marigold-en.m4a"
   },
   "parts": {
     "flower": {

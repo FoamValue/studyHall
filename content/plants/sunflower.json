@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 93,
   "name": {
     "zh": "向日葵",
     "pinyin": "xiàng rì kuí",
     "en": "Sunflower",
-    "ipa": "/ˈsʌnˌflaʊər/"
+    "ipa": "/ˈsʌnˌflaʊər/",
+    "audioZh": "/audio/sunflower-zh.m4a",
+    "audioEn": "/audio/sunflower-en.m4a"
   },
   "parts": {
     "flower": {

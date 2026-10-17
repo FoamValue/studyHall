@@ -1,0 +1,36 @@
+{
+  "id": "brachiosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "腕龙",
+    "pinyin": "wàn lóng",
+    "en": "Brachiosaurus",
+    "ipa": "/ˌbrækiəˈsɔːrəs/",
+    "audioZh": "/audio/brachiosaurus-zh.m4a",
+    "audioEn": "/audio/brachiosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "腕龙",
+        "pinyin": "wàn lóng",
+        "en": "Brachiosaurus",
+        "ipa": "/ˌbrækiəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/brachiosaurus.jpg"
+        }
+      ],
+      "description": "腕龙的脖子特别长，前腿比后腿长，能吃到高高的树顶上的叶子。",
+      "allusion": {
+        "text": "腕龙的鼻孔长在头顶，抬头也能呼吸。",
+        "explain": "鼻孔在头顶，它抬头吃叶子也不闷。"
+      }
+    }
+  }
+}

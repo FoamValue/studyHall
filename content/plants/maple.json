@@ -3,11 +3,14 @@
   "categories": [
     "leaf"
   ],
+  "sort": 60,
   "name": {
     "zh": "枫树",
     "pinyin": "fēng shù",
     "en": "Maple",
-    "ipa": "/ˈmeɪpl/"
+    "ipa": "/ˈmeɪpl/",
+    "audioZh": "/audio/maple-zh.m4a",
+    "audioEn": "/audio/maple-en.m4a"
   },
   "parts": {
     "leaf": {

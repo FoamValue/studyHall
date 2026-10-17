@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 42,
   "name": {
     "zh": "鸢尾花",
     "pinyin": "yuān wěi huā",
     "en": "Iris",
-    "ipa": "/ˈaɪrɪs/"
+    "ipa": "/ˈaɪrɪs/",
+    "audioZh": "/audio/iris-zh.m4a",
+    "audioEn": "/audio/iris-en.m4a"
   },
   "parts": {
     "flower": {

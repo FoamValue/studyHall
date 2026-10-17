@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 43,
   "name": {
     "zh": "茉莉花",
     "pinyin": "mò lì huā",
     "en": "Jasmine",
-    "ipa": "/ˈdʒæzmɪn/"
+    "ipa": "/ˈdʒæzmɪn/",
+    "audioZh": "/audio/jasmine-zh.m4a",
+    "audioEn": "/audio/jasmine-en.m4a"
   },
   "parts": {
     "flower": {

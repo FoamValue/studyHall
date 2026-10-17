@@ -1,0 +1,36 @@
+{
+  "id": "giant-panda",
+  "categories": [
+    "animal"
+  ],
+  "sort": 1,
+  "name": {
+    "zh": "大熊猫",
+    "pinyin": "dà xióng māo",
+    "en": "Giant Panda",
+    "ipa": "/ˈdʒaɪənt ˈpændə/",
+    "audioZh": "/audio/giant-panda-zh.m4a",
+    "audioEn": "/audio/giant-panda-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "大熊猫",
+        "pinyin": "dà xióng māo",
+        "en": "Giant Panda",
+        "ipa": "/ˈdʒaɪənt ˈpændə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/giant-panda.jpg"
+        }
+      ],
+      "description": "大熊猫身上黑白两色，圆圆的脸上有黑眼圈。最爱抱着竹子啃，样子憨憨的很可爱。",
+      "allusion": {
+        "text": "大熊猫每天要吃很多竹子，一天几乎有一半时间都在啃竹子哦。",
+        "explain": "竹子没什么营养，所以要一直吃才够饱。"
+      }
+    }
+  }
+}

@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 82,
   "name": {
     "zh": "梅花",
     "pinyin": "méi huā",
     "en": "Plum Blossom",
-    "ipa": "/plʌm ˈblɒsəm/"
+    "ipa": "/plʌm ˈblɒsəm/",
+    "audioZh": "/audio/plum-blossom-zh.m4a",
+    "audioEn": "/audio/plum-blossom-en.m4a"
   },
   "parts": {
     "flower": {

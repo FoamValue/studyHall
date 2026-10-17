@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 51,
   "name": {
     "zh": "铃兰",
     "pinyin": "líng lán",
     "en": "Lily of the Valley",
-    "ipa": "/ˈlɪli əv ðə ˈvæli/"
+    "ipa": "/ˈlɪli əv ðə ˈvæli/",
+    "audioZh": "/audio/lily-of-the-valley-zh.m4a",
+    "audioEn": "/audio/lily-of-the-valley-en.m4a"
   },
   "parts": {
     "flower": {

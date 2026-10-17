@@ -4,19 +4,28 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import PlantDetailPage from '../pages/PlantDetailPage';
-import { getPlant, getPlants } from '../api/client';
+import { PART_ORDER, PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
+import { getPlant, getPlants, getPlantsBySection } from '../api/client';
 
 vi.mock('../api/client', () => ({
   getCategories: vi.fn(),
   getPlants: vi.fn(),
+  getPlantsBySection: vi.fn(),
   getPlant: vi.fn(),
 }));
 
-// 与后端契约一致的完整植物文档
+// 与后端契约一致的完整植物文档（Sprint 9：name 可带预生成音频路径 audioZh/audioEn）
 const SUNFLOWER = {
   id: 'sunflower',
   categories: ['flower'],
-  name: { zh: '向日葵', pinyin: 'xiàng rì kuí', en: 'Sunflower', ipa: '/ˈsʌnˌflaʊər/' },
+  name: {
+    zh: '向日葵',
+    pinyin: 'xiàng rì kuí',
+    en: 'Sunflower',
+    ipa: '/ˈsʌnˌflaʊər/',
+    audioZh: '/audio/sunflower-zh.m4a',
+    audioEn: '/audio/sunflower-en.m4a',
+  },
   parts: {
     flower: {
       name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
@@ -59,7 +68,14 @@ const GINKGO = {
 const PEACH = {
   id: 'peach',
   categories: ['flower'],
-  name: { zh: '桃花', pinyin: 'táo huā', en: 'Peach blossom', ipa: '/piːtʃ/' },
+  name: {
+    zh: '桃花',
+    pinyin: 'táo huā',
+    en: 'Peach blossom',
+    ipa: '/piːtʃ/',
+    audioZh: '/audio/peach-blossom-zh.m4a',
+    audioEn: '/audio/peach-blossom-en.m4a',
+  },
   parts: {
     flower: {
       name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
@@ -119,6 +135,42 @@ const APPLE = {
   },
 };
 
+// 动物单图条目（Sprint 9）：parts 恰 1 键且为板块 code `animal`
+const PANDA = {
+  id: 'giant-panda',
+  categories: ['animal'],
+  name: {
+    zh: '大熊猫',
+    pinyin: 'dà xióng māo',
+    en: 'Giant Panda',
+    ipa: '/ˈdʒaɪənt ˈpændə/',
+    audioZh: '/audio/giant-panda-zh.m4a',
+    audioEn: '/audio/giant-panda-en.m4a',
+  },
+  parts: {
+    animal: {
+      name: { zh: '动物', pinyin: 'dòng wù', en: 'animal' },
+      images: [{ type: 'photo', url: '/images/animals/giant-panda.jpg' }],
+      description: '大熊猫胖乎乎的，最爱吃竹子。',
+      allusion: { text: '大熊猫是我们中国的国宝。', explain: '它们只住在中国的竹林里。' },
+    },
+  },
+};
+
+// 恐龙单图条目（有英文名但缺 audioEn，验证英文喇叭按音频缺失不渲染）
+const TREX = {
+  id: 'tyrannosaurus',
+  categories: ['dinosaur'],
+  name: { zh: '霸王龙', pinyin: 'bà wáng lóng', en: 'Tyrannosaurus', audioZh: '/audio/tyrannosaurus-zh.m4a' },
+  parts: {
+    dinosaur: {
+      name: { zh: '恐龙', pinyin: 'kǒng lóng', en: 'dinosaur' },
+      images: [{ type: 'photo', url: '/images/dinosaurs/tyrannosaurus.jpg' }],
+      description: '霸王龙的牙齿又大又尖。',
+    },
+  },
+};
+
 const byId = {
   sunflower: SUNFLOWER,
   ginkgo: GINKGO,
@@ -126,6 +178,8 @@ const byId = {
   maple: MAPLE,
   coconut: COCONUT,
   apple: APPLE,
+  'giant-panda': PANDA,
+  tyrannosaurus: TREX,
 };
 
 // 列表卡片（后端契约：{id, name, coverImage, parts}）
@@ -145,36 +199,40 @@ const renderDetail = (id, state) =>
     </MemoryRouter>
   );
 
-// 语音合成 mock：记录 speak / cancel 调用与被朗读的 utterance
-function makeSpeechMock() {
-  const speak = vi.fn();
-  const cancel = vi.fn();
-  const utterances = [];
-  class MockUtterance {
-    constructor(text) {
-      this.text = text;
-      utterances.push(this);
+// 预生成音频 mock：桩掉全局 Audio，记录每个实例的 src / play / pause 调用
+function makeAudioMock() {
+  const instances = [];
+  class MockAudio {
+    constructor(src) {
+      this.src = src || '';
+      this.currentTime = 0;
+      this.paused = true;
+      this.onended = null;
+      this.onerror = null;
+      this.play = vi.fn(() => {
+        this.paused = false;
+        return Promise.resolve();
+      });
+      this.pause = vi.fn(() => {
+        this.paused = true;
+      });
+      instances.push(this);
     }
   }
-  Object.defineProperty(window, 'speechSynthesis', {
-    value: { speak, cancel, getVoices: () => [] },
-    configurable: true,
-  });
-  Object.defineProperty(window, 'SpeechSynthesisUtterance', {
-    value: MockUtterance,
-    configurable: true,
-  });
-  return { speak, cancel, utterances };
+  vi.stubGlobal('Audio', MockAudio);
+  return { instances };
 }
 
 beforeEach(() => {
   vi.clearAllMocks();
   // 详情页无路由 state 时会兜底拉邻居列表，默认给空列表
   getPlants.mockResolvedValue([]);
+  getPlantsBySection.mockResolvedValue([]);
   getPlant.mockImplementation((id) => Promise.resolve(byId[id]));
 });
 
 afterEach(() => {
+  vi.unstubAllGlobals();
   delete Element.prototype.requestFullscreen;
   delete document.fullscreenEnabled;
   delete window.speechSynthesis;
@@ -351,52 +409,47 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
   });
 });
 
-describe('PlantDetailPage 语音朗读（Sprint 5：TC-41 ~ TC-45f）', () => {
+describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45f）', () => {
   const FLOWER_LIST = [card(SUNFLOWER), card(PEACH), card(MAPLE)];
-  let speech;
 
-  beforeEach(() => {
-    speech = makeSpeechMock();
-  });
-
-  it('TC-41 点中文喇叭朗读中文名（zh-CN / 0.8×）', async () => {
+  it('TC-41 点中文喇叭播放中文名音频（audioZh）', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
     await screen.findByAltText('向日葵的花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
 
-    expect(speech.speak).toHaveBeenCalledTimes(1);
-    const u = speech.utterances.at(-1);
-    expect(u.text).toBe('向日葵');
-    expect(u.lang).toBe('zh-CN');
-    expect(u.rate).toBe(0.8);
+    expect(audio.instances).toHaveLength(1);
+    expect(audio.instances[0].src).toBe('/audio/sunflower-zh.m4a');
+    expect(audio.instances[0].play).toHaveBeenCalledTimes(1);
   });
 
-  it('TC-42 点英文喇叭朗读英文名（en-US / 0.8×）', async () => {
+  it('TC-42 点英文喇叭播放英文名音频（audioEn）', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
     await screen.findByAltText('向日葵的花');
 
     await user.click(screen.getByRole('button', { name: '朗读英文名' }));
 
-    const u = speech.utterances.at(-1);
-    expect(u.text).toBe('Sunflower');
-    expect(u.lang).toBe('en-US');
-    expect(u.rate).toBe(0.8);
+    expect(audio.instances[0].src).toBe('/audio/sunflower-en.m4a');
+    expect(audio.instances[0].play).toHaveBeenCalledTimes(1);
   });
 
-  it('TC-43 两喇叭互斥：点英文喇叭先取消当前再朗读英文名', async () => {
+  it('TC-43 两喇叭互斥：点英文喇叭先暂停当前再播放英文名', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
     await screen.findByAltText('向日葵的花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
     await user.click(screen.getByRole('button', { name: '朗读英文名' }));
 
-    expect(speech.speak).toHaveBeenCalledTimes(2);
-    expect(speech.cancel).toHaveBeenCalledTimes(2); // 每次 speak 前先 cancel
-    expect(speech.utterances.at(-1).text).toBe('Sunflower');
+    expect(audio.instances).toHaveLength(1); // 单例音频，同一时刻至多一个
+    expect(audio.instances[0].src).toBe('/audio/sunflower-en.m4a');
+    expect(audio.instances[0].play).toHaveBeenCalledTimes(2);
+    expect(audio.instances[0].pause).toHaveBeenCalled(); // 互斥：播放前先暂停当前
     expect(screen.getByRole('button', { name: '朗读英文名' })).toHaveAttribute(
       'aria-pressed',
       'true'
@@ -409,6 +462,7 @@ describe('PlantDetailPage 语音朗读（Sprint 5：TC-41 ~ TC-45f）', () => {
 
   it('TC-44 再点同一喇叭即停止', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
     await screen.findByAltText('向日葵的花');
 
@@ -417,73 +471,87 @@ describe('PlantDetailPage 语音朗读（Sprint 5：TC-41 ~ TC-45f）', () => {
     expect(zhBtn).toHaveAttribute('aria-pressed', 'true');
 
     await user.click(zhBtn);
-    expect(speech.cancel).toHaveBeenCalledTimes(2); // speak 前 1 次 + 停止 1 次
+    expect(audio.instances[0].pause).toHaveBeenCalledTimes(2); // play 内 1 次 + 停止 1 次
     expect(zhBtn).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it('TC-45 场景自动停止：切部位 / 换株 / 卸载', async () => {
+  it('TC-45 场景自动停止：切部位 / 换株 / 卸载（pause 增加）', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
+    const totalPause = () => audio.instances.reduce((n, a) => n + a.pause.mock.calls.length, 0);
 
     // ① 切部位
     const first = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
     await screen.findByAltText('向日葵的花');
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
-    const afterSpeak = speech.cancel.mock.calls.length;
+    const afterSpeak = totalPause();
     await user.click(screen.getByRole('tab', { name: '叶' }));
     expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
-    expect(speech.cancel.mock.calls.length).toBeGreaterThan(afterSpeak);
+    expect(totalPause()).toBeGreaterThan(afterSpeak);
     first.unmount();
 
     // ② 换株
     const second = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
     await screen.findByAltText('向日葵的花');
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
-    const beforeSwitch = speech.cancel.mock.calls.length;
+    const beforeSwitch = totalPause();
     await user.click(screen.getByRole('button', { name: '下一株' }));
     expect(await screen.findByRole('heading', { name: '桃花' })).toBeInTheDocument();
-    expect(speech.cancel.mock.calls.length).toBeGreaterThan(beforeSwitch);
+    expect(totalPause()).toBeGreaterThan(beforeSwitch);
     second.unmount();
 
     // ③ 卸载
     const third = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
     await screen.findByAltText('向日葵的花');
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
-    const beforeUnmount = speech.cancel.mock.calls.length;
+    const beforeUnmount = totalPause();
     third.unmount();
-    expect(speech.cancel.mock.calls.length).toBeGreaterThan(beforeUnmount);
+    expect(totalPause()).toBeGreaterThan(beforeUnmount);
   });
 
-  it('TC-45b 喇叭只读名称：朗读文本不含拼音 / 部位名 / 说明 / 典故', async () => {
+  it('TC-45b 喇叭播放的是名称音频：src 为名称读音而非部位/说明', async () => {
     const user = userEvent.setup();
+    const audio = makeAudioMock();
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
     await screen.findByAltText('向日葵的花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
-    const text = speech.utterances.at(-1).text;
 
-    expect(text).toBe('向日葵');
-    expect(text).not.toContain('xiàng rì kuí');
-    expect(text).not.toContain('花');
-    expect(text).not.toContain('小太阳');
-    expect(text).not.toContain('柳絮');
+    const src = audio.instances.at(-1).src;
+    // 播放的是名称读音（audioZh），而非部位图/说明路径
+    expect(src).toBe('/audio/sunflower-zh.m4a');
+    expect(src).toMatch(/-zh\.m4a$/);
   });
 
-  it('TC-45c 不支持语音合成时喇叭不渲染，其余功能正常', async () => {
-    delete window.speechSynthesis;
-    delete window.SpeechSynthesisUtterance;
+  it('TC-45c 无预生成音频时喇叭不渲染，且不调用 speechSynthesis（降级）', async () => {
+    const speak = vi.fn();
+    Object.defineProperty(window, 'speechSynthesis', {
+      value: { speak, cancel: vi.fn(), getVoices: () => [] },
+      configurable: true,
+    });
+    makeAudioMock();
+    // 语料无 audioZh/audioEn（仅中文名/拼音/英文名）
+    getPlant.mockImplementation(() =>
+      Promise.resolve({ ...SUNFLOWER, name: { zh: '向日葵', pinyin: 'xiàng rì kuí', en: 'Sunflower' } })
+    );
 
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
 
     expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读中文名' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
+    expect(speak).not.toHaveBeenCalled(); // 绝不回退语音合成
     expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /回花园/ })).toBeInTheDocument();
   });
 
-  it('TC-45d 植物无英文名时不渲染英文喇叭', async () => {
+  it('TC-45d 有英文名但缺 audioEn 时不渲染英文喇叭，中文喇叭仍在', async () => {
+    makeAudioMock();
     getPlant.mockImplementation(() =>
-      Promise.resolve({ ...SUNFLOWER, name: { zh: '向日葵', pinyin: 'xiàng rì kuí' } })
+      Promise.resolve({
+        ...SUNFLOWER,
+        name: { zh: '向日葵', pinyin: 'xiàng rì kuí', en: 'Sunflower', audioZh: '/audio/sunflower-zh.m4a' },
+      })
     );
 
     renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
@@ -599,5 +667,74 @@ describe('详情默认部位跟随入口分类（Sprint 8：TC-65 / TC-66）', (
     // 新植物（银杏）默认部位也应跟随「果实」分类 → 果，而非其固定首位的「叶」
     expect(await screen.findByAltText('银杏的果')).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
+  });
+});
+
+describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83）', () => {
+  it('TC-82a 动物单图条目：不渲染 PartSwitcher，渲染大图与说明 + 小知识', async () => {
+    renderDetail('giant-panda', { section: 'animal', list: [card(PANDA)] });
+
+    // 大图以名称作 alt（无部位三语名行）
+    expect(await screen.findByAltText('大熊猫')).toBeInTheDocument();
+    expect(screen.getByAltText('大熊猫')).toHaveAttribute('src', '/images/animals/giant-panda.jpg');
+    // 不渲染部位切换条
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+    // 说明与小知识卡片渲染
+    expect(screen.getByText('大熊猫胖乎乎的，最爱吃竹子。')).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: '小知识' })).toBeInTheDocument();
+    expect(screen.getByText('大熊猫是我们中国的国宝。')).toBeInTheDocument();
+  });
+
+  it('TC-83 植物条目仍渲染部位切换（单图分支不误伤）', async () => {
+    renderDetail('sunflower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
+
+    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(screen.getByRole('tablist')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
+  });
+
+  it('TC-82b 恐龙单图条目 + 缺 audioEn：不渲染部位切换与英文喇叭', async () => {
+    makeAudioMock();
+    renderDetail('tyrannosaurus', { section: 'dinosaur', list: [card(TREX)] });
+
+    expect(await screen.findByAltText('霸王龙')).toBeInTheDocument();
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
+  });
+});
+
+describe('小知识卡片称谓（Sprint 9：TC-88）', () => {
+  it('TC-88 典故/小知识卡片 aria-label 为「小知识」，无内容不渲染', async () => {
+    const user = userEvent.setup();
+    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+
+    expect(await screen.findByRole('region', { name: '小知识' })).toBeInTheDocument();
+
+    // 切到无小知识的叶部位 → 卡片整体不渲染
+    await user.click(screen.getByRole('tab', { name: '叶' }));
+    expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: '小知识' })).not.toBeInTheDocument();
+  });
+});
+
+describe('PART_ORDER / PART_LABELS 扩展（Sprint 9：TC-84）', () => {
+  it('TC-84a 板块部位尾部追加，植物顺序（flower,leaf,fruit）保持不变', () => {
+    expect(PART_ORDER).toEqual(['flower', 'leaf', 'fruit', 'animal', 'insect', 'dinosaur']);
+    expect(PART_LABELS).toMatchObject({
+      flower: '花',
+      leaf: '叶',
+      fruit: '果',
+      animal: '动物',
+      insect: '昆虫',
+      dinosaur: '恐龙',
+    });
+  });
+
+  it('TC-84b getOrderedParts 支持单键板块部位', () => {
+    expect(getOrderedParts({ animal: {} })).toEqual(['animal']);
+    expect(getOrderedParts({ insect: {}, animal: {} })).toEqual(['animal', 'insect']);
+    expect(getOrderedParts({ flower: {}, leaf: {}, fruit: {} })).toEqual(['flower', 'leaf', 'fruit']);
   });
 });

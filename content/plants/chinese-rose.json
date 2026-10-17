@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 17,
   "name": {
     "zh": "月季",
     "pinyin": "yuè jì",
     "en": "Chinese Rose",
-    "ipa": "/ˌtʃaɪˈniːz roʊz/"
+    "ipa": "/ˌtʃaɪˈniːz roʊz/",
+    "audioZh": "/audio/chinese-rose-zh.m4a",
+    "audioEn": "/audio/chinese-rose-en.m4a"
   },
   "parts": {
     "flower": {

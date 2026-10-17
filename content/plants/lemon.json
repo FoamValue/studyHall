@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 49,
   "name": {
     "zh": "柠檬",
     "pinyin": "níng méng",
     "en": "Lemon",
-    "ipa": "/ˈlemən/"
+    "ipa": "/ˈlemən/",
+    "audioZh": "/audio/lemon-zh.m4a",
+    "audioEn": "/audio/lemon-en.m4a"
   },
   "parts": {
     "fruit": {

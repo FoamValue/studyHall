@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 66,
   "name": {
     "zh": "橄榄",
     "pinyin": "gǎn lǎn",
     "en": "Olive",
-    "ipa": "/ˈɑːlɪv/"
+    "ipa": "/ˈɑːlɪv/",
+    "audioZh": "/audio/olive-zh.m4a",
+    "audioEn": "/audio/olive-en.m4a"
   },
   "parts": {
     "fruit": {

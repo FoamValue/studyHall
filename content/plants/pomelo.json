@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 85,
   "name": {
     "zh": "柚子",
     "pinyin": "yòu zi",
     "en": "Pomelo",
-    "ipa": "/ˈpɑːməloʊ/"
+    "ipa": "/ˈpɑːməloʊ/",
+    "audioZh": "/audio/pomelo-zh.m4a",
+    "audioEn": "/audio/pomelo-en.m4a"
   },
   "parts": {
     "fruit": {

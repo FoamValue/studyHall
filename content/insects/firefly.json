@@ -1,0 +1,36 @@
+{
+  "id": "firefly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "萤火虫",
+    "pinyin": "yíng huǒ chóng",
+    "en": "Firefly",
+    "ipa": "/ˈfaɪərflaɪ/",
+    "audioZh": "/audio/firefly-zh.m4a",
+    "audioEn": "/audio/firefly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "萤火虫",
+        "pinyin": "yíng huǒ chóng",
+        "en": "Firefly",
+        "ipa": "/ˈfaɪərflaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/firefly.jpg"
+        }
+      ],
+      "description": "萤火虫小小的，尾巴会发出亮亮的绿光。夜晚的草丛里，它们像会飞的小灯笼。",
+      "allusion": {
+        "text": "萤火虫的光不烫手，是很温和的冷光。",
+        "explain": "它的光凉凉的，摸上去一点也不热。"
+      }
+    }
+  }
+}

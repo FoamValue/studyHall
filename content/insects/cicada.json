@@ -1,0 +1,36 @@
+{
+  "id": "cicada",
+  "categories": [
+    "insect"
+  ],
+  "sort": 8,
+  "name": {
+    "zh": "蝉",
+    "pinyin": "chán",
+    "en": "Cicada",
+    "ipa": "/sɪˈkɑːdə/",
+    "audioZh": "/audio/cicada-zh.m4a",
+    "audioEn": "/audio/cicada-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蝉",
+        "pinyin": "chán",
+        "en": "Cicada",
+        "ipa": "/sɪˈkɑːdə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/cicada.jpg"
+        }
+      ],
+      "description": "蝉趴在树上，夏天会知了知了地叫。它的翅膀薄薄的，身子黑黑的。",
+      "allusion": {
+        "text": "蝉在地底下住好几年，才爬上树变成会叫的蝉。",
+        "explain": "它要先在土里长大，很久以后才出来。"
+      }
+    }
+  }
+}

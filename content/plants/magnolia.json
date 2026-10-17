@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 57,
   "name": {
     "zh": "玉兰花",
     "pinyin": "yù lán huā",
     "en": "Magnolia",
-    "ipa": "/mæɡˈnoʊliə/"
+    "ipa": "/mæɡˈnoʊliə/",
+    "audioZh": "/audio/magnolia-zh.m4a",
+    "audioEn": "/audio/magnolia-en.m4a"
   },
   "parts": {
     "flower": {

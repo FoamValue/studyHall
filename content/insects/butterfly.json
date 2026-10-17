@@ -1,0 +1,36 @@
+{
+  "id": "butterfly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 1,
+  "name": {
+    "zh": "蝴蝶",
+    "pinyin": "hú dié",
+    "en": "Butterfly",
+    "ipa": "/ˈbʌtərflaɪ/",
+    "audioZh": "/audio/butterfly-zh.m4a",
+    "audioEn": "/audio/butterfly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蝴蝶",
+        "pinyin": "hú dié",
+        "en": "Butterfly",
+        "ipa": "/ˈbʌtərflaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/butterfly.jpg"
+        }
+      ],
+      "description": "蝴蝶有漂亮的彩色翅膀，在花丛里飞来飞去。它喜欢吸花里甜甜的花蜜。",
+      "allusion": {
+        "text": "蝴蝶小时候是毛毛虫，慢慢变成蛹，再变成蝴蝶。",
+        "explain": "它长大时会变个样子，叫变蝴蝶。"
+      }
+    }
+  }
+}

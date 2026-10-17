@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 14,
   "name": {
     "zh": "樱花",
     "pinyin": "yīng huā",
     "en": "Cherry Blossom",
-    "ipa": "/ˈtʃeri ˌblɑːsəm/"
+    "ipa": "/ˈtʃeri ˌblɑːsəm/",
+    "audioZh": "/audio/cherry-zh.m4a",
+    "audioEn": "/audio/cherry-en.m4a"
   },
   "parts": {
     "flower": {

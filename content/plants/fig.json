@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 30,
   "name": {
     "zh": "无花果",
     "pinyin": "wú huā guǒ",
     "en": "Fig",
-    "ipa": "/fɪɡ/"
+    "ipa": "/fɪɡ/",
+    "audioZh": "/audio/fig-zh.m4a",
+    "audioEn": "/audio/fig-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 7,
   "name": {
     "zh": "香蕉",
     "pinyin": "xiāng jiāo",
     "en": "Banana",
-    "ipa": "/bəˈnænə/"
+    "ipa": "/bəˈnænə/",
+    "audioZh": "/audio/banana-zh.m4a",
+    "audioEn": "/audio/banana-en.m4a"
   },
   "parts": {
     "fruit": {

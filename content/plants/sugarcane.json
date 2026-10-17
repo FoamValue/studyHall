@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 92,
   "name": {
     "zh": "甘蔗",
     "pinyin": "gān zhe",
     "en": "Sugarcane",
-    "ipa": "/ˈʃʊɡərkeɪn/"
+    "ipa": "/ˈʃʊɡərkeɪn/",
+    "audioZh": "/audio/sugarcane-zh.m4a",
+    "audioEn": "/audio/sugarcane-en.m4a"
   },
   "parts": {
     "fruit": {

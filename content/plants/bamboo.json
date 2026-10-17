@@ -3,11 +3,14 @@
   "categories": [
     "leaf"
   ],
+  "sort": 6,
   "name": {
     "zh": "竹子",
     "pinyin": "zhú zi",
     "en": "Bamboo",
-    "ipa": "/ˌbæmˈbuː/"
+    "ipa": "/ˌbæmˈbuː/",
+    "audioZh": "/audio/bamboo-zh.m4a",
+    "audioEn": "/audio/bamboo-en.m4a"
   },
   "parts": {
     "leaf": {

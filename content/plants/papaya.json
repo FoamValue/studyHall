@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 71,
   "name": {
     "zh": "木瓜",
     "pinyin": "mù guā",
     "en": "Papaya",
-    "ipa": "/pəˈpaɪə/"
+    "ipa": "/pəˈpaɪə/",
+    "audioZh": "/audio/papaya-zh.m4a",
+    "audioEn": "/audio/papaya-en.m4a"
   },
   "parts": {
     "fruit": {

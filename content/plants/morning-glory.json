@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 63,
   "name": {
     "zh": "牵牛花",
     "pinyin": "qiān niú huā",
     "en": "Morning Glory",
-    "ipa": "/ˈmɔːrnɪŋ ˈɡlɔːri/"
+    "ipa": "/ˈmɔːrnɪŋ ˈɡlɔːri/",
+    "audioZh": "/audio/morning-glory-zh.m4a",
+    "audioEn": "/audio/morning-glory-en.m4a"
   },
   "parts": {
     "flower": {

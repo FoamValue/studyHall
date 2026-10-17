@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 40,
   "name": {
     "zh": "金银花",
     "pinyin": "jīn yín huā",
     "en": "Honeysuckle",
-    "ipa": "/ˈhʌniˌsʌkəl/"
+    "ipa": "/ˈhʌniˌsʌkəl/",
+    "audioZh": "/audio/honeysuckle-zh.m4a",
+    "audioEn": "/audio/honeysuckle-en.m4a"
   },
   "parts": {
     "flower": {

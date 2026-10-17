@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 33,
   "name": {
     "zh": "栀子花",
     "pinyin": "zhī zi huā",
     "en": "Gardenia",
-    "ipa": "/ɡɑːrˈdiːniə/"
+    "ipa": "/ɡɑːrˈdiːniə/",
+    "audioZh": "/audio/gardenia-zh.m4a",
+    "audioEn": "/audio/gardenia-en.m4a"
   },
   "parts": {
     "flower": {

@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 4,
   "name": {
     "zh": "牛油果",
     "pinyin": "niú yóu guǒ",
     "en": "Avocado",
-    "ipa": "/ˌævəˈkɑːdoʊ/"
+    "ipa": "/ˌævəˈkɑːdoʊ/",
+    "audioZh": "/audio/avocado-zh.m4a",
+    "audioEn": "/audio/avocado-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -1,0 +1,36 @@
+{
+  "id": "lion",
+  "categories": [
+    "animal"
+  ],
+  "sort": 5,
+  "name": {
+    "zh": "狮子",
+    "pinyin": "shī zi",
+    "en": "Lion",
+    "ipa": "/ˈlaɪən/",
+    "audioZh": "/audio/lion-zh.m4a",
+    "audioEn": "/audio/lion-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "狮子",
+        "pinyin": "shī zi",
+        "en": "Lion",
+        "ipa": "/ˈlaɪən/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/lion.jpg"
+        }
+      ],
+      "description": "狮子脖子上有一圈金色鬃毛，看起来威风极了。它住在草原上，被叫做草原之王。",
+      "allusion": {
+        "text": "只有雄狮才有鬃毛，雌狮负责一起出门捕猎。",
+        "explain": "鬃毛让雄狮看起来更大更威风。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "dolphin",
+  "categories": [
+    "animal"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "海豚",
+    "pinyin": "hǎi tún",
+    "en": "Dolphin",
+    "ipa": "/ˈdɒlfɪn/",
+    "audioZh": "/audio/dolphin-zh.m4a",
+    "audioEn": "/audio/dolphin-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "海豚",
+        "pinyin": "hǎi tún",
+        "en": "Dolphin",
+        "ipa": "/ˈdɒlfɪn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/dolphin.jpg"
+        }
+      ],
+      "description": "海豚身体滑滑的，尖尖的嘴巴像在微笑。它在水里跳来跳去，游得又快又灵活。",
+      "allusion": {
+        "text": "海豚很聪明，会用声音互相打招呼、一起玩耍。",
+        "explain": "它们叫一叫，就像在说话一样。"
+      }
+    }
+  }
+}

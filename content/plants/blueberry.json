@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 9,
   "name": {
     "zh": "蓝莓",
     "pinyin": "lán méi",
     "en": "Blueberry",
-    "ipa": "/ˈbluːberi/"
+    "ipa": "/ˈbluːberi/",
+    "audioZh": "/audio/blueberry-zh.m4a",
+    "audioEn": "/audio/blueberry-en.m4a"
   },
   "parts": {
     "fruit": {

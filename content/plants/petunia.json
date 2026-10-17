@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 79,
   "name": {
     "zh": "矮牵牛",
     "pinyin": "ǎi qiān niú",
     "en": "Petunia",
-    "ipa": "/pəˈtuːniə/"
+    "ipa": "/pəˈtuːniə/",
+    "audioZh": "/audio/petunia-zh.m4a",
+    "audioEn": "/audio/petunia-en.m4a"
   },
   "parts": {
     "flower": {

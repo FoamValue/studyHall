@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 32,
   "name": {
     "zh": "小苍兰",
     "pinyin": "xiǎo cāng lán",
     "en": "Freesia",
-    "ipa": "/ˈfriːʒə/"
+    "ipa": "/ˈfriːʒə/",
+    "audioZh": "/audio/freesia-zh.m4a",
+    "audioEn": "/audio/freesia-en.m4a"
   },
   "parts": {
     "flower": {

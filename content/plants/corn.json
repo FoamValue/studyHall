@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 20,
   "name": {
     "zh": "玉米",
     "pinyin": "yù mǐ",
     "en": "Corn",
-    "ipa": "/kɔːrn/"
+    "ipa": "/kɔːrn/",
+    "audioZh": "/audio/corn-zh.m4a",
+    "audioEn": "/audio/corn-en.m4a"
   },
   "parts": {
     "fruit": {

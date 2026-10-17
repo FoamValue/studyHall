@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 19,
   "name": {
     "zh": "椰子",
     "pinyin": "yē zi",
     "en": "Coconut",
-    "ipa": "/ˈkoʊkənʌt/"
+    "ipa": "/ˈkoʊkənʌt/",
+    "audioZh": "/audio/coconut-zh.m4a",
+    "audioEn": "/audio/coconut-en.m4a"
   },
   "parts": {
     "fruit": {

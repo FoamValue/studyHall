@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 59,
   "name": {
     "zh": "山竹",
     "pinyin": "shān zhú",
     "en": "Mangosteen",
-    "ipa": "/ˈmæŋɡəstiːn/"
+    "ipa": "/ˈmæŋɡəstiːn/",
+    "audioZh": "/audio/mangosteen-zh.m4a",
+    "audioEn": "/audio/mangosteen-en.m4a"
   },
   "parts": {
     "fruit": {

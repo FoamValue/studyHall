@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 86,
   "name": {
     "zh": "虞美人",
     "pinyin": "yú měi rén",
     "en": "Poppy",
-    "ipa": "/ˈpɑːpi/"
+    "ipa": "/ˈpɑːpi/",
+    "audioZh": "/audio/poppy-zh.m4a",
+    "audioEn": "/audio/poppy-en.m4a"
   },
   "parts": {
     "flower": {

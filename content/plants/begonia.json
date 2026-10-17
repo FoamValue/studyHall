@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 8,
   "name": {
     "zh": "海棠花",
     "pinyin": "hǎi táng huā",
     "en": "Begonia",
-    "ipa": "/bɪˈɡoʊniə/"
+    "ipa": "/bɪˈɡoʊniə/",
+    "audioZh": "/audio/begonia-zh.m4a",
+    "audioEn": "/audio/begonia-en.m4a"
   },
   "parts": {
     "flower": {

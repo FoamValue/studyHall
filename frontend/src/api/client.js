@@ -36,4 +36,7 @@ export const getCategories = () => request('/categories');
 export const getPlants = (category) =>
   request(category ? `/plants?category=${encodeURIComponent(category)}` : '/plants');
 
+export const getPlantsBySection = (section) =>
+  request(`/plants?section=${encodeURIComponent(section)}`);
+
 export const getPlant = (id) => request(`/plants/${encodeURIComponent(id)}`);

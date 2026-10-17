@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 69,
   "name": {
     "zh": "桂花",
     "pinyin": "guì huā",
     "en": "Osmanthus",
-    "ipa": "/ɒzˈmænθəs/"
+    "ipa": "/ɒzˈmænθəs/",
+    "audioZh": "/audio/osmanthus-zh.m4a",
+    "audioEn": "/audio/osmanthus-en.m4a"
   },
   "parts": {
     "flower": {

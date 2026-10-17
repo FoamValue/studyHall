@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 46,
   "name": {
     "zh": "猕猴桃",
     "pinyin": "mí hóu táo",
     "en": "Kiwi",
-    "ipa": "/ˈkiːwiː/"
+    "ipa": "/ˈkiːwiː/",
+    "audioZh": "/audio/kiwi-zh.m4a",
+    "audioEn": "/audio/kiwi-en.m4a"
   },
   "parts": {
     "fruit": {

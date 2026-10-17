@@ -39,10 +39,12 @@ public class PlantController {
         return ApiResponse.ok(plantService.getCategories());
     }
 
-    /** 植物卡片列表；category 缺省 = 全部，非法分类返回 code=40001。 */
+    /** 条目卡片列表；category（二级筛选）优先于 section（板块），两者缺省 = 全部条目；
+     *  非法分类返回 code=40001，未知板块返回 code=40002。 */
     @GetMapping("/plants")
-    public ApiResponse<List<PlantCard>> plants(@RequestParam(required = false) String category) {
-        return ApiResponse.ok(plantService.getPlants(category));
+    public ApiResponse<List<PlantCard>> plants(@RequestParam(required = false) String category,
+                                               @RequestParam(required = false) String section) {
+        return ApiResponse.ok(plantService.getPlants(category, section));
     }
 
     /** 植物完整文档；不存在返回 code=40401。 */

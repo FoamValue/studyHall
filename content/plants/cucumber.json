@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 23,
   "name": {
     "zh": "黄瓜",
     "pinyin": "huáng gua",
     "en": "Cucumber",
-    "ipa": "/ˈkjuːkʌmbər/"
+    "ipa": "/ˈkjuːkʌmbər/",
+    "audioZh": "/audio/cucumber-zh.m4a",
+    "audioEn": "/audio/cucumber-en.m4a"
   },
   "parts": {
     "fruit": {

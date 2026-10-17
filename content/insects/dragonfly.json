@@ -1,0 +1,36 @@
+{
+  "id": "dragonfly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 5,
+  "name": {
+    "zh": "蜻蜓",
+    "pinyin": "qīng tíng",
+    "en": "Dragonfly",
+    "ipa": "/ˈdræɡənflaɪ/",
+    "audioZh": "/audio/dragonfly-zh.m4a",
+    "audioEn": "/audio/dragonfly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜻蜓",
+        "pinyin": "qīng tíng",
+        "en": "Dragonfly",
+        "ipa": "/ˈdræɡənflaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/dragonfly.jpg"
+        }
+      ],
+      "description": "蜻蜓有长长的身子和透明的翅膀，飞得又快又稳，还喜欢在水边点水。",
+      "allusion": {
+        "text": "蜻蜓的眼睛特别大，几乎能看到四周所有的东西。",
+        "explain": "大复眼帮它同时看到很多方向。"
+      }
+    }
+  }
+}

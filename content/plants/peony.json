@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 77,
   "name": {
     "zh": "牡丹",
     "pinyin": "mǔ dān",
     "en": "Peony",
-    "ipa": "/ˈpiːəni/"
+    "ipa": "/ˈpiːəni/",
+    "audioZh": "/audio/peony-zh.m4a",
+    "audioEn": "/audio/peony-en.m4a"
   },
   "parts": {
     "flower": {

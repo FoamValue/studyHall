@@ -1,0 +1,36 @@
+{
+  "id": "giraffe",
+  "categories": [
+    "animal"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "长颈鹿",
+    "pinyin": "cháng jǐng lù",
+    "en": "Giraffe",
+    "ipa": "/dʒəˈræf/",
+    "audioZh": "/audio/giraffe-zh.m4a",
+    "audioEn": "/audio/giraffe-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "长颈鹿",
+        "pinyin": "cháng jǐng lù",
+        "en": "Giraffe",
+        "ipa": "/dʒəˈræf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/giraffe.jpg"
+        }
+      ],
+      "description": "长颈鹿脖子长长的，是陆地上最高的动物。它抬头就能吃到高高的树叶。",
+      "allusion": {
+        "text": "长颈鹿脖子骨头的数量和人类一样多，只是每一块都更长。",
+        "explain": "脖子骨更长，所以它才能长这么高。"
+      }
+    }
+  }
+}

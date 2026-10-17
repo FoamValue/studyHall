@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 89,
   "name": {
     "zh": "玫瑰",
     "pinyin": "méi guī",
     "en": "Rose",
-    "ipa": "/roʊz/"
+    "ipa": "/roʊz/",
+    "audioZh": "/audio/rose-zh.m4a",
+    "audioEn": "/audio/rose-en.m4a"
   },
   "parts": {
     "flower": {

@@ -1,0 +1,36 @@
+{
+  "id": "velociraptor",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 5,
+  "name": {
+    "zh": "迅猛龙",
+    "pinyin": "xùn měng lóng",
+    "en": "Velociraptor",
+    "ipa": "/vəˈlɒsɪræptər/",
+    "audioZh": "/audio/velociraptor-zh.m4a",
+    "audioEn": "/audio/velociraptor-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "迅猛龙",
+        "pinyin": "xùn měng lóng",
+        "en": "Velociraptor",
+        "ipa": "/vəˈlɒsɪræptər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/velociraptor.jpg"
+        }
+      ],
+      "description": "迅猛龙个头不大，但跑得非常快，后脚上有弯弯的爪子，很会捕猎。",
+      "allusion": {
+        "text": "迅猛龙身上可能长着羽毛，跑起来又快又灵活。",
+        "explain": "身子轻巧，跑起来像一阵风。"
+      }
+    }
+  }
+}

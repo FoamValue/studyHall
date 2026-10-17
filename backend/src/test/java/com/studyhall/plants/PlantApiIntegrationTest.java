@@ -31,6 +31,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +89,12 @@ class PlantApiIntegrationTest {
     @Autowired
     Environment environment;
 
+    /** 板块分类 code 对应的图片前缀（动物/昆虫/恐龙单图条目）。 */
+    private static final Map<String, String> BOARD_IMAGE_PREFIX = Map.of(
+            "animal", "/images/animals/",
+            "insect", "/images/insects/",
+            "dinosaur", "/images/dinosaurs/");
+
     List<Category> categories;
     List<Plant> plants;
 
@@ -136,22 +143,24 @@ class PlantApiIntegrationTest {
         assertThat(resp.data().get("status")).isEqualTo("UP");
     }
 
-    /** TC-02 分类列表：3 个分类，按 order 升序，字段齐全。 */
+    /** TC-02 分类列表：条数 = content 实际分类数，按 order 升序，字段齐全（Sprint 9 起含 section）。 */
     @Test
     void tc02_categoriesShouldBeSortedByOrder() {
         ApiResponse<List<Category>> resp = get("/api/categories", listOf(Category.class));
         assertThat(resp.code()).isZero();
-        assertThat(resp.data()).hasSize(3);
-        assertThat(resp.data()).extracting(Category::order).containsExactly(1, 2, 3);
+        assertThat(resp.data()).hasSize(categories.size());
+        assertThat(resp.data()).extracting(Category::order)
+                .containsExactlyElementsOf(categories.stream().map(Category::order).toList());
         assertThat(resp.data()).allSatisfy(c -> {
             assertThat(c.code()).isNotBlank();
             assertThat(c.nameZh()).isNotBlank();
             assertThat(c.pinyin()).isNotBlank();
             assertThat(c.nameEn()).isNotBlank();
+            assertThat(c.section()).isIn("plant", "animal", "insect", "dinosaur");
         });
     }
 
-    /** TC-03 植物列表-全部：条数等于 content/plants/ 实际文件数，卡片字段齐全。 */
+    /** TC-03 条目列表-全部：条数等于 content/ 四个子目录实际条目数（130），卡片字段齐全。 */
     @Test
     void tc03_plantListShouldReturnAllSeeds() {
         List<String> expectedIds = plants.stream().map(Plant::id).toList();
@@ -182,13 +191,13 @@ class PlantApiIntegrationTest {
                 .containsExactlyInAnyOrderElementsOf(expected);
     }
 
-    /** TC-05 非法分类：code=40001，友好提示。 */
+    /** TC-05 非法分类：code=40001，友好提示覆盖四板块。 */
     @Test
     void tc05_invalidCategoryShouldReturn40001() {
         ApiResponse<Void> resp = get("/api/plants?category=abc",
                 objectMapper.getTypeFactory().constructType(Void.class));
         assertThat(resp.code()).isEqualTo(40001);
-        assertThat(resp.message()).isNotBlank();
+        assertThat(resp.message()).contains("昆虫");
     }
 
     /** TC-06 植物详情：向日葵完整文档，三语名称、三部位、说明与典故齐全。 */
@@ -281,7 +290,8 @@ class PlantApiIntegrationTest {
                 .isEqualTo("http://localhost:5173");
     }
 
-    /** TC-11 内容 schema 全量合规（Sprint 2 数据驱动）：categories = parts 键集合、每部位 ≥1 图、三语非空、allusion 有则三字段全。 */
+    /** TC-11 内容 schema 全量合规（数据驱动，Sprint 9 起含动物/昆虫/恐龙）：categories = parts 键集合、
+     *  每部位 ≥1 图且图路径符合板块前缀、三语非空、allusion 有则三字段全。 */
     @Test
     void tc11_allContentFilesShouldMatchSchema() {
         assertThat(plants).isNotEmpty();
@@ -292,26 +302,35 @@ class PlantApiIntegrationTest {
             assertThat(p.name().pinyin()).isNotBlank();
             assertThat(p.name().en()).isNotBlank();
             assertThat(p.name().ipa()).startsWith("/");
+            assertThat(p.sort()).as("条目 %s 缺少 sort", p.id()).isNotNull();
             p.parts().forEach((partCode, part) -> {
                 assertThat(part.name().zh()).isNotBlank();
                 assertThat(part.name().pinyin()).isNotBlank();
                 assertThat(part.name().en()).isNotBlank();
                 assertThat(part.images()).isNotEmpty();
+                String boardPrefix = BOARD_IMAGE_PREFIX.get(partCode);
                 part.images().forEach(img -> {
-                    assertThat(img.type()).isIn("illustration", "photo");
-                    assertThat(img.url()).startsWith("/images/plants/" + p.id() + "-");
+                    assertThat(img.type()).isIn("illustration", "photo", "restore");
+                    if (boardPrefix != null) {
+                        assertThat(img.url()).startsWith(boardPrefix + p.id() + ".");
+                    } else {
+                        assertThat(img.url()).startsWith("/images/plants/" + p.id() + "-");
+                    }
                 });
                 assertThat(part.description()).isNotBlank();
                 if (part.allusion() != null) {
                     assertThat(part.allusion().text()).isNotBlank();
-                    assertThat(part.allusion().source()).isNotBlank();
                     assertThat(part.allusion().explain()).isNotBlank();
+                    // 植物部位典故须含出处；板块小知识（animal/insect/dinosaur）可无 source
+                    if (boardPrefix == null) {
+                        assertThat(part.allusion().source()).isNotBlank();
+                    }
                 }
             });
         }
     }
 
-    /** TC-12 图片资产齐备：JSON 引用的 photo 图片在 frontend/public 下存在对应文件。 */
+    /** TC-12 图片资产齐备：JSON 引用的 photo/restore 图片在 frontend/public 下存在对应文件。 */
     @Test
     void tc12_photoAssetsShouldExistOnDisk() {
         Path publicDir = ContentSeed.contentDir().resolve("../frontend/public").normalize();
@@ -319,12 +338,12 @@ class PlantApiIntegrationTest {
         for (Plant p : plants) {
             p.parts().forEach((partCode, part) ->
                     part.images().stream()
-                            .filter(img -> img.type().equals("photo"))
+                            .filter(img -> img.type().equals("photo") || img.type().equals("restore"))
                             .forEach(img -> {
-                                // url 形如 /images/plants/{id}-{part}.jpg，去掉前导斜杠映射到 public 下
+                                // url 形如 /images/plants/{id}-{part}.jpg 或 /images/animals/{id}.jpg，去掉前导斜杠映射到 public 下
                                 Path file = publicDir.resolve(img.url().substring(1));
                                 assertThat(Files.isRegularFile(file))
-                                        .as("缺少图片资产 %s（植物 %s 部位 %s）", img.url(), p.id(), partCode)
+                                        .as("缺少图片资产 %s（条目 %s 部位 %s）", img.url(), p.id(), partCode)
                                         .isTrue();
                             }));
         }
@@ -381,6 +400,93 @@ class PlantApiIntegrationTest {
         ApiResponse<List<PlantCard>> flower = get("/api/plants?category=flower", listOf(PlantCard.class));
         assertThat(flower.code()).isZero();
         assertThat(findCard(flower.data(), "apple").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
+    }
+
+    /** TC-71 板块列表（Sprint 9）：?section=plant 计数 = 该板块条目数（数据驱动）。 */
+    @Test
+    void tc71_sectionPlantShouldReturnBoardEntries() {
+        long expected = plants.stream()
+                .filter(p -> p.categories().stream().anyMatch(c -> "plant".equals(sectionOf(c))))
+                .count();
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=plant", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).hasSize((int) expected);
+    }
+
+    /** TC-72 单图板块（Sprint 9）：?section=animal 计数 = 该板块条目数且每条 parts 恰 [animal]。 */
+    @Test
+    void tc72_sectionAnimalShouldReturnSinglePartEntries() {
+        List<String> animalIds = plants.stream()
+                .filter(p -> p.categories().contains("animal"))
+                .map(Plant::id)
+                .toList();
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=animal", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .containsExactlyInAnyOrderElementsOf(animalIds);
+        assertThat(resp.data()).allSatisfy(card -> assertThat(card.parts()).containsExactly("animal"));
+    }
+
+    /** TC-73 未知板块（Sprint 9）：code=40002，友好提示。 */
+    @Test
+    void tc73_unknownSectionShouldReturn40002() {
+        ApiResponse<Void> resp = get("/api/plants?section=nope",
+                objectMapper.getTypeFactory().constructType(Void.class));
+        assertThat(resp.code()).isEqualTo(40002);
+        assertThat(resp.message()).contains("板块");
+    }
+
+    /** TC-74 单图板块封面（Sprint 9）：?category=animal 封面 = 该条目自身单图。 */
+    @Test
+    void tc74_categoryAnimalCoverShouldMatchItsImage() {
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?category=animal", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).isNotEmpty();
+        assertThat(resp.data()).allSatisfy(card -> {
+            Plant p = findPlant(card.id());
+            assertThat(card.coverImage())
+                    .isEqualTo(p.parts().get("animal").images().getFirst().url());
+        });
+    }
+
+    /** TC-75 列表顺序稳定（Sprint 9 清排序技术债）：两次请求一致且 = sort ASC, id ASC。 */
+    @Test
+    void tc75_listShouldBeSortedBySortThenId() {
+        Comparator<Plant> bySortThenId = Comparator
+                .comparing(Plant::sort, Comparator.nullsFirst(Comparator.naturalOrder()))
+                .thenComparing(Plant::id);
+
+        ApiResponse<List<PlantCard>> first = get("/api/plants", listOf(PlantCard.class));
+        ApiResponse<List<PlantCard>> second = get("/api/plants", listOf(PlantCard.class));
+        assertThat(first.code()).isZero();
+        List<String> expectedAll = plants.stream().sorted(bySortThenId).map(Plant::id).toList();
+        assertThat(first.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedAll);
+        assertThat(second.data()).extracting(PlantCard::id)
+                .containsExactlyElementsOf(first.data().stream().map(PlantCard::id).toList());
+
+        // 分类列表同样显式排序（替换原 findByCategoriesContains 未排序技术债）
+        ApiResponse<List<PlantCard>> leaf = get("/api/plants?category=leaf", listOf(PlantCard.class));
+        List<String> expectedLeaf = plants.stream()
+                .filter(p -> p.categories().contains("leaf"))
+                .sorted(bySortThenId)
+                .map(Plant::id)
+                .toList();
+        assertThat(leaf.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedLeaf);
+    }
+
+    /** 取分类 code 所属板块（无匹配返回 null）。 */
+    private String sectionOf(String categoryCode) {
+        return categories.stream()
+                .filter(c -> c.code().equals(categoryCode))
+                .map(Category::section)
+                .findFirst()
+                .orElse(null);
+    }
+
+    /** 取已播种的条目文档。 */
+    private Plant findPlant(String id) {
+        return plants.stream().filter(p -> p.id().equals(id)).findFirst()
+                .orElseThrow(() -> new AssertionError("内容缺少条目 " + id));
     }
 
     private static PlantCard findCard(List<PlantCard> cards, String id) {

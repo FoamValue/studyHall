@@ -1,5 +1,8 @@
 [
-  { "code": "flower", "nameZh": "花朵", "pinyin": "huā duǒ", "nameEn": "Flower", "order": 1 },
-  { "code": "leaf", "nameZh": "树叶", "pinyin": "shù yè", "nameEn": "Leaf", "order": 2 },
-  { "code": "fruit", "nameZh": "果实", "pinyin": "guǒ shí", "nameEn": "Fruit", "order": 3 }
+  { "code": "flower", "nameZh": "花朵", "pinyin": "huā duǒ", "nameEn": "Flower", "order": 1, "section": "plant" },
+  { "code": "leaf", "nameZh": "树叶", "pinyin": "shù yè", "nameEn": "Leaf", "order": 2, "section": "plant" },
+  { "code": "fruit", "nameZh": "果实", "pinyin": "guǒ shí", "nameEn": "Fruit", "order": 3, "section": "plant" },
+  { "code": "animal", "nameZh": "动物", "pinyin": "dòng wù", "nameEn": "Animal", "order": 4, "section": "animal" },
+  { "code": "insect", "nameZh": "昆虫", "pinyin": "kūn chóng", "nameEn": "Insect", "order": 5, "section": "insect" },
+  { "code": "dinosaur", "nameZh": "恐龙", "pinyin": "kǒng lóng", "nameEn": "Dinosaur", "order": 6, "section": "dinosaur" }
 ]

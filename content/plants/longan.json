@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 53,
   "name": {
     "zh": "龙眼",
     "pinyin": "lóng yǎn",
     "en": "Longan",
-    "ipa": "/ˈlɑːŋɡən/"
+    "ipa": "/ˈlɑːŋɡən/",
+    "audioZh": "/audio/longan-zh.m4a",
+    "audioEn": "/audio/longan-en.m4a"
   },
   "parts": {
     "fruit": {

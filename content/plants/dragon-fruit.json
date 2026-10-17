@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 27,
   "name": {
     "zh": "火龙果",
     "pinyin": "huǒ lóng guǒ",
     "en": "Dragon Fruit",
-    "ipa": "/ˈdræɡən fruːt/"
+    "ipa": "/ˈdræɡən fruːt/",
+    "audioZh": "/audio/dragon-fruit-zh.m4a",
+    "audioEn": "/audio/dragon-fruit-en.m4a"
   },
   "parts": {
     "fruit": {

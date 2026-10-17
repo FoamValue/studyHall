@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 29,
   "name": {
     "zh": "茄子",
     "pinyin": "qié zi",
     "en": "Eggplant",
-    "ipa": "/ˈeɡplænt/"
+    "ipa": "/ˈeɡplænt/",
+    "audioZh": "/audio/eggplant-zh.m4a",
+    "audioEn": "/audio/eggplant-en.m4a"
   },
   "parts": {
     "fruit": {

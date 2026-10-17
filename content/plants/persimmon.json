@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 78,
   "name": {
     "zh": "柿子",
     "pinyin": "shì zi",
     "en": "Persimmon",
-    "ipa": "/pərˈsɪmən/"
+    "ipa": "/pərˈsɪmən/",
+    "audioZh": "/audio/persimmon-zh.m4a",
+    "audioEn": "/audio/persimmon-en.m4a"
   },
   "parts": {
     "fruit": {

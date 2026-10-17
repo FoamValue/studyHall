@@ -5,11 +5,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 94,
   "name": {
     "zh": "番茄",
     "pinyin": "fān qié",
     "en": "Tomato",
-    "ipa": "/təˈmeɪtoʊ/"
+    "ipa": "/təˈmeɪtoʊ/",
+    "audioZh": "/audio/tomato-zh.m4a",
+    "audioEn": "/audio/tomato-en.m4a"
   },
   "parts": {
     "fruit": {

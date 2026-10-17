@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 11,
   "name": {
     "zh": "山茶花",
     "pinyin": "shān chá huā",
     "en": "Camellia",
-    "ipa": "/kəˈmiːliə/"
+    "ipa": "/kəˈmiːliə/",
+    "audioZh": "/audio/camellia-zh.m4a",
+    "audioEn": "/audio/camellia-en.m4a"
   },
   "parts": {
     "flower": {

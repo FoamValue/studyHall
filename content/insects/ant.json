@@ -1,0 +1,36 @@
+{
+  "id": "ant",
+  "categories": [
+    "insect"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "蚂蚁",
+    "pinyin": "mǎ yǐ",
+    "en": "Ant",
+    "ipa": "/ænt/",
+    "audioZh": "/audio/ant-zh.m4a",
+    "audioEn": "/audio/ant-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚂蚁",
+        "pinyin": "mǎ yǐ",
+        "en": "Ant",
+        "ipa": "/ænt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/ant.jpg"
+        }
+      ],
+      "description": "蚂蚁小小的，排着队搬东西。它们很团结，能一起搬动比自己大很多的食物。",
+      "allusion": {
+        "text": "蚂蚁力气很大，还能抬起比自己重很多的东西。",
+        "explain": "小蚂蚁一起使劲，就能搬动大东西。"
+      }
+    }
+  }
+}

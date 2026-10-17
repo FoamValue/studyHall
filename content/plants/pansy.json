@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 70,
   "name": {
     "zh": "三色堇",
     "pinyin": "sān sè jǐn",
     "en": "Pansy",
-    "ipa": "/ˈpænzi/"
+    "ipa": "/ˈpænzi/",
+    "audioZh": "/audio/pansy-zh.m4a",
+    "audioEn": "/audio/pansy-en.m4a"
   },
   "parts": {
     "flower": {

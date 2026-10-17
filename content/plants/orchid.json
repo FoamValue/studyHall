@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 68,
   "name": {
     "zh": "蝴蝶兰",
     "pinyin": "hú dié lán",
     "en": "Orchid",
-    "ipa": "/ˈɔːrkɪd/"
+    "ipa": "/ˈɔːrkɪd/",
+    "audioZh": "/audio/orchid-zh.m4a",
+    "audioEn": "/audio/orchid-en.m4a"
   },
   "parts": {
     "flower": {

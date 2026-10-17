@@ -1,0 +1,36 @@
+{
+  "id": "pteranodon",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 8,
+  "name": {
+    "zh": "翼龙",
+    "pinyin": "yì lóng",
+    "en": "Pteranodon",
+    "ipa": "/təˈrænədɒn/",
+    "audioZh": "/audio/pteranodon-zh.m4a",
+    "audioEn": "/audio/pteranodon-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "翼龙",
+        "pinyin": "yì lóng",
+        "en": "Pteranodon",
+        "ipa": "/təˈrænədɒn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/pteranodon.jpg"
+        }
+      ],
+      "description": "翼龙有大大的翅膀，能在天上飞。它头上有一块向后的骨冠，长长的嘴巴像尖尖的梭子。",
+      "allusion": {
+        "text": "翼龙不是恐龙，而是会飞的爬行动物。",
+        "explain": "它会飞，和恐龙住在一个时代。"
+      }
+    }
+  }
+}

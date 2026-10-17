@@ -1,0 +1,36 @@
+{
+  "id": "mantis",
+  "categories": [
+    "insect"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "螳螂",
+    "pinyin": "táng láng",
+    "en": "Mantis",
+    "ipa": "/ˈmæntɪs/",
+    "audioZh": "/audio/mantis-zh.m4a",
+    "audioEn": "/audio/mantis-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "螳螂",
+        "pinyin": "táng láng",
+        "en": "Mantis",
+        "ipa": "/ˈmæntɪs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/mantis.jpg"
+        }
+      ],
+      "description": "螳螂有绿绿的身子，举着两把像小刀的前腿。它一动不动地等，再突然抓住虫子。",
+      "allusion": {
+        "text": "螳螂的前腿上有小刺，能牢牢夹住猎物。",
+        "explain": "前腿像夹子，抓住虫子不松手。"
+      }
+    }
+  }
+}

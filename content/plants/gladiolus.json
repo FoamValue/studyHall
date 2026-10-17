@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 36,
   "name": {
     "zh": "剑兰",
     "pinyin": "jiàn lán",
     "en": "Gladiolus",
-    "ipa": "/ˌɡlædiˈoʊləs/"
+    "ipa": "/ˌɡlædiˈoʊləs/",
+    "audioZh": "/audio/gladiolus-zh.m4a",
+    "audioEn": "/audio/gladiolus-en.m4a"
   },
   "parts": {
     "flower": {

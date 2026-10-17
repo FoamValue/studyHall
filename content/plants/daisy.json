@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 24,
   "name": {
     "zh": "雏菊",
     "pinyin": "chú jú",
     "en": "Daisy",
-    "ipa": "/ˈdeɪzi/"
+    "ipa": "/ˈdeɪzi/",
+    "audioZh": "/audio/daisy-zh.m4a",
+    "audioEn": "/audio/daisy-en.m4a"
   },
   "parts": {
     "flower": {

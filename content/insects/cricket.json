@@ -1,0 +1,36 @@
+{
+  "id": "cricket",
+  "categories": [
+    "insect"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "蟋蟀",
+    "pinyin": "xī shuài",
+    "en": "Cricket",
+    "ipa": "/ˈkrɪkɪt/",
+    "audioZh": "/audio/cricket-zh.m4a",
+    "audioEn": "/audio/cricket-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蟋蟀",
+        "pinyin": "xī shuài",
+        "en": "Cricket",
+        "ipa": "/ˈkrɪkɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/cricket.jpg"
+        }
+      ],
+      "description": "蟋蟀黑褐色，后腿很有劲，能跳得很远。夏天的夜晚，它会唧唧地唱歌。",
+      "allusion": {
+        "text": "蟋蟀是用翅膀互相摩擦来发出声音的。",
+        "explain": "两个翅膀一蹭，就唱出好听的声音。"
+      }
+    }
+  }
+}

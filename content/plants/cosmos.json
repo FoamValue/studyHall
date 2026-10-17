@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 22,
   "name": {
     "zh": "波斯菊",
     "pinyin": "bō sī jú",
     "en": "Cosmos",
-    "ipa": "/ˈkɑːzmoʊs/"
+    "ipa": "/ˈkɑːzmoʊs/",
+    "audioZh": "/audio/cosmos-zh.m4a",
+    "audioEn": "/audio/cosmos-en.m4a"
   },
   "parts": {
     "flower": {

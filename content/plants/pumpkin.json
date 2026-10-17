@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 87,
   "name": {
     "zh": "南瓜",
     "pinyin": "nán guā",
     "en": "Pumpkin",
-    "ipa": "/ˈpʌmpkɪn/"
+    "ipa": "/ˈpʌmpkɪn/",
+    "audioZh": "/audio/pumpkin-zh.m4a",
+    "audioEn": "/audio/pumpkin-en.m4a"
   },
   "parts": {
     "fruit": {

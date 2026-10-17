@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 99,
   "name": {
     "zh": "西瓜",
     "pinyin": "xī guā",
     "en": "Watermelon",
-    "ipa": "/ˈwɔːtərˌmelən/"
+    "ipa": "/ˈwɔːtərˌmelən/",
+    "audioZh": "/audio/watermelon-zh.m4a",
+    "audioEn": "/audio/watermelon-en.m4a"
   },
   "parts": {
     "fruit": {

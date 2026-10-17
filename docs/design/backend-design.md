@@ -258,6 +258,7 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
   public record Category(@Id String code, String nameZh, String pinyin, String nameEn, int order, String section) {}
   ```
 - **`Plant`**（`model/Plant.java`）新增 `Integer sort`（可空；`@Id String id, List<String> categories, I18nName name, Map<String,PlantPart> parts, Integer sort)`）。`parts` 键集合扩展为 `flower/leaf/fruit/animal/insect/dinosaur`（**结构不变**，Map 天然容纳单键）。
+- **`I18nName`**（`model/I18nName.java`）新增可选 `String audioZh, String audioEn`（音频相对路径，如 `/audio/apple-zh.m4a`）；**可空**，缺省表示无音频。后端仅透传，无业务逻辑；前端按「字段存在即渲染喇叭」实现优雅降级（PRD §14.7-③）。
 - `PlantPart` / `PlantImage` / `Allusion` **零改动**：动物/昆虫/恐龙仅用 `parts.{单个键}`，`images` 仅 1 张（`type` ∈ `photo|restore`），小知识沿用 `allusion` 结构。
 
 ## S9-2. 分类合法性校验与文案（J-14）
@@ -288,7 +289,8 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - 路径与响应骨架不变；`ApiResponse` 不变。
 
 ## S9-6. 导入脚本影响（R-27 协同）
-- 验证点扩展：`categories.json` 每条须含 `section` ∈ {plant,animal,insect,dinosaur}；`plants` 的 `parts` 键 ∈ `flower|leaf|fruit|animal|insect|dinosaur`；单键板块条目的单键必须 = 其 `categories` 唯一分类 code；新增 `sort` 为整数校验（可空则脚本可补默认）。图片路径校验按板块前缀放宽（`/images/plants/{id}-{part}.jpg` 仅植物；动物/昆虫/恐龙为 `/images/{animals|insects|dinosaurs}/{id}.jpg`）。音频资产存在性校验（`/audio/{id}-zh.m4a` / `-en.m4a`）。
+- **内容目录**：沿用 `content/plants/*.json`；新增 `content/animals/*.json`、`content/insects/*.json`、`content/dinosaurs/*.json`（一物一文件，schema 同植物但 `parts` 单键）。脚本改为读取这 4 个子目录的全部 `*.json`，统一 UPSERT 进同一 `plants` 集合（**集合名与既有 100 植物数据保留不变**）。
+- 验证点扩展：`categories.json` 每条须含 `section` ∈ {plant,animal,insect,dinosaur}；`plants` 的 `parts` 键 ∈ `flower|leaf|fruit|animal|insect|dinosaur`；单键板块条目的单键必须 = 其 `categories` 唯一分类 code；`sort` 为整数校验（必填）。图片路径校验按板块前缀放宽（植物 `/images/plants/{id}-{part}.jpg`；动物 `/images/animals/{id}.jpg`、昆虫 `/images/insects/{id}.jpg`、恐龙 `/images/dinosaurs/{id}.jpg`）。音频资产存在性校验：`name.audioZh`/`audioEn` 存在时对应文件须存在。
 
 ## S9-7. 测试策略（配合 QA-20/QA-21）
 - 更新：`PlantApiIntegrationTest` 的「全部计数」改为**数据驱动**（= content 实际条目数，130）；分类计数 3 → 6。

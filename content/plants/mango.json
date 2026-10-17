@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 58,
   "name": {
     "zh": "芒果",
     "pinyin": "máng guǒ",
     "en": "Mango",
-    "ipa": "/ˈmæŋɡoʊ/"
+    "ipa": "/ˈmæŋɡoʊ/",
+    "audioZh": "/audio/mango-zh.m4a",
+    "audioEn": "/audio/mango-en.m4a"
   },
   "parts": {
     "fruit": {

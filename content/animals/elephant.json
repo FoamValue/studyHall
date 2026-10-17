@@ -1,0 +1,36 @@
+{
+  "id": "elephant",
+  "categories": [
+    "animal"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "大象",
+    "pinyin": "dà xiàng",
+    "en": "Elephant",
+    "ipa": "/ˈelɪfənt/",
+    "audioZh": "/audio/elephant-zh.m4a",
+    "audioEn": "/audio/elephant-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "大象",
+        "pinyin": "dà xiàng",
+        "en": "Elephant",
+        "ipa": "/ˈelɪfənt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/elephant.jpg"
+        }
+      ],
+      "description": "大象灰灰的、大大的，有长长的鼻子和大耳朵。鼻子能喝水、洗澡，还能卷起东西。",
+      "allusion": {
+        "text": "大象用长鼻子吸水，再喷进嘴里，也可以用耳朵扇风降温。",
+        "explain": "大耳朵像大扇子，能帮它赶走热热的感觉。"
+      }
+    }
+  }
+}

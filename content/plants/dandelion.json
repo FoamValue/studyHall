@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 25,
   "name": {
     "zh": "蒲公英",
     "pinyin": "pú gōng yīng",
     "en": "Dandelion",
-    "ipa": "/ˈdændɪlaɪən/"
+    "ipa": "/ˈdændɪlaɪən/",
+    "audioZh": "/audio/dandelion-zh.m4a",
+    "audioEn": "/audio/dandelion-en.m4a"
   },
   "parts": {
     "flower": {

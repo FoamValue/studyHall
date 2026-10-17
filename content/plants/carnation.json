@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 13,
   "name": {
     "zh": "康乃馨",
     "pinyin": "kāng nǎi xīn",
     "en": "Carnation",
-    "ipa": "/kɑːrˈneɪʃn/"
+    "ipa": "/kɑːrˈneɪʃn/",
+    "audioZh": "/audio/carnation-zh.m4a",
+    "audioEn": "/audio/carnation-en.m4a"
   },
   "parts": {
     "flower": {

@@ -1,0 +1,36 @@
+{
+  "id": "ladybug",
+  "categories": [
+    "insect"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "瓢虫",
+    "pinyin": "piáo chóng",
+    "en": "Ladybug",
+    "ipa": "/ˈleɪdibʌɡ/",
+    "audioZh": "/audio/ladybug-zh.m4a",
+    "audioEn": "/audio/ladybug-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "瓢虫",
+        "pinyin": "piáo chóng",
+        "en": "Ladybug",
+        "ipa": "/ˈleɪdibʌɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/ladybug.jpg"
+        }
+      ],
+      "description": "瓢虫圆圆小小的，红红的壳上有黑点点。它慢慢爬，也会张开翅膀飞起来。",
+      "allusion": {
+        "text": "瓢虫爱吃害虫，是花园里的小卫士。",
+        "explain": "它帮花草赶走坏虫，花草长得更好。"
+      }
+    }
+  }
+}

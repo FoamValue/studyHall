@@ -21,13 +21,18 @@ import java.util.function.Supplier;
 
 /**
  * 植物/分类查询服务：MongoDB 提供数据，Redis 缓存读结果（TTL 600s 兜底）。
- * 缓存 key 约定：sh:categories、sh:plants:list:{category|all}、sh:plant:{id}（JSON 序列化）。
+ * 缓存 key 约定：sh:categories、sh:plants:list:{category|all}、sh:plants:list:section:{section}、
+ * sh:plant:{id}（JSON 序列化）。
  */
 @Service
 public class PlantService {
 
-    /** 部位固定顺序，部位标签展示与封面回退都依赖此顺序。 */
-    private static final List<String> PART_ORDER = List.of("flower", "leaf", "fruit");
+    /** 部位固定顺序（植物三项在前），部位标签展示与封面回退都依赖此顺序。 */
+    private static final List<String> PART_ORDER =
+            List.of("flower", "leaf", "fruit", "animal", "insect", "dinosaur");
+
+    /** 列表统一排序：sort 升序，其次 id 升序（空缺 sort 由 Mongo 升序排前）。 */
+    private static final Sort LIST_SORT = Sort.by(Sort.Direction.ASC, "sort", "id");
 
     static final String KEY_CATEGORIES = "sh:categories";
     static final String KEY_PLANT_LIST_PREFIX = "sh:plants:list:";
@@ -56,19 +61,36 @@ public class PlantService {
                 () -> categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "order")));
     }
 
-    public List<PlantCard> getPlants(String category) {
-        if (category == null || category.isBlank()) {
-            return cachedList(KEY_PLANT_LIST_PREFIX + "all", PlantCard.class,
-                    () -> plantRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
+    /**
+     * 列表查询：category 优先（二级筛选），否则 section（板块），两者皆空为全部条目（跨板块）。
+     * 合法性校验均放在查缓存之前，非法值不落缓存。
+     */
+    public List<PlantCard> getPlants(String category, String section) {
+        if (category != null && !category.isBlank()) {
+            if (!categoryRepository.existsById(category)) {
+                throw new ApiException(40001,
+                        "没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫或恐龙吧".formatted(category));
+            }
+            return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,
+                    () -> plantRepository.findByCategoriesIn(List.of(category), LIST_SORT)
+                            .stream().map(plant -> toCard(plant, category)).toList());
+        }
+        if (section != null && !section.isBlank()) {
+            // 取该板块下全部分类 code（按 order 升序），无匹配分类即未知板块
+            List<String> codes = categoryRepository.findAll(Sort.by(Sort.Direction.ASC, "order")).stream()
+                    .filter(c -> section.equals(c.section()))
+                    .map(Category::code)
+                    .toList();
+            if (codes.isEmpty()) {
+                throw new ApiException(40002, "没有「%s」这个板块哦".formatted(section));
+            }
+            return cachedList(KEY_PLANT_LIST_PREFIX + "section:" + section, PlantCard.class,
+                    () -> plantRepository.findByCategoriesIn(codes, LIST_SORT)
                             .stream().map(plant -> toCard(plant, null)).toList());
         }
-        // 分类合法性校验放在查缓存之前，非法分类不落缓存
-        if (!categoryRepository.existsById(category)) {
-            throw new ApiException(40001, "没有「%s」这个分类哦，试试花朵、树叶或果实吧".formatted(category));
-        }
-        return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,
-                () -> plantRepository.findByCategoriesContains(category)
-                        .stream().map(plant -> toCard(plant, category)).toList());
+        return cachedList(KEY_PLANT_LIST_PREFIX + "all", PlantCard.class,
+                () -> plantRepository.findAll(LIST_SORT)
+                        .stream().map(plant -> toCard(plant, null)).toList());
     }
 
     public Plant getPlant(String id) {
@@ -95,8 +117,8 @@ public class PlantService {
     }
 
     /**
-     * 封面：请求带分类时优先取该分类对应部位的首图，缺失再按 flower → leaf → fruit 回退；
-     * 未指定分类（全部列表）保持原回退顺序。
+     * 封面：请求带分类时优先取该分类对应部位的首图，缺失再按 PART_ORDER 回退；
+     * 未指定分类（全部/板块列表）保持 PART_ORDER 顺序（单图板块条目取自身单图）。
      */
     private String coverImage(Plant plant, String category) {
         if (plant.parts() == null) {

@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 98,
   "name": {
     "zh": "睡莲",
     "pinyin": "shuì lián",
     "en": "Water Lily",
-    "ipa": "/ˈwɔːtər ˈlɪli/"
+    "ipa": "/ˈwɔːtər ˈlɪli/",
+    "audioZh": "/audio/water-lily-zh.m4a",
+    "audioEn": "/audio/water-lily-en.m4a"
   },
   "parts": {
     "flower": {

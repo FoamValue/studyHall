@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 64,
   "name": {
     "zh": "桑葚",
     "pinyin": "sāng shèn",
     "en": "Mulberry",
-    "ipa": "/ˈmʌlberi/"
+    "ipa": "/ˈmʌlberi/",
+    "audioZh": "/audio/mulberry-zh.m4a",
+    "audioEn": "/audio/mulberry-en.m4a"
   },
   "parts": {
     "fruit": {

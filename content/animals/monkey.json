@@ -1,0 +1,36 @@
+{
+  "id": "monkey",
+  "categories": [
+    "animal"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "猴子",
+    "pinyin": "hóu zi",
+    "en": "Monkey",
+    "ipa": "/ˈmʌŋki/",
+    "audioZh": "/audio/monkey-zh.m4a",
+    "audioEn": "/audio/monkey-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "猴子",
+        "pinyin": "hóu zi",
+        "en": "Monkey",
+        "ipa": "/ˈmʌŋki/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/monkey.jpg"
+        }
+      ],
+      "description": "猴子爱爬树，手脚都很灵活，尾巴能帮忙抓住树枝。它们喜欢一群住在一起。",
+      "allusion": {
+        "text": "猴子的尾巴像多了一只手，帮它牢牢抓住树枝不摔下来。",
+        "explain": "尾巴有劲，抓着树枝就能稳住身体。"
+      }
+    }
+  }
+}

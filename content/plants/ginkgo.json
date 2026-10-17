@@ -4,11 +4,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 35,
   "name": {
     "zh": "银杏",
     "pinyin": "yín xìng",
     "en": "Ginkgo",
-    "ipa": "/ˈɡɪŋkoʊ/"
+    "ipa": "/ˈɡɪŋkoʊ/",
+    "audioZh": "/audio/ginkgo-zh.m4a",
+    "audioEn": "/audio/ginkgo-en.m4a"
   },
   "parts": {
     "leaf": {

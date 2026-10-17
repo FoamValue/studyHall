@@ -1,0 +1,36 @@
+{
+  "id": "bee",
+  "categories": [
+    "insect"
+  ],
+  "sort": 2,
+  "name": {
+    "zh": "蜜蜂",
+    "pinyin": "mì fēng",
+    "en": "Bee",
+    "ipa": "/biː/",
+    "audioZh": "/audio/bee-zh.m4a",
+    "audioEn": "/audio/bee-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜜蜂",
+        "pinyin": "mì fēng",
+        "en": "Bee",
+        "ipa": "/biː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/bee.jpg"
+        }
+      ],
+      "description": "蜜蜂黄黄黑黑的，嗡嗡地飞。它采花蜜，还会在蜂巢里酿出甜甜的蜂蜜。",
+      "allusion": {
+        "text": "蜜蜂找到花蜜后，会用跳舞告诉伙伴花在哪里。",
+        "explain": "它跳一跳，伙伴就知道去哪儿采蜜。"
+      }
+    }
+  }
+}

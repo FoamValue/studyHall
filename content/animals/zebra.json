@@ -1,0 +1,36 @@
+{
+  "id": "zebra",
+  "categories": [
+    "animal"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "斑马",
+    "pinyin": "bān mǎ",
+    "en": "Zebra",
+    "ipa": "/ˈzebrə/",
+    "audioZh": "/audio/zebra-zh.m4a",
+    "audioEn": "/audio/zebra-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "斑马",
+        "pinyin": "bān mǎ",
+        "en": "Zebra",
+        "ipa": "/ˈzebrə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/zebra.jpg"
+        }
+      ],
+      "description": "斑马全身黑白相间，一道道条纹像画上去的。它们常常一起在草原上吃草、奔跑。",
+      "allusion": {
+        "text": "斑马的条纹每只都不同，还能让蚊虫不容易叮到它。",
+        "explain": "条纹一闪一闪，蚊虫就看不清啦。"
+      }
+    }
+  }
+}

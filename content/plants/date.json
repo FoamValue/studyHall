@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 26,
   "name": {
     "zh": "椰枣",
     "pinyin": "yē zǎo",
     "en": "Date",
-    "ipa": "/deɪt/"
+    "ipa": "/deɪt/",
+    "audioZh": "/audio/date-zh.m4a",
+    "audioEn": "/audio/date-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -4,11 +4,14 @@
     "leaf",
     "flower"
   ],
+  "sort": 10,
   "name": {
     "zh": "仙人掌",
     "pinyin": "xiān rén zhǎng",
     "en": "Cactus",
-    "ipa": "/ˈkæktəs/"
+    "ipa": "/ˈkæktəs/",
+    "audioZh": "/audio/cactus-zh.m4a",
+    "audioEn": "/audio/cactus-en.m4a"
   },
   "parts": {
     "leaf": {

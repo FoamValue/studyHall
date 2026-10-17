@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 38,
   "name": {
     "zh": "山楂",
     "pinyin": "shān zhā",
     "en": "Hawthorn",
-    "ipa": "/ˈhɔːθɔːrn/"
+    "ipa": "/ˈhɔːθɔːrn/",
+    "audioZh": "/audio/hawthorn-zh.m4a",
+    "audioEn": "/audio/hawthorn-en.m4a"
   },
   "parts": {
     "fruit": {

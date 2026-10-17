@@ -13,12 +13,14 @@
  *   MYSQL_URI   默认 mysql://studyhall:studyhall@localhost:3306/studyhall
  *
  * 行为（幂等，可重复执行）：
- *   1. 读取 content/categories.json 与 content/plants/*.json，先整体校验，不合法立即报错退出；
+ *   1. 读取 content/categories.json 与 content/{plants,animals,insects,dinosaurs}/*.json，
+ *      先整体校验，不合法立即报错退出；
  *   2. 按 _id=code/id UPSERT 进 MongoDB（同 id 覆盖，不产生重复）；
  *   3. SCAN 删除 Redis 中 sh:* 前缀缓存（后端 TTL 600s 兜底）；
- *   4. 确保 MySQL import_log 表存在，并为每个植物文件写入一条 UPSERT 审计记录。
+ *   4. 确保 MySQL import_log 表存在，并为每个条目文件写入一条 UPSERT 审计记录。
  */
 import { readdir, readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { MongoClient } from "mongodb";
@@ -30,7 +32,17 @@ const MONGO_DB = process.env.MONGO_DB ?? "studyhall";
 const REDIS_URI = process.env.REDIS_URI ?? "redis://localhost:6379";
 const MYSQL_URI = process.env.MYSQL_URI ?? "mysql://studyhall:studyhall@localhost:3306/studyhall";
 
-const VALID_PARTS = ["flower", "leaf", "fruit"];
+const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur"];
+const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur"];
+// 单键板块（一物一图）→ 图片目录前缀
+const SINGLE_KEY_IMAGE_DIR = { animal: "animals", insect: "insects", dinosaur: "dinosaurs" };
+// 内容子目录（一物一文件），统一 UPSERT 进 plants 集合
+const CONTENT_DIRS = [
+  { dir: "plants", prefix: "content/plants" },
+  { dir: "animals", prefix: "content/animals" },
+  { dir: "insects", prefix: "content/insects" },
+  { dir: "dinosaurs", prefix: "content/dinosaurs" },
+];
 const REPO_ROOT = path.resolve(import.meta.dirname, "..");
 
 const fail = (msg) => {
@@ -44,35 +56,62 @@ function validateCategory(cat, file) {
   if (!cat.code || typeof cat.code !== "string") err("缺少 code");
   if (!cat.nameZh || !cat.pinyin || !cat.nameEn) err("缺少 nameZh/pinyin/nameEn");
   if (!Number.isInteger(cat.order)) err("order 必须是整数");
+  if (!VALID_SECTIONS.includes(cat.section)) {
+    err(`section 必须属于 ${VALID_SECTIONS.join("/")}，当前是 ${cat.section}`);
+  }
 }
 
-/** 校验植物文档，schema 见 docs/design/backend-design.md §2。 */
+/** 校验条目文档，schema 见 docs/design/backend-design.md §2 与 Sprint 9 S9-6。 */
 function validatePlant(plant, file) {
   const err = (m) => fail(`[校验失败] ${file}: ${m}`);
   if (!plant.id || typeof plant.id !== "string") err("缺少 id");
   if (!Array.isArray(plant.categories) || plant.categories.length === 0) err("categories 不能为空");
+  if (!Number.isInteger(plant.sort)) err("sort 必须是整数");
   if (!plant.name?.zh || !plant.name?.pinyin || !plant.name?.en || !plant.name?.ipa) {
     err("name 缺少 zh/pinyin/en/ipa");
   }
   const partKeys = Object.keys(plant.parts ?? {});
   if (partKeys.length === 0) err("parts 不能为空");
   for (const key of partKeys) {
-    if (!VALID_PARTS.includes(key)) err(`未知部位「${key}」，只允许 flower/leaf/fruit`);
+    if (!VALID_PARTS.includes(key)) {
+      err(`未知部位「${key}」，只允许 ${VALID_PARTS.join("/")}`);
+    }
     const part = plant.parts[key];
     if (!part.name?.zh) err(`parts.${key}.name 缺少 zh`);
     if (!Array.isArray(part.images) || part.images.length === 0) err(`parts.${key}.images 至少 1 张`);
     for (const img of part.images) {
       if (!img.url) err(`parts.${key}.images 缺少 url`);
-      // 图片路径必须与 UI 命名规范一致：/images/plants/{id}-{part}.jpg
-      if (img.type === "photo" && img.url !== `/images/plants/${plant.id}-${key}.jpg`) {
-        err(`parts.${key} 图片路径应为 /images/plants/${plant.id}-${key}.jpg，当前是 ${img.url}`);
+      if (img.type === "photo") {
+        // 图片路径须与 UI 命名规范一致：
+        //   植物 /images/plants/{id}-{part}.jpg；单键板块 /images/{目录名}/{id}.jpg
+        const expected = SINGLE_KEY_IMAGE_DIR[key]
+          ? `/images/${SINGLE_KEY_IMAGE_DIR[key]}/${plant.id}.jpg`
+          : `/images/plants/${plant.id}-${key}.jpg`;
+        if (img.url !== expected) {
+          err(`parts.${key} 图片路径应为 ${expected}，当前是 ${img.url}`);
+        }
       }
     }
     if (part.description === undefined || part.description === "") err(`parts.${key} 缺少 description`);
     if (part.allusion) {
-      for (const field of ["text", "source", "explain"]) {
+      // text/explain 必填（小知识卡片核心）；source 可选（植物典故为出处，其他板块多为无出处）
+      for (const field of ["text", "explain"]) {
         if (!part.allusion[field]) err(`parts.${key}.allusion 缺少 ${field}`);
       }
+    }
+  }
+  // 单键板块：parts 只有一个键且为板块 code 时，该键必须 = categories 的唯一元素
+  if (partKeys.length === 1 && SINGLE_KEY_IMAGE_DIR[partKeys[0]]) {
+    if (plant.categories.length !== 1 || plant.categories[0] !== partKeys[0]) {
+      err(`单键板块条目「${partKeys[0]}」的键必须等于其 categories 唯一元素`);
+    }
+  }
+  // 音频资产存在性：字段存在则对应文件必须存在
+  for (const field of ["audioZh", "audioEn"]) {
+    const rel = plant.name?.[field];
+    if (rel) {
+      const abs = path.join(REPO_ROOT, "frontend/public", rel.replace(/^\//, ""));
+      if (!existsSync(abs)) err(`name.${field} 指向的音频文件不存在：${rel}`);
     }
   }
 }
@@ -83,16 +122,25 @@ async function main() {
   const categoryFiles = categories.map((c) => "content/categories.json");
   categories.forEach((c, i) => validateCategory(c, categoryFiles[i]));
 
-  const plantsDir = path.join(contentDir, "plants");
-  const plantFiles = (await readdir(plantsDir)).filter((f) => f.endsWith(".json")).sort();
-  if (plantFiles.length === 0) fail("content/plants/ 下没有任何植物 JSON");
-  const plants = [];
-  for (const file of plantFiles) {
-    const plant = JSON.parse(await readFile(path.join(plantsDir, file), "utf8"));
-    validatePlant(plant, `content/plants/${file}`);
-    plants.push({ file: `content/plants/${file}`, plant });
+  const entries = [];
+  for (const { dir, prefix } of CONTENT_DIRS) {
+    const fullDir = path.join(contentDir, dir);
+    const files = (await readdir(fullDir)).filter((f) => f.endsWith(".json")).sort();
+    if (files.length === 0) fail(`${prefix}/ 下没有任何 JSON`);
+    for (const file of files) {
+      const plant = JSON.parse(await readFile(path.join(fullDir, file), "utf8"));
+      validatePlant(plant, `${prefix}/${file}`);
+      entries.push({ file: `${prefix}/${file}`, plant });
+    }
   }
-  console.log(`✓ 校验通过：${categories.length} 个分类，${plants.length} 种植物`);
+  const counts = Object.fromEntries(categories.map((c) => [c.code, 0]));
+  for (const { plant } of entries) {
+    for (const c of plant.categories) if (c in counts) counts[c]++;
+  }
+  const countLine = Object.entries(counts).map(([k, v]) => `${k}=${v}`).join(" ");
+  console.log(
+    `✓ 校验通过：分类 ${categories.length} 个（${categories.map((c) => c.code).join("/")}），条目 ${entries.length} 个；total=${entries.length} ${countLine}`,
+  );
 
   // ---- 1. MongoDB UPSERT（幂等：同 id 覆盖） ----
   const mongo = new MongoClient(MONGO_URI);
@@ -104,12 +152,12 @@ async function main() {
       delete doc.code;
       await db.collection("categories").replaceOne({ _id: doc._id }, doc, { upsert: true });
     }
-    for (const { plant } of plants) {
+    for (const { plant } of entries) {
       const doc = { ...plant, _id: plant.id };
       delete doc.id;
       await db.collection("plants").replaceOne({ _id: doc._id }, doc, { upsert: true });
     }
-    console.log(`✓ MongoDB ${MONGO_DB}：分类 ${categories.length} 条、植物 ${plants.length} 条 UPSERT 完成`);
+    console.log(`✓ MongoDB ${MONGO_DB}：分类 ${categories.length} 条、条目 ${entries.length} 条 UPSERT 完成`);
   } finally {
     await mongo.close();
   }
@@ -143,18 +191,18 @@ async function main() {
         action VARCHAR(16) NOT NULL,
         imported_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
       )`);
-    for (const { file, plant } of plants) {
+    for (const { file, plant } of entries) {
       await conn.query(
         "INSERT INTO import_log (source_file, plant_id, action) VALUES (?, ?, ?)",
         [file, plant.id, "UPSERT"],
       );
     }
-    console.log(`✓ MySQL：写入 import_log ${plants.length} 条`);
+    console.log(`✓ MySQL：写入 import_log ${entries.length} 条`);
   } finally {
     await conn.end();
   }
 
-  console.log(`✅ 导入完成：${plants.length} 种植物已就绪`);
+  console.log(`✅ 导入完成：${entries.length} 个条目已就绪`);
 }
 
 main().catch((e) => fail(`导入失败：${e.message}`));

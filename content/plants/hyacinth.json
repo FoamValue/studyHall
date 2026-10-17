@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 41,
   "name": {
     "zh": "风信子",
     "pinyin": "fēng xìn zi",
     "en": "Hyacinth",
-    "ipa": "/ˈhaɪəsɪnθ/"
+    "ipa": "/ˈhaɪəsɪnθ/",
+    "audioZh": "/audio/hyacinth-zh.m4a",
+    "audioEn": "/audio/hyacinth-en.m4a"
   },
   "parts": {
     "flower": {

@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 56,
   "name": {
     "zh": "荔枝",
     "pinyin": "lì zhī",
     "en": "Lychee",
-    "ipa": "/ˈliːtʃiː/"
+    "ipa": "/ˈliːtʃiː/",
+    "audioZh": "/audio/lychee-zh.m4a",
+    "audioEn": "/audio/lychee-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -419,7 +419,7 @@ setPart(preferred || ordered[0] || null);
 - 新增常量：`SECTIONS = [{code:'plant',label:'植物'},{code:'animal',label:'动物'},{code:'insect',label:'昆虫'},{code:'dinosaur',label:'恐龙'}]`（板块固定顺序）。
 - `HomePage` 状态：`section`（默认 `'plant'`）+ 既有 `category`。
 - 新增 `SectionNav` 组件（可内联于 HomePage）：渲染 4 个板块按钮，复用 `.filter-btn`，`role="group" aria-label="板块导航"`，类名 `.section-nav`。
-- 二级筛选：仅当 `section === 'plant'` 时渲染既有 `CategoryFilter`（全部/花朵/树叶/果实）；切换板块时 `setCategory('all')`（植物）或置为板块单一分类。
+- 二级筛选：仅当 `section === 'plant'` 时渲染既有 `CategoryFilter`；**传入的分类须先按板块过滤**——`plantCategories = categories.filter(c => c.section === 'plant')`（否则 `/api/categories` 新增的 3 个板块分类会混进筛选条，出现 7 钮）。切换板块时 `setCategory('all')`（植物）或置为板块单一分类。
 - 请求策略（`api/client.js` 增 `getPlantsBySection(section)`）：
   - 植物板块：`category === 'all'` → `GET /api/plants?section=plant`；否则 `GET /api/plants?category={category}`。
   - 动物/昆虫/恐龙板块：`GET /api/plants?section={section}`。

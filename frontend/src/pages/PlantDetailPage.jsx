@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { getPlant, getPlants } from '../api/client';
+import { getPlant, getPlants, getPlantsBySection } from '../api/client';
 import usePlantNavigation from '../hooks/usePlantNavigation';
-import useSpeech from '../hooks/useSpeech';
+import useAudio from '../hooks/useAudio';
 import PartSwitcher, { PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
 import AllusionCard from '../components/AllusionCard';
 import SpeakButton from '../components/SpeakButton';
@@ -10,10 +10,14 @@ import SpeakButton from '../components/SpeakButton';
 // 水平滑动触发换株的最小位移（px）
 const SWIPE_THRESHOLD = 60;
 
+// 单图板块部位：动物/昆虫/恐龙条目 parts 恰 1 键且为该板块 code（Sprint 9）
+const SINGLE_IMAGE_KEYS = ['animal', 'insect', 'dinosaur'];
+
 export default function PlantDetailPage() {
   const { id } = useParams();
   const location = useLocation();
-  // 路由 state 携带当前分类与列表快照；深链接进入时兜底为「全部」
+  // 路由 state 携带当前板块/分类与列表快照；深链接进入时兜底为「植物 / 全部」
+  const section = location.state?.section || 'plant';
   const category = location.state?.category || 'all';
 
   const containerRef = useRef(null);
@@ -29,7 +33,7 @@ export default function PlantDetailPage() {
     () => typeof document !== 'undefined' && Boolean(document.fullscreenEnabled)
   );
 
-  // 植物详情：仅首次进入显示加载态；换株时保留上一帧内容，避免白屏
+  // 详情：仅首次进入显示加载态；换株时保留上一帧内容，避免白屏
   useEffect(() => {
     let alive = true;
     getPlant(id)
@@ -57,11 +61,12 @@ export default function PlantDetailPage() {
     };
   }, [id]);
 
-  // 深链接兜底：无路由 state 时按当前分类（缺省「全部」）拉一次列表得到邻居
+  // 深链接兜底：无路由 state 时按当前分类/板块拉一次列表得到邻居
   useEffect(() => {
     if (list) return;
     let alive = true;
-    getPlants(category === 'all' ? undefined : category)
+    const req = category !== 'all' ? getPlants(category) : getPlantsBySection(section);
+    req
       .then((data) => {
         if (alive) setList(data || []);
       })
@@ -71,18 +76,19 @@ export default function PlantDetailPage() {
     return () => {
       alive = false;
     };
-  }, [list, category]);
+  }, [list, category, section]);
 
   const { prevId, nextId, canPrev, canNext, goPrev, goNext } = usePlantNavigation({
     list,
     currentId: id,
     category,
+    section,
   });
 
-  // 语音朗读：只读名称本身（中文名 / 英文名各一个喇叭）
-  const { supported: canSpeak, speakingLang, speak, stop } = useSpeech();
+  // 名称读音：预生成音频（HTMLAudioElement），中/英各一个喇叭
+  const { playingUrl, play, stop } = useAudio();
 
-  // 换株时停止朗读（含浏览器前进 / 后退导致的路由变化），避免残音
+  // 换株时停止播放（含浏览器前进 / 后退导致的路由变化），避免残音
   const didMount = useRef(false);
   useEffect(() => {
     if (!didMount.current) {
@@ -92,15 +98,16 @@ export default function PlantDetailPage() {
     stop();
   }, [id, stop]);
 
-  // 切部位同样停止朗读
+  // 切部位同样停止播放
   const handlePartChange = (nextPart) => {
     stop();
     setPart(nextPart);
   };
 
-  const toggleSpeak = (text, lang) => {
-    if (speakingLang === lang) stop();
-    else speak(text, lang);
+  // 互斥：再点同一喇叭即停止，否则播放该音频
+  const togglePlay = (url) => {
+    if (playingUrl === url) stop();
+    else play(url);
   };
 
   // 键盘 ← / → 换植物（输入控件内忽略）
@@ -123,7 +130,7 @@ export default function PlantDetailPage() {
     return () => window.removeEventListener('keydown', onKey);
   }, [goPrev, goNext]);
 
-  // 系统全屏状态同步（Esc / 退出按钮都会触发）；全屏进出时停止朗读
+  // 系统全屏状态同步（Esc / 退出按钮都会触发）；全屏进出时停止播放
   useEffect(() => {
     const onChange = () => {
       setIsFullscreen(Boolean(document.fullscreenElement));
@@ -208,8 +215,15 @@ export default function PlantDetailPage() {
     );
   }
 
+  const ordered = getOrderedParts(plant.parts);
   const current = plant.parts?.[part];
   if (!current) return null;
+
+  // 单图分支：parts 恰 1 键且为板块部位（动物/昆虫/恐龙）→ 不渲染部位切换与部位名行
+  const isSingleImage = ordered.length === 1 && SINGLE_IMAGE_KEYS.includes(ordered[0]);
+
+  const zhAudio = plant.name.audioZh;
+  const enAudio = plant.name.en ? plant.name.audioEn : null;
 
   return (
     <main
@@ -222,7 +236,7 @@ export default function PlantDetailPage() {
         <Link
           className="back-btn"
           to="/"
-          state={{ category, restoreScroll: true }}
+          state={{ section, category, restoreScroll: true }}
           onClick={stop}
         >
           ← 回花园
@@ -258,12 +272,12 @@ export default function PlantDetailPage() {
           <p className="detail-pinyin">{plant.name.pinyin}</p>
           <div className="detail-name-row">
             <h1 className="detail-zh">{plant.name.zh}</h1>
-            {canSpeak ? (
+            {zhAudio ? (
               <SpeakButton
-                text={plant.name.zh}
+                text={zhAudio}
                 lang="zh"
-                speaking={speakingLang === 'zh'}
-                onToggle={toggleSpeak}
+                speaking={playingUrl === zhAudio}
+                onToggle={togglePlay}
               />
             ) : null}
           </div>
@@ -272,27 +286,32 @@ export default function PlantDetailPage() {
               {plant.name.en}
               {plant.name.ipa ? <span className="detail-ipa">{plant.name.ipa}</span> : null}
             </p>
-            {canSpeak && plant.name.en ? (
+            {enAudio ? (
               <SpeakButton
-                text={plant.name.en}
+                text={enAudio}
                 lang="en"
-                speaking={speakingLang === 'en'}
-                onToggle={toggleSpeak}
+                speaking={playingUrl === enAudio}
+                onToggle={togglePlay}
               />
             ) : null}
           </div>
         </header>
 
-        <PartSwitcher parts={plant.parts} value={part} onChange={handlePartChange} />
+        {isSingleImage ? null : (
+          <PartSwitcher parts={plant.parts} value={part} onChange={handlePartChange} />
+        )}
 
         <div className="detail-main">
           <img
             className="part-img"
             src={current.images?.[0]?.url}
-            alt={`${plant.name.zh}的${PART_LABELS[part]}`}
+            alt={isSingleImage ? plant.name.zh : `${plant.name.zh}的${PART_LABELS[part]}`}
             loading="lazy"
           />
-          <section className="part-content" aria-label={`${PART_LABELS[part]}的内容`}>
+          <section
+            className="part-content"
+            aria-label={isSingleImage ? '说明' : `${PART_LABELS[part]}的内容`}
+          >
             <p className="part-desc">{current.description}</p>
             <AllusionCard allusion={current.allusion} />
           </section>

@@ -1,0 +1,36 @@
+{
+  "id": "spinosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "棘龙",
+    "pinyin": "jí lóng",
+    "en": "Spinosaurus",
+    "ipa": "/ˌspaɪnəˈsɔːrəs/",
+    "audioZh": "/audio/spinosaurus-zh.m4a",
+    "audioEn": "/audio/spinosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "棘龙",
+        "pinyin": "jí lóng",
+        "en": "Spinosaurus",
+        "ipa": "/ˌspaɪnəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/spinosaurus.jpg"
+        }
+      ],
+      "description": "棘龙背上有一排高高的帆状骨板，嘴巴又长又窄，很爱在水边抓鱼吃。",
+      "allusion": {
+        "text": "棘龙背上的大帆也许能帮它散热或者吸引伙伴。",
+        "explain": "大骨帆让它看起来更大更神气。"
+      }
+    }
+  }
+}

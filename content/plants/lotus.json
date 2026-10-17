@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 55,
   "name": {
     "zh": "荷花",
     "pinyin": "hé huā",
     "en": "Lotus",
-    "ipa": "/ˈloʊtəs/"
+    "ipa": "/ˈloʊtəs/",
+    "audioZh": "/audio/lotus-zh.m4a",
+    "audioEn": "/audio/lotus-en.m4a"
   },
   "parts": {
     "flower": {

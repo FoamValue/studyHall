@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 52,
   "name": {
     "zh": "百合",
     "pinyin": "bǎi hé",
     "en": "Lily",
-    "ipa": "/ˈlɪli/"
+    "ipa": "/ˈlɪli/",
+    "audioZh": "/audio/lily-zh.m4a",
+    "audioEn": "/audio/lily-en.m4a"
   },
   "parts": {
     "flower": {

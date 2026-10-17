@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 84,
   "name": {
     "zh": "石榴",
     "pinyin": "shí liu",
     "en": "Pomegranate",
-    "ipa": "/ˈpɑːmɪˌɡrænɪt/"
+    "ipa": "/ˈpɑːmɪˌɡrænɪt/",
+    "audioZh": "/audio/pomegranate-zh.m4a",
+    "audioEn": "/audio/pomegranate-en.m4a"
   },
   "parts": {
     "fruit": {

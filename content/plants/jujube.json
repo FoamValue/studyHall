@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 44,
   "name": {
     "zh": "枣",
     "pinyin": "zǎo",
     "en": "Jujube",
-    "ipa": "/ˈdʒuːdʒuːb/"
+    "ipa": "/ˈdʒuːdʒuːb/",
+    "audioZh": "/audio/jujube-zh.m4a",
+    "audioEn": "/audio/jujube-en.m4a"
   },
   "parts": {
     "fruit": {

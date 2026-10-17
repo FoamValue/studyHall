@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 34,
   "name": {
     "zh": "天竺葵",
     "pinyin": "tiān zhú kuí",
     "en": "Geranium",
-    "ipa": "/dʒəˈreɪniəm/"
+    "ipa": "/dʒəˈreɪniəm/",
+    "audioZh": "/audio/geranium-zh.m4a",
+    "audioEn": "/audio/geranium-en.m4a"
   },
   "parts": {
     "flower": {

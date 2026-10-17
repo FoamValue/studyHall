@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 28,
   "name": {
     "zh": "榴莲",
     "pinyin": "liú lián",
     "en": "Durian",
-    "ipa": "/ˈdʊriən/"
+    "ipa": "/ˈdʊriən/",
+    "audioZh": "/audio/durian-zh.m4a",
+    "audioEn": "/audio/durian-en.m4a"
   },
   "parts": {
     "fruit": {

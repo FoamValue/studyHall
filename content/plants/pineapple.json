@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 81,
   "name": {
     "zh": "菠萝",
     "pinyin": "bō luó",
     "en": "Pineapple",
-    "ipa": "/ˈpaɪnæpəl/"
+    "ipa": "/ˈpaɪnæpəl/",
+    "audioZh": "/audio/pineapple-zh.m4a",
+    "audioEn": "/audio/pineapple-en.m4a"
   },
   "parts": {
     "fruit": {

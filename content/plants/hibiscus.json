@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 39,
   "name": {
     "zh": "芙蓉花",
     "pinyin": "fú róng huā",
     "en": "Hibiscus",
-    "ipa": "/hɪˈbɪskəs/"
+    "ipa": "/hɪˈbɪskəs/",
+    "audioZh": "/audio/hibiscus-zh.m4a",
+    "audioEn": "/audio/hibiscus-en.m4a"
   },
   "parts": {
     "flower": {

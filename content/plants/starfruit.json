@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 90,
   "name": {
     "zh": "杨桃",
     "pinyin": "yáng tao",
     "en": "Starfruit",
-    "ipa": "/ˈstɑːrfruːt/"
+    "ipa": "/ˈstɑːrfruːt/",
+    "audioZh": "/audio/starfruit-zh.m4a",
+    "audioEn": "/audio/starfruit-en.m4a"
   },
   "parts": {
     "fruit": {

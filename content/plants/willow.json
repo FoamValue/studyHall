@@ -3,11 +3,14 @@
   "categories": [
     "leaf"
   ],
+  "sort": 100,
   "name": {
     "zh": "柳树",
     "pinyin": "liǔ shù",
     "en": "Willow",
-    "ipa": "/ˈwɪloʊ/"
+    "ipa": "/ˈwɪloʊ/",
+    "audioZh": "/audio/willow-zh.m4a",
+    "audioEn": "/audio/willow-en.m4a"
   },
   "parts": {
     "leaf": {

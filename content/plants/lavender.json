@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 48,
   "name": {
     "zh": "薰衣草",
     "pinyin": "xūn yī cǎo",
     "en": "Lavender",
-    "ipa": "/ˈlævəndər/"
+    "ipa": "/ˈlævəndər/",
+    "audioZh": "/audio/lavender-zh.m4a",
+    "audioEn": "/audio/lavender-en.m4a"
   },
   "parts": {
     "flower": {

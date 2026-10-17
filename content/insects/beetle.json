@@ -1,0 +1,36 @@
+{
+  "id": "beetle",
+  "categories": [
+    "insect"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "甲虫",
+    "pinyin": "jiǎ chóng",
+    "en": "Beetle",
+    "ipa": "/ˈbiːtl/",
+    "audioZh": "/audio/beetle-zh.m4a",
+    "audioEn": "/audio/beetle-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "甲虫",
+        "pinyin": "jiǎ chóng",
+        "en": "Beetle",
+        "ipa": "/ˈbiːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/beetle.jpg"
+        }
+      ],
+      "description": "甲虫有硬硬的壳，像穿了一件小盔甲。它很会爬，有的头上还长着大角。",
+      "allusion": {
+        "text": "甲虫的硬壳是它的护甲，能保护身体不被咬伤。",
+        "explain": "硬壳像盔甲，帮它挡住危险。"
+      }
+    }
+  }
+}

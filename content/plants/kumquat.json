@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 47,
   "name": {
     "zh": "金桔",
     "pinyin": "jīn jú",
     "en": "Kumquat",
-    "ipa": "/ˈkʌmkwɑːt/"
+    "ipa": "/ˈkʌmkwɑːt/",
+    "audioZh": "/audio/kumquat-zh.m4a",
+    "audioEn": "/audio/kumquat-en.m4a"
   },
   "parts": {
     "fruit": {

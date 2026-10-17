@@ -1,0 +1,36 @@
+{
+  "id": "penguin",
+  "categories": [
+    "animal"
+  ],
+  "sort": 8,
+  "name": {
+    "zh": "企鹅",
+    "pinyin": "qǐ é",
+    "en": "Penguin",
+    "ipa": "/ˈpeŋɡwɪn/",
+    "audioZh": "/audio/penguin-zh.m4a",
+    "audioEn": "/audio/penguin-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "企鹅",
+        "pinyin": "qǐ é",
+        "en": "Penguin",
+        "ipa": "/ˈpeŋɡwɪn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/penguin.jpg"
+        }
+      ],
+      "description": "企鹅穿着黑白两色的衣服，走起路来摇摇摆摆。它不会飞，却能在水里游得很快。",
+      "allusion": {
+        "text": "企鹅住在很冷的地方，会挤在一起互相取暖。",
+        "explain": "挤成一团，大家就都暖和啦。"
+      }
+    }
+  }
+}

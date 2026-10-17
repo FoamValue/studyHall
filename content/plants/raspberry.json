@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 88,
   "name": {
     "zh": "树莓",
     "pinyin": "shù méi",
     "en": "Raspberry",
-    "ipa": "/ˈræzberi/"
+    "ipa": "/ˈræzberi/",
+    "audioZh": "/audio/raspberry-zh.m4a",
+    "audioEn": "/audio/raspberry-en.m4a"
   },
   "parts": {
     "fruit": {

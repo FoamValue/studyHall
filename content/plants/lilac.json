@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 50,
   "name": {
     "zh": "丁香花",
     "pinyin": "dīng xiāng huā",
     "en": "Lilac",
-    "ipa": "/ˈlaɪlək/"
+    "ipa": "/ˈlaɪlək/",
+    "audioZh": "/audio/lilac-zh.m4a",
+    "audioEn": "/audio/lilac-en.m4a"
   },
   "parts": {
     "flower": {

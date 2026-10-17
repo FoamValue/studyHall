@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 37,
   "name": {
     "zh": "葡萄",
     "pinyin": "pú táo",
     "en": "Grape",
-    "ipa": "/ɡreɪp/"
+    "ipa": "/ɡreɪp/",
+    "audioZh": "/audio/grape-zh.m4a",
+    "audioEn": "/audio/grape-en.m4a"
   },
   "parts": {
     "fruit": {

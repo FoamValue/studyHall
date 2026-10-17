@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 2,
   "name": {
     "zh": "苹果",
     "pinyin": "píng guǒ",
     "en": "Apple",
-    "ipa": "/ˈæpl/"
+    "ipa": "/ˈæpl/",
+    "audioZh": "/audio/apple-zh.m4a",
+    "audioEn": "/audio/apple-en.m4a"
   },
   "parts": {
     "flower": {

@@ -1,0 +1,36 @@
+{
+  "id": "parasaurolophus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "副栉龙",
+    "pinyin": "fù zhì lóng",
+    "en": "Parasaurolophus",
+    "ipa": "/ˌpærəsɔːˈrɒləfəs/",
+    "audioZh": "/audio/parasaurolophus-zh.m4a",
+    "audioEn": "/audio/parasaurolophus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "副栉龙",
+        "pinyin": "fù zhì lóng",
+        "en": "Parasaurolophus",
+        "ipa": "/ˌpærəsɔːˈrɒləfəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/parasaurolophus.jpg"
+        }
+      ],
+      "description": "副栉龙头上有一个长长的空心骨管，像戴了一顶高高的帽子，还能发出声响。",
+      "allusion": {
+        "text": "副栉龙头上的长管能发出低沉的声音叫伙伴。",
+        "explain": "它用这个长管子大声喊朋友。"
+      }
+    }
+  }
+}

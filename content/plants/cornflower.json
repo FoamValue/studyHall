@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 21,
   "name": {
     "zh": "矢车菊",
     "pinyin": "shǐ chē jú",
     "en": "Cornflower",
-    "ipa": "/ˈkɔːrnflaʊər/"
+    "ipa": "/ˈkɔːrnflaʊər/",
+    "audioZh": "/audio/cornflower-zh.m4a",
+    "audioEn": "/audio/cornflower-en.m4a"
   },
   "parts": {
     "flower": {

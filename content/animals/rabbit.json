@@ -1,0 +1,36 @@
+{
+  "id": "rabbit",
+  "categories": [
+    "animal"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "兔子",
+    "pinyin": "tù zi",
+    "en": "Rabbit",
+    "ipa": "/ˈræbɪt/",
+    "audioZh": "/audio/rabbit-zh.m4a",
+    "audioEn": "/audio/rabbit-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "兔子",
+        "pinyin": "tù zi",
+        "en": "Rabbit",
+        "ipa": "/ˈræbɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/rabbit.jpg"
+        }
+      ],
+      "description": "兔子有长长的耳朵和短短的尾巴，蹦蹦跳跳跑得飞快。最爱吃青菜和胡萝卜。",
+      "allusion": {
+        "text": "兔子的长耳朵能听远处的声音，还能帮助身体散热。",
+        "explain": "耳朵大，听声音灵，也能凉快一点。"
+      }
+    }
+  }
+}

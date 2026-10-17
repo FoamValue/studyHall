@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 5,
   "name": {
     "zh": "杜鹃花",
     "pinyin": "dù juān huā",
     "en": "Azalea",
-    "ipa": "/əˈzeɪliə/"
+    "ipa": "/əˈzeɪliə/",
+    "audioZh": "/audio/azalea-zh.m4a",
+    "audioEn": "/audio/azalea-en.m4a"
   },
   "parts": {
     "flower": {

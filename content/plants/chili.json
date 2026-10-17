@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 16,
   "name": {
     "zh": "辣椒",
     "pinyin": "là jiāo",
     "en": "Chili",
-    "ipa": "/ˈtʃɪli/"
+    "ipa": "/ˈtʃɪli/",
+    "audioZh": "/audio/chili-zh.m4a",
+    "audioEn": "/audio/chili-en.m4a"
   },
   "parts": {
     "fruit": {

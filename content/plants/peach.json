@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 74,
   "name": {
     "zh": "桃",
     "pinyin": "táo",
     "en": "Peach",
-    "ipa": "/piːtʃ/"
+    "ipa": "/piːtʃ/",
+    "audioZh": "/audio/peach-zh.m4a",
+    "audioEn": "/audio/peach-en.m4a"
   },
   "parts": {
     "flower": {

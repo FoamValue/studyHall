@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 75,
   "name": {
     "zh": "花生",
     "pinyin": "huā shēng",
     "en": "Peanut",
-    "ipa": "/ˈpiːnʌt/"
+    "ipa": "/ˈpiːnʌt/",
+    "audioZh": "/audio/peanut-zh.m4a",
+    "audioEn": "/audio/peanut-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 96,
   "name": {
     "zh": "紫罗兰",
     "pinyin": "zǐ luó lán",
     "en": "Violet",
-    "ipa": "/ˈvaɪələt/"
+    "ipa": "/ˈvaɪələt/",
+    "audioZh": "/audio/violet-zh.m4a",
+    "audioEn": "/audio/violet-en.m4a"
   },
   "parts": {
     "flower": {

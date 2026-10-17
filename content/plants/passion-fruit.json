@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 72,
   "name": {
     "zh": "百香果",
     "pinyin": "bǎi xiāng guǒ",
     "en": "Passion Fruit",
-    "ipa": "/ˈpæʃən fruːt/"
+    "ipa": "/ˈpæʃən fruːt/",
+    "audioZh": "/audio/passion-fruit-zh.m4a",
+    "audioEn": "/audio/passion-fruit-en.m4a"
   },
   "parts": {
     "fruit": {

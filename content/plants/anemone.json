@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 1,
   "name": {
     "zh": "银莲花",
     "pinyin": "yín lián huā",
     "en": "Anemone",
-    "ipa": "/əˈneməni/"
+    "ipa": "/əˈneməni/",
+    "audioZh": "/audio/anemone-zh.m4a",
+    "audioEn": "/audio/anemone-en.m4a"
   },
   "parts": {
     "flower": {

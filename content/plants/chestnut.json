@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 15,
   "name": {
     "zh": "板栗",
     "pinyin": "bǎn lì",
     "en": "Chestnut",
-    "ipa": "/ˈtʃesnʌt/"
+    "ipa": "/ˈtʃesnʌt/",
+    "audioZh": "/audio/chestnut-zh.m4a",
+    "audioEn": "/audio/chestnut-en.m4a"
   },
   "parts": {
     "fruit": {

@@ -4,11 +4,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 80,
   "name": {
     "zh": "松树",
     "pinyin": "sōng shù",
     "en": "Pine",
-    "ipa": "/paɪn/"
+    "ipa": "/paɪn/",
+    "audioZh": "/audio/pine-zh.m4a",
+    "audioEn": "/audio/pine-en.m4a"
   },
   "parts": {
     "leaf": {

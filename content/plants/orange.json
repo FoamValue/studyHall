@@ -5,11 +5,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 67,
   "name": {
     "zh": "橙子",
     "pinyin": "chéng zi",
     "en": "Orange",
-    "ipa": "/ˈɔːrɪndʒ/"
+    "ipa": "/ˈɔːrɪndʒ/",
+    "audioZh": "/audio/orange-zh.m4a",
+    "audioEn": "/audio/orange-en.m4a"
   },
   "parts": {
     "fruit": {

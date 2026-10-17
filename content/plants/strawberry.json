@@ -5,11 +5,14 @@
     "leaf",
     "fruit"
   ],
+  "sort": 91,
   "name": {
     "zh": "草莓",
     "pinyin": "cǎo méi",
     "en": "Strawberry",
-    "ipa": "/ˈstrɔːbəri/"
+    "ipa": "/ˈstrɔːbəri/",
+    "audioZh": "/audio/strawberry-zh.m4a",
+    "audioEn": "/audio/strawberry-en.m4a"
   },
   "parts": {
     "flower": {

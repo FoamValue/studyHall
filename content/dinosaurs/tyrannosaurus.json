@@ -1,0 +1,36 @@
+{
+  "id": "tyrannosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 1,
+  "name": {
+    "zh": "霸王龙",
+    "pinyin": "bà wáng lóng",
+    "en": "Tyrannosaurus",
+    "ipa": "/tɪˌrænəˈsɔːrəs/",
+    "audioZh": "/audio/tyrannosaurus-zh.m4a",
+    "audioEn": "/audio/tyrannosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "霸王龙",
+        "pinyin": "bà wáng lóng",
+        "en": "Tyrannosaurus",
+        "ipa": "/tɪˌrænəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/tyrannosaurus.jpg"
+        }
+      ],
+      "description": "霸王龙是很大的恐龙，牙齿又尖又大，后腿粗壮有力，走起路来咚咚响。",
+      "allusion": {
+        "text": "霸王龙的头很大，牙齿像香蕉那样粗。",
+        "explain": "大牙齿帮它咬住猎物，很厉害。"
+      }
+    }
+  }
+}

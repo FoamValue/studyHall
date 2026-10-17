@@ -1,0 +1,36 @@
+{
+  "id": "diplodocus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "梁龙",
+    "pinyin": "liáng lóng",
+    "en": "Diplodocus",
+    "ipa": "/dɪˈplɒdəkəs/",
+    "audioZh": "/audio/diplodocus-zh.m4a",
+    "audioEn": "/audio/diplodocus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "梁龙",
+        "pinyin": "liáng lóng",
+        "en": "Diplodocus",
+        "ipa": "/dɪˈplɒdəkəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/diplodocus.jpg"
+        }
+      ],
+      "description": "梁龙脖子长长、尾巴长长，四条腿像柱子，身体是恐龙里数一数二长的。",
+      "allusion": {
+        "text": "梁龙用长长的尾巴像鞭子一样甩动来保护自己。",
+        "explain": "长尾巴一甩，就能赶走靠近的敌人。"
+      }
+    }
+  }
+}

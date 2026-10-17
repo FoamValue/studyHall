@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 31,
   "name": {
     "zh": "勿忘我",
     "pinyin": "wù wàng wǒ",
     "en": "Forget-me-not",
-    "ipa": "/fərˈɡet miː nɑːt/"
+    "ipa": "/fərˈɡet miː nɑːt/",
+    "audioZh": "/audio/forget-me-not-zh.m4a",
+    "audioEn": "/audio/forget-me-not-en.m4a"
   },
   "parts": {
     "flower": {

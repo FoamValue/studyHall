@@ -1,0 +1,36 @@
+{
+  "id": "stegosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "剑龙",
+    "pinyin": "jiàn lóng",
+    "en": "Stegosaurus",
+    "ipa": "/ˌsteɡəˈsɔːrəs/",
+    "audioZh": "/audio/stegosaurus-zh.m4a",
+    "audioEn": "/audio/stegosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "剑龙",
+        "pinyin": "jiàn lóng",
+        "en": "Stegosaurus",
+        "ipa": "/ˌsteɡəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/stegosaurus.jpg"
+        }
+      ],
+      "description": "剑龙背上有两排尖尖的骨板，尾巴末端还有尖刺，看起来像穿了一身装备。",
+      "allusion": {
+        "text": "剑龙背上的骨板能帮它调节身体的温度。",
+        "explain": "骨板散热保温，让它一直舒服。"
+      }
+    }
+  }
+}

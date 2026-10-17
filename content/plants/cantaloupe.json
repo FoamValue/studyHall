@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 12,
   "name": {
     "zh": "哈密瓜",
     "pinyin": "hā mì guā",
     "en": "Cantaloupe",
-    "ipa": "/ˈkæntəloʊp/"
+    "ipa": "/ˈkæntəloʊp/",
+    "audioZh": "/audio/cantaloupe-zh.m4a",
+    "audioEn": "/audio/cantaloupe-en.m4a"
   },
   "parts": {
     "fruit": {

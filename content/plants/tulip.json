@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 95,
   "name": {
     "zh": "郁金香",
     "pinyin": "yù jīn xiāng",
     "en": "Tulip",
-    "ipa": "/ˈtuːlɪp/"
+    "ipa": "/ˈtuːlɪp/",
+    "audioZh": "/audio/tulip-zh.m4a",
+    "audioEn": "/audio/tulip-en.m4a"
   },
   "parts": {
     "flower": {

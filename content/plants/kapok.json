@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 45,
   "name": {
     "zh": "木棉花",
     "pinyin": "mù mián huā",
     "en": "Kapok",
-    "ipa": "/ˈkeɪpɑːk/"
+    "ipa": "/ˈkeɪpɑːk/",
+    "audioZh": "/audio/kapok-zh.m4a",
+    "audioEn": "/audio/kapok-en.m4a"
   },
   "parts": {
     "flower": {

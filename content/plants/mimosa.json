@@ -4,11 +4,14 @@
     "leaf",
     "flower"
   ],
+  "sort": 62,
   "name": {
     "zh": "含羞草",
     "pinyin": "hán xiū cǎo",
     "en": "Mimosa",
-    "ipa": "/mɪˈmoʊzə/"
+    "ipa": "/mɪˈmoʊzə/",
+    "audioZh": "/audio/mimosa-zh.m4a",
+    "audioEn": "/audio/mimosa-en.m4a"
   },
   "parts": {
     "leaf": {

@@ -5,11 +5,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 76,
   "name": {
     "zh": "梨",
     "pinyin": "lí",
     "en": "Pear",
-    "ipa": "/per/"
+    "ipa": "/per/",
+    "audioZh": "/audio/pear-zh.m4a",
+    "audioEn": "/audio/pear-en.m4a"
   },
   "parts": {
     "fruit": {

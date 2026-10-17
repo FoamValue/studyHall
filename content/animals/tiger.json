@@ -1,0 +1,36 @@
+{
+  "id": "tiger",
+  "categories": [
+    "animal"
+  ],
+  "sort": 2,
+  "name": {
+    "zh": "老虎",
+    "pinyin": "lǎo hǔ",
+    "en": "Tiger",
+    "ipa": "/ˈtaɪɡər/",
+    "audioZh": "/audio/tiger-zh.m4a",
+    "audioEn": "/audio/tiger-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "老虎",
+        "pinyin": "lǎo hǔ",
+        "en": "Tiger",
+        "ipa": "/ˈtaɪɡər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/tiger.jpg"
+        }
+      ],
+      "description": "老虎全身黄黄的，上面有一道道黑条纹。它是森林里很厉害的大猫，走起路来静悄悄。",
+      "allusion": {
+        "text": "每只老虎的条纹都不一样，就像人的指纹一样独特。",
+        "explain": "条纹帮它藏在草丛里，不容易被发现。"
+      }
+    }
+  }
+}

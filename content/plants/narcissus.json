@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 65,
   "name": {
     "zh": "水仙花",
     "pinyin": "shuǐ xiān huā",
     "en": "Narcissus",
-    "ipa": "/nɑːrˈsɪsəs/"
+    "ipa": "/nɑːrˈsɪsəs/",
+    "audioZh": "/audio/narcissus-zh.m4a",
+    "audioEn": "/audio/narcissus-en.m4a"
   },
   "parts": {
     "flower": {

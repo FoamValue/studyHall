@@ -13,10 +13,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * 测试播种器：直接读取仓库 content/ 下的真实内容文件（categories.json + plants/*.json），
+ * 测试播种器：直接读取仓库 content/ 下的真实内容文件
+ * （categories.json + plants/ + animals/ + insects/ + dinosaurs/ 下的 *.json），
  * 与导入脚本走同一份 schema，顺便验证内容文件本身的合法性。
  */
 final class ContentSeed {
+
+    /** 四个内容子目录（Sprint 9 起：植物 + 动物/昆虫/恐龙试点）。 */
+    private static final List<String> PLANT_DIRS = List.of("plants", "animals", "insects", "dinosaurs");
 
     private ContentSeed() {
     }
@@ -39,13 +43,19 @@ final class ContentSeed {
 
     static List<Plant> loadPlants(ObjectMapper objectMapper) throws IOException {
         List<Plant> plants = new ArrayList<>();
-        try (Stream<Path> files = Files.list(contentDir().resolve("plants"))) {
-            List<Path> jsonFiles = files
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
-                    .sorted()
-                    .toList();
-            for (Path file : jsonFiles) {
-                plants.add(objectMapper.readValue(file.toFile(), Plant.class));
+        for (String dir : PLANT_DIRS) {
+            Path dirPath = contentDir().resolve(dir);
+            if (!Files.isDirectory(dirPath)) {
+                continue;
+            }
+            try (Stream<Path> files = Files.list(dirPath)) {
+                List<Path> jsonFiles = files
+                        .filter(p -> p.getFileName().toString().endsWith(".json"))
+                        .sorted()
+                        .toList();
+                for (Path file : jsonFiles) {
+                    plants.add(objectMapper.readValue(file.toFile(), Plant.class));
+                }
             }
         }
         return plants;

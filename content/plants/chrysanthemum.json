@@ -4,11 +4,14 @@
     "flower",
     "leaf"
   ],
+  "sort": 18,
   "name": {
     "zh": "菊花",
     "pinyin": "jú huā",
     "en": "Chrysanthemum",
-    "ipa": "/krɪˈsænθəməm/"
+    "ipa": "/krɪˈsænθəməm/",
+    "audioZh": "/audio/chrysanthemum-zh.m4a",
+    "audioEn": "/audio/chrysanthemum-en.m4a"
   },
   "parts": {
     "flower": {

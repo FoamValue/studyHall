@@ -4,11 +4,14 @@
     "fruit",
     "leaf"
   ],
+  "sort": 54,
   "name": {
     "zh": "枇杷",
     "pinyin": "pí pa",
     "en": "Loquat",
-    "ipa": "/ˈloʊkwɑːt/"
+    "ipa": "/ˈloʊkwɑːt/",
+    "audioZh": "/audio/loquat-zh.m4a",
+    "audioEn": "/audio/loquat-en.m4a"
   },
   "parts": {
     "fruit": {
