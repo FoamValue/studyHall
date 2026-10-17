@@ -1,0 +1,36 @@
+{
+  "id": "compsognathus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 17,
+  "name": {
+    "zh": "美颌龙",
+    "pinyin": "měi hé lóng",
+    "en": "Compsognathus",
+    "ipa": "/ˌkɒmpsəˈnæθəs/",
+    "audioZh": "/audio/compsognathus-zh.m4a",
+    "audioEn": "/audio/compsognathus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "美颌龙",
+        "pinyin": "měi hé lóng",
+        "en": "Compsognathus",
+        "ipa": "/ˌkɒmpsəˈnæθəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/compsognathus.jpg"
+        }
+      ],
+      "description": "美颌龙是最小的恐龙之一，只比一只鸡大一点点。它身体轻轻的，跑起来飞快，专捉小虫子吃。",
+      "allusion": {
+        "text": "美颌龙小小的，能轻轻跳过小水沟。",
+        "explain": "个子小，跑得快，好躲开大恐龙。"
+      }
+    }
+  }
+}

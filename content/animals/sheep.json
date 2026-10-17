@@ -1,0 +1,36 @@
+{
+  "id": "sheep",
+  "categories": [
+    "animal"
+  ],
+  "sort": 17,
+  "name": {
+    "zh": "绵羊",
+    "pinyin": "mián yáng",
+    "en": "Sheep",
+    "ipa": "/ʃiːp/",
+    "audioZh": "/audio/sheep-zh.m4a",
+    "audioEn": "/audio/sheep-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "绵羊",
+        "pinyin": "mián yáng",
+        "en": "Sheep",
+        "ipa": "/ʃiːp/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/sheep.jpg"
+        }
+      ],
+      "description": "绵羊的毛卷卷的，白白的像一团棉花。它跟着羊群吃草，咩咩地叫个不停。",
+      "allusion": {
+        "text": "绵羊的毛长长了就会被剪下来，做成暖和的毛衣。",
+        "explain": "我们穿的羊毛衣就来自它。"
+      }
+    }
+  }
+}

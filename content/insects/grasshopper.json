@@ -1,0 +1,36 @@
+{
+  "id": "grasshopper",
+  "categories": [
+    "insect"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "蚱蜢",
+    "pinyin": "zhà měng",
+    "en": "Grasshopper",
+    "ipa": "/ˈɡræshɒpə(r)/",
+    "audioZh": "/audio/grasshopper-zh.m4a",
+    "audioEn": "/audio/grasshopper-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚱蜢",
+        "pinyin": "zhà měng",
+        "en": "Grasshopper",
+        "ipa": "/ˈɡræshɒpə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/grasshopper.jpg"
+        }
+      ],
+      "description": "蚱蜢住在大大的草丛里，一蹦就能跳很远。它啃嫩嫩的草叶，腿特别有力。",
+      "allusion": {
+        "text": "蚱蜢跳的时候，会把后腿一蹬，像小弹簧。",
+        "explain": "它的后腿又粗又有劲，跳得高。"
+      }
+    }
+  }
+}

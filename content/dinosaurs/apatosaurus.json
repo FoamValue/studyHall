@@ -1,0 +1,36 @@
+{
+  "id": "apatosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "迷惑龙",
+    "pinyin": "mí huò lóng",
+    "en": "Apatosaurus",
+    "ipa": "/əˌpætəˈsɔːrəs/",
+    "audioZh": "/audio/apatosaurus-zh.m4a",
+    "audioEn": "/audio/apatosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "迷惑龙",
+        "pinyin": "mí huò lóng",
+        "en": "Apatosaurus",
+        "ipa": "/əˌpætəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/apatosaurus.jpg"
+        }
+      ],
+      "description": "迷惑龙有长长的脖子，脑袋小小的，身体像房子一样大。它爱吃树上的叶子，每天要吃好多好多。",
+      "allusion": {
+        "text": "迷惑龙的脖子像长长的吊桥。",
+        "explain": "长脖子够得到高处的树叶。"
+      }
+    }
+  }
+}

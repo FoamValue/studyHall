@@ -1,0 +1,36 @@
+{
+  "id": "spider",
+  "categories": [
+    "insect"
+  ],
+  "sort": 23,
+  "name": {
+    "zh": "蜘蛛",
+    "pinyin": "zhī zhū",
+    "en": "Spider",
+    "ipa": "/ˈspaɪdə(r)/",
+    "audioZh": "/audio/spider-zh.m4a",
+    "audioEn": "/audio/spider-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜘蛛",
+        "pinyin": "zhī zhū",
+        "en": "Spider",
+        "ipa": "/ˈspaɪdə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/spider.jpg"
+        }
+      ],
+      "description": "蜘蛛有八条腿，会吐丝织出漂亮的网。它守在网边，等小虫子飞过来。",
+      "allusion": {
+        "text": "蜘蛛不是昆虫哦，它有八条腿，昆虫只有六条。",
+        "explain": "它用蛛丝织网，抓小飞虫。"
+      }
+    }
+  }
+}

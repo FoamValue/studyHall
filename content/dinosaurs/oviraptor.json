@@ -1,0 +1,36 @@
+{
+  "id": "oviraptor",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "窃蛋龙",
+    "pinyin": "qiè dàn lóng",
+    "en": "Oviraptor",
+    "ipa": "/ˈəʊvɪræptə(r)/",
+    "audioZh": "/audio/oviraptor-zh.m4a",
+    "audioEn": "/audio/oviraptor-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "窃蛋龙",
+        "pinyin": "qiè dàn lóng",
+        "en": "Oviraptor",
+        "ipa": "/ˈəʊvɪræptə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/oviraptor.jpg"
+        }
+      ],
+      "description": "窃蛋龙头顶上有一个漂亮的骨头小帽子，嘴巴像鸟喙。它最爱吃蛋，也会把蛋保护在自己身边。",
+      "allusion": {
+        "text": "窃蛋龙的头冠像一顶小花帽。",
+        "explain": "它其实最爱吃蛋，也护着自己的蛋。"
+      }
+    }
+  }
+}

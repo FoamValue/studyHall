@@ -1,0 +1,36 @@
+{
+  "id": "horse",
+  "categories": [
+    "animal"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "马",
+    "pinyin": "mǎ",
+    "en": "Horse",
+    "ipa": "/hɔːs/",
+    "audioZh": "/audio/horse-zh.m4a",
+    "audioEn": "/audio/horse-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "马",
+        "pinyin": "mǎ",
+        "en": "Horse",
+        "ipa": "/hɔːs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/horse.jpg"
+        }
+      ],
+      "description": "马有长长的鬃毛和有力的腿，跑起来非常快。它喜欢在草地上自由自在地奔跑。",
+      "allusion": {
+        "text": "马站着也能睡着，只要低下头打个盹就行。",
+        "explain": "它的腿能一直站着不累。"
+      }
+    }
+  }
+}

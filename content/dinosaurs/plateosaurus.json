@@ -1,0 +1,36 @@
+{
+  "id": "plateosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 29,
+  "name": {
+    "zh": "板龙",
+    "pinyin": "bǎn lóng",
+    "en": "Plateosaurus",
+    "ipa": "/ˌplætiəˈsɔːrəs/",
+    "audioZh": "/audio/plateosaurus-zh.m4a",
+    "audioEn": "/audio/plateosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "板龙",
+        "pinyin": "bǎn lóng",
+        "en": "Plateosaurus",
+        "ipa": "/ˌplætiəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/plateosaurus.jpg"
+        }
+      ],
+      "description": "板龙是很早出现的恐龙，脖子长长的，身体胖胖的。它用四条腿走路，能站起来吃高高的树叶。",
+      "allusion": {
+        "text": "板龙能靠后腿站起来够树叶。",
+        "explain": "它的肚子圆圆的，吃得很多。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "megalosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 24,
+  "name": {
+    "zh": "巨齿龙",
+    "pinyin": "jù chǐ lóng",
+    "en": "Megalosaurus",
+    "ipa": "/ˌmeɡələˈsɔːrəs/",
+    "audioZh": "/audio/megalosaurus-zh.m4a",
+    "audioEn": "/audio/megalosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "巨齿龙",
+        "pinyin": "jù chǐ lóng",
+        "en": "Megalosaurus",
+        "ipa": "/ˌmeɡələˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/megalosaurus.jpg"
+        }
+      ],
+      "description": "巨齿龙有强壮的大嘴和好多尖牙，专门抓大恐龙吃。它是很早以前就被人们发现的恐龙之一。",
+      "allusion": {
+        "text": "巨齿龙的大嘴一张，尖牙像一排小铲子。",
+        "explain": "它专门咬大块大块的肉。"
+      }
+    }
+  }
+}

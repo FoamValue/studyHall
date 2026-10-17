@@ -1,0 +1,36 @@
+{
+  "id": "centipede",
+  "categories": [
+    "insect"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "蜈蚣",
+    "pinyin": "wú gōng",
+    "en": "Centipede",
+    "ipa": "/ˈsentɪpiːd/",
+    "audioZh": "/audio/centipede-zh.m4a",
+    "audioEn": "/audio/centipede-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜈蚣",
+        "pinyin": "wú gōng",
+        "en": "Centipede",
+        "ipa": "/ˈsentɪpiːd/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/centipede.jpg"
+        }
+      ],
+      "description": "蜈蚣有好多好多条腿，走路像波浪一样。它躲在石头下面，晚上才出来。",
+      "allusion": {
+        "text": "蜈蚣的腿特别多，一对一对往前走着。",
+        "explain": "每对腿都一起动，走得又快又稳。"
+      }
+    }
+  }
+}

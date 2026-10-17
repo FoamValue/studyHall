@@ -1,0 +1,36 @@
+{
+  "id": "elasmosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 20,
+  "name": {
+    "zh": "薄片龙",
+    "pinyin": "báo piàn lóng",
+    "en": "Elasmosaurus",
+    "ipa": "/ɪˌlæzməˈsɔːrəs/",
+    "audioZh": "/audio/elasmosaurus-zh.m4a",
+    "audioEn": "/audio/elasmosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "薄片龙",
+        "pinyin": "báo piàn lóng",
+        "en": "Elasmosaurus",
+        "ipa": "/ɪˌlæzməˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/elasmosaurus.jpg"
+        }
+      ],
+      "description": "薄片龙住在海里，脖子很长很长，像一条大蛇。它用四只像桨一样的鳍游泳，专门抓鱼和贝壳吃。",
+      "allusion": {
+        "text": "薄片龙的脖子很长，能伸到海底找吃的。",
+        "explain": "长脖子像小吊车一样灵活。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "iguanodon",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 22,
+  "name": {
+    "zh": "禽龙",
+    "pinyin": "qín lóng",
+    "en": "Iguanodon",
+    "ipa": "/ɪˈɡwɑːnədɒn/",
+    "audioZh": "/audio/iguanodon-zh.m4a",
+    "audioEn": "/audio/iguanodon-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "禽龙",
+        "pinyin": "qín lóng",
+        "en": "Iguanodon",
+        "ipa": "/ɪˈɡwɑːnədɒn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/iguanodon.jpg"
+        }
+      ],
+      "description": "禽龙是吃植物的大恐龙，嘴巴像鸟喙，能咬下树叶。它的大拇指上有一根尖刺，可以保护自己。",
+      "allusion": {
+        "text": "禽龙的大拇指尖刺像小钉子。",
+        "explain": "尖刺帮它保护自己，也能钩树叶。"
+      }
+    }
+  }
+}

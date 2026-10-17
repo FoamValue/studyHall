@@ -1,0 +1,36 @@
+{
+  "id": "gallimimus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 21,
+  "name": {
+    "zh": "似鸡龙",
+    "pinyin": "sì jī lóng",
+    "en": "Gallimimus",
+    "ipa": "/ˌɡælɪˈmaɪməs/",
+    "audioZh": "/audio/gallimimus-zh.m4a",
+    "audioEn": "/audio/gallimimus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "似鸡龙",
+        "pinyin": "sì jī lóng",
+        "en": "Gallimimus",
+        "ipa": "/ˌɡælɪˈmaɪməs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/gallimimus.jpg"
+        }
+      ],
+      "description": "似鸡龙长得像一只大鸵鸟，脖子细细的，腿长长的。它不会飞，可是跑得特别快，喜欢成群一起跑。",
+      "allusion": {
+        "text": "似鸡龙跑起来像会飞的大鸟。",
+        "explain": "长腿帮它跑得又快又稳。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "cat",
+  "categories": [
+    "animal"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "猫",
+    "pinyin": "māo",
+    "en": "Cat",
+    "ipa": "/kæt/",
+    "audioZh": "/audio/cat-zh.m4a",
+    "audioEn": "/audio/cat-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "猫",
+        "pinyin": "māo",
+        "en": "Cat",
+        "ipa": "/kæt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/cat.jpg"
+        }
+      ],
+      "description": "猫有软软的毛和尖尖的小爪子。它喜欢白天晒太阳，晚上捉老鼠。",
+      "allusion": {
+        "text": "猫的胡须能帮它量一量，前面的洞能不能钻过去。",
+        "explain": "胡子就像一把小尺子。"
+      }
+    }
+  }
+}

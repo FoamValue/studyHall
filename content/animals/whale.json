@@ -1,0 +1,36 @@
+{
+  "id": "whale",
+  "categories": [
+    "animal"
+  ],
+  "sort": 30,
+  "name": {
+    "zh": "鲸鱼",
+    "pinyin": "jīng yú",
+    "en": "Whale",
+    "ipa": "/weɪl/",
+    "audioZh": "/audio/whale-zh.m4a",
+    "audioEn": "/audio/whale-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鲸鱼",
+        "pinyin": "jīng yú",
+        "en": "Whale",
+        "ipa": "/weɪl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/whale.jpg"
+        }
+      ],
+      "description": "鲸鱼是世界上最大的动物，住在又深又蓝的大海里。它会喷出高高的水柱子。",
+      "allusion": {
+        "text": "鲸鱼虽然住在海里，却不是鱼，它要用鼻子呼吸空气。",
+        "explain": "所以它常常浮上来换气。"
+      }
+    }
+  }
+}

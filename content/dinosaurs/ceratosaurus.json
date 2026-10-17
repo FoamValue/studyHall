@@ -1,0 +1,36 @@
+{
+  "id": "ceratosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 16,
+  "name": {
+    "zh": "角鼻龙",
+    "pinyin": "jiǎo bí lóng",
+    "en": "Ceratosaurus",
+    "ipa": "/ˌserəˈtɔːrəs/",
+    "audioZh": "/audio/ceratosaurus-zh.m4a",
+    "audioEn": "/audio/ceratosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "角鼻龙",
+        "pinyin": "jiǎo bí lóng",
+        "en": "Ceratosaurus",
+        "ipa": "/ˌserəˈtɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/ceratosaurus.jpg"
+        }
+      ],
+      "description": "角鼻龙鼻子上有一个小角，眼睛上还有两个小角。它个子不大，喜欢在水边追着小恐龙跑。",
+      "allusion": {
+        "text": "角鼻龙鼻尖上有一个小角，很神气。",
+        "explain": "小角是它打架时的武器。"
+      }
+    }
+  }
+}

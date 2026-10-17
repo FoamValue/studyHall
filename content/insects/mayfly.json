@@ -1,0 +1,36 @@
+{
+  "id": "mayfly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 29,
+  "name": {
+    "zh": "蜉蝣",
+    "pinyin": "fú yóu",
+    "en": "Mayfly",
+    "ipa": "/ˈmeɪflaɪ/",
+    "audioZh": "/audio/mayfly-zh.m4a",
+    "audioEn": "/audio/mayfly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜉蝣",
+        "pinyin": "fú yóu",
+        "en": "Mayfly",
+        "ipa": "/ˈmeɪflaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/mayfly.jpg"
+        }
+      ],
+      "description": "蜉蝣的翅膀薄薄的，像一层小纱。它只活短短几天，在水边飞来飞去。",
+      "allusion": {
+        "text": "蜉蝣长大只能活一两天，忙着找朋友生宝宝。",
+        "explain": "所以它从来不休息。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "pachycephalosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 27,
+  "name": {
+    "zh": "肿头龙",
+    "pinyin": "zhǒng tóu lóng",
+    "en": "Pachycephalosaurus",
+    "ipa": "/ˌpækɪˌsefələˈsɔːrə/",
+    "audioZh": "/audio/pachycephalosaurus-zh.m4a",
+    "audioEn": "/audio/pachycephalosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "肿头龙",
+        "pinyin": "zhǒng tóu lóng",
+        "en": "Pachycephalosaurus",
+        "ipa": "/ˌpækɪˌsefələˈsɔːrə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/pachycephalosaurus.jpg"
+        }
+      ],
+      "description": "肿头龙的头顶又厚又硬，鼓鼓的像戴了一个大头盔。它用两条腿走路，喜欢用头顶轻轻顶朋友玩。",
+      "allusion": {
+        "text": "肿头龙的头顶硬得像大石头。",
+        "explain": "它用头顶轻轻碰一碰比力气。"
+      }
+    }
+  }
+}

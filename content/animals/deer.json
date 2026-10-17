@@ -1,0 +1,36 @@
+{
+  "id": "deer",
+  "categories": [
+    "animal"
+  ],
+  "sort": 23,
+  "name": {
+    "zh": "鹿",
+    "pinyin": "lù",
+    "en": "Deer",
+    "ipa": "/dɪə(r)/",
+    "audioZh": "/audio/deer-zh.m4a",
+    "audioEn": "/audio/deer-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鹿",
+        "pinyin": "lù",
+        "en": "Deer",
+        "ipa": "/dɪə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/deer.jpg"
+        }
+      ],
+      "description": "小鹿的腿细细长长，头上长了漂亮的鹿角。它跑起来很轻快，喜欢住在树林里。",
+      "allusion": {
+        "text": "鹿角每年都会掉下来，然后长出新的、更大的鹿角。",
+        "explain": "就像换了一顶新帽子。"
+      }
+    }
+  }
+}

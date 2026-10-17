@@ -1,0 +1,36 @@
+{
+  "id": "chicken",
+  "categories": [
+    "animal"
+  ],
+  "sort": 19,
+  "name": {
+    "zh": "鸡",
+    "pinyin": "jī",
+    "en": "Chicken",
+    "ipa": "/ˈtʃɪkɪn/",
+    "audioZh": "/audio/chicken-zh.m4a",
+    "audioEn": "/audio/chicken-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鸡",
+        "pinyin": "jī",
+        "en": "Chicken",
+        "ipa": "/ˈtʃɪkɪn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/chicken.jpg"
+        }
+      ],
+      "description": "小鸡有黄色绒毛和尖尖的嘴巴。它用爪子刨土找虫子，咯咯咯地叫。",
+      "allusion": {
+        "text": "母鸡下蛋以后会咯咯地叫，好像在告诉大家这个好消息。",
+        "explain": "那是在报告它下蛋啦。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "styracosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 30,
+  "name": {
+    "zh": "戟龙",
+    "pinyin": "jǐ lóng",
+    "en": "Styracosaurus",
+    "ipa": "/ˌstaɪrəkəˈsɔːrəs/",
+    "audioZh": "/audio/styracosaurus-zh.m4a",
+    "audioEn": "/audio/styracosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "戟龙",
+        "pinyin": "jǐ lóng",
+        "en": "Styracosaurus",
+        "ipa": "/ˌstaɪrəkəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/styracosaurus.jpg"
+        }
+      ],
+      "description": "戟龙鼻子上有一根大角，头上还长着好几根尖尖的角。它用角吓跑坏蛋，最爱吃低低的植物。",
+      "allusion": {
+        "text": "戟龙头上的角像一排小尖矛。",
+        "explain": "很多角一起，看着就很威风。"
+      }
+    }
+  }
+}

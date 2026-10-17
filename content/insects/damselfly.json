@@ -1,0 +1,36 @@
+{
+  "id": "damselfly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 20,
+  "name": {
+    "zh": "豆娘",
+    "pinyin": "dòu niáng",
+    "en": "Damselfly",
+    "ipa": "/ˈdæmzlflaɪ/",
+    "audioZh": "/audio/damselfly-zh.m4a",
+    "audioEn": "/audio/damselfly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "豆娘",
+        "pinyin": "dòu niáng",
+        "en": "Damselfly",
+        "ipa": "/ˈdæmzlflaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/damselfly.jpg"
+        }
+      ],
+      "description": "豆娘像细细的小蜻蜓，停在水边的草上。它翅膀慢慢扇动，飞起来轻轻的。",
+      "allusion": {
+        "text": "豆娘休息时，会把翅膀合在背上，像小帆船。",
+        "explain": "它和小蜻蜓长得像，可翅膀不一样。"
+      }
+    }
+  }
+}

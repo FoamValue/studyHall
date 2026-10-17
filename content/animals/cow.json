@@ -1,0 +1,36 @@
+{
+  "id": "cow",
+  "categories": [
+    "animal"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "奶牛",
+    "pinyin": "nǎi niú",
+    "en": "Cow",
+    "ipa": "/kaʊ/",
+    "audioZh": "/audio/cow-zh.m4a",
+    "audioEn": "/audio/cow-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "奶牛",
+        "pinyin": "nǎi niú",
+        "en": "Cow",
+        "ipa": "/kaʊ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/cow.jpg"
+        }
+      ],
+      "description": "奶牛的个子很大，身上有黑白花纹。它每天吃青草，能挤出香香的牛奶。",
+      "allusion": {
+        "text": "奶牛有好几个胃，吃下去的草会慢慢再嚼一遍。",
+        "explain": "它们吃东西总是细嚼慢咽。"
+      }
+    }
+  }
+}

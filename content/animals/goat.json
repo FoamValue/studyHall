@@ -1,0 +1,36 @@
+{
+  "id": "goat",
+  "categories": [
+    "animal"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "山羊",
+    "pinyin": "shān yáng",
+    "en": "Goat",
+    "ipa": "/ɡəʊt/",
+    "audioZh": "/audio/goat-zh.m4a",
+    "audioEn": "/audio/goat-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "山羊",
+        "pinyin": "shān yáng",
+        "en": "Goat",
+        "ipa": "/ɡəʊt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/goat.jpg"
+        }
+      ],
+      "description": "山羊下巴上有一小撮胡子，很会爬高高的山坡。它喜欢吃嫩嫩的树叶和青草。",
+      "allusion": {
+        "text": "山羊很会爬山，再陡的石头也能稳稳地走上去。",
+        "explain": "它的蹄子像小吸盘一样。"
+      }
+    }
+  }
+}

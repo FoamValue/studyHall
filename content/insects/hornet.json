@@ -1,0 +1,36 @@
+{
+  "id": "hornet",
+  "categories": [
+    "insect"
+  ],
+  "sort": 30,
+  "name": {
+    "zh": "大胡蜂",
+    "pinyin": "dà hú fēng",
+    "en": "Hornet",
+    "ipa": "/ˈhɔːnɪt/",
+    "audioZh": "/audio/hornet-zh.m4a",
+    "audioEn": "/audio/hornet-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "大胡蜂",
+        "pinyin": "dà hú fēng",
+        "en": "Hornet",
+        "ipa": "/ˈhɔːnɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/hornet.jpg"
+        }
+      ],
+      "description": "大胡蜂个子很大，身上黄黑分明。它会做纸一样的窝，要小心别惊动它。",
+      "allusion": {
+        "text": "大胡蜂用嘴把木头嚼碎，做成纸一样的窝。",
+        "explain": "它的窝挂在树上，像个大纸球。"
+      }
+    }
+  }
+}

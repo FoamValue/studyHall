@@ -1,0 +1,36 @@
+{
+  "id": "fox",
+  "categories": [
+    "animal"
+  ],
+  "sort": 22,
+  "name": {
+    "zh": "狐狸",
+    "pinyin": "hú li",
+    "en": "Fox",
+    "ipa": "/fɒks/",
+    "audioZh": "/audio/fox-zh.m4a",
+    "audioEn": "/audio/fox-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "狐狸",
+        "pinyin": "hú li",
+        "en": "Fox",
+        "ipa": "/fɒks/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/fox.jpg"
+        }
+      ],
+      "description": "狐狸有尖尖的嘴巴和一条蓬松的大尾巴。它很机灵，跑得快跑得轻。",
+      "allusion": {
+        "text": "狐狸的大尾巴很暖和，睡觉时能当围巾把鼻子围起来。",
+        "explain": "这样冬天就不怕冷啦。"
+      }
+    }
+  }
+}

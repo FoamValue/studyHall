@@ -1,0 +1,36 @@
+{
+  "id": "kangaroo",
+  "categories": [
+    "animal"
+  ],
+  "sort": 27,
+  "name": {
+    "zh": "袋鼠",
+    "pinyin": "dài shǔ",
+    "en": "Kangaroo",
+    "ipa": "/ˌkæŋɡəˈruː/",
+    "audioZh": "/audio/kangaroo-zh.m4a",
+    "audioEn": "/audio/kangaroo-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "袋鼠",
+        "pinyin": "dài shǔ",
+        "en": "Kangaroo",
+        "ipa": "/ˌkæŋɡəˈruː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/kangaroo.jpg"
+        }
+      ],
+      "description": "袋鼠用两条后腿跳着走路，跳得又高又远。它的肚子上有个口袋，装着小宝宝。",
+      "allusion": {
+        "text": "袋鼠妈妈的口袋里装着宝宝，宝宝会在里面待好几个月。",
+        "explain": "饿了就钻出小脑袋吃东西。"
+      }
+    }
+  }
+}

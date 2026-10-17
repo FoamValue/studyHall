@@ -1,0 +1,36 @@
+{
+  "id": "aphid",
+  "categories": [
+    "insect"
+  ],
+  "sort": 27,
+  "name": {
+    "zh": "蚜虫",
+    "pinyin": "yá chóng",
+    "en": "Aphid",
+    "ipa": "/ˈeɪfɪd/",
+    "audioZh": "/audio/aphid-zh.m4a",
+    "audioEn": "/audio/aphid-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚜虫",
+        "pinyin": "yá chóng",
+        "en": "Aphid",
+        "ipa": "/ˈeɪfɪd/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/aphid.jpg"
+        }
+      ],
+      "description": "蚜虫小小的、绿绿的，挤在嫩嫩的叶子上。它们爱吸植物的汁，是菜园的小麻烦。",
+      "allusion": {
+        "text": "蚜虫太多时，蚂蚁会来保护它们，赶走瓢虫。",
+        "explain": "因为蚂蚁爱喝蚜虫甜甜的汁。"
+      }
+    }
+  }
+}

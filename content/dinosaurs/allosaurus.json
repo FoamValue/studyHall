@@ -1,0 +1,36 @@
+{
+  "id": "allosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "异特龙",
+    "pinyin": "yì tè lóng",
+    "en": "Allosaurus",
+    "ipa": "/ˌæləˈsɔːrəs/",
+    "audioZh": "/audio/allosaurus-zh.m4a",
+    "audioEn": "/audio/allosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "异特龙",
+        "pinyin": "yì tè lóng",
+        "en": "Allosaurus",
+        "ipa": "/ˌæləˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/allosaurus.jpg"
+        }
+      ],
+      "description": "异特龙是凶猛的肉食恐龙，嘴巴里有很多弯弯的尖牙。它用两条强壮的后腿奔跑，专门追捕别的恐龙。",
+      "allusion": {
+        "text": "异特龙的牙齿弯弯的，像一把把小刀。",
+        "explain": "弯牙齿能牢牢咬住猎物。"
+      }
+    }
+  }
+}

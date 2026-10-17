@@ -1,0 +1,36 @@
+{
+  "id": "mosquito",
+  "categories": [
+    "insect"
+  ],
+  "sort": 22,
+  "name": {
+    "zh": "蚊子",
+    "pinyin": "wén zi",
+    "en": "Mosquito",
+    "ipa": "/məˈskiːtəʊ/",
+    "audioZh": "/audio/mosquito-zh.m4a",
+    "audioEn": "/audio/mosquito-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚊子",
+        "pinyin": "wén zi",
+        "en": "Mosquito",
+        "ipa": "/məˈskiːtəʊ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/mosquito.jpg"
+        }
+      ],
+      "description": "蚊子又小又轻，飞起来嗡嗡叫。它咬人一口，皮肤就会痒痒的。",
+      "allusion": {
+        "text": "只有母蚊子才会吸血，公蚊子爱喝花蜜。",
+        "explain": "它们爱躲在暗处和草丛里。"
+      }
+    }
+  }
+}

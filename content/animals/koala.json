@@ -1,0 +1,36 @@
+{
+  "id": "koala",
+  "categories": [
+    "animal"
+  ],
+  "sort": 28,
+  "name": {
+    "zh": "考拉",
+    "pinyin": "kǎo lā",
+    "en": "Koala",
+    "ipa": "/kəʊˈɑːlə/",
+    "audioZh": "/audio/koala-zh.m4a",
+    "audioEn": "/audio/koala-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "考拉",
+        "pinyin": "kǎo lā",
+        "en": "Koala",
+        "ipa": "/kəʊˈɑːlə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/koala.jpg"
+        }
+      ],
+      "description": "考拉圆滚滚的，长着大耳朵和黑鼻子。它大部分时间抱着树睡觉。",
+      "allusion": {
+        "text": "考拉只吃桉树的叶子，吃饱了就在树上呼呼大睡。",
+        "explain": "它一天能睡很久很久。"
+      }
+    }
+  }
+}

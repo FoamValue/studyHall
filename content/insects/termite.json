@@ -1,0 +1,36 @@
+{
+  "id": "termite",
+  "categories": [
+    "insect"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "白蚁",
+    "pinyin": "bái yǐ",
+    "en": "Termite",
+    "ipa": "/ˈtɜːmaɪt/",
+    "audioZh": "/audio/termite-zh.m4a",
+    "audioEn": "/audio/termite-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "白蚁",
+        "pinyin": "bái yǐ",
+        "en": "Termite",
+        "ipa": "/ˈtɜːmaɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/termite.jpg"
+        }
+      ],
+      "description": "白蚁白白的、小小的，喜欢成群住在一起。它们会啃木头，搭高高的土窝。",
+      "allusion": {
+        "text": "白蚁把木头啃成小洞，是搭房子的小能手。",
+        "explain": "它们的窝像一座小城堡。"
+      }
+    }
+  }
+}

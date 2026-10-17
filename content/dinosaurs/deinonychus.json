@@ -1,0 +1,36 @@
+{
+  "id": "deinonychus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "恐爪龙",
+    "pinyin": "kǒng zhǎo lóng",
+    "en": "Deinonychus",
+    "ipa": "/daɪˈnɒnɪkəs/",
+    "audioZh": "/audio/deinonychus-zh.m4a",
+    "audioEn": "/audio/deinonychus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "恐爪龙",
+        "pinyin": "kǒng zhǎo lóng",
+        "en": "Deinonychus",
+        "ipa": "/daɪˈnɒnɪkəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/deinonychus.jpg"
+        }
+      ],
+      "description": "恐爪龙脚上长着一根弯弯的大爪子，尖尖的像小钩子。它跑得很快，会用大爪子抓住猎物不放。",
+      "allusion": {
+        "text": "恐爪龙的钩爪平时翘起来，跑得快。",
+        "explain": "抓猎物的时候，钩爪才会踩下去。"
+      }
+    }
+  }
+}

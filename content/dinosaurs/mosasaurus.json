@@ -1,0 +1,36 @@
+{
+  "id": "mosasaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "沧龙",
+    "pinyin": "cāng lóng",
+    "en": "Mosasaurus",
+    "ipa": "/ˌmɒzəˈsɔːrəs/",
+    "audioZh": "/audio/mosasaurus-zh.m4a",
+    "audioEn": "/audio/mosasaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "沧龙",
+        "pinyin": "cāng lóng",
+        "en": "Mosasaurus",
+        "ipa": "/ˌmɒzəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/mosasaurus.jpg"
+        }
+      ],
+      "description": "沧龙住在大海里，身体又长又大，还有一条大尾巴。它用像桨一样的四肢游泳，张嘴就能吃掉大鱼。",
+      "allusion": {
+        "text": "沧龙的尾巴像大船桨，一摆游很远。",
+        "explain": "它在海里像会游泳的大蜥蜴。"
+      }
+    }
+  }
+}

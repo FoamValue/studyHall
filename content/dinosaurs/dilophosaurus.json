@@ -1,0 +1,36 @@
+{
+  "id": "dilophosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 19,
+  "name": {
+    "zh": "双脊龙",
+    "pinyin": "shuāng jǐ lóng",
+    "en": "Dilophosaurus",
+    "ipa": "/daɪˌlɒfəˈsɔːrəs/",
+    "audioZh": "/audio/dilophosaurus-zh.m4a",
+    "audioEn": "/audio/dilophosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "双脊龙",
+        "pinyin": "shuāng jǐ lóng",
+        "en": "Dilophosaurus",
+        "ipa": "/daɪˌlɒfəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/dilophosaurus.jpg"
+        }
+      ],
+      "description": "双脊龙头顶上有两片圆圆的骨头，像戴了两顶小帽子。它张开大嘴，爱吃肉，跑得可快了。",
+      "allusion": {
+        "text": "双脊龙头顶两片骨头一闪一闪真好看。",
+        "explain": "这是它给同伴看的招牌帽子。"
+      }
+    }
+  }
+}

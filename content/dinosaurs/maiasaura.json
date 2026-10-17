@@ -1,0 +1,36 @@
+{
+  "id": "maiasaura",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 23,
+  "name": {
+    "zh": "慈母龙",
+    "pinyin": "cí mǔ lóng",
+    "en": "Maiasaura",
+    "ipa": "/ˌmaɪəˈsɔːrə/",
+    "audioZh": "/audio/maiasaura-zh.m4a",
+    "audioEn": "/audio/maiasaura-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "慈母龙",
+        "pinyin": "cí mǔ lóng",
+        "en": "Maiasaura",
+        "ipa": "/ˌmaɪəˈsɔːrə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/maiasaura.jpg"
+        }
+      ],
+      "description": "慈母龙会细心照顾小宝宝，是很好的恐龙妈妈。它把蛋放在窝里，还给小恐龙带回好多好吃的。",
+      "allusion": {
+        "text": "慈母龙会把小宝宝喂得饱饱的。",
+        "explain": "它是很温柔的好妈妈。"
+      }
+    }
+  }
+}

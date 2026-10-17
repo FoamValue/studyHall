@@ -1,0 +1,36 @@
+{
+  "id": "stick-insect",
+  "categories": [
+    "insect"
+  ],
+  "sort": 17,
+  "name": {
+    "zh": "竹节虫",
+    "pinyin": "zhú jié chóng",
+    "en": "Stick Insect",
+    "ipa": "/ˈstɪk ɪnsekt/",
+    "audioZh": "/audio/stick-insect-zh.m4a",
+    "audioEn": "/audio/stick-insect-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "竹节虫",
+        "pinyin": "zhú jié chóng",
+        "en": "Stick Insect",
+        "ipa": "/ˈstɪk ɪnsekt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/stick-insect.jpg"
+        }
+      ],
+      "description": "竹节虫细细长长，长得像一根小树枝。它躲在树上不动，别人就看不见它。",
+      "allusion": {
+        "text": "竹节虫装成树枝，连小鸟都找不到它。",
+        "explain": "这叫会隐身，用来保护自己。"
+      }
+    }
+  }
+}

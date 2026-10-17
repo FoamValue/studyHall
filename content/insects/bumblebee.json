@@ -1,0 +1,36 @@
+{
+  "id": "bumblebee",
+  "categories": [
+    "insect"
+  ],
+  "sort": 16,
+  "name": {
+    "zh": "熊蜂",
+    "pinyin": "xióng fēng",
+    "en": "Bumblebee",
+    "ipa": "/ˈbʌmblbiː/",
+    "audioZh": "/audio/bumblebee-zh.m4a",
+    "audioEn": "/audio/bumblebee-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "熊蜂",
+        "pinyin": "xióng fēng",
+        "en": "Bumblebee",
+        "ipa": "/ˈbʌmblbiː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/bumblebee.jpg"
+        }
+      ],
+      "description": "熊蜂圆滚滚、毛茸茸，像小黑熊在飞。它嗡嗡地在花上采蜜，还帮忙传花粉。",
+      "allusion": {
+        "text": "熊蜂采蜜时，身上沾满花粉，飞到别的花上。",
+        "explain": "这样花就能结出果子啦。"
+      }
+    }
+  }
+}

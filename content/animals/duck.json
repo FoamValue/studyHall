@@ -1,0 +1,36 @@
+{
+  "id": "duck",
+  "categories": [
+    "animal"
+  ],
+  "sort": 20,
+  "name": {
+    "zh": "鸭子",
+    "pinyin": "yā zi",
+    "en": "Duck",
+    "ipa": "/dʌk/",
+    "audioZh": "/audio/duck-zh.m4a",
+    "audioEn": "/audio/duck-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鸭子",
+        "pinyin": "yā zi",
+        "en": "Duck",
+        "ipa": "/dʌk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/duck.jpg"
+        }
+      ],
+      "description": "鸭子嘴巴扁扁的，脚上有蹼，走起来一摇一摆。它在水里游泳特别快。",
+      "allusion": {
+        "text": "鸭子的羽毛上有一层油，所以泡在水里也不会湿透。",
+        "explain": "就像穿了一件小雨衣。"
+      }
+    }
+  }
+}

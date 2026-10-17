@@ -1,0 +1,36 @@
+{
+  "id": "bear",
+  "categories": [
+    "animal"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "熊",
+    "pinyin": "xióng",
+    "en": "Bear",
+    "ipa": "/beə(r)/",
+    "audioZh": "/audio/bear-zh.m4a",
+    "audioEn": "/audio/bear-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "熊",
+        "pinyin": "xióng",
+        "en": "Bear",
+        "ipa": "/beə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/bear.jpg"
+        }
+      ],
+      "description": "熊的身体又大又壮，长着厚厚的毛。它喜欢吃蜂蜜，还会在树洞里睡觉。",
+      "allusion": {
+        "text": "冬天来的时候，熊会找个舒服的地方睡上好几个月。",
+        "explain": "它睡醒了，春天就到啦。"
+      }
+    }
+  }
+}

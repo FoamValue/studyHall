@@ -1,0 +1,36 @@
+{
+  "id": "locust",
+  "categories": [
+    "insect"
+  ],
+  "sort": 19,
+  "name": {
+    "zh": "蝗虫",
+    "pinyin": "huáng chóng",
+    "en": "Locust",
+    "ipa": "/ˈləʊkəst/",
+    "audioZh": "/audio/locust-zh.m4a",
+    "audioEn": "/audio/locust-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蝗虫",
+        "pinyin": "huáng chóng",
+        "en": "Locust",
+        "ipa": "/ˈləʊkəst/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/locust.jpg"
+        }
+      ],
+      "description": "蝗虫是爱跳的大蚱蜢，一大群飞过田野。它们会吃掉很多庄稼和青草。",
+      "allusion": {
+        "text": "蝗虫常常一大群一起飞，遮住整片天空。",
+        "explain": "它们一起吃庄稼，农民很发愁。"
+      }
+    }
+  }
+}

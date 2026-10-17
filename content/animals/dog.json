@@ -1,0 +1,36 @@
+{
+  "id": "dog",
+  "categories": [
+    "animal"
+  ],
+  "sort": 13,
+  "name": {
+    "zh": "狗",
+    "pinyin": "gǒu",
+    "en": "Dog",
+    "ipa": "/dɒɡ/",
+    "audioZh": "/audio/dog-zh.m4a",
+    "audioEn": "/audio/dog-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "狗",
+        "pinyin": "gǒu",
+        "en": "Dog",
+        "ipa": "/dɒɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/dog.jpg"
+        }
+      ],
+      "description": "狗是人类的好朋友，总爱摇着尾巴跑来跑去。它的鼻子很灵，能闻到很远的气味。",
+      "allusion": {
+        "text": "狗的耳朵能听见我们听不到的声音，还能帮人看家。",
+        "explain": "所以它一有动静就叫。"
+      }
+    }
+  }
+}

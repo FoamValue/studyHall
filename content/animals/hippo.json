@@ -1,0 +1,36 @@
+{
+  "id": "hippo",
+  "categories": [
+    "animal"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "河马",
+    "pinyin": "hé mǎ",
+    "en": "Hippopotamus",
+    "ipa": "/ˌhɪpəˈpɒtəməs/",
+    "audioZh": "/audio/hippo-zh.m4a",
+    "audioEn": "/audio/hippo-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "河马",
+        "pinyin": "hé mǎ",
+        "en": "Hippopotamus",
+        "ipa": "/ˌhɪpəˈpɒtəməs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/hippo.jpg"
+        }
+      ],
+      "description": "河马的身体又大又圆，嘴巴张开来特别大。它白天泡在水里，晚上才上岸吃草。",
+      "allusion": {
+        "text": "河马在水里会闭上眼睛和耳朵，泡很久也不用上岸呼吸。",
+        "explain": "它憋气可厉害啦。"
+      }
+    }
+  }
+}

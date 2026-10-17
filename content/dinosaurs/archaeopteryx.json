@@ -1,0 +1,36 @@
+{
+  "id": "archaeopteryx",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 13,
+  "name": {
+    "zh": "始祖鸟",
+    "pinyin": "shǐ zǔ niǎo",
+    "en": "Archaeopteryx",
+    "ipa": "/ˌɑːkiˈɒptərɪks/",
+    "audioZh": "/audio/archaeopteryx-zh.m4a",
+    "audioEn": "/audio/archaeopteryx-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "始祖鸟",
+        "pinyin": "shǐ zǔ niǎo",
+        "en": "Archaeopteryx",
+        "ipa": "/ˌɑːkiˈɒptərɪks/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/archaeopteryx.jpg"
+        }
+      ],
+      "description": "始祖鸟是很小很轻的恐龙，身上长着羽毛，还会滑翔。它有尖尖的牙齿和长长的翅膀，像一只小怪鸟。",
+      "allusion": {
+        "text": "始祖鸟的羽毛能帮它从树上滑下来。",
+        "explain": "它是最早会飞的鸟类亲戚之一。"
+      }
+    }
+  }
+}

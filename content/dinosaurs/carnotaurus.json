@@ -1,0 +1,36 @@
+{
+  "id": "carnotaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "食肉牛龙",
+    "pinyin": "shí ròu niú lóng",
+    "en": "Carnotaurus",
+    "ipa": "/ˌkɑːnəˈtɔːrəs/",
+    "audioZh": "/audio/carnotaurus-zh.m4a",
+    "audioEn": "/audio/carnotaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "食肉牛龙",
+        "pinyin": "shí ròu niú lóng",
+        "en": "Carnotaurus",
+        "ipa": "/ˌkɑːnəˈtɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/carnotaurus.jpg"
+        }
+      ],
+      "description": "食肉牛龙头上长着两只小角，像小牛一样。它跑得飞快，可前腿却短短的，帮不上什么忙。",
+      "allusion": {
+        "text": "食肉牛龙的角短短的，像小牛角。",
+        "explain": "小角帮它顶开挡路的伙伴。"
+      }
+    }
+  }
+}

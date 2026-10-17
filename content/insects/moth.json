@@ -1,0 +1,36 @@
+{
+  "id": "moth",
+  "categories": [
+    "insect"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "飞蛾",
+    "pinyin": "fēi é",
+    "en": "Moth",
+    "ipa": "/mɒθ/",
+    "audioZh": "/audio/moth-zh.m4a",
+    "audioEn": "/audio/moth-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "飞蛾",
+        "pinyin": "fēi é",
+        "en": "Moth",
+        "ipa": "/mɒθ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/moth.jpg"
+        }
+      ],
+      "description": "飞蛾的翅膀又软又粉，晚上喜欢飞向亮亮的灯。它白天躲在暗暗的地方睡觉。",
+      "allusion": {
+        "text": "飞蛾会朝着路灯和月亮飞，好像很想靠近光。",
+        "explain": "它分不清方向，就绕着灯打转。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "silkworm",
+  "categories": [
+    "insect"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "蚕",
+    "pinyin": "cán",
+    "en": "Silkworm",
+    "ipa": "/ˈsɪlkwɜːm/",
+    "audioZh": "/audio/silkworm-zh.m4a",
+    "audioEn": "/audio/silkworm-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚕",
+        "pinyin": "cán",
+        "en": "Silkworm",
+        "ipa": "/ˈsɪlkwɜːm/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/silkworm.jpg"
+        }
+      ],
+      "description": "蚕白白胖胖，爱吃桑树的叶子。它长大后会吐丝，给自己做个白茧。",
+      "allusion": {
+        "text": "我们穿的丝绸，就是蚕吐的丝做成的。",
+        "explain": "蚕吐丝把自己包起来，叫蚕茧。"
+      }
+    }
+  }
+}

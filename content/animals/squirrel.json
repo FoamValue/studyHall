@@ -1,0 +1,36 @@
+{
+  "id": "squirrel",
+  "categories": [
+    "animal"
+  ],
+  "sort": 24,
+  "name": {
+    "zh": "松鼠",
+    "pinyin": "sōng shǔ",
+    "en": "Squirrel",
+    "ipa": "/ˈskwɪrəl/",
+    "audioZh": "/audio/squirrel-zh.m4a",
+    "audioEn": "/audio/squirrel-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "松鼠",
+        "pinyin": "sōng shǔ",
+        "en": "Squirrel",
+        "ipa": "/ˈskwɪrəl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/squirrel.jpg"
+        }
+      ],
+      "description": "松鼠有一条毛茸茸的大尾巴，总爱抱在怀里。它喜欢在树上跳来跳去，藏松果。",
+      "allusion": {
+        "text": "松鼠会把找到的坚果埋在地下藏起来，留着冬天吃。",
+        "explain": "有时它还会忘了埋在哪儿。"
+      }
+    }
+  }
+}

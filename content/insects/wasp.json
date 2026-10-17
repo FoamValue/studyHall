@@ -1,0 +1,36 @@
+{
+  "id": "wasp",
+  "categories": [
+    "insect"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "黄蜂",
+    "pinyin": "huáng fēng",
+    "en": "Wasp",
+    "ipa": "/wɒsp/",
+    "audioZh": "/audio/wasp-zh.m4a",
+    "audioEn": "/audio/wasp-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "黄蜂",
+        "pinyin": "huáng fēng",
+        "en": "Wasp",
+        "ipa": "/wɒsp/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/wasp.jpg"
+        }
+      ],
+      "description": "黄蜂身上有黄黑的条纹，飞起来嗡嗡响。它在树上做小窝，会蜇人，要躲远点。",
+      "allusion": {
+        "text": "黄蜂会用树叶和木屑，做成一个圆圆的小窝。",
+        "explain": "它在窝里养宝宝，别去碰它。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "baryonyx",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "重爪龙",
+    "pinyin": "zhòng zhǎo lóng",
+    "en": "Baryonyx",
+    "ipa": "/ˈbæriɒnɪks/",
+    "audioZh": "/audio/baryonyx-zh.m4a",
+    "audioEn": "/audio/baryonyx-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "重爪龙",
+        "pinyin": "zhòng zhǎo lóng",
+        "en": "Baryonyx",
+        "ipa": "/ˈbæriɒnɪks/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/baryonyx.jpg"
+        }
+      ],
+      "description": "重爪龙最爱吃鱼，它站在水边，用大爪子抓鱼吃。它嘴巴又长又窄，牙齿尖尖的，像鳄鱼一样。",
+      "allusion": {
+        "text": "重爪龙的大爪子像钩子，一下就能叉住鱼。",
+        "explain": "它蹲在水边等鱼游过来。"
+      }
+    }
+  }
+}

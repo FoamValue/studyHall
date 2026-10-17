@@ -1,0 +1,36 @@
+{
+  "id": "snail",
+  "categories": [
+    "insect"
+  ],
+  "sort": 24,
+  "name": {
+    "zh": "蜗牛",
+    "pinyin": "wō niú",
+    "en": "Snail",
+    "ipa": "/sneɪl/",
+    "audioZh": "/audio/snail-zh.m4a",
+    "audioEn": "/audio/snail-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蜗牛",
+        "pinyin": "wō niú",
+        "en": "Snail",
+        "ipa": "/sneɪl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/snail.jpg"
+        }
+      ],
+      "description": "蜗牛背着圆圆的小房子，慢慢往前爬。它爬过的地方会留下一条亮亮的线。",
+      "allusion": {
+        "text": "蜗牛爬得很慢很慢，还会留下亮亮的痕迹。",
+        "explain": "它走一步，就要花好久。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "owl",
+  "categories": [
+    "animal"
+  ],
+  "sort": 21,
+  "name": {
+    "zh": "猫头鹰",
+    "pinyin": "māo tóu yīng",
+    "en": "Owl",
+    "ipa": "/aʊl/",
+    "audioZh": "/audio/owl-zh.m4a",
+    "audioEn": "/audio/owl-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "猫头鹰",
+        "pinyin": "māo tóu yīng",
+        "en": "Owl",
+        "ipa": "/aʊl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/owl.jpg"
+        }
+      ],
+      "description": "猫头鹰有大大的圆眼睛，白天睡觉晚上出来。它飞起来一点声音都没有。",
+      "allusion": {
+        "text": "猫头鹰的脖子很灵活，能把头转大半圈看四周。",
+        "explain": "它转头不用动身子。"
+      }
+    }
+  }
+}

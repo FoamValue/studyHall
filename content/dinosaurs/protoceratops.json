@@ -1,0 +1,36 @@
+{
+  "id": "protoceratops",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 28,
+  "name": {
+    "zh": "原角龙",
+    "pinyin": "yuán jiǎo lóng",
+    "en": "Protoceratops",
+    "ipa": "/ˌprəʊtəˈserətɒps/",
+    "audioZh": "/audio/protoceratops-zh.m4a",
+    "audioEn": "/audio/protoceratops-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "原角龙",
+        "pinyin": "yuán jiǎo lóng",
+        "en": "Protoceratops",
+        "ipa": "/ˌprəʊtəˈserətɒps/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/protoceratops.jpg"
+        }
+      ],
+      "description": "原角龙头上有一圈骨头做的围裙，就像小盾牌一样。它嘴巴像鸟喙，爱吃树叶和植物。",
+      "allusion": {
+        "text": "原角龙的围裙骨头像小盾牌。",
+        "explain": "小盾牌能帮它挡一下对手。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "fly",
+  "categories": [
+    "insect"
+  ],
+  "sort": 21,
+  "name": {
+    "zh": "苍蝇",
+    "pinyin": "cāng ying",
+    "en": "Fly",
+    "ipa": "/flaɪ/",
+    "audioZh": "/audio/fly-zh.m4a",
+    "audioEn": "/audio/fly-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "苍蝇",
+        "pinyin": "cāng ying",
+        "en": "Fly",
+        "ipa": "/flaɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/fly.jpg"
+        }
+      ],
+      "description": "苍蝇有圆圆的大眼睛，飞来嗡嗡响。它爱停在不干净的地方，要赶它走。",
+      "allusion": {
+        "text": "苍蝇的脚上有小黏垫，能倒着站在天花板上。",
+        "explain": "所以它哪里都能爬上去。"
+      }
+    }
+  }
+}

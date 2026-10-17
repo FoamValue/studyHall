@@ -1,0 +1,36 @@
+{
+  "id": "wolf",
+  "categories": [
+    "animal"
+  ],
+  "sort": 29,
+  "name": {
+    "zh": "狼",
+    "pinyin": "láng",
+    "en": "Wolf",
+    "ipa": "/wʊlf/",
+    "audioZh": "/audio/wolf-zh.m4a",
+    "audioEn": "/audio/wolf-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "狼",
+        "pinyin": "láng",
+        "en": "Wolf",
+        "ipa": "/wʊlf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/wolf.jpg"
+        }
+      ],
+      "description": "狼的耳朵尖尖的，尾巴长长的，长得很像狗。它们常常一群一起生活。",
+      "allusion": {
+        "text": "狼用叫声和同伴说话，一只叫起来，别的狼也跟着叫。",
+        "explain": "那是它们在互相打招呼。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "pig",
+  "categories": [
+    "animal"
+  ],
+  "sort": 16,
+  "name": {
+    "zh": "猪",
+    "pinyin": "zhū",
+    "en": "Pig",
+    "ipa": "/pɪɡ/",
+    "audioZh": "/audio/pig-zh.m4a",
+    "audioEn": "/audio/pig-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "猪",
+        "pinyin": "zhū",
+        "en": "Pig",
+        "ipa": "/pɪɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/pig.jpg"
+        }
+      ],
+      "description": "小猪胖乎乎的，有一个圆圆的大鼻子。它爱在泥里打滚，吃起来呼噜呼噜的。",
+      "allusion": {
+        "text": "猪在泥里打滚，其实是为了让身子凉快、赶走小虫。",
+        "explain": "泥巴就像它的防晒霜。"
+      }
+    }
+  }
+}

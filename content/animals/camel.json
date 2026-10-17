@@ -1,0 +1,36 @@
+{
+  "id": "camel",
+  "categories": [
+    "animal"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "骆驼",
+    "pinyin": "luò tuo",
+    "en": "Camel",
+    "ipa": "/ˈkæml/",
+    "audioZh": "/audio/camel-zh.m4a",
+    "audioEn": "/audio/camel-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "骆驼",
+        "pinyin": "luò tuo",
+        "en": "Camel",
+        "ipa": "/ˈkæml/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/camel.jpg"
+        }
+      ],
+      "description": "骆驼的背上有高高的驼峰，能在沙漠里走很远。它喝一次水能好多天不渴。",
+      "allusion": {
+        "text": "驼峰里存的不是水，是营养，帮它在沙漠里不饿也不累。",
+        "explain": "所以它能走很远的路。"
+      }
+    }
+  }
+}

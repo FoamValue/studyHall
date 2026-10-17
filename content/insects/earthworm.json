@@ -1,0 +1,36 @@
+{
+  "id": "earthworm",
+  "categories": [
+    "insect"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "蚯蚓",
+    "pinyin": "qiū yǐn",
+    "en": "Earthworm",
+    "ipa": "/ˈɜːθwɜːm/",
+    "audioZh": "/audio/earthworm-zh.m4a",
+    "audioEn": "/audio/earthworm-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚯蚓",
+        "pinyin": "qiū yǐn",
+        "en": "Earthworm",
+        "ipa": "/ˈɜːθwɜːm/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/earthworm.jpg"
+        }
+      ],
+      "description": "蚯蚓又细又长，住在松松的泥土里。它钻来钻去，让土变得又松又软。",
+      "allusion": {
+        "text": "下雨后蚯蚓会爬出地面，因为土里没有空气啦。",
+        "explain": "它用皮肤呼吸，要湿湿的。"
+      }
+    }
+  }
+}

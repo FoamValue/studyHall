@@ -1,0 +1,36 @@
+{
+  "id": "caterpillar",
+  "categories": [
+    "insect"
+  ],
+  "sort": 13,
+  "name": {
+    "zh": "毛毛虫",
+    "pinyin": "máo mao chóng",
+    "en": "Caterpillar",
+    "ipa": "/ˈkætəpɪlə(r)/",
+    "audioZh": "/audio/caterpillar-zh.m4a",
+    "audioEn": "/audio/caterpillar-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "毛毛虫",
+        "pinyin": "máo mao chóng",
+        "en": "Caterpillar",
+        "ipa": "/ˈkætəpɪlə(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/caterpillar.jpg"
+        }
+      ],
+      "description": "毛毛虫身体软软的，一节一节往前爬。它最爱吃新鲜的叶子，吃得胖胖的。",
+      "allusion": {
+        "text": "毛毛虫吃饱了会吐丝，把自己裹起来变成蛹。",
+        "explain": "它在里面睡一觉，醒来变成蝴蝶。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "weevil",
+  "categories": [
+    "insect"
+  ],
+  "sort": 28,
+  "name": {
+    "zh": "象鼻虫",
+    "pinyin": "xiàng bí chóng",
+    "en": "Weevil",
+    "ipa": "/ˈwiːvl/",
+    "audioZh": "/audio/weevil-zh.m4a",
+    "audioEn": "/audio/weevil-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "象鼻虫",
+        "pinyin": "xiàng bí chóng",
+        "en": "Weevil",
+        "ipa": "/ˈwiːvl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/weevil.jpg"
+        }
+      ],
+      "description": "象鼻虫头上有个长长的鼻子，像小象。它用小鼻子钻洞，藏在种子里面。",
+      "allusion": {
+        "text": "象鼻虫的长鼻子其实是嘴，能钻开硬硬的壳。",
+        "explain": "它钻进粮食里，偷偷吃种子。"
+      }
+    }
+  }
+}
