@@ -400,4 +400,71 @@ setPart(preferred || ordered[0] || null);
 - `PlantDetailPage.test.jsx`：新增 TC-65（树叶分类默认选叶、输入 `apple-leaf` 数据）、TC-66（全部默认花 / 花朵默认花 / 果实默认果 + 换株后跟随）。
 - `e2e/smoke.spec.js`：新增 TC-67（树叶分类苹果标题「苹果叶」且详情默认选叶、大图 `apple-leaf.jpg`）、TC-68（花朵分类苹果标题「苹果花」）、TC-69（果实分类银杏标题「白果」）、TC-70（全部进入苹果默认「花」）。
 
+---
+
+# 前端开发设计文章 — Sprint 9（增量：v2.0 四板块两级导航 + 单图详情 + 小知识 + 预生成音频）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-9-requirements.md（Q2~Q7 冻结）、PRD §14（v2.0） |
+| 范围 | `HomePage.jsx`、`PlantDetailPage.jsx`、新增 `useAudio`、`AllusionCard.jsx`、`PartSwitcher.jsx`、`api/client.js`、`styles.css`；不改详情路由 |
+
+## S9-1. 站点改名（S9-1）
+- `HomePage.jsx` 标题三行文本：`zhí wù xiǎo huā yuán` → `zì rán xiǎo tú jiàn`；`植物小花园` → `自然小图鉴`；`Plant Garden` → `Nature Guide`。
+- 样式类名（`.site-title-pinyin/-zh/-en`）与版式不变。
+
+## S9-2. 板块导航 + 植物二级筛选（Q3/Q4/R-28）
+- 新增常量：`SECTIONS = [{code:'plant',label:'植物'},{code:'animal',label:'动物'},{code:'insect',label:'昆虫'},{code:'dinosaur',label:'恐龙'}]`（板块固定顺序）。
+- `HomePage` 状态：`section`（默认 `'plant'`）+ 既有 `category`。
+- 新增 `SectionNav` 组件（可内联于 HomePage）：渲染 4 个板块按钮，复用 `.filter-btn`，`role="group" aria-label="板块导航"`，类名 `.section-nav`。
+- 二级筛选：仅当 `section === 'plant'` 时渲染既有 `CategoryFilter`（全部/花朵/树叶/果实）；切换板块时 `setCategory('all')`（植物）或置为板块单一分类。
+- 请求策略（`api/client.js` 增 `getPlantsBySection(section)`）：
+  - 植物板块：`category === 'all'` → `GET /api/plants?section=plant`；否则 `GET /api/plants?category={category}`。
+  - 动物/昆虫/恐龙板块：`GET /api/plants?section={section}`。
+- 列表渲染、加载态、空态（文案「这个板块还没有内容哦」/「这个分类还没有植物哦」）与 PlantCard 复用不变；`PlantCard` 的 `state` 增带 `section`。
+
+## S9-3. 详情单图分支（Q2/R-29）
+- 判定：`const singleKey = getOrderedParts(plant.parts)[0]`，若 `plant.parts` 恰有 1 键且键 ∈ `{animal,insect,dinosaur}` → **单图分支**。
+- 单图分支渲染：`header`（拼音/中文名 + 喇叭 / 英文名 + 音标 + 喇叭）→ 大图（`.part-img`，src = 该部位首图）→ `.part-content`（说明 + 小知识卡片）；**不渲染** `PartSwitcher`，**不渲染**部位三语名行。
+- 植物分支完全沿用现状（含 US-6 沉浸/换株/全屏、US-7 喇叭、US-8 默认部位跟随分类）。
+- 预加载与邻株计算复用（`usePlantNavigation` 以 `list` 快照为准，不依赖部位）。
+
+## S9-4. 扩展 `PART_ORDER` / `PART_LABELS`（`PartSwitcher.jsx`）
+```js
+export const PART_ORDER = ['flower', 'leaf', 'fruit', 'animal', 'insect', 'dinosaur'];
+export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动物', insect:'昆虫', dinosaur:'恐龙' };
+```
+- `getOrderedParts(parts)` 与原逻辑不变（按 PART_ORDER 过滤存在的部位）；**植物顺序仍 `flower,leaf,fruit` 在前**，US-8 默认部位按 category 命中逻辑不受影响。
+- `PartSwitcher` 组件仅在植物分支渲染（单图分支不渲染），故新增标签不产生可见控件。
+
+## S9-5. 小知识卡片（R-30）
+- `AllusionCard` 复用，仅将 `aria-label` 由 `植物小典故` 改为 `小知识`；`.allusion-card` 视觉不变；无 `allusion.text` 不渲染（沿用现状）。
+- 动物/昆虫/恐龙语料用 `allusion:{text,source,explain}` 承载「冷知识/习性/分布/季节」，`source` 可省。
+
+## S9-6. 预生成音频播放（R-31/R-32）
+- 新增 `frontend/src/hooks/useAudio.js`：
+  - 单例 `HTMLAudioElement`（`new Audio()`），或按 URL 缓存。
+  - API：`{ supported: true, playingUrl, play(url), stop() }`（`playingUrl` 用于按钮高亮与「再点停止」）。
+  - `play(url)`：先 `pause()` 当前并 `currentTime=0`，再 `new Audio(url)`（或复用）`play()`；`onended/onerror → setPlayingUrl(null)`。
+  - 互斥：同一时刻至多一个音频；再点同一 URL 视为停止（调用方判定，同 Sprint 5）。
+  - 卸载清理：`useEffect(() => () => audio.pause(), [])`。
+- 音频 URL 来源：`plant.name.audioZh ?? (plant.name.en ? \`/audio/${id}-zh.m4a\` : ...)`；设计定为 `name` 增可选 `audioZh`/`audioEn`，缺省按 `/audio/{id}-{zh|en}.m4a` 推导；**英文名缺失不渲染英文喇叭**。
+- 降级：音频 URL 缺失或文件不存在时**不渲染**该喇叭；**不回退 `speechSynthesis`**（移除 `useSpeech` 依赖）。
+- 场景停止：换株（`id` 变化）、切部位、回花园（`onClick`）、全屏进出（`fullscreenchange`）、组件卸载 —— 均调用 `stop()`（与 Sprint 5 一致）。
+- `SpeakButton` 组件复用（props `text`→改为 `onToggle(url)` 语义；图标/热区/`aria-pressed` 不变）。
+- 注：`useSpeech.js` 保留为回滚备份还是删除由实现决定；**运行时不再调用**。
+
+## S9-7. 样式增量（styles.css）
+- `.section-nav`：一行 4 个板块按钮，间距 ≥16px（复用 `.filter-btn` 视觉，热区 ≥56px）。
+- 板块导航与植物分类筛选两行间距 ≥16px（`margin-top`）。
+- 单图详情：`header` + 大图 + 文字；横屏沿用「左图右文」两栏、竖屏沿用「上图下文」；`aspect-ratio:1/1` + `object-fit:contain` 不变；去掉部位切换条后空间更充裕，不引入页面级滚动（Sprint 6 约束保持）。
+
+## S9-8. 测试更新（配合 QA-20/QA-21）
+- `HomePage.test.jsx`：站点标题断言改名；新增板块切换（请求 `?section=`）、植物二级筛选、板块列表渲染用例（TC-71 起）。
+- `PlantDetailPage.test.jsx`：新增单图详情分支（不渲染 PartSwitcher、渲染大图与说明）、音频播放/停止/降级（stub `Audio`，断言无 `speechSynthesis` 调用）用例。
+- `e2e/`：新增站点标题、板块导航、单图详情无部位切换、音频请求可见、排序稳定性用例。
+
+
 

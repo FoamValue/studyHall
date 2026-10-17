@@ -241,4 +241,59 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - 新增后端用例：分类列表封面语义（对应 PRD §12.4 之 20）——用真实语料中「含花朵但被归入 leaf/fruit 分类」的植物（如 apple / anemone）断言 `?category=leaf` / `?category=fruit` 封面为对应部位图；`?category=flower` 或全部则维持回退顺序。
 - 其余 `mvn test` 全量回归（TC-01~13、TC-24 数据驱动）须全绿。
 
+---
+
+# 后端开发设计文章 — Sprint 9（增量：v2.0 四板块 + 单键部位 + 小知识 + 音频 + sort）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-9-requirements.md（Q2~Q7 冻结）、PRD §14（v2.0） |
+
+## S9-1. 数据模型增量
+- **`Category`**（`model/Category.java`）新增 `String section`（可空，向后兼容）：
+  ```java
+  @Document("categories")
+  public record Category(@Id String code, String nameZh, String pinyin, String nameEn, int order, String section) {}
+  ```
+- **`Plant`**（`model/Plant.java`）新增 `Integer sort`（可空；`@Id String id, List<String> categories, I18nName name, Map<String,PlantPart> parts, Integer sort)`）。`parts` 键集合扩展为 `flower/leaf/fruit/animal/insect/dinosaur`（**结构不变**，Map 天然容纳单键）。
+- `PlantPart` / `PlantImage` / `Allusion` **零改动**：动物/昆虫/恐龙仅用 `parts.{单个键}`，`images` 仅 1 张（`type` ∈ `photo|restore`），小知识沿用 `allusion` 结构。
+
+## S9-2. 分类合法性校验与文案（J-14）
+- `getPlants` 中 `categoryRepository.existsById(category)` 天然覆盖新分类。
+- 40001 文案更新为覆盖四板块：「没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫或恐龙吧」。
+- 新增 `section` 校验：未知 section → `ApiException(40002, "没有「%s」这个板块哦")`。
+
+## S9-3. 「板块列表」查询：新增可选 `section` 参数（Q3/Q4）
+- `PlantController.plants` 增加 `@RequestParam(required=false) String section`。
+- `PlantService.getPlants(String category, String section)` 逻辑：
+  - `category` 非空 → 校验存在 → `findByCategoriesIn(List.of(category), Sort.by(ASC,"sort","id"))`（**显式排序，替清 S4-1 技术债**）。
+  - `category` 空、`section` 非空 → 取该 section 下全部分类 code（`findAll(Sort.by(ASC,"order"))` 过滤 `section`）→ 校验非空否则 40002 → `findByCategoriesIn(codes, Sort.by(ASC,"sort","id"))`。
+  - 两者皆空 → `findAll(Sort.by(ASC,"sort","id"))`（跨板块全部，向后兼容；UI 不依赖）。
+- `PlantRepository` 新增 `List<Plant> findByCategoriesIn(Collection<String> categories, Sort sort)`。
+- **封面**：`coverImage(plant, category)` 逻辑不变；但 `PART_ORDER` 扩为 `flower,leaf,fruit,animal,insect,dinosaur`，使单图条目在 `?section=animal`（category 为空）时也能取到自身图片。
+- **`partCodes`**：同用扩展后的 `PART_ORDER`，单图条目返回 `[animal]`。
+
+## S9-4. `sort` 排序与缓存（J-16）
+- 列表查询统一 `Sort.by(Sort.Direction.ASC, "sort", "id")`；空缺 `sort` 由 Mongo 升序排在数值前（重导后所有条目均带 `sort`）。
+- 缓存 key 增量：新增 `sh:plants:list:section:{section}`（如 `sh:plants:list:section:plant`）；既有 `sh:plants:list:{category|all}` 不变。导入脚本 SCAN `sh:*` 已覆盖清理，**脚本 key 规则不改**。
+- `GET /api/categories` 仍按 `order` 升序（`Sort.by(ASC,"order")`），多返回 `section` 字段。
+
+## S9-5. 契约影响
+- `GET /api/categories`：**增字段 `section`**（向后兼容）。
+- `GET /api/plants`：**新增可选参数 `section`**；无参语义由「全部植物」变为「全部条目（跨板块）」（既有 100 植物仍全含）。
+- `GET /api/plants/{id}`：响应 `Plant` 多出 `sort` 字段（向后兼容）。
+- 错误码新增 **40002**（未知板块）。
+- 路径与响应骨架不变；`ApiResponse` 不变。
+
+## S9-6. 导入脚本影响（R-27 协同）
+- 验证点扩展：`categories.json` 每条须含 `section` ∈ {plant,animal,insect,dinosaur}；`plants` 的 `parts` 键 ∈ `flower|leaf|fruit|animal|insect|dinosaur`；单键板块条目的单键必须 = 其 `categories` 唯一分类 code；新增 `sort` 为整数校验（可空则脚本可补默认）。图片路径校验按板块前缀放宽（`/images/plants/{id}-{part}.jpg` 仅植物；动物/昆虫/恐龙为 `/images/{animals|insects|dinosaurs}/{id}.jpg`）。音频资产存在性校验（`/audio/{id}-zh.m4a` / `-en.m4a`）。
+
+## S9-7. 测试策略（配合 QA-20/QA-21）
+- 更新：`PlantApiIntegrationTest` 的「全部计数」改为**数据驱动**（= content 实际条目数，130）；分类计数 3 → 6。
+- 新增：`?section=plant` 计数 = 植物数；`?section=animal` = 10 且条目 `parts` 仅 `[animal]`；未知 section → 40002；`?category=animal` 封面 = 对应图；排序稳定性（两次请求顺序一致，且 = `sort ASC,id ASC`）。
+- 回归：TC-01~13、TC-24、TC-57/58 全绿。
+
+
 
