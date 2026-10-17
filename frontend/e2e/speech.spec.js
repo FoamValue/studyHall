@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test';
 
 // ===== Sprint 5 新增 E2E（TC-46 ~ TC-47）：详情页名称朗读喇叭 =====
 
-// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名
+// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名（Sprint 8 起卡片标题按分类派生，故取卡片图 alt 的原名）
 async function enterFirstFlowerDetail(page) {
   await page.goto('/');
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
   await expect(cards).toHaveCount(53, { timeout: 15000 }); // 等花朵列表渲染完成
-  const name = await cards.first().locator('.plant-card-zh').textContent();
+  const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();
   return name;

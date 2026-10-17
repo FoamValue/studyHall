@@ -25,8 +25,8 @@ test('TC-22 首页→花朵→桃花→叶', async ({ page }) => {
   await expect(page.locator('.plant-card', { hasText: '银杏' })).toHaveCount(0);
   await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
 
-  // 3. 点桃花卡片进详情
-  await page.locator('.plant-card', { hasText: '桃花' }).click();
+  // 3. 点桃花卡片进详情（Sprint 8：花朵分类下「桃」也派生为「桃花」，按卡片图 alt 精确定位「桃花」）
+  await page.locator('.plant-card').filter({ has: page.locator('img[alt="桃花"]') }).click();
   await expect(page.locator('.detail-zh')).toHaveText('桃花');
 
   // 4. 切「叶」部位 → 显示叶内容
@@ -75,7 +75,7 @@ test('TC-26 首页→果实（53 种）', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
   await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
-  await expect(page.locator('.plant-card', { hasText: '银杏' })).toHaveCount(1);   // 白果
+  await expect(page.locator('.plant-card', { hasText: '白果' })).toHaveCount(1);   // 银杏卡片标题派生为「白果」
   await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
   await expect(page.locator('.plant-card', { hasText: '火龙果' })).toHaveCount(1);
 
@@ -111,4 +111,61 @@ test('TC-63 树叶分类下含花朵植物封面跟随分类', async ({ page }) 
   // 苹果同时含花/叶/果，树叶分类下封面应为叶图（修复前会错误显示花朵照片）
   const appleCover = page.locator('.plant-card', { hasText: '苹果' }).locator('img');
   await expect(appleCover).toHaveAttribute('src', /apple-leaf\.jpg$/);
+});
+
+// ===== Sprint 8 新增 E2E（TC-67 ~ TC-70）：卡片标题 + 详情默认部位跟随分类（EX-4 / EX-5） =====
+
+// TC-67 树叶分类：卡片标题「苹果叶」，点进详情默认选中「叶」、大图与卡片图一致
+test('TC-67 树叶分类苹果标题「苹果叶」且详情默认选叶', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
+  await expect(page.locator('.plant-card')).toHaveCount(100, { timeout: 15000 });
+
+  const appleCard = page.locator('.plant-card', { hasText: '苹果叶' });
+  await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果叶');
+  await expect(appleCard.locator('img')).toHaveAttribute('src', /apple-leaf\.jpg$/); // 卡片图=叶
+
+  await appleCard.click();
+  await expect(page.locator('.detail-zh')).toHaveText('苹果');
+  // 详情默认部位跟随入口分类 → 叶（而非固定首位「花」）
+  await expect(page.getByRole('tab', { name: '叶' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'false');
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /apple-leaf\.jpg$/);
+  await expect(page.locator('.part-img')).toHaveAttribute('alt', '苹果的叶');
+});
+
+// TC-68 花朵分类：苹果卡片标题「苹果花」
+test('TC-68 花朵分类苹果标题「苹果花」', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('group', { name: '植物分类筛选' }).getByText('花朵').click();
+  await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
+
+  await expect(page.locator('.plant-card', { hasText: '苹果花' }).locator('.plant-card-zh')).toHaveText(
+    '苹果花'
+  );
+});
+
+// TC-69 果实分类：银杏卡片标题「白果」（惯用果名特例）
+test('TC-69 果实分类银杏标题「白果」', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
+  await expect(page.locator('.plant-card')).toHaveCount(53, { timeout: 15000 });
+
+  await expect(page.locator('.plant-card', { hasText: '白果' }).locator('.plant-card-zh')).toHaveText(
+    '白果'
+  );
+});
+
+// TC-70 全部分类：苹果标题保持原名，详情默认仍为「花」（回归）
+test('TC-70 全部苹果标题原名且详情默认「花」', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
+
+  const appleCard = page.locator('.plant-card', { hasText: '苹果' });
+  await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果');
+
+  await appleCard.click();
+  await expect(page.locator('.detail-zh')).toHaveText('苹果');
+  await expect(page.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /apple-flower\.jpg$/);
 });

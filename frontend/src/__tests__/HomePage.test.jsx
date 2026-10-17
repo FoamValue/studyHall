@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
+import { deriveCardTitle } from '../components/PlantCard';
 import { getCategories, getPlants } from '../api/client';
 
 vi.mock('../api/client', () => ({
@@ -67,8 +68,8 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
 
     await user.click(screen.getByRole('button', { name: '花朵' }));
 
-    // 过滤后只剩向日葵，且请求带上 category 参数
-    expect(await screen.findByText('向日葵')).toBeInTheDocument();
+    // 过滤后只剩向日葵，且请求带上 category 参数（Sprint 8：花朵分类下标题派生为「向日葵花」）
+    expect(await screen.findByText('向日葵花')).toBeInTheDocument();
     expect(screen.queryByText('银杏')).not.toBeInTheDocument();
     expect(getPlants).toHaveBeenLastCalledWith('flower');
   });
@@ -160,5 +161,42 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     const block = css.match(/\.plant-card-pinyin[\s\S]*?\.plant-card-en\s*\{[^}]*\}/s)[0];
     const fontSize = Number(block.match(/font-size:\s*(\d+)px/)[1]);
     expect(fontSize).toBeGreaterThanOrEqual(16);
+  });
+});
+
+describe('卡片标题按分类派生 deriveCardTitle（Sprint 8：TC-64）', () => {
+  const plant = (id, zh) => ({ id, name: { zh } });
+
+  it('TC-64a 花朵分类：不含「花」的名+「花」，已含「花」保持原名', () => {
+    expect(deriveCardTitle(plant('apple', '苹果'), 'flower')).toBe('苹果花');
+    expect(deriveCardTitle(plant('sunflower', '向日葵'), 'flower')).toBe('向日葵花');
+    expect(deriveCardTitle(plant('rose', '玫瑰'), 'flower')).toBe('玫瑰花');
+    expect(deriveCardTitle(plant('dandelion', '蒲公英'), 'flower')).toBe('蒲公英花');
+    // 名字已含「花」→ 保持原名
+    expect(deriveCardTitle(plant('peach-blossom', '桃花'), 'flower')).toBe('桃花');
+    expect(deriveCardTitle(plant('cherry', '樱花'), 'flower')).toBe('樱花');
+    expect(deriveCardTitle(plant('chrysanthemum', '菊花'), 'flower')).toBe('菊花');
+    expect(deriveCardTitle(plant('azalea', '杜鹃花'), 'flower')).toBe('杜鹃花');
+  });
+
+  it('TC-64b 树叶分类：一律 名称+「叶」', () => {
+    expect(deriveCardTitle(plant('apple', '苹果'), 'leaf')).toBe('苹果叶');
+    expect(deriveCardTitle(plant('maple', '枫树'), 'leaf')).toBe('枫树叶');
+    expect(deriveCardTitle(plant('ginkgo', '银杏'), 'leaf')).toBe('银杏叶');
+    expect(deriveCardTitle(plant('dandelion', '蒲公英'), 'leaf')).toBe('蒲公英叶');
+  });
+
+  it('TC-64c 果实分类：银杏/松树/荷花 特例，其余保持原名', () => {
+    expect(deriveCardTitle(plant('ginkgo', '银杏'), 'fruit')).toBe('白果');
+    expect(deriveCardTitle(plant('pine', '松树'), 'fruit')).toBe('松果');
+    expect(deriveCardTitle(plant('lotus', '荷花'), 'fruit')).toBe('莲蓬');
+    expect(deriveCardTitle(plant('apple', '苹果'), 'fruit')).toBe('苹果');
+    expect(deriveCardTitle(plant('banana', '香蕉'), 'fruit')).toBe('香蕉');
+  });
+
+  it('TC-64d 「全部」/未知分类：保持原名', () => {
+    expect(deriveCardTitle(plant('apple', '苹果'), 'all')).toBe('苹果');
+    expect(deriveCardTitle(plant('peach-blossom', '桃花'), 'all')).toBe('桃花');
+    expect(deriveCardTitle(plant('apple', '苹果'), undefined)).toBe('苹果');
   });
 });

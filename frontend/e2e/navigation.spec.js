@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test';
 
 // ===== Sprint 4 新增 E2E（TC-35 ~ TC-40）：沉浸式详情 / 连续换株 / 全屏 / 状态记忆 =====
 
-// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名
+// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名（Sprint 8 起卡片标题按分类派生，故取卡片图 alt 的原名）
 async function enterFirstFlowerDetail(page) {
   await page.goto('/');
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
   await expect(cards).toHaveCount(53, { timeout: 15000 }); // 等花朵列表渲染完成
-  const name = await cards.first().locator('.plant-card-zh').textContent();
+  const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();
   return name;
@@ -63,8 +63,8 @@ test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
   await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
   await expect(cards).toHaveCount(53, { timeout: 15000 });
-  const firstName = await cards.first().locator('.plant-card-zh').textContent();
-  const lastName = await cards.last().locator('.plant-card-zh').textContent();
+  const firstName = await cards.first().locator('img').getAttribute('alt');
+  const lastName = await cards.last().locator('img').getAttribute('alt');
   expect(firstName).not.toBe(lastName);
 
   // 首张 → 上一株 → 应循环到末张

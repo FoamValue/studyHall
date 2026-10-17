@@ -348,4 +348,56 @@ frontend/
 - `e2e/responsive.spec.js`：新增 TC-61（横屏详情图片像素宽度增大且无水平溢出、页面级溢出 ≤ 1）、TC-62（长文案 azalea 不溢出）。
 - `e2e/smoke.spec.js`：新增 TC-63（分类页卡片封面 URL 与分类一致）。
 
+---
+
+# 前端开发设计文章 — Sprint 8（名实一致修复：卡片标题 + 详情默认部位跟随分类）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-17 |
+| 依据 | docs/product/iteration-8-requirements.md、PRD §13（v1.5） |
+| 范围 | 前端 JSX 两处（`PlantCard.jsx`、`PlantDetailPage.jsx`）；不改样式、路由、接口与语料 |
+
+## S8-1. `deriveCardTitle(plant, category)` 纯函数（位于 `PlantCard.jsx`）
+```js
+// 果实惯用名特例：语料里该果实本身的说法（银杏的果=白果、松树的果=松果、荷花的果=莲蓬）
+export const FRUIT_SPECIAL_NAMES = { ginkgo: '白果', pine: '松果', lotus: '莲蓬' };
+
+// 卡片标题按入口分类派生；「全部」/未知分类保持原名
+export function deriveCardTitle(plant, category) {
+  const zh = plant?.name?.zh || '';
+  if (category === 'flower') return zh.includes('花') ? zh : `${zh}花`;
+  if (category === 'leaf') return `${zh}叶`;
+  if (category === 'fruit') return FRUIT_SPECIAL_NAMES[plant?.id] || zh;
+  return zh;
+}
+```
+- 规则：花→名已含「花」保持原名，否则 名称+「花」；叶→**一律** 名称+「叶」（口径见 PRD §13.3：统一「植物名+叶」，避免「蒲公英树叶」类不自然说法）；果→特例表命中否则原名；全部/未知→原名。
+- `.plant-card-zh` 渲染改为 `{deriveCardTitle(plant, category)}`；卡片图片 `alt` 仍用 `plant.name.zh`（语义为植物本身名，不改）。
+- 纯函数无副作用，单测直接断言（TC-64）。
+
+## S8-2. 详情默认部位跟随入口分类（`PlantDetailPage.jsx`）
+```js
+// 默认部位：优先跟随入口分类对应的部位（该植物确有才选中），否则退回固定顺序第一个
+const ordered = getOrderedParts(data.parts);
+const preferred =
+  ['flower', 'leaf', 'fruit'].includes(category) && data.parts?.[category] ? category : null;
+setPart(preferred || ordered[0] || null);
+```
+- `category` 取 `location.state?.category`，缺省 `'all'`（深链接无 state 时与现状一致）。
+- 效果：树叶→苹果默认「叶」、大图 `apple-leaf.jpg`；花朵→苹果默认「花」；果实→银杏默认「果」、大图 `ginkgo-fruit.jpg`；全部→仍默认「花」。
+- 换株（`goPrev/goNext`，改动 `id` 触发同一 `useEffect`）与滑动切株后，新植物按**当前** `category` 重新计算默认部位，天然跟随分类。
+- 不新增控件、不改换株 / 全屏 / 语音朗读逻辑。
+
+## S8-3. 不回归
+- 既有用例多为「全部」或「花朵」分类：`parts` 固定顺序首位即 flower，语义不变（TC-14/TC-15/TC-28/TC-30/TC-45 等）。
+- Sprint 6 无滚动 / Sprint 7 封面与字号断言不受影响（未改样式与后端）。
+- 唯一受影响断言：`HomePage.test.jsx` TC-12「花朵」分类下的卡片文本由「向日葵」变为「向日葵花」，按新语义更新。
+
+## S8-4. 测试更新（配合 QA）
+- `HomePage.test.jsx`：新增 TC-64（`deriveCardTitle` 派生规则：花/叶/果/全部 + 银杏/松树/荷花特例 + 桃花保持原名）；更新 TC-12 花朵分类卡片文本断言为「向日葵花」。
+- `PlantDetailPage.test.jsx`：新增 TC-65（树叶分类默认选叶、输入 `apple-leaf` 数据）、TC-66（全部默认花 / 花朵默认花 / 果实默认果 + 换株后跟随）。
+- `e2e/smoke.spec.js`：新增 TC-67（树叶分类苹果标题「苹果叶」且详情默认选叶、大图 `apple-leaf.jpg`）、TC-68（花朵分类苹果标题「苹果花」）、TC-69（果实分类银杏标题「白果」）、TC-70（全部进入苹果默认「花」）。
+
 

@@ -95,12 +95,37 @@ const COCONUT = {
   },
 };
 
+// 苹果：花/叶/果三部位齐全，固定顺序首个部位为「花」（验证默认部位是否跟随分类）
+const APPLE = {
+  id: 'apple',
+  categories: ['flower', 'leaf', 'fruit'],
+  name: { zh: '苹果', pinyin: 'píng guǒ', en: 'Apple', ipa: '/ˈæpl/' },
+  parts: {
+    flower: {
+      name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
+      images: [{ type: 'photo', url: '/images/plants/apple-flower.jpg' }],
+      description: '苹果花白白的，带一点粉。',
+    },
+    leaf: {
+      name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
+      images: [{ type: 'photo', url: '/images/plants/apple-leaf.jpg' }],
+      description: '苹果叶椭圆椭圆的，绿油油。',
+    },
+    fruit: {
+      name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
+      images: [{ type: 'photo', url: '/images/plants/apple-fruit.jpg' }],
+      description: '苹果圆滚滚、红红的。',
+    },
+  },
+};
+
 const byId = {
   sunflower: SUNFLOWER,
   ginkgo: GINKGO,
   peach: PEACH,
   maple: MAPLE,
   coconut: COCONUT,
+  apple: APPLE,
 };
 
 // 列表卡片（后端契约：{id, name, coverImage, parts}）
@@ -513,5 +538,57 @@ describe('横屏详情版式（Sprint 7：TC-60，样式源文件断言）', () 
     expect(imgBlock).toMatch(/max-width:\s*48%/);
     expect(landscape).not.toMatch(/max-width:\s*40%/);
     expect(imgBlock).toContain('max-height: 100%');
+  });
+});
+
+describe('详情默认部位跟随入口分类（Sprint 8：TC-65 / TC-66）', () => {
+  it('TC-65 来自「树叶」分类：苹果默认选中「叶」，大图与卡片图一致', async () => {
+    const user = userEvent.setup();
+    renderDetail('apple', { category: 'leaf', list: [card(APPLE), card(GINKGO)] });
+
+    // 默认选中「叶」，而非固定顺序首位「花」
+    expect(await screen.findByAltText('苹果的叶')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '叶' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'false');
+    expect(screen.getByAltText('苹果的叶')).toHaveAttribute('src', '/images/plants/apple-leaf.jpg');
+
+    // 仍可手动切到花 / 果
+    await user.click(screen.getByRole('tab', { name: '花' }));
+    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
+  });
+
+  it('TC-66a 来自「全部」分类：苹果仍默认「花」（固定顺序首位）', async () => {
+    renderDetail('apple', { category: 'all', list: [card(APPLE)] });
+
+    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('TC-66b 来自「花朵」分类：苹果默认「花」', async () => {
+    renderDetail('apple', { category: 'flower', list: [card(APPLE)] });
+
+    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('TC-66c 来自「果实」分类：银杏默认「果」', async () => {
+    renderDetail('ginkgo', { category: 'fruit', list: [card(GINKGO)] });
+
+    // 银杏固定顺序首位为「叶」，果实分类应默认选中「果」
+    expect(await screen.findByAltText('银杏的果')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByAltText('银杏的果')).toHaveAttribute('src', '/images/plants/ginkgo-fruit.jpg');
+  });
+
+  it('TC-66d 换株后默认部位仍跟随当前分类', async () => {
+    const user = userEvent.setup();
+    renderDetail('apple', { category: 'fruit', list: [card(APPLE), card(GINKGO)] });
+
+    expect(await screen.findByAltText('苹果的果')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: '下一株' }));
+    // 新植物（银杏）默认部位也应跟随「果实」分类 → 果，而非其固定首位的「叶」
+    expect(await screen.findByAltText('银杏的果')).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
   });
 });

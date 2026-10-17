@@ -36,7 +36,11 @@ export default function PlantDetailPage() {
       .then((data) => {
         if (!alive) return;
         setPlant(data);
-        setPart(getOrderedParts(data.parts)[0] || null); // 默认选中第一个存在部位
+        // 默认部位：优先跟随入口分类对应的部位（该植物确有才选中），否则退回固定顺序第一个（Sprint 8 / EX-5）
+        const ordered = getOrderedParts(data.parts);
+        const preferred =
+          ['flower', 'leaf', 'fruit'].includes(category) && data.parts?.[category] ? category : null;
+        setPart(preferred || ordered[0] || null);
         setStatus('ready');
       })
       .catch((err) => {
