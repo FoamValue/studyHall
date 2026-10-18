@@ -27,7 +27,11 @@
           "url": "/images/plants/petunia-flower.jpg"
         }
       ],
-      "description": "矮牵牛的花像小喇叭，紫的粉的真热闹。开在花盆里，像小花瀑布。"
+      "description": "矮牵牛的花像小喇叭，紫的粉的真热闹。开在花盆里，像小花瀑布。",
+      "allusion": {
+        "text": "矮牵牛的花有紫、粉、白等好多颜色，一盆能开上百朵。",
+        "explain": "矮牵牛小小的，却特别能开花，一盆能开出一大堆小花。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/petunia-leaf.jpg"
         }
       ],
-      "description": "矮牵牛叶子小小的，摸起来有点黏。叶子软软的，绿绿的。"
+      "description": "矮牵牛叶子小小的，摸起来有点黏。叶子软软的，绿绿的。",
+      "allusion": {
+        "text": "矮牵牛叶小小的，摸起来有点黏，软软绿绿的。",
+        "explain": "矮牵牛的叶子小小的，摸上去有点黏黏的，又软又绿。"
+      }
     }
   }
 }

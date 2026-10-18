@@ -28,7 +28,11 @@
           "url": "/images/plants/dandelion-flower.jpg"
         }
       ],
-      "description": "蒲公英开黄色小花，像小太阳落在草地上。太阳出来它张开，天黑就合上。"
+      "description": "蒲公英开黄色小花，像小太阳落在草地上。太阳出来它张开，天黑就合上。",
+      "allusion": {
+        "text": "蒲公英花谢了，变成白色小绒球，风一吹种子就飞走。",
+        "explain": "蒲公英的小白球，风一吹，种子就撑着小伞去旅行啦。"
+      }
     },
     "leaf": {
       "name": {
@@ -43,7 +47,11 @@
           "url": "/images/plants/dandelion-leaf.jpg"
         }
       ],
-      "description": "叶子贴着地面长，边上是尖尖的锯齿，像狮子的大牙齿。"
+      "description": "叶子贴着地面长，边上是尖尖的锯齿，像狮子的大牙齿。",
+      "allusion": {
+        "text": "蒲公英叶贴着地面长，边上锯齿像狮子的大牙齿。",
+        "explain": "蒲公英的叶子趴在地上长，边上尖尖的锯齿，像狮子的大牙齿。"
+      }
     },
     "fruit": {
       "name": {
@@ -58,7 +66,11 @@
           "url": "/images/plants/dandelion-fruit.jpg"
         }
       ],
-      "description": "黄花谢了，变成白色小绒球。吹一口气，小种子撑着降落伞飞走，落到哪里就在哪里发芽。"
+      "description": "黄花谢了，变成白色小绒球。吹一口气，小种子撑着降落伞飞走，落到哪里就在哪里发芽。",
+      "allusion": {
+        "text": "蒲公英还有个名字，叫婆婆丁。",
+        "explain": "蒲公英的小果实像小伞，人们还给它起了个可爱的名字叫婆婆丁。"
+      }
     }
   }
 }

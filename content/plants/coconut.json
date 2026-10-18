@@ -27,7 +27,11 @@
           "url": "/images/plants/coconut-fruit.jpg"
         }
       ],
-      "description": "椰子外壳硬硬的，里面装着甜甜的椰子水。插根吸管就能喝。"
+      "description": "椰子外壳硬硬的，里面装着甜甜的椰子水。插根吸管就能喝。",
+      "allusion": {
+        "text": "椰子掉进大海，漂到远方安家。",
+        "explain": "椰子外面有厚厚的壳像小船，掉进海里也不会沉，漂到新地方发芽。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/coconut-leaf.jpg"
         }
       ],
-      "description": "椰子叶子又长又大，像绿色的大羽毛。风一吹哗啦啦响。"
+      "description": "椰子叶子又长又大，像绿色的大羽毛。风一吹哗啦啦响。",
+      "allusion": {
+        "text": "椰子叶又长又大，像绿色的大羽毛，风一吹哗啦啦响。",
+        "explain": "椰子树的叶子又长又大，像绿色的大羽毛，风一吹就哗啦啦唱歌。"
+      }
     }
   }
 }

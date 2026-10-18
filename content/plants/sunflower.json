@@ -48,7 +48,11 @@
           "url": "/images/plants/sunflower-leaf.jpg"
         }
       ],
-      "description": "叶子又宽又大，像绿色的手掌。它迎着太阳，帮花盘收集阳光。"
+      "description": "叶子又宽又大，像绿色的手掌。它迎着太阳，帮花盘收集阳光。",
+      "allusion": {
+        "text": "叶子又宽又大，像绿色的手掌，帮花盘收集阳光。",
+        "explain": "向日葵的叶子又宽又大，像绿色的手掌，迎着太阳帮花盘收集阳光。"
+      }
     },
     "fruit": {
       "name": {
@@ -63,7 +67,11 @@
           "url": "/images/plants/sunflower-fruit.jpg"
         }
       ],
-      "description": "花盘里排满了一颗颗葵花籽，这就是它的果实。炒香了可香啦，还能榨油。"
+      "description": "花盘里排满了一颗颗葵花籽，这就是它的果实。炒香了可香啦，还能榨油。",
+      "allusion": {
+        "text": "一个大花盘里，能藏上千颗葵花籽。",
+        "explain": "向日葵的花盘里整整齐齐排满了葵花籽，一颗一颗数都数不完。"
+      }
     }
   }
 }

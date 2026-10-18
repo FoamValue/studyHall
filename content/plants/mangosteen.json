@@ -27,7 +27,11 @@
           "url": "/images/plants/mangosteen-fruit.jpg"
         }
       ],
-      "description": "山竹紫紫的外壳厚厚的，里面藏着几瓣白果肉。酸酸甜甜像小蒜瓣。"
+      "description": "山竹紫紫的外壳厚厚的，里面藏着几瓣白果肉。酸酸甜甜像小蒜瓣。",
+      "allusion": {
+        "text": "山竹紫紫的壳里，藏着白白的果肉瓣。",
+        "explain": "山竹厚厚的紫壳里，果肉像一瓣瓣小白蒜，甜甜的，叫水果皇后。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/mangosteen-leaf.jpg"
         }
       ],
-      "description": "山竹叶子椭圆厚厚的，绿得发亮。一对一对整整齐齐长着。"
+      "description": "山竹叶子椭圆厚厚的，绿得发亮。一对一对整整齐齐长着。",
+      "allusion": {
+        "text": "山竹叶椭圆厚厚的，一对一对整整齐齐地长着。",
+        "explain": "山竹的叶子又厚又圆，一对一对长得整整齐齐，绿得发亮。"
+      }
     }
   }
 }

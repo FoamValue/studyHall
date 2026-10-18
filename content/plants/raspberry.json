@@ -27,7 +27,11 @@
           "url": "/images/plants/raspberry-fruit.jpg"
         }
       ],
-      "description": "树莓红红的，像好多小珠子抱在一起。酸酸甜甜，软软的真好吃。"
+      "description": "树莓红红的，像好多小珠子抱在一起。酸酸甜甜，软软的真好吃。",
+      "allusion": {
+        "text": "树莓还有个名字，叫覆盆子。",
+        "explain": "树莓红红的一颗颗像小杯子，人们也爱叫它覆盆子。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/raspberry-leaf.jpg"
         }
       ],
-      "description": "树莓叶子边上有小锯齿，背面白白的。叶子上有小绒毛。"
+      "description": "树莓叶子边上有小锯齿，背面白白的。叶子上有小绒毛。",
+      "allusion": {
+        "text": "树莓叶边上有小锯齿，背面白白的，还有小绒毛。",
+        "explain": "树莓的叶子边上有小锯齿，背面白白的，上面长着一层小绒毛。"
+      }
     }
   }
 }

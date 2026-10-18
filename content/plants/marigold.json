@@ -27,7 +27,11 @@
           "url": "/images/plants/marigold-flower.jpg"
         }
       ],
-      "description": "金盏花金黄金黄的，像一个小金碗。太阳一晒，开得更加灿烂。"
+      "description": "金盏花金黄金黄的，像一个小金碗。太阳一晒，开得更加灿烂。",
+      "allusion": {
+        "text": "金盏花金黄金黄的，像一个小金碗，太阳一晒更亮。",
+        "explain": "金盏花像小太阳一样黄，越晒越金黄，还会结小黑籽。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/marigold-leaf.jpg"
         }
       ],
-      "description": "金盏花叶子绿绿的，边上有小锯齿。闻一闻，有一股特别的味道。"
+      "description": "金盏花叶子绿绿的，边上有小锯齿。闻一闻，有一股特别的味道。",
+      "allusion": {
+        "text": "金盏花叶绿绿的，边上有小锯齿，闻着有特别的味道。",
+        "explain": "金盏花的叶子绿绿的，边上有一排小锯齿，闻一闻有股特别的味道。"
+      }
     }
   }
 }

@@ -27,7 +27,11 @@
           "url": "/images/plants/anemone-flower.jpg"
         }
       ],
-      "description": "银莲花白白的，风一吹就点头，所以也叫风花。花心有一圈小绒毛。"
+      "description": "银莲花白白的，风一吹就点头，所以也叫风花。花心有一圈小绒毛。",
+      "allusion": {
+        "text": "银莲花也叫风花，风一吹，它就在草地上轻轻点头。",
+        "explain": "白白的银莲花最爱跟风做游戏，风一吹，它就点头跟你打招呼。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/anemone-leaf.jpg"
         }
       ],
-      "description": "银莲花叶子像小鸭掌，分成好几瓣。绿绿的，贴着地长。"
+      "description": "银莲花叶子像小鸭掌，分成好几瓣。绿绿的，贴着地长。",
+      "allusion": {
+        "text": "银莲花的叶子像小鸭掌，分成好几瓣，绿绿地贴在地上。",
+        "explain": "它的叶子分成好几瓣，趴在地上长，像小鸭子的小脚掌。"
+      }
     }
   }
 }

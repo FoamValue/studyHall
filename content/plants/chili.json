@@ -27,7 +27,11 @@
           "url": "/images/plants/chili-fruit.jpg"
         }
       ],
-      "description": "辣椒尖尖的，红红的像小灯笼。咬一口辣得直吐舌头。"
+      "description": "辣椒尖尖的，红红的像小灯笼。咬一口辣得直吐舌头。",
+      "allusion": {
+        "text": "辣椒辣辣的，是为了不让小动物咬它。",
+        "explain": "辣椒的辣味是它的武器，可小鸟不怕辣，还能帮它把种子带走。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/chili-leaf.jpg"
         }
       ],
-      "description": "辣椒叶子小小的，尖尖的，绿绿的。叶子摸上去滑滑的。"
+      "description": "辣椒叶子小小的，尖尖的，绿绿的。叶子摸上去滑滑的。",
+      "allusion": {
+        "text": "辣椒叶小小的、尖尖的，绿绿的，摸上去滑滑的。",
+        "explain": "辣椒的叶子小小的，尖尖的绿绿的，摸起来滑溜溜的。"
+      }
     }
   }
 }

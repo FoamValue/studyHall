@@ -27,7 +27,12 @@
           "url": "/images/plants/papaya-fruit.jpg"
         }
       ],
-      "description": "木瓜长长的，熟了黄澄澄的。切开里面一排黑籽，果肉软软的、甜甜的。"
+      "description": "木瓜长长的，熟了黄澄澄的。切开里面一排黑籽，果肉软软的、甜甜的。",
+      "allusion": {
+        "text": "投我以木瓜，报之以琼琚。",
+        "source": "《诗经·木瓜》",
+        "explain": "你送我甜甜的木瓜，我回送你美美的玉，好朋友要互相分享。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +47,11 @@
           "url": "/images/plants/papaya-leaf.jpg"
         }
       ],
-      "description": "木瓜叶子像一把大伞，长在高高的树干顶。叶柄长长的。"
+      "description": "木瓜叶子像一把大伞，长在高高的树干顶。叶柄长长的。",
+      "allusion": {
+        "text": "木瓜叶像一把大伞，长在高高的树干顶，柄长长的。",
+        "explain": "木瓜的叶子像一把大伞，长在高高的树干顶上，叶柄长长的。"
+      }
     }
   }
 }

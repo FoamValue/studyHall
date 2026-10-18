@@ -27,7 +27,11 @@
           "url": "/images/plants/pineapple-fruit.jpg"
         }
       ],
-      "description": "菠萝穿着带刺的盔甲，头顶绿油油的叶子帽。果肉酸酸甜甜。"
+      "description": "菠萝穿着带刺的盔甲，头顶绿油油的叶子帽。果肉酸酸甜甜。",
+      "allusion": {
+        "text": "菠萝是一群小花手拉手，长成的大果子。",
+        "explain": "菠萝不是一朵花结的，而是好多好多小花挤在一起，长成一个大菠萝。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/pineapple-leaf.jpg"
         }
       ],
-      "description": "菠萝叶子又长又硬，边上有小刺。它们围成一圈像绿色皇冠。"
+      "description": "菠萝叶子又长又硬，边上有小刺。它们围成一圈像绿色皇冠。",
+      "allusion": {
+        "text": "菠萝叶又长又硬，边上有小刺，围成一圈像皇冠。",
+        "explain": "菠萝的叶子又长又硬，边上长着小刺，围成一圈像绿色的皇冠。"
+      }
     }
   }
 }

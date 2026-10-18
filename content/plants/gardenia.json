@@ -47,7 +47,12 @@
           "url": "/images/plants/gardenia-leaf.jpg"
         }
       ],
-      "description": "栀子叶子绿油油的，一年四季都不掉。叶片厚厚的，摸上去滑滑的。"
+      "description": "栀子叶子绿油油的，一年四季都不掉。叶片厚厚的，摸上去滑滑的。",
+      "allusion": {
+        "text": "四季常青，栀子叶厚厚的，冬天也绿油油。",
+        "source": "成语",
+        "explain": "栀子的叶子一年到头都是绿的，又厚又滑，冬天也不掉。"
+      }
     }
   }
 }

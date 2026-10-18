@@ -27,7 +27,11 @@
           "url": "/images/plants/peanut-fruit.jpg"
         }
       ],
-      "description": "花生住在泥土里，外壳像小葫芦。剥开两颗胖娃娃，香香脆脆。"
+      "description": "花生住在泥土里，外壳像小葫芦。剥开两颗胖娃娃，香香脆脆。",
+      "allusion": {
+        "text": "花生花开完，就钻进土里结果子。",
+        "explain": "花生的花开在枝上，谢了就弯下腰钻进土里，慢慢长出花生，所以叫落花生。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/peanut-leaf.jpg"
         }
       ],
-      "description": "花生叶子是四片小叶手拉手。晚上叶子会合起来睡觉觉。"
+      "description": "花生叶子是四片小叶手拉手。晚上叶子会合起来睡觉觉。",
+      "allusion": {
+        "text": "花生叶是四片小叶手拉手，晚上会合起来睡觉觉。",
+        "explain": "花生的叶子四片排在一起，像手拉手，天黑了就合起来睡觉。"
+      }
     }
   }
 }

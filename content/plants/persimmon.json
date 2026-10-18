@@ -47,7 +47,11 @@
           "url": "/images/plants/persimmon-leaf.jpg"
         }
       ],
-      "description": "柿子叶又大又圆，绿得发亮。秋天叶子变红，比花还好看。"
+      "description": "柿子叶又大又圆，绿得发亮。秋天叶子变红，比花还好看。",
+      "allusion": {
+        "text": "柿子叶又大又圆，秋天变红，比花还好看。",
+        "explain": "柿子的叶子又大又圆，秋天会变成红红的，比花还漂亮。"
+      }
     }
   }
 }

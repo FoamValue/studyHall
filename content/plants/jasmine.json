@@ -27,7 +27,12 @@
           "url": "/images/plants/jasmine-flower.jpg"
         }
       ],
-      "description": "茉莉花小小的，白白的，像小星星。闻起来特别香，夏天晚上最香啦。"
+      "description": "茉莉花小小的，白白的，像小星星。闻起来特别香，夏天晚上最香啦。",
+      "allusion": {
+        "text": "好一朵美丽的茉莉花，又香又白人人夸。",
+        "source": "民歌《茉莉花》",
+        "explain": "这首中国老歌一唱起茉莉花，就想到白白香香的花儿。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +47,11 @@
           "url": "/images/plants/jasmine-leaf.jpg"
         }
       ],
-      "description": "茉莉叶椭圆椭圆的，两头尖尖。绿得油亮，托着白白的小香花。"
+      "description": "茉莉叶椭圆椭圆的，两头尖尖。绿得油亮，托着白白的小香花。",
+      "allusion": {
+        "text": "茉莉叶椭圆椭圆的，两头尖尖，绿得油亮。",
+        "explain": "茉莉的叶子椭圆椭圆的，两头尖尖，绿得发亮，托着白白的小香花。"
+      }
     }
   }
 }

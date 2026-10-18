@@ -27,7 +27,11 @@
           "url": "/images/plants/honeysuckle-flower.jpg"
         }
       ],
-      "description": "金银花开花先白后黄，一根藤上金色银色都有。闻起来香香甜甜的。"
+      "description": "金银花开花先白后黄，一根藤上金色银色都有。闻起来香香甜甜的。",
+      "allusion": {
+        "text": "金银花先白后黄，晒干了还能泡成香香的花茶。",
+        "explain": "金银花的花会变颜色，刚开是白的，后来变黄，所以叫金银花。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/honeysuckle-leaf.jpg"
         }
       ],
-      "description": "金银花叶子一对一对长着，像一对对好朋友。叶子软软的，绿绿的。"
+      "description": "金银花叶子一对一对长着，像一对对好朋友。叶子软软的，绿绿的。",
+      "allusion": {
+        "text": "金银花叶一对一对长着，像一对对好朋友，软软的。",
+        "explain": "金银花的叶子一对一对长在一起，像好朋友手拉手，软软绿绿的。"
+      }
     }
   }
 }

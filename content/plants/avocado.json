@@ -27,7 +27,11 @@
           "url": "/images/plants/avocado-fruit.jpg"
         }
       ],
-      "description": "牛油果深绿深绿的，像一颗大鸭梨。切开里面黄绿黄绿，还有一颗大核。"
+      "description": "牛油果深绿深绿的，像一颗大鸭梨。切开里面黄绿黄绿，还有一颗大核。",
+      "allusion": {
+        "text": "牛油果也叫鳄梨，果肉滑得像黄油。",
+        "explain": "牛油果的皮坑坑洼洼像鳄鱼皮，所以也叫鳄梨，果肉软软的。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/avocado-leaf.jpg"
         }
       ],
-      "description": "牛油果叶子长长的，绿得发亮。一年四季都是绿的。"
+      "description": "牛油果叶子长长的，绿得发亮。一年四季都是绿的。",
+      "allusion": {
+        "text": "牛油果的叶子长长的，绿得发亮，一年到头都不掉。",
+        "explain": "它的叶子又长又亮，冬天也是绿的，一直挂在树上不掉下来。"
+      }
     }
   }
 }

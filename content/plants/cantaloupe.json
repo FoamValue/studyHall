@@ -27,7 +27,11 @@
           "url": "/images/plants/cantaloupe-fruit.jpg"
         }
       ],
-      "description": "哈密瓜圆圆的，皮上有网网花纹。果肉橙橙的，甜得像蜜。"
+      "description": "哈密瓜圆圆的，皮上有网网花纹。果肉橙橙的，甜得像蜜。",
+      "allusion": {
+        "text": "哈密瓜长在新疆哈密，名字就来自这里。",
+        "explain": "甜甜的哈密瓜出产在新疆哈密，大家就照着地名叫它哈密瓜。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/cantaloupe-leaf.jpg"
         }
       ],
-      "description": "哈密瓜叶子圆圆的，像小扇子。叶子毛毛的，趴在地上长。"
+      "description": "哈密瓜叶子圆圆的，像小扇子。叶子毛毛的，趴在地上长。",
+      "allusion": {
+        "text": "哈密瓜叶子圆圆的，毛毛的，趴在地上晒太阳。",
+        "explain": "哈密瓜的叶子圆圆的，上面有细毛，铺在地上一边爬一边晒太阳。"
+      }
     }
   }
 }

@@ -321,8 +321,9 @@ class PlantApiIntegrationTest {
                 if (part.allusion() != null) {
                     assertThat(part.allusion().text()).isNotBlank();
                     assertThat(part.allusion().explain()).isNotBlank();
-                    // 植物部位典故须含出处；板块小知识（animal/insect/dinosaur）可无 source
-                    if (boardPrefix == null) {
+                    // Sprint 13（v2.4）：小知识「有明确出处才填 source」，植物与板块统一口径
+                    //（无合适古典诗文的植物以文化/自然常识回退，省略 source）；若填写则须非空
+                    if (part.allusion().source() != null) {
                         assertThat(part.allusion().source()).isNotBlank();
                     }
                 }

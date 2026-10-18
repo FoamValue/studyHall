@@ -27,7 +27,11 @@
           "url": "/images/plants/blueberry-fruit.jpg"
         }
       ],
-      "description": "蓝莓小小的、蓝蓝的，像一颗颗小宝石。表面有一层白白的粉。"
+      "description": "蓝莓小小的、蓝蓝的，像一颗颗小宝石。表面有一层白白的粉。",
+      "allusion": {
+        "text": "蓝莓皮上的白霜，是它自己长的保护衣。",
+        "explain": "蓝莓身上那层白白的粉是它自己长的，能保护它，洗洗就能吃。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/blueberry-leaf.jpg"
         }
       ],
-      "description": "蓝莓叶子小小的，椭圆椭圆的。秋天叶子变红，像小火苗。"
+      "description": "蓝莓叶子小小的，椭圆椭圆的。秋天叶子变红，像小火苗。",
+      "allusion": {
+        "text": "蓝莓叶小小的，秋天变红，像一簇簇小火苗。",
+        "explain": "蓝莓的叶子小小的，到了秋天会变红，远远看像一朵朵小火苗。"
+      }
     }
   }
 }

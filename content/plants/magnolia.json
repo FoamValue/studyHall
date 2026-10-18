@@ -47,7 +47,12 @@
           "url": "/images/plants/magnolia-leaf.jpg"
         }
       ],
-      "description": "玉兰叶子又大又圆，绿得发亮。秋天叶子变黄，一片片飘下来。"
+      "description": "玉兰叶子又大又圆，绿得发亮。秋天叶子变黄，一片片飘下来。",
+      "allusion": {
+        "text": "一叶知秋，玉兰叶黄了，秋天就来了。",
+        "source": "成语",
+        "explain": "看见玉兰树落下第一片黄叶，就知道秋天到了，天气要凉啦。"
+      }
     }
   }
 }

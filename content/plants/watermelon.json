@@ -27,7 +27,11 @@
           "url": "/images/plants/watermelon-fruit.jpg"
         }
       ],
-      "description": "西瓜圆滚滚的，绿皮上有深绿条纹。切开红红的瓤，黑黑的籽，甜甜的汁水多。"
+      "description": "西瓜圆滚滚的，绿皮上有深绿条纹。切开红红的瓤，黑黑的籽，甜甜的汁水多。",
+      "allusion": {
+        "text": "西瓜从西边传来，所以叫西瓜。",
+        "explain": "很久以前西瓜从很远的地方传来，大家就叫它西瓜。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/watermelon-leaf.jpg"
         }
       ],
-      "description": "西瓜叶裂成好多小片，像小手掌。趴在地上爬藤，给西瓜遮太阳。"
+      "description": "西瓜叶裂成好多小片，像小手掌。趴在地上爬藤，给西瓜遮太阳。",
+      "allusion": {
+        "text": "西瓜叶裂成好多小片，像小手掌，趴在地上爬藤。",
+        "explain": "西瓜的叶子裂成好多小片，像小手掌，趴在地上爬藤给西瓜遮太阳。"
+      }
     }
   }
 }

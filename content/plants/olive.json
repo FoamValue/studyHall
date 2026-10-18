@@ -27,7 +27,12 @@
           "url": "/images/plants/olive-fruit.jpg"
         }
       ],
-      "description": "橄榄小小的、椭圆椭圆的，青的紫的都有。嚼一嚼，先苦后甜。"
+      "description": "橄榄小小的、椭圆椭圆的，青的紫的都有。嚼一嚼，先苦后甜。",
+      "allusion": {
+        "text": "待得微甘回齿颊，已输崖蜜十分甜。",
+        "source": "苏轼《橄榄》",
+        "explain": "橄榄刚吃有点苦，慢慢嚼一嚼，甜甜的味道就出来了。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +47,11 @@
           "url": "/images/plants/olive-leaf.jpg"
         }
       ],
-      "description": "橄榄叶子小小的，正面绿背面银白。风一吹，树叶一闪一闪。"
+      "description": "橄榄叶子小小的，正面绿背面银白。风一吹，树叶一闪一闪。",
+      "allusion": {
+        "text": "橄榄叶正面绿、背面银白，风一吹就一闪一闪。",
+        "explain": "橄榄的叶子正面是绿的，背面银白，风一吹，树叶亮闪闪的。"
+      }
     }
   }
 }

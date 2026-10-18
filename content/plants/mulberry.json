@@ -47,7 +47,12 @@
           "url": "/images/plants/mulberry-leaf.jpg"
         }
       ],
-      "description": "桑叶大大的，像绿色的小爱心。蚕宝宝最爱吃桑叶了。"
+      "description": "桑叶大大的，像绿色的小爱心。蚕宝宝最爱吃桑叶了。",
+      "allusion": {
+        "text": "桑之未落，其叶沃若。",
+        "source": "《诗经·卫风·氓》",
+        "explain": "桑树的叶子还没落的时候，长得又嫩又润，绿得真好看。"
+      }
     }
   }
 }

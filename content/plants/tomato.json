@@ -28,7 +28,11 @@
           "url": "/images/plants/tomato-fruit.jpg"
         }
       ],
-      "description": "番茄红红的、圆圆的，像小灯笼。咬一口酸酸甜甜，里面还有小籽籽。"
+      "description": "番茄红红的、圆圆的，像小灯笼。咬一口酸酸甜甜，里面还有小籽籽。",
+      "allusion": {
+        "text": "番茄从远方传来，也叫西红柿。",
+        "explain": "番茄原来长在很远的外国，来到我们这里以后，人们又叫它西红柿。"
+      }
     },
     "flower": {
       "name": {
@@ -43,7 +47,11 @@
           "url": "/images/plants/tomato-flower.jpg"
         }
       ],
-      "description": "番茄花黄黄的，小小的，像小星星。一簇一簇开在叶子中间。"
+      "description": "番茄花黄黄的，小小的，像小星星。一簇一簇开在叶子中间。",
+      "allusion": {
+        "text": "番茄花小小的黄黄的，它常常自己给自己传粉结果。",
+        "explain": "番茄花不用别人帮忙，常常自己就能结出圆圆的番茄。"
+      }
     },
     "leaf": {
       "name": {
@@ -58,7 +66,11 @@
           "url": "/images/plants/tomato-leaf.jpg"
         }
       ],
-      "description": "番茄叶毛毛的，裂成好多小片。摸一摸有点扎手，闻起来有特别的味道。"
+      "description": "番茄叶毛毛的，裂成好多小片。摸一摸有点扎手，闻起来有特别的味道。",
+      "allusion": {
+        "text": "番茄叶毛毛的，裂成好多小片，闻着有特别的味道。",
+        "explain": "番茄的叶子毛茸茸的，裂成好多小片，摸一摸有点扎手，闻着有味。"
+      }
     }
   }
 }

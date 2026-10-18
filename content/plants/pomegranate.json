@@ -47,7 +47,11 @@
           "url": "/images/plants/pomegranate-leaf.jpg"
         }
       ],
-      "description": "石榴叶子小小的，一对一对长着。叶面亮亮的，像涂了油。"
+      "description": "石榴叶子小小的，一对一对长着。叶面亮亮的，像涂了油。",
+      "allusion": {
+        "text": "石榴叶小小的，一对一对长着，叶面亮得像涂了油。",
+        "explain": "石榴的叶子小小的，一对一对长着，亮亮的像涂了一层油。"
+      }
     }
   }
 }

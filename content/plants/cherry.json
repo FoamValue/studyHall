@@ -27,7 +27,11 @@
           "url": "/images/plants/cherry-flower.jpg"
         }
       ],
-      "description": "樱花一簇一簇开满枝头，粉粉嫩嫩的。风一吹，花瓣像小雪片飘下来。"
+      "description": "樱花一簇一簇开满枝头，粉粉嫩嫩的。风一吹，花瓣像小雪片飘下来。",
+      "allusion": {
+        "text": "樱花开满枝头，只有短短几天，风一吹就落下来。",
+        "explain": "樱花是春天的小信使，它开的时候，春天就来啦。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/cherry-leaf.jpg"
         }
       ],
-      "description": "樱花树常常先开花、后长叶。新叶嫩绿嫩绿的，边上也有小锯齿。"
+      "description": "樱花树常常先开花、后长叶。新叶嫩绿嫩绿的，边上也有小锯齿。",
+      "allusion": {
+        "text": "樱花树先开花、后长叶，新叶嫩绿嫩绿的。",
+        "explain": "樱花树先开满花，花谢了才长出叶子，新叶子嫩嫩绿绿的。"
+      }
     }
   }
 }

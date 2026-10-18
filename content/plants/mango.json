@@ -27,7 +27,11 @@
           "url": "/images/plants/mango-fruit.jpg"
         }
       ],
-      "description": "芒果黄黄的，像弯弯的小月亮。果肉软软的，甜甜的，香香的。"
+      "description": "芒果黄黄的，像弯弯的小月亮。果肉软软的，甜甜的，香香的。",
+      "allusion": {
+        "text": "芒果又香又甜，被叫做热带果王。",
+        "explain": "芒果长在热热的南方，果肉软软甜甜，大家叫它热带果王。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/mango-leaf.jpg"
         }
       ],
-      "description": "芒果叶子长长的，绿得发亮。小叶子刚长出来是红褐色的。"
+      "description": "芒果叶子长长的，绿得发亮。小叶子刚长出来是红褐色的。",
+      "allusion": {
+        "text": "芒果叶长长的，绿得发亮，新叶刚长出来是红褐色。",
+        "explain": "芒果的叶子又长又亮，刚长出来的小叶子是红褐色的，慢慢才变绿。"
+      }
     }
   }
 }

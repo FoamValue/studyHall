@@ -601,6 +601,25 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 | 日期 | 2026-10-18 |
 | 结论 | **本迭代后端零改动**（J-16）。三项均为前端文案 / 样式；不涉接口契约、路由、语料、音频路径与排序逻辑。 |
 
+---
+
+# 前端开发设计文章 — Sprint 13（增量：无）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-18 |
+| 结论 | **本迭代前端零改动**（R-37）。纯语料增补。 |
+
+## S13-1. 零改动确认
+- `AllusionCard` 为**数据驱动**组件：`allusion.text` 存在即渲染「小知识」标题（`.allusion-title`）与 `.allusion-text`/`.allusion-explain`；无内容整卡不渲染（沿用 v2.1 EX-4 口径）。因此植物语料补齐 `allusion` 后**无需任何前端改动**即自动展示。
+- **不改**：路由 `/plants/:id`、`location.state`（section / category / list / restoreScroll）、`SECTION_HOME` 返回文案派生、部位切换、喇叭音频播放、沉浸式 / 全屏 / 增量加载逻辑、`styles.css`。
+- US-6 沉浸换株、US-7 喇叭、US-8 默认部位跟随分类、Sprint 6 无滚动红线、Sprint 10 增量加载与「共 N 种」、Sprint 12 返回文案派生均不受影响。
+
+## S13-2. 测试更新（配合 QA-31 / QA-32）
+- 前端单测**不新增**（`AllusionCard` 逻辑已由既有断言覆盖）。
+- E2E 新增 **TC-128**（此前缺失小知识的植物，如 apple，详情 `.allusion-card` 与 `.allusion-title` 渲染）、**TC-129**（同株「花 / 叶 / 果」小知识文案互不相同）；既有 50 用例全量回归。
+
 
 
 

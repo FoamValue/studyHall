@@ -27,7 +27,11 @@
           "url": "/images/plants/eggplant-fruit.jpg"
         }
       ],
-      "description": "茄子紫紫的、亮亮的，像穿紫袍的小胖子。煮熟了软软的。"
+      "description": "茄子紫紫的、亮亮的，像穿紫袍的小胖子。煮熟了软软的。",
+      "allusion": {
+        "text": "茄子和番茄、辣椒，原来是一家人。",
+        "explain": "茄子、番茄和辣椒长得不一样，可它们是同一个小家族里的亲戚。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/eggplant-leaf.jpg"
         }
       ],
-      "description": "茄子叶子大大的，边上有波浪。叶子上有小毛毛，还有点刺。"
+      "description": "茄子叶子大大的，边上有波浪。叶子上有小毛毛，还有点刺。",
+      "allusion": {
+        "text": "茄子叶大大的，边上有波浪，上面有小毛毛和小刺。",
+        "explain": "茄子的叶子很大，边上像波浪，表面有细毛，还有一点点小刺。"
+      }
     }
   }
 }

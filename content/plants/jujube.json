@@ -27,7 +27,12 @@
           "url": "/images/plants/jujube-fruit.jpg"
         }
       ],
-      "description": "枣子红红的、椭圆的，像一颗颗小玛瑙。脆脆甜甜的，晒干更甜。"
+      "description": "枣子红红的、椭圆的，像一颗颗小玛瑙。脆脆甜甜的，晒干更甜。",
+      "allusion": {
+        "text": "七月十五枣红圈，八月十五枣落杆。",
+        "source": "谚语",
+        "explain": "到了七月枣子开始红，八月枣子熟透了，就从树上摘下来啦。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +47,11 @@
           "url": "/images/plants/jujube-leaf.jpg"
         }
       ],
-      "description": "枣树叶子小小的，亮亮的，一对一对长着。枝条上还有小刺。"
+      "description": "枣树叶子小小的，亮亮的，一对一对长着。枝条上还有小刺。",
+      "allusion": {
+        "text": "枣树叶小小的、亮亮的，一对一对长，枝上还有小刺。",
+        "explain": "枣树的叶子小小的，亮亮的，一对一对长着，枝条上还长着小刺。"
+      }
     }
   }
 }

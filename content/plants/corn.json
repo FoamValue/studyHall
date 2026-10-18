@@ -27,7 +27,11 @@
           "url": "/images/plants/corn-fruit.jpg"
         }
       ],
-      "description": "玉米穿着绿外衣，剥开一排排金黄小牙齿。煮熟了甜甜的。"
+      "description": "玉米穿着绿外衣，剥开一排排金黄小牙齿。煮熟了甜甜的。",
+      "allusion": {
+        "text": "玉米头上的一把胡子，都是它的花丝。",
+        "explain": "玉米顶上的胡须，每一根都连着一颗玉米粒，可重要啦。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/corn-leaf.jpg"
         }
       ],
-      "description": "玉米叶子又长又宽，像绿色的大飘带。风一吹哗啦啦唱歌。"
+      "description": "玉米叶子又长又宽，像绿色的大飘带。风一吹哗啦啦唱歌。",
+      "allusion": {
+        "text": "玉米叶又长又宽，像绿色的大飘带，风吹沙沙响。",
+        "explain": "玉米的叶子又长又宽，像绿色的飘带，风一吹就沙沙地响。"
+      }
     }
   }
 }

@@ -28,7 +28,11 @@
           "url": "/images/plants/strawberry-flower.jpg"
         }
       ],
-      "description": "草莓开白色小花，五个圆花瓣，中间是黄黄的小圆心，像小纽扣。"
+      "description": "草莓开白色小花，五个圆花瓣，中间是黄黄的小圆心，像小纽扣。",
+      "allusion": {
+        "text": "草莓花中间的花托，以后会长成红红的草莓果肉。",
+        "explain": "草莓花谢了，中间的小花托慢慢长大，就变成红草莓啦。"
+      }
     },
     "leaf": {
       "name": {
@@ -43,7 +47,11 @@
           "url": "/images/plants/strawberry-leaf.jpg"
         }
       ],
-      "description": "草莓叶绿绿的，边上有锯齿，上面长着细细的绒毛，摸起来毛茸茸的。"
+      "description": "草莓叶绿绿的，边上有锯齿，上面长着细细的绒毛，摸起来毛茸茸的。",
+      "allusion": {
+        "text": "草莓叶绿绿的，边上有锯齿，上面有细毛，毛茸茸。",
+        "explain": "草莓的叶子绿绿的，边上有一排锯齿，上面长着细毛，摸起来毛茸茸。"
+      }
     },
     "fruit": {
       "name": {
@@ -58,7 +66,11 @@
           "url": "/images/plants/strawberry-fruit.jpg"
         }
       ],
-      "description": "草莓红红的，上面布满小芝麻点，那些小点点才是它真正的种子。咬一口，酸酸甜甜的。"
+      "description": "草莓红红的，上面布满小芝麻点，那些小点点才是它真正的种子。咬一口，酸酸甜甜的。",
+      "allusion": {
+        "text": "摘草莓要轻轻一扭，可不能捏坏它。",
+        "explain": "草莓软软的，摘的时候轻轻一扭就下来，用力捏就会捏破啦。"
+      }
     }
   }
 }

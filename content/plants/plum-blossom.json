@@ -47,7 +47,11 @@
           "url": "/images/plants/plum-blossom-leaf.jpg"
         }
       ],
-      "description": "梅叶圆圆的，两头尖尖。春天花谢了才长出来，绿得发亮。"
+      "description": "梅叶圆圆的，两头尖尖。春天花谢了才长出来，绿得发亮。",
+      "allusion": {
+        "text": "梅叶圆圆的，两头尖尖，春天花谢了才长出来。",
+        "explain": "梅花的叶子圆圆的，两头尖尖，春天花谢了以后才长出来。"
+      }
     }
   }
 }

@@ -27,7 +27,11 @@
           "url": "/images/plants/passion-fruit-fruit.jpg"
         }
       ],
-      "description": "百香果圆圆的、紫紫的，切开里面金黄果汁好多籽。酸酸甜甜香香的。"
+      "description": "百香果圆圆的、紫紫的，切开里面金黄果汁好多籽。酸酸甜甜香香的。",
+      "allusion": {
+        "text": "百香果香香的，藏着好多水果的香味。",
+        "explain": "百香果闻着像好多水果混在一起的香味，所以得了这个名字。"
+      }
     },
     "leaf": {
       "name": {
@@ -42,7 +46,11 @@
           "url": "/images/plants/passion-fruit-leaf.jpg"
         }
       ],
-      "description": "百香果叶子像小鸭掌，分成三瓣。藤蔓上长着卷卷的须须。"
+      "description": "百香果叶子像小鸭掌，分成三瓣。藤蔓上长着卷卷的须须。",
+      "allusion": {
+        "text": "百香果叶像小鸭掌，分成三瓣，藤上还有卷卷的须。",
+        "explain": "百香果的叶子像小鸭掌，分成三瓣，藤上长着卷卷的小须须。"
+      }
     }
   }
 }
