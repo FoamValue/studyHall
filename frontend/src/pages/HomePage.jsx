@@ -119,10 +119,9 @@ export default function HomePage() {
     pendingScroll.current = null;
   }, [plants, visibleCount]);
 
-  // 切换板块时重置二级筛选项（Sprint 17：植物已无二级筛选，保持 'all' 兼容导航态）
+  // Sprint 17：植物已无二级筛选，板块切换仅更新 section
   const handleSectionChange = (nextSection) => {
     setSection(nextSection);
-    setCategory('all');
   };
 
   const sectionLabel = SECTIONS.find((s) => s.code === section)?.label || '';

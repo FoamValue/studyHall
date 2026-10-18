@@ -6,7 +6,7 @@ import { loadAllCards } from './helpers';
 // 进入植物板块第一张卡片详情（先滚动加载全量，再点首张）
 async function enterFirstPlantDetail(page) {
   await page.goto('/');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.locator('.plant-card').first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();

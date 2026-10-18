@@ -176,7 +176,7 @@ class PlantApiIntegrationTest {
     /** TC-03 条目列表-全部：条数等于 content/ 四个子目录实际条目数（130），卡片字段齐全。 */
     @Test
     void tc03_plantListShouldReturnAllSeeds() {
-        List<String> expectedIds = plants.stream().map(Plant::id).toList();
+        List<String> expectedIds = activePlants().stream().map(Plant::id).toList();
         ApiResponse<List<PlantCard>> resp = get("/api/plants", listOf(PlantCard.class));
         assertThat(resp.code()).isZero();
         assertThat(resp.data()).hasSize(expectedIds.size());
@@ -194,7 +194,7 @@ class PlantApiIntegrationTest {
     /** TC-04 植物列表-筛选：只返回 categories 含 plant 的条目（Sprint 17：植物取消二级分类）。 */
     @Test
     void tc04_plantListShouldFilterByCategory() {
-        List<String> expected = plants.stream()
+        List<String> expected = activePlants().stream()
                 .filter(p -> p.categories().contains("plant"))
                 .map(Plant::id)
                 .toList();
@@ -435,7 +435,7 @@ class PlantApiIntegrationTest {
     /** TC-71 板块列表（Sprint 9）：?section=plant 计数 = 该板块条目数（数据驱动）。 */
     @Test
     void tc71_sectionPlantShouldReturnBoardEntries() {
-        long expected = plants.stream()
+        long expected = activePlants().stream()
                 .filter(p -> p.categories().stream().anyMatch(c -> "plant".equals(sectionOf(c))))
                 .count();
         ApiResponse<List<PlantCard>> resp = get("/api/plants?section=plant", listOf(PlantCard.class));
@@ -489,14 +489,14 @@ class PlantApiIntegrationTest {
         ApiResponse<List<PlantCard>> first = get("/api/plants", listOf(PlantCard.class));
         ApiResponse<List<PlantCard>> second = get("/api/plants", listOf(PlantCard.class));
         assertThat(first.code()).isZero();
-        List<String> expectedAll = plants.stream().sorted(bySortThenId).map(Plant::id).toList();
+        List<String> expectedAll = activePlants().stream().sorted(bySortThenId).map(Plant::id).toList();
         assertThat(first.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedAll);
         assertThat(second.data()).extracting(PlantCard::id)
                 .containsExactlyElementsOf(first.data().stream().map(PlantCard::id).toList());
 
         // 分类列表同样显式排序（替换原 findByCategoriesContains 未排序技术债）
         ApiResponse<List<PlantCard>> plant = get("/api/plants?category=plant", listOf(PlantCard.class));
-        List<String> expectedPlant = plants.stream()
+        List<String> expectedPlant = activePlants().stream()
                 .filter(p -> p.categories().contains("plant"))
                 .sorted(bySortThenId)
                 .map(Plant::id)
@@ -617,6 +617,32 @@ class PlantApiIntegrationTest {
         }
     }
 
+    /** TC-161 废弃条目不展示（Sprint 17 修正）：命名冲突条目（peach-blossom 的花/叶，与 peach 的花/叶中文名重复）
+     *  数据标记 deprecated=true 保留（不物理删除），列表/详情均不出现，页面上「桃花」「桃花叶」仍唯一（peach 侧）。 */
+    @Test
+    void tc161_deprecatedEntriesShouldBeHiddenButKept() {
+        // 1. 植物板块列表不含废弃条目
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=plant", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .doesNotContain("peach-blossom-flower", "peach-blossom-leaf");
+        // 2. 页面上「桃花」「桃花叶」各恰好 1 次（peach-flower / peach-leaf）
+        assertThat(resp.data()).extracting(c -> c.name().zh())
+                .containsOnlyOnce("桃花", "桃花叶");
+        // 3. 全部列表同样不含
+        ApiResponse<List<PlantCard>> all = get("/api/plants", listOf(PlantCard.class));
+        assertThat(all.code()).isZero();
+        assertThat(all.data()).extracting(PlantCard::id)
+                .doesNotContain("peach-blossom-flower", "peach-blossom-leaf");
+        // 4. 详情按不存在处理：code=40401
+        ApiResponse<Void> detail = get("/api/plants/peach-blossom-flower",
+                objectMapper.getTypeFactory().constructType(Void.class));
+        assertThat(detail.code()).isEqualTo(40401);
+        // 5. 数据保留：MongoDB 中废弃条目仍存在且 deprecated=true（不物理删除）
+        assertThat(mongoTemplate.findById("peach-blossom-flower", Plant.class).deprecated()).isTrue();
+        assertThat(mongoTemplate.findById("peach-blossom-leaf", Plant.class).deprecated()).isTrue();
+    }
+
     /** 取分类 code 所属板块（无匹配返回 null）。 */
     private String sectionOf(String categoryCode) {
         return categories.stream()
@@ -624,6 +650,11 @@ class PlantApiIntegrationTest {
                 .map(Category::section)
                 .findFirst()
                 .orElse(null);
+    }
+
+    /** 语料中的有效条目（Sprint 17 修正：deprecated=true 条目页面不展示，不参与列表期望）。 */
+    private List<Plant> activePlants() {
+        return plants.stream().filter(p -> !Boolean.TRUE.equals(p.deprecated())).toList();
     }
 
     /** 取已播种的条目文档。 */

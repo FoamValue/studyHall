@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 import { loadAllCards } from './helpers';
 
 // ===== Sprint 4 新增 E2E（TC-35 ~ TC-40）：沉浸式详情 / 连续换株 / 全屏 / 状态记忆 =====
-// Sprint 17：植物取消二级分类，所有部位条目同属 plant 板块（206 条）
+// Sprint 17：植物取消二级分类，所有部位条目同属 plant 板块（204 条展示，2 条废弃不展示）
 
 // 进入植物板块第一张卡片详情，返回该条目中文名
 async function enterFirstPlantDetail(page) {
   await page.goto('/');
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
@@ -61,7 +61,7 @@ test('TC-35 按钮 / 键盘 / 左滑三种方式换到同一株', async ({ page 
 test('TC-36 首尾循环（植物板块）', async ({ page }) => {
   await page.goto('/');
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
   const firstName = await cards.first().locator('img').getAttribute('alt');
   const lastName = await cards.last().locator('img').getAttribute('alt');
   expect(firstName).not.toBe(lastName);
@@ -74,7 +74,7 @@ test('TC-36 首尾循环（植物板块）', async ({ page }) => {
 
   // 末张 → 下一株 → 应循环回首张
   await page.goto('/');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
   await cards.last().click();
   await expect(page.locator('.detail-zh')).toHaveText(lastName);
   await page.getByRole('button', { name: '下一株' }).click();
@@ -121,7 +121,7 @@ test('TC-39 回花园保住滚动位置', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto('/');
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
 
   await page.evaluate(() => window.scrollTo(0, 1200));
   await cards.nth(12).click();

@@ -1,12 +1,13 @@
 {
   "id": "peach-blossom-leaf",
+  "deprecated": true,
   "categories": [
     "plant"
   ],
   "sort": 75,
   "name": {
-    "zh": "碧桃花叶",
-    "pinyin": "bì táo huā yè",
+    "zh": "桃花叶",
+    "pinyin": "táo huā yè",
     "en": "Peach Blossom Leaf",
     "ipa": "/piːtʃ ˈblɑːsəm/ liːf",
     "audioZh": "/audio/peach-blossom-leaf-zh.m4a",

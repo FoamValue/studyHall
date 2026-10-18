@@ -4,20 +4,20 @@ import { loadAllCards } from './helpers';
 // ===== Sprint 10 新增 E2E（TC-109 ~ TC-114，编号依 QA 手册 docs/qa/sprint-10-test-cases.md）=====
 // 覆盖：EX-6 首页首屏 + 滚动增量加载 / 「共 N 种」总量口径 / EX-4 小知识可见标题 / EX-5 单图横屏主图占比 / 植物版式不回归
 
-// TC-109 植物板块首屏不满 206，滚动后累计全量 206，总量提示「共 206 种」
-test('TC-109 植物增量加载至 206 且总量提示', async ({ page }) => {
+// TC-109 植物板块首屏不满 204，滚动后累计全量 204，总量提示「共 204 种」
+test('TC-109 植物增量加载至 204 且总量提示', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
 
   // 首屏卡片数明显少于全量（增量加载生效）
   const firstScreen = await page.locator('.plant-card').count();
-  expect(firstScreen).toBeLessThan(206);
+  expect(firstScreen).toBeLessThan(204);
 
   // 总量口径 = 当前板块返回条数
-  await expect(page.locator('.list-count')).toHaveText('共 206 种');
+  await expect(page.locator('.list-count')).toHaveText('共 204 种');
 
   // 滚动加载至全量
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
 });
 
 // TC-111 EX-4：小知识卡片渲染用户可见标题「小知识」

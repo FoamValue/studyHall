@@ -76,7 +76,7 @@ public class PlantService {
                                 .formatted(category));
             }
             return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,
-                    () -> plantRepository.findByCategoriesIn(List.of(category), LIST_SORT)
+                    () -> plantRepository.findActiveByCategoriesIn(List.of(category), LIST_SORT)
                             .stream().map(plant -> toCard(plant, category)).toList());
         }
         if (section != null && !section.isBlank()) {
@@ -89,14 +89,15 @@ public class PlantService {
                 throw new ApiException(40002, "没有「%s」这个板块哦".formatted(section));
             }
             return cachedList(KEY_PLANT_LIST_PREFIX + "section:" + section, PlantCard.class,
-                    () -> plantRepository.findByCategoriesIn(codes, LIST_SORT)
+                    () -> plantRepository.findActiveByCategoriesIn(codes, LIST_SORT)
                             .stream().map(plant -> toCard(plant, null)).toList());
         }
         return cachedList(KEY_PLANT_LIST_PREFIX + "all", PlantCard.class,
-                () -> plantRepository.findAll(LIST_SORT)
+                () -> plantRepository.findAllActive(LIST_SORT)
                         .stream().map(plant -> toCard(plant, null)).toList());
     }
 
+    /** 详情：废弃条目（deprecated=true）数据保留但页面不展示，按不存在处理（40401）。 */
     public Plant getPlant(String id) {
         String key = KEY_PLANT_PREFIX + id;
         String cached = redis.opsForValue().get(key);
@@ -104,6 +105,7 @@ public class PlantService {
             return objectMapper.readValue(cached, Plant.class);
         }
         Plant plant = plantRepository.findById(id)
+                .filter(p -> !Boolean.TRUE.equals(p.deprecated()))
                 .orElseThrow(() -> new ApiException(40401, "这株植物还没准备好哦，换一株看看吧"));
         redis.opsForValue().set(key, objectMapper.writeValueAsString(plant), cacheTtl);
         return plant;

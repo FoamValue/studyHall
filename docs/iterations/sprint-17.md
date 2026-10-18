@@ -7,7 +7,7 @@
 | 依据 | 用户需求澄清（Q1~Q5 + 字号需求）；PO 冻结口径见下 |
 | 类型 | **能力迭代**（前端 + 后端 + 内容 + 资产 + 测试全面改动） |
 | 内容基线（Sprint 16 交付后） | 语料 **334**（plant100 / animal50 / insect50 / dinosaur50 / letter26 / pinyin26 / number21 / color11）、分类 **10**、图片 **440** `.jpg`、音频 **616** `.m4a` |
-| 交付后基线 | 语料 **440**（plant **206** = 花 53 + 叶 100 + 果 53；其余不变）、分类 **8**（移除 flower/leaf/fruit，新增 plant）、图片 **646**（+206 植物部位图，复用原部位图仅重命名）、音频 **1028**（+412 植物部位 zh/en） |
+| 交付后基线 | 语料 **440**（plant **206** = 花 53 + 叶 100 + 果 53，其中 **2 条废弃**；其余不变）、分类 **8**（移除 flower/leaf/fruit，新增 plant）、图片 **646**（+206 植物部位图，复用原部位图仅重命名）、音频 **1028**（+412 植物部位 zh/en） |
 
 ## 一、PO 冻结口径
 
@@ -22,7 +22,7 @@
 | 首页 | 移除植物二级筛选条（CategoryFilter） |
 | 名称字号 | 详情 `.detail-zh` 48→56px（横屏 40→52px）；`.detail-en` 24→30px（横屏 20→26px） |
 | 音频 | 为每个新条目名生成新音频（zh/en 各一），不复用原音频 |
-| 命名冲突消除 | `peach-blossom`（原名"桃花"）花/叶改为「碧桃花」「碧桃花叶」，避免与 `peach` 的「桃花」「桃花叶」冲突 |
+| 命名冲突处置（交付后修正） | `peach-blossom-flower`/`peach-blossom-leaf`（原名「桃花/桃花叶」，与 `peach-flower`/`peach-leaf` 冲突）**不改名**：数据保留原名 + 顶层 `deprecated: true` 标记废弃（不物理删除），**页面不展示**（后端列表/详情统一过滤，详情按 40401 处理）；页面上「桃花/桃花叶」由 `peach` 侧条目唯一展示 |
 
 ## 二、迭代范围（Scope）
 
@@ -38,21 +38,22 @@
 | S17-8 | **前端 styles.css** | `.detail-zh` 48→56px（横屏 40→52px）；`.detail-en` 24→30px（横屏 20→26px） |
 | S17-9 | **前后端测试 + E2E 适配** | 后端 27 用例全绿；前端 72/72；E2E 72/72 |
 
-## 三、门禁证据
+## 四、门禁证据（交付后修正复跑，全绿）
 
 | 门禁项 | 结果 |
 |---|---|
 | 语料校验 | total=**440**（plant206/animal50/insect50/dinosaur50/letter26/pinyin26/number21/color11）、分类 **8** |
-| 后端 `mvn test` | **27 用例**全绿（0 失败） |
-| 前端 `vitest run` | **72/72** 全绿 |
+| 后端 `mvn test` | **28 用例**全绿（27 既有适配 deprecated 过滤 + 新增 TC-161） |
+| 前端 `vitest run` | **72/72** 全绿（unhandled errors 清零） |
 | 前端 `vite build` | 退出码 0 |
 | `docker compose up -d --build` | `/api/health=UP` |
-| 两次导入幂等 | import_log delta **+880 = 2×440**；Mongo **440 条目 / 8 分类**；`redis sh:*` = 0 |
-| API 计数 | plant=206 / animal=50 / insect=50 / dinosaur=50 / letter=26 / pinyin=26 / number=21 / color=11 |
+| 两次导入幂等 | import_log delta **+880 = 2×440**；Mongo **440 条目 / 8 分类**（含 deprecated 2 条，不物理删除）；`redis sh:*` = 0 |
+| API 计数 | **plant=204**（206−2 废弃）/ all=**438** / animal=50 / insect=50 / dinosaur=50 / letter=26 / pinyin=26 / number=21 / color=11；废弃详情 `GET /api/plants/peach-blossom-flower` → 40401 |
 | `npx playwright test` | **72/72** 全绿 |
 
-## 四、关键技术决策
+## 五、关键技术决策
 
-1. **导入脚本陈旧清理**：原脚本仅 UPSERT 不删除，导致植物拆分后旧整株 id 残留。新增按内容集 diff 删除陈旧条目与分类的逻辑，保证 MongoDB 与内容文件一致。
+1. **导入脚本陈旧清理**：原脚本仅 UPSERT 不删除，导致植物拆分后旧整株 id 残留。新增按内容集 diff 删除陈旧条目与分类的逻辑，保证 MongoDB 与内容文件一致（废弃条目仍在内容集中，不会被清理）。
 2. **单图判断泛化**：`isSingleImageParts(parts) = Object.keys(parts).length === 1`，覆盖植物部位（fruit/flower/leaf）及所有其他单图板块，无需维护 `SINGLE_IMAGE_KEYS` 白名单。
-3. **命名冲突处理**：仅 `peach-blossom`（原名"桃花"）与 `peach`（原名"桃"）的花/叶条目重名，将前者改为"碧桃花"/"碧桃花叶"。
+3. **命名冲突处置 = 废弃机制（交付后修正，替代改名方案）**：数据层顶层 `deprecated: true` 字段标记（导入脚本全字段透传进 Mongo，不物理删除）；后端 `Plant` 实体加 `deprecated` 字段，列表查询统一 `deprecated: {$ne: true}` 过滤（`$ne` 对字段缺省条目同样命中），详情对废弃条目按 40401 处理；页面上「桃花/桃花叶」由 `peach` 侧条目唯一展示。后续如有其他命名冲突，同样以 `deprecated: true` 标记即可，无需改名或删数据。
+4. **附带修复**：`HomePage.jsx` 残留 `setCategory('all')` 调用（category state 已移除，板块切换时抛 ReferenceError，vitest unhandled errors 5 起），已删除。

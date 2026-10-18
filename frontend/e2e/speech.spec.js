@@ -7,7 +7,7 @@ import { loadAllCards } from './helpers';
 async function enterFirstPlantDetail(page) {
   await page.goto('/');
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 206);
+  await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
