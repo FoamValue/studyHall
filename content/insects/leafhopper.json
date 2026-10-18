@@ -1,0 +1,36 @@
+{
+  "id": "leafhopper",
+  "categories": [
+    "insect"
+  ],
+  "sort": 47,
+  "name": {
+    "zh": "叶蝉",
+    "pinyin": "yè chán",
+    "en": "Leafhopper",
+    "ipa": "/ˈliːfhɒpə/",
+    "audioZh": "/audio/leafhopper-zh.m4a",
+    "audioEn": "/audio/leafhopper-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "叶蝉",
+        "pinyin": "yè chán",
+        "en": "Leafhopper",
+        "ipa": "/ˈliːfhɒpə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/leafhopper.jpg"
+        }
+      ],
+      "description": "叶蝉小小的会跳，停在叶子上会侧着身子挪步。",
+      "allusion": {
+        "text": "叶蝉的后腿一蹬，就能跳到别的叶子上。",
+        "explain": "它像跳远小选手。"
+      }
+    }
+  }
+}

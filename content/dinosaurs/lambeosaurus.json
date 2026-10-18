@@ -1,0 +1,36 @@
+{
+  "id": "lambeosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 37,
+  "name": {
+    "zh": "兰伯龙",
+    "pinyin": "lán bó lóng",
+    "en": "Lambeosaurus",
+    "ipa": "/ˌlæmbiəˈsɔːrəs/",
+    "audioZh": "/audio/lambeosaurus-zh.m4a",
+    "audioEn": "/audio/lambeosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "兰伯龙",
+        "pinyin": "lán bó lóng",
+        "en": "Lambeosaurus",
+        "ipa": "/ˌlæmbiəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/lambeosaurus.jpg"
+        }
+      ],
+      "description": "兰伯龙头上的骨冠像一把小斧头，嘴巴扁扁的像鸭嘴。",
+      "allusion": {
+        "text": "兰伯龙的嘴巴像鸭嘴，用来咬碎树叶。",
+        "explain": "鸭嘴一样的嘴很好用。"
+      }
+    }
+  }
+}

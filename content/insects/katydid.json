@@ -1,0 +1,36 @@
+{
+  "id": "katydid",
+  "categories": [
+    "insect"
+  ],
+  "sort": 38,
+  "name": {
+    "zh": "纺织娘",
+    "pinyin": "fǎng zhī niáng",
+    "en": "Katydid",
+    "ipa": "/ˈkeɪtɪdɪd/",
+    "audioZh": "/audio/katydid-zh.m4a",
+    "audioEn": "/audio/katydid-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "纺织娘",
+        "pinyin": "fǎng zhī niáng",
+        "en": "Katydid",
+        "ipa": "/ˈkeɪtɪdɪd/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/katydid.jpg"
+        }
+      ],
+      "description": "纺织娘穿着绿衣裳，藏在草里，叫声像纺车吱吱响。",
+      "allusion": {
+        "text": "纺织娘用翅膀摩擦，发出吱吱的叫声。",
+        "explain": "它的歌声是翅膀唱出来的。"
+      }
+    }
+  }
+}

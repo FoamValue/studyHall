@@ -1,0 +1,36 @@
+{
+  "id": "camarasaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 32,
+  "name": {
+    "zh": "圆顶龙",
+    "pinyin": "yuán dǐng lóng",
+    "en": "Camarasaurus",
+    "ipa": "/ˌkæmərəˈsɔːrəs/",
+    "audioZh": "/audio/camarasaurus-zh.m4a",
+    "audioEn": "/audio/camarasaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "圆顶龙",
+        "pinyin": "yuán dǐng lóng",
+        "en": "Camarasaurus",
+        "ipa": "/ˌkæmərəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/camarasaurus.jpg"
+        }
+      ],
+      "description": "圆顶龙的脑袋圆圆的，脖子不太长，牙齿像小勺子。",
+      "allusion": {
+        "text": "圆顶龙用小勺一样的牙齿，剪下嫩树叶吃。",
+        "explain": "它的牙齿适合咬嫩叶子。"
+      }
+    }
+  }
+}

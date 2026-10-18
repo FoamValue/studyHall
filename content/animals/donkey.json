@@ -1,0 +1,36 @@
+{
+  "id": "donkey",
+  "categories": [
+    "animal"
+  ],
+  "sort": 46,
+  "name": {
+    "zh": "驴",
+    "pinyin": "lǘ",
+    "en": "Donkey",
+    "ipa": "/ˈdɒŋki/",
+    "audioZh": "/audio/donkey-zh.m4a",
+    "audioEn": "/audio/donkey-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "驴",
+        "pinyin": "lǘ",
+        "en": "Donkey",
+        "ipa": "/ˈdɒŋki/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/donkey.jpg"
+        }
+      ],
+      "description": "驴的耳朵长长的，叫声大大的，能驮着东西走路。",
+      "allusion": {
+        "text": "驴的耳朵大，能听见很远的声音。",
+        "explain": "大耳朵也帮它散热。"
+      }
+    }
+  }
+}

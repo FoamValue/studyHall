@@ -1,0 +1,36 @@
+{
+  "id": "leopard",
+  "categories": [
+    "animal"
+  ],
+  "sort": 31,
+  "name": {
+    "zh": "豹",
+    "pinyin": "bào",
+    "en": "Leopard",
+    "ipa": "/ˈlepəd/",
+    "audioZh": "/audio/leopard-zh.m4a",
+    "audioEn": "/audio/leopard-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "豹",
+        "pinyin": "bào",
+        "en": "Leopard",
+        "ipa": "/ˈlepəd/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/leopard.jpg"
+        }
+      ],
+      "description": "豹身上有许多小圆斑，跑起来非常快，喜欢躲在树上休息。",
+      "allusion": {
+        "text": "豹能把吃不完的食物挂到高高的树枝上，防止被抢走。",
+        "explain": "它力气大，还会爬树藏食物。"
+      }
+    }
+  }
+}

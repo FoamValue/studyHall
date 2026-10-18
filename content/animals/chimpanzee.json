@@ -1,0 +1,36 @@
+{
+  "id": "chimpanzee",
+  "categories": [
+    "animal"
+  ],
+  "sort": 34,
+  "name": {
+    "zh": "黑猩猩",
+    "pinyin": "hēi xīng xing",
+    "en": "Chimpanzee",
+    "ipa": "/ˌtʃɪmpænˈziː/",
+    "audioZh": "/audio/chimpanzee-zh.m4a",
+    "audioEn": "/audio/chimpanzee-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "黑猩猩",
+        "pinyin": "hēi xīng xing",
+        "en": "Chimpanzee",
+        "ipa": "/ˌtʃɪmpænˈziː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/chimpanzee.jpg"
+        }
+      ],
+      "description": "黑猩猩很聪明，会用手拿东西，还会学人的样子做事。",
+      "allusion": {
+        "text": "黑猩猩会用小石头砸开硬硬的坚果吃。",
+        "explain": "它像小朋友一样，会动脑筋想办法。"
+      }
+    }
+  }
+}

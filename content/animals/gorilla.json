@@ -1,0 +1,36 @@
+{
+  "id": "gorilla",
+  "categories": [
+    "animal"
+  ],
+  "sort": 33,
+  "name": {
+    "zh": "大猩猩",
+    "pinyin": "dà xīng xing",
+    "en": "Gorilla",
+    "ipa": "/ɡəˈrɪlə/",
+    "audioZh": "/audio/gorilla-zh.m4a",
+    "audioEn": "/audio/gorilla-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "大猩猩",
+        "pinyin": "dà xīng xing",
+        "en": "Gorilla",
+        "ipa": "/ɡəˈrɪlə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/gorilla.jpg"
+        }
+      ],
+      "description": "大猩猩是最大的猴子，力气很大，喜欢吃嫩嫩的树叶。",
+      "allusion": {
+        "text": "大猩猩会用拳头轻轻捶胸口，表示自己很厉害。",
+        "explain": "它还会用树枝搭床睡觉。"
+      }
+    }
+  }
+}

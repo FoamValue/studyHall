@@ -1,0 +1,36 @@
+{
+  "id": "hedgehog",
+  "categories": [
+    "animal"
+  ],
+  "sort": 42,
+  "name": {
+    "zh": "刺猬",
+    "pinyin": "cì wei",
+    "en": "Hedgehog",
+    "ipa": "/ˈhedʒhɒɡ/",
+    "audioZh": "/audio/hedgehog-zh.m4a",
+    "audioEn": "/audio/hedgehog-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "刺猬",
+        "pinyin": "cì wei",
+        "en": "Hedgehog",
+        "ipa": "/ˈhedʒhɒɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/hedgehog.jpg"
+        }
+      ],
+      "description": "刺猬背上长满小刺，遇到危险就缩成一个刺球。",
+      "allusion": {
+        "text": "刺猬身上的刺其实是变硬的毛。",
+        "explain": "平时刺是软的，害怕时才竖起来。"
+      }
+    }
+  }
+}

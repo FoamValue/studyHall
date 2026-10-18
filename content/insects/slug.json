@@ -1,0 +1,36 @@
+{
+  "id": "slug",
+  "categories": [
+    "insect"
+  ],
+  "sort": 34,
+  "name": {
+    "zh": "蛞蝓",
+    "pinyin": "kuò yú",
+    "en": "Slug",
+    "ipa": "/slʌɡ/",
+    "audioZh": "/audio/slug-zh.m4a",
+    "audioEn": "/audio/slug-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蛞蝓",
+        "pinyin": "kuò yú",
+        "en": "Slug",
+        "ipa": "/slʌɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/slug.jpg"
+        }
+      ],
+      "description": "蛞蝓软软的，背上没有壳，爬过的地方会留下亮亮的黏液。",
+      "allusion": {
+        "text": "蛞蝓爬过会留下一条银亮的痕迹。",
+        "explain": "那是它留下的黏液小路。"
+      }
+    }
+  }
+}

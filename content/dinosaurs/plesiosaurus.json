@@ -1,0 +1,36 @@
+{
+  "id": "plesiosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "蛇颈龙",
+    "pinyin": "shé jǐng lóng",
+    "en": "Plesiosaurus",
+    "ipa": "/ˌpliːziəˈsɔːrəs/",
+    "audioZh": "/audio/plesiosaurus-zh.m4a",
+    "audioEn": "/audio/plesiosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "蛇颈龙",
+        "pinyin": "shé jǐng lóng",
+        "en": "Plesiosaurus",
+        "ipa": "/ˌpliːziəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/plesiosaurus.jpg"
+        }
+      ],
+      "description": "蛇颈龙住在海里，脖子长长的，有四个像桨一样的鳍。",
+      "allusion": {
+        "text": "蛇颈龙用四只大鳍划水，像在海里飞。",
+        "explain": "它游起来又稳又快。"
+      }
+    }
+  }
+}

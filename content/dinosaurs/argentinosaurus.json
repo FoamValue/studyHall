@@ -1,0 +1,36 @@
+{
+  "id": "argentinosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 34,
+  "name": {
+    "zh": "阿根廷龙",
+    "pinyin": "ā gēn tíng lóng",
+    "en": "Argentinosaurus",
+    "ipa": "/ˌɑːdʒənˌtiːnəˈsɔːrəs/",
+    "audioZh": "/audio/argentinosaurus-zh.m4a",
+    "audioEn": "/audio/argentinosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "阿根廷龙",
+        "pinyin": "ā gēn tíng lóng",
+        "en": "Argentinosaurus",
+        "ipa": "/ˌɑːdʒənˌtiːnəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/argentinosaurus.jpg"
+        }
+      ],
+      "description": "阿根廷龙又高又重，走路时地上咚咚响，是最大的恐龙之一。",
+      "allusion": {
+        "text": "阿根廷龙这么重，走一步地面都会震一震。",
+        "explain": "它是恐龙里的大块头。"
+      }
+    }
+  }
+}

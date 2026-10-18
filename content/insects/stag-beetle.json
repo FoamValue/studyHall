@@ -1,0 +1,36 @@
+{
+  "id": "stag-beetle",
+  "categories": [
+    "insect"
+  ],
+  "sort": 36,
+  "name": {
+    "zh": "锹甲虫",
+    "pinyin": "qiāo jiǎ chóng",
+    "en": "Stag Beetle",
+    "ipa": "/stæɡ ˈbiːtl/",
+    "audioZh": "/audio/stag-beetle-zh.m4a",
+    "audioEn": "/audio/stag-beetle-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "锹甲虫",
+        "pinyin": "qiāo jiǎ chóng",
+        "en": "Stag Beetle",
+        "ipa": "/stæɡ ˈbiːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/stag-beetle.jpg"
+        }
+      ],
+      "description": "锹甲虫有一对大夹子，像弯弯的刀，走来走去很威风。",
+      "allusion": {
+        "text": "锹甲虫的大夹子是它比力气用的。",
+        "explain": "打闹时它会把对手夹起来。"
+      }
+    }
+  }
+}

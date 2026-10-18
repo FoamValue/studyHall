@@ -1,0 +1,36 @@
+{
+  "id": "centrosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 40,
+  "name": {
+    "zh": "尖角龙",
+    "pinyin": "jiān jiǎo lóng",
+    "en": "Centrosaurus",
+    "ipa": "/ˌsentrəˈsɔːrəs/",
+    "audioZh": "/audio/centrosaurus-zh.m4a",
+    "audioEn": "/audio/centrosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "尖角龙",
+        "pinyin": "jiān jiǎo lóng",
+        "en": "Centrosaurus",
+        "ipa": "/ˌsentrəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/centrosaurus.jpg"
+        }
+      ],
+      "description": "尖角龙的鼻子上有尖尖的角，脖子后面长着一圈刺。",
+      "allusion": {
+        "text": "尖角龙一大群一起走，遇到危险也不怕。",
+        "explain": "成群结队更安全。"
+      }
+    }
+  }
+}

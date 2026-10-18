@@ -1,0 +1,36 @@
+{
+  "id": "stink-bug",
+  "categories": [
+    "insect"
+  ],
+  "sort": 48,
+  "name": {
+    "zh": "椿象",
+    "pinyin": "chūn xiàng",
+    "en": "Stink Bug",
+    "ipa": "/stɪŋk bʌɡ/",
+    "audioZh": "/audio/stink-bug-zh.m4a",
+    "audioEn": "/audio/stink-bug-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "椿象",
+        "pinyin": "chūn xiàng",
+        "en": "Stink Bug",
+        "ipa": "/stɪŋk bʌɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/stink-bug.jpg"
+        }
+      ],
+      "description": "椿象的壳像小盾牌，遇到危险会放出难闻的气味。",
+      "allusion": {
+        "text": "椿象放出臭味，把想咬它的动物熏跑。",
+        "explain": "臭味就是它的护身法宝。"
+      }
+    }
+  }
+}

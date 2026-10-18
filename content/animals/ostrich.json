@@ -1,0 +1,36 @@
+{
+  "id": "ostrich",
+  "categories": [
+    "animal"
+  ],
+  "sort": 50,
+  "name": {
+    "zh": "鸵鸟",
+    "pinyin": "tuó niǎo",
+    "en": "Ostrich",
+    "ipa": "/ˈɒstrɪtʃ/",
+    "audioZh": "/audio/ostrich-zh.m4a",
+    "audioEn": "/audio/ostrich-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鸵鸟",
+        "pinyin": "tuó niǎo",
+        "en": "Ostrich",
+        "ipa": "/ˈɒstrɪtʃ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/ostrich.jpg"
+        }
+      ],
+      "description": "鸵鸟是最大的鸟，腿又长又有劲，跑得比马还快。",
+      "allusion": {
+        "text": "鸵鸟不会飞，但是跑起来像风一样快。",
+        "explain": "它用两条长腿逃跑。"
+      }
+    }
+  }
+}

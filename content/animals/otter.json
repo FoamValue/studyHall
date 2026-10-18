@@ -1,0 +1,36 @@
+{
+  "id": "otter",
+  "categories": [
+    "animal"
+  ],
+  "sort": 41,
+  "name": {
+    "zh": "水獭",
+    "pinyin": "shuǐ tǎ",
+    "en": "Otter",
+    "ipa": "/ˈɒtə/",
+    "audioZh": "/audio/otter-zh.m4a",
+    "audioEn": "/audio/otter-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "水獭",
+        "pinyin": "shuǐ tǎ",
+        "en": "Otter",
+        "ipa": "/ˈɒtə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/otter.jpg"
+        }
+      ],
+      "description": "水獭的毛又软又亮，喜欢仰着身子在水面上漂着玩。",
+      "allusion": {
+        "text": "水獭睡觉时会拉着手，漂在水上不分开。",
+        "explain": "它们是手拉手的好朋友。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "peacock",
+  "categories": [
+    "animal"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "孔雀",
+    "pinyin": "kǒng què",
+    "en": "Peacock",
+    "ipa": "/ˈpiːkɒk/",
+    "audioZh": "/audio/peacock-zh.m4a",
+    "audioEn": "/audio/peacock-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "孔雀",
+        "pinyin": "kǒng què",
+        "en": "Peacock",
+        "ipa": "/ˈpiːkɒk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/peacock.jpg"
+        }
+      ],
+      "description": "孔雀的尾巴又长又漂亮，打开时像一把大扇子。",
+      "allusion": {
+        "text": "孔雀开屏展示羽毛，是它在向别人问好。",
+        "explain": "尾巴越漂亮越神气。"
+      }
+    }
+  }
+}

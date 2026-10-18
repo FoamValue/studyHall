@@ -1,0 +1,36 @@
+{
+  "id": "frog",
+  "categories": [
+    "animal"
+  ],
+  "sort": 38,
+  "name": {
+    "zh": "青蛙",
+    "pinyin": "qīng wā",
+    "en": "Frog",
+    "ipa": "/frɒɡ/",
+    "audioZh": "/audio/frog-zh.m4a",
+    "audioEn": "/audio/frog-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "青蛙",
+        "pinyin": "qīng wā",
+        "en": "Frog",
+        "ipa": "/frɒɡ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/frog.jpg"
+        }
+      ],
+      "description": "青蛙穿着绿衣服，后腿很有劲，会蹦得高高的。",
+      "allusion": {
+        "text": "青蛙用长长的舌头一卷，就能捉住飞过的小虫。",
+        "explain": "它的舌头又快又黏。"
+      }
+    }
+  }
+}

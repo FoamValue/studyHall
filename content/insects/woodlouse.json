@@ -1,0 +1,36 @@
+{
+  "id": "woodlouse",
+  "categories": [
+    "insect"
+  ],
+  "sort": 40,
+  "name": {
+    "zh": "潮虫",
+    "pinyin": "cháo chóng",
+    "en": "Woodlouse",
+    "ipa": "/ˈwʊdlaʊs/",
+    "audioZh": "/audio/woodlouse-zh.m4a",
+    "audioEn": "/audio/woodlouse-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "潮虫",
+        "pinyin": "cháo chóng",
+        "en": "Woodlouse",
+        "ipa": "/ˈwʊdlaʊs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/woodlouse.jpg"
+        }
+      ],
+      "description": "潮虫背上一片片像小盔甲，喜欢躲在潮湿的花盆底下。",
+      "allusion": {
+        "text": "潮虫害怕时会卷成一个小球。",
+        "explain": "卷起来它就变成了小豆子。"
+      }
+    }
+  }
+}

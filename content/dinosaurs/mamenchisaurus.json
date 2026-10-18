@@ -1,0 +1,36 @@
+{
+  "id": "mamenchisaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 33,
+  "name": {
+    "zh": "马门溪龙",
+    "pinyin": "mǎ mén xī lóng",
+    "en": "Mamenchisaurus",
+    "ipa": "/mɑːˌmʌntʃiˈsɔːrəs/",
+    "audioZh": "/audio/mamenchisaurus-zh.m4a",
+    "audioEn": "/audio/mamenchisaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "马门溪龙",
+        "pinyin": "mǎ mén xī lóng",
+        "en": "Mamenchisaurus",
+        "ipa": "/mɑːˌmʌntʃiˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/mamenchisaurus.jpg"
+        }
+      ],
+      "description": "马门溪龙的脖子特别特别长，能吃到高树上的叶子。",
+      "allusion": {
+        "text": "马门溪龙的脖子长得像长长的吊车。",
+        "explain": "它一伸脖子就够到树顶。"
+      }
+    }
+  }
+}

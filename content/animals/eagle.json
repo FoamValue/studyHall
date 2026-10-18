@@ -1,0 +1,36 @@
+{
+  "id": "eagle",
+  "categories": [
+    "animal"
+  ],
+  "sort": 48,
+  "name": {
+    "zh": "老鹰",
+    "pinyin": "lǎo yīng",
+    "en": "Eagle",
+    "ipa": "/ˈiːɡl/",
+    "audioZh": "/audio/eagle-zh.m4a",
+    "audioEn": "/audio/eagle-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "老鹰",
+        "pinyin": "lǎo yīng",
+        "en": "Eagle",
+        "ipa": "/ˈiːɡl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/eagle.jpg"
+        }
+      ],
+      "description": "老鹰的翅膀又宽又大，眼睛很尖，在高高的天上飞。",
+      "allusion": {
+        "text": "老鹰飞得很高，也能看清地上的小动物。",
+        "explain": "它的眼睛特别厉害。"
+      }
+    }
+  }
+}

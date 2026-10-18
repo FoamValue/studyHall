@@ -1,0 +1,36 @@
+{
+  "id": "shark",
+  "categories": [
+    "animal"
+  ],
+  "sort": 39,
+  "name": {
+    "zh": "鲨鱼",
+    "pinyin": "shā yú",
+    "en": "Shark",
+    "ipa": "/ʃɑːk/",
+    "audioZh": "/audio/shark-zh.m4a",
+    "audioEn": "/audio/shark-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鲨鱼",
+        "pinyin": "shā yú",
+        "en": "Shark",
+        "ipa": "/ʃɑːk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/shark.jpg"
+        }
+      ],
+      "description": "鲨鱼是大海里的鱼，牙齿一排又一排，游得又快又稳。",
+      "allusion": {
+        "text": "鲨鱼身体里没有硬骨头，全是软软的软骨。",
+        "explain": "所以它能灵活地转弯。"
+      }
+    }
+  }
+}

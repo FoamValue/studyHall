@@ -1,0 +1,36 @@
+{
+  "id": "giganotosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 44,
+  "name": {
+    "zh": "南方巨兽龙",
+    "pinyin": "nán fāng jù shòu lóng",
+    "en": "Giganotosaurus",
+    "ipa": "/ˌɡɪɡəˌnɒtəˈsɔːrəs/",
+    "audioZh": "/audio/giganotosaurus-zh.m4a",
+    "audioEn": "/audio/giganotosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "南方巨兽龙",
+        "pinyin": "nán fāng jù shòu lóng",
+        "en": "Giganotosaurus",
+        "ipa": "/ˌɡɪɡəˌnɒtəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/giganotosaurus.jpg"
+        }
+      ],
+      "description": "南方巨兽龙嘴巴又长又大，牙齿像刀，跑起来很威风。",
+      "allusion": {
+        "text": "南方巨兽龙个头比霸王龙还大一些。",
+        "explain": "它是很大的食肉恐龙。"
+      }
+    }
+  }
+}

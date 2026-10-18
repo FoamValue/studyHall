@@ -1,0 +1,36 @@
+{
+  "id": "rhinoceros",
+  "categories": [
+    "animal"
+  ],
+  "sort": 32,
+  "name": {
+    "zh": "犀牛",
+    "pinyin": "xī niú",
+    "en": "Rhinoceros",
+    "ipa": "/raɪˈnɒsərəs/",
+    "audioZh": "/audio/rhinoceros-zh.m4a",
+    "audioEn": "/audio/rhinoceros-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "犀牛",
+        "pinyin": "xī niú",
+        "en": "Rhinoceros",
+        "ipa": "/raɪˈnɒsərəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/rhinoceros.jpg"
+        }
+      ],
+      "description": "犀牛身体又大又壮，鼻子上长着尖尖的角，皮厚厚的像铠甲。",
+      "allusion": {
+        "text": "犀牛喜欢在泥里打滚，泥巴干了就像穿上一层保护衣。",
+        "explain": "泥巴能帮它挡住蚊虫和太阳。"
+      }
+    }
+  }
+}

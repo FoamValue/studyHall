@@ -82,15 +82,15 @@ test('TC-113 植物详情版式不回归（EX-5 红线）', async ({ page }) => 
   expect(overflow.y).toBeLessThanOrEqual(1);
 });
 
-// TC-114 板块总量提示：动物 / 昆虫 / 恐龙均「共 30 种」且滚动加载后各渲染 30 张卡
-// （Sprint 11 内容扩容：板块由 10 增至 30，断言同步更新）
-test('TC-114 板块总量提示「共 30 种」', async ({ page }) => {
+// TC-114 板块总量提示：动物 / 昆虫 / 恐龙均「共 50 种」且滚动加载后各渲染 50 张卡
+// （Sprint 14 内容扩容：板块由 30 增至 50，断言同步更新）
+test('TC-114 板块总量提示「共 50 种」', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
 
   for (const label of ['动物', '昆虫', '恐龙']) {
     await nav.getByRole('button', { name: label }).click();
-    await expect(page.locator('.list-count')).toHaveText('共 30 种');
-    await loadAllCards(page, 30);
+    await expect(page.locator('.list-count')).toHaveText('共 50 种');
+    await loadAllCards(page, 50);
   }
 });

@@ -1,0 +1,36 @@
+{
+  "id": "swan",
+  "categories": [
+    "animal"
+  ],
+  "sort": 47,
+  "name": {
+    "zh": "天鹅",
+    "pinyin": "tiān é",
+    "en": "Swan",
+    "ipa": "/swɒn/",
+    "audioZh": "/audio/swan-zh.m4a",
+    "audioEn": "/audio/swan-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "天鹅",
+        "pinyin": "tiān é",
+        "en": "Swan",
+        "ipa": "/swɒn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/swan.jpg"
+        }
+      ],
+      "description": "天鹅的脖子又细又长，羽毛雪白，游水像小船。",
+      "allusion": {
+        "text": "小天鹅刚出生时是灰灰的，长大才变白。",
+        "explain": "它会长大变样，叫丑小鸭变天鹅。"
+      }
+    }
+  }
+}

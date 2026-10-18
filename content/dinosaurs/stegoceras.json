@@ -1,0 +1,36 @@
+{
+  "id": "stegoceras",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 39,
+  "name": {
+    "zh": "剑角龙",
+    "pinyin": "jiàn jiǎo lóng",
+    "en": "Stegoceras",
+    "ipa": "/stɛˈɡɒsərəs/",
+    "audioZh": "/audio/stegoceras-zh.m4a",
+    "audioEn": "/audio/stegoceras-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "剑角龙",
+        "pinyin": "jiàn jiǎo lóng",
+        "en": "Stegoceras",
+        "ipa": "/stɛˈɡɒsərəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/stegoceras.jpg"
+        }
+      ],
+      "description": "剑角龙小小的，头顶厚厚的像小盔帽，靠头对头顶。",
+      "allusion": {
+        "text": "剑角龙喜欢用硬硬的头顶，比谁的力气大。",
+        "explain": "它们像小朋友顶头玩。"
+      }
+    }
+  }
+}

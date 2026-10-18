@@ -1,0 +1,36 @@
+{
+  "id": "edmontonia",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 42,
+  "name": {
+    "zh": "埃德蒙顿甲龙",
+    "pinyin": "āi dé méng dùn jiǎ lóng",
+    "en": "Edmontonia",
+    "ipa": "/ˌedmənˈtoʊniə/",
+    "audioZh": "/audio/edmontonia-zh.m4a",
+    "audioEn": "/audio/edmontonia-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "埃德蒙顿甲龙",
+        "pinyin": "āi dé méng dùn jiǎ lóng",
+        "en": "Edmontonia",
+        "ipa": "/ˌedmənˈtoʊniə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/edmontonia.jpg"
+        }
+      ],
+      "description": "埃德蒙顿甲龙背上一排排骨片，肩膀还伸出尖尖的刺。",
+      "allusion": {
+        "text": "埃德蒙顿甲龙低低地趴着，像会走的小堡垒。",
+        "explain": "一身铠甲让它很安全。"
+      }
+    }
+  }
+}

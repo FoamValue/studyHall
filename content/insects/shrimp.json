@@ -1,0 +1,36 @@
+{
+  "id": "shrimp",
+  "categories": [
+    "insect"
+  ],
+  "sort": 50,
+  "name": {
+    "zh": "小虾",
+    "pinyin": "xiǎo xiā",
+    "en": "Shrimp",
+    "ipa": "/ʃrɪmp/",
+    "audioZh": "/audio/shrimp-zh.m4a",
+    "audioEn": "/audio/shrimp-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "小虾",
+        "pinyin": "xiǎo xiā",
+        "en": "Shrimp",
+        "ipa": "/ʃrɪmp/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/shrimp.jpg"
+        }
+      ],
+      "description": "小虾身体弯弯的，长着细细的腿和长长的触须，在水里弹跳。",
+      "allusion": {
+        "text": "小虾遇到危险会用尾巴一弹，飞快地游走。",
+        "explain": "它往后一弹就逃开了。"
+      }
+    }
+  }
+}

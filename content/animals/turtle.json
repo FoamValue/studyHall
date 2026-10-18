@@ -1,0 +1,36 @@
+{
+  "id": "turtle",
+  "categories": [
+    "animal"
+  ],
+  "sort": 37,
+  "name": {
+    "zh": "乌龟",
+    "pinyin": "wū guī",
+    "en": "Turtle",
+    "ipa": "/ˈtɜːtl/",
+    "audioZh": "/audio/turtle-zh.m4a",
+    "audioEn": "/audio/turtle-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "乌龟",
+        "pinyin": "wū guī",
+        "en": "Turtle",
+        "ipa": "/ˈtɜːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/turtle.jpg"
+        }
+      ],
+      "description": "乌龟背上有硬硬的壳，走起路来慢慢的，喜欢晒太阳。",
+      "allusion": {
+        "text": "乌龟遇到危险会把头和脚缩进壳里躲起来。",
+        "explain": "硬壳就是它的保护小屋。"
+      }
+    }
+  }
+}

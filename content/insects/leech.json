@@ -1,0 +1,36 @@
+{
+  "id": "leech",
+  "categories": [
+    "insect"
+  ],
+  "sort": 43,
+  "name": {
+    "zh": "水蛭",
+    "pinyin": "shuǐ zhì",
+    "en": "Leech",
+    "ipa": "/liːtʃ/",
+    "audioZh": "/audio/leech-zh.m4a",
+    "audioEn": "/audio/leech-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "水蛭",
+        "pinyin": "shuǐ zhì",
+        "en": "Leech",
+        "ipa": "/liːtʃ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/leech.jpg"
+        }
+      ],
+      "description": "水蛭身体又软又长，住在水里，靠身体一伸一缩地游。",
+      "allusion": {
+        "text": "水蛭没有脚，靠身体一伸一缩往前爬。",
+        "explain": "它扭来扭去就能前进。"
+      }
+    }
+  }
+}

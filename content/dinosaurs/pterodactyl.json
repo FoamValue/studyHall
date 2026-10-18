@@ -1,0 +1,36 @@
+{
+  "id": "pterodactyl",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 50,
+  "name": {
+    "zh": "翼手龙",
+    "pinyin": "yì shǒu lóng",
+    "en": "Pterodactyl",
+    "ipa": "/ˌterəˈdæktɪl/",
+    "audioZh": "/audio/pterodactyl-zh.m4a",
+    "audioEn": "/audio/pterodactyl-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "翼手龙",
+        "pinyin": "yì shǒu lóng",
+        "en": "Pterodactyl",
+        "ipa": "/ˌterəˈdæktɪl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/pterodactyl.jpg"
+        }
+      ],
+      "description": "翼手龙会飞，翅膀像大大的风筝，没有牙齿，爱吃小鱼。",
+      "allusion": {
+        "text": "翼手龙的翅膀又薄又大，能张开滑翔。",
+        "explain": "它像会飞的大风筝。"
+      }
+    }
+  }
+}

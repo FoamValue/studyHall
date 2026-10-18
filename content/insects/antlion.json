@@ -1,0 +1,36 @@
+{
+  "id": "antlion",
+  "categories": [
+    "insect"
+  ],
+  "sort": 44,
+  "name": {
+    "zh": "蚁狮",
+    "pinyin": "yǐ shī",
+    "en": "Antlion",
+    "ipa": "/ˈæntlaɪən/",
+    "audioZh": "/audio/antlion-zh.m4a",
+    "audioEn": "/audio/antlion-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蚁狮",
+        "pinyin": "yǐ shī",
+        "en": "Antlion",
+        "ipa": "/ˈæntlaɪən/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/antlion.jpg"
+        }
+      ],
+      "description": "蚁狮会在沙土里挖一个漏斗样的小坑，等小虫滑下去。",
+      "allusion": {
+        "text": "蚁狮挖好小坑，就在坑底安静地等猎物。",
+        "explain": "沙坑滑滑的，小虫一进去就爬不上来。"
+      }
+    }
+  }
+}

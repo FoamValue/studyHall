@@ -1,0 +1,36 @@
+{
+  "id": "rhinoceros-beetle",
+  "categories": [
+    "insect"
+  ],
+  "sort": 35,
+  "name": {
+    "zh": "独角仙",
+    "pinyin": "dú jiǎo xiān",
+    "en": "Rhinoceros Beetle",
+    "ipa": "/raɪˈnɒsərəs ˈbiːtl/",
+    "audioZh": "/audio/rhinoceros-beetle-zh.m4a",
+    "audioEn": "/audio/rhinoceros-beetle-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "独角仙",
+        "pinyin": "dú jiǎo xiān",
+        "en": "Rhinoceros Beetle",
+        "ipa": "/raɪˈnɒsərəs ˈbiːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/rhinoceros-beetle.jpg"
+        }
+      ],
+      "description": "独角仙头上长着一只大角，像小犀牛，力气特别大。",
+      "allusion": {
+        "text": "独角仙会用头上的角把对手顶翻。",
+        "explain": "它是昆虫里的大力士。"
+      }
+    }
+  }
+}

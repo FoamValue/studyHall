@@ -1,0 +1,36 @@
+{
+  "id": "millipede",
+  "categories": [
+    "insect"
+  ],
+  "sort": 33,
+  "name": {
+    "zh": "马陆",
+    "pinyin": "mǎ lù",
+    "en": "Millipede",
+    "ipa": "/ˈmɪlɪpiːd/",
+    "audioZh": "/audio/millipede-zh.m4a",
+    "audioEn": "/audio/millipede-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "马陆",
+        "pinyin": "mǎ lù",
+        "en": "Millipede",
+        "ipa": "/ˈmɪlɪpiːd/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/millipede.jpg"
+        }
+      ],
+      "description": "马陆的身体一节一节，长着好多好多小脚，走路像波浪。",
+      "allusion": {
+        "text": "马陆遇到危险会卷成一个圆盘装死。",
+        "explain": "它靠装死躲过敌人。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "microraptor",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 47,
+  "name": {
+    "zh": "小盗龙",
+    "pinyin": "xiǎo dào lóng",
+    "en": "Microraptor",
+    "ipa": "/ˈmaɪkrəʊræptə/",
+    "audioZh": "/audio/microraptor-zh.m4a",
+    "audioEn": "/audio/microraptor-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "小盗龙",
+        "pinyin": "xiǎo dào lóng",
+        "en": "Microraptor",
+        "ipa": "/ˈmaɪkrəʊræptə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/microraptor.jpg"
+        }
+      ],
+      "description": "小盗龙个头很小，四条腿上都长着羽毛，会从树上滑翔。",
+      "allusion": {
+        "text": "小盗龙展开四条带羽毛的腿，从树上滑下来。",
+        "explain": "它像会滑翔的小飞机。"
+      }
+    }
+  }
+}

@@ -345,3 +345,19 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - **天然覆盖**：既有后端 TC-24（文案限长，全量遍历 `description` ≤80 无拉丁字母、`allusion.text` ≤60、`explain` ≤50）将自动覆盖新增 176 条小知识文案；超长即失败。
 - 既有后端 21 用例作为回归基线，退出码必须为 0。
 - **门禁期测试口径对齐（D13-1）**：`PlantApiIntegrationTest.tc11_allContentFilesShouldMatchSchema` 原对植物部位强制 `allusion.source` 非空，与本迭代冻结口径 Q2「有明确出处才填 `source`」冲突（156 条常识型小知识按口径省略 `source`，且严禁杜撰出处）。已将该断言改为「`source` 可选，若填写则须非空」，与板块小知识（animal/insect/dinosaur）口径统一；**仅测试代码调整，Controller / Service / 模型 / 契约零改动**。调整后 21 用例全绿。
+
+---
+
+# 后端开发设计文章 — Sprint 14（增量：无）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-18 |
+| 结论 | **本迭代后端零改动**（J-15）；纯内容扩容 |
+
+- Sprint 14（v2.5）为内容扩容（动物 / 昆虫 / 恐龙各 30 → 50），不触碰后端代码。
+- **不改**：Controller / Service / Repository / Entity / 契约（`/api/categories`、`/api/plants`、`/api/plants/{id}`）、响应骨架、缓存 key 规则、`section` 与 `sort` 查询逻辑、导入脚本、`Allusion` 数据模型（`source` 可选）。
+- **天然覆盖**：导入校验已包含单键板块 `parts↔categories` 一致性、图片路径规则（`/images/{目录}/{id}.jpg`）、音频文件存在性；`?section=animal|insect|dinosaur` 各返回 **50** 条，顺序由既有 `Sort.by(ASC,"sort","id")` 保证。
+- **数据驱动断言自动适配**：TC-71/TC-72/TC-74 等按语料实际过滤计数（非硬编码 30），新增 60 条语料不改断言；TC-24（文案限长全量遍历）自动覆盖新增文案；TC-11（`source` 可选）沿用 D13-1 口径。
+- 既有后端 21 用例作为回归基线，退出码必须为 0。

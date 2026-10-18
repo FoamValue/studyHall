@@ -1,0 +1,36 @@
+{
+  "id": "hamster",
+  "categories": [
+    "animal"
+  ],
+  "sort": 45,
+  "name": {
+    "zh": "仓鼠",
+    "pinyin": "cāng shǔ",
+    "en": "Hamster",
+    "ipa": "/ˈhæmstə/",
+    "audioZh": "/audio/hamster-zh.m4a",
+    "audioEn": "/audio/hamster-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "仓鼠",
+        "pinyin": "cāng shǔ",
+        "en": "Hamster",
+        "ipa": "/ˈhæmstə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/hamster.jpg"
+        }
+      ],
+      "description": "仓鼠胖乎乎的，会把食物塞进两边的腮帮子里。",
+      "allusion": {
+        "text": "仓鼠的腮帮像两个小口袋，能装好多瓜子。",
+        "explain": "它把吃的先藏起来，慢慢吃。"
+      }
+    }
+  }
+}

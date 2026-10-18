@@ -1,0 +1,36 @@
+{
+  "id": "scorpion",
+  "categories": [
+    "insect"
+  ],
+  "sort": 32,
+  "name": {
+    "zh": "蝎子",
+    "pinyin": "xiē zi",
+    "en": "Scorpion",
+    "ipa": "/ˈskɔːpiən/",
+    "audioZh": "/audio/scorpion-zh.m4a",
+    "audioEn": "/audio/scorpion-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蝎子",
+        "pinyin": "xiē zi",
+        "en": "Scorpion",
+        "ipa": "/ˈskɔːpiən/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/scorpion.jpg"
+        }
+      ],
+      "description": "蝎子有八条腿，尾巴上有个小钩子，喜欢躲在石头下。",
+      "allusion": {
+        "text": "蝎子夜里出来活动，尾巴会翘起来防身。",
+        "explain": "它的钩子是用来保护自己的。"
+      }
+    }
+  }
+}

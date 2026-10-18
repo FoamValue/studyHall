@@ -1,0 +1,36 @@
+{
+  "id": "troodon",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 48,
+  "name": {
+    "zh": "伤齿龙",
+    "pinyin": "shāng chǐ lóng",
+    "en": "Troodon",
+    "ipa": "/ˈtroʊədɒn/",
+    "audioZh": "/audio/troodon-zh.m4a",
+    "audioEn": "/audio/troodon-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "伤齿龙",
+        "pinyin": "shāng chǐ lóng",
+        "en": "Troodon",
+        "ipa": "/ˈtroʊədɒn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/troodon.jpg"
+        }
+      ],
+      "description": "伤齿龙脑袋大，眼睛亮亮的，是聪明的小型恐龙。",
+      "allusion": {
+        "text": "伤齿龙的眼睛又大又亮，夜里也能看清。",
+        "explain": "它的眼睛帮它夜里找吃的。"
+      }
+    }
+  }
+}

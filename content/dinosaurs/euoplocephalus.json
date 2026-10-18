@@ -1,0 +1,36 @@
+{
+  "id": "euoplocephalus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 41,
+  "name": {
+    "zh": "包头龙",
+    "pinyin": "bāo tóu lóng",
+    "en": "Euoplocephalus",
+    "ipa": "/juːˌɒpləˈsefələs/",
+    "audioZh": "/audio/euoplocephalus-zh.m4a",
+    "audioEn": "/audio/euoplocephalus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "包头龙",
+        "pinyin": "bāo tóu lóng",
+        "en": "Euoplocephalus",
+        "ipa": "/juːˌɒpləˈsefələs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/euoplocephalus.jpg"
+        }
+      ],
+      "description": "包头龙的背像小坦克，尾巴末端有个大锤子。",
+      "allusion": {
+        "text": "包头龙挥动尾巴上的大锤，能赶走敌人。",
+        "explain": "锤子就是它的武器。"
+      }
+    }
+  }
+}

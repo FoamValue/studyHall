@@ -17,13 +17,13 @@ const DINOSAUR_IDS = [
   'gallimimus', 'iguanodon', 'maiasaura', 'megalosaurus', 'mosasaurus', 'oviraptor', 'pachycephalosaurus', 'protoceratops', 'plateosaurus', 'styracosaurus',
 ];
 
-// TC-115 动物板块扩容：可滚动加载至 30 卡 → 新增条目「鲸鱼」详情（单图分支 + 音频喇叭）
-test('TC-115 动物板块扩容至 30 且新增条目详情正常', async ({ page }) => {
+// TC-115 动物板块扩容：可滚动加载至 50 卡 → 新增条目「鲸鱼」详情（单图分支 + 音频喇叭）
+test('TC-115 动物板块扩容至 50 且新增条目详情正常', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
   await nav.getByRole('button', { name: '动物' }).click();
-  await expect(page.locator('.list-count')).toHaveText('共 30 种');
-  await loadAllCards(page, 30);
+  await expect(page.locator('.list-count')).toHaveText('共 50 种');
+  await loadAllCards(page, 50);
 
   // 抽查末尾新增条目卡片可见
   for (const name of ['猫', '狗', '鲸鱼']) {
@@ -38,12 +38,12 @@ test('TC-115 动物板块扩容至 30 且新增条目详情正常', async ({ pag
 });
 
 // TC-116 昆虫板块扩容：含并入的常见「小虫」（蜘蛛/蜗牛/蚯蚓/蜈蚣）
-test('TC-116 昆虫板块扩容至 30 且「小虫」并入', async ({ page }) => {
+test('TC-116 昆虫板块扩容至 50 且「小虫」并入', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
   await nav.getByRole('button', { name: '昆虫' }).click();
-  await expect(page.locator('.list-count')).toHaveText('共 30 种');
-  await loadAllCards(page, 30);
+  await expect(page.locator('.list-count')).toHaveText('共 50 种');
+  await loadAllCards(page, 50);
 
   for (const name of ['蜘蛛', '蜗牛', '蚯蚓', '蜈蚣', '大胡蜂']) {
     await expect(page.locator('.plant-card-zh', { hasText: name }).first()).toBeVisible();
@@ -57,12 +57,12 @@ test('TC-116 昆虫板块扩容至 30 且「小虫」并入', async ({ page }) =
 });
 
 // TC-117 恐龙板块扩容：完整骨架化石图可真实加载
-test('TC-117 恐龙板块扩容至 30 且骨架图可加载', async ({ page }) => {
+test('TC-117 恐龙板块扩容至 50 且骨架图可加载', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
   await nav.getByRole('button', { name: '恐龙' }).click();
-  await expect(page.locator('.list-count')).toHaveText('共 30 种');
-  await loadAllCards(page, 30);
+  await expect(page.locator('.list-count')).toHaveText('共 50 种');
+  await loadAllCards(page, 50);
 
   for (const name of ['戟龙', '原角龙', '翼龙']) {
     await expect(page.locator('.plant-card-zh', { hasText: name }).first()).toBeVisible();

@@ -1,0 +1,36 @@
+{
+  "id": "dung-beetle",
+  "categories": [
+    "insect"
+  ],
+  "sort": 37,
+  "name": {
+    "zh": "屎壳郎",
+    "pinyin": "shǐ ké làng",
+    "en": "Dung Beetle",
+    "ipa": "/dʌŋ ˈbiːtl/",
+    "audioZh": "/audio/dung-beetle-zh.m4a",
+    "audioEn": "/audio/dung-beetle-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "屎壳郎",
+        "pinyin": "shǐ ké làng",
+        "en": "Dung Beetle",
+        "ipa": "/dʌŋ ˈbiːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/dung-beetle.jpg"
+        }
+      ],
+      "description": "屎壳郎会滚一个圆圆的球，用后腿推着走，特别有力气。",
+      "allusion": {
+        "text": "屎壳郎把小球滚回家，给宝宝当食物。",
+        "explain": "它推球是为了养宝宝。"
+      }
+    }
+  }
+}

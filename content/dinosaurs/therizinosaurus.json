@@ -1,0 +1,36 @@
+{
+  "id": "therizinosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 43,
+  "name": {
+    "zh": "镰刀龙",
+    "pinyin": "lián dāo lóng",
+    "en": "Therizinosaurus",
+    "ipa": "/θəˌrɪzɪnəˈsɔːrəs/",
+    "audioZh": "/audio/therizinosaurus-zh.m4a",
+    "audioEn": "/audio/therizinosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "镰刀龙",
+        "pinyin": "lián dāo lóng",
+        "en": "Therizinosaurus",
+        "ipa": "/θəˌrɪzɪnəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/therizinosaurus.jpg"
+        }
+      ],
+      "description": "镰刀龙有又长又弯的大爪子，肚子大大的，爱吃树叶。",
+      "allusion": {
+        "text": "镰刀龙的爪子像大镰刀，用来勾树叶。",
+        "explain": "它其实爱吃植物，不爱打架。"
+      }
+    }
+  }
+}

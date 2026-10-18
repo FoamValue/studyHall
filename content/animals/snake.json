@@ -1,0 +1,36 @@
+{
+  "id": "snake",
+  "categories": [
+    "animal"
+  ],
+  "sort": 36,
+  "name": {
+    "zh": "蛇",
+    "pinyin": "shé",
+    "en": "Snake",
+    "ipa": "/sneɪk/",
+    "audioZh": "/audio/snake-zh.m4a",
+    "audioEn": "/audio/snake-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "蛇",
+        "pinyin": "shé",
+        "en": "Snake",
+        "ipa": "/sneɪk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/snake.jpg"
+        }
+      ],
+      "description": "蛇的身体长长的，没有脚，能在地上弯弯曲曲地爬。",
+      "allusion": {
+        "text": "蛇会不停地吐舌头，用它闻出周围的味道。",
+        "explain": "它的舌头像小鼻子一样灵。"
+      }
+    }
+  }
+}

@@ -136,8 +136,8 @@ studyHall/
 │   │   ├── api/client.js          # 统一 fetch 封装
 │   │   └── __tests__/             # Vitest 组件测试
 │   ├── e2e/                       # Playwright E2E（smoke/navigation/responsive/speech/sprint*）
-│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 三板块各 30 jpg）
-│   ├── public/audio/              # 预生成音频（380 个 .m4a = 190 条 × zh/en）
+│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 三板块各 50 jpg）
+│   ├── public/audio/              # 预生成音频（500 个 .m4a = 250 条 × zh/en）
 │   ├── nginx.conf                 # SPA 路由回退 + /api 反代
 │   └── Dockerfile                 # 多阶段：node:22-alpine 构建 → nginx:alpine 运行
 ├── scripts/
@@ -301,12 +301,12 @@ node scripts/import-plants.mjs
 
 | 步骤 | 命令 | 当前基线 |
 |---|---|---|
-| 0. 语料校验 | `node scripts/import-plants.mjs`（校验阶段） | `total = 190`，分类 6 |
+| 0. 语料校验 | `node scripts/import-plants.mjs`（校验阶段） | `total = 250`，分类 6 |
 | 1. 后端测试 | `mvn test`（Testcontainers 起真实中间件） | **21** 用例，退出码 0 |
-| 2. 前端测试 + 构建 | `npx vitest run` · `vite build` | **67 / 67**，构建退出码 0 |
+| 2. 前端测试 + 构建 | `npx vitest run` · `vite build` | **73 / 73**，构建退出码 0 |
 | 3. 容器重建 | `docker compose up -d --build` | `/api/health = UP` |
 | 4. 导入幂等 | 连续导入两次 | `import_log` delta = 2 × 条目数；Mongo 无重复；导入后 `redis sh:*` = 0 |
-| 5. E2E | `npx playwright test` | **47 / 47**（目标 = nginx 80 入口，需先 `docker compose up -d` 并导入内容） |
+| 5. E2E | `npx playwright test` | **56 / 56**（目标 = nginx 80 入口，需先 `docker compose up -d` 并导入内容） |
 
 > `docker compose up -d --build` 而非 `restart`：新增图片 / 音频为静态资源，必须重建 frontend 镜像才会被 nginx 提供。
 
@@ -316,10 +316,10 @@ node scripts/import-plants.mjs
 
 | 项 | 规模 |
 |---|---|
-| 条目总数 | **190**（植物 100 / 动物 30 / 昆虫 30 / 恐龙 30） |
+| 条目总数 | **250**（植物 100 / 动物 50 / 昆虫 50 / 恐龙 50） |
 | 分类 | 6（flower / leaf / fruit / animal / insect / dinosaur） |
-| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、三板块各 30 张 = **296** 张 `.jpg` |
-| 音频 | **380** 个 `.m4a`（190 条 × 中文 / 英文） |
+| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、三板块各 50 张 = **356** 张 `.jpg` |
+| 音频 | **500** 个 `.m4a`（250 条 × 中文 / 英文） |
 | 后端源码 | 486 行（Java 459 + 配置 27） |
 | 前端源码 | 1,524 行（非测试部分） |
 | 测试代码 | 2,665 行（后端 559 / 前端单元 1,185 / E2E 921） |
@@ -380,7 +380,10 @@ node scripts/import-plants.mjs
 | v1.5 | Sprint 8 | 名实一致修复：卡片标题与详情默认部位跟随入口分类 |
 | v2.0 | Sprint 9 | 升级为「自然认知图鉴」：四板块 + 单图模型 + 小知识 + 预生成音频 + `sort` 排序 |
 | v2.1 | Sprint 10 | PF 体验回流：小知识可见标题、单图横屏主图放大、首页增量加载 + 「共 N 种」 |
-| v2.2 | Sprint 11 | 内容扩容（一）：动物 / 昆虫 / 恐龙各 10 → 30（纯内容，零代码改动；内容已落盘、门禁全绿） |
+| v2.2 | Sprint 11 | 内容扩容（一）：动物 / 昆虫 / 恐龙各 10 → 30（纯内容，零代码改动） |
+| v2.3 | Sprint 12 | PF 体验回流：返回文案按板块派生、详情拼音字号、首页板块 / 分类按钮字号 |
+| v2.4 | Sprint 13 | 内容产线 N2：植物板块 176 处缺失部位补齐「小知识」（纯内容，零代码改动） |
+| v2.5 | Sprint 14 | 内容扩容（二）：动物 / 昆虫 / 恐龙各 30 → 50（纯内容，零代码改动；图片总数 356、音频 500） |
 
 ---
 

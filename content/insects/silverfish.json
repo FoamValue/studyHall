@@ -1,0 +1,36 @@
+{
+  "id": "silverfish",
+  "categories": [
+    "insect"
+  ],
+  "sort": 45,
+  "name": {
+    "zh": "衣鱼",
+    "pinyin": "yī yú",
+    "en": "Silverfish",
+    "ipa": "/ˈsɪlvəfɪʃ/",
+    "audioZh": "/audio/silverfish-zh.m4a",
+    "audioEn": "/audio/silverfish-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "衣鱼",
+        "pinyin": "yī yú",
+        "en": "Silverfish",
+        "ipa": "/ˈsɪlvəfɪʃ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/silverfish.jpg"
+        }
+      ],
+      "description": "衣鱼身体细长，像一条小鱼，跑起来弯弯曲曲很灵活。",
+      "allusion": {
+        "text": "衣鱼喜欢躲在暗暗的地方，爱吃旧纸张。",
+        "explain": "它最爱啃书本和纸片。"
+      }
+    }
+  }
+}

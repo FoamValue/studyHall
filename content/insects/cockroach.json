@@ -1,0 +1,36 @@
+{
+  "id": "cockroach",
+  "categories": [
+    "insect"
+  ],
+  "sort": 31,
+  "name": {
+    "zh": "蟑螂",
+    "pinyin": "zhāng láng",
+    "en": "Cockroach",
+    "ipa": "/ˈkɒkrəʊtʃ/",
+    "audioZh": "/audio/cockroach-zh.m4a",
+    "audioEn": "/audio/cockroach-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "蟑螂",
+        "pinyin": "zhāng láng",
+        "en": "Cockroach",
+        "ipa": "/ˈkɒkrəʊtʃ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/cockroach.jpg"
+        }
+      ],
+      "description": "蟑螂身体扁扁的，跑得飞快，喜欢藏在暗暗的角落里。",
+      "allusion": {
+        "text": "蟑螂喜欢夜里出来，白天都躲起来睡大觉。",
+        "explain": "它是怕光的小夜猫子。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "edmontosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 38,
+  "name": {
+    "zh": "埃德蒙顿龙",
+    "pinyin": "āi dé méng dùn lóng",
+    "en": "Edmontosaurus",
+    "ipa": "/edˌmɒntəˈsɔːrəs/",
+    "audioZh": "/audio/edmontosaurus-zh.m4a",
+    "audioEn": "/audio/edmontosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "埃德蒙顿龙",
+        "pinyin": "āi dé méng dùn lóng",
+        "en": "Edmontosaurus",
+        "ipa": "/edˌmɒntəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/edmontosaurus.jpg"
+        }
+      ],
+      "description": "埃德蒙顿龙嘴巴像鸭嘴，喜欢成群一起找吃的。",
+      "allusion": {
+        "text": "埃德蒙顿龙常排着大队伍一起走。",
+        "explain": "大家在一起更安全。"
+      }
+    }
+  }
+}

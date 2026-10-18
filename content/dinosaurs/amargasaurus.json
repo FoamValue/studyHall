@@ -1,0 +1,36 @@
+{
+  "id": "amargasaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 35,
+  "name": {
+    "zh": "阿马加龙",
+    "pinyin": "ā mǎ jiā lóng",
+    "en": "Amargasaurus",
+    "ipa": "/əˌmɑːrɡəˈsɔːrəs/",
+    "audioZh": "/audio/amargasaurus-zh.m4a",
+    "audioEn": "/audio/amargasaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "阿马加龙",
+        "pinyin": "ā mǎ jiā lóng",
+        "en": "Amargasaurus",
+        "ipa": "/əˌmɑːrɡəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/amargasaurus.jpg"
+        }
+      ],
+      "description": "阿马加龙的脖子上有一排长长的尖刺，像梳子一样竖着。",
+      "allusion": {
+        "text": "阿马加龙脖子上的尖刺，是它特别的样子。",
+        "explain": "别的恐龙都长得不一样。"
+      }
+    }
+  }
+}

@@ -26,16 +26,16 @@ test('TC-90 板块导航四钮且二级筛选仅植物板块', async ({ page }) 
   await expect(filterGroup.locator('.filter-btn')).toHaveCount(4);
   await expect(filterGroup.getByRole('button', { name: '动物' })).toHaveCount(0);
 
-  // 切到动物板块：二级筛选消失，渲染 30 种动物卡片（Sprint 11 扩容：10 → 30）
+  // 切到动物板块：二级筛选消失，渲染 50 种动物卡片（Sprint 14 扩容：30 → 50）
   await nav.getByRole('button', { name: '动物' }).click();
   await expect(page.getByRole('group', { name: '植物分类筛选' })).toHaveCount(0);
-  await loadAllCards(page, 30);
+  await loadAllCards(page, 50);
 
-  // 昆虫 / 恐龙板块同样平铺 30 种
+  // 昆虫 / 恐龙板块同样平铺 50 种
   await nav.getByRole('button', { name: '昆虫' }).click();
-  await loadAllCards(page, 30);
+  await loadAllCards(page, 50);
   await nav.getByRole('button', { name: '恐龙' }).click();
-  await loadAllCards(page, 30);
+  await loadAllCards(page, 50);
 });
 
 // TC-91 动物单图详情：不渲染部位切换，渲染大图与说明 + 小知识
@@ -95,12 +95,12 @@ test('TC-94 板块列表顺序稳定（sort ASC）', async ({ page }) => {
   const nav = page.getByRole('group', { name: '板块导航' });
 
   await nav.getByRole('button', { name: '动物' }).click();
-  await loadAllCards(page, 30);
+  await loadAllCards(page, 50);
   const first = await page.locator('.plant-card-zh').allTextContents();
 
   await page.reload();
   await page.getByRole('group', { name: '板块导航' }).getByRole('button', { name: '动物' }).click();
-  await loadAllCards(page, 30);
+  await loadAllCards(page, 50);
   const second = await page.locator('.plant-card-zh').allTextContents();
 
   expect(first).toEqual(second);

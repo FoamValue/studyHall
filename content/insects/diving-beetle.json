@@ -1,0 +1,36 @@
+{
+  "id": "diving-beetle",
+  "categories": [
+    "insect"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "龙虱",
+    "pinyin": "lóng shī",
+    "en": "Diving Beetle",
+    "ipa": "/ˈdaɪvɪŋ ˈbiːtl/",
+    "audioZh": "/audio/diving-beetle-zh.m4a",
+    "audioEn": "/audio/diving-beetle-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "龙虱",
+        "pinyin": "lóng shī",
+        "en": "Diving Beetle",
+        "ipa": "/ˈdaɪvɪŋ ˈbiːtl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/diving-beetle.jpg"
+        }
+      ],
+      "description": "龙虱是会游泳的甲虫，带着气泡潜到水下抓小虫吃。",
+      "allusion": {
+        "text": "龙虱把空气装在身上，带到水里慢慢用。",
+        "explain": "它像背着氧气瓶潜水。"
+      }
+    }
+  }
+}

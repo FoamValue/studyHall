@@ -1,0 +1,36 @@
+{
+  "id": "flea",
+  "categories": [
+    "insect"
+  ],
+  "sort": 42,
+  "name": {
+    "zh": "跳蚤",
+    "pinyin": "tiào zǎo",
+    "en": "Flea",
+    "ipa": "/fliː/",
+    "audioZh": "/audio/flea-zh.m4a",
+    "audioEn": "/audio/flea-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "跳蚤",
+        "pinyin": "tiào zǎo",
+        "en": "Flea",
+        "ipa": "/fliː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/flea.jpg"
+        }
+      ],
+      "description": "跳蚤个头很小，后腿特别有劲，一下子能蹦得很高。",
+      "allusion": {
+        "text": "跳蚤能跳过比自己高很多很多倍的距离。",
+        "explain": "它是动物里的跳高冠军。"
+      }
+    }
+  }
+}

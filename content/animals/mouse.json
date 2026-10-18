@@ -1,0 +1,36 @@
+{
+  "id": "mouse",
+  "categories": [
+    "animal"
+  ],
+  "sort": 44,
+  "name": {
+    "zh": "老鼠",
+    "pinyin": "lǎo shǔ",
+    "en": "Mouse",
+    "ipa": "/maʊs/",
+    "audioZh": "/audio/mouse-zh.m4a",
+    "audioEn": "/audio/mouse-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "老鼠",
+        "pinyin": "lǎo shǔ",
+        "en": "Mouse",
+        "ipa": "/maʊs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/mouse.jpg"
+        }
+      ],
+      "description": "老鼠个头很小，耳朵圆圆的，牙齿一直在长。",
+      "allusion": {
+        "text": "老鼠的门牙不停地长，要常常啃东西磨短。",
+        "explain": "所以它总爱咬一咬。"
+      }
+    }
+  }
+}

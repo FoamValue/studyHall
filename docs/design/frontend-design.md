@@ -620,6 +620,26 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - 前端单测**不新增**（`AllusionCard` 逻辑已由既有断言覆盖）。
 - E2E 新增 **TC-128**（此前缺失小知识的植物，如 apple，详情 `.allusion-card` 与 `.allusion-title` 渲染）、**TC-129**（同株「花 / 叶 / 果」小知识文案互不相同）；既有 50 用例全量回归。
 
+---
+
+# 前端开发设计文章 — Sprint 14（增量：无）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-18 |
+| 结论 | **本迭代前端零改动**（R-34）。纯内容扩容。 |
+
+## S14-1. 零改动确认
+- 板块列表 / 单图详情 / 音频喇叭 / 增量加载均为**数据驱动**：`/api/plants?section=*` 返回条数增加后，`loadAllCards` 按滚动步进自然补全，「共 N 种」（`.list-count`）取接口返回总数——**无需任何前端改动**。
+- **不改**：路由 `/plants/:id`、`location.state`（section / category / list / restoreScroll）、`SECTION_HOME` 返回文案派生、单图详情分支（`.detail-body.single-image`、无部位切换）、喇叭音频播放、沉浸式 / 全屏 / 增量加载逻辑、`styles.css`。
+- US-6 沉浸换株、US-7 喇叭、US-8 默认部位跟随分类、Sprint 6 无滚动红线、Sprint 9 板块导航与单图模型、Sprint 10 增量加载、Sprint 12 返回文案派生均不受影响。
+
+## S14-2. 测试更新（配合 QA-30 / QA-31）
+- 前端单测**不新增**（组件逻辑不变；TC-106「共 N 种」等 mock 驱动用例不受真实语料计数影响）。
+- E2E **更新**：TC-114「共 30 种」→「共 50 种」+ `loadAllCards(page, 50)`；`sprint9.spec.js` TC-90 / TC-94 与 `sprint11.spec.js` TC-115~TC-117 同步由 30 改 50。
+- E2E **新增**：`sprint14.spec.js` **TC-130**（三板块扩容至 50，末位新增条目如「鸵鸟 / 小虾 / 翼手龙」可见）、**TC-131**（新增条目单图详情 + 音频喇叭）、**TC-132**（新增 60 图 HTTP 200）、**TC-133**（新增 120 音频 HTTP 200）。
+
 
 
 

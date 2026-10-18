@@ -1,0 +1,36 @@
+{
+  "id": "hermit-crab",
+  "categories": [
+    "insect"
+  ],
+  "sort": 41,
+  "name": {
+    "zh": "寄居蟹",
+    "pinyin": "jì jū xiè",
+    "en": "Hermit Crab",
+    "ipa": "/ˈhɜːmɪt kræb/",
+    "audioZh": "/audio/hermit-crab-zh.m4a",
+    "audioEn": "/audio/hermit-crab-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "寄居蟹",
+        "pinyin": "jì jū xiè",
+        "en": "Hermit Crab",
+        "ipa": "/ˈhɜːmɪt kræb/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/hermit-crab.jpg"
+        }
+      ],
+      "description": "寄居蟹住在捡来的空壳里，驮着壳慢慢走，还会换新家。",
+      "allusion": {
+        "text": "寄居蟹长大了就要换一个更大的壳。",
+        "explain": "它到处找合适的空壳当房子。"
+      }
+    }
+  }
+}

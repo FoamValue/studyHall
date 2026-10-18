@@ -1,0 +1,36 @@
+{
+  "id": "corythosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 36,
+  "name": {
+    "zh": "冠龙",
+    "pinyin": "guān lóng",
+    "en": "Corythosaurus",
+    "ipa": "/kəˌrɪθəˈsɔːrəs/",
+    "audioZh": "/audio/corythosaurus-zh.m4a",
+    "audioEn": "/audio/corythosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "冠龙",
+        "pinyin": "guān lóng",
+        "en": "Corythosaurus",
+        "ipa": "/kəˌrɪθəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/corythosaurus.jpg"
+        }
+      ],
+      "description": "冠龙头上有个半圆的骨冠，像戴着一顶小帽子。",
+      "allusion": {
+        "text": "冠龙头上的骨冠，像一顶半圆的小头盔。",
+        "explain": "它用这个特别的样子认同伴。"
+      }
+    }
+  }
+}

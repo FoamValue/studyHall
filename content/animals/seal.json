@@ -1,0 +1,36 @@
+{
+  "id": "seal",
+  "categories": [
+    "animal"
+  ],
+  "sort": 40,
+  "name": {
+    "zh": "海豹",
+    "pinyin": "hǎi bào",
+    "en": "Seal",
+    "ipa": "/siːl/",
+    "audioZh": "/audio/seal-zh.m4a",
+    "audioEn": "/audio/seal-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "海豹",
+        "pinyin": "hǎi bào",
+        "en": "Seal",
+        "ipa": "/siːl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/seal.jpg"
+        }
+      ],
+      "description": "海豹身体圆圆的，四肢像小桨，在水里游得可快了。",
+      "allusion": {
+        "text": "海豹在水里能闭住鼻子，憋很久的气。",
+        "explain": "它一口气能潜好久。"
+      }
+    }
+  }
+}

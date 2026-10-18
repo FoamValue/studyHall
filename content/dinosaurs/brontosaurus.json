@@ -1,0 +1,36 @@
+{
+  "id": "brontosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 31,
+  "name": {
+    "zh": "雷龙",
+    "pinyin": "léi lóng",
+    "en": "Brontosaurus",
+    "ipa": "/ˌbrɒntəˈsɔːrəs/",
+    "audioZh": "/audio/brontosaurus-zh.m4a",
+    "audioEn": "/audio/brontosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "雷龙",
+        "pinyin": "léi lóng",
+        "en": "Brontosaurus",
+        "ipa": "/ˌbrɒntəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/brontosaurus.jpg"
+        }
+      ],
+      "description": "雷龙脖子长长的，尾巴粗粗的，是吃树叶的大个子。",
+      "allusion": {
+        "text": "雷龙这样的大恐龙，每天要吃很多很多树叶。",
+        "explain": "它得一直吃，才有力气。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "crocodile",
+  "categories": [
+    "animal"
+  ],
+  "sort": 35,
+  "name": {
+    "zh": "鳄鱼",
+    "pinyin": "è yú",
+    "en": "Crocodile",
+    "ipa": "/ˈkrɒkədaɪl/",
+    "audioZh": "/audio/crocodile-zh.m4a",
+    "audioEn": "/audio/crocodile-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "鳄鱼",
+        "pinyin": "è yú",
+        "en": "Crocodile",
+        "ipa": "/ˈkrɒkədaɪl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/crocodile.jpg"
+        }
+      ],
+      "description": "鳄鱼趴在水边一动不动，嘴巴又长又大，牙齿尖尖的。",
+      "allusion": {
+        "text": "鳄鱼妈妈会把小宝宝含在嘴里，送到水边保护它们。",
+        "explain": "别看它凶，它也很爱自己的宝宝。"
+      }
+    }
+  }
+}

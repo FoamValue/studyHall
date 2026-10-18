@@ -1,0 +1,36 @@
+{
+  "id": "water-strider",
+  "categories": [
+    "insect"
+  ],
+  "sort": 39,
+  "name": {
+    "zh": "水黾",
+    "pinyin": "shuǐ mǐn",
+    "en": "Water Strider",
+    "ipa": "/ˈwɔːtə ˈstraɪdə/",
+    "audioZh": "/audio/water-strider-zh.m4a",
+    "audioEn": "/audio/water-strider-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "水黾",
+        "pinyin": "shuǐ mǐn",
+        "en": "Water Strider",
+        "ipa": "/ˈwɔːtə ˈstraɪdə/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/water-strider.jpg"
+        }
+      ],
+      "description": "水黾有四条长腿，能轻轻站在水面上滑来滑去。",
+      "allusion": {
+        "text": "水黾的脚上有细毛，托住水面不会沉下去。",
+        "explain": "它像会水上漂的小侠客。"
+      }
+    }
+  }
+}

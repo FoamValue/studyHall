@@ -1,0 +1,36 @@
+{
+  "id": "lacewing",
+  "categories": [
+    "insect"
+  ],
+  "sort": 46,
+  "name": {
+    "zh": "草蛉",
+    "pinyin": "cǎo líng",
+    "en": "Lacewing",
+    "ipa": "/ˈleɪswɪŋ/",
+    "audioZh": "/audio/lacewing-zh.m4a",
+    "audioEn": "/audio/lacewing-en.m4a"
+  },
+  "parts": {
+    "insect": {
+      "name": {
+        "zh": "草蛉",
+        "pinyin": "cǎo líng",
+        "en": "Lacewing",
+        "ipa": "/ˈleɪswɪŋ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/insects/lacewing.jpg"
+        }
+      ],
+      "description": "草蛉穿着绿纱一样的翅膀，眼睛亮亮的，飞起来轻飘飘。",
+      "allusion": {
+        "text": "草蛉会帮花园吃掉好多小害虫。",
+        "explain": "它是花园里的小卫士。"
+      }
+    }
+  }
+}

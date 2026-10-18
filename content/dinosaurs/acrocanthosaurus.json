@@ -1,0 +1,36 @@
+{
+  "id": "acrocanthosaurus",
+  "categories": [
+    "dinosaur"
+  ],
+  "sort": 45,
+  "name": {
+    "zh": "高棘龙",
+    "pinyin": "gāo jí lóng",
+    "en": "Acrocanthosaurus",
+    "ipa": "/ˌækrəˌkænθəˈsɔːrəs/",
+    "audioZh": "/audio/acrocanthosaurus-zh.m4a",
+    "audioEn": "/audio/acrocanthosaurus-en.m4a"
+  },
+  "parts": {
+    "dinosaur": {
+      "name": {
+        "zh": "高棘龙",
+        "pinyin": "gāo jí lóng",
+        "en": "Acrocanthosaurus",
+        "ipa": "/ˌækrəˌkænθəˈsɔːrəs/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/dinosaurs/acrocanthosaurus.jpg"
+        }
+      ],
+      "description": "高棘龙背上有一排高高的小山脊，喜欢追着别的恐龙跑。",
+      "allusion": {
+        "text": "高棘龙背上高高的脊像小山峰。",
+        "explain": "这个特别的样子很好认。"
+      }
+    }
+  }
+}

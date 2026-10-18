@@ -1,0 +1,36 @@
+{
+  "id": "bat",
+  "categories": [
+    "animal"
+  ],
+  "sort": 43,
+  "name": {
+    "zh": "蝙蝠",
+    "pinyin": "biān fú",
+    "en": "Bat",
+    "ipa": "/bæt/",
+    "audioZh": "/audio/bat-zh.m4a",
+    "audioEn": "/audio/bat-en.m4a"
+  },
+  "parts": {
+    "animal": {
+      "name": {
+        "zh": "蝙蝠",
+        "pinyin": "biān fú",
+        "en": "Bat",
+        "ipa": "/bæt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/animals/bat.jpg"
+        }
+      ],
+      "description": "蝙蝠会飞，白天挂在洞里睡觉，晚上出来找吃的。",
+      "allusion": {
+        "text": "蝙蝠会发出很小的声音，再听回声认路。",
+        "explain": "这样黑黑的夜里也不会撞东西。"
+      }
+    }
+  }
+}
