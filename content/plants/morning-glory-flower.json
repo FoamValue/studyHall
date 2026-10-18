@@ -1,0 +1,36 @@
+{
+  "id": "morning-glory-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 64,
+  "name": {
+    "zh": "牵牛花",
+    "pinyin": "qiān niú huā",
+    "en": "Morning Glory Flower",
+    "ipa": "/ˈmɔːrnɪŋ ˈɡlɔːri/ ˈflaʊər",
+    "audioZh": "/audio/morning-glory-flower-zh.m4a",
+    "audioEn": "/audio/morning-glory-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/morning-glory-flower.jpg"
+        }
+      ],
+      "description": "牵牛花像小喇叭，紫的、粉的、蓝的都有。早上开，太阳大了就合上。",
+      "allusion": {
+        "text": "牵牛花早上开得最早，蜜蜂和蝴蝶最爱来它家做客。",
+        "explain": "牵牛花清早张着小喇叭，招呼蜜蜂蝴蝶快来喝甜甜的花蜜。"
+      }
+    }
+  }
+}

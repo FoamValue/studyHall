@@ -1,0 +1,37 @@
+{
+  "id": "jujube-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 44,
+  "name": {
+    "zh": "枣子",
+    "pinyin": "zǎo zi",
+    "en": "Jujube",
+    "ipa": "/ˈdʒuːdʒuːb/",
+    "audioZh": "/audio/jujube-fruit-zh.m4a",
+    "audioEn": "/audio/jujube-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/jujube-fruit.jpg"
+        }
+      ],
+      "description": "枣子红红的、椭圆的，像一颗颗小玛瑙。脆脆甜甜的，晒干更甜。",
+      "allusion": {
+        "text": "七月十五枣红圈，八月十五枣落杆。",
+        "source": "谚语",
+        "explain": "到了七月枣子开始红，八月枣子熟透了，就从树上摘下来啦。"
+      }
+    }
+  }
+}

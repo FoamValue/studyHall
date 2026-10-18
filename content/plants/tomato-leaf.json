@@ -1,0 +1,36 @@
+{
+  "id": "tomato-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 96,
+  "name": {
+    "zh": "番茄花叶",
+    "pinyin": "fān qié huā yè",
+    "en": "Tomato Leaf",
+    "ipa": "/təˈmeɪtoʊ/ liːf",
+    "audioZh": "/audio/tomato-leaf-zh.m4a",
+    "audioEn": "/audio/tomato-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/tomato-leaf.jpg"
+        }
+      ],
+      "description": "番茄叶毛毛的，裂成好多小片。摸一摸有点扎手，闻起来有特别的味道。",
+      "allusion": {
+        "text": "番茄叶毛毛的，裂成好多小片，闻着有特别的味道。",
+        "explain": "番茄的叶子毛茸茸的，裂成好多小片，摸一摸有点扎手，闻着有味。"
+      }
+    }
+  }
+}

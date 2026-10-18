@@ -1,0 +1,36 @@
+{
+  "id": "lemon-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 51,
+  "name": {
+    "zh": "柠檬花叶",
+    "pinyin": "níng méng huā yè",
+    "en": "Lemon Leaf",
+    "ipa": "/ˈlemən/ liːf",
+    "audioZh": "/audio/lemon-leaf-zh.m4a",
+    "audioEn": "/audio/lemon-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lemon-leaf.jpg"
+        }
+      ],
+      "description": "柠檬叶子绿油油的，边缘有小波浪。揉一揉，有清新的香味。",
+      "allusion": {
+        "text": "柠檬叶绿油油的，边上有点小波浪，揉一揉有清香。",
+        "explain": "柠檬的叶子绿油油的，边边有小波浪，揉一揉就有清新的香味。"
+      }
+    }
+  }
+}

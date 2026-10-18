@@ -1,0 +1,37 @@
+{
+  "id": "walnut-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 99,
+  "name": {
+    "zh": "核桃花叶",
+    "pinyin": "hé tao huā yè",
+    "en": "Walnut Leaf",
+    "ipa": "/ˈwɔːlnʌt/ liːf",
+    "audioZh": "/audio/walnut-leaf-zh.m4a",
+    "audioEn": "/audio/walnut-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/walnut-leaf.jpg"
+        }
+      ],
+      "description": "核桃叶子由好几片小叶组成，像大羽毛。叶子有股特别的香味。",
+      "allusion": {
+        "text": "根深叶茂，核桃树枝叶长得又高又密。",
+        "source": "成语",
+        "explain": "核桃树的根扎得深，叶子和枝条长得又多又密，是一棵高大的树。"
+      }
+    }
+  }
+}

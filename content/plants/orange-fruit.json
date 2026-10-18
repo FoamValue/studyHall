@@ -1,0 +1,37 @@
+{
+  "id": "orange-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 67,
+  "name": {
+    "zh": "橙子",
+    "pinyin": "chéng zi",
+    "en": "Orange",
+    "ipa": "/ˈɔːrɪndʒ/",
+    "audioZh": "/audio/orange-fruit-zh.m4a",
+    "audioEn": "/audio/orange-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/orange-fruit.jpg"
+        }
+      ],
+      "description": "橙子圆圆的，橙黄橙黄的。剥开皮一瓣一瓣，酸酸甜甜的，汁水好多。",
+      "allusion": {
+        "text": "一年好景君须记，最是橙黄橘绿时。",
+        "source": "苏轼《赠刘景文》",
+        "explain": "最好的季节要记住呀，那就是橙子黄了、橘子绿了的时候。"
+      }
+    }
+  }
+}

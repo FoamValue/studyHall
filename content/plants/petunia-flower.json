@@ -1,0 +1,36 @@
+{
+  "id": "petunia-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 80,
+  "name": {
+    "zh": "矮牵牛花",
+    "pinyin": "ǎi qiān niú huā",
+    "en": "Petunia Flower",
+    "ipa": "/pəˈtuːniə/ ˈflaʊər",
+    "audioZh": "/audio/petunia-flower-zh.m4a",
+    "audioEn": "/audio/petunia-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/petunia-flower.jpg"
+        }
+      ],
+      "description": "矮牵牛的花像小喇叭，紫的粉的真热闹。开在花盆里，像小花瀑布。",
+      "allusion": {
+        "text": "矮牵牛的花有紫、粉、白等好多颜色，一盆能开上百朵。",
+        "explain": "矮牵牛小小的，却特别能开花，一盆能开出一大堆小花。"
+      }
+    }
+  }
+}

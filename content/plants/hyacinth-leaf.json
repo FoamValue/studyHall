@@ -1,0 +1,36 @@
+{
+  "id": "hyacinth-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 43,
+  "name": {
+    "zh": "风信子花叶",
+    "pinyin": "fēng xìn zi huā yè",
+    "en": "Hyacinth Leaf",
+    "ipa": "/ˈhaɪəsɪnθ/ liːf",
+    "audioZh": "/audio/hyacinth-leaf-zh.m4a",
+    "audioEn": "/audio/hyacinth-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/hyacinth-leaf.jpg"
+        }
+      ],
+      "description": "风信子叶子又厚又绿，像一把把小剑。它们围着花茎站得直直的。",
+      "allusion": {
+        "text": "风信子叶又厚又绿，像一把把小剑，围着花茎站直。",
+        "explain": "风信子的叶子又厚又绿，像一把把小剑，围着花茎站得直直的。"
+      }
+    }
+  }
+}

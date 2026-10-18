@@ -1,0 +1,36 @@
+{
+  "id": "dandelion-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "蒲公英",
+    "pinyin": "pú gōng yīng",
+    "en": "Dandelion",
+    "ipa": "/ˈdændɪlaɪən/",
+    "audioZh": "/audio/dandelion-fruit-zh.m4a",
+    "audioEn": "/audio/dandelion-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-fruit.jpg"
+        }
+      ],
+      "description": "黄花谢了，变成白色小绒球。吹一口气，小种子撑着降落伞飞走，落到哪里就在哪里发芽。",
+      "allusion": {
+        "text": "蒲公英还有个名字，叫婆婆丁。",
+        "explain": "蒲公英的小果实像小伞，人们还给它起了个可爱的名字叫婆婆丁。"
+      }
+    }
+  }
+}

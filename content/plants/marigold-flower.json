@@ -1,0 +1,36 @@
+{
+  "id": "marigold-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 62,
+  "name": {
+    "zh": "金盏花",
+    "pinyin": "jīn zhǎn huā",
+    "en": "Marigold Flower",
+    "ipa": "/ˈmærɪɡoʊld/ ˈflaʊər",
+    "audioZh": "/audio/marigold-flower-zh.m4a",
+    "audioEn": "/audio/marigold-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/marigold-flower.jpg"
+        }
+      ],
+      "description": "金盏花金黄金黄的，像一个小金碗。太阳一晒，开得更加灿烂。",
+      "allusion": {
+        "text": "金盏花金黄金黄的，像一个小金碗，太阳一晒更亮。",
+        "explain": "金盏花像小太阳一样黄，越晒越金黄，还会结小黑籽。"
+      }
+    }
+  }
+}

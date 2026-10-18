@@ -1,0 +1,36 @@
+{
+  "id": "watermelon-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 101,
+  "name": {
+    "zh": "西瓜花叶",
+    "pinyin": "xī guā huā yè",
+    "en": "Watermelon Leaf",
+    "ipa": "/ˈwɔːtərˌmelən/ liːf",
+    "audioZh": "/audio/watermelon-leaf-zh.m4a",
+    "audioEn": "/audio/watermelon-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/watermelon-leaf.jpg"
+        }
+      ],
+      "description": "西瓜叶裂成好多小片，像小手掌。趴在地上爬藤，给西瓜遮太阳。",
+      "allusion": {
+        "text": "西瓜叶裂成好多小片，像小手掌，趴在地上爬藤。",
+        "explain": "西瓜的叶子裂成好多小片，像小手掌，趴在地上爬藤给西瓜遮太阳。"
+      }
+    }
+  }
+}

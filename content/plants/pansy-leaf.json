@@ -1,0 +1,36 @@
+{
+  "id": "pansy-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 72,
+  "name": {
+    "zh": "三色堇花叶",
+    "pinyin": "sān sè jǐn huā yè",
+    "en": "Pansy Leaf",
+    "ipa": "/ˈpænzi/ liːf",
+    "audioZh": "/audio/pansy-leaf-zh.m4a",
+    "audioEn": "/audio/pansy-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pansy-leaf.jpg"
+        }
+      ],
+      "description": "三色堇叶子小小的，像绿色的小爱心。叶子边缘有圆圆的波浪。",
+      "allusion": {
+        "text": "三色堇叶小小的，像绿色的小爱心，边上有圆波浪。",
+        "explain": "三色堇的叶子小小的，像绿色的小心心，边边是圆圆的波浪。"
+      }
+    }
+  }
+}

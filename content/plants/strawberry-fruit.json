@@ -1,0 +1,36 @@
+{
+  "id": "strawberry-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 91,
+  "name": {
+    "zh": "草莓",
+    "pinyin": "cǎo méi",
+    "en": "Strawberry",
+    "ipa": "/ˈstrɔːbəri/",
+    "audioZh": "/audio/strawberry-fruit-zh.m4a",
+    "audioEn": "/audio/strawberry-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-fruit.jpg"
+        }
+      ],
+      "description": "草莓红红的，上面布满小芝麻点，那些小点点才是它真正的种子。咬一口，酸酸甜甜的。",
+      "allusion": {
+        "text": "摘草莓要轻轻一扭，可不能捏坏它。",
+        "explain": "草莓软软的，摘的时候轻轻一扭就下来，用力捏就会捏破啦。"
+      }
+    }
+  }
+}

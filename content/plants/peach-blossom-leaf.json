@@ -1,0 +1,36 @@
+{
+  "id": "peach-blossom-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 75,
+  "name": {
+    "zh": "碧桃花叶",
+    "pinyin": "bì táo huā yè",
+    "en": "Peach Blossom Leaf",
+    "ipa": "/piːtʃ ˈblɑːsəm/ liːf",
+    "audioZh": "/audio/peach-blossom-leaf-zh.m4a",
+    "audioEn": "/audio/peach-blossom-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peach-blossom-leaf.jpg"
+        }
+      ],
+      "description": "桃叶细细长长的，像绿色的小船。边上有一排小小锯齿。",
+      "allusion": {
+        "text": "桃叶边上有一排小锯齿，像绿色的小船轻轻摇。",
+        "explain": "桃树的叶子又细又长，边上有一排小锯齿，风一吹像小船摇啊摇。"
+      }
+    }
+  }
+}

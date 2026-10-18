@@ -1,0 +1,36 @@
+{
+  "id": "anemone-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "银莲花叶",
+    "pinyin": "yín lián huā yè",
+    "en": "Anemone Leaf",
+    "ipa": "/əˈneməni/ liːf",
+    "audioZh": "/audio/anemone-leaf-zh.m4a",
+    "audioEn": "/audio/anemone-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/anemone-leaf.jpg"
+        }
+      ],
+      "description": "银莲花叶子像小鸭掌，分成好几瓣。绿绿的，贴着地长。",
+      "allusion": {
+        "text": "银莲花的叶子像小鸭掌，分成好几瓣，绿绿地贴在地上。",
+        "explain": "它的叶子分成好几瓣，趴在地上长，像小鸭子的小脚掌。"
+      }
+    }
+  }
+}

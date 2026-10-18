@@ -1,0 +1,36 @@
+{
+  "id": "sunflower-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 93,
+  "name": {
+    "zh": "向日葵",
+    "pinyin": "xiàng rì kuí",
+    "en": "Sunflower",
+    "ipa": "/ˈsʌnˌflaʊər/",
+    "audioZh": "/audio/sunflower-fruit-zh.m4a",
+    "audioEn": "/audio/sunflower-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-fruit.jpg"
+        }
+      ],
+      "description": "花盘里排满了一颗颗葵花籽，这就是它的果实。炒香了可香啦，还能榨油。",
+      "allusion": {
+        "text": "一个大花盘里，能藏上千颗葵花籽。",
+        "explain": "向日葵的花盘里整整齐齐排满了葵花籽，一颗一颗数都数不完。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "plum-blossom-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 83,
+  "name": {
+    "zh": "梅花",
+    "pinyin": "méi huā",
+    "en": "Plum Blossom",
+    "ipa": "/plʌm ˈblɒsəm/ ˈflaʊər",
+    "audioZh": "/audio/plum-blossom-flower-zh.m4a",
+    "audioEn": "/audio/plum-blossom-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/plum-blossom-flower.jpg"
+        }
+      ],
+      "description": "梅花小小的，五个花瓣，粉白粉白的。天冷的时候它偏要开，可勇敢啦。",
+      "allusion": {
+        "text": "墙角数枝梅，凌寒独自开。",
+        "source": "宋·王安石《梅花》",
+        "explain": "墙角有几枝梅花，天这么冷还自己开了，不怕冻。"
+      }
+    }
+  }
+}

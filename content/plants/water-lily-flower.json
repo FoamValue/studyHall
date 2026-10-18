@@ -1,0 +1,36 @@
+{
+  "id": "water-lily-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 99,
+  "name": {
+    "zh": "睡莲花",
+    "pinyin": "shuì lián huā",
+    "en": "Water Lily Flower",
+    "ipa": "/ˈwɔːtər ˈlɪli/ ˈflaʊər",
+    "audioZh": "/audio/water-lily-flower-zh.m4a",
+    "audioEn": "/audio/water-lily-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/water-lily-flower.jpg"
+        }
+      ],
+      "description": "睡莲漂在水面上开花，粉的白的像小公主。晚上它会合上花瓣睡觉觉。",
+      "allusion": {
+        "text": "睡莲的花有白的、粉的、黄的，开在水面上像小仙子。",
+        "explain": "睡莲的花开在水上，白的粉的黄的，像小仙子坐在水面。"
+      }
+    }
+  }
+}

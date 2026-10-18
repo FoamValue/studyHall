@@ -1,0 +1,36 @@
+{
+  "id": "date-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 28,
+  "name": {
+    "zh": "椰枣花叶",
+    "pinyin": "yē zǎo huā yè",
+    "en": "Date Leaf",
+    "ipa": "/deɪt/ liːf",
+    "audioZh": "/audio/date-leaf-zh.m4a",
+    "audioEn": "/audio/date-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/date-leaf.jpg"
+        }
+      ],
+      "description": "椰枣叶子又长又大，像绿色的大羽毛。叶子边上有小刺。",
+      "allusion": {
+        "text": "椰枣叶又长又大，像绿色的大羽毛，边上还有小刺。",
+        "explain": "椰枣树的叶子又长又大，像绿色的大羽毛，边上长着小刺。"
+      }
+    }
+  }
+}

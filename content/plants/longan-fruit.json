@@ -1,0 +1,36 @@
+{
+  "id": "longan-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 53,
+  "name": {
+    "zh": "龙眼",
+    "pinyin": "lóng yǎn",
+    "en": "Longan",
+    "ipa": "/ˈlɑːŋɡən/",
+    "audioZh": "/audio/longan-fruit-zh.m4a",
+    "audioEn": "/audio/longan-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/longan-fruit.jpg"
+        }
+      ],
+      "description": "龙眼圆圆的，壳薄薄的、土黄土黄的。剥开果肉像小龙的眼珠，甜甜的。",
+      "allusion": {
+        "text": "龙眼晒干了就叫桂圆，甜得像蜜。",
+        "explain": "龙眼剥开像小龙的眼珠，晒干以后人们又叫它桂圆，甜甜的。"
+      }
+    }
+  }
+}

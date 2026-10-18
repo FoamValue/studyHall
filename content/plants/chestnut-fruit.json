@@ -1,0 +1,36 @@
+{
+  "id": "chestnut-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "板栗",
+    "pinyin": "bǎn lì",
+    "en": "Chestnut",
+    "ipa": "/ˈtʃesnʌt/",
+    "audioZh": "/audio/chestnut-fruit-zh.m4a",
+    "audioEn": "/audio/chestnut-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chestnut-fruit.jpg"
+        }
+      ],
+      "description": "板栗住在带刺的小刺猬壳里。剥开壳，栗子棕红油亮，炒熟香喷喷。",
+      "allusion": {
+        "text": "板栗生吃脆脆的，炒熟了又香又软。",
+        "explain": "栗子没煮的时候脆脆的，放进锅里炒一炒，就变得又香又软。"
+      }
+    }
+  }
+}

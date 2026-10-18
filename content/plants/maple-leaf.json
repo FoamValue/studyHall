@@ -1,0 +1,37 @@
+{
+  "id": "maple-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 62,
+  "name": {
+    "zh": "枫树花叶",
+    "pinyin": "fēng shù huā yè",
+    "en": "Maple Leaf",
+    "ipa": "/ˈmeɪpl/ liːf",
+    "audioZh": "/audio/maple-leaf-zh.m4a",
+    "audioEn": "/audio/maple-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/maple-leaf.jpg"
+        }
+      ],
+      "description": "枫叶像小手掌，有五个尖尖角。秋天变成红红的，落下来像下红雨。",
+      "allusion": {
+        "text": "停车坐爱枫林晚，霜叶红于二月花。",
+        "source": "唐·杜牧《山行》",
+        "explain": "我停下车，因为傍晚的枫林太美，红红的枫叶比春天的花还好看。"
+      }
+    }
+  }
+}

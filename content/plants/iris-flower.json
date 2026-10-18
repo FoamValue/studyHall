@@ -1,0 +1,36 @@
+{
+  "id": "iris-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 43,
+  "name": {
+    "zh": "鸢尾花",
+    "pinyin": "yuān wěi huā",
+    "en": "Iris Flower",
+    "ipa": "/ˈaɪrɪs/ ˈflaʊər",
+    "audioZh": "/audio/iris-flower-zh.m4a",
+    "audioEn": "/audio/iris-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/iris-flower.jpg"
+        }
+      ],
+      "description": "鸢尾花紫紫的，花瓣像小旗子飘呀飘。远远看，像一只只紫蝴蝶。",
+      "allusion": {
+        "text": "鸢尾花的名字来自鸢鸟，因为花瓣像它翘翘的尾巴。",
+        "explain": "鸢尾花的样子像小鸟的尾巴，所以人们叫它鸢尾花。"
+      }
+    }
+  }
+}

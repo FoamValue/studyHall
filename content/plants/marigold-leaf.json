@@ -1,0 +1,36 @@
+{
+  "id": "marigold-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 63,
+  "name": {
+    "zh": "金盏花叶",
+    "pinyin": "jīn zhǎn huā yè",
+    "en": "Marigold Leaf",
+    "ipa": "/ˈmærɪɡoʊld/ liːf",
+    "audioZh": "/audio/marigold-leaf-zh.m4a",
+    "audioEn": "/audio/marigold-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/marigold-leaf.jpg"
+        }
+      ],
+      "description": "金盏花叶子绿绿的，边上有小锯齿。闻一闻，有一股特别的味道。",
+      "allusion": {
+        "text": "金盏花叶绿绿的，边上有小锯齿，闻着有特别的味道。",
+        "explain": "金盏花的叶子绿绿的，边上有一排小锯齿，闻一闻有股特别的味道。"
+      }
+    }
+  }
+}

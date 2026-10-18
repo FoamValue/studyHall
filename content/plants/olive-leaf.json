@@ -1,0 +1,36 @@
+{
+  "id": "olive-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 68,
+  "name": {
+    "zh": "橄榄花叶",
+    "pinyin": "gǎn lǎn huā yè",
+    "en": "Olive Leaf",
+    "ipa": "/ˈɑːlɪv/ liːf",
+    "audioZh": "/audio/olive-leaf-zh.m4a",
+    "audioEn": "/audio/olive-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/olive-leaf.jpg"
+        }
+      ],
+      "description": "橄榄叶子小小的，正面绿背面银白。风一吹，树叶一闪一闪。",
+      "allusion": {
+        "text": "橄榄叶正面绿、背面银白，风一吹就一闪一闪。",
+        "explain": "橄榄的叶子正面是绿的，背面银白，风一吹，树叶亮闪闪的。"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import PlantDetailPage from '../pages/PlantDetailPage';
@@ -15,17 +15,17 @@ vi.mock('../api/client', () => ({
   getPlant: vi.fn(),
 }));
 
-// 与后端契约一致的完整植物文档（Sprint 9：name 可带预生成音频路径 audioZh/audioEn）
+// Sprint 17：植物拆分为单部位条目，每条仅一个部位，categories=["plant"]
 const SUNFLOWER = {
-  id: 'sunflower',
-  categories: ['flower'],
+  id: 'sunflower-flower',
+  categories: ['plant'],
   name: {
-    zh: '向日葵',
-    pinyin: 'xiàng rì kuí',
+    zh: '向日葵花',
+    pinyin: 'xiàng rì kuí huā',
     en: 'Sunflower',
     ipa: '/ˈsʌnˌflaʊər/',
-    audioZh: '/audio/sunflower-zh.m4a',
-    audioEn: '/audio/sunflower-en.m4a',
+    audioZh: '/audio/sunflower-flower-zh.m4a',
+    audioEn: '/audio/sunflower-flower-en.m4a',
   },
   parts: {
     flower: {
@@ -34,62 +34,47 @@ const SUNFLOWER = {
       description: '大大的花盘像小太阳。',
       allusion: { text: '更无柳絮因风起，惟有葵花向日倾。', source: '《客中初夏》', explain: '葵花总是朝着太阳转。' },
     },
-    leaf: {
-      name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
-      images: [{ type: 'photo', url: '/images/plants/sunflower-leaf.jpg' }],
-      description: '叶子绿绿的，像大手掌。',
-    },
-    fruit: {
-      name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
-      images: [{ type: 'photo', url: '/images/plants/sunflower-fruit.jpg' }],
-      description: '葵花籽香香的，可以吃。',
-    },
   },
 };
 
-// 银杏无 flower 部位
+// 银杏叶部位
 const GINKGO = {
-  id: 'ginkgo',
-  categories: ['leaf'],
-  name: { zh: '银杏', pinyin: 'yín xìng', en: 'Ginkgo', ipa: '/ˈɡɪŋkoʊ/' },
+  id: 'ginkgo-leaf',
+  categories: ['plant'],
+  name: { zh: '银杏叶', pinyin: 'yín xìng yè', en: 'Ginkgo Leaf', ipa: '/ˈɡɪŋkoʊ liːf/' },
   parts: {
     leaf: {
       name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
       images: [{ type: 'photo', url: '/images/plants/ginkgo-leaf.jpg' }],
       description: '叶子像一把把小扇子。',
     },
-    fruit: {
-      name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
-      images: [{ type: 'photo', url: '/images/plants/ginkgo-fruit.jpg' }],
-      description: '白果圆圆的，穿着黄衣裳。',
-    },
   },
 };
 
 const PEACH = {
-  id: 'peach',
-  categories: ['flower'],
+  id: 'peach-flower',
+  categories: ['plant'],
   name: {
     zh: '桃花',
     pinyin: 'táo huā',
-    en: 'Peach blossom',
-    ipa: '/piːtʃ/',
-    audioZh: '/audio/peach-blossom-zh.m4a',
-    audioEn: '/audio/peach-blossom-en.m4a',
+    en: 'Peach Blossom',
+    ipa: '/piːtʃ ˈblɒsəm/',
+    audioZh: '/audio/peach-flower-zh.m4a',
+    audioEn: '/audio/peach-flower-en.m4a',
   },
   parts: {
     flower: {
       name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
-      images: [{ type: 'photo', url: '/images/plants/peach-blossom-flower.jpg' }],
+      images: [{ type: 'photo', url: '/images/plants/peach-flower.jpg' }],
       description: '粉粉的花瓣像小裙子。',
     },
   },
 };
 
 const MAPLE = {
-  id: 'maple',
-  categories: ['leaf'],
-  name: { zh: '枫树', pinyin: 'fēng shù', en: 'Maple', ipa: '/ˈmeɪpl/' },
+  id: 'maple-leaf',
+  categories: ['plant'],
+  name: { zh: '枫叶', pinyin: 'fēng yè', en: 'Maple Leaf', ipa: '/ˈmeɪpl liːf/' },
   parts: {
     leaf: {
       name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
@@ -100,8 +85,8 @@ const MAPLE = {
 };
 
 const COCONUT = {
-  id: 'coconut',
-  categories: ['fruit'],
+  id: 'coconut-fruit',
+  categories: ['plant'],
   name: { zh: '椰子', pinyin: 'yē zi', en: 'Coconut', ipa: '/ˈkoʊkənʌt/' },
   parts: {
     fruit: {
@@ -112,26 +97,16 @@ const COCONUT = {
   },
 };
 
-// 苹果：花/叶/果三部位齐全，固定顺序首个部位为「花」（验证默认部位是否跟随分类）
+// 苹果花部位（Sprint 17：单部位条目）
 const APPLE = {
-  id: 'apple',
-  categories: ['flower', 'leaf', 'fruit'],
-  name: { zh: '苹果', pinyin: 'píng guǒ', en: 'Apple', ipa: '/ˈæpl/' },
+  id: 'apple-flower',
+  categories: ['plant'],
+  name: { zh: '苹果花', pinyin: 'píng guǒ huā', en: 'Apple Flower', ipa: '/ˈæpl ˈflaʊər/' },
   parts: {
     flower: {
       name: { zh: '花', pinyin: 'huā', en: 'flower', ipa: '/ˈflaʊər/' },
       images: [{ type: 'photo', url: '/images/plants/apple-flower.jpg' }],
       description: '苹果花白白的，带一点粉。',
-    },
-    leaf: {
-      name: { zh: '叶', pinyin: 'yè', en: 'leaf', ipa: '/liːf/' },
-      images: [{ type: 'photo', url: '/images/plants/apple-leaf.jpg' }],
-      description: '苹果叶椭圆椭圆的，绿油油。',
-    },
-    fruit: {
-      name: { zh: '果', pinyin: 'guǒ', en: 'fruit', ipa: '/fruːt/' },
-      images: [{ type: 'photo', url: '/images/plants/apple-fruit.jpg' }],
-      description: '苹果圆滚滚、红红的。',
     },
   },
 };
@@ -233,12 +208,12 @@ const COLOR_RED = {
 };
 
 const byId = {
-  sunflower: SUNFLOWER,
-  ginkgo: GINKGO,
-  peach: PEACH,
-  maple: MAPLE,
-  coconut: COCONUT,
-  apple: APPLE,
+  'sunflower-flower': SUNFLOWER,
+  'ginkgo-leaf': GINKGO,
+  'peach-flower': PEACH,
+  'maple-leaf': MAPLE,
+  'coconut-fruit': COCONUT,
+  'apple-flower': APPLE,
   'giant-panda': PANDA,
   tyrannosaurus: TREX,
   'letter-a': LETTER_A,
@@ -305,67 +280,45 @@ afterEach(() => {
 });
 
 describe('PlantDetailPage（TC-14 ~ TC-16）', () => {
-  it('TC-14 详情显示花/叶/果大按钮，点击切换内容区（图/名称/说明）', async () => {
-    const user = userEvent.setup();
-    renderDetail('sunflower');
+  it('TC-14 单图详情：渲染名称、单张大图与说明，无部位切换按钮（Sprint 17）', async () => {
+    renderDetail('sunflower-flower');
 
-    // 默认展示花的图片与说明
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    // 单图模式：图片 alt = 条目中文名，无部位后缀
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.getByText('大大的花盘像小太阳。')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '叶' })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '果' })).toBeInTheDocument();
-
-    await user.click(screen.getByRole('tab', { name: '果' }));
-
-    // 内容区切换为果实：图片、部位名称、说明全部更新
-    expect(await screen.findByAltText('向日葵的果')).toBeInTheDocument();
-    expect(screen.getByText('葵花籽香香的，可以吃。')).toBeInTheDocument();
-    // 部位名行（中文/拼音/英文/音标）已移除，部位语义只由切换按钮承载
-    expect(screen.queryByText('guǒ · fruit /fruːt/')).not.toBeInTheDocument();
-    expect(screen.queryByAltText('向日葵的花')).not.toBeInTheDocument();
-    expect(screen.queryByText('大大的花盘像小太阳。')).not.toBeInTheDocument();
+    // 无部位切换 tab
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
   });
 
-  it('TC-15 缺部位隐藏标签：银杏不显示「花」，默认选中叶', async () => {
-    renderDetail('ginkgo');
+  it('TC-15 单图条目不渲染部位切换与部位名（Sprint 17）', async () => {
+    renderDetail('ginkgo-leaf');
 
-    expect(await screen.findByAltText('银杏的叶')).toBeInTheDocument();
+    expect(await screen.findByAltText('银杏叶')).toBeInTheDocument();
     expect(screen.queryByRole('tab', { name: '花' })).not.toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '叶' })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '果' })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '叶' })).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'false');
+    expect(screen.queryByRole('tab', { name: '叶' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: '果' })).not.toBeInTheDocument();
   });
 
-  it('TC-16 典故：有典故渲染 AllusionCard，无典故不渲染', async () => {
-    const user = userEvent.setup();
-    renderDetail('sunflower');
+  it('TC-16 典故：有典故渲染 AllusionCard（Sprint 17：单图，无部位切换）', async () => {
+    renderDetail('sunflower-flower');
 
     // 花部位有典故：原文 + 出处 + 白话解释都渲染
     expect(await screen.findByText('更无柳絮因风起，惟有葵花向日倾。')).toBeInTheDocument();
     expect(screen.getByText('—— 《客中初夏》')).toBeInTheDocument();
     expect(screen.getByText('葵花总是朝着太阳转。')).toBeInTheDocument();
-
-    // 切到无典故的叶部位：卡片整体不渲染
-    await user.click(screen.getByRole('tab', { name: '叶' }));
-    expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
-    expect(screen.queryByText('更无柳絮因风起，惟有葵花向日倾。')).not.toBeInTheDocument();
-    expect(screen.queryByText('葵花总是朝着太阳转。')).not.toBeInTheDocument();
   });
 
-  it('TC-18 仅 leaf 植物只渲染「叶」标签（Sprint 2 新增）', async () => {
-    renderDetail('maple');
+  it('TC-18 单图模式：无部位切换标签（Sprint 17：所有条目均单图）', async () => {
+    renderDetail('maple-leaf');
 
-    expect(await screen.findByAltText('枫树的叶')).toBeInTheDocument();
-    expect(screen.getAllByRole('tab')).toHaveLength(1);
-    expect(screen.getByRole('tab', { name: '叶' })).toBeInTheDocument();
+    expect(await screen.findByAltText('枫叶')).toBeInTheDocument();
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
   });
 
   it('TC-20b 详情大图带 loading="lazy"', async () => {
-    renderDetail('sunflower');
+    renderDetail('sunflower-flower');
 
-    const img = await screen.findByAltText('向日葵的花');
+    const img = await screen.findByAltText('向日葵花');
     expect(img).toHaveAttribute('loading', 'lazy');
   });
 
@@ -382,57 +335,55 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
 
   it('TC-28 点「下一株」切到相邻植物并更新内容', async () => {
     const user = userEvent.setup();
-    renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
+    renderDetail('sunflower-flower', { category: 'all', list: FLOWER_LIST });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: '下一株' }));
 
     expect(await screen.findByRole('heading', { name: '桃花' })).toBeInTheDocument();
-    expect(getPlant).toHaveBeenLastCalledWith('peach');
+    expect(getPlant).toHaveBeenLastCalledWith('peach-flower');
   });
 
   it('TC-29 首尾循环：末株的下一株回到首株，首株的上一株回到末株', async () => {
     const user = userEvent.setup();
-    renderDetail('maple', { category: 'flower', list: FLOWER_LIST });
+    renderDetail('maple-leaf', { category: 'all', list: FLOWER_LIST });
 
-    expect(await screen.findByRole('heading', { name: '枫树' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: '枫叶' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: '下一株' }));
-    expect(await screen.findByRole('heading', { name: '向日葵' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: '向日葵花' })).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: '上一株' }));
-    expect(await screen.findByRole('heading', { name: '枫树' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: '枫叶' })).toBeInTheDocument();
   });
 
-  it('TC-30 换株后部位回落：新植物无当前部位时落到它自己的第一个部位', async () => {
+  it('TC-30 换株后内容更新为新条目（Sprint 17：单图，无部位回落）', async () => {
     const user = userEvent.setup();
     const list = [card(SUNFLOWER), card(COCONUT)];
-    renderDetail('sunflower', { category: 'all', list });
+    renderDetail('sunflower-flower', { category: 'all', list });
 
-    // 当前选中「叶」，下一株椰子只有「果」
-    await user.click(await screen.findByRole('tab', { name: '叶' }));
-    expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: '下一株' }));
-    expect(await screen.findByAltText('椰子的果')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
+    expect(await screen.findByAltText('椰子')).toBeInTheDocument();
   });
 
   it('TC-31 单株列表：两侧按钮存在但禁用（不隐藏）', async () => {
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '上一株' })).toBeDisabled();
     expect(screen.getByRole('button', { name: '下一株' })).toBeDisabled();
   });
 
   it('TC-32 全屏不可用时按钮不渲染，沉浸式功能正常', async () => {
     // jsdom 默认 document.fullscreenEnabled 为 undefined
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '全屏' })).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: /回花园/ })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
+    // Sprint 17：单图模式无部位切换
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
   });
 
   it('TC-32b 全屏可用时点「全屏」调用 requestFullscreen', async () => {
@@ -441,7 +392,7 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
     const requestFullscreen = vi.fn();
     Element.prototype.requestFullscreen = requestFullscreen;
 
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
     const btn = await screen.findByRole('button', { name: '全屏' });
     await user.click(btn);
@@ -449,16 +400,16 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
   });
 
   it('TC-33 沉浸式详情保留「← 回花园」入口并指向首页', async () => {
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
     const back = await screen.findByRole('link', { name: /回花园/ });
     expect(back).toHaveAttribute('href', '/');
   });
 
   it('TC-33b 键盘 → 换植物（ArrowRight）', async () => {
-    renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
+    renderDetail('sunflower-flower', { category: 'all', list: FLOWER_LIST });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     fireEvent.keyDown(window, { key: 'ArrowRight' });
     expect(await screen.findByRole('heading', { name: '桃花' })).toBeInTheDocument();
   });
@@ -480,39 +431,39 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
   it('TC-41 点中文喇叭播放中文名音频（audioZh）', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
-    await screen.findByAltText('向日葵的花');
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    await screen.findByAltText('向日葵花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
 
     expect(audio.instances).toHaveLength(1);
-    expect(audio.instances[0].src).toBe('/audio/sunflower-zh.m4a');
+    expect(audio.instances[0].src).toBe('/audio/sunflower-flower-zh.m4a');
     expect(audio.instances[0].play).toHaveBeenCalledTimes(1);
   });
 
   it('TC-42 点英文喇叭播放英文名音频（audioEn）', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
-    await screen.findByAltText('向日葵的花');
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    await screen.findByAltText('向日葵花');
 
     await user.click(screen.getByRole('button', { name: '朗读英文名' }));
 
-    expect(audio.instances[0].src).toBe('/audio/sunflower-en.m4a');
+    expect(audio.instances[0].src).toBe('/audio/sunflower-flower-en.m4a');
     expect(audio.instances[0].play).toHaveBeenCalledTimes(1);
   });
 
   it('TC-43 两喇叭互斥：点英文喇叭先暂停当前再播放英文名', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
-    await screen.findByAltText('向日葵的花');
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    await screen.findByAltText('向日葵花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
     await user.click(screen.getByRole('button', { name: '朗读英文名' }));
 
     expect(audio.instances).toHaveLength(1); // 单例音频，同一时刻至多一个
-    expect(audio.instances[0].src).toBe('/audio/sunflower-en.m4a');
+    expect(audio.instances[0].src).toBe('/audio/sunflower-flower-en.m4a');
     expect(audio.instances[0].play).toHaveBeenCalledTimes(2);
     expect(audio.instances[0].pause).toHaveBeenCalled(); // 互斥：播放前先暂停当前
     expect(screen.getByRole('button', { name: '朗读英文名' })).toHaveAttribute(
@@ -528,8 +479,8 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
   it('TC-44 再点同一喇叭即停止', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
-    await screen.findByAltText('向日葵的花');
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    await screen.findByAltText('向日葵花');
 
     const zhBtn = screen.getByRole('button', { name: '朗读中文名' });
     await user.click(zhBtn);
@@ -540,24 +491,14 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
     expect(zhBtn).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it('TC-45 场景自动停止：切部位 / 换株 / 卸载（pause 增加）', async () => {
+  it('TC-45 场景自动停止：换株 / 卸载（pause 增加）', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
     const totalPause = () => audio.instances.reduce((n, a) => n + a.pause.mock.calls.length, 0);
 
-    // ① 切部位
-    const first = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
-    await screen.findByAltText('向日葵的花');
-    await user.click(screen.getByRole('button', { name: '朗读中文名' }));
-    const afterSpeak = totalPause();
-    await user.click(screen.getByRole('tab', { name: '叶' }));
-    expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
-    expect(totalPause()).toBeGreaterThan(afterSpeak);
-    first.unmount();
-
-    // ② 换株
-    const second = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
-    await screen.findByAltText('向日葵的花');
+    // ① 换株
+    const second = renderDetail('sunflower-flower', { category: 'all', list: FLOWER_LIST });
+    await screen.findByAltText('向日葵花');
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
     const beforeSwitch = totalPause();
     await user.click(screen.getByRole('button', { name: '下一株' }));
@@ -565,9 +506,9 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
     expect(totalPause()).toBeGreaterThan(beforeSwitch);
     second.unmount();
 
-    // ③ 卸载
-    const third = renderDetail('sunflower', { category: 'flower', list: FLOWER_LIST });
-    await screen.findByAltText('向日葵的花');
+    // ② 卸载
+    const third = renderDetail('sunflower-flower', { category: 'all', list: FLOWER_LIST });
+    await screen.findByAltText('向日葵花');
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
     const beforeUnmount = totalPause();
     third.unmount();
@@ -577,14 +518,14 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
   it('TC-45b 喇叭播放的是名称音频：src 为名称读音而非部位/说明', async () => {
     const user = userEvent.setup();
     const audio = makeAudioMock();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
-    await screen.findByAltText('向日葵的花');
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    await screen.findByAltText('向日葵花');
 
     await user.click(screen.getByRole('button', { name: '朗读中文名' }));
 
     const src = audio.instances.at(-1).src;
     // 播放的是名称读音（audioZh），而非部位图/说明路径
-    expect(src).toBe('/audio/sunflower-zh.m4a');
+    expect(src).toBe('/audio/sunflower-flower-zh.m4a');
     expect(src).toMatch(/-zh\.m4a$/);
   });
 
@@ -597,16 +538,18 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
     makeAudioMock();
     // 语料无 audioZh/audioEn（仅中文名/拼音/英文名）
     getPlant.mockImplementation(() =>
-      Promise.resolve({ ...SUNFLOWER, name: { zh: '向日葵', pinyin: 'xiàng rì kuí', en: 'Sunflower' } })
+      Promise.resolve({
+        ...SUNFLOWER,
+        name: { zh: '向日葵花', pinyin: 'xiàng rì kuí huā', en: 'Sunflower' },
+      })
     );
 
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读中文名' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
     expect(speak).not.toHaveBeenCalled(); // 绝不回退语音合成
-    expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /回花园/ })).toBeInTheDocument();
   });
 
@@ -615,11 +558,11 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
     getPlant.mockImplementation(() =>
       Promise.resolve({
         ...SUNFLOWER,
-        name: { zh: '向日葵', pinyin: 'xiàng rì kuí', en: 'Sunflower', audioZh: '/audio/sunflower-zh.m4a' },
+        name: { zh: '向日葵花', pinyin: 'xiàng rì kuí huā', en: 'Sunflower', audioZh: '/audio/sunflower-flower-zh.m4a' },
       })
     );
 
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
     expect(await screen.findByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
@@ -683,55 +626,22 @@ describe('横屏详情版式（Sprint 7 TC-60 / Sprint 9 左图右文，样式�
   });
 });
 
-describe('详情默认部位跟随入口分类（Sprint 8：TC-65 / TC-66）', () => {
-  it('TC-65 来自「树叶」分类：苹果默认选中「叶」，大图与卡片图一致', async () => {
-    const user = userEvent.setup();
-    renderDetail('apple', { category: 'leaf', list: [card(APPLE), card(GINKGO)] });
+describe('植物单图详情（Sprint 17：取消部位切换）', () => {
+  it('TC-65 植物条目为单图模式：不渲染部位切换，大图 alt = 条目名', async () => {
+    renderDetail('apple-flower', { category: 'all', list: [card(APPLE)] });
 
-    // 默认选中「叶」，而非固定顺序首位「花」
-    expect(await screen.findByAltText('苹果的叶')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '叶' })).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'false');
-    expect(screen.getByAltText('苹果的叶')).toHaveAttribute('src', '/images/plants/apple-leaf.jpg');
-
-    // 仍可手动切到花 / 果
-    await user.click(screen.getByRole('tab', { name: '花' }));
-    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
+    expect(await screen.findByAltText('苹果花')).toBeInTheDocument();
+    expect(screen.getByAltText('苹果花')).toHaveAttribute('src', '/images/plants/apple-flower.jpg');
+    // 无部位切换
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
   });
 
-  it('TC-66a 来自「全部」分类：苹果仍默认「花」（固定顺序首位）', async () => {
-    renderDetail('apple', { category: 'all', list: [card(APPLE)] });
+  it('TC-66 银杏叶条目：单图，无部位切换', async () => {
+    renderDetail('ginkgo-leaf', { category: 'all', list: [card(GINKGO)] });
 
-    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
-  });
-
-  it('TC-66b 来自「花朵」分类：苹果默认「花」', async () => {
-    renderDetail('apple', { category: 'flower', list: [card(APPLE)] });
-
-    expect(await screen.findByAltText('苹果的花')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
-  });
-
-  it('TC-66c 来自「果实」分类：银杏默认「果」', async () => {
-    renderDetail('ginkgo', { category: 'fruit', list: [card(GINKGO)] });
-
-    // 银杏固定顺序首位为「叶」，果实分类应默认选中「果」
-    expect(await screen.findByAltText('银杏的果')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByAltText('银杏的果')).toHaveAttribute('src', '/images/plants/ginkgo-fruit.jpg');
-  });
-
-  it('TC-66d 换株后默认部位仍跟随当前分类', async () => {
-    const user = userEvent.setup();
-    renderDetail('apple', { category: 'fruit', list: [card(APPLE), card(GINKGO)] });
-
-    expect(await screen.findByAltText('苹果的果')).toBeInTheDocument();
-
-    await user.click(screen.getByRole('button', { name: '下一株' }));
-    // 新植物（银杏）默认部位也应跟随「果实」分类 → 果，而非其固定首位的「叶」
-    expect(await screen.findByAltText('银杏的果')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '果' })).toHaveAttribute('aria-selected', 'true');
+    expect(await screen.findByAltText('银杏叶')).toBeInTheDocument();
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
   });
 });
 
@@ -751,12 +661,12 @@ describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83；Sprint
     expect(screen.getByText('大熊猫是我们中国的国宝。')).toBeInTheDocument();
   });
 
-  it('TC-83 植物条目仍渲染部位切换（单图分支不误伤）', async () => {
-    renderDetail('sunflower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
+  it('TC-83 植物条目现为单图模式（Sprint 17）：不渲染部位切换', async () => {
+    renderDetail('sunflower-flower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
 
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
-    expect(screen.getByRole('tablist')).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: '花' })).toBeInTheDocument();
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
   });
 
   it('TC-82b 恐龙单图条目 + 缺 audioEn：不渲染部位切换与英文喇叭', async () => {
@@ -807,14 +717,20 @@ describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83；Sprint
 
 describe('小知识卡片称谓（Sprint 9：TC-88）', () => {
   it('TC-88 典故/小知识卡片 aria-label 为「小知识」，无内容不渲染', async () => {
-    const user = userEvent.setup();
-    renderDetail('sunflower', { category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
     expect(await screen.findByRole('region', { name: '小知识' })).toBeInTheDocument();
 
-    // 切到无小知识的叶部位 → 卡片整体不渲染
-    await user.click(screen.getByRole('tab', { name: '叶' }));
-    expect(await screen.findByAltText('向日葵的叶')).toBeInTheDocument();
+    // 无小知识的条目 → 卡片整体不渲染
+    cleanup();
+    getPlant.mockImplementation(() =>
+      Promise.resolve({
+        ...SUNFLOWER,
+        parts: { flower: { ...SUNFLOWER.parts.flower, allusion: undefined } },
+      })
+    );
+    renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.queryByRole('region', { name: '小知识' })).not.toBeInTheDocument();
   });
 });
@@ -885,15 +801,16 @@ describe('小知识可见标题与单图横屏版式（Sprint 10：TC-101 ~ TC-1
     expect(screen.queryByText('小知识')).not.toBeInTheDocument();
   });
 
-  it('TC-104 单图分支容器类：单图含 single-image，植物三部位不含', async () => {
+  it('TC-104 单图分支容器类：所有单部位条目均含 single-image（Sprint 17：植物亦单图）', async () => {
     const single = renderDetail('giant-panda', { section: 'animal', list: [card(PANDA)] });
     await screen.findByAltText('大熊猫');
     expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
     single.unmount();
 
-    renderDetail('sunflower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
-    expect(await screen.findByAltText('向日葵的花')).toBeInTheDocument();
-    expect(document.querySelector('.detail-body').className).toBe('detail-body');
+    renderDetail('sunflower-flower', { section: 'plant', category: 'all', list: [card(SUNFLOWER)] });
+    expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
+    // Sprint 17：植物条目改为单图，亦含 single-image
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
   });
 
   it('TC-105 单图横屏栏宽 64%，植物横屏栏宽仍 48%（不回归）', () => {
@@ -916,7 +833,7 @@ describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Spr
       ['dinosaur', /回恐龙园/],
     ];
     for (const [section, name] of cases) {
-      const { unmount } = renderDetail('sunflower', { section, category: 'all', list: [card(SUNFLOWER)] });
+      const { unmount } = renderDetail('sunflower-flower', { section, category: 'all', list: [card(SUNFLOWER)] });
       const back = await screen.findByRole('link', { name });
       expect(back).toHaveAttribute('href', '/');
       // 反向校验：非本板块文案不得出现
@@ -935,7 +852,7 @@ describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Spr
   });
 
   it('TC-121 未知 section 回退「花园」', async () => {
-    renderDetail('sunflower', { section: 'xunknown', category: 'all', list: [card(SUNFLOWER)] });
+    renderDetail('sunflower-flower', { section: 'xunknown', category: 'all', list: [card(SUNFLOWER)] });
     expect(await screen.findByRole('link', { name: /回花园/ })).toBeInTheDocument();
   });
 

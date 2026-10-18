@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
  * 植物前后切换：在当前生效列表（当前板块/分类的有序卡片数组）内计算上一株/下一株，首尾循环。
  * 邻居由同一份列表快照计算，不依赖后端跨请求的顺序稳定。
  */
-export default function usePlantNavigation({ list, currentId, category, section }) {
+export default function usePlantNavigation({ list, currentId, section }) {
   const navigate = useNavigate();
 
   const nav = useMemo(() => {
@@ -27,9 +27,9 @@ export default function usePlantNavigation({ list, currentId, category, section 
     (targetId) => {
       if (!targetId) return;
       // 携带列表快照继续连续翻株，邻居来源不丢
-      navigate(`/plants/${targetId}`, { state: { section, category, list } });
+      navigate(`/plants/${targetId}`, { state: { section, list } });
     },
-    [navigate, category, section, list]
+    [navigate, section, list]
   );
 
   const goPrev = useCallback(() => goto(nav.prevId), [goto, nav.prevId]);

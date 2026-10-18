@@ -1,0 +1,36 @@
+{
+  "id": "cactus-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "仙人掌花叶",
+    "pinyin": "xiān rén zhǎng huā yè",
+    "en": "Cactus Leaf",
+    "ipa": "/ˈkæktəs/ liːf",
+    "audioZh": "/audio/cactus-leaf-zh.m4a",
+    "audioEn": "/audio/cactus-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cactus-leaf.jpg"
+        }
+      ],
+      "description": "仙人掌的叶子变成了小刺，硬硬的扎手。这样就不会被小动物吃掉，还能保存水分。",
+      "allusion": {
+        "text": "仙人掌的叶子变成了小刺，硬硬的，帮它留住水分。",
+        "explain": "仙人掌把叶子变成了小刺，这样不会被吃掉，还能少丢水。"
+      }
+    }
+  }
+}

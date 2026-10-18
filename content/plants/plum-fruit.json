@@ -1,0 +1,37 @@
+{
+  "id": "plum-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 83,
+  "name": {
+    "zh": "李子",
+    "pinyin": "lǐ zi",
+    "en": "Plum",
+    "ipa": "/plʌm/",
+    "audioZh": "/audio/plum-fruit-zh.m4a",
+    "audioEn": "/audio/plum-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/plum-fruit.jpg"
+        }
+      ],
+      "description": "李子圆圆的，紫的红黄的都有。皮上有一层白霜，咬一口酸酸甜甜。",
+      "allusion": {
+        "text": "投我以桃，报之以李。",
+        "source": "《诗经·大雅·抑》",
+        "explain": "你送我一个桃子，我回赠你一个李子，好朋友之间就是这样有来有往。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "peach-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 76,
+  "name": {
+    "zh": "桃花叶",
+    "pinyin": "táo huā yè",
+    "en": "Peach Leaf",
+    "ipa": "/piːtʃ/ liːf",
+    "audioZh": "/audio/peach-leaf-zh.m4a",
+    "audioEn": "/audio/peach-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peach-leaf.jpg"
+        }
+      ],
+      "description": "桃叶细细长长的，像小船。边上有小小的锯齿，摸的时候要轻轻的。",
+      "allusion": {
+        "text": "桃之夭夭，其叶蓁蓁。",
+        "source": "《诗经·周南·桃夭》",
+        "explain": "桃树长得真茂盛，它的叶子又绿又密，一片挨着一片。"
+      }
+    }
+  }
+}

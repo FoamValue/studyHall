@@ -1,0 +1,36 @@
+{
+  "id": "dandelion-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 27,
+  "name": {
+    "zh": "蒲公英花叶",
+    "pinyin": "pú gōng yīng huā yè",
+    "en": "Dandelion Leaf",
+    "ipa": "/ˈdændɪlaɪən/ liːf",
+    "audioZh": "/audio/dandelion-leaf-zh.m4a",
+    "audioEn": "/audio/dandelion-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-leaf.jpg"
+        }
+      ],
+      "description": "叶子贴着地面长，边上是尖尖的锯齿，像狮子的大牙齿。",
+      "allusion": {
+        "text": "蒲公英叶贴着地面长，边上锯齿像狮子的大牙齿。",
+        "explain": "蒲公英的叶子趴在地上长，边上尖尖的锯齿，像狮子的大牙齿。"
+      }
+    }
+  }
+}

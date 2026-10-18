@@ -1,0 +1,36 @@
+{
+  "id": "starfruit-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 92,
+  "name": {
+    "zh": "杨桃花叶",
+    "pinyin": "yáng tao huā yè",
+    "en": "Starfruit Leaf",
+    "ipa": "/ˈstɑːrfruːt/ liːf",
+    "audioZh": "/audio/starfruit-leaf-zh.m4a",
+    "audioEn": "/audio/starfruit-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/starfruit-leaf.jpg"
+        }
+      ],
+      "description": "杨桃叶子由好多小叶排成羽毛状。晚上小叶会合起来睡觉。",
+      "allusion": {
+        "text": "杨桃叶由好多小叶排成羽毛状，晚上会合起来睡觉。",
+        "explain": "杨桃的叶子由好多小叶子排成羽毛一样，天黑了就合起来睡觉。"
+      }
+    }
+  }
+}

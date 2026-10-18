@@ -1,0 +1,36 @@
+{
+  "id": "passion-fruit-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 72,
+  "name": {
+    "zh": "百香果",
+    "pinyin": "bǎi xiāng guǒ",
+    "en": "Passion Fruit",
+    "ipa": "/ˈpæʃən fruːt/",
+    "audioZh": "/audio/passion-fruit-fruit-zh.m4a",
+    "audioEn": "/audio/passion-fruit-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/passion-fruit-fruit.jpg"
+        }
+      ],
+      "description": "百香果圆圆的、紫紫的，切开里面金黄果汁好多籽。酸酸甜甜香香的。",
+      "allusion": {
+        "text": "百香果香香的，藏着好多水果的香味。",
+        "explain": "百香果闻着像好多水果混在一起的香味，所以得了这个名字。"
+      }
+    }
+  }
+}

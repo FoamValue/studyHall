@@ -1,0 +1,37 @@
+{
+  "id": "camellia-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "山茶花",
+    "pinyin": "shān chá huā",
+    "en": "Camellia Flower",
+    "ipa": "/kəˈmiːliə/ ˈflaʊər",
+    "audioZh": "/audio/camellia-flower-zh.m4a",
+    "audioEn": "/audio/camellia-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/camellia-flower.jpg"
+        }
+      ],
+      "description": "山茶花红红艳艳的，花瓣整整齐齐排着队。冷冷的冬天里开得真精神。",
+      "allusion": {
+        "text": "惟有山茶偏耐久，绿丛又放数枝红。",
+        "source": "陆游《山茶》",
+        "explain": "别的花怕冷躲起来了，山茶花却能开好久，绿叶中间又开出几枝红花。"
+      }
+    }
+  }
+}

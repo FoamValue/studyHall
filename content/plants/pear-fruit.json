@@ -1,0 +1,37 @@
+{
+  "id": "pear-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 76,
+  "name": {
+    "zh": "梨",
+    "pinyin": "lí",
+    "en": "Pear",
+    "ipa": "/per/",
+    "audioZh": "/audio/pear-fruit-zh.m4a",
+    "audioEn": "/audio/pear-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pear-fruit.jpg"
+        }
+      ],
+      "description": "梨上面小下面大，像小葫芦。黄黄的皮，白白的肉，甜甜的汁水多。",
+      "allusion": {
+        "text": "孔融让梨",
+        "source": "成语",
+        "explain": "孔融四岁的时候，把最大的梨让给哥哥吃，真是个懂事的好孩子。"
+      }
+    }
+  }
+}

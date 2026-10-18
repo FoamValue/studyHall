@@ -1,12 +1,10 @@
 [
-  { "code": "flower", "nameZh": "花朵", "pinyin": "huā duǒ", "nameEn": "Flower", "order": 1, "section": "plant" },
-  { "code": "leaf", "nameZh": "树叶", "pinyin": "shù yè", "nameEn": "Leaf", "order": 2, "section": "plant" },
-  { "code": "fruit", "nameZh": "果实", "pinyin": "guǒ shí", "nameEn": "Fruit", "order": 3, "section": "plant" },
-  { "code": "animal", "nameZh": "动物", "pinyin": "dòng wù", "nameEn": "Animal", "order": 4, "section": "animal" },
-  { "code": "insect", "nameZh": "昆虫", "pinyin": "kūn chóng", "nameEn": "Insect", "order": 5, "section": "insect" },
-  { "code": "dinosaur", "nameZh": "恐龙", "pinyin": "kǒng lóng", "nameEn": "Dinosaur", "order": 6, "section": "dinosaur" },
-  { "code": "letter", "nameZh": "英文字母", "pinyin": "yīng wén zì mǔ", "nameEn": "Letter", "order": 7, "section": "letter" },
-  { "code": "pinyin", "nameZh": "汉语拼音", "pinyin": "hàn yǔ pīn yīn", "nameEn": "Pinyin", "order": 8, "section": "pinyin" },
-  { "code": "number", "nameZh": "数字", "pinyin": "shù zì", "nameEn": "Number", "order": 9, "section": "number" },
-  { "code": "color", "nameZh": "颜色", "pinyin": "yán sè", "nameEn": "Color", "order": 10, "section": "color" }
+  { "code": "plant", "nameZh": "植物", "pinyin": "zhí wù", "nameEn": "Plant", "order": 1, "section": "plant" },
+  { "code": "animal", "nameZh": "动物", "pinyin": "dòng wù", "nameEn": "Animal", "order": 2, "section": "animal" },
+  { "code": "insect", "nameZh": "昆虫", "pinyin": "kūn chóng", "nameEn": "Insect", "order": 3, "section": "insect" },
+  { "code": "dinosaur", "nameZh": "恐龙", "pinyin": "kǒng lóng", "nameEn": "Dinosaur", "order": 4, "section": "dinosaur" },
+  { "code": "letter", "nameZh": "英文字母", "pinyin": "yīng wén zì mǔ", "nameEn": "Letter", "order": 5, "section": "letter" },
+  { "code": "pinyin", "nameZh": "汉语拼音", "pinyin": "hàn yǔ pīn yīn", "nameEn": "Pinyin", "order": 6, "section": "pinyin" },
+  { "code": "number", "nameZh": "数字", "pinyin": "shù zì", "nameEn": "Number", "order": 7, "section": "number" },
+  { "code": "color", "nameZh": "颜色", "pinyin": "yán sè", "nameEn": "Color", "order": 8, "section": "color" }
 ]

@@ -1,0 +1,36 @@
+{
+  "id": "tulip-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 97,
+  "name": {
+    "zh": "郁金香花叶",
+    "pinyin": "yù jīn xiāng huā yè",
+    "en": "Tulip Leaf",
+    "ipa": "/ˈtuːlɪp/ liːf",
+    "audioZh": "/audio/tulip-leaf-zh.m4a",
+    "audioEn": "/audio/tulip-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/tulip-leaf.jpg"
+        }
+      ],
+      "description": "郁金香的叶子宽宽的，像绿舌头。贴着花杆往上长，保护着小酒杯。",
+      "allusion": {
+        "text": "郁金香叶宽宽的，像绿舌头，贴着花杆往上长。",
+        "explain": "郁金香的叶子宽宽的，像绿色的舌头，贴着花杆往上长，护着花。"
+      }
+    }
+  }
+}

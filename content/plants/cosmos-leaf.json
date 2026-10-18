@@ -1,0 +1,36 @@
+{
+  "id": "cosmos-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 24,
+  "name": {
+    "zh": "波斯菊花叶",
+    "pinyin": "bō sī jú huā yè",
+    "en": "Cosmos Leaf",
+    "ipa": "/ˈkɑːzmoʊs/ liːf",
+    "audioZh": "/audio/cosmos-leaf-zh.m4a",
+    "audioEn": "/audio/cosmos-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cosmos-leaf.jpg"
+        }
+      ],
+      "description": "波斯菊叶子细细碎碎的，像绿色的小羽毛。风一吹轻轻摇。",
+      "allusion": {
+        "text": "波斯菊叶细细碎碎的，像绿色的小羽毛，风一吹轻摇。",
+        "explain": "波斯菊的叶子分成好多细条，像绿色的小羽毛，风一吹就轻轻摇。"
+      }
+    }
+  }
+}

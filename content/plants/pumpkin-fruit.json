@@ -1,0 +1,36 @@
+{
+  "id": "pumpkin-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 87,
+  "name": {
+    "zh": "南瓜",
+    "pinyin": "nán guā",
+    "en": "Pumpkin",
+    "ipa": "/ˈpʌmpkɪn/",
+    "audioZh": "/audio/pumpkin-fruit-zh.m4a",
+    "audioEn": "/audio/pumpkin-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pumpkin-fruit.jpg"
+        }
+      ],
+      "description": "南瓜胖胖的、黄黄的，像一个大灯笼。蒸熟了软软甜甜。",
+      "allusion": {
+        "text": "南瓜能放很久不坏，是冬天的好口粮。",
+        "explain": "南瓜皮厚厚的，放在屋角能存一整个冬天，饿了就切一块煮着吃。"
+      }
+    }
+  }
+}

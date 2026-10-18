@@ -1,0 +1,36 @@
+{
+  "id": "orange-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 68,
+  "name": {
+    "zh": "橙子花",
+    "pinyin": "chéng zi huā",
+    "en": "Orange Flower",
+    "ipa": "/ˈɔːrɪndʒ/ ˈflaʊər",
+    "audioZh": "/audio/orange-flower-zh.m4a",
+    "audioEn": "/audio/orange-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/orange-flower.jpg"
+        }
+      ],
+      "description": "橙子花白白的，小小的，有五片花瓣。闻起来香香的，春天开满枝头。",
+      "allusion": {
+        "text": "橙子花白白的，香香的，花开满树，秋天结出甜橙子。",
+        "explain": "橙子树先开白白香香的花，蜜蜂来帮忙，后来就结大橙子。"
+      }
+    }
+  }
+}

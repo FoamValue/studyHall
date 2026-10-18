@@ -1,0 +1,37 @@
+{
+  "id": "kumquat-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "金桔花叶",
+    "pinyin": "jīn jú huā yè",
+    "en": "Kumquat Leaf",
+    "ipa": "/ˈkʌmkwɑːt/ liːf",
+    "audioZh": "/audio/kumquat-leaf-zh.m4a",
+    "audioEn": "/audio/kumquat-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kumquat-leaf.jpg"
+        }
+      ],
+      "description": "金桔叶子小小的，绿得发亮。叶子上有香香的小油点。",
+      "allusion": {
+        "text": "绿叶素荣，纷其可喜兮。",
+        "source": "战国·屈原《橘颂》",
+        "explain": "橘树长着绿绿的叶子、白白的花，长得茂盛，真让人喜欢。"
+      }
+    }
+  }
+}

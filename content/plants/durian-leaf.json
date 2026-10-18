@@ -1,0 +1,36 @@
+{
+  "id": "durian-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 30,
+  "name": {
+    "zh": "榴莲花叶",
+    "pinyin": "liú lián huā yè",
+    "en": "Durian Leaf",
+    "ipa": "/ˈdʊriən/ liːf",
+    "audioZh": "/audio/durian-leaf-zh.m4a",
+    "audioEn": "/audio/durian-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/durian-leaf.jpg"
+        }
+      ],
+      "description": "榴莲叶子长长的，背面有点银色。叶子厚厚的，绿绿的。",
+      "allusion": {
+        "text": "榴莲叶长长的，厚厚的，背面泛着一层银光。",
+        "explain": "榴莲的叶子又长又厚，正面绿，背面有一层银白，闪闪的。"
+      }
+    }
+  }
+}

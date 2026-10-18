@@ -1,0 +1,36 @@
+{
+  "id": "corn-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 22,
+  "name": {
+    "zh": "玉米花叶",
+    "pinyin": "yù mǐ huā yè",
+    "en": "Corn Leaf",
+    "ipa": "/kɔːrn/ liːf",
+    "audioZh": "/audio/corn-leaf-zh.m4a",
+    "audioEn": "/audio/corn-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/corn-leaf.jpg"
+        }
+      ],
+      "description": "玉米叶子又长又宽，像绿色的大飘带。风一吹哗啦啦唱歌。",
+      "allusion": {
+        "text": "玉米叶又长又宽，像绿色的大飘带，风吹沙沙响。",
+        "explain": "玉米的叶子又长又宽，像绿色的飘带，风一吹就沙沙地响。"
+      }
+    }
+  }
+}

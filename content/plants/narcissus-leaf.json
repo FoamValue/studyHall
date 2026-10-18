@@ -1,0 +1,36 @@
+{
+  "id": "narcissus-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 67,
+  "name": {
+    "zh": "水仙花叶",
+    "pinyin": "shuǐ xiān huā yè",
+    "en": "Narcissus Leaf",
+    "ipa": "/nɑːrˈsɪsəs/ liːf",
+    "audioZh": "/audio/narcissus-leaf-zh.m4a",
+    "audioEn": "/audio/narcissus-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/narcissus-leaf.jpg"
+        }
+      ],
+      "description": "水仙叶子扁扁长长的，像绿色的小带子。从白白的球茎里钻出来。",
+      "allusion": {
+        "text": "水仙叶扁扁长长，像绿色的小带子，从白球茎里钻出来。",
+        "explain": "水仙的叶子又扁又长，像绿色的小带子，从白白的球茎里冒出来。"
+      }
+    }
+  }
+}

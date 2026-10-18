@@ -1,0 +1,36 @@
+{
+  "id": "cactus-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "仙人掌花",
+    "pinyin": "xiān rén zhǎng huā",
+    "en": "Cactus Flower",
+    "ipa": "/ˈkæktəs/ ˈflaʊər",
+    "audioZh": "/audio/cactus-flower-zh.m4a",
+    "audioEn": "/audio/cactus-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cactus-flower.jpg"
+        }
+      ],
+      "description": "仙人掌也会开花，黄黄的、红红的，开在刺刺的头顶上。花期很短，要看运气哦。",
+      "allusion": {
+        "text": "仙人掌的花开在刺刺的头顶上，花期很短，很难得。",
+        "explain": "仙人掌平时只长刺，好不容易才开一朵花，看到就是好运气。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "violet-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 97,
+  "name": {
+    "zh": "紫罗兰花",
+    "pinyin": "zǐ luó lán huā",
+    "en": "Violet Flower",
+    "ipa": "/ˈvaɪələt/ ˈflaʊər",
+    "audioZh": "/audio/violet-flower-zh.m4a",
+    "audioEn": "/audio/violet-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/violet-flower.jpg"
+        }
+      ],
+      "description": "紫罗兰紫紫的，一朵朵挤在一起开。闻闻看，有一股甜甜的香味。",
+      "allusion": {
+        "text": "紫罗兰的花一簇簇紫色，香气甜甜的，常用来做香水。",
+        "explain": "紫罗兰香香的花常被用来做香水，闻一闻，甜丝丝的。"
+      }
+    }
+  }
+}

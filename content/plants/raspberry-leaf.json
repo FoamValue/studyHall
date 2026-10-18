@@ -1,0 +1,36 @@
+{
+  "id": "raspberry-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 90,
+  "name": {
+    "zh": "树莓花叶",
+    "pinyin": "shù méi huā yè",
+    "en": "Raspberry Leaf",
+    "ipa": "/ˈræzberi/ liːf",
+    "audioZh": "/audio/raspberry-leaf-zh.m4a",
+    "audioEn": "/audio/raspberry-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/raspberry-leaf.jpg"
+        }
+      ],
+      "description": "树莓叶子边上有小锯齿，背面白白的。叶子上有小绒毛。",
+      "allusion": {
+        "text": "树莓叶边上有小锯齿，背面白白的，还有小绒毛。",
+        "explain": "树莓的叶子边上有小锯齿，背面白白的，上面长着一层小绒毛。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "apple-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 2,
+  "name": {
+    "zh": "苹果",
+    "pinyin": "píng guǒ",
+    "en": "Apple",
+    "ipa": "/ˈæpl/",
+    "audioZh": "/audio/apple-fruit-zh.m4a",
+    "audioEn": "/audio/apple-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/apple-fruit.jpg"
+        }
+      ],
+      "description": "苹果圆滚滚、红红的，像小皮球。咬一口脆脆甜甜，里面藏着黑黑的小种子。",
+      "allusion": {
+        "text": "苹果横着切开，果核像一颗小星星。",
+        "explain": "把苹果横着切成两半，中间的籽排成漂亮的小星星，真神奇。"
+      }
+    }
+  }
+}

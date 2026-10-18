@@ -1,0 +1,36 @@
+{
+  "id": "chrysanthemum-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 20,
+  "name": {
+    "zh": "菊花叶",
+    "pinyin": "jú huā yè",
+    "en": "Chrysanthemum Leaf",
+    "ipa": "/krɪˈsænθəməm/ liːf",
+    "audioZh": "/audio/chrysanthemum-leaf-zh.m4a",
+    "audioEn": "/audio/chrysanthemum-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chrysanthemum-leaf.jpg"
+        }
+      ],
+      "description": "菊叶裂成好多小片，边边有点锯齿。闻一闻，有淡淡的清香味。",
+      "allusion": {
+        "text": "菊叶裂成好多小片，闻一闻有淡淡的清香味。",
+        "explain": "菊花的叶子分成好多小片，边上有锯齿，闻起来有淡淡的香味。"
+      }
+    }
+  }
+}

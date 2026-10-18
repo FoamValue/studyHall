@@ -1,0 +1,37 @@
+{
+  "id": "lotus-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 55,
+  "name": {
+    "zh": "莲蓬",
+    "pinyin": "lián péng",
+    "en": "Lotus Seed Pod",
+    "ipa": "/ˈloʊtəs siːd pɒd/",
+    "audioZh": "/audio/lotus-fruit-zh.m4a",
+    "audioEn": "/audio/lotus-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lotus-fruit.jpg"
+        }
+      ],
+      "description": "花瓣谢了，剩下小小的莲蓬，像花洒。莲子住在里面，剥开就是甜甜的果子。",
+      "allusion": {
+        "text": "最喜小儿无赖，溪头卧剥莲蓬。",
+        "source": "辛弃疾《清平乐·村居》",
+        "explain": "最可爱的就是小娃娃，趴在溪边剥莲蓬，吃得可开心啦。"
+      }
+    }
+  }
+}

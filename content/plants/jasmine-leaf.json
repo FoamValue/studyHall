@@ -1,0 +1,36 @@
+{
+  "id": "jasmine-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 45,
+  "name": {
+    "zh": "茉莉花叶",
+    "pinyin": "mò lì huā yè",
+    "en": "Jasmine Leaf",
+    "ipa": "/ˈdʒæzmɪn/ liːf",
+    "audioZh": "/audio/jasmine-leaf-zh.m4a",
+    "audioEn": "/audio/jasmine-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/jasmine-leaf.jpg"
+        }
+      ],
+      "description": "茉莉叶椭圆椭圆的，两头尖尖。绿得油亮，托着白白的小香花。",
+      "allusion": {
+        "text": "茉莉叶椭圆椭圆的，两头尖尖，绿得油亮。",
+        "explain": "茉莉的叶子椭圆椭圆的，两头尖尖，绿得发亮，托着白白的小香花。"
+      }
+    }
+  }
+}

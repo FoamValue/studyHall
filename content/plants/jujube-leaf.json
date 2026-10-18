@@ -1,0 +1,36 @@
+{
+  "id": "jujube-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 46,
+  "name": {
+    "zh": "枣花叶",
+    "pinyin": "zǎo huā yè",
+    "en": "Jujube Leaf",
+    "ipa": "/ˈdʒuːdʒuːb/ liːf",
+    "audioZh": "/audio/jujube-leaf-zh.m4a",
+    "audioEn": "/audio/jujube-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/jujube-leaf.jpg"
+        }
+      ],
+      "description": "枣树叶子小小的，亮亮的，一对一对长着。枝条上还有小刺。",
+      "allusion": {
+        "text": "枣树叶小小的、亮亮的，一对一对长，枝上还有小刺。",
+        "explain": "枣树的叶子小小的，亮亮的，一对一对长着，枝条上还长着小刺。"
+      }
+    }
+  }
+}

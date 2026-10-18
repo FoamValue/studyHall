@@ -1,0 +1,36 @@
+{
+  "id": "strawberry-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 92,
+  "name": {
+    "zh": "草莓花",
+    "pinyin": "cǎo méi huā",
+    "en": "Strawberry Flower",
+    "ipa": "/ˈstrɔːbəri/ ˈflaʊər",
+    "audioZh": "/audio/strawberry-flower-zh.m4a",
+    "audioEn": "/audio/strawberry-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-flower.jpg"
+        }
+      ],
+      "description": "草莓开白色小花，五个圆花瓣，中间是黄黄的小圆心，像小纽扣。",
+      "allusion": {
+        "text": "草莓花中间的花托，以后会长成红红的草莓果肉。",
+        "explain": "草莓花谢了，中间的小花托慢慢长大，就变成红草莓啦。"
+      }
+    }
+  }
+}

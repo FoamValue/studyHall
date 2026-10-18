@@ -1,0 +1,37 @@
+{
+  "id": "magnolia-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 59,
+  "name": {
+    "zh": "玉兰花叶",
+    "pinyin": "yù lán huā yè",
+    "en": "Magnolia Leaf",
+    "ipa": "/mæɡˈnoʊliə/ liːf",
+    "audioZh": "/audio/magnolia-leaf-zh.m4a",
+    "audioEn": "/audio/magnolia-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/magnolia-leaf.jpg"
+        }
+      ],
+      "description": "玉兰叶子又大又圆，绿得发亮。秋天叶子变黄，一片片飘下来。",
+      "allusion": {
+        "text": "一叶知秋，玉兰叶黄了，秋天就来了。",
+        "source": "成语",
+        "explain": "看见玉兰树落下第一片黄叶，就知道秋天到了，天气要凉啦。"
+      }
+    }
+  }
+}

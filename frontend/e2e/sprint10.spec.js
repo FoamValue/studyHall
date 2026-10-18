@@ -4,29 +4,20 @@ import { loadAllCards } from './helpers';
 // ===== Sprint 10 新增 E2E（TC-109 ~ TC-114，编号依 QA 手册 docs/qa/sprint-10-test-cases.md）=====
 // 覆盖：EX-6 首页首屏 + 滚动增量加载 / 「共 N 种」总量口径 / EX-4 小知识可见标题 / EX-5 单图横屏主图占比 / 植物版式不回归
 
-// TC-109 植物板块「全部」首屏不满 100，滚动后累计全量 100，总量提示「共 100 种」
-test('TC-109 植物「全部」增量加载至 100 且总量提示', async ({ page }) => {
+// TC-109 植物板块首屏不满 206，滚动后累计全量 206，总量提示「共 206 种」
+test('TC-109 植物增量加载至 206 且总量提示', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
 
   // 首屏卡片数明显少于全量（增量加载生效）
   const firstScreen = await page.locator('.plant-card').count();
-  expect(firstScreen).toBeLessThan(100);
+  expect(firstScreen).toBeLessThan(206);
 
   // 总量口径 = 当前板块返回条数
-  await expect(page.locator('.list-count')).toHaveText('共 100 种');
+  await expect(page.locator('.list-count')).toHaveText('共 206 种');
 
   // 滚动加载至全量
-  await loadAllCards(page, 100);
-});
-
-// TC-110 分类态总量口径：花朵分类「共 53 种」，列表计数一致
-test('TC-110 花朵分类总量提示「共 53 种」', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('花朵').click();
-
-  await expect(page.locator('.list-count')).toHaveText('共 53 种');
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
 });
 
 // TC-111 EX-4：小知识卡片渲染用户可见标题「小知识」
@@ -58,16 +49,16 @@ test('TC-112 单图横屏主图占可用高 ≥80%（EX-5）', async ({ page }) 
   expect(box.y + box.height).toBeLessThanOrEqual(body.y + body.height + 1);
 });
 
-// TC-113 EX-5 红线：植物详情不回归（不含 single-image、3 部位标签、溢出 0）
-test('TC-113 植物详情版式不回归（EX-5 红线）', async ({ page }) => {
+// TC-113 Sprint 17：植物详情现为单图模式（含 single-image、无部位切换、溢出 0）
+test('TC-113 植物详情单图版式（Sprint 17）', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await page.goto('/plants/apple');
-  await expect(page.locator('.detail-zh')).toHaveText('苹果');
+  await page.goto('/plants/apple-flower');
+  await expect(page.locator('.detail-zh')).toHaveText('苹果花');
 
-  // 植物容器不带单图分支类
-  expect(await page.locator('.detail-body').getAttribute('class')).toBe('detail-body');
-  // 部位切换保留 3 个标签
-  await expect(page.locator('[role="tab"]')).toHaveCount(3);
+  // 植物容器带单图分支类
+  expect(await page.locator('.detail-body').getAttribute('class')).toContain('single-image');
+  // 无部位切换
+  await expect(page.locator('[role="tab"]')).toHaveCount(0);
   await expect(page.locator('.part-img')).toBeVisible();
 
   // 页面级无水平 / 纵向溢出

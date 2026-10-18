@@ -2,14 +2,13 @@ import { test, expect } from '@playwright/test';
 import { loadAllCards } from './helpers';
 
 // ===== Sprint 4 新增 E2E（TC-35 ~ TC-40）：沉浸式详情 / 连续换株 / 全屏 / 状态记忆 =====
+// Sprint 17：植物取消二级分类，所有部位条目同属 plant 板块（206 条）
 
-// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名（Sprint 8 起卡片标题按分类派生，故取卡片图 alt 的原名）
-async function enterFirstFlowerDetail(page) {
+// 进入植物板块第一张卡片详情，返回该条目中文名
+async function enterFirstPlantDetail(page) {
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 53); // 增量加载：滚动至全量
+  await loadAllCards(page, 206);
   await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
@@ -21,7 +20,7 @@ const detailName = (page) => page.locator('.detail-zh').textContent();
 
 // TC-35 三通道换植物行为一致：按钮 / 键盘 → / 左滑，各切一次后落到同一株
 test('TC-35 按钮 / 键盘 / 左滑三种方式换到同一株', async ({ page }) => {
-  const startName = await enterFirstFlowerDetail(page);
+  const startName = await enterFirstPlantDetail(page);
 
   // ① 点「下一株」按钮
   await page.getByRole('button', { name: '下一株' }).click();
@@ -29,13 +28,13 @@ test('TC-35 按钮 / 键盘 / 左滑三种方式换到同一株', async ({ page 
   const viaButton = await detailName(page);
 
   // ② 键盘 →
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
   await page.keyboard.press('ArrowRight');
   await expect(page.locator('.detail-zh')).not.toHaveText(startName);
   const viaKeyboard = await detailName(page);
 
   // ③ 左滑（在沉浸式容器上派发触摸序列）
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
   await page.evaluate(() => {
     const el = document.querySelector('.detail-immersive');
     const touch = (x) => new Touch({ identifier: 1, target: el, clientX: x, clientY: 300 });
@@ -58,13 +57,11 @@ test('TC-35 按钮 / 键盘 / 左滑三种方式换到同一株', async ({ page 
   expect(viaSwipe).toBe(viaButton);
 });
 
-// TC-36 首尾循环：花朵列表首张的「上一株」= 末张；末张的「下一株」= 首张
-test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
+// TC-36 首尾循环：植物列表首张的「上一株」= 末张；末张的「下一株」= 首张
+test('TC-36 首尾循环（植物板块）', async ({ page }) => {
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
   const firstName = await cards.first().locator('img').getAttribute('alt');
   const lastName = await cards.last().locator('img').getAttribute('alt');
   expect(firstName).not.toBe(lastName);
@@ -77,8 +74,7 @@ test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
 
   // 末张 → 下一株 → 应循环回首张
   await page.goto('/');
-  await filterGroup.getByText('花朵').click();
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
   await cards.last().click();
   await expect(page.locator('.detail-zh')).toHaveText(lastName);
   await page.getByRole('button', { name: '下一株' }).click();
@@ -87,7 +83,7 @@ test('TC-36 首尾循环（限当前分类）', async ({ page }) => {
 
 // TC-37 系统全屏进出不丢位置
 test('TC-37 全屏进出后当前植物不变', async ({ page }) => {
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
   const nameBefore = await detailName(page);
 
   const supported = await page.evaluate(() => Boolean(document.fullscreenEnabled));
@@ -107,7 +103,7 @@ test('TC-37 全屏进出后当前植物不变', async ({ page }) => {
 // TC-38 沉浸式态：无页面级滚动条，图片完整不裁切
 test('TC-38 沉浸式无页面级滚动条且图片完整', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
 
   const overflow = await page.evaluate(() => {
     const d = document.documentElement;
@@ -120,14 +116,12 @@ test('TC-38 沉浸式无页面级滚动条且图片完整', async ({ page }) => 
   expect(await img.evaluate((el) => getComputedStyle(el).objectFit)).toBe('contain');
 });
 
-// TC-39 返回首页保住分类筛选与列表滚动位置
-test('TC-39 回花园保住分类与滚动位置', async ({ page }) => {
+// TC-39 返回首页保住列表滚动位置（Sprint 17：无分类筛选，仅保滚动）
+test('TC-39 回花园保住滚动位置', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
 
   await page.evaluate(() => window.scrollTo(0, 1200));
   await cards.nth(12).click();
@@ -136,8 +130,6 @@ test('TC-39 回花园保住分类与滚动位置', async ({ page }) => {
   await page.getByRole('link', { name: /回花园/ }).click();
   await expect(cards.first()).toBeVisible({ timeout: 15000 });
 
-  // 分类仍为「花朵」选中
-  await expect(page.getByRole('button', { name: '花朵' })).toHaveAttribute('aria-pressed', 'true');
   // 列表滚动位置已恢复（未回到顶部）
   const scrollY = await page.evaluate(() => window.scrollY);
   expect(scrollY).toBeGreaterThan(0);
@@ -150,7 +142,7 @@ for (const viewport of [
 ]) {
   test(`TC-40 平板 ${viewport.width}x${viewport.height} 沉浸式适配`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    await enterFirstFlowerDetail(page);
+    await enterFirstPlantDetail(page);
 
     await expect(page.locator('.part-img')).toBeVisible();
 

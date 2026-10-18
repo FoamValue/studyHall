@@ -1,0 +1,36 @@
+{
+  "id": "geranium-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 36,
+  "name": {
+    "zh": "天竺葵花叶",
+    "pinyin": "tiān zhú kuí huā yè",
+    "en": "Geranium Leaf",
+    "ipa": "/dʒəˈreɪniəm/ liːf",
+    "audioZh": "/audio/geranium-leaf-zh.m4a",
+    "audioEn": "/audio/geranium-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/geranium-leaf.jpg"
+        }
+      ],
+      "description": "天竺葵叶子圆圆的，边上有波浪。摸一摸有股特别的味道，小蚊子不喜欢。",
+      "allusion": {
+        "text": "天竺葵叶圆圆的，边上有波浪，闻着有特别的味道。",
+        "explain": "天竺葵的叶子圆圆的，边边像波浪，闻一闻有股特别的味道。"
+      }
+    }
+  }
+}

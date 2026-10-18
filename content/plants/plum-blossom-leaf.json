@@ -1,0 +1,36 @@
+{
+  "id": "plum-blossom-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 84,
+  "name": {
+    "zh": "梅花叶",
+    "pinyin": "méi huā yè",
+    "en": "Plum Blossom Leaf",
+    "ipa": "/plʌm ˈblɒsəm/ liːf",
+    "audioZh": "/audio/plum-blossom-leaf-zh.m4a",
+    "audioEn": "/audio/plum-blossom-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/plum-blossom-leaf.jpg"
+        }
+      ],
+      "description": "梅叶圆圆的，两头尖尖。春天花谢了才长出来，绿得发亮。",
+      "allusion": {
+        "text": "梅叶圆圆的，两头尖尖，春天花谢了才长出来。",
+        "explain": "梅花的叶子圆圆的，两头尖尖，春天花谢了以后才长出来。"
+      }
+    }
+  }
+}

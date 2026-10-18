@@ -1,0 +1,36 @@
+{
+  "id": "peony-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 79,
+  "name": {
+    "zh": "牡丹花叶",
+    "pinyin": "mǔ dān huā yè",
+    "en": "Peony Leaf",
+    "ipa": "/ˈpiːəni/ liːf",
+    "audioZh": "/audio/peony-leaf-zh.m4a",
+    "audioEn": "/audio/peony-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peony-leaf.jpg"
+        }
+      ],
+      "description": "牡丹叶分成好多小片，像小手掌。绿绿的，托着大大的花。",
+      "allusion": {
+        "text": "牡丹叶分成好多小片，像小手掌，托着大大的花。",
+        "explain": "牡丹的叶子分成好多小片，像小手掌，绿绿地托着大大的花。"
+      }
+    }
+  }
+}

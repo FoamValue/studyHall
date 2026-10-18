@@ -1,0 +1,36 @@
+{
+  "id": "lavender-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 50,
+  "name": {
+    "zh": "薰衣草花叶",
+    "pinyin": "xūn yī cǎo huā yè",
+    "en": "Lavender Leaf",
+    "ipa": "/ˈlævəndər/ liːf",
+    "audioZh": "/audio/lavender-leaf-zh.m4a",
+    "audioEn": "/audio/lavender-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lavender-leaf.jpg"
+        }
+      ],
+      "description": "薰衣草叶子细细长长，灰绿灰绿的。摸一摸，手上也留着香味。",
+      "allusion": {
+        "text": "薰衣草叶细细长长，灰绿灰绿，摸完手上留香。",
+        "explain": "薰衣草的叶子又细又长，灰绿灰绿，摸一摸，手上也留下香味。"
+      }
+    }
+  }
+}

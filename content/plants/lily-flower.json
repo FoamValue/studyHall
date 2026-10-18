@@ -1,0 +1,37 @@
+{
+  "id": "lily-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 53,
+  "name": {
+    "zh": "百合花",
+    "pinyin": "bǎi hé huā",
+    "en": "Lily Flower",
+    "ipa": "/ˈlɪli/ ˈflaʊər",
+    "audioZh": "/audio/lily-flower-zh.m4a",
+    "audioEn": "/audio/lily-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lily-flower.jpg"
+        }
+      ],
+      "description": "百合花像小喇叭，白白的香香的。花瓣卷卷的往外翻，中间立着几根小天线。",
+      "allusion": {
+        "text": "百年好合",
+        "source": "成语",
+        "explain": "百合花的名字里藏着祝福，祝大家一辈子和和美美在一起。"
+      }
+    }
+  }
+}

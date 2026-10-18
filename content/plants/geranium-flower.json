@@ -1,0 +1,36 @@
+{
+  "id": "geranium-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 35,
+  "name": {
+    "zh": "天竺葵花",
+    "pinyin": "tiān zhú kuí huā",
+    "en": "Geranium Flower",
+    "ipa": "/dʒəˈreɪniəm/ ˈflaʊər",
+    "audioZh": "/audio/geranium-flower-zh.m4a",
+    "audioEn": "/audio/geranium-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/geranium-flower.jpg"
+        }
+      ],
+      "description": "天竺葵开成一个个小花球，红的粉的像棒棒糖。它最喜欢晒太阳。",
+      "allusion": {
+        "text": "天竺葵的花挤成一个个小花球，最爱晒太阳，不怕晒。",
+        "explain": "天竺葵的花一球一球的，太阳越大，它开得越有精神。"
+      }
+    }
+  }
+}

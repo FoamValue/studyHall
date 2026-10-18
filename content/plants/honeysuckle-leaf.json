@@ -1,0 +1,36 @@
+{
+  "id": "honeysuckle-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 42,
+  "name": {
+    "zh": "金银花叶",
+    "pinyin": "jīn yín huā yè",
+    "en": "Honeysuckle Leaf",
+    "ipa": "/ˈhʌniˌsʌkəl/ liːf",
+    "audioZh": "/audio/honeysuckle-leaf-zh.m4a",
+    "audioEn": "/audio/honeysuckle-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/honeysuckle-leaf.jpg"
+        }
+      ],
+      "description": "金银花叶子一对一对长着，像一对对好朋友。叶子软软的，绿绿的。",
+      "allusion": {
+        "text": "金银花叶一对一对长着，像一对对好朋友，软软的。",
+        "explain": "金银花的叶子一对一对长在一起，像好朋友手拉手，软软绿绿的。"
+      }
+    }
+  }
+}

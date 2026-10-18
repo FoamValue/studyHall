@@ -1,0 +1,36 @@
+{
+  "id": "pomelo-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 87,
+  "name": {
+    "zh": "柚子花叶",
+    "pinyin": "yòu zi huā yè",
+    "en": "Pomelo Leaf",
+    "ipa": "/ˈpɑːməloʊ/ liːf",
+    "audioZh": "/audio/pomelo-leaf-zh.m4a",
+    "audioEn": "/audio/pomelo-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pomelo-leaf.jpg"
+        }
+      ],
+      "description": "柚子叶子大大的，像带翅膀的小爱心。揉一揉有清香味。",
+      "allusion": {
+        "text": "柚子叶大大的，像带翅膀的小爱心，揉一揉有清香。",
+        "explain": "柚子的叶子很大，像带翅膀的小爱心，揉一揉就有清香味。"
+      }
+    }
+  }
+}

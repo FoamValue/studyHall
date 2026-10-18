@@ -15,16 +15,13 @@ vi.mock('../api/client', () => ({
 }));
 
 const CATEGORIES = [
-  { code: 'flower', nameZh: '花朵', pinyin: 'huā duǒ', nameEn: 'Flower', order: 1, section: 'plant' },
-  { code: 'leaf', nameZh: '树叶', pinyin: 'shù yè', nameEn: 'Leaf', order: 2, section: 'plant' },
-  { code: 'fruit', nameZh: '果实', pinyin: 'guǒ shí', nameEn: 'Fruit', order: 3, section: 'plant' },
-  // Sprint 9：接口新增板块分类，二级筛选（植物）必须过滤掉它们
-  { code: 'animal', nameZh: '动物', pinyin: 'dòng wù', nameEn: 'Animal', order: 4, section: 'animal' },
-  { code: 'insect', nameZh: '昆虫', pinyin: 'kūn chóng', nameEn: 'Insect', order: 5, section: 'insect' },
-  { code: 'dinosaur', nameZh: '恐龙', pinyin: 'kǒng lóng', nameEn: 'Dinosaur', order: 6, section: 'dinosaur' },
-  // Sprint 15：接口新增两个认知启蒙板块分类（二级植物筛选须继续过滤掉）
-  { code: 'letter', nameZh: '英文字母', pinyin: 'yīng wén zì mǔ', nameEn: 'Letter', order: 7, section: 'letter' },
-  { code: 'pinyin', nameZh: '汉语拼音', pinyin: 'hàn yǔ pīn yīn', nameEn: 'Pinyin', order: 8, section: 'pinyin' },
+  // Sprint 17：植物取消二级分类，合并为单一 plant 分类
+  { code: 'plant', nameZh: '植物', pinyin: 'zhí wù', nameEn: 'Plant', order: 1, section: 'plant' },
+  { code: 'animal', nameZh: '动物', pinyin: 'dòng wù', nameEn: 'Animal', order: 2, section: 'animal' },
+  { code: 'insect', nameZh: '昆虫', pinyin: 'kūn chóng', nameEn: 'Insect', order: 3, section: 'insect' },
+  { code: 'dinosaur', nameZh: '恐龙', pinyin: 'kǒng lóng', nameEn: 'Dinosaur', order: 4, section: 'dinosaur' },
+  { code: 'letter', nameZh: '英文字母', pinyin: 'yīng wén zì mǔ', nameEn: 'Letter', order: 5, section: 'letter' },
+  { code: 'pinyin', nameZh: '汉语拼音', pinyin: 'hàn yǔ pīn yīn', nameEn: 'Pinyin', order: 6, section: 'pinyin' },
 ];
 
 // 与后端契约一致的卡片结构：{id, name, coverImage, parts}
@@ -35,8 +32,9 @@ const card = (id, zh, pinyin, en, cover, parts) => ({
   parts,
 });
 
-const SUNFLOWER_CARD = card('sunflower', '向日葵', 'xiàng rì kuí', 'Sunflower', '/images/plants/sunflower-flower.jpg', ['flower', 'leaf', 'fruit']);
-const GINKGO_CARD = card('ginkgo', '银杏', 'yín xìng', 'Ginkgo', '/images/plants/ginkgo-leaf.jpg', ['leaf', 'fruit']);
+// Sprint 17：植物拆分为单部位条目，每条仅一个部位
+const SUNFLOWER_CARD = card('sunflower-flower', '向日葵花', 'xiàng rì kuí huā', 'Sunflower', '/images/plants/sunflower-flower.jpg', ['flower']);
+const GINKGO_CARD = card('ginkgo-leaf', '银杏叶', 'yín xìng yè', 'Ginkgo Leaf', '/images/plants/ginkgo-leaf.jpg', ['leaf']);
 const PANDA_CARD = card('giant-panda', '大熊猫', 'dà xióng māo', 'Giant Panda', '/images/animals/giant-panda.jpg', ['animal']);
 
 const renderHome = () =>
@@ -60,59 +58,43 @@ afterEach(() => {
 });
 
 describe('HomePage（TC-11 ~ TC-13）', () => {
-  it('TC-11 首页渲染分类按钮：全部/花朵/树叶/果实 四钮可见', async () => {
+  it('TC-11 植物板块无二级筛选条（Sprint 17：取消花朵/树叶/果实分类）', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
     renderHome();
 
-    expect(await screen.findByRole('button', { name: '全部' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '花朵' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '树叶' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '果实' })).toBeInTheDocument();
-    // Sprint 9：二级筛选只取植物板块分类，板块分类（动物/昆虫/恐龙）不得出现在筛选条内
-    const filterGroup = screen.getByRole('group', { name: '植物分类筛选' });
-    expect(filterGroup.querySelectorAll('.filter-btn')).toHaveLength(4);
-    for (const board of ['动物', '昆虫', '恐龙']) {
-      expect(within(filterGroup).queryByRole('button', { name: board })).not.toBeInTheDocument();
-    }
-  });
-
-  it('TC-12 点击分类触发对应 category 请求并渲染过滤后的卡片列表', async () => {
-    const user = userEvent.setup();
-    getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
-    getPlants.mockImplementation((category) =>
-      category === 'flower' ? Promise.resolve([SUNFLOWER_CARD]) : Promise.resolve([])
-    );
-    renderHome();
-
-    // 初始「全部」列表渲染两株植物
-    expect(await screen.findByText('向日葵')).toBeInTheDocument();
-    expect(screen.getByText('银杏')).toBeInTheDocument();
-
-    await user.click(screen.getByRole('button', { name: '花朵' }));
-
-    // 过滤后只剩向日葵，且请求带上 category 参数（Sprint 8：花朵分类下标题派生为「向日葵花」）
+    // 植物板块不再渲染分类筛选按钮（全部/花朵/树叶/果实）
     expect(await screen.findByText('向日葵花')).toBeInTheDocument();
-    expect(screen.queryByText('银杏')).not.toBeInTheDocument();
-    expect(getPlants).toHaveBeenLastCalledWith('flower');
+    expect(screen.queryByRole('button', { name: '全部' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '花朵' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '树叶' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '果实' })).not.toBeInTheDocument();
   });
 
-  it('TC-13 空分类显示空态文案「这个分类还没有植物哦」', async () => {
-    const user = userEvent.setup();
-    getPlantsBySection.mockResolvedValue([]);
-    getPlants.mockResolvedValue([]);
+  it('TC-12 植物板块统一走 section 请求，无 category 筛选', async () => {
+    getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
     renderHome();
 
-    await user.click(await screen.findByRole('button', { name: '树叶' }));
+    // 初始「植物」列表渲染两条
+    expect(await screen.findByText('向日葵花')).toBeInTheDocument();
+    expect(screen.getByText('银杏叶')).toBeInTheDocument();
+    // 植物板块只用 getPlantsBySection('plant')，不调用 getPlants(category)
+    expect(getPlantsBySection).toHaveBeenCalledWith('plant');
+    expect(getPlants).not.toHaveBeenCalled();
+  });
 
-    expect(await screen.findByText('这个分类还没有植物哦')).toBeInTheDocument();
-    expect(screen.queryByText('向日葵')).not.toBeInTheDocument();
+  it('TC-13 空板块显示空态文案「这里还没有植物哦」', async () => {
+    getPlantsBySection.mockResolvedValue([]);
+    renderHome();
+
+    expect(await screen.findByText('这里还没有植物哦')).toBeInTheDocument();
+    expect(screen.queryByText('向日葵花')).not.toBeInTheDocument();
   });
 
   it('TC-20 卡片图片带 loading="lazy"', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD]);
     renderHome();
 
-    const img = await screen.findByAltText('向日葵');
+    const img = await screen.findByAltText('向日葵花');
     expect(img).toHaveAttribute('loading', 'lazy');
   });
 
@@ -129,13 +111,10 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     expect(document.querySelectorAll('.plant-card')).toHaveLength(100);
   });
 
-  it('TC-25 触控目标：分类按钮使用 .filter-btn，且样式表 min-height ≥ 44px', async () => {
+  it('TC-25 触控目标：样式表 .filter-btn 的 min-height ≥ 44px（部位/板块按钮共用）', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD]);
     renderHome();
-
-    // 结构断言：分类按钮全部带 filter-btn 类（部位按钮复用同类，见 PartSwitcher）
-    expect(await screen.findByRole('button', { name: '全部' })).toHaveClass('filter-btn');
-    expect(screen.getByRole('button', { name: '花朵' })).toHaveClass('filter-btn');
+    await screen.findByText('向日葵花');
 
     // 样式表规则断言：.filter-btn 的 min-height ≥ 44px（jsdom 不计算级联样式，直接读源文件）
     const css = readFileSync('src/styles.css', 'utf-8');
@@ -144,12 +123,9 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
     expect(minHeight).toBeGreaterThanOrEqual(44);
   });
 
-  it('TC-12b 点击卡片进详情时携带当前板块/分类与列表快照（Sprint 4 新增）', async () => {
+  it('TC-12b 点击卡片进详情时携带当前板块与列表快照（Sprint 4 新增；Sprint 17 无 category）', async () => {
     const user = userEvent.setup();
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
-    getPlants.mockImplementation((category) =>
-      category === 'flower' ? Promise.resolve([SUNFLOWER_CARD]) : Promise.resolve([])
-    );
 
     // 探针路由：把详情页收到的 location.state 渲染成可断言文本
     const StateProbe = () => {
@@ -168,18 +144,17 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
       </MemoryRouter>
     );
 
-    await user.click(await screen.findByRole('button', { name: '花朵' }));
-    await user.click(await screen.findByRole('link', { name: /向日葵/ }));
+    await user.click(await screen.findByRole('link', { name: /向日葵花/ }));
 
-    // 详情页拿到 section=plant、category=flower 及其列表快照（1 株）
-    expect(await screen.findByTestId('probe')).toHaveTextContent('plant|flower|1');
+    // 详情页拿到 section=plant 及其列表快照（2 条），无 category（Sprint 17 取消二级筛选）
+    expect(await screen.findByTestId('probe')).toHaveTextContent('plant|undefined|2');
   });
 
   it('TC-45e 首页不渲染朗读喇叭（Sprint 5 新增）', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD, GINKGO_CARD]);
     renderHome();
 
-    expect(await screen.findByText('向日葵')).toBeInTheDocument();
+    expect(await screen.findByText('向日葵花')).toBeInTheDocument();
     expect(document.querySelectorAll('.speak-btn')).toHaveLength(0);
   });
 
@@ -240,26 +215,25 @@ describe('首页板块导航与站点改名（Sprint 9：TC-79 ~ TC-81、TC-80b�
     expect(cardEl.querySelector('.plant-card-en')).toBeNull();
   });
 
-  it('TC-81 切换板块触发 section 请求；二级筛选仅植物板块渲染', async () => {
+  it('TC-81 切换板块触发 section 请求（Sprint 17：植物无二级筛选）', async () => {
     const user = userEvent.setup();
     getPlantsBySection.mockImplementation((section) =>
       section === 'animal' ? Promise.resolve([PANDA_CARD]) : Promise.resolve([SUNFLOWER_CARD])
     );
     renderHome();
 
-    // 默认植物板块：二级分类筛选渲染
-    expect(await screen.findByRole('group', { name: '植物分类筛选' })).toBeInTheDocument();
+    // 默认植物板块：渲染植物列表，无二级筛选
+    expect(await screen.findByText('向日葵花')).toBeInTheDocument();
+    expect(screen.queryByRole('group', { name: '植物分类筛选' })).not.toBeInTheDocument();
 
-    // 切到动物板块：请求 ?section=animal，二级筛选消失，渲染板块列表
+    // 切到动物板块：请求 ?section=animal，渲染板块列表
     await user.click(screen.getByRole('button', { name: '动物' }));
     expect(await screen.findByText('大熊猫')).toBeInTheDocument();
     expect(getPlantsBySection).toHaveBeenLastCalledWith('animal');
-    expect(screen.queryByRole('group', { name: '植物分类筛选' })).not.toBeInTheDocument();
 
-    // 切回植物板块：二级筛选恢复且回到「全部」，请求 ?section=plant
+    // 切回植物板块：请求 ?section=plant
     await user.click(screen.getByRole('button', { name: '植物' }));
-    expect(await screen.findByRole('group', { name: '植物分类筛选' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '全部' })).toHaveAttribute('aria-pressed', 'true');
+    expect(await screen.findByText('向日葵花')).toBeInTheDocument();
     expect(getPlantsBySection).toHaveBeenLastCalledWith('plant');
   });
 
@@ -289,40 +263,18 @@ describe('首页板块导航与站点改名（Sprint 9：TC-79 ~ TC-81、TC-80b�
   });
 });
 
-describe('卡片标题按分类派生 deriveCardTitle（Sprint 8：TC-64）', () => {
+describe('卡片标题 deriveCardTitle（Sprint 17：植物拆分后 name.zh 即展示名）', () => {
   const plant = (id, zh) => ({ id, name: { zh } });
 
-  it('TC-64a 花朵分类：不含「花」的名+「花」，已含「花」保持原名', () => {
-    expect(deriveCardTitle(plant('apple', '苹果'), 'flower')).toBe('苹果花');
-    expect(deriveCardTitle(plant('sunflower', '向日葵'), 'flower')).toBe('向日葵花');
-    expect(deriveCardTitle(plant('rose', '玫瑰'), 'flower')).toBe('玫瑰花');
-    expect(deriveCardTitle(plant('dandelion', '蒲公英'), 'flower')).toBe('蒲公英花');
-    // 名字已含「花」→ 保持原名
-    expect(deriveCardTitle(plant('peach-blossom', '桃花'), 'flower')).toBe('桃花');
-    expect(deriveCardTitle(plant('cherry', '樱花'), 'flower')).toBe('樱花');
-    expect(deriveCardTitle(plant('chrysanthemum', '菊花'), 'flower')).toBe('菊花');
-    expect(deriveCardTitle(plant('azalea', '杜鹃花'), 'flower')).toBe('杜鹃花');
-  });
-
-  it('TC-64b 树叶分类：一律 名称+「叶」', () => {
-    expect(deriveCardTitle(plant('apple', '苹果'), 'leaf')).toBe('苹果叶');
-    expect(deriveCardTitle(plant('maple', '枫树'), 'leaf')).toBe('枫树叶');
-    expect(deriveCardTitle(plant('ginkgo', '银杏'), 'leaf')).toBe('银杏叶');
-    expect(deriveCardTitle(plant('dandelion', '蒲公英'), 'leaf')).toBe('蒲公英叶');
-  });
-
-  it('TC-64c 果实分类：银杏/松树/荷花 特例，其余保持原名', () => {
-    expect(deriveCardTitle(plant('ginkgo', '银杏'), 'fruit')).toBe('白果');
-    expect(deriveCardTitle(plant('pine', '松树'), 'fruit')).toBe('松果');
-    expect(deriveCardTitle(plant('lotus', '荷花'), 'fruit')).toBe('莲蓬');
-    expect(deriveCardTitle(plant('apple', '苹果'), 'fruit')).toBe('苹果');
-    expect(deriveCardTitle(plant('banana', '香蕉'), 'fruit')).toBe('香蕉');
-  });
-
-  it('TC-64d 「全部」/未知分类：保持原名', () => {
-    expect(deriveCardTitle(plant('apple', '苹果'), 'all')).toBe('苹果');
-    expect(deriveCardTitle(plant('peach-blossom', '桃花'), 'all')).toBe('桃花');
-    expect(deriveCardTitle(plant('apple', '苹果'), undefined)).toBe('苹果');
+  it('TC-64 直接返回条目 name.zh，不再按分类派生', () => {
+    // 植物拆分后每条 name.zh 已是最终展示名（桃子/桃花/桃花叶等）
+    expect(deriveCardTitle(plant('peach-fruit', '桃子'))).toBe('桃子');
+    expect(deriveCardTitle(plant('peach-flower', '桃花'))).toBe('桃花');
+    expect(deriveCardTitle(plant('peach-leaf', '桃花叶'))).toBe('桃花叶');
+    expect(deriveCardTitle(plant('ginkgo-fruit', '白果'))).toBe('白果');
+    // 其他板块同理
+    expect(deriveCardTitle(plant('giant-panda', '大熊猫'))).toBe('大熊猫');
+    expect(deriveCardTitle(plant('letter-a', 'Aa'))).toBe('Aa');
   });
 });
 
@@ -350,19 +302,17 @@ describe('首页增量加载与总量提示（Sprint 10：TC-106 ~ TC-108、TC-1
   const cardCount = () => document.querySelectorAll('.plant-card').length;
   const flush = async () => act(async () => {});
 
-  it('TC-106 「共 N 种」口径：全部 40 / 分类 7 / 板块 10', async () => {
+  it('TC-106 「共 N 种」口径：植物板块 40 / 动物板块 10（Sprint 17：无分类筛选）', async () => {
     const user = userEvent.setup();
     getPlantsBySection.mockImplementation((section) =>
       section === 'animal' ? Promise.resolve(makeCards(10)) : Promise.resolve(makeCards(40))
     );
-    getPlants.mockResolvedValue(makeCards(7));
     renderHome();
 
+    // 默认植物板块 40 条
     expect(await screen.findByText('共 40 种')).toBeInTheDocument();
 
-    await user.click(screen.getByRole('button', { name: '花朵' }));
-    expect(await screen.findByText('共 7 种')).toBeInTheDocument();
-
+    // 切到动物板块 10 条
     await user.click(screen.getByRole('button', { name: '动物' }));
     expect(await screen.findByText('共 10 种')).toBeInTheDocument();
   });

@@ -1,0 +1,36 @@
+{
+  "id": "forget-me-not-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 33,
+  "name": {
+    "zh": "勿忘我花叶",
+    "pinyin": "wù wàng wǒ huā yè",
+    "en": "Forget-me-not Leaf",
+    "ipa": "/fərˈɡet miː nɑːt/ liːf",
+    "audioZh": "/audio/forget-me-not-leaf-zh.m4a",
+    "audioEn": "/audio/forget-me-not-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/forget-me-not-leaf.jpg"
+        }
+      ],
+      "description": "勿忘我叶子小小的，上面有细绒毛。灰绿灰绿的，真温柔。",
+      "allusion": {
+        "text": "勿忘我叶小小的，灰绿灰绿的，上面有细绒毛。",
+        "explain": "勿忘我的叶子小小的，灰灰绿绿，上面长着一层软软的细毛。"
+      }
+    }
+  }
+}

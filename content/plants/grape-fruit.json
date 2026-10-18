@@ -1,0 +1,37 @@
+{
+  "id": "grape-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 37,
+  "name": {
+    "zh": "葡萄",
+    "pinyin": "pú táo",
+    "en": "Grape",
+    "ipa": "/ɡreɪp/",
+    "audioZh": "/audio/grape-fruit-zh.m4a",
+    "audioEn": "/audio/grape-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/grape-fruit.jpg"
+        }
+      ],
+      "description": "葡萄一颗一颗圆溜溜，紫紫的像小宝石。一大串挂在一起，甜甜的汁水多。",
+      "allusion": {
+        "text": "葡萄美酒夜光杯，欲饮琵琶马上催。",
+        "source": "王翰《凉州词》",
+        "explain": "甜甜的葡萄能酿出美酒，倒进亮晶晶的杯子里，真香呀。"
+      }
+    }
+  }
+}

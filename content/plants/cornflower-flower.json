@@ -1,0 +1,36 @@
+{
+  "id": "cornflower-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 22,
+  "name": {
+    "zh": "矢车菊花",
+    "pinyin": "shǐ chē jú huā",
+    "en": "Cornflower",
+    "ipa": "/ˈkɔːrnflaʊər/ ˈflaʊər",
+    "audioZh": "/audio/cornflower-flower-zh.m4a",
+    "audioEn": "/audio/cornflower-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cornflower-flower.jpg"
+        }
+      ],
+      "description": "矢车菊蓝蓝的，花瓣像一排小齿轮。它是田野里的蓝色小星星。",
+      "allusion": {
+        "text": "矢车菊蓝蓝的，是外国的国花，田野里像蓝色小星星。",
+        "explain": "矢车菊蓝蓝的小花，长在麦田边，像撒了一地蓝星星。"
+      }
+    }
+  }
+}

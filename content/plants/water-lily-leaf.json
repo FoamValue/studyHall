@@ -1,0 +1,36 @@
+{
+  "id": "water-lily-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 100,
+  "name": {
+    "zh": "睡莲花叶",
+    "pinyin": "shuì lián huā yè",
+    "en": "Water Lily Leaf",
+    "ipa": "/ˈwɔːtər ˈlɪli/ liːf",
+    "audioZh": "/audio/water-lily-leaf-zh.m4a",
+    "audioEn": "/audio/water-lily-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/water-lily-leaf.jpg"
+        }
+      ],
+      "description": "睡莲叶子圆圆的，像绿色的小圆盘。它漂在水上，给小青蛙当小床。",
+      "allusion": {
+        "text": "睡莲叶圆圆的，像绿色的小圆盘，漂在水上。",
+        "explain": "睡莲的叶子圆圆的，像绿色的小盘子，漂在水面上，给小青蛙当床。"
+      }
+    }
+  }
+}

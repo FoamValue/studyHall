@@ -1,0 +1,37 @@
+{
+  "id": "pear-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 77,
+  "name": {
+    "zh": "梨花",
+    "pinyin": "lí huā",
+    "en": "Pear Flower",
+    "ipa": "/per/ ˈflaʊər",
+    "audioZh": "/audio/pear-flower-zh.m4a",
+    "audioEn": "/audio/pear-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pear-flower.jpg"
+        }
+      ],
+      "description": "梨花白白的，五片小花瓣。春天开满一树，像落了一层雪。",
+      "allusion": {
+        "text": "梨花淡白柳深青，柳絮飞时花满城。",
+        "source": "苏轼《东栏梨花》",
+        "explain": "梨花白白的，一开满城都是，像给春天铺了一层雪。"
+      }
+    }
+  }
+}

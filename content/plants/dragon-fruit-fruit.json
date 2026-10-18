@@ -1,0 +1,36 @@
+{
+  "id": "dragon-fruit-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 27,
+  "name": {
+    "zh": "火龙果",
+    "pinyin": "huǒ lóng guǒ",
+    "en": "Dragon Fruit",
+    "ipa": "/ˈdræɡən fruːt/",
+    "audioZh": "/audio/dragon-fruit-fruit-zh.m4a",
+    "audioEn": "/audio/dragon-fruit-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dragon-fruit-fruit.jpg"
+        }
+      ],
+      "description": "火龙果穿着粉红的外衣，还长着绿色小鳞片。里面白白的果肉撒满小黑籽。",
+      "allusion": {
+        "text": "火龙果是仙人掌开的花，结出来的果子。",
+        "explain": "原来火龙果的爸爸妈妈是仙人掌，仙人掌开完花就结出火龙果。"
+      }
+    }
+  }
+}

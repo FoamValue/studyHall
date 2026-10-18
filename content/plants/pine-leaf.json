@@ -1,0 +1,36 @@
+{
+  "id": "pine-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 82,
+  "name": {
+    "zh": "松树花叶",
+    "pinyin": "sōng shù huā yè",
+    "en": "Pine Leaf",
+    "ipa": "/paɪn/ liːf",
+    "audioZh": "/audio/pine-leaf-zh.m4a",
+    "audioEn": "/audio/pine-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pine-leaf.jpg"
+        }
+      ],
+      "description": "松叶细细尖尖，像一根根小针，也叫松针。冬天也不掉，一直是绿绿的。",
+      "allusion": {
+        "text": "松针细细尖尖像小针，冬天也不掉，一直绿绿的。",
+        "explain": "松树的叶子像一根根小针，所以叫松针，冬天也不掉，一直绿着。"
+      }
+    }
+  }
+}

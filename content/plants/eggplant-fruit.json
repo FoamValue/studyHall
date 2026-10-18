@@ -1,0 +1,36 @@
+{
+  "id": "eggplant-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 29,
+  "name": {
+    "zh": "茄子",
+    "pinyin": "qié zi",
+    "en": "Eggplant",
+    "ipa": "/ˈeɡplænt/",
+    "audioZh": "/audio/eggplant-fruit-zh.m4a",
+    "audioEn": "/audio/eggplant-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/eggplant-fruit.jpg"
+        }
+      ],
+      "description": "茄子紫紫的、亮亮的，像穿紫袍的小胖子。煮熟了软软的。",
+      "allusion": {
+        "text": "茄子和番茄、辣椒，原来是一家人。",
+        "explain": "茄子、番茄和辣椒长得不一样，可它们是同一个小家族里的亲戚。"
+      }
+    }
+  }
+}

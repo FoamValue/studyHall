@@ -1,0 +1,36 @@
+{
+  "id": "cucumber-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "黄瓜花叶",
+    "pinyin": "huáng gua huā yè",
+    "en": "Cucumber Leaf",
+    "ipa": "/ˈkjuːkʌmbər/ liːf",
+    "audioZh": "/audio/cucumber-leaf-zh.m4a",
+    "audioEn": "/audio/cucumber-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cucumber-leaf.jpg"
+        }
+      ],
+      "description": "黄瓜叶子像绿色的小爱心，边上有小角。叶子毛毛的，大大的。",
+      "allusion": {
+        "text": "黄瓜叶像绿色的小爱心，边上有小角，毛毛的。",
+        "explain": "黄瓜的叶子像绿色的小心心，边上翘起小角，上面毛茸茸的。"
+      }
+    }
+  }
+}

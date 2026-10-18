@@ -1,0 +1,36 @@
+{
+  "id": "mango-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 58,
+  "name": {
+    "zh": "芒果",
+    "pinyin": "máng guǒ",
+    "en": "Mango",
+    "ipa": "/ˈmæŋɡoʊ/",
+    "audioZh": "/audio/mango-fruit-zh.m4a",
+    "audioEn": "/audio/mango-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mango-fruit.jpg"
+        }
+      ],
+      "description": "芒果黄黄的，像弯弯的小月亮。果肉软软的，甜甜的，香香的。",
+      "allusion": {
+        "text": "芒果又香又甜，被叫做热带果王。",
+        "explain": "芒果长在热热的南方，果肉软软甜甜，大家叫它热带果王。"
+      }
+    }
+  }
+}

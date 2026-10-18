@@ -13,8 +13,8 @@ test('TC-89 站点标题改名为「认知小图鉴」', async ({ page }) => {
   await expect(page.getByText('自然小图鉴')).toHaveCount(0);
 });
 
-// TC-90 板块导航两组共 8 钮（自然认知 4 + 认知启蒙 4）；仅植物板块渲染二级分类筛选
-test('TC-90 板块导航八钮两组且二级筛选仅植物板块', async ({ page }) => {
+// TC-90 板块导航两组共 8 钮（自然认知 4 + 认知启蒙 4）；植物板块无二级分类筛选（Sprint 17）
+test('TC-90 板块导航八钮两组且植物无二级筛选', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
   // Sprint 15：4 → 8 钮，两组标题可见
@@ -25,14 +25,13 @@ test('TC-90 板块导航八钮两组且二级筛选仅植物板块', async ({ pa
   for (const label of ['植物', '动物', '昆虫', '恐龙', '英文字母', '汉语拼音', '数字', '颜色']) {
     await expect(nav.getByRole('button', { name: label, exact: true })).toBeVisible();
   }
-  // 默认植物板块：二级分类筛选可见，四钮（全部/花朵/树叶/果实），不含板块分类
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await expect(filterGroup.locator('.filter-btn')).toHaveCount(4);
-  await expect(filterGroup.getByRole('button', { name: '动物' })).toHaveCount(0);
-
-  // 切到动物板块：二级筛选消失，渲染 50 种动物卡片（Sprint 14 扩容：30 → 50）
-  await nav.getByRole('button', { name: '动物' }).click();
+  // Sprint 17：植物板块无二级分类筛选
   await expect(page.getByRole('group', { name: '植物分类筛选' })).toHaveCount(0);
+  // 植物板块 206 条（花 53 + 叶 100 + 果 53）
+  await loadAllCards(page, 206);
+
+  // 切到动物板块：渲染 50 种动物卡片（Sprint 14 扩容：30 → 50）
+  await nav.getByRole('button', { name: '动物' }).click();
   await loadAllCards(page, 50);
 
   // 昆虫 / 恐龙板块同样平铺 50 种
@@ -54,16 +53,16 @@ test('TC-91a 动物单图详情无部位切换', async ({ page }) => {
   await expect(page.getByRole('region', { name: '小知识' })).toBeVisible();
 });
 
-// TC-91b 植物详情仍保留部位切换（单图分支不误伤），横竖屏均正常
+// TC-91b 植物详情现为单图模式（Sprint 17）：无部位切换，横竖屏均正常
 for (const viewport of [
   { width: 1024, height: 768 },
   { width: 768, height: 1024 },
 ]) {
-  test(`TC-91b 植物详情 ${viewport.width}x${viewport.height} 保留部位切换`, async ({ page }) => {
+  test(`TC-91b 植物详情 ${viewport.width}x${viewport.height} 单图无部位切换`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    await page.goto('/plants/apple');
-    await expect(page.locator('.detail-zh')).toHaveText('苹果');
-    await expect(page.locator('[role="tab"]')).toHaveCount(3);
+    await page.goto('/plants/apple-flower');
+    await expect(page.locator('.detail-zh')).toHaveText('苹果花');
+    await expect(page.locator('[role="tab"]')).toHaveCount(0);
     await expect(page.locator('.part-img')).toBeVisible();
   });
 }
@@ -111,11 +110,11 @@ test('TC-94 板块列表顺序稳定（sort ASC）', async ({ page }) => {
   expect(first[0]).toBe('大熊猫'); // sort=1
 });
 
-// TC-95 植物板块「全部」限定板块内（不混入动物/昆虫/恐龙）
-test('TC-95 植物板块「全部」仅植物条目', async ({ page }) => {
+// TC-95 植物板块仅植物条目（不混入动物/昆虫/恐龙）
+test('TC-95 植物板块仅植物条目', async ({ page }) => {
   await page.goto('/');
-  // Sprint 10（EX-6）：植物「全部」改为增量加载，滚动至全量后再断言恰好 100 张
-  await loadAllCards(page, 100);
+  // Sprint 17：植物 100 株拆为 206 条部位条目
+  await loadAllCards(page, 206);
   await expect(page.locator('.plant-card-zh', { hasText: '大熊猫' })).toHaveCount(0);
   await expect(page.locator('.plant-card-zh', { hasText: '霸王龙' })).toHaveCount(0);
 });

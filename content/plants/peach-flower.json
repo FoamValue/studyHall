@@ -1,0 +1,37 @@
+{
+  "id": "peach-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 75,
+  "name": {
+    "zh": "桃花",
+    "pinyin": "táo huā",
+    "en": "Peach Flower",
+    "ipa": "/piːtʃ/ ˈflaʊər",
+    "audioZh": "/audio/peach-flower-zh.m4a",
+    "audioEn": "/audio/peach-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peach-flower.jpg"
+        }
+      ],
+      "description": "桃花粉粉的，有五个小花瓣。它先开花、后长叶，蜜蜂最爱来玩。",
+      "allusion": {
+        "text": "桃之夭夭，灼灼其华。",
+        "source": "《诗经·桃夭》",
+        "explain": "桃树开花开得又多又亮，粉红粉红的，就像春天在发光。"
+      }
+    }
+  }
+}

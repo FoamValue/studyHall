@@ -1,0 +1,36 @@
+{
+  "id": "honeysuckle-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 41,
+  "name": {
+    "zh": "金银花",
+    "pinyin": "jīn yín huā",
+    "en": "Honeysuckle Flower",
+    "ipa": "/ˈhʌniˌsʌkəl/ ˈflaʊər",
+    "audioZh": "/audio/honeysuckle-flower-zh.m4a",
+    "audioEn": "/audio/honeysuckle-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/honeysuckle-flower.jpg"
+        }
+      ],
+      "description": "金银花开花先白后黄，一根藤上金色银色都有。闻起来香香甜甜的。",
+      "allusion": {
+        "text": "金银花先白后黄，晒干了还能泡成香香的花茶。",
+        "explain": "金银花的花会变颜色，刚开是白的，后来变黄，所以叫金银花。"
+      }
+    }
+  }
+}

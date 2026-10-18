@@ -1,0 +1,37 @@
+{
+  "id": "chinese-rose-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "月季花",
+    "pinyin": "yuè jì huā",
+    "en": "Chinese Rose Flower",
+    "ipa": "/ˌtʃaɪˈniːz roʊz/ ˈflaʊər",
+    "audioZh": "/audio/chinese-rose-flower-zh.m4a",
+    "audioEn": "/audio/chinese-rose-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chinese-rose-flower.jpg"
+        }
+      ],
+      "description": "月季花层层叠叠，红的粉的真漂亮。它差不多每个月都开花，所以叫月季。",
+      "allusion": {
+        "text": "只道花无十日红，此花无日不春风。",
+        "source": "杨万里《腊前月季》",
+        "explain": "别的花开十天就谢了，月季却好像每天都在春风里，月月都能开花。"
+      }
+    }
+  }
+}

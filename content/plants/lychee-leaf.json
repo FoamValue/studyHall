@@ -1,0 +1,36 @@
+{
+  "id": "lychee-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 58,
+  "name": {
+    "zh": "荔枝花叶",
+    "pinyin": "lì zhī huā yè",
+    "en": "Lychee Leaf",
+    "ipa": "/ˈliːtʃiː/ liːf",
+    "audioZh": "/audio/lychee-leaf-zh.m4a",
+    "audioEn": "/audio/lychee-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lychee-leaf.jpg"
+        }
+      ],
+      "description": "荔枝叶子长长的，一对一对排着。新叶子红红的，慢慢变绿。",
+      "allusion": {
+        "text": "荔枝叶长长的，一对一对排着，新叶红红的慢慢变绿。",
+        "explain": "荔枝的叶子又长又绿，一对一对排好队，刚长出的新叶是红红的。"
+      }
+    }
+  }
+}

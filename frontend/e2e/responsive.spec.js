@@ -3,12 +3,10 @@ import { loadAllCards } from './helpers';
 
 // ===== Sprint 6 新增 E2E（TC-48 ~ TC-52）：详情页整屏不滚动（iPad 为基准设备） =====
 
-// 进入「花朵」分类下的第一张卡片详情（先滚动加载全量，再点首张）
-async function enterFirstFlowerDetail(page) {
+// 进入植物板块第一张卡片详情（先滚动加载全量，再点首张）
+async function enterFirstPlantDetail(page) {
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await filterGroup.getByText('花朵').click();
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.locator('.plant-card').first().click();
   await expect(page.locator('.detail-zh')).toBeVisible();
@@ -34,7 +32,7 @@ for (const viewport of [
 ]) {
   test(`TC-48 iPad 横屏 ${viewport.width}x${viewport.height} 沉浸式整屏不滚动`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    await enterFirstFlowerDetail(page);
+    await enterFirstPlantDetail(page);
 
     expect(await pageOverflow(page)).toBeLessThanOrEqual(1);
     expect(await bodyOverflow(page)).toBeLessThanOrEqual(1);
@@ -48,7 +46,7 @@ for (const viewport of [
 ]) {
   test(`TC-49 iPad 竖屏 ${viewport.width}x${viewport.height} 沉浸式整屏不滚动`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    await enterFirstFlowerDetail(page);
+    await enterFirstPlantDetail(page);
 
     expect(await pageOverflow(page)).toBeLessThanOrEqual(1);
     expect(await bodyOverflow(page)).toBeLessThanOrEqual(1);
@@ -58,7 +56,7 @@ for (const viewport of [
 // TC-50 全屏态整屏不滚动，且滚动不改变文档滚动位置
 test('TC-50 全屏态整屏不滚动且滚动不改变文档滚动位置', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
 
   const supported = await page.evaluate(() => Boolean(document.fullscreenEnabled));
   test.skip(!supported, '当前浏览器不支持 Fullscreen API');
@@ -92,7 +90,7 @@ test('TC-50 全屏态整屏不滚动且滚动不改变文档滚动位置', async
 // TC-51 图片完整不裁切且不溢出容器/视口
 test('TC-51 图片完整不裁切且不溢出视口', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
 
   const img = page.locator('.part-img');
   await expect(img).toBeVisible();
@@ -109,7 +107,7 @@ test('TC-51 图片完整不裁切且不溢出视口', async ({ page }) => {
 // TC-52 长文案植物（含典故）不产生页面滚动且文字完整
 test('TC-52 长文案植物（含典故）不产生页面滚动且文字完整', async ({ page }) => {
   await page.setViewportSize({ width: 768, height: 1024 });
-  await page.goto('/plants/azalea');
+  await page.goto('/plants/azalea-flower');
   await expect(page.locator('.detail-zh')).toBeVisible();
 
   expect(await pageOverflow(page)).toBeLessThanOrEqual(1);
@@ -137,7 +135,7 @@ for (const viewport of [
 ]) {
   test(`TC-61 横屏 ${viewport.width}x${viewport.height} 左图右文两栏且无溢出`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    await enterFirstFlowerDetail(page);
+    await enterFirstPlantDetail(page);
 
     // 细节：横屏下 .detail-body 已改为 grid，图片占左栏约 48% 宽（旧规则上限 40%）
     const bodyWidth = (await page.locator('.detail-body').boundingBox()).width;
@@ -157,10 +155,10 @@ for (const viewport of [
   });
 }
 
-// TC-62 横屏长文案植物（azalea）放大图片后文字仍不溢出
-test('TC-62 横屏长文案植物（azalea）图片放大后不溢出', async ({ page }) => {
+// TC-62 横屏长文案植物（杜鹃花）放大图片后文字仍不溢出
+test('TC-62 横屏长文案植物（杜鹃花）图片放大后不溢出', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await page.goto('/plants/azalea');
+  await page.goto('/plants/azalea-flower');
   await expect(page.locator('.detail-zh')).toBeVisible();
 
   expect(await pageOverflow(page)).toBeLessThanOrEqual(1);

@@ -1,0 +1,36 @@
+{
+  "id": "cantaloupe-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 12,
+  "name": {
+    "zh": "哈密瓜",
+    "pinyin": "hā mì guā",
+    "en": "Cantaloupe",
+    "ipa": "/ˈkæntəloʊp/",
+    "audioZh": "/audio/cantaloupe-fruit-zh.m4a",
+    "audioEn": "/audio/cantaloupe-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cantaloupe-fruit.jpg"
+        }
+      ],
+      "description": "哈密瓜圆圆的，皮上有网网花纹。果肉橙橙的，甜得像蜜。",
+      "allusion": {
+        "text": "哈密瓜长在新疆哈密，名字就来自这里。",
+        "explain": "甜甜的哈密瓜出产在新疆哈密，大家就照着地名叫它哈密瓜。"
+      }
+    }
+  }
+}

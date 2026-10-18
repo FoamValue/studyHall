@@ -1,0 +1,36 @@
+{
+  "id": "banana-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "香蕉花叶",
+    "pinyin": "xiāng jiāo huā yè",
+    "en": "Banana Leaf",
+    "ipa": "/bəˈnænə/ liːf",
+    "audioZh": "/audio/banana-leaf-zh.m4a",
+    "audioEn": "/audio/banana-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/banana-leaf.jpg"
+        }
+      ],
+      "description": "香蕉叶又大又长，像大扇子。下雨的时候，小蚂蚁可以躲在下面。",
+      "allusion": {
+        "text": "香蕉叶又大又长，像一把大扇子，能给小蚂蚁当伞。",
+        "explain": "香蕉树的叶子又大又长，像大扇子，下雨时小虫子可以躲在下面。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "cucumber-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 23,
+  "name": {
+    "zh": "黄瓜",
+    "pinyin": "huáng gua",
+    "en": "Cucumber",
+    "ipa": "/ˈkjuːkʌmbər/",
+    "audioZh": "/audio/cucumber-fruit-zh.m4a",
+    "audioEn": "/audio/cucumber-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cucumber-fruit.jpg"
+        }
+      ],
+      "description": "黄瓜绿绿的、长长的，身上有小刺刺。咬一口脆脆的，真清爽。",
+      "allusion": {
+        "text": "黄瓜以前叫胡瓜，后来才改名黄瓜。",
+        "explain": "很久很久以前，黄瓜叫胡瓜，后来人们给它换了个名字叫黄瓜。"
+      }
+    }
+  }
+}

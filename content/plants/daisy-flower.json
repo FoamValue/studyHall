@@ -1,0 +1,36 @@
+{
+  "id": "daisy-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 25,
+  "name": {
+    "zh": "雏菊花",
+    "pinyin": "chú jú huā",
+    "en": "Daisy Flower",
+    "ipa": "/ˈdeɪzi/ ˈflaʊər",
+    "audioZh": "/audio/daisy-flower-zh.m4a",
+    "audioEn": "/audio/daisy-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/daisy-flower.jpg"
+        }
+      ],
+      "description": "雏菊白白的花瓣围着黄黄的花心，像一个小太阳。它矮矮的，开在草地上。",
+      "allusion": {
+        "text": "雏菊白天张开花瓣，天黑就合拢起来，像小太阳睡觉。",
+        "explain": "小小的雏菊，白天晒太阳开花，晚上合上花瓣睡觉觉。"
+      }
+    }
+  }
+}

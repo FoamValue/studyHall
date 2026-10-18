@@ -10,6 +10,9 @@ export async function loadAllCards(page, expectedCount) {
   const sentinel = page.locator('.load-sentinel');
   await expect(cards.first()).toBeVisible({ timeout: 15000 });
 
+  // 切换板块后滚动回顶，避免上一板块的滚动位置导致 IO 哨兵竞态（Sprint 17）
+  await page.evaluate(() => window.scrollTo(0, 0));
+
   const target = expectedCount ?? Infinity;
   for (let i = 0; i < 60; i += 1) {
     const n = await cards.count();

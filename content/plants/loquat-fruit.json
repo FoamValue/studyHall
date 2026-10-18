@@ -1,0 +1,37 @@
+{
+  "id": "loquat-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 54,
+  "name": {
+    "zh": "枇杷",
+    "pinyin": "pí pa",
+    "en": "Loquat",
+    "ipa": "/ˈloʊkwɑːt/",
+    "audioZh": "/audio/loquat-fruit-zh.m4a",
+    "audioEn": "/audio/loquat-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/loquat-fruit.jpg"
+        }
+      ],
+      "description": "枇杷黄黄的、圆圆的，皮上有细细绒毛。果肉软软的，酸酸甜甜。",
+      "allusion": {
+        "text": "东园载酒西园醉，摘尽枇杷一树金。",
+        "source": "戴复古《初夏游张园》",
+        "explain": "初夏的园子里真热闹，枇杷熟了满树金黄，像挂了一树小金子。"
+      }
+    }
+  }
+}

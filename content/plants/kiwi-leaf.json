@@ -1,0 +1,36 @@
+{
+  "id": "kiwi-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 48,
+  "name": {
+    "zh": "猕猴桃花叶",
+    "pinyin": "mí hóu táo huā yè",
+    "en": "Kiwi Leaf",
+    "ipa": "/ˈkiːwiː/ liːf",
+    "audioZh": "/audio/kiwi-leaf-zh.m4a",
+    "audioEn": "/audio/kiwi-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kiwi-leaf.jpg"
+        }
+      ],
+      "description": "猕猴桃叶子大大的，像绿色的小爱心。叶子背面有细细的绒毛。",
+      "allusion": {
+        "text": "猕猴桃叶大大的，像绿色的小爱心，背面有绒毛。",
+        "explain": "猕猴桃的叶子很大，像绿色的小爱心，背面长着一层细细的绒毛。"
+      }
+    }
+  }
+}

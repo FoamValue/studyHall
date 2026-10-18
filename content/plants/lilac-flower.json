@@ -1,0 +1,37 @@
+{
+  "id": "lilac-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 51,
+  "name": {
+    "zh": "丁香花",
+    "pinyin": "dīng xiāng huā",
+    "en": "Lilac Flower",
+    "ipa": "/ˈlaɪlək/ ˈflaʊər",
+    "audioZh": "/audio/lilac-flower-zh.m4a",
+    "audioEn": "/audio/lilac-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lilac-flower.jpg"
+        }
+      ],
+      "description": "丁香花小小的，一串一串开满枝头。紫紫白白的，香气能飘好远好远。",
+      "allusion": {
+        "text": "芭蕉不展丁香结，同向春风各自愁。",
+        "source": "李商隐《代赠》",
+        "explain": "丁香的小花苞紧紧抱着，像打了一个个小结，古人用它来说心里的想念。"
+      }
+    }
+  }
+}

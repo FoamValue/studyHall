@@ -1,0 +1,36 @@
+{
+  "id": "orchid-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 69,
+  "name": {
+    "zh": "蝴蝶兰花",
+    "pinyin": "hú dié lán huā",
+    "en": "Orchid Flower",
+    "ipa": "/ˈɔːrkɪd/ ˈflaʊər",
+    "audioZh": "/audio/orchid-flower-zh.m4a",
+    "audioEn": "/audio/orchid-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/orchid-flower.jpg"
+        }
+      ],
+      "description": "蝴蝶兰的花瓣像一只只彩蝴蝶，停在枝头休息。它能开好久好久。",
+      "allusion": {
+        "text": "蝴蝶兰的花能开两三个月，是花期很长的年宵花。",
+        "explain": "蝴蝶兰的花开得久又好看，过年时人们爱摆一盆在家里。"
+      }
+    }
+  }
+}

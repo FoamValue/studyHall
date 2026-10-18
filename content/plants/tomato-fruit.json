@@ -1,0 +1,36 @@
+{
+  "id": "tomato-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 94,
+  "name": {
+    "zh": "番茄",
+    "pinyin": "fān qié",
+    "en": "Tomato",
+    "ipa": "/təˈmeɪtoʊ/",
+    "audioZh": "/audio/tomato-fruit-zh.m4a",
+    "audioEn": "/audio/tomato-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/tomato-fruit.jpg"
+        }
+      ],
+      "description": "番茄红红的、圆圆的，像小灯笼。咬一口酸酸甜甜，里面还有小籽籽。",
+      "allusion": {
+        "text": "番茄从远方传来，也叫西红柿。",
+        "explain": "番茄原来长在很远的外国，来到我们这里以后，人们又叫它西红柿。"
+      }
+    }
+  }
+}

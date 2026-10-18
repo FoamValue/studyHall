@@ -1,0 +1,37 @@
+{
+  "id": "apricot-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "杏子",
+    "pinyin": "xìng zi",
+    "en": "Apricot",
+    "ipa": "/ˈeɪprɪkɑːt/",
+    "audioZh": "/audio/apricot-fruit-zh.m4a",
+    "audioEn": "/audio/apricot-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/apricot-fruit.jpg"
+        }
+      ],
+      "description": "杏子黄黄的、圆圆的，脸上有一条小缝。酸甜多汁，里面藏着硬核。",
+      "allusion": {
+        "text": "春色满园关不住，一枝红杏出墙来。",
+        "source": "叶绍翁《游园不值》",
+        "explain": "春天的美景关也关不住，一枝粉红的杏花偷偷探出墙外跟大家打招呼。"
+      }
+    }
+  }
+}

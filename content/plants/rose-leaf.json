@@ -1,0 +1,36 @@
+{
+  "id": "rose-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 91,
+  "name": {
+    "zh": "玫瑰花叶",
+    "pinyin": "méi guī huā yè",
+    "en": "Rose Leaf",
+    "ipa": "/roʊz/ liːf",
+    "audioZh": "/audio/rose-leaf-zh.m4a",
+    "audioEn": "/audio/rose-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/rose-leaf.jpg"
+        }
+      ],
+      "description": "玫瑰叶边上有小锯齿，像小牙齿。它绿绿的，托着漂亮的花。",
+      "allusion": {
+        "text": "玫瑰叶边上有小锯齿，像小牙齿，绿绿地托着花。",
+        "explain": "玫瑰的叶子边上有一排小锯齿，像小牙齿，绿绿地托着漂亮的花。"
+      }
+    }
+  }
+}

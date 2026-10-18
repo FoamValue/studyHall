@@ -1,0 +1,36 @@
+{
+  "id": "daisy-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "雏菊花叶",
+    "pinyin": "chú jú huā yè",
+    "en": "Daisy Leaf",
+    "ipa": "/ˈdeɪzi/ liːf",
+    "audioZh": "/audio/daisy-leaf-zh.m4a",
+    "audioEn": "/audio/daisy-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/daisy-leaf.jpg"
+        }
+      ],
+      "description": "雏菊叶子圆圆的，长在花的脚边。绿油油的，像一把把小勺子。",
+      "allusion": {
+        "text": "雏菊叶圆圆的，长在花的脚边，像一把把小勺子。",
+        "explain": "雏菊的叶子圆圆的，长在花的下边，像一柄柄绿色的小勺子。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "papaya-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 71,
+  "name": {
+    "zh": "木瓜",
+    "pinyin": "mù guā",
+    "en": "Papaya",
+    "ipa": "/pəˈpaɪə/",
+    "audioZh": "/audio/papaya-fruit-zh.m4a",
+    "audioEn": "/audio/papaya-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/papaya-fruit.jpg"
+        }
+      ],
+      "description": "木瓜长长的，熟了黄澄澄的。切开里面一排黑籽，果肉软软的、甜甜的。",
+      "allusion": {
+        "text": "投我以木瓜，报之以琼琚。",
+        "source": "《诗经·木瓜》",
+        "explain": "你送我甜甜的木瓜，我回送你美美的玉，好朋友要互相分享。"
+      }
+    }
+  }
+}

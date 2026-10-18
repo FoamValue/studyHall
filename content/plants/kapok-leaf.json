@@ -1,0 +1,36 @@
+{
+  "id": "kapok-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 47,
+  "name": {
+    "zh": "木棉花叶",
+    "pinyin": "mù mián huā yè",
+    "en": "Kapok Leaf",
+    "ipa": "/ˈkeɪpɑːk/ liːf",
+    "audioZh": "/audio/kapok-leaf-zh.m4a",
+    "audioEn": "/audio/kapok-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kapok-leaf.jpg"
+        }
+      ],
+      "description": "木棉叶子像张开的小手掌，几片小叶排在一起。秋天叶子变黄才掉。",
+      "allusion": {
+        "text": "木棉叶像张开的小手掌，秋天变黄了才落下来。",
+        "explain": "木棉的叶子像张开的小手掌，几片小叶排一起，秋天变黄了才掉。"
+      }
+    }
+  }
+}

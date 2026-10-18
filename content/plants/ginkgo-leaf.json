@@ -1,0 +1,37 @@
+{
+  "id": "ginkgo-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 37,
+  "name": {
+    "zh": "银杏花叶",
+    "pinyin": "yín xìng huā yè",
+    "en": "Ginkgo Leaf",
+    "ipa": "/ˈɡɪŋkoʊ/ liːf",
+    "audioZh": "/audio/ginkgo-leaf-zh.m4a",
+    "audioEn": "/audio/ginkgo-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/ginkgo-leaf.jpg"
+        }
+      ],
+      "description": "银杏叶像一把小扇子，中间有个小缺口。秋天一到，整棵树都变金黄。",
+      "allusion": {
+        "text": "谁怜流落江湖上，玉骨冰肌未肯枯。",
+        "source": "宋·李清照《瑞鹧鸪·双银杏》",
+        "explain": "李清照夸银杏：它的果子壳白白硬硬，放很久也不坏，像特别坚强的小勇士。"
+      }
+    }
+  }
+}

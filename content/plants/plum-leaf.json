@@ -1,0 +1,36 @@
+{
+  "id": "plum-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 85,
+  "name": {
+    "zh": "李子花叶",
+    "pinyin": "lǐ zi huā yè",
+    "en": "Plum Leaf",
+    "ipa": "/plʌm/ liːf",
+    "audioZh": "/audio/plum-leaf-zh.m4a",
+    "audioEn": "/audio/plum-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/plum-leaf.jpg"
+        }
+      ],
+      "description": "李子叶长长的，边上有小锯齿。叶子薄薄的，绿绿的。",
+      "allusion": {
+        "text": "李子叶长长的，薄薄的，边上有小锯齿，绿绿的。",
+        "explain": "李子的叶子又长又薄，边上有一排小锯齿，绿绿的很好看。"
+      }
+    }
+  }
+}

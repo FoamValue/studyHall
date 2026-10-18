@@ -1,0 +1,37 @@
+{
+  "id": "peach-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 74,
+  "name": {
+    "zh": "桃子",
+    "pinyin": "táo zi",
+    "en": "Peach",
+    "ipa": "/piːtʃ/",
+    "audioZh": "/audio/peach-fruit-zh.m4a",
+    "audioEn": "/audio/peach-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peach-fruit.jpg"
+        }
+      ],
+      "description": "桃子毛茸茸、甜甜的。咬开软软的果肉，里面有个硬硬的核，核里藏着种子。",
+      "allusion": {
+        "text": "投桃报李",
+        "source": "成语",
+        "explain": "别人送你桃子，你就回送李子，朋友之间要互相赠送好东西。"
+      }
+    }
+  }
+}

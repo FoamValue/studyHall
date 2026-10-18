@@ -1,0 +1,36 @@
+{
+  "id": "starfruit-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 90,
+  "name": {
+    "zh": "杨桃",
+    "pinyin": "yáng tao",
+    "en": "Starfruit",
+    "ipa": "/ˈstɑːrfruːt/",
+    "audioZh": "/audio/starfruit-fruit-zh.m4a",
+    "audioEn": "/audio/starfruit-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/starfruit-fruit.jpg"
+        }
+      ],
+      "description": "杨桃黄黄的，横着切开像一颗小星星。酸酸甜甜水分多。",
+      "allusion": {
+        "text": "杨桃水分多，渴了吃一个真解渴。",
+        "explain": "杨桃咬一口汁水特别多，酸酸甜甜的，夏天吃最舒服。"
+      }
+    }
+  }
+}

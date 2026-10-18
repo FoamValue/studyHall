@@ -1,0 +1,36 @@
+{
+  "id": "pine-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 80,
+  "name": {
+    "zh": "松果",
+    "pinyin": "sōng guǒ",
+    "en": "Pine Cone",
+    "ipa": "/paɪn koʊn/",
+    "audioZh": "/audio/pine-fruit-zh.m4a",
+    "audioEn": "/audio/pine-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pine-fruit.jpg"
+        }
+      ],
+      "description": "松果像小宝塔，一层一层硬硬的。里面藏着松子，小松鼠最爱吃。",
+      "allusion": {
+        "text": "松子香香的，既能吃又能榨油。",
+        "explain": "松果里的松子炒熟香香的，人们爱吃，还能榨出香香的油。"
+      }
+    }
+  }
+}

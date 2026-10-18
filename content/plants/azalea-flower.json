@@ -1,0 +1,37 @@
+{
+  "id": "azalea-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "杜鹃花",
+    "pinyin": "dù juān huā",
+    "en": "Azalea Flower",
+    "ipa": "/əˈzeɪliə/ ˈflaʊər",
+    "audioZh": "/audio/azalea-flower-zh.m4a",
+    "audioEn": "/audio/azalea-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/azalea-flower.jpg"
+        }
+      ],
+      "description": "杜鹃花红红粉粉，开满山坡像铺了花毯子。它还有一个名字叫映山红。",
+      "allusion": {
+        "text": "蜀国曾闻子规鸟，宣城还见杜鹃花。",
+        "source": "李白《宣城见杜鹃花》",
+        "explain": "李白爷爷看到红红的杜鹃花，想起家乡的杜鹃鸟，花儿让他想家了。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "poppy-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 87,
+  "name": {
+    "zh": "虞美人花",
+    "pinyin": "yú měi rén huā",
+    "en": "Poppy Flower",
+    "ipa": "/ˈpɑːpi/ ˈflaʊər",
+    "audioZh": "/audio/poppy-flower-zh.m4a",
+    "audioEn": "/audio/poppy-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/poppy-flower.jpg"
+        }
+      ],
+      "description": "虞美人的花瓣薄薄的，像彩色的小纸裙。风一吹，它就轻轻跳舞。",
+      "allusion": {
+        "text": "春花秋月何时了，往事知多少。",
+        "source": "李煜《虞美人》",
+        "explain": "虞美人的名字来自古代美人虞姬，后来诗人还把这三个字当成了写词的曲牌名。"
+      }
+    }
+  }
+}

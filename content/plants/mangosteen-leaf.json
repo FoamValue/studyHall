@@ -1,0 +1,36 @@
+{
+  "id": "mangosteen-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 61,
+  "name": {
+    "zh": "山竹花叶",
+    "pinyin": "shān zhú huā yè",
+    "en": "Mangosteen Leaf",
+    "ipa": "/ˈmæŋɡəstiːn/ liːf",
+    "audioZh": "/audio/mangosteen-leaf-zh.m4a",
+    "audioEn": "/audio/mangosteen-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mangosteen-leaf.jpg"
+        }
+      ],
+      "description": "山竹叶子椭圆厚厚的，绿得发亮。一对一对整整齐齐长着。",
+      "allusion": {
+        "text": "山竹叶椭圆厚厚的，一对一对整整齐齐地长着。",
+        "explain": "山竹的叶子又厚又圆，一对一对长得整整齐齐，绿得发亮。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "loquat-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 56,
+  "name": {
+    "zh": "枇杷花叶",
+    "pinyin": "pí pa huā yè",
+    "en": "Loquat Leaf",
+    "ipa": "/ˈloʊkwɑːt/ liːf",
+    "audioZh": "/audio/loquat-leaf-zh.m4a",
+    "audioEn": "/audio/loquat-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/loquat-leaf.jpg"
+        }
+      ],
+      "description": "枇杷叶子又长又大，背面有棕色绒毛。叶面有深深的叶脉。",
+      "allusion": {
+        "text": "枇杷叶又长又大，背面有棕色绒毛，叶脉深深的。",
+        "explain": "枇杷的叶子又长又大，背面盖着棕色的绒毛，叶面上叶脉鼓鼓的。"
+      }
+    }
+  }
+}

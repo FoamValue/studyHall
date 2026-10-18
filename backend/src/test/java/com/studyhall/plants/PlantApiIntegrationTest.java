@@ -89,7 +89,8 @@ class PlantApiIntegrationTest {
     @Autowired
     Environment environment;
 
-    /** 板块分类 code 对应的图片前缀（单图条目的图片目录）。Sprint 15 增字母/拼音；Sprint 16 增数字/颜色。 */
+    /** 板块分类 code 对应的图片前缀（单图条目的图片目录）。Sprint 15 增字母/拼音；Sprint 16 增数字/颜色；
+     *  Sprint 17：植物拆分为单部位条目，fruit/flower/leaf 图片目录均为 plants。 */
     private static final Map<String, String> BOARD_IMAGE_PREFIX = Map.of(
             "animal", "/images/animals/",
             "insect", "/images/insects/",
@@ -97,7 +98,10 @@ class PlantApiIntegrationTest {
             "letter", "/images/letters/",
             "pinyin", "/images/pinyin/",
             "number", "/images/numbers/",
-            "color", "/images/colors/");
+            "color", "/images/colors/",
+            "fruit", "/images/plants/",
+            "flower", "/images/plants/",
+            "leaf", "/images/plants/");
 
     /** 字形类启蒙板块（字母 / 拼音）：名称仅符号本身，省略 pinyin/en/ipa。 */
     private static boolean isGlyphBoard(Plant p) {
@@ -187,14 +191,14 @@ class PlantApiIntegrationTest {
         });
     }
 
-    /** TC-04 植物列表-筛选：只返回 categories 含 flower 的植物。 */
+    /** TC-04 植物列表-筛选：只返回 categories 含 plant 的条目（Sprint 17：植物取消二级分类）。 */
     @Test
     void tc04_plantListShouldFilterByCategory() {
         List<String> expected = plants.stream()
-                .filter(p -> p.categories().contains("flower"))
+                .filter(p -> p.categories().contains("plant"))
                 .map(Plant::id)
                 .toList();
-        ApiResponse<List<PlantCard>> resp = get("/api/plants?category=flower", listOf(PlantCard.class));
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?category=plant", listOf(PlantCard.class));
         assertThat(resp.code()).isZero();
         assertThat(resp.data()).extracting(PlantCard::id)
                 .containsExactlyInAnyOrderElementsOf(expected);
@@ -209,19 +213,19 @@ class PlantApiIntegrationTest {
         assertThat(resp.message()).contains("昆虫");
     }
 
-    /** TC-06 植物详情：向日葵完整文档，三语名称、三部位、说明与典故齐全。 */
+    /** TC-06 植物详情：向日葵花部位单条目（Sprint 17 拆分后），三语名称、单部位、说明与典故齐全。 */
     @Test
     void tc06_plantDetailShouldReturnFullDocument() {
-        ApiResponse<Plant> resp = get("/api/plants/sunflower",
+        ApiResponse<Plant> resp = get("/api/plants/sunflower-flower",
                 objectMapper.getTypeFactory().constructType(Plant.class));
         assertThat(resp.code()).isZero();
         Plant sunflower = resp.data();
-        assertThat(sunflower.id()).isEqualTo("sunflower");
-        assertThat(sunflower.name().zh()).isEqualTo("向日葵");
+        assertThat(sunflower.id()).isEqualTo("sunflower-flower");
+        assertThat(sunflower.name().zh()).isEqualTo("向日葵花");
         assertThat(sunflower.name().pinyin()).isNotBlank();
         assertThat(sunflower.name().en()).isEqualTo("Sunflower");
         assertThat(sunflower.name().ipa()).startsWith("/");
-        assertThat(sunflower.parts().keySet()).containsExactlyInAnyOrder("flower", "leaf", "fruit");
+        assertThat(sunflower.parts().keySet()).containsExactly("flower");
         PlantPart flower = sunflower.parts().get("flower");
         assertThat(flower.description()).isNotBlank();
         assertThat(flower.images().getFirst().url()).isEqualTo("/images/plants/sunflower-flower.jpg");
@@ -232,24 +236,27 @@ class PlantApiIntegrationTest {
         assertThat(allusion.explain()).isNotBlank();
     }
 
-    /** TC-07 缺部位：银杏无 flower，列表封面回退到 leaf；maple 仅 leaf（Sprint 2 新增）。 */
+    /** TC-07 植物部位拆分为独立条目（Sprint 17）：银杏有叶、果两条目，每条仅一个部位，封面即自身部位图。 */
     @Test
     void tc07_missingPartShouldFallbackCoverImage() {
-        ApiResponse<Plant> resp = get("/api/plants/ginkgo",
+        ApiResponse<Plant> ginkgoLeaf = get("/api/plants/ginkgo-leaf",
                 objectMapper.getTypeFactory().constructType(Plant.class));
-        assertThat(resp.code()).isZero();
-        assertThat(resp.data().parts()).doesNotContainKey("flower");
-        assertThat(resp.data().parts().keySet()).containsExactlyInAnyOrder("leaf", "fruit");
+        assertThat(ginkgoLeaf.code()).isZero();
+        assertThat(ginkgoLeaf.data().parts().keySet()).containsExactly("leaf");
+
+        ApiResponse<Plant> ginkgoFruit = get("/api/plants/ginkgo-fruit",
+                objectMapper.getTypeFactory().constructType(Plant.class));
+        assertThat(ginkgoFruit.code()).isZero();
+        assertThat(ginkgoFruit.data().parts().keySet()).containsExactly("fruit");
 
         ApiResponse<List<PlantCard>> list = get("/api/plants", listOf(PlantCard.class));
-        PlantCard ginkgo = list.data().stream()
-                .filter(card -> card.id().equals("ginkgo"))
-                .findFirst()
-                .orElseThrow();
-        assertThat(ginkgo.coverImage()).isEqualTo("/images/plants/ginkgo-leaf.jpg");
+        assertThat(findCard(list.data(), "ginkgo-leaf").coverImage())
+                .isEqualTo("/images/plants/ginkgo-leaf.jpg");
+        assertThat(findCard(list.data(), "ginkgo-fruit").coverImage())
+                .isEqualTo("/images/plants/ginkgo-fruit.jpg");
 
-        // Sprint 2 新增：maple 仅有 leaf 部位
-        ApiResponse<Plant> maple = get("/api/plants/maple",
+        // 枫树仅有叶部位
+        ApiResponse<Plant> maple = get("/api/plants/maple-leaf",
                 objectMapper.getTypeFactory().constructType(Plant.class));
         assertThat(maple.code()).isZero();
         assertThat(maple.data().parts().keySet()).containsExactly("leaf");
@@ -270,26 +277,26 @@ class PlantApiIntegrationTest {
         assertThat(list.code()).isZero();
         assertThat(redisTemplate.hasKey("sh:plants:list:all")).isTrue();
 
-        ApiResponse<Plant> first = get("/api/plants/sunflower",
+        ApiResponse<Plant> first = get("/api/plants/sunflower-fruit",
                 objectMapper.getTypeFactory().constructType(Plant.class));
         assertThat(first.code()).isZero();
-        assertThat(redisTemplate.hasKey("sh:plant:sunflower")).isTrue();
-        Long ttl = redisTemplate.getExpire("sh:plant:sunflower");
+        assertThat(redisTemplate.hasKey("sh:plant:sunflower-fruit")).isTrue();
+        Long ttl = redisTemplate.getExpire("sh:plant:sunflower-fruit");
         assertThat(ttl).isNotNull().isPositive().isLessThanOrEqualTo(600);
 
         // 删掉 Mongo 里的文档，第二次请求仍能返回 → 说明读的是 Redis 缓存
-        mongoTemplate.remove(Query.query(Criteria.where("_id").is("sunflower")), "plants");
-        ApiResponse<Plant> second = get("/api/plants/sunflower",
+        mongoTemplate.remove(Query.query(Criteria.where("_id").is("sunflower-fruit")), "plants");
+        ApiResponse<Plant> second = get("/api/plants/sunflower-fruit",
                 objectMapper.getTypeFactory().constructType(Plant.class));
         assertThat(second.code()).isZero();
-        assertThat(second.data().id()).isEqualTo("sunflower");
+        assertThat(second.data().id()).isEqualTo("sunflower-fruit");
     }
 
     /** CORS 冒烟：Vite dev server 预检放行。 */
     @Test
     void corsShouldAllowViteDevServer() {
         ResponseEntity<String> resp = rest().method(HttpMethod.OPTIONS)
-                .uri("/api/plants?category=flower")
+                .uri("/api/plants?category=plant")
                 .header(HttpHeaders.ORIGIN, "http://localhost:5173")
                 .header(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "GET")
                 .retrieve()
@@ -300,15 +307,25 @@ class PlantApiIntegrationTest {
     }
 
     /** TC-11 内容 schema 全量合规（数据驱动，Sprint 9 起含动物/昆虫/恐龙，Sprint 15 起含字母/拼音）：
-     *  categories = parts 键集合、每部位 ≥1 图且图路径符合板块前缀、三语非空（字形类板块省略 pinyin/en/ipa）、
+     *  Sprint 17：植物拆分为单部位条目（categories=["plant"]，parts 单键为 fruit/flower/leaf），
+     *  故「categories = parts 键集合」仅对非植物板块成立；植物板块校验 categories 含 "plant"。
+     *  每部位 ≥1 图且图路径符合板块前缀、三语非空（字形类板块省略 pinyin/en/ipa）、
      *  allusion 有则文本与解释非空（source 可选）。 */
     @Test
     void tc11_allContentFilesShouldMatchSchema() {
         assertThat(plants).isNotEmpty();
         for (Plant p : plants) {
             boolean glyph = isGlyphBoard(p);
+            boolean isPlantBoard = p.categories().contains("plant");
             assertThat(p.id()).isNotBlank();
-            assertThat(p.categories()).containsExactlyInAnyOrderElementsOf(p.parts().keySet());
+            if (isPlantBoard) {
+                // 植物条目：categories 仅含 plant，parts 单键为 fruit/flower/leaf
+                assertThat(p.categories()).containsExactly("plant");
+                assertThat(p.parts()).hasSize(1);
+                assertThat(p.parts().keySet().iterator().next()).isIn("fruit", "flower", "leaf");
+            } else {
+                assertThat(p.categories()).containsExactlyInAnyOrderElementsOf(p.parts().keySet());
+            }
             assertThat(p.name().zh()).isNotBlank();
             if (!glyph) {
                 assertThat(p.name().pinyin()).isNotBlank();
@@ -393,33 +410,26 @@ class PlantApiIntegrationTest {
         }
     }
 
-    /** TC-57 分类列表封面跟随分类（Sprint 7 / EX-1）：含花朵的植物在树叶/果实分类下取对应部位封面。 */
+    /** TC-57 植物条目封面即自身单部位图（Sprint 17：每部位一条，无分类回退）。 */
     @Test
     void tc57_categoryCoverImageShouldFollowCategory() {
-        ApiResponse<List<PlantCard>> leafList = get("/api/plants?category=leaf", listOf(PlantCard.class));
-        assertThat(leafList.code()).isZero();
-        assertThat(findCard(leafList.data(), "apple").coverImage())
+        ApiResponse<List<PlantCard>> plantList = get("/api/plants?category=plant", listOf(PlantCard.class));
+        assertThat(plantList.code()).isZero();
+        assertThat(findCard(plantList.data(), "apple-leaf").coverImage())
                 .isEqualTo("/images/plants/apple-leaf.jpg");
-        assertThat(findCard(leafList.data(), "anemone").coverImage())
+        assertThat(findCard(plantList.data(), "anemone-leaf").coverImage())
                 .isEqualTo("/images/plants/anemone-leaf.jpg");
-
-        ApiResponse<List<PlantCard>> fruitList = get("/api/plants?category=fruit", listOf(PlantCard.class));
-        assertThat(fruitList.code()).isZero();
-        assertThat(findCard(fruitList.data(), "apple").coverImage())
+        assertThat(findCard(plantList.data(), "apple-fruit").coverImage())
                 .isEqualTo("/images/plants/apple-fruit.jpg");
     }
 
-    /** TC-58 「全部」与花朵分类封面回退顺序不变（回归 TC-07 语义，Sprint 7）。 */
+    /** TC-58 植物条目在全部列表中封面同样为自身单部位图（Sprint 17：无花朵/树叶/果实分类回退）。 */
     @Test
     void tc58_allAndFlowerCoverImageShouldKeepFallback() {
         ApiResponse<List<PlantCard>> all = get("/api/plants", listOf(PlantCard.class));
         assertThat(all.code()).isZero();
-        assertThat(findCard(all.data(), "ginkgo").coverImage()).isEqualTo("/images/plants/ginkgo-leaf.jpg");
-        assertThat(findCard(all.data(), "apple").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
-
-        ApiResponse<List<PlantCard>> flower = get("/api/plants?category=flower", listOf(PlantCard.class));
-        assertThat(flower.code()).isZero();
-        assertThat(findCard(flower.data(), "apple").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
+        assertThat(findCard(all.data(), "ginkgo-leaf").coverImage()).isEqualTo("/images/plants/ginkgo-leaf.jpg");
+        assertThat(findCard(all.data(), "apple-flower").coverImage()).isEqualTo("/images/plants/apple-flower.jpg");
     }
 
     /** TC-71 板块列表（Sprint 9）：?section=plant 计数 = 该板块条目数（数据驱动）。 */
@@ -485,13 +495,13 @@ class PlantApiIntegrationTest {
                 .containsExactlyElementsOf(first.data().stream().map(PlantCard::id).toList());
 
         // 分类列表同样显式排序（替换原 findByCategoriesContains 未排序技术债）
-        ApiResponse<List<PlantCard>> leaf = get("/api/plants?category=leaf", listOf(PlantCard.class));
-        List<String> expectedLeaf = plants.stream()
-                .filter(p -> p.categories().contains("leaf"))
+        ApiResponse<List<PlantCard>> plant = get("/api/plants?category=plant", listOf(PlantCard.class));
+        List<String> expectedPlant = plants.stream()
+                .filter(p -> p.categories().contains("plant"))
                 .sorted(bySortThenId)
                 .map(Plant::id)
                 .toList();
-        assertThat(leaf.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedLeaf);
+        assertThat(plant.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedPlant);
     }
 
     /** TC-143 字母板块（Sprint 15）：?section=letter 26 条、每条 parts 恰 [letter]、按 sort 升序首 letter-a 末 letter-z。 */
@@ -528,13 +538,18 @@ class PlantApiIntegrationTest {
         assertThat(resp.data().getLast().id()).isEqualTo("pinyin-z");
     }
 
-    /** TC-145 分类齐备（Sprint 15 起；Sprint 16 扩至 10 条）：/api/categories 含字形类（letter/pinyin）与数字/颜色。 */
+    /** TC-145 分类齐备（Sprint 15 起；Sprint 16 扩数字/颜色；Sprint 17 植物合并为 1 条，共 8 条）：
+     *  /api/categories 含 plant 与字形类（letter/pinyin）与数字/颜色。 */
     @Test
     void tc145_categoriesShouldIncludeGlyphBoards() {
         ApiResponse<List<Category>> resp = get("/api/categories", listOf(Category.class));
         assertThat(resp.code()).isZero();
-        assertThat(resp.data()).hasSize(10);
-        assertThat(resp.data()).extracting(Category::code).contains("letter", "pinyin", "number", "color");
+        assertThat(resp.data()).hasSize(8);
+        assertThat(resp.data()).extracting(Category::code)
+                .contains("plant", "letter", "pinyin", "number", "color");
+        Category plantCat = resp.data().stream().filter(c -> c.code().equals("plant")).findFirst().orElseThrow();
+        assertThat(plantCat.nameZh()).isEqualTo("植物");
+        assertThat(plantCat.section()).isEqualTo("plant");
         Category letter = resp.data().stream().filter(c -> c.code().equals("letter")).findFirst().orElseThrow();
         assertThat(letter.nameZh()).isEqualTo("英文字母");
         assertThat(letter.section()).isEqualTo("letter");

@@ -1,0 +1,36 @@
+{
+  "id": "walnut-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 97,
+  "name": {
+    "zh": "核桃",
+    "pinyin": "hé tao",
+    "en": "Walnut",
+    "ipa": "/ˈwɔːlnʌt/",
+    "audioZh": "/audio/walnut-fruit-zh.m4a",
+    "audioEn": "/audio/walnut-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/walnut-fruit.jpg"
+        }
+      ],
+      "description": "核桃外壳硬硬的，像小脑袋。敲开里面的果仁，长得也像小小的大脑。",
+      "allusion": {
+        "text": "核桃刚长出来，外面还包着一层绿衣裳。",
+        "explain": "树上刚结的核桃，外面裹着青青的皮，熟了才露出硬硬的壳。"
+      }
+    }
+  }
+}

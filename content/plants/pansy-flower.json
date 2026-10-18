@@ -1,0 +1,36 @@
+{
+  "id": "pansy-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 71,
+  "name": {
+    "zh": "三色堇花",
+    "pinyin": "sān sè jǐn huā",
+    "en": "Pansy Flower",
+    "ipa": "/ˈpænzi/ ˈflaʊər",
+    "audioZh": "/audio/pansy-flower-zh.m4a",
+    "audioEn": "/audio/pansy-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pansy-flower.jpg"
+        }
+      ],
+      "description": "三色堇一朵花上有三种颜色，像一张小花脸。小朋友们都爱对着它笑。",
+      "allusion": {
+        "text": "三色堇一朵花有三种颜色，像一张笑眯眯的小花脸。",
+        "explain": "三色堇的花上有三种颜色，像小花猫的脸，还会朝人笑。"
+      }
+    }
+  }
+}

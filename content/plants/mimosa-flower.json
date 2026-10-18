@@ -1,0 +1,36 @@
+{
+  "id": "mimosa-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 63,
+  "name": {
+    "zh": "含羞草花",
+    "pinyin": "hán xiū cǎo huā",
+    "en": "Mimosa Flower",
+    "ipa": "/mɪˈmoʊzə/ ˈflaʊər",
+    "audioZh": "/audio/mimosa-flower-zh.m4a",
+    "audioEn": "/audio/mimosa-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mimosa-flower.jpg"
+        }
+      ],
+      "description": "含羞草开粉色小绒球，毛茸茸的像小蒲公英。轻轻一吹，软软的。",
+      "allusion": {
+        "text": "含羞草的花开完，会结出一串小小的豆荚种子。",
+        "explain": "含羞草的花谢了，会结出小豆荚，里面藏着下一次的种子。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "strawberry-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 93,
+  "name": {
+    "zh": "草莓花叶",
+    "pinyin": "cǎo méi huā yè",
+    "en": "Strawberry Leaf",
+    "ipa": "/ˈstrɔːbəri/ liːf",
+    "audioZh": "/audio/strawberry-leaf-zh.m4a",
+    "audioEn": "/audio/strawberry-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/strawberry-leaf.jpg"
+        }
+      ],
+      "description": "草莓叶绿绿的，边上有锯齿，上面长着细细的绒毛，摸起来毛茸茸的。",
+      "allusion": {
+        "text": "草莓叶绿绿的，边上有锯齿，上面有细毛，毛茸茸。",
+        "explain": "草莓的叶子绿绿的，边上有一排锯齿，上面长着细毛，摸起来毛茸茸。"
+      }
+    }
+  }
+}

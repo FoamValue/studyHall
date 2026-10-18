@@ -1,0 +1,36 @@
+{
+  "id": "ginkgo-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 35,
+  "name": {
+    "zh": "白果",
+    "pinyin": "bái guǒ",
+    "en": "Ginkgo",
+    "ipa": "/ˈɡɪŋkɡoʊ/",
+    "audioZh": "/audio/ginkgo-fruit-zh.m4a",
+    "audioEn": "/audio/ginkgo-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/ginkgo-fruit.jpg"
+        }
+      ],
+      "description": "白果圆圆的，穿着橙黄色外衣。剥开里面是米白色的果仁，要煮熟才能吃哦。",
+      "allusion": {
+        "text": "银杏树又叫公孙树，果子要煮熟才能吃。",
+        "explain": "银杏树种下很久才结果，爷爷种树，孙子才能吃到果子，所以叫公孙树。"
+      }
+    }
+  }
+}

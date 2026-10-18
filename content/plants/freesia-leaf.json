@@ -1,0 +1,36 @@
+{
+  "id": "freesia-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 34,
+  "name": {
+    "zh": "小苍兰花叶",
+    "pinyin": "xiǎo cāng lán huā yè",
+    "en": "Freesia Leaf",
+    "ipa": "/ˈfriːʒə/ liːf",
+    "audioZh": "/audio/freesia-leaf-zh.m4a",
+    "audioEn": "/audio/freesia-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/freesia-leaf.jpg"
+        }
+      ],
+      "description": "小苍兰叶子细细长长，像绿色的小剑。两片两片交叉着长。",
+      "allusion": {
+        "text": "小苍兰叶细细长长，像绿色的小剑，两片两片交叉。",
+        "explain": "小苍兰的叶子又细又长，像绿色的小剑，两片两片交叉着长。"
+      }
+    }
+  }
+}

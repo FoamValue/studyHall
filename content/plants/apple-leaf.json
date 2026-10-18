@@ -1,0 +1,36 @@
+{
+  "id": "apple-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "苹果花叶",
+    "pinyin": "píng guǒ huā yè",
+    "en": "Apple Leaf",
+    "ipa": "/ˈæpl/ liːf",
+    "audioZh": "/audio/apple-leaf-zh.m4a",
+    "audioEn": "/audio/apple-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/apple-leaf.jpg"
+        }
+      ],
+      "description": "苹果叶椭圆椭圆的，绿油油。正面亮亮的，边上也有小锯齿。",
+      "allusion": {
+        "text": "苹果叶椭圆椭圆的，正面亮亮的，边上有细细的小锯齿。",
+        "explain": "苹果的叶子圆圆的，绿油油，边上有一排小锯齿，摸起来有点糙。"
+      }
+    }
+  }
+}

@@ -72,7 +72,7 @@ public class PlantService {
         if (category != null && !category.isBlank()) {
             if (!categoryRepository.existsById(category)) {
                 throw new ApiException(40001,
-                        "没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫、恐龙、英文字母或汉语拼音吧"
+                        "没有「%s」这个分类哦，试试植物、动物、昆虫、恐龙、英文字母或汉语拼音吧"
                                 .formatted(category));
             }
             return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,

@@ -1,0 +1,36 @@
+{
+  "id": "sunflower-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 95,
+  "name": {
+    "zh": "向日葵花叶",
+    "pinyin": "xiàng rì kuí huā yè",
+    "en": "Sunflower Leaf",
+    "ipa": "/ˈsʌnˌflaʊər/ liːf",
+    "audioZh": "/audio/sunflower-leaf-zh.m4a",
+    "audioEn": "/audio/sunflower-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-leaf.jpg"
+        }
+      ],
+      "description": "叶子又宽又大，像绿色的手掌。它迎着太阳，帮花盘收集阳光。",
+      "allusion": {
+        "text": "叶子又宽又大，像绿色的手掌，帮花盘收集阳光。",
+        "explain": "向日葵的叶子又宽又大，像绿色的手掌，迎着太阳帮花盘收集阳光。"
+      }
+    }
+  }
+}

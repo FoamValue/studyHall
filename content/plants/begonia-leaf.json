@@ -1,0 +1,36 @@
+{
+  "id": "begonia-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "海棠花叶",
+    "pinyin": "hǎi táng huā yè",
+    "en": "Begonia Leaf",
+    "ipa": "/bɪˈɡoʊniə/ liːf",
+    "audioZh": "/audio/begonia-leaf-zh.m4a",
+    "audioEn": "/audio/begonia-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/begonia-leaf.jpg"
+        }
+      ],
+      "description": "海棠叶子圆圆的，边上有点歪，像害羞的小脸。叶面亮亮的，绿得可爱。",
+      "allusion": {
+        "text": "海棠叶圆圆的，边上有点歪，绿得亮亮的像小脸。",
+        "explain": "海棠的叶子圆圆的，边边有点歪，绿油油的，像害羞的小脸蛋。"
+      }
+    }
+  }
+}

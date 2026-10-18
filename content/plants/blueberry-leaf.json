@@ -1,0 +1,36 @@
+{
+  "id": "blueberry-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "蓝莓花叶",
+    "pinyin": "lán méi huā yè",
+    "en": "Blueberry Leaf",
+    "ipa": "/ˈbluːberi/ liːf",
+    "audioZh": "/audio/blueberry-leaf-zh.m4a",
+    "audioEn": "/audio/blueberry-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/blueberry-leaf.jpg"
+        }
+      ],
+      "description": "蓝莓叶子小小的，椭圆椭圆的。秋天叶子变红，像小火苗。",
+      "allusion": {
+        "text": "蓝莓叶小小的，秋天变红，像一簇簇小火苗。",
+        "explain": "蓝莓的叶子小小的，到了秋天会变红，远远看像一朵朵小火苗。"
+      }
+    }
+  }
+}

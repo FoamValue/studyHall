@@ -1,0 +1,36 @@
+{
+  "id": "kumquat-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 47,
+  "name": {
+    "zh": "金桔",
+    "pinyin": "jīn jú",
+    "en": "Kumquat",
+    "ipa": "/ˈkʌmkwɑːt/",
+    "audioZh": "/audio/kumquat-fruit-zh.m4a",
+    "audioEn": "/audio/kumquat-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kumquat-fruit.jpg"
+        }
+      ],
+      "description": "金桔小小的、圆圆的，金黄金黄像小太阳。连皮一起吃，甜甜的。",
+      "allusion": {
+        "text": "金桔金灿灿像小元宝，过年摆着很喜庆。",
+        "explain": "金桔小小的圆圆的，金黄金黄的，过年的时候摆一盘，特别吉祥。"
+      }
+    }
+  }
+}

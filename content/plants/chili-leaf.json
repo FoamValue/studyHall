@@ -1,0 +1,36 @@
+{
+  "id": "chili-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "辣椒花叶",
+    "pinyin": "là jiāo huā yè",
+    "en": "Chili Leaf",
+    "ipa": "/ˈtʃɪli/ liːf",
+    "audioZh": "/audio/chili-leaf-zh.m4a",
+    "audioEn": "/audio/chili-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chili-leaf.jpg"
+        }
+      ],
+      "description": "辣椒叶子小小的，尖尖的，绿绿的。叶子摸上去滑滑的。",
+      "allusion": {
+        "text": "辣椒叶小小的、尖尖的，绿绿的，摸上去滑滑的。",
+        "explain": "辣椒的叶子小小的，尖尖的绿绿的，摸起来滑溜溜的。"
+      }
+    }
+  }
+}

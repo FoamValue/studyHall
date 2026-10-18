@@ -1,0 +1,36 @@
+{
+  "id": "dandelion-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "蒲公英花",
+    "pinyin": "pú gōng yīng huā",
+    "en": "Dandelion Flower",
+    "ipa": "/ˈdændɪlaɪən/ ˈflaʊər",
+    "audioZh": "/audio/dandelion-flower-zh.m4a",
+    "audioEn": "/audio/dandelion-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dandelion-flower.jpg"
+        }
+      ],
+      "description": "蒲公英开黄色小花，像小太阳落在草地上。太阳出来它张开，天黑就合上。",
+      "allusion": {
+        "text": "蒲公英花谢了，变成白色小绒球，风一吹种子就飞走。",
+        "explain": "蒲公英的小白球，风一吹，种子就撑着小伞去旅行啦。"
+      }
+    }
+  }
+}

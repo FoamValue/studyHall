@@ -1,0 +1,36 @@
+{
+  "id": "sugarcane-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 94,
+  "name": {
+    "zh": "甘蔗花叶",
+    "pinyin": "gān zhe huā yè",
+    "en": "Sugarcane Leaf",
+    "ipa": "/ˈʃʊɡərkeɪn/ liːf",
+    "audioZh": "/audio/sugarcane-leaf-zh.m4a",
+    "audioEn": "/audio/sugarcane-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sugarcane-leaf.jpg"
+        }
+      ],
+      "description": "甘蔗叶子又长又尖，像绿色的大刀。叶子边缘有点割手。",
+      "allusion": {
+        "text": "甘蔗叶又长又尖，像绿色的大刀，叶子边缘有点割手。",
+        "explain": "甘蔗的叶子又长又尖，像绿色的大刀，边边有点锋利，要小心。"
+      }
+    }
+  }
+}

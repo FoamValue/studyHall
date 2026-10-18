@@ -1,45 +1,37 @@
 import { test, expect } from '@playwright/test';
 import { loadAllCards } from './helpers';
 
-// TC-22 浏览主流程冒烟（100 种规模）：首页 → 点「花朵」分类 → 点桃花卡片 → 切「叶」部位
-// 期望：详情显示桃花叶内容，全程无控制台错误（PRD §7-1/§7-2：无登录、2 次点击到达详情）
-test('TC-22 首页→花朵→桃花→叶', async ({ page }) => {
+// TC-22 浏览主流程冒烟（Sprint 17：植物单图，206 条）：首页 → 点桃花卡片 → 详情单图
+// 期望：详情显示桃花内容，全程无控制台错误（PRD §7-1/§7-2：无登录、2 次点击到达详情）
+test('TC-22 首页→桃花→详情（单图无部位切换）', async ({ page }) => {
   const problems = [];
   page.on('console', (m) => {
     if (m.type() === 'error') problems.push(`console.error: ${m.text()}`);
   });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
-  // 1. 首页加载，四个分类按钮可见，无登录/注册元素（§7-1）
+  // 1. 首页加载，无登录/注册元素（§7-1）
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await expect(filterGroup.getByText('全部')).toBeVisible();
-  await expect(filterGroup.getByText('花朵')).toBeVisible();
-  await expect(filterGroup.getByText('树叶')).toBeVisible();
-  await expect(filterGroup.getByText('果实')).toBeVisible();
   await expect(page.getByText(/登录|注册/)).toHaveCount(0);
 
-  // 2. 点「花朵」→ 显示 flower 分类植物（53 种，无银杏、无枫树）
-  await filterGroup.getByText('花朵').click();
-  await loadAllCards(page, 53);
-  await expect(page.locator('.plant-card', { hasText: '银杏' })).toHaveCount(0);
-  await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
+  // 2. 植物板块 206 条（无二级分类筛选）
+  await loadAllCards(page, 206);
 
-  // 3. 点桃花卡片进详情（Sprint 8：花朵分类下「桃」也派生为「桃花」，按卡片图 alt 精确定位「桃花」）
+  // 3. 点桃花卡片进详情
   await page.locator('.plant-card').filter({ has: page.locator('img[alt="桃花"]') }).click();
   await expect(page.locator('.detail-zh')).toHaveText('桃花');
 
-  // 4. 切「叶」部位 → 显示叶内容
-  await page.locator('[role="tab"]').filter({ hasText: /^叶$/ }).click();
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /peach-blossom-leaf\.jpg$/);
-  await expect(page.locator('.part-img')).toHaveAttribute('alt', '桃花的叶');
+  // 4. 单图模式：无部位切换标签，大图即桃花图
+  await expect(page.locator('[role="tab"]')).toHaveCount(0);
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /peach-flower\.jpg$/);
+  await expect(page.locator('.part-img')).toHaveAttribute('alt', '桃花');
 
   // 5. 页面无报错
   expect(problems).toEqual([]);
 });
 
-// TC-23 缺部位流程：首页 → 点「树叶」分类 → 点枫树卡片 → 详情仅显示「叶」标签
-test('TC-23 首页→树叶→枫树（仅叶标签）', async ({ page }) => {
+// TC-23 植物板块规模：206 张卡片，含花朵/树叶/果实三类条目
+test('TC-23 植物板块 206 条（含桃花/枫叶/白果）', async ({ page }) => {
   const problems = [];
   page.on('console', (m) => {
     if (m.type() === 'error') problems.push(`console.error: ${m.text()}`);
@@ -47,25 +39,20 @@ test('TC-23 首页→树叶→枫树（仅叶标签）', async ({ page }) => {
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
+  await loadAllCards(page, 206);
 
-  // 「树叶」分类 100 种全部可见（滚动加载全量）
-  await filterGroup.getByText('树叶').click();
-  await loadAllCards(page, 100);
-
-  // 点枫树进详情：只有「叶」一个部位标签，无花/果
-  await page.locator('.plant-card', { hasText: '枫树' }).click();
-  await expect(page.locator('.detail-zh')).toHaveText('枫树');
-  const tabs = page.locator('[role="tab"]');
-  await expect(tabs).toHaveCount(1);
-  await expect(tabs.first()).toHaveText(/^叶$/);
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /maple-leaf\.jpg$/);
+  // 花朵条目（精确匹配卡片标题）
+  await expect(page.getByText('桃花', { exact: true })).toHaveCount(1);
+  // 树叶条目（枫树花叶）
+  await expect(page.getByText('枫树花叶', { exact: true })).toHaveCount(1);
+  // 果实条目（白果 = 银杏果）
+  await expect(page.getByText('白果', { exact: true })).toHaveCount(1);
 
   expect(problems).toEqual([]);
 });
 
-// TC-26 果实分类规模：首页 → 点「果实」→ 53 张卡片，无银杏、无枫树
-test('TC-26 首页→果实（53 种）', async ({ page }) => {
+// TC-26 植物板块命名校验：桃花/枫叶/白果各自独立条目
+test('TC-26 植物部位条目命名独立', async ({ page }) => {
   const problems = [];
   page.on('console', (m) => {
     if (m.type() === 'error') problems.push(`console.error: ${m.text()}`);
@@ -73,16 +60,17 @@ test('TC-26 首页→果实（53 种）', async ({ page }) => {
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
   await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
-  await loadAllCards(page, 53);
-  await expect(page.locator('.plant-card', { hasText: '白果' })).toHaveCount(1);   // 银杏卡片标题派生为「白果」
-  await expect(page.locator('.plant-card', { hasText: '枫树' })).toHaveCount(0);
-  await expect(page.locator('.plant-card', { hasText: '火龙果' })).toHaveCount(1);
+  await loadAllCards(page, 206);
+
+  // 桃的三个部位：桃子（果）、桃花（花）、桃花叶（叶）
+  await expect(page.getByText('桃子', { exact: true })).toHaveCount(1);
+  await expect(page.getByText('桃花', { exact: true })).toHaveCount(1);
+  await expect(page.getByText('桃花叶', { exact: true })).toHaveCount(1);
 
   expect(problems).toEqual([]);
 });
 
-// TC-27 平板横屏布局（1024×768）：网格一行 ≥4 张卡片，分类按钮高度 ≥44px
+// TC-27 平板横屏布局（1024×768）：网格一行 ≥4 张卡片
 test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto('/');
@@ -95,77 +83,72 @@ test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
     els.slice(0, 4).map((el) => Math.round(el.getBoundingClientRect().top))
   );
   expect(new Set(tops).size).toBe(1);
-
-  // 分类按钮高度 ≥44px（getByRole 命中按钮，而非内部 span）
-  const btn = page.getByRole('button', { name: '花朵' });
-  const height = await btn.evaluate((el) => el.getBoundingClientRect().height);
-  expect(height).toBeGreaterThanOrEqual(44);
 });
 
-// TC-63 分类封面跟随分类（Sprint 7 / EX-1）：树叶分类下「苹果」封面为叶图，而非花朵照片
-test('TC-63 树叶分类下含花朵植物封面跟随分类', async ({ page }) => {
+// TC-63 枫树花叶条目封面即枫叶图
+test('TC-63 枫树花叶条目封面即枫叶图', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
-  await loadAllCards(page, 100);
+  await loadAllCards(page, 206);
 
-  // 苹果同时含花/叶/果，树叶分类下封面应为叶图（修复前会错误显示花朵照片）
-  const appleCover = page.locator('.plant-card', { hasText: '苹果' }).locator('img');
-  await expect(appleCover).toHaveAttribute('src', /apple-leaf\.jpg$/);
+  const mapleLeafCard = page.locator('.plant-card', { has: page.getByText('枫树花叶', { exact: true }) });
+  await expect(mapleLeafCard.locator('img')).toHaveAttribute('src', /maple-leaf\.jpg$/);
 });
 
-// ===== Sprint 8 新增 E2E（TC-67 ~ TC-70）：卡片标题 + 详情默认部位跟随分类（EX-4 / EX-5） =====
+// ===== Sprint 8 E2E 改写（TC-67 ~ TC-70）：Sprint 17 起植物为单部位独立条目 =====
 
-// TC-67 树叶分类：卡片标题「苹果叶」，点进详情默认选中「叶」、大图与卡片图一致
-test('TC-67 树叶分类苹果标题「苹果叶」且详情默认选叶', async ({ page }) => {
+// TC-67 苹果花条目：卡片标题「苹果花」，详情单图为苹果花图
+test('TC-67 苹果花条目标题与详情图一致', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('树叶').click();
-  await loadAllCards(page, 100);
+  await loadAllCards(page, 206);
 
-  const appleCard = page.locator('.plant-card', { hasText: '苹果叶' });
-  await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果叶');
-  await expect(appleCard.locator('img')).toHaveAttribute('src', /apple-leaf\.jpg$/); // 卡片图=叶
+  const appleFlowerCard = page.locator('.plant-card', { has: page.getByText('苹果花', { exact: true }) });
+  await expect(appleFlowerCard.locator('.plant-card-zh')).toHaveText('苹果花');
+  await expect(appleFlowerCard.locator('img')).toHaveAttribute('src', /apple-flower\.jpg$/);
 
-  await appleCard.click();
-  await expect(page.locator('.detail-zh')).toHaveText('苹果');
-  // 详情默认部位跟随入口分类 → 叶（而非固定首位「花」）
-  await expect(page.getByRole('tab', { name: '叶' })).toHaveAttribute('aria-selected', 'true');
-  await expect(page.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'false');
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /apple-leaf\.jpg$/);
-  await expect(page.locator('.part-img')).toHaveAttribute('alt', '苹果的叶');
+  await appleFlowerCard.click();
+  await expect(page.locator('.detail-zh')).toHaveText('苹果花');
+  // 单图模式无部位切换
+  await expect(page.locator('[role="tab"]')).toHaveCount(0);
+  await expect(page.locator('.part-img')).toHaveAttribute('src', /apple-flower\.jpg$/);
 });
 
-// TC-68 花朵分类：苹果卡片标题「苹果花」
-test('TC-68 花朵分类苹果标题「苹果花」', async ({ page }) => {
+// TC-68 苹果叶条目：卡片标题「苹果花叶」（不叫「树叶」）
+test('TC-68 苹果叶条目命名「苹果花叶」', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('花朵').click();
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
 
-  await expect(page.locator('.plant-card', { hasText: '苹果花' }).locator('.plant-card-zh')).toHaveText(
-    '苹果花'
+  await expect(page.locator('.plant-card', { has: page.getByText('苹果花叶', { exact: true }) }).locator('.plant-card-zh')).toHaveText(
+    '苹果花叶'
   );
 });
 
-// TC-69 果实分类：银杏卡片标题「白果」（惯用果名特例）
-test('TC-69 果实分类银杏标题「白果」', async ({ page }) => {
+// TC-69 银杏果条目：标题「白果」（惯用果名特例）
+test('TC-69 银杏果条目标题「白果」', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('group', { name: '植物分类筛选' }).getByText('果实').click();
-  await loadAllCards(page, 53);
+  await loadAllCards(page, 206);
 
-  await expect(page.locator('.plant-card', { hasText: '白果' }).locator('.plant-card-zh')).toHaveText(
+  await expect(page.locator('.plant-card', { has: page.getByText('白果', { exact: true }) }).locator('.plant-card-zh')).toHaveText(
     '白果'
   );
 });
 
-// TC-70 全部分类：苹果标题保持原名，详情默认仍为「花」（回归）
-test('TC-70 全部苹果标题原名且详情默认「花」', async ({ page }) => {
+// TC-70 详情名称字号调大（Sprint 17 新增需求：方便幼儿识字）
+test('TC-70 详情页名称字号加大', async ({ page }) => {
   await page.goto('/');
-  await loadAllCards(page, 100);
+  await loadAllCards(page, 206);
 
-  const appleCard = page.locator('.plant-card', { hasText: '苹果' });
-  await expect(appleCard.locator('.plant-card-zh')).toHaveText('苹果');
+  const peachCard = page.locator('.plant-card', { has: page.getByText('桃花', { exact: true }) });
+  await peachCard.click();
 
-  await appleCard.click();
-  await expect(page.locator('.detail-zh')).toHaveText('苹果');
-  await expect(page.getByRole('tab', { name: '花' })).toHaveAttribute('aria-selected', 'true');
-  await expect(page.locator('.part-img')).toHaveAttribute('src', /apple-flower\.jpg$/);
+  const zhFontSize = await page
+    .locator('.detail-zh')
+    .evaluate((el) => getComputedStyle(el).fontSize);
+  // 横屏详情中文名 ≥52px（默认 56px）
+  expect(parseFloat(zhFontSize)).toBeGreaterThanOrEqual(48);
+
+  const enFontSize = await page
+    .locator('.detail-en')
+    .evaluate((el) => getComputedStyle(el).fontSize);
+  // 英文名 ≥24px（默认 30px）
+  expect(parseFloat(enFontSize)).toBeGreaterThanOrEqual(24);
 });

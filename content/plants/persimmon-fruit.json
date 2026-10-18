@@ -1,0 +1,37 @@
+{
+  "id": "persimmon-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 78,
+  "name": {
+    "zh": "柿子",
+    "pinyin": "shì zi",
+    "en": "Persimmon",
+    "ipa": "/pərˈsɪmən/",
+    "audioZh": "/audio/persimmon-fruit-zh.m4a",
+    "audioEn": "/audio/persimmon-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/persimmon-fruit.jpg"
+        }
+      ],
+      "description": "柿子红红的，像小灯笼挂在树上。熟透了软软的，甜得像蜜。",
+      "allusion": {
+        "text": "晓连星影出，晚带日光悬。",
+        "source": "刘禹锡《咏红柿子》",
+        "explain": "红柿子早上映着星光，晚上披着阳光，像树上挂着一盏盏小红灯笼。"
+      }
+    }
+  }
+}

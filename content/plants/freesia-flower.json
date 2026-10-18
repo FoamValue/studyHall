@@ -1,0 +1,36 @@
+{
+  "id": "freesia-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 33,
+  "name": {
+    "zh": "小苍兰花",
+    "pinyin": "xiǎo cāng lán huā",
+    "en": "Freesia Flower",
+    "ipa": "/ˈfriːʒə/ ˈflaʊər",
+    "audioZh": "/audio/freesia-flower-zh.m4a",
+    "audioEn": "/audio/freesia-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/freesia-flower.jpg"
+        }
+      ],
+      "description": "小苍兰的花像小喇叭，一排排歪着头开。香味清清的，真好闻。",
+      "allusion": {
+        "text": "小苍兰的花像小喇叭，一排排歪着头开，香味清清的。",
+        "explain": "小苍兰的花像一排小喇叭，香香的味道能飘好远。"
+      }
+    }
+  }
+}

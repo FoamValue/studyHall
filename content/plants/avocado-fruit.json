@@ -1,0 +1,36 @@
+{
+  "id": "avocado-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "牛油果",
+    "pinyin": "niú yóu guǒ",
+    "en": "Avocado",
+    "ipa": "/ˌævəˈkɑːdoʊ/",
+    "audioZh": "/audio/avocado-fruit-zh.m4a",
+    "audioEn": "/audio/avocado-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/avocado-fruit.jpg"
+        }
+      ],
+      "description": "牛油果深绿深绿的，像一颗大鸭梨。切开里面黄绿黄绿，还有一颗大核。",
+      "allusion": {
+        "text": "牛油果也叫鳄梨，果肉滑得像黄油。",
+        "explain": "牛油果的皮坑坑洼洼像鳄鱼皮，所以也叫鳄梨，果肉软软的。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "osmanthus-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 70,
+  "name": {
+    "zh": "桂花",
+    "pinyin": "guì huā",
+    "en": "Osmanthus Flower",
+    "ipa": "/ɒzˈmænθəs/ ˈflaʊər",
+    "audioZh": "/audio/osmanthus-flower-zh.m4a",
+    "audioEn": "/audio/osmanthus-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/osmanthus-flower.jpg"
+        }
+      ],
+      "description": "桂花米粒那么小，金黄金黄的，一团一团挂在叶子里。香香的，能做桂花糕。",
+      "allusion": {
+        "text": "人闲桂花落，夜静春山空。",
+        "source": "唐·王维《鸟鸣涧》",
+        "explain": "安静的夜晚，小桂花轻轻地落下来，山里静悄悄的。"
+      }
+    }
+  }
+}

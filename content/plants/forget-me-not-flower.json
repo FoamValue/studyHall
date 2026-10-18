@@ -1,0 +1,36 @@
+{
+  "id": "forget-me-not-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 32,
+  "name": {
+    "zh": "勿忘我花",
+    "pinyin": "wù wàng wǒ huā",
+    "en": "Forget-me-not Flower",
+    "ipa": "/fərˈɡet miː nɑːt/ ˈflaʊər",
+    "audioZh": "/audio/forget-me-not-flower-zh.m4a",
+    "audioEn": "/audio/forget-me-not-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/forget-me-not-flower.jpg"
+        }
+      ],
+      "description": "勿忘我是小小的蓝花，花心黄黄的。它的名字是说：别忘记我呀。",
+      "allusion": {
+        "text": "勿忘我的名字，是提醒大家：千万别把我忘记呀。",
+        "explain": "勿忘我是蓝色的小花，它的名字在说：记住我，别忘了我。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "cantaloupe-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "哈密瓜花叶",
+    "pinyin": "hā mì guā huā yè",
+    "en": "Cantaloupe Leaf",
+    "ipa": "/ˈkæntəloʊp/ liːf",
+    "audioZh": "/audio/cantaloupe-leaf-zh.m4a",
+    "audioEn": "/audio/cantaloupe-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cantaloupe-leaf.jpg"
+        }
+      ],
+      "description": "哈密瓜叶子圆圆的，像小扇子。叶子毛毛的，趴在地上长。",
+      "allusion": {
+        "text": "哈密瓜叶子圆圆的，毛毛的，趴在地上晒太阳。",
+        "explain": "哈密瓜的叶子圆圆的，上面有细毛，铺在地上一边爬一边晒太阳。"
+      }
+    }
+  }
+}

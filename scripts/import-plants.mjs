@@ -35,6 +35,9 @@ const MYSQL_URI = process.env.MYSQL_URI ?? "mysql://studyhall:studyhall@localhos
 const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur", "letter", "pinyin", "number", "color"];
 const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur", "letter", "pinyin", "number", "color"];
 // 单键板块（一物一图）→ 图片目录前缀
+// 注：植物拆分后每部位一条（parts 单键为 fruit/flower/leaf），图片目录仍为 plants，
+//     但 categories 为 plant（≠ 部位键），故部位键加入本映射仅用于图片路径校验，
+//     不参与下方「键 = categories 唯一元素」的约束。
 const SINGLE_KEY_IMAGE_DIR = {
   animal: "animals",
   insect: "insects",
@@ -43,7 +46,13 @@ const SINGLE_KEY_IMAGE_DIR = {
   pinyin: "pinyin",
   number: "numbers",
   color: "colors",
+  fruit: "plants",
+  flower: "plants",
+  leaf: "plants",
 };
+// 真正的「键 = categories 唯一元素」板块（动物/昆虫/恐龙/字母/拼音/数字/颜色）；
+// 植物部位条目（fruit/flower/leaf）categories 为 plant，不适用此约束。
+const STRICT_KEY_EQUALS_CATEGORY = ["animal", "insect", "dinosaur", "letter", "pinyin", "number", "color"];
 // 字形类启蒙板块（字母/拼音）：名称仅符号本身，省略 pinyin/en/ipa；number/color 保留三语+音标
 const GLYPH_SECTIONS = ["letter", "pinyin"];
 // 内容子目录（一物一文件），统一 UPSERT 进 plants 集合
@@ -120,8 +129,10 @@ function validatePlant(plant, file) {
       }
     }
   }
-  // 单键板块：parts 只有一个键且为板块 code 时，该键必须 = categories 的唯一元素
-  if (partKeys.length === 1 && SINGLE_KEY_IMAGE_DIR[partKeys[0]]) {
+  // 严格单键板块：parts 只有一个键且该键 ∈ STRICT_KEY_EQUALS_CATEGORY 时，
+  // 该键必须 = categories 的唯一元素（动物/昆虫/恐龙/字母/拼音/数字/颜色）。
+  // 植物部位条目（fruit/flower/leaf，categories=plant）不适用此约束。
+  if (partKeys.length === 1 && STRICT_KEY_EQUALS_CATEGORY.includes(partKeys[0])) {
     if (plant.categories.length !== 1 || plant.categories[0] !== partKeys[0]) {
       err(`单键板块条目「${partKeys[0]}」的键必须等于其 categories 唯一元素`);
     }
@@ -172,10 +183,26 @@ async function main() {
       delete doc.code;
       await db.collection("categories").replaceOne({ _id: doc._id }, doc, { upsert: true });
     }
+    const validIds = new Set(entries.map(({ plant }) => plant.id));
     for (const { plant } of entries) {
       const doc = { ...plant, _id: plant.id };
       delete doc.id;
       await db.collection("plants").replaceOne({ _id: doc._id }, doc, { upsert: true });
+    }
+    // Sprint 17：清理已不在内容集中的陈旧条目（如植物拆分后旧的整株 id）
+    const allDocs = await db.collection("plants").find({}, { projection: { _id: 1 } }).toArray();
+    const staleIds = allDocs.map((d) => d._id).filter((id) => !validIds.has(id));
+    if (staleIds.length > 0) {
+      await db.collection("plants").deleteMany({ _id: { $in: staleIds } });
+      console.log(`✓ MongoDB：清理陈旧条目 ${staleIds.length} 条（${staleIds.slice(0, 5).join(", ")}${staleIds.length > 5 ? "…" : ""}）`);
+    }
+    // 同步清理分类集合中已不存在的分类
+    const validCatIds = new Set(categories.map((c) => c.code));
+    const allCats = await db.collection("categories").find({}, { projection: { _id: 1 } }).toArray();
+    const staleCats = allCats.map((d) => d._id).filter((id) => !validCatIds.has(id));
+    if (staleCats.length > 0) {
+      await db.collection("categories").deleteMany({ _id: { $in: staleCats } });
+      console.log(`✓ MongoDB：清理陈旧分类 ${staleCats.length} 条`);
     }
     console.log(`✓ MongoDB ${MONGO_DB}：分类 ${categories.length} 条、条目 ${entries.length} 条 UPSERT 完成`);
   } finally {

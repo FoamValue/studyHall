@@ -1,0 +1,37 @@
+{
+  "id": "hibiscus-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 40,
+  "name": {
+    "zh": "芙蓉花",
+    "pinyin": "fú róng huā",
+    "en": "Hibiscus Flower",
+    "ipa": "/hɪˈbɪskəs/ ˈflaʊər",
+    "audioZh": "/audio/hibiscus-flower-zh.m4a",
+    "audioEn": "/audio/hibiscus-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/hibiscus-flower.jpg"
+        }
+      ],
+      "description": "芙蓉花早上白白的，傍晚变粉红，像会变魔术。花朵大大的，真好看。",
+      "allusion": {
+        "text": "新开寒露丛，远比水间红。",
+        "source": "韩愈《木芙蓉》",
+        "explain": "天凉凉的寒露时节，木芙蓉刚刚开放，比夏天水边的荷花还要红艳。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "apricot-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 5,
+  "name": {
+    "zh": "杏花叶",
+    "pinyin": "xìng huā yè",
+    "en": "Apricot Leaf",
+    "ipa": "/ˈeɪprɪkɑːt/ liːf",
+    "audioZh": "/audio/apricot-leaf-zh.m4a",
+    "audioEn": "/audio/apricot-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/apricot-leaf.jpg"
+        }
+      ],
+      "description": "杏树叶圆圆的，边上有小锯齿。叶柄长长的，风一吹直点头。",
+      "allusion": {
+        "text": "杏树叶圆圆的，叶柄长长的，风一吹就轻轻点头。",
+        "explain": "杏树的叶子圆圆的，叶柄长长的，风一吹就摇啊摇，像在跟你打招呼。"
+      }
+    }
+  }
+}

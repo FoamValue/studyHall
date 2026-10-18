@@ -1,0 +1,36 @@
+{
+  "id": "carnation-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "康乃馨花",
+    "pinyin": "kāng nǎi xīn huā",
+    "en": "Carnation Flower",
+    "ipa": "/kɑːrˈneɪʃn/ ˈflaʊər",
+    "audioZh": "/audio/carnation-flower-zh.m4a",
+    "audioEn": "/audio/carnation-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/carnation-flower.jpg"
+        }
+      ],
+      "description": "康乃馨花瓣边像小锯齿裙，粉粉的、红红的。它代表爱和感谢，送给妈妈最好啦。",
+      "allusion": {
+        "text": "康乃馨的花瓣边像小锯齿，层层叠叠，代表爱和感谢。",
+        "explain": "康乃馨是送给妈妈的爱心花，谢谢妈妈每天照顾我。"
+      }
+    }
+  }
+}

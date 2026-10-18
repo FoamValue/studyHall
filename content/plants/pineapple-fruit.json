@@ -1,0 +1,36 @@
+{
+  "id": "pineapple-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 81,
+  "name": {
+    "zh": "菠萝",
+    "pinyin": "bō luó",
+    "en": "Pineapple",
+    "ipa": "/ˈpaɪnæpəl/",
+    "audioZh": "/audio/pineapple-fruit-zh.m4a",
+    "audioEn": "/audio/pineapple-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pineapple-fruit.jpg"
+        }
+      ],
+      "description": "菠萝穿着带刺的盔甲，头顶绿油油的叶子帽。果肉酸酸甜甜。",
+      "allusion": {
+        "text": "菠萝是一群小花手拉手，长成的大果子。",
+        "explain": "菠萝不是一朵花结的，而是好多好多小花挤在一起，长成一个大菠萝。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "carnation-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "康乃馨花叶",
+    "pinyin": "kāng nǎi xīn huā yè",
+    "en": "Carnation Leaf",
+    "ipa": "/kɑːrˈneɪʃn/ liːf",
+    "audioZh": "/audio/carnation-leaf-zh.m4a",
+    "audioEn": "/audio/carnation-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/carnation-leaf.jpg"
+        }
+      ],
+      "description": "康乃馨叶细细长长的，颜色有点灰绿。一对一对长在花杆上，托着漂亮的花。",
+      "allusion": {
+        "text": "康乃馨叶细细长长，灰绿灰绿，一对一对托着花。",
+        "explain": "康乃馨的叶子又细又长，灰灰绿绿，一对一对长在花杆上。"
+      }
+    }
+  }
+}

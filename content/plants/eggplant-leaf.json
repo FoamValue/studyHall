@@ -1,0 +1,36 @@
+{
+  "id": "eggplant-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 31,
+  "name": {
+    "zh": "茄子花叶",
+    "pinyin": "qié zi huā yè",
+    "en": "Eggplant Leaf",
+    "ipa": "/ˈeɡplænt/ liːf",
+    "audioZh": "/audio/eggplant-leaf-zh.m4a",
+    "audioEn": "/audio/eggplant-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/eggplant-leaf.jpg"
+        }
+      ],
+      "description": "茄子叶子大大的，边上有波浪。叶子上有小毛毛，还有点刺。",
+      "allusion": {
+        "text": "茄子叶大大的，边上有波浪，上面有小毛毛和小刺。",
+        "explain": "茄子的叶子很大，边上像波浪，表面有细毛，还有一点点小刺。"
+      }
+    }
+  }
+}

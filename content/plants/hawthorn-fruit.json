@@ -1,0 +1,36 @@
+{
+  "id": "hawthorn-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 38,
+  "name": {
+    "zh": "山楂",
+    "pinyin": "shān zhā",
+    "en": "Hawthorn",
+    "ipa": "/ˈhɔːθɔːrn/",
+    "audioZh": "/audio/hawthorn-fruit-zh.m4a",
+    "audioEn": "/audio/hawthorn-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/hawthorn-fruit.jpg"
+        }
+      ],
+      "description": "山楂红红的，像一颗颗小红果。酸酸的，做成糖葫芦可好吃啦。",
+      "allusion": {
+        "text": "山楂也叫山里红，因为它长在山里红红的。",
+        "explain": "山楂长在山里，果子红红的一片，人们就叫它山里红。"
+      }
+    }
+  }
+}

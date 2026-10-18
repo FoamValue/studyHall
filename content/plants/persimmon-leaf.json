@@ -1,0 +1,36 @@
+{
+  "id": "persimmon-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 80,
+  "name": {
+    "zh": "柿子花叶",
+    "pinyin": "shì zi huā yè",
+    "en": "Persimmon Leaf",
+    "ipa": "/pərˈsɪmən/ liːf",
+    "audioZh": "/audio/persimmon-leaf-zh.m4a",
+    "audioEn": "/audio/persimmon-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/persimmon-leaf.jpg"
+        }
+      ],
+      "description": "柿子叶又大又圆，绿得发亮。秋天叶子变红，比花还好看。",
+      "allusion": {
+        "text": "柿子叶又大又圆，秋天变红，比花还好看。",
+        "explain": "柿子的叶子又大又圆，秋天会变成红红的，比花还漂亮。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "tulip-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 96,
+  "name": {
+    "zh": "郁金香花",
+    "pinyin": "yù jīn xiāng huā",
+    "en": "Tulip Flower",
+    "ipa": "/ˈtuːlɪp/ ˈflaʊər",
+    "audioZh": "/audio/tulip-flower-zh.m4a",
+    "audioEn": "/audio/tulip-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/tulip-flower.jpg"
+        }
+      ],
+      "description": "郁金香像一个小酒杯，直直地站着。红的、黄的、紫的，像彩色蜡烛。",
+      "allusion": {
+        "text": "郁金香藏在土里的球根里过冬，春天就开出彩色花。",
+        "explain": "郁金香冬天在土里睡大觉，春天一到，就冒出彩色的花。"
+      }
+    }
+  }
+}

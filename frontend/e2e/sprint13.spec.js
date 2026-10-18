@@ -4,10 +4,10 @@ import { test, expect } from '@playwright/test';
 // 覆盖：植物 176 处小知识补齐后，详情页「小知识」卡片渲染 + 同株不同部位文案差异化。
 // 前端零改动，语料增补后 AllusionCard 数据驱动即渲染。
 
-// TC-128 补齐小知识后详情渲染（选此前缺失小知识的植物 apple）
+// TC-128 补齐小知识后详情渲染（选 apple-flower 条目）
 test('TC-128 补齐后小知识卡片渲染', async ({ page }) => {
-  await page.goto('/plants/apple');
-  await expect(page.locator('.detail-zh')).toHaveText('苹果');
+  await page.goto('/plants/apple-flower');
+  await expect(page.locator('.detail-zh')).toHaveText('苹果花');
 
   await expect(page.locator('.allusion-card')).toBeVisible();
   await expect(page.locator('.allusion-title')).toHaveText('小知识');
@@ -17,18 +17,12 @@ test('TC-128 补齐后小知识卡片渲染', async ({ page }) => {
   expect((await text.innerText()).trim().length).toBeGreaterThan(0);
 });
 
-// TC-129 同株花 / 叶 / 果小知识互不相同
-test('TC-129 不同部位小知识不重复', async ({ page }) => {
-  await page.goto('/plants/apple');
-  await expect(page.locator('.detail-zh')).toHaveText('苹果');
-
+// TC-129 同株花 / 叶 / 果三条目小知识互不相同（Sprint 17：每部位独立条目）
+test('TC-129 不同部位条目小知识不重复', async ({ page }) => {
   const texts = [];
-  for (const label of ['花', '叶', '果']) {
-    const tab = page.getByRole('tab', { name: label });
-    await tab.click();
-    await expect(tab).toHaveAttribute('aria-selected', 'true');
-    await page.waitForTimeout(200);
-
+  for (const id of ['apple-flower', 'apple-leaf', 'apple-fruit']) {
+    await page.goto(`/plants/${id}`);
+    await expect(page.locator('.detail-zh')).toBeVisible();
     const t = (await page.locator('.allusion-text').innerText()).trim();
     expect(t.length).toBeGreaterThan(0);
     texts.push(t);

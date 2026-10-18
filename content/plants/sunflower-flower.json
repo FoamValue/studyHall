@@ -1,0 +1,37 @@
+{
+  "id": "sunflower-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 94,
+  "name": {
+    "zh": "向日葵花",
+    "pinyin": "xiàng rì kuí huā",
+    "en": "Sunflower",
+    "ipa": "/ˈsʌnˌflaʊər/ ˈflaʊər",
+    "audioZh": "/audio/sunflower-flower-zh.m4a",
+    "audioEn": "/audio/sunflower-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sunflower-flower.jpg"
+        }
+      ],
+      "description": "大大的花盘圆圆的，像金色的小太阳。它会跟着太阳转，所以叫向日葵。",
+      "allusion": {
+        "text": "青青园中葵，朝露待日晞。",
+        "source": "汉乐府《长歌行》",
+        "explain": "园子里绿绿的葵菜，叶子上还挂着小露珠，等着太阳出来晒干，新的一天开始啦。"
+      }
+    }
+  }
+}

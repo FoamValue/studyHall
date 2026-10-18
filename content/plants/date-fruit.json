@@ -1,0 +1,36 @@
+{
+  "id": "date-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 26,
+  "name": {
+    "zh": "椰枣",
+    "pinyin": "yē zǎo",
+    "en": "Date",
+    "ipa": "/deɪt/",
+    "audioZh": "/audio/date-fruit-zh.m4a",
+    "audioEn": "/audio/date-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/date-fruit.jpg"
+        }
+      ],
+      "description": "椰枣一串一串挂在树上，棕红棕红的。晒干后甜甜的像蜜糖。",
+      "allusion": {
+        "text": "椰枣长在沙漠里，是沙漠里甜甜的食物。",
+        "explain": "沙漠里很少下雨，椰枣树却结出甜甜的果子，人们很爱吃。"
+      }
+    }
+  }
+}

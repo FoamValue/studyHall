@@ -1,0 +1,36 @@
+{
+  "id": "avocado-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "牛油果花叶",
+    "pinyin": "niú yóu guǒ huā yè",
+    "en": "Avocado Leaf",
+    "ipa": "/ˌævəˈkɑːdoʊ/ liːf",
+    "audioZh": "/audio/avocado-leaf-zh.m4a",
+    "audioEn": "/audio/avocado-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/avocado-leaf.jpg"
+        }
+      ],
+      "description": "牛油果叶子长长的，绿得发亮。一年四季都是绿的。",
+      "allusion": {
+        "text": "牛油果的叶子长长的，绿得发亮，一年到头都不掉。",
+        "explain": "它的叶子又长又亮，冬天也是绿的，一直挂在树上不掉下来。"
+      }
+    }
+  }
+}

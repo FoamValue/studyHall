@@ -1,0 +1,36 @@
+{
+  "id": "lemon-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "柠檬",
+    "pinyin": "níng méng",
+    "en": "Lemon",
+    "ipa": "/ˈlemən/",
+    "audioZh": "/audio/lemon-fruit-zh.m4a",
+    "audioEn": "/audio/lemon-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lemon-fruit.jpg"
+        }
+      ],
+      "description": "柠檬黄黄的，两头尖尖的。咬一口酸得眯眼睛，泡水喝香香的。",
+      "allusion": {
+        "text": "柠檬虽然酸，泡水喝香香的。",
+        "explain": "柠檬咬一口酸得眯眼睛，可把它泡进水里，就变成香香甜甜的饮料啦。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "cherry-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 16,
+  "name": {
+    "zh": "樱花叶",
+    "pinyin": "yīng huā yè",
+    "en": "Cherry Blossom Leaf",
+    "ipa": "/ˈtʃeri ˌblɑːsəm/ liːf",
+    "audioZh": "/audio/cherry-leaf-zh.m4a",
+    "audioEn": "/audio/cherry-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cherry-leaf.jpg"
+        }
+      ],
+      "description": "樱花树常常先开花、后长叶。新叶嫩绿嫩绿的，边上也有小锯齿。",
+      "allusion": {
+        "text": "樱花树先开花、后长叶，新叶嫩绿嫩绿的。",
+        "explain": "樱花树先开满花，花谢了才长出叶子，新叶子嫩嫩绿绿的。"
+      }
+    }
+  }
+}

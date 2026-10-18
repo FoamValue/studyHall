@@ -1,0 +1,36 @@
+{
+  "id": "passion-fruit-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 74,
+  "name": {
+    "zh": "百香果花叶",
+    "pinyin": "bǎi xiāng guǒ huā yè",
+    "en": "Passion Fruit Leaf",
+    "ipa": "/ˈpæʃən fruːt/ liːf",
+    "audioZh": "/audio/passion-fruit-leaf-zh.m4a",
+    "audioEn": "/audio/passion-fruit-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/passion-fruit-leaf.jpg"
+        }
+      ],
+      "description": "百香果叶子像小鸭掌，分成三瓣。藤蔓上长着卷卷的须须。",
+      "allusion": {
+        "text": "百香果叶像小鸭掌，分成三瓣，藤上还有卷卷的须。",
+        "explain": "百香果的叶子像小鸭掌，分成三瓣，藤上长着卷卷的小须须。"
+      }
+    }
+  }
+}

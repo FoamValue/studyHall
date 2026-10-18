@@ -1,0 +1,37 @@
+{
+  "id": "pomelo-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 85,
+  "name": {
+    "zh": "柚子",
+    "pinyin": "yòu zi",
+    "en": "Pomelo",
+    "ipa": "/ˈpɑːməloʊ/",
+    "audioZh": "/audio/pomelo-fruit-zh.m4a",
+    "audioEn": "/audio/pomelo-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pomelo-fruit.jpg"
+        }
+      ],
+      "description": "柚子大大的、黄黄的，像一个大皮球。剥开厚厚皮，果肉一瓣一瓣。",
+      "allusion": {
+        "text": "人烟寒橘柚，秋色老梧桐。",
+        "source": "李白《秋登宣城谢朓北楼》",
+        "explain": "秋天到了，炊烟下的橘柚树带着凉意，梧桐叶变黄了，秋天的颜色真美。"
+      }
+    }
+  }
+}

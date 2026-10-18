@@ -1,0 +1,36 @@
+{
+  "id": "dragon-fruit-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 29,
+  "name": {
+    "zh": "火龙果花叶",
+    "pinyin": "huǒ lóng guǒ huā yè",
+    "en": "Dragon Fruit Leaf",
+    "ipa": "/ˈdræɡən fruːt/ liːf",
+    "audioZh": "/audio/dragon-fruit-leaf-zh.m4a",
+    "audioEn": "/audio/dragon-fruit-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/dragon-fruit-leaf.jpg"
+        }
+      ],
+      "description": "火龙果的叶子变成了绿绿的肉茎，像三条边的小柱子。它是仙人掌的亲戚。",
+      "allusion": {
+        "text": "火龙果的叶子变成了绿绿的肉茎，像三条边的小柱子。",
+        "explain": "火龙果没有普通叶子，绿绿的茎就是它的叶，它是仙人掌的亲戚。"
+      }
+    }
+  }
+}

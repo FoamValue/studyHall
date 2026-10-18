@@ -3,13 +3,11 @@ import { loadAllCards } from './helpers';
 
 // ===== Sprint 9：详情页名称预生成音频（.m4a）播放 =====
 
-// 进入「花朵」分类下的第一张卡片详情，返回该植物的中文名（Sprint 8 起卡片标题按分类派生，故取卡片图 alt 的原名）
-async function enterFirstFlowerDetail(page) {
+// 进入植物板块第一张卡片详情，返回该条目中文名
+async function enterFirstPlantDetail(page) {
   await page.goto('/');
-  const filterGroup = page.getByRole('group', { name: '植物分类筛选' });
-  await filterGroup.getByText('花朵').click();
   const cards = page.locator('.plant-card');
-  await loadAllCards(page, 53); // 增量加载：滚动至全量
+  await loadAllCards(page, 206);
   await page.evaluate(() => window.scrollTo(0, 0));
   const name = await cards.first().locator('img').getAttribute('alt');
   await cards.first().click();
@@ -20,7 +18,7 @@ async function enterFirstFlowerDetail(page) {
 // TC-46 中/英喇叭存在且热区 ≥56px
 test('TC-46 详情页中/英朗读喇叭存在且热区 ≥56px', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
 
   const zh = page.getByRole('button', { name: '朗读中文名' });
   const en = page.getByRole('button', { name: '朗读英文名' });
@@ -53,7 +51,7 @@ test('TC-47 点喇叭播放预生成音频，离开详情页时暂停', async ({
     };
   });
 
-  await enterFirstFlowerDetail(page);
+  await enterFirstPlantDetail(page);
   await page.getByRole('button', { name: '朗读中文名' }).click();
 
   await expect.poll(() => page.evaluate(() => window.__played.length)).toBeGreaterThan(0);

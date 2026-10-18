@@ -1,0 +1,36 @@
+{
+  "id": "fig-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 30,
+  "name": {
+    "zh": "无花果",
+    "pinyin": "wú huā guǒ",
+    "en": "Fig",
+    "ipa": "/fɪɡ/",
+    "audioZh": "/audio/fig-fruit-zh.m4a",
+    "audioEn": "/audio/fig-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/fig-fruit.jpg"
+        }
+      ],
+      "description": "无花果软软甜甜的，掰开里面藏着小花花。原来它的花躲在果子里面。",
+      "allusion": {
+        "text": "无花果摘下来很快就软，晒干更甜。",
+        "explain": "无花果熟透了软软的，可以晒成果干，甜甜的像小蜜糖。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "orange-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 69,
+  "name": {
+    "zh": "橙子花叶",
+    "pinyin": "chéng zi huā yè",
+    "en": "Orange Leaf",
+    "ipa": "/ˈɔːrɪndʒ/ liːf",
+    "audioZh": "/audio/orange-leaf-zh.m4a",
+    "audioEn": "/audio/orange-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/orange-leaf.jpg"
+        }
+      ],
+      "description": "橙叶椭圆椭圆的，绿得发亮。揉一揉有清香味，一年四季都是绿的。",
+      "allusion": {
+        "text": "橙叶椭圆椭圆的，绿得发亮，一年四季都是绿的。",
+        "explain": "橙子的叶子椭圆椭圆的，绿得发亮，冬天也不掉，一年到头都绿。"
+      }
+    }
+  }
+}

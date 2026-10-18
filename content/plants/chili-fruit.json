@@ -1,0 +1,36 @@
+{
+  "id": "chili-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 16,
+  "name": {
+    "zh": "辣椒",
+    "pinyin": "là jiāo",
+    "en": "Chili",
+    "ipa": "/ˈtʃɪli/",
+    "audioZh": "/audio/chili-fruit-zh.m4a",
+    "audioEn": "/audio/chili-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chili-fruit.jpg"
+        }
+      ],
+      "description": "辣椒尖尖的，红红的像小灯笼。咬一口辣得直吐舌头。",
+      "allusion": {
+        "text": "辣椒辣辣的，是为了不让小动物咬它。",
+        "explain": "辣椒的辣味是它的武器，可小鸟不怕辣，还能帮它把种子带走。"
+      }
+    }
+  }
+}

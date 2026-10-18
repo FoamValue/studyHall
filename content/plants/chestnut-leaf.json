@@ -1,0 +1,36 @@
+{
+  "id": "chestnut-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 17,
+  "name": {
+    "zh": "板栗花叶",
+    "pinyin": "bǎn lì huā yè",
+    "en": "Chestnut Leaf",
+    "ipa": "/ˈtʃesnʌt/ liːf",
+    "audioZh": "/audio/chestnut-leaf-zh.m4a",
+    "audioEn": "/audio/chestnut-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/chestnut-leaf.jpg"
+        }
+      ],
+      "description": "板栗叶子长长的，边上有尖尖锯齿。叶子排得整整齐齐。",
+      "allusion": {
+        "text": "板栗叶长长的，边上有尖尖锯齿，排得整整齐齐。",
+        "explain": "板栗的叶子又长又窄，边上有一排尖尖的小锯齿，排得很整齐。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "papaya-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 73,
+  "name": {
+    "zh": "木瓜花叶",
+    "pinyin": "mù guā huā yè",
+    "en": "Papaya Leaf",
+    "ipa": "/pəˈpaɪə/ liːf",
+    "audioZh": "/audio/papaya-leaf-zh.m4a",
+    "audioEn": "/audio/papaya-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/papaya-leaf.jpg"
+        }
+      ],
+      "description": "木瓜叶子像一把大伞，长在高高的树干顶。叶柄长长的。",
+      "allusion": {
+        "text": "木瓜叶像一把大伞，长在高高的树干顶，柄长长的。",
+        "explain": "木瓜的叶子像一把大伞，长在高高的树干顶上，叶柄长长的。"
+      }
+    }
+  }
+}

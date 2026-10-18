@@ -1,0 +1,36 @@
+{
+  "id": "grape-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 39,
+  "name": {
+    "zh": "葡萄花叶",
+    "pinyin": "pú táo huā yè",
+    "en": "Grape Leaf",
+    "ipa": "/ɡreɪp/ liːf",
+    "audioZh": "/audio/grape-leaf-zh.m4a",
+    "audioEn": "/audio/grape-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/grape-leaf.jpg"
+        }
+      ],
+      "description": "葡萄叶像小手掌，有五根小指头。爬在架子上，给葡萄串搭凉棚。",
+      "allusion": {
+        "text": "葡萄叶像小手掌，有五根小指头，给葡萄串搭凉棚。",
+        "explain": "葡萄的叶子像小手掌，有五根小指头，爬在架子上给葡萄遮太阳。"
+      }
+    }
+  }
+}

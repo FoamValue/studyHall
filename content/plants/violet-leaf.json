@@ -1,0 +1,36 @@
+{
+  "id": "violet-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 98,
+  "name": {
+    "zh": "紫罗兰花叶",
+    "pinyin": "zǐ luó lán huā yè",
+    "en": "Violet Leaf",
+    "ipa": "/ˈvaɪələt/ liːf",
+    "audioZh": "/audio/violet-leaf-zh.m4a",
+    "audioEn": "/audio/violet-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/violet-leaf.jpg"
+        }
+      ],
+      "description": "紫罗兰叶子圆圆的，边缘有点波浪。叶片毛茸茸的，摸起来软软的。",
+      "allusion": {
+        "text": "紫罗兰叶圆圆的，边上有波浪，摸起来软软的。",
+        "explain": "紫罗兰的叶子圆圆的，边边像波浪，上面毛茸茸的，摸着软软的。"
+      }
+    }
+  }
+}

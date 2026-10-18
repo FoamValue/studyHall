@@ -1,0 +1,36 @@
+{
+  "id": "coconut-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 21,
+  "name": {
+    "zh": "椰子花叶",
+    "pinyin": "yē zi huā yè",
+    "en": "Coconut Leaf",
+    "ipa": "/ˈkoʊkənʌt/ liːf",
+    "audioZh": "/audio/coconut-leaf-zh.m4a",
+    "audioEn": "/audio/coconut-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/coconut-leaf.jpg"
+        }
+      ],
+      "description": "椰子叶子又长又大，像绿色的大羽毛。风一吹哗啦啦响。",
+      "allusion": {
+        "text": "椰子叶又长又大，像绿色的大羽毛，风一吹哗啦啦响。",
+        "explain": "椰子树的叶子又长又大，像绿色的大羽毛，风一吹就哗啦啦唱歌。"
+      }
+    }
+  }
+}

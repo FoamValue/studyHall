@@ -1,0 +1,36 @@
+{
+  "id": "pumpkin-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 89,
+  "name": {
+    "zh": "南瓜花叶",
+    "pinyin": "nán guā huā yè",
+    "en": "Pumpkin Leaf",
+    "ipa": "/ˈpʌmpkɪn/ liːf",
+    "audioZh": "/audio/pumpkin-leaf-zh.m4a",
+    "audioEn": "/audio/pumpkin-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/pumpkin-leaf.jpg"
+        }
+      ],
+      "description": "南瓜叶子像大手掌，摸上去毛毛的。它趴在地上晒太阳。",
+      "allusion": {
+        "text": "南瓜叶像大手掌，毛毛的，趴在地上晒太阳。",
+        "explain": "南瓜的叶子像大手掌，上面毛茸茸的，趴在地上一边爬一边晒太阳。"
+      }
+    }
+  }
+}

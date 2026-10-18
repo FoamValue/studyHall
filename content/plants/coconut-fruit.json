@@ -1,0 +1,36 @@
+{
+  "id": "coconut-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 19,
+  "name": {
+    "zh": "椰子",
+    "pinyin": "yē zi",
+    "en": "Coconut",
+    "ipa": "/ˈkoʊkənʌt/",
+    "audioZh": "/audio/coconut-fruit-zh.m4a",
+    "audioEn": "/audio/coconut-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/coconut-fruit.jpg"
+        }
+      ],
+      "description": "椰子外壳硬硬的，里面装着甜甜的椰子水。插根吸管就能喝。",
+      "allusion": {
+        "text": "椰子掉进大海，漂到远方安家。",
+        "explain": "椰子外面有厚厚的壳像小船，掉进海里也不会沉，漂到新地方发芽。"
+      }
+    }
+  }
+}

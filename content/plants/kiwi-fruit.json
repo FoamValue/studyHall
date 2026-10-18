@@ -1,0 +1,36 @@
+{
+  "id": "kiwi-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 46,
+  "name": {
+    "zh": "猕猴桃",
+    "pinyin": "mí hóu táo",
+    "en": "Kiwi",
+    "ipa": "/ˈkiːwiː/",
+    "audioZh": "/audio/kiwi-fruit-zh.m4a",
+    "audioEn": "/audio/kiwi-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kiwi-fruit.jpg"
+        }
+      ],
+      "description": "猕猴桃穿着棕色毛衣，里面绿绿的果肉藏着一排小黑籽。酸酸甜甜。",
+      "allusion": {
+        "text": "猕猴桃因为猕猴爱吃，所以得了这个名字。",
+        "explain": "猕猴桃毛茸茸的，山里的小猕猴很爱吃，大家就叫它猕猴桃。"
+      }
+    }
+  }
+}

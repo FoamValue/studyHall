@@ -1,0 +1,36 @@
+{
+  "id": "cherry-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "樱花",
+    "pinyin": "yīng huā",
+    "en": "Cherry Blossom",
+    "ipa": "/ˈtʃeri ˌblɑːsəm/ ˈflaʊər",
+    "audioZh": "/audio/cherry-flower-zh.m4a",
+    "audioEn": "/audio/cherry-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cherry-flower.jpg"
+        }
+      ],
+      "description": "樱花一簇一簇开满枝头，粉粉嫩嫩的。风一吹，花瓣像小雪片飘下来。",
+      "allusion": {
+        "text": "樱花开满枝头，只有短短几天，风一吹就落下来。",
+        "explain": "樱花是春天的小信使，它开的时候，春天就来啦。"
+      }
+    }
+  }
+}

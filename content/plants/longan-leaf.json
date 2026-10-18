@@ -1,0 +1,36 @@
+{
+  "id": "longan-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 55,
+  "name": {
+    "zh": "龙眼花叶",
+    "pinyin": "lóng yǎn huā yè",
+    "en": "Longan Leaf",
+    "ipa": "/ˈlɑːŋɡən/ liːf",
+    "audioZh": "/audio/longan-leaf-zh.m4a",
+    "audioEn": "/audio/longan-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/longan-leaf.jpg"
+        }
+      ],
+      "description": "龙眼叶子长长的，绿油油一对对长着。一年四季都是绿的。",
+      "allusion": {
+        "text": "龙眼叶长长的，一对一对长着，一年四季都是绿的。",
+        "explain": "龙眼的叶子又长又绿，一对一对长在一起，一年到头都不掉。"
+      }
+    }
+  }
+}

@@ -224,13 +224,13 @@ body {
 }
 
 .detail-zh {
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 700;
   margin: 0 0 8px;
 }
 
 .detail-en {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 600;
   margin: 0;
 }
@@ -499,12 +499,12 @@ body {
   }
 
   .detail-header .detail-zh {
-    font-size: 40px;
+    font-size: 52px;
     margin: 0 0 2px;
   }
 
   .detail-header .detail-en {
-    font-size: 20px;
+    font-size: 26px;
   }
 
   /* Sprint 10（EX-5）：单图板块（动物/昆虫/恐龙）无部位按钮约束，横屏放宽图片栏 48% → 64%，

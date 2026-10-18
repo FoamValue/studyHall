@@ -1,0 +1,36 @@
+{
+  "id": "osmanthus-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 71,
+  "name": {
+    "zh": "桂花叶",
+    "pinyin": "guì huā yè",
+    "en": "Osmanthus Leaf",
+    "ipa": "/ɒzˈmænθəs/ liːf",
+    "audioZh": "/audio/osmanthus-leaf-zh.m4a",
+    "audioEn": "/audio/osmanthus-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/osmanthus-leaf.jpg"
+        }
+      ],
+      "description": "桂叶长长的，边边滑滑的没有锯齿。绿绿的，藏着香香的小黄花。",
+      "allusion": {
+        "text": "桂叶长长的，边边滑滑的，没有锯齿。",
+        "explain": "桂花的叶子长长的，边上滑溜溜的，没有小锯齿，藏着香香的小黄花。"
+      }
+    }
+  }
+}

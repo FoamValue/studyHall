@@ -1,0 +1,36 @@
+{
+  "id": "orchid-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 70,
+  "name": {
+    "zh": "蝴蝶兰花叶",
+    "pinyin": "hú dié lán huā yè",
+    "en": "Orchid Leaf",
+    "ipa": "/ˈɔːrkɪd/ liːf",
+    "audioZh": "/audio/orchid-leaf-zh.m4a",
+    "audioEn": "/audio/orchid-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/orchid-leaf.jpg"
+        }
+      ],
+      "description": "蝴蝶兰叶子又厚又绿，像绿色的小舌头。它从根上长出来，胖乎乎的。",
+      "allusion": {
+        "text": "蝴蝶兰叶又厚又绿，胖乎乎的，从根上长出来。",
+        "explain": "蝴蝶兰的叶子又厚又绿，像绿色的小舌头，胖胖的从根上冒出来。"
+      }
+    }
+  }
+}

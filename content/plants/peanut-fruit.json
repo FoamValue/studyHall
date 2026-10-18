@@ -1,0 +1,36 @@
+{
+  "id": "peanut-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 75,
+  "name": {
+    "zh": "花生",
+    "pinyin": "huā shēng",
+    "en": "Peanut",
+    "ipa": "/ˈpiːnʌt/",
+    "audioZh": "/audio/peanut-fruit-zh.m4a",
+    "audioEn": "/audio/peanut-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peanut-fruit.jpg"
+        }
+      ],
+      "description": "花生住在泥土里，外壳像小葫芦。剥开两颗胖娃娃，香香脆脆。",
+      "allusion": {
+        "text": "花生花开完，就钻进土里结果子。",
+        "explain": "花生的花开在枝上，谢了就弯下腰钻进土里，慢慢长出花生，所以叫落花生。"
+      }
+    }
+  }
+}

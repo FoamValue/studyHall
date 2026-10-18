@@ -1,0 +1,36 @@
+{
+  "id": "blueberry-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "蓝莓",
+    "pinyin": "lán méi",
+    "en": "Blueberry",
+    "ipa": "/ˈbluːberi/",
+    "audioZh": "/audio/blueberry-fruit-zh.m4a",
+    "audioEn": "/audio/blueberry-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/blueberry-fruit.jpg"
+        }
+      ],
+      "description": "蓝莓小小的、蓝蓝的，像一颗颗小宝石。表面有一层白白的粉。",
+      "allusion": {
+        "text": "蓝莓皮上的白霜，是它自己长的保护衣。",
+        "explain": "蓝莓身上那层白白的粉是它自己长的，能保护它，洗洗就能吃。"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "peony-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 78,
+  "name": {
+    "zh": "牡丹花",
+    "pinyin": "mǔ dān huā",
+    "en": "Peony Flower",
+    "ipa": "/ˈpiːəni/ ˈflaʊər",
+    "audioZh": "/audio/peony-flower-zh.m4a",
+    "audioEn": "/audio/peony-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peony-flower.jpg"
+        }
+      ],
+      "description": "牡丹花开得又大又圆，像小皮球。粉粉白白的，一层一层像小裙子。",
+      "allusion": {
+        "text": "唯有牡丹真国色，花开时节动京城。",
+        "source": "唐·刘禹锡《赏牡丹》",
+        "explain": "牡丹花开的时候特别漂亮，整个京城的人都跑来看它。"
+      }
+    }
+  }
+}

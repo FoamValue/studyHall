@@ -1,0 +1,36 @@
+{
+  "id": "poppy-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 88,
+  "name": {
+    "zh": "虞美人花叶",
+    "pinyin": "yú měi rén huā yè",
+    "en": "Poppy Leaf",
+    "ipa": "/ˈpɑːpi/ liːf",
+    "audioZh": "/audio/poppy-leaf-zh.m4a",
+    "audioEn": "/audio/poppy-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/poppy-leaf.jpg"
+        }
+      ],
+      "description": "虞美人叶子毛茸茸的，边上有小裂口。它细细瘦瘦的，贴着地长。",
+      "allusion": {
+        "text": "虞美人叶毛茸茸的，边上有小裂口，细细瘦瘦贴着地。",
+        "explain": "虞美人的叶子毛茸茸的，边上裂开小口，细细瘦瘦贴着地面长。"
+      }
+    }
+  }
+}

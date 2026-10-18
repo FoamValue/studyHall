@@ -1,0 +1,37 @@
+{
+  "id": "rose-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 90,
+  "name": {
+    "zh": "玫瑰花",
+    "pinyin": "méi guī huā",
+    "en": "Rose Flower",
+    "ipa": "/roʊz/ ˈflaʊər",
+    "audioZh": "/audio/rose-flower-zh.m4a",
+    "audioEn": "/audio/rose-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/rose-flower.jpg"
+        }
+      ],
+      "description": "玫瑰花有好多层花瓣，红红的像小裙摆。闻起来香香的，摸上去软软的。",
+      "allusion": {
+        "text": "赠人玫瑰，手有余香。",
+        "source": "谚语",
+        "explain": "把香香的玫瑰送给别人，自己手上也会留下香味，帮助别人真开心。"
+      }
+    }
+  }
+}

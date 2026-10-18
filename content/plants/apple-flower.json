@@ -1,0 +1,36 @@
+{
+  "id": "apple-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "苹果花",
+    "pinyin": "píng guǒ huā",
+    "en": "Apple Flower",
+    "ipa": "/ˈæpl/ ˈflaʊər",
+    "audioZh": "/audio/apple-flower-zh.m4a",
+    "audioEn": "/audio/apple-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/apple-flower.jpg"
+        }
+      ],
+      "description": "苹果花白白的，带一点粉，五个花瓣围成小圆圈，香香的。",
+      "allusion": {
+        "text": "苹果树春天开花，花谢以后，才慢慢结出大苹果。",
+        "explain": "苹果花是苹果的妈妈，先开花再结果，秋天就有甜甜的苹果啦。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "peanut-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 77,
+  "name": {
+    "zh": "花生花叶",
+    "pinyin": "huā shēng huā yè",
+    "en": "Peanut Leaf",
+    "ipa": "/ˈpiːnʌt/ liːf",
+    "audioZh": "/audio/peanut-leaf-zh.m4a",
+    "audioEn": "/audio/peanut-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/peanut-leaf.jpg"
+        }
+      ],
+      "description": "花生叶子是四片小叶手拉手。晚上叶子会合起来睡觉觉。",
+      "allusion": {
+        "text": "花生叶是四片小叶手拉手，晚上会合起来睡觉觉。",
+        "explain": "花生的叶子四片排在一起，像手拉手，天黑了就合起来睡觉。"
+      }
+    }
+  }
+}

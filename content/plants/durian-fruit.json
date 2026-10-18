@@ -1,0 +1,36 @@
+{
+  "id": "durian-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 28,
+  "name": {
+    "zh": "榴莲",
+    "pinyin": "liú lián",
+    "en": "Durian",
+    "ipa": "/ˈdʊriən/",
+    "audioZh": "/audio/durian-fruit-zh.m4a",
+    "audioEn": "/audio/durian-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/durian-fruit.jpg"
+        }
+      ],
+      "description": "榴莲满身是尖尖的刺，闻着臭吃着香。果肉软软黄黄的，像奶油。",
+      "allusion": {
+        "text": "榴莲闻着臭臭的，却被叫做水果之王。",
+        "explain": "榴莲的刺是它的护身衣，果肉又软又甜，所以人们叫它水果之王。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "gladiolus-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 38,
+  "name": {
+    "zh": "剑兰花叶",
+    "pinyin": "jiàn lán huā yè",
+    "en": "Gladiolus Leaf",
+    "ipa": "/ˌɡlædiˈoʊləs/ liːf",
+    "audioZh": "/audio/gladiolus-leaf-zh.m4a",
+    "audioEn": "/audio/gladiolus-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/gladiolus-leaf.jpg"
+        }
+      ],
+      "description": "剑兰叶子又长又直，像一把把宝剑。它们保护着花茎站得笔直。",
+      "allusion": {
+        "text": "剑兰叶又长又直，像一把把宝剑，护着花茎站得笔直。",
+        "explain": "剑兰的叶子又长又直，像一把把绿色的宝剑，扶着花茎站得直直的。"
+      }
+    }
+  }
+}

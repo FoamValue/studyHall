@@ -1,0 +1,37 @@
+{
+  "id": "kapok-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 46,
+  "name": {
+    "zh": "木棉花",
+    "pinyin": "mù mián huā",
+    "en": "Kapok Flower",
+    "ipa": "/ˈkeɪpɑːk/ ˈflaʊər",
+    "audioZh": "/audio/kapok-flower-zh.m4a",
+    "audioEn": "/audio/kapok-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/kapok-flower.jpg"
+        }
+      ],
+      "description": "木棉花大大的、红红的，像小火炬举在枝头。花朵掉在地上也不蔫。",
+      "allusion": {
+        "text": "粤江二月三月来，千树万树朱花开。",
+        "source": "陈恭尹《木棉花歌》",
+        "explain": "南方的二月三月，木棉树上千树万树都开出火红的花，像举起一个个小火炬。"
+      }
+    }
+  }
+}

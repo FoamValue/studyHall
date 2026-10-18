@@ -1,0 +1,36 @@
+{
+  "id": "cornflower-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 23,
+  "name": {
+    "zh": "矢车菊花叶",
+    "pinyin": "shǐ chē jú huā yè",
+    "en": "Cornflower Leaf",
+    "ipa": "/ˈkɔːrnflaʊər/ liːf",
+    "audioZh": "/audio/cornflower-leaf-zh.m4a",
+    "audioEn": "/audio/cornflower-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/cornflower-leaf.jpg"
+        }
+      ],
+      "description": "矢车菊叶子细细长长的，灰绿灰绿的。叶子上有细细的小绒毛。",
+      "allusion": {
+        "text": "矢车菊叶细细长长，灰绿灰绿，上面有细绒毛。",
+        "explain": "矢车菊的叶子又细又长，灰灰绿绿，表面有一层细细的小绒毛。"
+      }
+    }
+  }
+}

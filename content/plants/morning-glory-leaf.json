@@ -1,0 +1,36 @@
+{
+  "id": "morning-glory-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 65,
+  "name": {
+    "zh": "牵牛花叶",
+    "pinyin": "qiān niú huā yè",
+    "en": "Morning Glory Leaf",
+    "ipa": "/ˈmɔːrnɪŋ ˈɡlɔːri/ liːf",
+    "audioZh": "/audio/morning-glory-leaf-zh.m4a",
+    "audioEn": "/audio/morning-glory-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/morning-glory-leaf.jpg"
+        }
+      ],
+      "description": "牵牛花叶像小心心，绿绿的。它喜欢爬篱笆，叶子一层一层往上叠。",
+      "allusion": {
+        "text": "牵牛花叶像小心心，喜欢爬篱笆，一层一层往上叠。",
+        "explain": "牵牛花的叶子像小心心，爱爬篱笆，叶子一层一层往上叠。"
+      }
+    }
+  }
+}

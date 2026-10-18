@@ -1,0 +1,36 @@
+{
+  "id": "fig-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 32,
+  "name": {
+    "zh": "无花果花叶",
+    "pinyin": "wú huā guǒ huā yè",
+    "en": "Fig Leaf",
+    "ipa": "/fɪɡ/ liːf",
+    "audioZh": "/audio/fig-leaf-zh.m4a",
+    "audioEn": "/audio/fig-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/fig-leaf.jpg"
+        }
+      ],
+      "description": "无花果叶子大大的，像张开的手掌。叶子摸上去有点粗粗的。",
+      "allusion": {
+        "text": "无花果叶大大的，像张开的手掌，摸着有点粗。",
+        "explain": "无花果的叶子很大，像张开的大手掌，摸上去粗粗的。"
+      }
+    }
+  }
+}

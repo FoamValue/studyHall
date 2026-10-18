@@ -1,0 +1,36 @@
+{
+  "id": "banana-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "香蕉",
+    "pinyin": "xiāng jiāo",
+    "en": "Banana",
+    "ipa": "/bəˈnænə/",
+    "audioZh": "/audio/banana-fruit-zh.m4a",
+    "audioEn": "/audio/banana-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/banana-fruit.jpg"
+        }
+      ],
+      "description": "香蕉弯弯的，像小月亮。黄黄的皮一剥就开，里面白白的果肉软软的甜甜的。",
+      "allusion": {
+        "text": "香蕉树不是树，是一种大大的草。",
+        "explain": "香蕉树看着高高的，其实它是一株大草，风一吹就摇啊摇。"
+      }
+    }
+  }
+}

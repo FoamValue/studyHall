@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { getPlant, getPlants, getPlantsBySection } from '../api/client';
+import { getPlant, getPlantsBySection } from '../api/client';
 import usePlantNavigation from '../hooks/usePlantNavigation';
 import useAudio from '../hooks/useAudio';
 import PartSwitcher, { PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
@@ -10,8 +10,11 @@ import SpeakButton from '../components/SpeakButton';
 // 水平滑动触发换株的最小位移（px）
 const SWIPE_THRESHOLD = 60;
 
-// 单图板块部位：parts 恰 1 键且为该板块 code（Sprint 9；Sprint 15 增字母/拼音，预留数字/颜色）
-const SINGLE_IMAGE_KEYS = ['animal', 'insect', 'dinosaur', 'letter', 'pinyin', 'number', 'color'];
+// Sprint 17：植物拆分为单部位条目后，所有条目 parts 均为单键，统一走单图模式（无部位切换）。
+// 单图判断：parts 恰 1 键即单图（覆盖植物部位 fruit/flower/leaf 及动物/昆虫/恐龙/字母/拼音/数字/颜色）。
+function isSingleImageParts(parts) {
+  return parts && Object.keys(parts).length === 1;
+}
 
 // 返回入口文案按板块派生（Sprint 12 / EX-7；Sprint 15 增字母/拼音，预留数字/颜色）；未知板块回退「花园」
 const SECTION_HOME = {
@@ -28,9 +31,8 @@ const SECTION_HOME = {
 export default function PlantDetailPage() {
   const { id } = useParams();
   const location = useLocation();
-  // 路由 state 携带当前板块/分类与列表快照；深链接进入时兜底为「植物 / 全部」
+  // 路由 state 携带当前板块与列表快照；深链接进入时兜底为「植物」
   const section = location.state?.section || 'plant';
-  const category = location.state?.category || 'all';
   // 返回文案随板块派生（Sprint 12 / EX-7）
   const homeLabel = SECTION_HOME[section] || '花园';
 
@@ -54,11 +56,9 @@ export default function PlantDetailPage() {
       .then((data) => {
         if (!alive) return;
         setPlant(data);
-        // 默认部位：优先跟随入口分类对应的部位（该植物确有才选中），否则退回固定顺序第一个（Sprint 8 / EX-5）
+        // Sprint 17：所有条目均为单部位，默认选中唯一部位
         const ordered = getOrderedParts(data.parts);
-        const preferred =
-          ['flower', 'leaf', 'fruit'].includes(category) && data.parts?.[category] ? category : null;
-        setPart(preferred || ordered[0] || null);
+        setPart(ordered[0] || null);
         setStatus('ready');
       })
       .catch((err) => {
@@ -75,12 +75,11 @@ export default function PlantDetailPage() {
     };
   }, [id]);
 
-  // 深链接兜底：无路由 state 时按当前分类/板块拉一次列表得到邻居
+  // 深链接兜底：无路由 state 时按当前板块拉一次列表得到邻居
   useEffect(() => {
     if (list) return;
     let alive = true;
-    const req = category !== 'all' ? getPlants(category) : getPlantsBySection(section);
-    req
+    getPlantsBySection(section)
       .then((data) => {
         if (alive) setList(data || []);
       })
@@ -90,12 +89,11 @@ export default function PlantDetailPage() {
     return () => {
       alive = false;
     };
-  }, [list, category, section]);
+  }, [list, section]);
 
   const { prevId, nextId, canPrev, canNext, goPrev, goNext } = usePlantNavigation({
     list,
     currentId: id,
-    category,
     section,
   });
 
@@ -233,8 +231,8 @@ export default function PlantDetailPage() {
   const current = plant.parts?.[part];
   if (!current) return null;
 
-  // 单图分支：parts 恰 1 键且为板块部位（动物/昆虫/恐龙）→ 不渲染部位切换与部位名行
-  const isSingleImage = ordered.length === 1 && SINGLE_IMAGE_KEYS.includes(ordered[0]);
+  // 单图分支：parts 恰 1 键 → 不渲染部位切换与部位名行（Sprint 17 统一）
+  const isSingleImage = isSingleImageParts(plant.parts);
 
   const zhAudio = plant.name.audioZh;
   // 喇叭按实际音频字段渲染：字母仅有 audioEn、拼音仅有 audioZh（Sprint 15 / Q7）
@@ -251,7 +249,7 @@ export default function PlantDetailPage() {
         <Link
           className="back-btn"
           to="/"
-          state={{ section, category, restoreScroll: true }}
+          state={{ section, restoreScroll: true }}
           onClick={stop}
         >
           ← 回{homeLabel}

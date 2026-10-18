@@ -1,0 +1,36 @@
+{
+  "id": "tomato-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 95,
+  "name": {
+    "zh": "番茄花",
+    "pinyin": "fān qié huā",
+    "en": "Tomato Flower",
+    "ipa": "/təˈmeɪtoʊ/ ˈflaʊər",
+    "audioZh": "/audio/tomato-flower-zh.m4a",
+    "audioEn": "/audio/tomato-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/tomato-flower.jpg"
+        }
+      ],
+      "description": "番茄花黄黄的，小小的，像小星星。一簇一簇开在叶子中间。",
+      "allusion": {
+        "text": "番茄花小小的黄黄的，它常常自己给自己传粉结果。",
+        "explain": "番茄花不用别人帮忙，常常自己就能结出圆圆的番茄。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lavender-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 49,
+  "name": {
+    "zh": "薰衣草花",
+    "pinyin": "xūn yī cǎo huā",
+    "en": "Lavender Flower",
+    "ipa": "/ˈlævəndər/ ˈflaʊər",
+    "audioZh": "/audio/lavender-flower-zh.m4a",
+    "audioEn": "/audio/lavender-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lavender-flower.jpg"
+        }
+      ],
+      "description": "薰衣草是一串串紫色小花，像紫色的小辫子。闻起来香香的，能让人睡个好觉。",
+      "allusion": {
+        "text": "薰衣草来自遥远的地方，一大片紫色，像紫色的花海。",
+        "explain": "紫色的薰衣草一大片连起来，就像一片紫色的海。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lily-of-the-valley-flower",
+  "categories": [
+    "plant"
+  ],
+  "sort": 52,
+  "name": {
+    "zh": "铃兰花",
+    "pinyin": "líng lán huā",
+    "en": "Lily of the Valley Flower",
+    "ipa": "/ˈlɪli əv ðə ˈvæli/ ˈflaʊər",
+    "audioZh": "/audio/lily-of-the-valley-flower-zh.m4a",
+    "audioEn": "/audio/lily-of-the-valley-flower-en.m4a"
+  },
+  "parts": {
+    "flower": {
+      "name": {
+        "zh": "花",
+        "pinyin": "huā",
+        "en": "flower",
+        "ipa": "/ˈflaʊər/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lily-of-the-valley-flower.jpg"
+        }
+      ],
+      "description": "铃兰的花白白的，像一串串小铃铛挂在弯弯的枝条上。风一吹，好像叮叮当当在唱歌。",
+      "allusion": {
+        "text": "铃兰的花像小铃铛，在法国，人们把它当成幸福的花。",
+        "explain": "铃兰花开的时候，人们说幸福就来啦，所以要送给喜欢的人。"
+      }
+    }
+  }
+}

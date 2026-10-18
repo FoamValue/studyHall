@@ -1,0 +1,37 @@
+{
+  "id": "willow-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 102,
+  "name": {
+    "zh": "柳树花叶",
+    "pinyin": "liǔ shù huā yè",
+    "en": "Willow Leaf",
+    "ipa": "/ˈwɪloʊ/ liːf",
+    "audioZh": "/audio/willow-leaf-zh.m4a",
+    "audioEn": "/audio/willow-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/willow-leaf.jpg"
+        }
+      ],
+      "description": "柳叶细细的、长长的，像小眉毛。风一吹，柳枝就带着叶子轻轻跳舞。",
+      "allusion": {
+        "text": "碧玉妆成一树高，万条垂下绿丝绦。",
+        "source": "唐·贺知章《咏柳》",
+        "explain": "柳树高高的，垂下好多好多绿绿的枝条，像丝带一样。"
+      }
+    }
+  }
+}

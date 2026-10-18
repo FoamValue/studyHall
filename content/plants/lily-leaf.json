@@ -1,0 +1,36 @@
+{
+  "id": "lily-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 54,
+  "name": {
+    "zh": "百合花叶",
+    "pinyin": "bǎi hé huā yè",
+    "en": "Lily Leaf",
+    "ipa": "/ˈlɪli/ liːf",
+    "audioZh": "/audio/lily-leaf-zh.m4a",
+    "audioEn": "/audio/lily-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/lily-leaf.jpg"
+        }
+      ],
+      "description": "百合叶长长的，两头尖尖像柳叶。绿油油地围着花杆，排队站好。",
+      "allusion": {
+        "text": "百合叶长长的，两头尖尖像柳叶，围着花杆排队站好。",
+        "explain": "百合的叶子又长又尖，像柳叶一样，围着花杆一排排站好。"
+      }
+    }
+  }
+}

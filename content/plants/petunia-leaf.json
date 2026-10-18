@@ -1,0 +1,36 @@
+{
+  "id": "petunia-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 81,
+  "name": {
+    "zh": "矮牵牛花叶",
+    "pinyin": "ǎi qiān niú huā yè",
+    "en": "Petunia Leaf",
+    "ipa": "/pəˈtuːniə/ liːf",
+    "audioZh": "/audio/petunia-leaf-zh.m4a",
+    "audioEn": "/audio/petunia-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/petunia-leaf.jpg"
+        }
+      ],
+      "description": "矮牵牛叶子小小的，摸起来有点黏。叶子软软的，绿绿的。",
+      "allusion": {
+        "text": "矮牵牛叶小小的，摸起来有点黏，软软绿绿的。",
+        "explain": "矮牵牛的叶子小小的，摸上去有点黏黏的，又软又绿。"
+      }
+    }
+  }
+}

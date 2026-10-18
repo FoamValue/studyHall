@@ -1,0 +1,36 @@
+{
+  "id": "mimosa-leaf",
+  "categories": [
+    "plant"
+  ],
+  "sort": 64,
+  "name": {
+    "zh": "含羞草花叶",
+    "pinyin": "hán xiū cǎo huā yè",
+    "en": "Mimosa Leaf",
+    "ipa": "/mɪˈmoʊzə/ liːf",
+    "audioZh": "/audio/mimosa-leaf-zh.m4a",
+    "audioEn": "/audio/mimosa-leaf-en.m4a"
+  },
+  "parts": {
+    "leaf": {
+      "name": {
+        "zh": "叶",
+        "pinyin": "yè",
+        "en": "leaf",
+        "ipa": "/liːf/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/mimosa-leaf.jpg"
+        }
+      ],
+      "description": "含羞草的叶子像小羽毛，一排排小叶片。轻轻一碰，它就合起来，像在害羞。",
+      "allusion": {
+        "text": "含羞草的叶子像小羽毛，轻轻一碰就合起来。",
+        "explain": "含羞草的叶子像小羽毛一排排，手一碰它就合起来，像在害羞。"
+      }
+    }
+  }
+}

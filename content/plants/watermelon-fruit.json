@@ -1,0 +1,36 @@
+{
+  "id": "watermelon-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 99,
+  "name": {
+    "zh": "西瓜",
+    "pinyin": "xī guā",
+    "en": "Watermelon",
+    "ipa": "/ˈwɔːtərˌmelən/",
+    "audioZh": "/audio/watermelon-fruit-zh.m4a",
+    "audioEn": "/audio/watermelon-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/watermelon-fruit.jpg"
+        }
+      ],
+      "description": "西瓜圆滚滚的，绿皮上有深绿条纹。切开红红的瓤，黑黑的籽，甜甜的汁水多。",
+      "allusion": {
+        "text": "西瓜从西边传来，所以叫西瓜。",
+        "explain": "很久以前西瓜从很远的地方传来，大家就叫它西瓜。"
+      }
+    }
+  }
+}

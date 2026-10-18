@@ -1,0 +1,36 @@
+{
+  "id": "sugarcane-fruit",
+  "categories": [
+    "plant"
+  ],
+  "sort": 92,
+  "name": {
+    "zh": "甘蔗",
+    "pinyin": "gān zhe",
+    "en": "Sugarcane",
+    "ipa": "/ˈʃʊɡərkeɪn/",
+    "audioZh": "/audio/sugarcane-fruit-zh.m4a",
+    "audioEn": "/audio/sugarcane-fruit-en.m4a"
+  },
+  "parts": {
+    "fruit": {
+      "name": {
+        "zh": "果",
+        "pinyin": "guǒ",
+        "en": "fruit",
+        "ipa": "/fruːt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/plants/sugarcane-fruit.jpg"
+        }
+      ],
+      "description": "甘蔗一节一节长长的，像竹子。咬一口甜甜的，汁水真多。",
+      "allusion": {
+        "text": "甜甜的白糖，就是从甘蔗里榨出来的。",
+        "explain": "甘蔗一节一节的，咬一口甜甜的，人们用它榨出白白甜甜的糖。"
+      }
+    }
+  }
+}
