@@ -1,0 +1,36 @@
+{
+  "id": "color-pink",
+  "categories": [
+    "color"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "粉色",
+    "pinyin": "fěn sè",
+    "en": "Pink",
+    "ipa": "/pɪŋk/",
+    "audioZh": "/audio/color-pink-zh.m4a",
+    "audioEn": "/audio/color-pink-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "粉色",
+        "pinyin": "fěn sè",
+        "en": "Pink",
+        "ipa": "/pɪŋk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-pink.jpg"
+        }
+      ],
+      "description": "桃花和小猪是粉色。",
+      "allusion": {
+        "text": "粉粉的桃花真好看。",
+        "explain": "桃花开的时候是粉色的。"
+      }
+    }
+  }
+}

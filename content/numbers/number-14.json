@@ -1,0 +1,36 @@
+{
+  "id": "number-14",
+  "categories": [
+    "number"
+  ],
+  "sort": 14,
+  "name": {
+    "zh": "十四",
+    "pinyin": "shí sì",
+    "en": "Fourteen",
+    "ipa": "/ˌfɔːˈtiːn/",
+    "audioZh": "/audio/number-14-zh.m4a",
+    "audioEn": "/audio/number-14-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十四",
+        "pinyin": "shí sì",
+        "en": "Fourteen",
+        "ipa": "/ˌfɔːˈtiːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-14.jpg"
+        }
+      ],
+      "description": "数一数，这里有 14 个小圆点，就是十四。",
+      "allusion": {
+        "text": "十再往下数 4 个，就是十四。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

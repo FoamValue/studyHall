@@ -1,0 +1,36 @@
+{
+  "id": "number-4",
+  "categories": [
+    "number"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "四",
+    "pinyin": "sì",
+    "en": "Four",
+    "ipa": "/fɔː(r)/",
+    "audioZh": "/audio/number-4-zh.m4a",
+    "audioEn": "/audio/number-4-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "四",
+        "pinyin": "sì",
+        "en": "Four",
+        "ipa": "/fɔː(r)/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-4.jpg"
+        }
+      ],
+      "description": "数一数，这里有 4 个小圆点，就是四。",
+      "allusion": {
+        "text": "四，像一面迎风的小旗子。",
+        "explain": "四表示四个。"
+      }
+    }
+  }
+}

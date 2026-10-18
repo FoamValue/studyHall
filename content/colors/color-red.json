@@ -1,0 +1,36 @@
+{
+  "id": "color-red",
+  "categories": [
+    "color"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "红色",
+    "pinyin": "hóng sè",
+    "en": "Red",
+    "ipa": "/red/",
+    "audioZh": "/audio/color-red-zh.m4a",
+    "audioEn": "/audio/color-red-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "红色",
+        "pinyin": "hóng sè",
+        "en": "Red",
+        "ipa": "/red/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-red.jpg"
+        }
+      ],
+      "description": "红红的苹果是红色。",
+      "allusion": {
+        "text": "红灯亮了要停下来。",
+        "explain": "红灯停、绿灯行，红色最醒目。"
+      }
+    }
+  }
+}

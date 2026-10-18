@@ -408,5 +408,28 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - **TC-02**：`section` 断言集合由 4 板块扩为含 `letter`/`pinyin`（数据驱动，随分类数 8）。
 - **TC-11**：新增「letter/pinyin 板块条目省略 `name.pinyin/en/ipa` 且 `parts.<键>.name.pinyin/en` 亦省略」的分支——对 letter/pinyin 条目跳过 `name.pinyin/en/ipa` 与 `part.name.pinyin/en` 的非空断言；`BOARD_IMAGE_PREFIX` 增 `letter:/images/letters/`、`pinyin:/images/pinyin/`。
 - **TC-24**：仅对**非 letter/pinyin** 部位校验「≤80 字、无拉丁字母」；字母/拼音 `description` 豁免（Q6）。
-- 新增：`?section=letter` = 26 且每条 `parts` = `[letter]`；`?section=pinyin` = 26 且 `parts` = `[pinyin]`；`/api/categories` 8 条。
+- 新增：`?section=letter` = 26 且每条 `parts` = `[letter]`；`?section=pinyin` = 26 且每条 `parts` = `[pinyin]`；`/api/categories` 8 条。
 - 既有 21 用例作为回归基线，退出码必须为 0。
+
+# 后端开发设计文章 — Sprint 16（增量：v2.7 数字/颜色，产品代码零改动）
+
+> 后端 `PART_ORDER` 已于 Sprint 15 扩至 10 键（含 `number`/`color`），section 校验数据驱动；本迭代**产品代码零改动**，仅同步测试种子与断言。
+
+## S16-1. 零改动确认
+- `PlantService.PART_ORDER` = 10 键，已含 `number`/`color`；`partCodes` 对单键条目返回 `["number"]`/`["color"]`，前端单图分支识别成立。
+- section 合法性由 `categories.json.section` **数据驱动**，新增 number/color 分类后自动通过。
+- 卡片 / 详情 / 排序（`sort ASC + id ASC`）/ 缓存（TTL 600s）逻辑不变。
+
+## S16-2. 导入脚本泛化（J-19）
+- `VALID_PARTS` → 追加 `number`/`color`（共 10）。
+- `VALID_SECTIONS` → 追加 `number`/`color`（共 10）。
+- `CONTENT_DIRS` → 追加 `{dir:"numbers",prefix:"content/numbers"}`、`{dir:"colors",prefix:"content/colors"}`。
+- `GLYPH_SECTIONS` 维持 `["letter","pinyin"]` —— number/color 走**完整三语+音标**校验、`description` 不豁免拉丁红线。
+- `SINGLE_KEY_IMAGE_DIR` 已含 `number:"numbers"` / `color:"colors"`（Sprint 15 预留）。
+
+## S16-3. 测试适配（配合 QA-36/QA-37）
+- `ContentSeed.PLANT_DIRS` → 追加 `numbers`、`colors`。
+- **TC-02**：section 断言集合追加 `number`/`color`。
+- **分类数断言**（Sprint 15 TC-145）：`/api/categories` 由 **8 → 10**，追加 number（数字）/ color（颜色）码与 section 断言。
+- 新增：TC-156 `?section=number` = 21 且每条 `parts` = `["number"]`、首 `number-0` 末 `number-20`；TC-157 `?section=color` = 11 且每条 `parts` = `["color"]`、首 `color-black` 末 `color-grey`；TC-158 数字/颜色条目保留三语+音标。
+- 既有 24 用例作为回归基线，退出码必须为 0。

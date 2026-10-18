@@ -202,6 +202,36 @@ const PINYIN_A = {
   },
 };
 
+// 数字单图条目（Sprint 16）：保留完整三语 + 音标，中英双音频
+const NUMBER_1 = {
+  id: 'number-1',
+  categories: ['number'],
+  name: { zh: '一', pinyin: 'yī', en: 'One', ipa: '/wʌn/', audioZh: '/audio/number-1-zh.m4a', audioEn: '/audio/number-1-en.m4a' },
+  parts: {
+    number: {
+      name: { zh: '一', pinyin: 'yī', en: 'One', ipa: '/wʌn/' },
+      images: [{ type: 'photo', url: '/images/numbers/number-1.jpg' }],
+      description: '数一数，这里有 1 个小圆点，就是一。',
+      allusion: { text: '一，像一根直直的铅笔。', explain: '一表示只有一个。' },
+    },
+  },
+};
+
+// 颜色单图条目（Sprint 16）：保留完整三语 + 音标，中英双音频
+const COLOR_RED = {
+  id: 'color-red',
+  categories: ['color'],
+  name: { zh: '红色', pinyin: 'hóng sè', en: 'Red', ipa: '/red/', audioZh: '/audio/color-red-zh.m4a', audioEn: '/audio/color-red-en.m4a' },
+  parts: {
+    color: {
+      name: { zh: '红色', pinyin: 'hóng sè', en: 'Red', ipa: '/red/' },
+      images: [{ type: 'photo', url: '/images/colors/color-red.jpg' }],
+      description: '红红的苹果是红色。',
+      allusion: { text: '红灯亮了要停下来。', explain: '红灯停、绿灯行，红色最醒目。' },
+    },
+  },
+};
+
 const byId = {
   sunflower: SUNFLOWER,
   ginkgo: GINKGO,
@@ -213,6 +243,8 @@ const byId = {
   tyrannosaurus: TREX,
   'letter-a': LETTER_A,
   'pinyin-a': PINYIN_A,
+  'number-1': NUMBER_1,
+  'color-red': COLOR_RED,
 };
 
 // 列表卡片（后端契约：{id, name, coverImage, parts}）
@@ -912,5 +944,41 @@ describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Spr
     const landscape = css.match(/@media\s*\(orientation:\s*landscape\)\s*\{[\s\S]*?\n\}/)[0];
     const pinyin = landscape.match(/\.detail-header \.detail-pinyin\s*\{[^}]*\}/s)[0];
     expect(Number(pinyin.match(/font-size:\s*(\d+)px/)[1])).toBeGreaterThanOrEqual(20);
+  });
+});
+
+describe('数字 / 颜色单图详情分支（Sprint 16：TC-159 / TC-160）', () => {
+  it('TC-159 数字单图详情：单图分支无部位切换，三行名称齐全，中英喇叭各一', async () => {
+    makeAudioMock();
+    renderDetail('number-1', { section: 'number', list: [card(NUMBER_1)] });
+
+    expect(await screen.findByAltText('一')).toBeInTheDocument();
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
+    expect(document.querySelector('.detail-zh').textContent).toBe('一');
+    // 数字保留完整三语：拼音行与英文行均渲染
+    expect(document.querySelector('.detail-pinyin').textContent).toBe('yī');
+    expect(document.querySelector('.detail-en').textContent).toContain('One');
+    // 不渲染部位切换
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    // 中英双音频 → 两喇叭各一
+    expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '朗读英文名' })).toBeInTheDocument();
+    // 说明与小知识卡片渲染
+    expect(screen.getByText('数一数，这里有 1 个小圆点，就是一。')).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: '小知识' })).toBeInTheDocument();
+  });
+
+  it('TC-160 颜色单图详情：单图分支无部位切换，三行名称齐全，中英喇叭各一', async () => {
+    makeAudioMock();
+    renderDetail('color-red', { section: 'color', list: [card(COLOR_RED)] });
+
+    expect(await screen.findByAltText('红色')).toBeInTheDocument();
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
+    expect(document.querySelector('.detail-zh').textContent).toBe('红色');
+    expect(document.querySelector('.detail-pinyin').textContent).toBe('hóng sè');
+    expect(document.querySelector('.detail-en').textContent).toContain('Red');
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '朗读英文名' })).toBeInTheDocument();
   });
 });

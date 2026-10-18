@@ -89,13 +89,15 @@ class PlantApiIntegrationTest {
     @Autowired
     Environment environment;
 
-    /** 板块分类 code 对应的图片前缀（单图条目的图片目录）。Sprint 15 增字母/拼音。 */
+    /** 板块分类 code 对应的图片前缀（单图条目的图片目录）。Sprint 15 增字母/拼音；Sprint 16 增数字/颜色。 */
     private static final Map<String, String> BOARD_IMAGE_PREFIX = Map.of(
             "animal", "/images/animals/",
             "insect", "/images/insects/",
             "dinosaur", "/images/dinosaurs/",
             "letter", "/images/letters/",
-            "pinyin", "/images/pinyin/");
+            "pinyin", "/images/pinyin/",
+            "number", "/images/numbers/",
+            "color", "/images/colors/");
 
     /** 字形类启蒙板块（字母 / 拼音）：名称仅符号本身，省略 pinyin/en/ipa。 */
     private static boolean isGlyphBoard(Plant p) {
@@ -163,7 +165,7 @@ class PlantApiIntegrationTest {
             assertThat(c.nameZh()).isNotBlank();
             assertThat(c.pinyin()).isNotBlank();
             assertThat(c.nameEn()).isNotBlank();
-            assertThat(c.section()).isIn("plant", "animal", "insect", "dinosaur", "letter", "pinyin");
+            assertThat(c.section()).isIn("plant", "animal", "insect", "dinosaur", "letter", "pinyin", "number", "color");
         });
     }
 
@@ -526,19 +528,78 @@ class PlantApiIntegrationTest {
         assertThat(resp.data().getLast().id()).isEqualTo("pinyin-z");
     }
 
-    /** TC-145 分类齐备（Sprint 15）：/api/categories 共 8 条，含 letter(英文字母)/pinyin(汉语拼音)。 */
+    /** TC-145 分类齐备（Sprint 15 起；Sprint 16 扩至 10 条）：/api/categories 含字形类（letter/pinyin）与数字/颜色。 */
     @Test
     void tc145_categoriesShouldIncludeGlyphBoards() {
         ApiResponse<List<Category>> resp = get("/api/categories", listOf(Category.class));
         assertThat(resp.code()).isZero();
-        assertThat(resp.data()).hasSize(8);
-        assertThat(resp.data()).extracting(Category::code).contains("letter", "pinyin");
+        assertThat(resp.data()).hasSize(10);
+        assertThat(resp.data()).extracting(Category::code).contains("letter", "pinyin", "number", "color");
         Category letter = resp.data().stream().filter(c -> c.code().equals("letter")).findFirst().orElseThrow();
         assertThat(letter.nameZh()).isEqualTo("英文字母");
         assertThat(letter.section()).isEqualTo("letter");
         Category pinyin = resp.data().stream().filter(c -> c.code().equals("pinyin")).findFirst().orElseThrow();
         assertThat(pinyin.nameZh()).isEqualTo("汉语拼音");
         assertThat(pinyin.section()).isEqualTo("pinyin");
+        Category number = resp.data().stream().filter(c -> c.code().equals("number")).findFirst().orElseThrow();
+        assertThat(number.nameZh()).isEqualTo("数字");
+        assertThat(number.section()).isEqualTo("number");
+        Category color = resp.data().stream().filter(c -> c.code().equals("color")).findFirst().orElseThrow();
+        assertThat(color.nameZh()).isEqualTo("颜色");
+        assertThat(color.section()).isEqualTo("color");
+    }
+
+    /** TC-156 数字板块（Sprint 16）：?section=number 21 条、每条 parts 恰 [number]、sort 升序首 number-0 末 number-20。 */
+    @Test
+    void tc156_numberSectionShouldReturn21Cards() {
+        List<Plant> numbers = plants.stream()
+                .filter(p -> p.categories().contains("number"))
+                .sorted(Comparator.comparing(Plant::sort))
+                .toList();
+        assertThat(numbers).hasSize(21);
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=number", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .containsExactlyElementsOf(numbers.stream().map(Plant::id).toList());
+        assertThat(resp.data()).allSatisfy(card -> assertThat(card.parts()).containsExactly("number"));
+        assertThat(resp.data().getFirst().id()).isEqualTo("number-0");
+        assertThat(resp.data().getLast().id()).isEqualTo("number-20");
+    }
+
+    /** TC-157 颜色板块（Sprint 16）：?section=color 11 条、每条 parts 恰 [color]、首 color-black 末 color-grey。 */
+    @Test
+    void tc157_colorSectionShouldReturn11Cards() {
+        List<Plant> colors = plants.stream()
+                .filter(p -> p.categories().contains("color"))
+                .sorted(Comparator.comparing(Plant::sort))
+                .toList();
+        assertThat(colors).hasSize(11);
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=color", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .containsExactlyElementsOf(colors.stream().map(Plant::id).toList());
+        assertThat(resp.data()).allSatisfy(card -> assertThat(card.parts()).containsExactly("color"));
+        assertThat(resp.data().getFirst().id()).isEqualTo("color-black");
+        assertThat(resp.data().getLast().id()).isEqualTo("color-grey");
+    }
+
+    /** TC-158 数字/颜色保留完整三语+音标（Sprint 16）：不豁免（区别字形类 letter/pinyin）。 */
+    @Test
+    void tc158_numberAndColorShouldKeepFullNames() {
+        List<Plant> targets = plants.stream()
+                .filter(p -> p.categories().contains("number") || p.categories().contains("color"))
+                .toList();
+        assertThat(targets).hasSize(32);
+        for (Plant p : targets) {
+            assertThat(p.name().zh()).isNotBlank();
+            assertThat(p.name().pinyin()).isNotBlank();
+            assertThat(p.name().en()).isNotBlank();
+            assertThat(p.name().ipa()).startsWith("/");
+            String partCode = p.parts().keySet().iterator().next();
+            var part = p.parts().get(partCode);
+            assertThat(part.name().pinyin()).isNotBlank();
+            assertThat(part.name().en()).isNotBlank();
+        }
     }
 
     /** 取分类 code 所属板块（无匹配返回 null）。 */

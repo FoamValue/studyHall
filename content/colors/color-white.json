@@ -1,0 +1,36 @@
+{
+  "id": "color-white",
+  "categories": [
+    "color"
+  ],
+  "sort": 2,
+  "name": {
+    "zh": "白色",
+    "pinyin": "bái sè",
+    "en": "White",
+    "ipa": "/waɪt/",
+    "audioZh": "/audio/color-white-zh.m4a",
+    "audioEn": "/audio/color-white-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "白色",
+        "pinyin": "bái sè",
+        "en": "White",
+        "ipa": "/waɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-white.jpg"
+        }
+      ],
+      "description": "白云和雪花是白色的。",
+      "allusion": {
+        "text": "天上的白云是白色的。",
+        "explain": "雪花和白云都白白的。"
+      }
+    }
+  }
+}

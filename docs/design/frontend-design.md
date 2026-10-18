@@ -694,6 +694,25 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - **新增** `e2e/sprint15.spec.js`：TC-134（更名 + 两组 8 板块导航）、TC-135（切「英文字母」→ 26 卡 + `loadAllCards(page,26)` + 首卡 `Aa` + 「共 26 种」）、TC-136（切「汉语拼音」→ 26 卡 + 首卡 `a`）、TC-137（字母详情 `letter-a`：单图分支、无 `[role=tab]`、`.detail-zh` = `Aa`、无 `.detail-pinyin`/`.detail-en`、仅英文喇叭）、TC-138（拼音详情 `pinyin-a`：`.detail-zh` = `a`、仅中文喇叭）、TC-139（`letter`/`pinyin` 音频请求契约 `/audio/letter-a-en.m4a`、`/audio/pinyin-a-zh.m4a`）、TC-140（返回按钮文案「← 回字母乐园」「← 回拼音角」）、TC-141（字母/拼音 52 图 HTTP 200）、TC-142（52 音频 HTTP 200）。
 - 既有全部用例全量回归。
 
+# 前端开发设计文章 — Sprint 16（增量：v2.7 数字 0–20 + 颜色 11 色）
+
+> 本迭代前端**产品代码零改动**：Sprint 15 已把 `number`/`color` 纳入全部派生结构；本迭代仅清理过期注释并更新测试。
+
+## S16-1. 零改动确认
+- `SectionNav.jsx`：`SECTIONS` 已含 `number`/`color`（group `enlightenment`），`SECTION_GROUPS` 已含 4 码；**导航仍 8 钮**，仅删除「number/color 本迭代无内容（点击走既有空态）」过期注释。
+- `PartSwitcher.jsx`：`PART_ORDER` / `PART_LABELS` 已含 `number`/`color`。
+- `PlantDetailPage.jsx`：`SINGLE_IMAGE_KEYS` 已含 `number`/`color`（单图分支、无部位切换）；`SECTION_HOME` 已含 `number:'数字屋'` / `color:'颜色屋'`（返回文案派生）。
+- `HomePage.jsx`：`getPlantsBySection(section)` 已支持任意板块；`plantCategories = categories.filter(c => c.section === 'plant')` 恒为植物 4 钮。
+- `PlantCard.jsx`：名称条件渲染对「保留中英文名」的数字/颜色条目正常渲染拼音行与英文行。
+
+## S16-2. 名称渲染复核（与字母/拼音的差异）
+- 数字 / 颜色条目**保留** `name.pinyin/en/ipa` → 详情头 `.detail-pinyin`、`.detail-en` 行**正常渲染**；喇叭**中英各一**（`audioZh`/`audioEn` 均存在）。字母 / 拼音的「仅符号」分支不受影响。
+
+## S16-3. 测试更新（配合 QA-36/QA-37）
+- 更新 `SectionNav.jsx` 过期注释（无功能变更）。
+- **新增** `e2e/sprint16.spec.js`：TC-148（数字板块 21 卡 + 首 `number-0` 末 `number-20` + 「共 21 种」）、TC-149（颜色板块 11 卡 + 首 `color-black` 末 `color-grey` + 「共 11 种」）、TC-150（数字详情 `number-1` 单图分支、无 `[role=tab]`、名称含中文/拼音/英文行、中英喇叭各一）、TC-151（颜色详情 `color-red` 单图分支）、TC-152（返回文案「← 回数字屋」「← 回颜色屋」）、TC-153（`/audio/number-1-zh.m4a` + `/audio/number-1-en.m4a` + `/audio/color-red-zh.m4a` 请求契约）、TC-154（数字/颜色 32 图 HTTP 200）、TC-155（数字/颜色 64 音频 HTTP 200）。
+- 既有全部用例全量回归。
+
 
 
 

@@ -1,5 +1,5 @@
 // 顶层板块导航（Sprint 15）：分两组——自然认知（植物/动物/昆虫/恐龙）+ 认知启蒙（英文字母/汉语拼音/数字/颜色）
-// number/color 本迭代无内容（点击走既有空态），Sprint 16 补内容
+// Sprint 16 起 number/color 已补内容（数字 0–20、颜色 11 色），八板块均有可浏览条目
 export const SECTIONS = [
   { code: 'plant', label: '植物', group: 'nature' },
   { code: 'animal', label: '动物', group: 'nature' },

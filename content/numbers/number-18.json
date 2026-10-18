@@ -1,0 +1,36 @@
+{
+  "id": "number-18",
+  "categories": [
+    "number"
+  ],
+  "sort": 18,
+  "name": {
+    "zh": "十八",
+    "pinyin": "shí bā",
+    "en": "Eighteen",
+    "ipa": "/ˌeɪˈtiːn/",
+    "audioZh": "/audio/number-18-zh.m4a",
+    "audioEn": "/audio/number-18-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十八",
+        "pinyin": "shí bā",
+        "en": "Eighteen",
+        "ipa": "/ˌeɪˈtiːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-18.jpg"
+        }
+      ],
+      "description": "数一数，这里有 18 个小圆点，就是十八。",
+      "allusion": {
+        "text": "十再往下数 8 个，就是十八。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

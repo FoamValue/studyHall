@@ -1,0 +1,36 @@
+{
+  "id": "number-7",
+  "categories": [
+    "number"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "七",
+    "pinyin": "qī",
+    "en": "Seven",
+    "ipa": "/ˈsevn/",
+    "audioZh": "/audio/number-7-zh.m4a",
+    "audioEn": "/audio/number-7-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "七",
+        "pinyin": "qī",
+        "en": "Seven",
+        "ipa": "/ˈsevn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-7.jpg"
+        }
+      ],
+      "description": "数一数，这里有 7 个小圆点，就是七。",
+      "allusion": {
+        "text": "七，像一把弯弯的镰刀。",
+        "explain": "七表示七个。"
+      }
+    }
+  }
+}

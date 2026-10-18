@@ -1,0 +1,36 @@
+{
+  "id": "number-11",
+  "categories": [
+    "number"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "十一",
+    "pinyin": "shí yī",
+    "en": "Eleven",
+    "ipa": "/ɪˈlevn/",
+    "audioZh": "/audio/number-11-zh.m4a",
+    "audioEn": "/audio/number-11-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十一",
+        "pinyin": "shí yī",
+        "en": "Eleven",
+        "ipa": "/ɪˈlevn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-11.jpg"
+        }
+      ],
+      "description": "数一数，这里有 11 个小圆点，就是十一。",
+      "allusion": {
+        "text": "十再往下数 1 个，就是十一。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

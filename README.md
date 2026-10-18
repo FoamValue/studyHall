@@ -6,11 +6,11 @@
 
 打开即看 · 无需登录 · 平板优先 · 零后台运维
 
-![板块](https://img.shields.io/badge/板块-植物%20%7C%20动物%20%7C%20昆虫%20%7C%20恐龙%20%7C%20字母%20%7C%20拼音-4CAF50)
+![板块](https://img.shields.io/badge/板块-植物%20%7C%20动物%20%7C%20昆虫%20%7C%20恐龙%20%7C%20字母%20%7C%20拼音%20%7C%20数字%20%7C%20颜色-4CAF50)
 ![前端](https://img.shields.io/badge/前端-React%2018%20%2B%20Ant%20Design-61DAFB)
 ![后端](https://img.shields.io/badge/后端-JDK%2026%20%2B%20Spring%20Boot%204-6DB33F)
 ![部署](https://img.shields.io/badge/部署-Docker%20Compose-2496ED)
-![测试](https://img.shields.io/badge/门禁-后端21%20%2F%20前端67%20%2F%20E2E47-important)
+![测试](https://img.shields.io/badge/门禁-后端27%20%2F%20前端78%20%2F%20E2E73-important)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </div>
@@ -31,10 +31,10 @@
 | 🦕 **恐龙** | 板块即粒度 | 单图 + 一条小知识（一律完整骨架化石图） |
 | 🔤 **英文字母** | 板块即粒度 | 单图 + 一条小知识（A–Z 大小写同卡） |
 | 🅰️ **汉语拼音** | 板块即粒度 | 单图 + 一条小知识（a–z 按顺序） |
-| 🔢 **数字** | 板块即粒度 | 单图（数字 0–20，后续迭代） |
-| 🎨 **颜色** | 板块即粒度 | 单图（基础 11 色，后续迭代） |
+| 🔢 **数字** | 板块即粒度 | 单图 + 一条小知识（数字 0–20，拼音 + 中文名 / 英文名 + 音标齐全） |
+| 🎨 **颜色** | 板块即粒度 | 单图 + 一条小知识（基础 11 色，拼音 + 中文名 / 英文名 + 音标齐全） |
 
-自然 / 动物 / 昆虫 / 恐龙四个板块的每个条目都提供 **拼音 + 中文名 / 英文名 + 音标**、**低龄化中文说明**、**小知识卡片**，以及 **预生成的中英文语音朗读**——让还不识字的孩子也能自己看懂、跟着念出来。**英文字母 / 汉语拼音** 为字形板块：只显示符号本身（省略拼音 / 英文 / 音标），各配一条小知识与单语朗读。
+自然 / 动物 / 昆虫 / 恐龙 / 数字 / 颜色六个板块的每个条目都提供 **拼音 + 中文名 / 英文名 + 音标**、**低龄化中文说明**、**小知识卡片**，以及 **预生成的中英文语音朗读**——让还不识字的孩子也能自己看懂、跟着念出来。**英文字母 / 汉语拼音** 为字形板块：只显示符号本身（省略拼音 / 英文 / 音标），各配一条小知识与单语朗读。
 
 > 目标场景：家长把平板递给孩子，孩子自己点、自己看、自己听，不需要大人全程陪同。
 
@@ -83,7 +83,7 @@
 | 中间件 | MongoDB（内容文档）、Redis（查询缓存，TTL 600s）、MySQL（导入审计 `import_log`） |
 | 内容通道 | Node.js ≥ 22 脚本（`mongodb` / `mysql2` / `redis` 官方驱动） |
 | 部署 | Docker + Docker Compose 一键编排（前端 / 后端 / 三中间件五容器） |
-| 测试 | JUnit + Testcontainers（后端 21 用例）、Vitest + Testing Library（前端 67 用例）、Playwright（E2E 47 用例） |
+| 测试 | JUnit + Testcontainers（后端 27 用例）、Vitest + Testing Library（前端 78 用例）、Playwright（E2E 73 用例） |
 
 **中间件版本**（每个版本均已本地实测通过）：MySQL `8.0` · Redis `7` · MongoDB `8.0.4` · nginx `alpine` · JDK `eclipse-temurin 26-jdk/26-jre` · Maven `3.9-eclipse-temurin-26` · Node `22-alpine`。
 
@@ -116,13 +116,15 @@
 ```
 studyHall/
 ├── content/                       # 内容语料（产品即数据）
-│   ├── categories.json            # 8 个分类（含 section 板块归属 + order）
+│   ├── categories.json            # 10 个分类（含 section 板块归属 + order）
 │   ├── plants/    (100 条)        # 植物：多部位（flower/leaf/fruit）
 │   ├── animals/   ( 50 条)        # 动物：单键 parts.animal
 │   ├── insects/   ( 50 条)        # 昆虫：单键 parts.insect
 │   ├── dinosaurs/ ( 50 条)        # 恐龙：单键 parts.dinosaur（骨架化石图）
 │   ├── letters/   ( 26 条)        # 英文字母 A–Z：单键 parts.letter（大小写同卡，英文单语）
-│   └── pinyin/    ( 26 条)        # 汉语拼音 a–z：单键 parts.pinyin（按序，中文单语）
+│   ├── pinyin/    ( 26 条)        # 汉语拼音 a–z：单键 parts.pinyin（按序，中文单语）
+│   ├── numbers/   ( 21 条)        # 数字 0–20：单键 parts.number（保留中/英名 + 音标，双语）
+│   └── colors/    ( 11 条)        # 基础 11 色：单键 parts.color（保留中/英名 + 音标，双语）
 ├── backend/                       # Spring Boot 后端
 │   ├── src/main/java/com/studyhall/plants/
 │   │   ├── controller/            # PlantController（/api/health|categories|plants|plants/{id}）
@@ -131,7 +133,7 @@ studyHall/
 │   │   ├── model/                 # Plant/PlantCard/Category/I18nName/PlantImage...
 │   │   ├── mysql/                 # ImportLog 审计写入
 │   │   └── config/                # CORS、全局异常、ApiException
-│   ├── src/test/java/             # 24 个用例（Testcontainers 起真实中间件）
+│   ├── src/test/java/             # 27 个用例（Testcontainers 起真实中间件）
 │   └── Dockerfile                 # 多阶段：maven:3.9-temurin-26 构建 → temurin-26-jre 运行
 ├── frontend/                      # React 前端 + nginx
 │   ├── src/
@@ -142,8 +144,8 @@ studyHall/
 │   │   ├── api/client.js          # 统一 fetch 封装
 │   │   └── __tests__/             # Vitest 组件测试
 │   ├── e2e/                       # Playwright E2E（smoke/navigation/responsive/speech/sprint*）
-│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 四板块各 50 jpg / letters·pinyin 各 26 jpg；合计 408 jpg）
-│   ├── public/audio/              # 预生成音频（552 个 .m4a：自然认知 250 条 × zh/en + 字母 en 26 + 拼音 zh 26）
+│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 四板块各 50 jpg / letters·pinyin 各 26 jpg / numbers 21 + colors 11；合计 440 jpg）
+│   ├── public/audio/              # 预生成音频（616 个 .m4a：自然认知 250 条 × zh/en + 字母 en 26 + 拼音 zh 26 + 数字 zh/en 42 + 颜色 zh/en 22）
 │   ├── nginx.conf                 # SPA 路由回退 + /api 反代
 │   └── Dockerfile                 # 多阶段：node:22-alpine 构建 → nginx:alpine 运行
 ├── scripts/
@@ -223,7 +225,7 @@ node scripts/import-plants.mjs
 
 脚本行为（幂等）：
 
-1. 读取 `content/categories.json` 与六个内容目录下所有条目 JSON，**先整体校验，不合法立即报错退出**（校验覆盖 schema、分类与部位键一致性、图片 / 音频文件是否存在、文案长度与「说明不含拉丁字母」等红线）；
+1. 读取 `content/categories.json` 与八个内容目录下所有条目 JSON，**先整体校验，不合法立即报错退出**（校验覆盖 schema、分类与部位键一致性、图片 / 音频文件是否存在、文案长度与「说明不含拉丁字母」等红线）；
 2. 按 `_id = id` **UPSERT** 进 MongoDB（同 id 覆盖，不产生重复）；
 3. `SCAN` 删除 Redis 中 `sh:*` 前缀缓存（后端 TTL 600s 兜底）；
 4. 确保 MySQL `import_log` 表存在，并为每个条目写入一条 UPSERT 审计记录。
@@ -256,7 +258,7 @@ node scripts/import-plants.mjs
   "nameEn": "Animal", "order": 4, "section": "animal" }
 ```
 
-八个分类：`flower`/`leaf`/`fruit`（同属 `plant` 板块，有二级筛选）+ `animal`/`insect`/`dinosaur`/`letter`/`pinyin`（板块即粒度）。
+十个分类：`flower`/`leaf`/`fruit`（同属 `plant` 板块，有二级筛选）+ `animal`/`insect`/`dinosaur`/`letter`/`pinyin`/`number`/`color`（板块即粒度）。
 
 ### 8.2 条目（以 `content/animals/cat.json` 为例）
 
@@ -283,11 +285,11 @@ node scripts/import-plants.mjs
 }
 ```
 
-- 植物条目用 `parts.flower` / `parts.leaf` / `parts.fruit` 多键；动物 / 昆虫 / 恐龙用单键（键名 = 分类 code）。
-- `parts` 键集合为 `{flower, leaf, fruit, animal, insect, dinosaur}`，可缺省；缺某部位则前端不显示对应标签。
+- 植物条目用 `parts.flower` / `parts.leaf` / `parts.fruit` 多键；动物 / 昆虫 / 恐龙 / 字母 / 拼音 / 数字 / 颜色用单键（键名 = 分类 code）。
+- `parts` 键集合为 `{flower, leaf, fruit, animal, insect, dinosaur, letter, pinyin, number, color}`，可缺省；缺某部位则前端不显示对应标签。
 - 每个部位可含多张图片，`type ∈ {photo, illustration}`。
 - 拼音与音标为**独立字段**存储，不做运行时自动标注。
-- 文案红线：植物 `description` 低龄化；动物 / 昆虫 / 恐龙 `description` ≤ 80 字且不含拉丁字母；`allusion.text` ≤ 60 字、`explain` ≤ 50 字。
+- 文案红线：植物 `description` 低龄化；动物 / 昆虫 / 恐龙 / 字母 / 拼音 / 数字 / 颜色 `description` ≤ 80 字且不含拉丁字母（阿拉伯数字除外）；`allusion.text` ≤ 60 字、`explain` ≤ 50 字。
 
 ### 8.3 图片与音频资产路径约定
 
@@ -295,6 +297,7 @@ node scripts/import-plants.mjs
 |---|---|
 | 植物部位图 | `/images/plants/{id}-{part}.jpg`（旧 `.svg` 保留作回滚备份） |
 | 动物 / 昆虫 / 恐龙图 | `/images/{animals\|insects\|dinosaurs}/{id}.jpg` |
+| 字母 / 拼音 / 数字 / 颜色图 | `/images/{letters\|pinyin\|numbers\|colors}/{id}.jpg` |
 | 语音 | `/audio/{id}-zh.m4a`、`/audio/{id}-en.m4a`（AAC，中 / 英各一） |
 
 > 图片统一 1600×1600（mozjpeg q82 渐进式）；恐龙一律为**完整骨架化石**照片（博物馆陈列风格）。
@@ -307,12 +310,12 @@ node scripts/import-plants.mjs
 
 | 步骤 | 命令 | 当前基线 |
 |---|---|---|
-| 0. 语料校验 | `node scripts/import-plants.mjs`（校验阶段） | `total = 302`，分类 8 |
-| 1. 后端测试 | `mvn test`（Testcontainers 起真实中间件） | **24** 用例，退出码 0 |
-| 2. 前端测试 + 构建 | `npx vitest run` · `vite build` | **76 / 76**，构建退出码 0 |
+| 0. 语料校验 | `node scripts/import-plants.mjs`（校验阶段） | `total = 334`，分类 10 |
+| 1. 后端测试 | `mvn test`（Testcontainers 起真实中间件） | **27** 用例，退出码 0 |
+| 2. 前端测试 + 构建 | `npx vitest run` · `vite build` | **78 / 78**，构建退出码 0 |
 | 3. 容器重建 | `docker compose up -d --build` | `/api/health = UP` |
 | 4. 导入幂等 | 连续导入两次 | `import_log` delta = 2 × 条目数；Mongo 无重复；导入后 `redis sh:*` = 0 |
-| 5. E2E | `npx playwright test` | **65 / 65**（目标 = nginx 80 入口，需先 `docker compose up -d` 并导入内容） |
+| 5. E2E | `npx playwright test` | **73 / 73**（目标 = nginx 80 入口，需先 `docker compose up -d` 并导入内容） |
 
 > `docker compose up -d --build` 而非 `restart`：新增图片 / 音频为静态资源，必须重建 frontend 镜像才会被 nginx 提供。
 
@@ -322,10 +325,10 @@ node scripts/import-plants.mjs
 
 | 项 | 规模 |
 |---|---|
-| 条目总数 | **302**（植物 100 / 动物 50 / 昆虫 50 / 恐龙 50 / 英文字母 26 / 汉语拼音 26） |
-| 分类 | 8（flower / leaf / fruit / animal / insect / dinosaur / letter / pinyin） |
-| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、四板块各 50 张、字母 / 拼音各 26 张 = **408** 张 `.jpg` |
-| 音频 | **552** 个 `.m4a`（自然认知 250 条 × 中文 / 英文 + 字母 en 26 + 拼音 zh 26） |
+| 条目总数 | **334**（植物 100 / 动物 50 / 昆虫 50 / 恐龙 50 / 英文字母 26 / 汉语拼音 26 / 数字 21 / 颜色 11） |
+| 分类 | 10（flower / leaf / fruit / animal / insect / dinosaur / letter / pinyin / number / color） |
+| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、四板块各 50 张、字母 / 拼音各 26 张、数字 21 张、颜色 11 张 = **440** 张 `.jpg` |
+| 音频 | **616** 个 `.m4a`（自然认知 250 条 × 中文 / 英文 + 字母 en 26 + 拼音 zh 26 + 数字中 / 英各 21 + 颜色中 / 英各 11） |
 | 后端源码 | 486 行（Java 459 + 配置 27） |
 | 前端源码 | 1,524 行（非测试部分） |
 | 测试代码 | 2,665 行（后端 559 / 前端单元 1,185 / E2E 921） |
@@ -342,7 +345,7 @@ node scripts/import-plants.mjs
 | 目录 | 内容 |
 |---|---|
 | [`docs/product/`](docs/product/) | 产品需求手册（PRD）、各迭代需求文档、PF 体验裁决 |
-| [`docs/iterations/`](docs/iterations/) | Scrum 迭代计划与回顾（sprint-1 ~ sprint-15） |
+| [`docs/iterations/`](docs/iterations/) | Scrum 迭代计划与回顾（sprint-1 ~ sprint-16） |
 | [`docs/design/`](docs/design/) | 前端 / 后端开发设计文章、UI 样式与图标规范 |
 | [`docs/experience/`](docs/experience/) | PF 浏览器体验报告（iPad 横屏为主，含证据截图） |
 | [`docs/qa/`](docs/qa/) | 各迭代测试用例手册与执行记录 |
@@ -390,6 +393,8 @@ node scripts/import-plants.mjs
 | v2.3 | Sprint 12 | PF 体验回流：返回文案按板块派生、详情拼音字号、首页板块 / 分类按钮字号 |
 | v2.4 | Sprint 13 | 内容产线 N2：植物板块 176 处缺失部位补齐「小知识」（纯内容，零代码改动） |
 | v2.5 | Sprint 14 | 内容扩容（二）：动物 / 昆虫 / 恐龙各 30 → 50（纯内容，零代码改动；图片总数 356、音频 500） |
+| v2.6 | Sprint 15 | 更名「认知小图鉴」+ 首页两大组 8 板块导航 + 英文字母 A–Z、汉语拼音 a–z 各 26（能力迭代） |
+| v2.7 | Sprint 16 | 认知启蒙（二）：数字 0–20（21 条）+ 基础 11 色，认知启蒙四板块内容补齐（内容产线，前后端产品代码零改动；图片总数 440、音频 616） |
 
 ---
 

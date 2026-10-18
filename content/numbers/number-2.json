@@ -1,0 +1,36 @@
+{
+  "id": "number-2",
+  "categories": [
+    "number"
+  ],
+  "sort": 2,
+  "name": {
+    "zh": "二",
+    "pinyin": "èr",
+    "en": "Two",
+    "ipa": "/tuː/",
+    "audioZh": "/audio/number-2-zh.m4a",
+    "audioEn": "/audio/number-2-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "二",
+        "pinyin": "èr",
+        "en": "Two",
+        "ipa": "/tuː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-2.jpg"
+        }
+      ],
+      "description": "数一数，这里有 2 个小圆点，就是二。",
+      "allusion": {
+        "text": "二，像一只昂头的小鸭子。",
+        "explain": "二表示两个。"
+      }
+    }
+  }
+}

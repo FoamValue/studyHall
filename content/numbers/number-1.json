@@ -1,0 +1,36 @@
+{
+  "id": "number-1",
+  "categories": [
+    "number"
+  ],
+  "sort": 1,
+  "name": {
+    "zh": "一",
+    "pinyin": "yī",
+    "en": "One",
+    "ipa": "/wʌn/",
+    "audioZh": "/audio/number-1-zh.m4a",
+    "audioEn": "/audio/number-1-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "一",
+        "pinyin": "yī",
+        "en": "One",
+        "ipa": "/wʌn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-1.jpg"
+        }
+      ],
+      "description": "数一数，这里有 1 个小圆点，就是一。",
+      "allusion": {
+        "text": "一，像一根直直的铅笔。",
+        "explain": "一表示只有一个。"
+      }
+    }
+  }
+}

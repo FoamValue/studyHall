@@ -1,0 +1,36 @@
+{
+  "id": "number-0",
+  "categories": [
+    "number"
+  ],
+  "sort": 0,
+  "name": {
+    "zh": "零",
+    "pinyin": "líng",
+    "en": "Zero",
+    "ipa": "/ˈzɪərəʊ/",
+    "audioZh": "/audio/number-0-zh.m4a",
+    "audioEn": "/audio/number-0-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "零",
+        "pinyin": "líng",
+        "en": "Zero",
+        "ipa": "/ˈzɪərəʊ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-0.jpg"
+        }
+      ],
+      "description": "一个圆点也没有，就是零。",
+      "allusion": {
+        "text": "零，像一枚圆圆的鸡蛋。",
+        "explain": "什么都没有，就是零。"
+      }
+    }
+  }
+}

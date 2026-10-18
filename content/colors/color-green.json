@@ -1,0 +1,36 @@
+{
+  "id": "color-green",
+  "categories": [
+    "color"
+  ],
+  "sort": 4,
+  "name": {
+    "zh": "绿色",
+    "pinyin": "lǜ sè",
+    "en": "Green",
+    "ipa": "/ɡriːn/",
+    "audioZh": "/audio/color-green-zh.m4a",
+    "audioEn": "/audio/color-green-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "绿色",
+        "pinyin": "lǜ sè",
+        "en": "Green",
+        "ipa": "/ɡriːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-green.jpg"
+        }
+      ],
+      "description": "小草和树叶是绿色。",
+      "allusion": {
+        "text": "春天的小草是绿色的。",
+        "explain": "小草发芽，绿油油的真好看。"
+      }
+    }
+  }
+}

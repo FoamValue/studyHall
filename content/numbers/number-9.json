@@ -1,0 +1,36 @@
+{
+  "id": "number-9",
+  "categories": [
+    "number"
+  ],
+  "sort": 9,
+  "name": {
+    "zh": "九",
+    "pinyin": "jiǔ",
+    "en": "Nine",
+    "ipa": "/naɪn/",
+    "audioZh": "/audio/number-9-zh.m4a",
+    "audioEn": "/audio/number-9-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "九",
+        "pinyin": "jiǔ",
+        "en": "Nine",
+        "ipa": "/naɪn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-9.jpg"
+        }
+      ],
+      "description": "数一数，这里有 9 个小圆点，就是九。",
+      "allusion": {
+        "text": "九，像一只飘起的气球。",
+        "explain": "九表示九个。"
+      }
+    }
+  }
+}

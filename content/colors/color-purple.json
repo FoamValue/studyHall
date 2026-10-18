@@ -1,0 +1,36 @@
+{
+  "id": "color-purple",
+  "categories": [
+    "color"
+  ],
+  "sort": 8,
+  "name": {
+    "zh": "紫色",
+    "pinyin": "zǐ sè",
+    "en": "Purple",
+    "ipa": "/ˈpɜːpl/",
+    "audioZh": "/audio/color-purple-zh.m4a",
+    "audioEn": "/audio/color-purple-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "紫色",
+        "pinyin": "zǐ sè",
+        "en": "Purple",
+        "ipa": "/ˈpɜːpl/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-purple.jpg"
+        }
+      ],
+      "description": "葡萄是紫色。",
+      "allusion": {
+        "text": "一串串的葡萄是紫色的。",
+        "explain": "熟透的葡萄紫莹莹的。"
+      }
+    }
+  }
+}

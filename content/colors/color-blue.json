@@ -1,0 +1,36 @@
+{
+  "id": "color-blue",
+  "categories": [
+    "color"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "蓝色",
+    "pinyin": "lán sè",
+    "en": "Blue",
+    "ipa": "/bluː/",
+    "audioZh": "/audio/color-blue-zh.m4a",
+    "audioEn": "/audio/color-blue-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "蓝色",
+        "pinyin": "lán sè",
+        "en": "Blue",
+        "ipa": "/bluː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-blue.jpg"
+        }
+      ],
+      "description": "天空和大海是蓝色。",
+      "allusion": {
+        "text": "抬头看，天空是蓝色的。",
+        "explain": "晴天的时候，天空蓝蓝的。"
+      }
+    }
+  }
+}

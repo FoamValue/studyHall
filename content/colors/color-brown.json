@@ -1,0 +1,36 @@
+{
+  "id": "color-brown",
+  "categories": [
+    "color"
+  ],
+  "sort": 7,
+  "name": {
+    "zh": "棕色",
+    "pinyin": "zōng sè",
+    "en": "Brown",
+    "ipa": "/braʊn/",
+    "audioZh": "/audio/color-brown-zh.m4a",
+    "audioEn": "/audio/color-brown-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "棕色",
+        "pinyin": "zōng sè",
+        "en": "Brown",
+        "ipa": "/braʊn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-brown.jpg"
+        }
+      ],
+      "description": "树干和小熊是棕色。",
+      "allusion": {
+        "text": "小树的树干是棕色的。",
+        "explain": "树干和泥土都是棕色的。"
+      }
+    }
+  }
+}

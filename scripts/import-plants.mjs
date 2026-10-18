@@ -13,7 +13,7 @@
  *   MYSQL_URI   默认 mysql://studyhall:studyhall@localhost:3306/studyhall
  *
  * 行为（幂等，可重复执行）：
- *   1. 读取 content/categories.json 与 content/{plants,animals,insects,dinosaurs}/*.json，
+ *   1. 读取 content/categories.json 与 content/{plants,animals,insects,dinosaurs,letters,pinyin,numbers,colors}/*.json，
  *      先整体校验，不合法立即报错退出；
  *   2. 按 _id=code/id UPSERT 进 MongoDB（同 id 覆盖，不产生重复）；
  *   3. SCAN 删除 Redis 中 sh:* 前缀缓存（后端 TTL 600s 兜底）；
@@ -32,9 +32,9 @@ const MONGO_DB = process.env.MONGO_DB ?? "studyhall";
 const REDIS_URI = process.env.REDIS_URI ?? "redis://localhost:6379";
 const MYSQL_URI = process.env.MYSQL_URI ?? "mysql://studyhall:studyhall@localhost:3306/studyhall";
 
-const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur", "letter", "pinyin"];
-const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur", "letter", "pinyin"];
-// 单键板块（一物一图）→ 图片目录前缀（number/color 为 Sprint 16 预留）
+const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur", "letter", "pinyin", "number", "color"];
+const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur", "letter", "pinyin", "number", "color"];
+// 单键板块（一物一图）→ 图片目录前缀
 const SINGLE_KEY_IMAGE_DIR = {
   animal: "animals",
   insect: "insects",
@@ -44,7 +44,7 @@ const SINGLE_KEY_IMAGE_DIR = {
   number: "numbers",
   color: "colors",
 };
-// 字形类启蒙板块（字母/拼音）：名称仅符号本身，省略 pinyin/en/ipa
+// 字形类启蒙板块（字母/拼音）：名称仅符号本身，省略 pinyin/en/ipa；number/color 保留三语+音标
 const GLYPH_SECTIONS = ["letter", "pinyin"];
 // 内容子目录（一物一文件），统一 UPSERT 进 plants 集合
 const CONTENT_DIRS = [
@@ -54,6 +54,8 @@ const CONTENT_DIRS = [
   { dir: "dinosaurs", prefix: "content/dinosaurs" },
   { dir: "letters", prefix: "content/letters" },
   { dir: "pinyin", prefix: "content/pinyin" },
+  { dir: "numbers", prefix: "content/numbers" },
+  { dir: "colors", prefix: "content/colors" },
 ];
 const REPO_ROOT = path.resolve(import.meta.dirname, "..");
 

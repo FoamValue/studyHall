@@ -1,0 +1,36 @@
+{
+  "id": "color-orange",
+  "categories": [
+    "color"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "橙色",
+    "pinyin": "chéng sè",
+    "en": "Orange",
+    "ipa": "/ˈɒrəndʒ/",
+    "audioZh": "/audio/color-orange-zh.m4a",
+    "audioEn": "/audio/color-orange-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "橙色",
+        "pinyin": "chéng sè",
+        "en": "Orange",
+        "ipa": "/ˈɒrəndʒ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-orange.jpg"
+        }
+      ],
+      "description": "橘子是橙色。",
+      "allusion": {
+        "text": "圆圆的橘子是橙色的。",
+        "explain": "橘子皮就是橙色的。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "number-3",
+  "categories": [
+    "number"
+  ],
+  "sort": 3,
+  "name": {
+    "zh": "三",
+    "pinyin": "sān",
+    "en": "Three",
+    "ipa": "/θriː/",
+    "audioZh": "/audio/number-3-zh.m4a",
+    "audioEn": "/audio/number-3-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "三",
+        "pinyin": "sān",
+        "en": "Three",
+        "ipa": "/θriː/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-3.jpg"
+        }
+      ],
+      "description": "数一数，这里有 3 个小圆点，就是三。",
+      "allusion": {
+        "text": "三，像一只在听声音的耳朵。",
+        "explain": "三表示三个。"
+      }
+    }
+  }
+}

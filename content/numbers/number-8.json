@@ -1,0 +1,36 @@
+{
+  "id": "number-8",
+  "categories": [
+    "number"
+  ],
+  "sort": 8,
+  "name": {
+    "zh": "八",
+    "pinyin": "bā",
+    "en": "Eight",
+    "ipa": "/eɪt/",
+    "audioZh": "/audio/number-8-zh.m4a",
+    "audioEn": "/audio/number-8-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "八",
+        "pinyin": "bā",
+        "en": "Eight",
+        "ipa": "/eɪt/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-8.jpg"
+        }
+      ],
+      "description": "数一数，这里有 8 个小圆点，就是八。",
+      "allusion": {
+        "text": "八，像一只可爱的葫芦。",
+        "explain": "八表示八个。"
+      }
+    }
+  }
+}

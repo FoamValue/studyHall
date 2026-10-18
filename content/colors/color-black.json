@@ -1,0 +1,36 @@
+{
+  "id": "color-black",
+  "categories": [
+    "color"
+  ],
+  "sort": 1,
+  "name": {
+    "zh": "黑色",
+    "pinyin": "hēi sè",
+    "en": "Black",
+    "ipa": "/blæk/",
+    "audioZh": "/audio/color-black-zh.m4a",
+    "audioEn": "/audio/color-black-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "黑色",
+        "pinyin": "hēi sè",
+        "en": "Black",
+        "ipa": "/blæk/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-black.jpg"
+        }
+      ],
+      "description": "黑夜和乌云是黑色的。",
+      "allusion": {
+        "text": "夜里天黑了，就是黑色。",
+        "explain": "天黑的时候，什么都看不清。"
+      }
+    }
+  }
+}

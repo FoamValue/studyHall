@@ -1,0 +1,36 @@
+{
+  "id": "number-17",
+  "categories": [
+    "number"
+  ],
+  "sort": 17,
+  "name": {
+    "zh": "十七",
+    "pinyin": "shí qī",
+    "en": "Seventeen",
+    "ipa": "/ˌsevnˈtiːn/",
+    "audioZh": "/audio/number-17-zh.m4a",
+    "audioEn": "/audio/number-17-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十七",
+        "pinyin": "shí qī",
+        "en": "Seventeen",
+        "ipa": "/ˌsevnˈtiːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-17.jpg"
+        }
+      ],
+      "description": "数一数，这里有 17 个小圆点，就是十七。",
+      "allusion": {
+        "text": "十再往下数 7 个，就是十七。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

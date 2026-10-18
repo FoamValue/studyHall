@@ -1,0 +1,36 @@
+{
+  "id": "number-15",
+  "categories": [
+    "number"
+  ],
+  "sort": 15,
+  "name": {
+    "zh": "十五",
+    "pinyin": "shí wǔ",
+    "en": "Fifteen",
+    "ipa": "/ˌfɪfˈtiːn/",
+    "audioZh": "/audio/number-15-zh.m4a",
+    "audioEn": "/audio/number-15-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十五",
+        "pinyin": "shí wǔ",
+        "en": "Fifteen",
+        "ipa": "/ˌfɪfˈtiːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-15.jpg"
+        }
+      ],
+      "description": "数一数，这里有 15 个小圆点，就是十五。",
+      "allusion": {
+        "text": "十再往下数 5 个，就是十五。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

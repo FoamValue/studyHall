@@ -1,0 +1,36 @@
+{
+  "id": "number-10",
+  "categories": [
+    "number"
+  ],
+  "sort": 10,
+  "name": {
+    "zh": "十",
+    "pinyin": "shí",
+    "en": "Ten",
+    "ipa": "/ten/",
+    "audioZh": "/audio/number-10-zh.m4a",
+    "audioEn": "/audio/number-10-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十",
+        "pinyin": "shí",
+        "en": "Ten",
+        "ipa": "/ten/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-10.jpg"
+        }
+      ],
+      "description": "数一数，这里有 10 个小圆点，就是十。",
+      "allusion": {
+        "text": "十，像一根筷子加一枚鸡蛋。",
+        "explain": "十个手指正好数完。"
+      }
+    }
+  }
+}

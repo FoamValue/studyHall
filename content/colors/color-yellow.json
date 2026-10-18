@@ -1,0 +1,36 @@
+{
+  "id": "color-yellow",
+  "categories": [
+    "color"
+  ],
+  "sort": 5,
+  "name": {
+    "zh": "黄色",
+    "pinyin": "huáng sè",
+    "en": "Yellow",
+    "ipa": "/ˈjeləʊ/",
+    "audioZh": "/audio/color-yellow-zh.m4a",
+    "audioEn": "/audio/color-yellow-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "黄色",
+        "pinyin": "huáng sè",
+        "en": "Yellow",
+        "ipa": "/ˈjeləʊ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-yellow.jpg"
+        }
+      ],
+      "description": "香蕉和太阳是黄色。",
+      "allusion": {
+        "text": "弯弯的香蕉是黄色的。",
+        "explain": "香蕉熟了就变成黄色啦。"
+      }
+    }
+  }
+}

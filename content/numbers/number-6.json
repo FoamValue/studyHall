@@ -1,0 +1,36 @@
+{
+  "id": "number-6",
+  "categories": [
+    "number"
+  ],
+  "sort": 6,
+  "name": {
+    "zh": "六",
+    "pinyin": "liù",
+    "en": "Six",
+    "ipa": "/sɪks/",
+    "audioZh": "/audio/number-6-zh.m4a",
+    "audioEn": "/audio/number-6-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "六",
+        "pinyin": "liù",
+        "en": "Six",
+        "ipa": "/sɪks/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-6.jpg"
+        }
+      ],
+      "description": "数一数，这里有 6 个小圆点，就是六。",
+      "allusion": {
+        "text": "六，像一只响亮的哨子。",
+        "explain": "六表示六个。"
+      }
+    }
+  }
+}

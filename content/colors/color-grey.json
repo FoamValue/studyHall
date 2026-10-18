@@ -1,0 +1,36 @@
+{
+  "id": "color-grey",
+  "categories": [
+    "color"
+  ],
+  "sort": 11,
+  "name": {
+    "zh": "灰色",
+    "pinyin": "huī sè",
+    "en": "Grey",
+    "ipa": "/ɡreɪ/",
+    "audioZh": "/audio/color-grey-zh.m4a",
+    "audioEn": "/audio/color-grey-en.m4a"
+  },
+  "parts": {
+    "color": {
+      "name": {
+        "zh": "灰色",
+        "pinyin": "huī sè",
+        "en": "Grey",
+        "ipa": "/ɡreɪ/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/colors/color-grey.jpg"
+        }
+      ],
+      "description": "大象和小石头是灰色。",
+      "allusion": {
+        "text": "大象的皮肤是灰色的。",
+        "explain": "乌云和石头也是灰色的。"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "number-13",
+  "categories": [
+    "number"
+  ],
+  "sort": 13,
+  "name": {
+    "zh": "十三",
+    "pinyin": "shí sān",
+    "en": "Thirteen",
+    "ipa": "/ˌθɜːˈtiːn/",
+    "audioZh": "/audio/number-13-zh.m4a",
+    "audioEn": "/audio/number-13-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "十三",
+        "pinyin": "shí sān",
+        "en": "Thirteen",
+        "ipa": "/ˌθɜːˈtiːn/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-13.jpg"
+        }
+      ],
+      "description": "数一数，这里有 13 个小圆点，就是十三。",
+      "allusion": {
+        "text": "十再往下数 3 个，就是十三。",
+        "explain": "两只手数完十，再接着数。"
+      }
+    }
+  }
+}

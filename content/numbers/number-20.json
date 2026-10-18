@@ -1,0 +1,36 @@
+{
+  "id": "number-20",
+  "categories": [
+    "number"
+  ],
+  "sort": 20,
+  "name": {
+    "zh": "二十",
+    "pinyin": "èr shí",
+    "en": "Twenty",
+    "ipa": "/ˈtwenti/",
+    "audioZh": "/audio/number-20-zh.m4a",
+    "audioEn": "/audio/number-20-en.m4a"
+  },
+  "parts": {
+    "number": {
+      "name": {
+        "zh": "二十",
+        "pinyin": "èr shí",
+        "en": "Twenty",
+        "ipa": "/ˈtwenti/"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/numbers/number-20.jpg"
+        }
+      ],
+      "description": "数一数，这里有 20 个小圆点，就是二十。",
+      "allusion": {
+        "text": "两个十合在一起，就是二十。",
+        "explain": "二十是整整齐齐的两排十。"
+      }
+    }
+  }
+}
