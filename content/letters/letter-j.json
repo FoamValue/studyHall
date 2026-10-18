@@ -1,0 +1,29 @@
+{
+  "id": "letter-j",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Jj",
+    "audioEn": "/audio/letter-j-en.m4a"
+  },
+  "sort": 10,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Jj"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-j.jpg"
+        }
+      ],
+      "description": "大写 J 和小写 j，是字母表的第 10 个字母。Juice 果汁就是以 J 开头的。",
+      "allusion": {
+        "text": "字母 J 是从字母 I 变出来的。",
+        "explain": "在 I 下面弯一弯，就变成 J 了。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-l",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "l",
+    "audioZh": "/audio/pinyin-l-zh.m4a"
+  },
+  "sort": 12,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "l"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-l.jpg"
+        }
+      ],
+      "description": "l 是声母，像一根直直的小棍。",
+      "allusion": {
+        "text": "l 像一根高高直直的小棍子。",
+        "explain": "又直又高，就是 l。"
+      }
+    }
+  }
+}

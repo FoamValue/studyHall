@@ -1,0 +1,29 @@
+{
+  "id": "letter-m",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Mm",
+    "audioEn": "/audio/letter-m-en.m4a"
+  },
+  "sort": 13,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Mm"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-m.jpg"
+        }
+      ],
+      "description": "大写 M 和小写 m，是字母表的第 13 个字母。Moon 月亮就是以 M 开头的。",
+      "allusion": {
+        "text": "字母 M 最早的样子像水里的波浪。",
+        "explain": "一起一伏的波纹，慢慢变成了 M。"
+      }
+    }
+  }
+}

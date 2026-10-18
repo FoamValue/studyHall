@@ -1,0 +1,29 @@
+{
+  "id": "letter-k",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Kk",
+    "audioEn": "/audio/letter-k-en.m4a"
+  },
+  "sort": 11,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Kk"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-k.jpg"
+        }
+      ],
+      "description": "大写 K 和小写 k，是字母表的第 11 个字母。Key 钥匙就是以 K 开头的。",
+      "allusion": {
+        "text": "字母 K 最早的样子像张开的手掌。",
+        "explain": "手掌张开的符号，后来变成了 K。"
+      }
+    }
+  }
+}

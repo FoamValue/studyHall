@@ -361,3 +361,52 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - **天然覆盖**：导入校验已包含单键板块 `parts↔categories` 一致性、图片路径规则（`/images/{目录}/{id}.jpg`）、音频文件存在性；`?section=animal|insect|dinosaur` 各返回 **50** 条，顺序由既有 `Sort.by(ASC,"sort","id")` 保证。
 - **数据驱动断言自动适配**：TC-71/TC-72/TC-74 等按语料实际过滤计数（非硬编码 30），新增 60 条语料不改断言；TC-24（文案限长全量遍历）自动覆盖新增文案；TC-11（`source` 可选）沿用 D13-1 口径。
 - 既有后端 21 用例作为回归基线，退出码必须为 0。
+
+---
+
+# 后端开发设计文章 — Sprint 15（增量：v2.6 板块机制泛化）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | J |
+| 日期 | 2026-10-18 |
+| 依据 | docs/product/iteration-15-requirements.md（Q1~Q8 冻结）、PRD §20（v2.6） |
+
+## S15-1. `PART_ORDER` 扩键（J-17 核心）
+- `PlantService.PART_ORDER` 由 `flower,leaf,fruit,animal,insect,dinosaur` 扩为
+  `flower,leaf,fruit,animal,insect,dinosaur,letter,pinyin,number,color`。
+- 影响面：`partCodes()`（列表卡片 `parts` 字段）与 `coverImage()` 回退顺序。
+- `flower/leaf/fruit` 仍居前三位 → 植物封面回退顺序（TC-07/TC-58）**不变**；新增字母/拼音条目单键在尾部，`coverImage(plant, null)` 取到自身单图。
+- `number/color` 本迭代**占位**（无内容），扩键不产生副作用。
+
+## S15-2. 板块/分类校验与错误文案
+- `getPlants` 的 section 校验**数据驱动**（读 `categories.json.section` 过滤分类 code）→ 新增 `letter/pinyin` 分类后 `?section=letter|pinyin` **自动生效**，无代码改动。
+- 未知 section 仍 `ApiException(40002, "没有「%s」这个板块哦")`（TC-73 不回归）。
+- **40001 文案更新**：由「试试花朵、树叶、果实、动物、昆虫或恐龙吧」扩为覆盖 8 分类：
+  `"没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫、恐龙、英文字母或汉语拼音吧"`。
+
+## S15-3. 模型与契约
+- `Plant` / `I18nName` / `PlantPart` **record 结构零改动**：`I18nName` 的 `pinyin/en/ipa` 本就允许 null（letter/pinyin 条目省略）。
+- **无新增字段、无新增错误码**；`/api/plants?section=letter|pinyin` 各返回 26 条，顺序由既有 `Sort.by(ASC,"sort","id")` 保证。
+- `GET /api/categories` 由 6 → **8** 条（新增 letter/pinyin，`order` 7/8，`section` 各自 code）。
+- 缓存 key 规则不改（`sh:plants:list:section:letter` 等由既有 `section:` 前缀规则覆盖，导入脚本 SCAN `sh:*` 清理）。
+- `partCodes(letter 条目)` 依赖 S15-1 扩键，返回 `["letter"]`（供前端单图分支识别）。
+
+## S15-4. 导入脚本 `scripts/import-plants.mjs` 泛化（S15-3 范围）
+- `VALID_SECTIONS` → `plant,animal,insect,dinosaur,letter,pinyin,number,color`。
+- `VALID_PARTS` → 同上 8 键。
+- `CONTENT_DIRS` 增 `{dir:"letters",prefix:"content/letters"}`、`{dir:"pinyin",prefix:"content/pinyin"}`。
+- `SINGLE_KEY_IMAGE_DIR` 增 `letter:"letters"`、`pinyin:"pinyin"`、`number:"numbers"`、`color:"colors"`（后两者预留）。
+- **名称校验放宽**：仅当条目分类 ∈ {letter,pinyin} 时允许 `name.pinyin/en/ipa` 缺失；其余板块仍要求三语+音标齐全。
+- **文案红线豁免**：`validatePlant` 对 letter/pinyin 条目**不校验** `description` 的拉丁字母（其余板块维持既有校验）。
+- **音频校验按板块**：字母要求 `name.audioEn` 存在（无 `audioZh`）；拼音要求 `name.audioZh` 存在（无 `audioEn`）；数字/颜色 Sprint 16 双语。字段存在即校验对应文件存在（沿用既有逻辑）。
+- **单键一致性**：letter/pinyin 条目 `parts` 单键 = `categories` 唯一元素（沿用既有 `SINGLE_KEY_IMAGE_DIR` 分支）。
+- 图片路径：字母 `/images/letters/{id}.jpg`、拼音 `/images/pinyin/{id}.jpg`（沿用 `SINGLE_KEY_IMAGE_DIR` 拼接规则）。
+
+## S15-5. 测试策略（配合 QA-33/QA-34）
+- `ContentSeed.PLANT_DIRS` 增 `letters`、`pinyin`（读入同集合）。
+- **TC-02**：`section` 断言集合由 4 板块扩为含 `letter`/`pinyin`（数据驱动，随分类数 8）。
+- **TC-11**：新增「letter/pinyin 板块条目省略 `name.pinyin/en/ipa` 且 `parts.<键>.name.pinyin/en` 亦省略」的分支——对 letter/pinyin 条目跳过 `name.pinyin/en/ipa` 与 `part.name.pinyin/en` 的非空断言；`BOARD_IMAGE_PREFIX` 增 `letter:/images/letters/`、`pinyin:/images/pinyin/`。
+- **TC-24**：仅对**非 letter/pinyin** 部位校验「≤80 字、无拉丁字母」；字母/拼音 `description` 豁免（Q6）。
+- 新增：`?section=letter` = 26 且每条 `parts` = `[letter]`；`?section=pinyin` = 26 且 `parts` = `[pinyin]`；`/api/categories` 8 条。
+- 既有 21 用例作为回归基线，退出码必须为 0。

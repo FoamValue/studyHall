@@ -1,0 +1,29 @@
+{
+  "id": "letter-o",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Oo",
+    "audioEn": "/audio/letter-o-en.m4a"
+  },
+  "sort": 15,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Oo"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-o.jpg"
+        }
+      ],
+      "description": "大写 O 和小写 o，是字母表的第 15 个字母。Orange 橙子就是以 O 开头的。",
+      "allusion": {
+        "text": "字母 O 像一只圆圆的大眼睛。",
+        "explain": "圆圆的圆圈，就是 O 的样子。"
+      }
+    }
+  }
+}

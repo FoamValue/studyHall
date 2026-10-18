@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-z",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "z",
+    "audioZh": "/audio/pinyin-z-zh.m4a"
+  },
+  "sort": 26,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "z"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-z.jpg"
+        }
+      ],
+      "description": "z 是声母，像一条弯弯的小路。",
+      "allusion": {
+        "text": "z 像一条弯弯曲曲的小路。",
+        "explain": "小路折一折，就是 z。"
+      }
+    }
+  }
+}

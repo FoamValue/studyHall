@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-b",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "b",
+    "audioZh": "/audio/pinyin-b-zh.m4a"
+  },
+  "sort": 2,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "b"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-b.jpg"
+        }
+      ],
+      "description": "b 是声母，两个嘴唇轻轻一碰就读出来。",
+      "allusion": {
+        "text": "b 像一根收音机的小天线。",
+        "explain": "竖起一根小杆，就是 b。"
+      }
+    }
+  }
+}

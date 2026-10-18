@@ -1,0 +1,29 @@
+{
+  "id": "letter-n",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Nn",
+    "audioEn": "/audio/letter-n-en.m4a"
+  },
+  "sort": 14,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Nn"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-n.jpg"
+        }
+      ],
+      "description": "大写 N 和小写 n，是字母表的第 14 个字母。Nose 鼻子就是以 N 开头的。",
+      "allusion": {
+        "text": "字母 N 像波浪竖起来的样子。",
+        "explain": "把波浪竖立起来，就像 N 了。"
+      }
+    }
+  }
+}

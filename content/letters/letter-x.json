@@ -1,0 +1,29 @@
+{
+  "id": "letter-x",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Xx",
+    "audioEn": "/audio/letter-x-en.m4a"
+  },
+  "sort": 24,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Xx"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-x.jpg"
+        }
+      ],
+      "description": "大写 X 和小写 x，是字母表的第 24 个字母。Xylophone 木琴就是以 X 开头的。",
+      "allusion": {
+        "text": "字母 X 像一个大大的叉号。",
+        "explain": "两笔交叉在一起，就是 X。"
+      }
+    }
+  }
+}

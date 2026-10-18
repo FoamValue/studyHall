@@ -4,22 +4,26 @@ import { loadAllCards } from './helpers';
 // ===== Sprint 9 新增 E2E（TC-89 ~ TC-95，编号依 QA 手册 docs/qa/sprint-9-test-cases.md）=====
 // 覆盖：站点改名 / 四板块两级导航 / 单图详情无部位切换 / 恐龙骨架 / 预生成音频请求 / 排序稳定 / 植物「全部」限定板块
 
-// TC-89 站点改名「自然小图鉴 / zì rán xiǎo tú jiàn / Nature Guide」
-test('TC-89 站点标题改名为「自然小图鉴」', async ({ page }) => {
+// TC-89 站点改名「认知小图鉴 / rèn zhī xiǎo tú jiàn / Cognitive Guide」（Sprint 15 更名）
+test('TC-89 站点标题改名为「认知小图鉴」', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.site-title-zh')).toHaveText('自然小图鉴');
-  await expect(page.locator('.site-title-pinyin')).toHaveText('zì rán xiǎo tú jiàn');
-  await expect(page.locator('.site-title-en')).toHaveText('Nature Guide');
-  await expect(page.getByText('植物小花园')).toHaveCount(0);
+  await expect(page.locator('.site-title-zh')).toHaveText('认知小图鉴');
+  await expect(page.locator('.site-title-pinyin')).toHaveText('rèn zhī xiǎo tú jiàn');
+  await expect(page.locator('.site-title-en')).toHaveText('Cognitive Guide');
+  await expect(page.getByText('自然小图鉴')).toHaveCount(0);
 });
 
-// TC-90 四板块一级导航；仅植物板块渲染二级分类筛选（二级筛选只有植物 3 分类 + 全部 = 4 钮）
-test('TC-90 板块导航四钮且二级筛选仅植物板块', async ({ page }) => {
+// TC-90 板块导航两组共 8 钮（自然认知 4 + 认知启蒙 4）；仅植物板块渲染二级分类筛选
+test('TC-90 板块导航八钮两组且二级筛选仅植物板块', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('group', { name: '板块导航' });
-  await expect(nav.locator('.filter-btn')).toHaveCount(4);
-  for (const label of ['植物', '动物', '昆虫', '恐龙']) {
-    await expect(nav.getByRole('button', { name: label })).toBeVisible();
+  // Sprint 15：4 → 8 钮，两组标题可见
+  await expect(nav.locator('.filter-btn')).toHaveCount(8);
+  await expect(nav.locator('.section-group-title')).toHaveCount(2);
+  await expect(nav.getByText('自然认知')).toBeVisible();
+  await expect(nav.getByText('认知启蒙')).toBeVisible();
+  for (const label of ['植物', '动物', '昆虫', '恐龙', '英文字母', '汉语拼音', '数字', '颜色']) {
+    await expect(nav.getByRole('button', { name: label, exact: true })).toBeVisible();
   }
   // 默认植物板块：二级分类筛选可见，四钮（全部/花朵/树叶/果实），不含板块分类
   const filterGroup = page.getByRole('group', { name: '植物分类筛选' });

@@ -1,0 +1,29 @@
+{
+  "id": "letter-d",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Dd",
+    "audioEn": "/audio/letter-d-en.m4a"
+  },
+  "sort": 4,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Dd"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-d.jpg"
+        }
+      ],
+      "description": "大写 D 和小写 d，是字母表的第 4 个字母。Dog 狗就是以 D 开头的。",
+      "allusion": {
+        "text": "字母 D 最早的样子像一扇门。",
+        "explain": "古人把门画成弯弯的样子，就成了 D。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-f",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "f",
+    "audioZh": "/audio/pinyin-f-zh.m4a"
+  },
+  "sort": 6,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "f"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-f.jpg"
+        }
+      ],
+      "description": "f 是声母，像一把小拐杖。",
+      "allusion": {
+        "text": "f 像一根弯弯的小拐杖。",
+        "explain": "拐杖一竖一横，就是 f。"
+      }
+    }
+  }
+}

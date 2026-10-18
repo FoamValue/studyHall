@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-a",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "a",
+    "audioZh": "/audio/pinyin-a-zh.m4a"
+  },
+  "sort": 1,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "a"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-a.jpg"
+        }
+      ],
+      "description": "a 是单韵母，张大嘴巴就能读出「啊」。",
+      "allusion": {
+        "text": "a 像一位张大嘴巴唱歌的小朋友。",
+        "explain": "嘴巴张得大大的，声音就出来了。"
+      }
+    }
+  }
+}

@@ -32,16 +32,28 @@ const MONGO_DB = process.env.MONGO_DB ?? "studyhall";
 const REDIS_URI = process.env.REDIS_URI ?? "redis://localhost:6379";
 const MYSQL_URI = process.env.MYSQL_URI ?? "mysql://studyhall:studyhall@localhost:3306/studyhall";
 
-const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur"];
-const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur"];
-// 单键板块（一物一图）→ 图片目录前缀
-const SINGLE_KEY_IMAGE_DIR = { animal: "animals", insect: "insects", dinosaur: "dinosaurs" };
+const VALID_PARTS = ["flower", "leaf", "fruit", "animal", "insect", "dinosaur", "letter", "pinyin"];
+const VALID_SECTIONS = ["plant", "animal", "insect", "dinosaur", "letter", "pinyin"];
+// 单键板块（一物一图）→ 图片目录前缀（number/color 为 Sprint 16 预留）
+const SINGLE_KEY_IMAGE_DIR = {
+  animal: "animals",
+  insect: "insects",
+  dinosaur: "dinosaurs",
+  letter: "letters",
+  pinyin: "pinyin",
+  number: "numbers",
+  color: "colors",
+};
+// 字形类启蒙板块（字母/拼音）：名称仅符号本身，省略 pinyin/en/ipa
+const GLYPH_SECTIONS = ["letter", "pinyin"];
 // 内容子目录（一物一文件），统一 UPSERT 进 plants 集合
 const CONTENT_DIRS = [
   { dir: "plants", prefix: "content/plants" },
   { dir: "animals", prefix: "content/animals" },
   { dir: "insects", prefix: "content/insects" },
   { dir: "dinosaurs", prefix: "content/dinosaurs" },
+  { dir: "letters", prefix: "content/letters" },
+  { dir: "pinyin", prefix: "content/pinyin" },
 ];
 const REPO_ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -61,14 +73,17 @@ function validateCategory(cat, file) {
   }
 }
 
-/** 校验条目文档，schema 见 docs/design/backend-design.md §2 与 Sprint 9 S9-6。 */
+/** 校验条目文档，schema 见 docs/design/backend-design.md §2 与 Sprint 9 S9-6、Sprint 15 S15-4。 */
 function validatePlant(plant, file) {
   const err = (m) => fail(`[校验失败] ${file}: ${m}`);
   if (!plant.id || typeof plant.id !== "string") err("缺少 id");
   if (!Array.isArray(plant.categories) || plant.categories.length === 0) err("categories 不能为空");
   if (!Number.isInteger(plant.sort)) err("sort 必须是整数");
-  if (!plant.name?.zh || !plant.name?.pinyin || !plant.name?.en || !plant.name?.ipa) {
-    err("name 缺少 zh/pinyin/en/ipa");
+  // 字形类启蒙板块（字母/拼音）名称仅符号本身，省略 pinyin/en/ipa
+  const isGlyph = plant.categories.some((c) => GLYPH_SECTIONS.includes(c));
+  if (!plant.name?.zh) err("name 缺少 zh");
+  if (!isGlyph && (!plant.name?.pinyin || !plant.name?.en || !plant.name?.ipa)) {
+    err("name 缺少 pinyin/en/ipa");
   }
   const partKeys = Object.keys(plant.parts ?? {});
   if (partKeys.length === 0) err("parts 不能为空");
@@ -78,6 +93,9 @@ function validatePlant(plant, file) {
     }
     const part = plant.parts[key];
     if (!part.name?.zh) err(`parts.${key}.name 缺少 zh`);
+    if (!isGlyph && (!part.name?.pinyin || !part.name?.en)) {
+      err(`parts.${key}.name 缺少 pinyin/en`);
+    }
     if (!Array.isArray(part.images) || part.images.length === 0) err(`parts.${key}.images 至少 1 张`);
     for (const img of part.images) {
       if (!img.url) err(`parts.${key}.images 缺少 url`);

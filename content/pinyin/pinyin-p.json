@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-p",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "p",
+    "audioZh": "/audio/pinyin-p-zh.m4a"
+  },
+  "sort": 16,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "p"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-p.jpg"
+        }
+      ],
+      "description": "p 是声母，像一面挂起来的小旗子。",
+      "allusion": {
+        "text": "p 像一面挂在杆上的小旗。",
+        "explain": "圆圈加上竖杆，就是 p。"
+      }
+    }
+  }
+}

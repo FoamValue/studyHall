@@ -1,0 +1,29 @@
+{
+  "id": "letter-z",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Zz",
+    "audioEn": "/audio/letter-z-en.m4a"
+  },
+  "sort": 26,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Zz"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-z.jpg"
+        }
+      ],
+      "description": "大写 Z 和小写 z，是字母表的第 26 个字母。Zebra 斑马就是以 Z 开头的。",
+      "allusion": {
+        "text": "字母 Z 是字母表里最后一个字母。",
+        "explain": "学到 Z，二十六个字母就学完啦。"
+      }
+    }
+  }
+}

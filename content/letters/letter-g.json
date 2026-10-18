@@ -1,0 +1,29 @@
+{
+  "id": "letter-g",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Gg",
+    "audioEn": "/audio/letter-g-en.m4a"
+  },
+  "sort": 7,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Gg"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-g.jpg"
+        }
+      ],
+      "description": "大写 G 和小写 g，是字母表的第 7 个字母。Goat 山羊就是以 G 开头的。",
+      "allusion": {
+        "text": "字母 G 是从字母 C 变出来的。",
+        "explain": "古人在 C 上添了一小横，就有了 G。"
+      }
+    }
+  }
+}

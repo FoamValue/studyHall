@@ -148,9 +148,9 @@ export default function HomePage() {
   return (
     <main className="page">
       <header className="site-header page-block">
-        <p className="site-title-pinyin">zì rán xiǎo tú jiàn</p>
-        <h1 className="site-title-zh">自然小图鉴</h1>
-        <p className="site-title-en">Nature Guide</p>
+        <p className="site-title-pinyin">rèn zhī xiǎo tú jiàn</p>
+        <h1 className="site-title-zh">认知小图鉴</h1>
+        <p className="site-title-en">Cognitive Guide</p>
       </header>
 
       <SectionNav value={section} onChange={handleSectionChange} />

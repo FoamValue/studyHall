@@ -1,0 +1,29 @@
+{
+  "id": "letter-r",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Rr",
+    "audioEn": "/audio/letter-r-en.m4a"
+  },
+  "sort": 18,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Rr"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-r.jpg"
+        }
+      ],
+      "description": "大写 R 和小写 r，是字母表的第 18 个字母。Rabbit 兔子就是以 R 开头的。",
+      "allusion": {
+        "text": "字母 R 是在字母 P 下加了条小腿。",
+        "explain": "P 添上一条小斜腿，就变成 R。"
+      }
+    }
+  }
+}

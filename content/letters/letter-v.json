@@ -1,0 +1,29 @@
+{
+  "id": "letter-v",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Vv",
+    "audioEn": "/audio/letter-v-en.m4a"
+  },
+  "sort": 22,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Vv"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-v.jpg"
+        }
+      ],
+      "description": "大写 V 和小写 v，是字母表的第 22 个字母。Van 面包车就是以 V 开头的。",
+      "allusion": {
+        "text": "字母 V 像张开的两个手指。",
+        "explain": "两笔从中间分开，就是 V。"
+      }
+    }
+  }
+}

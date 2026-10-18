@@ -1,0 +1,29 @@
+{
+  "id": "letter-u",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Uu",
+    "audioEn": "/audio/letter-u-en.m4a"
+  },
+  "sort": 21,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Uu"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-u.jpg"
+        }
+      ],
+      "description": "大写 U 和小写 u，是字母表的第 21 个字母。Umbrella 雨伞就是以 U 开头的。",
+      "allusion": {
+        "text": "字母 U 像一个张开的小杯子。",
+        "explain": "杯子的形状弯下来，就变成 U。"
+      }
+    }
+  }
+}

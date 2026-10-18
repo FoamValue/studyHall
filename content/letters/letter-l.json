@@ -1,0 +1,29 @@
+{
+  "id": "letter-l",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ll",
+    "audioEn": "/audio/letter-l-en.m4a"
+  },
+  "sort": 12,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ll"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-l.jpg"
+        }
+      ],
+      "description": "大写 L 和小写 l，是字母表的第 12 个字母。Lion 狮子就是以 L 开头的。",
+      "allusion": {
+        "text": "字母 L 最早的样子像一根赶牛棒。",
+        "explain": "放牛用的弯弯小棒，后来变成了 L。"
+      }
+    }
+  }
+}

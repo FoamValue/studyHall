@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-s",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "s",
+    "audioZh": "/audio/pinyin-s-zh.m4a"
+  },
+  "sort": 19,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "s"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-s.jpg"
+        }
+      ],
+      "description": "s 是声母，像一条弯弯的小蛇。",
+      "allusion": {
+        "text": "s 像一条弯弯曲曲的小蛇。",
+        "explain": "小蛇扭一扭，就成了 s。"
+      }
+    }
+  }
+}

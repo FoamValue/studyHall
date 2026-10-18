@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 植物文档（MongoDB plants 集合）。
  * id 为主键（@Id → _id），即设计文档要求的唯一索引；
- * parts 的键 ∈ {flower, leaf, fruit, animal, insect, dinosaur}，可缺省；
+ * parts 的键 ∈ {flower, leaf, fruit, animal, insect, dinosaur, letter, pinyin, number, color}，可缺省；
  * sort 为板块内排序值，可空（Mongo 升序时缺省排在数值之前）。
  */
 @Document("plants")

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-e",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "e",
+    "audioZh": "/audio/pinyin-e-zh.m4a"
+  },
+  "sort": 5,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "e"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-e.jpg"
+        }
+      ],
+      "description": "e 是单韵母，嘴巴扁扁地读出「鹅」。",
+      "allusion": {
+        "text": "e 像一只浮在水面的白鹅。",
+        "explain": "白鹅弯弯的脖子，就像 e。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-c",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "c",
+    "audioZh": "/audio/pinyin-c-zh.m4a"
+  },
+  "sort": 3,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "c"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-c.jpg"
+        }
+      ],
+      "description": "c 是声母，像半个圆圈，读起来轻轻的。",
+      "allusion": {
+        "text": "c 像半个圆圆的月亮。",
+        "explain": "弯弯的一半圆圈，就是 c。"
+      }
+    }
+  }
+}

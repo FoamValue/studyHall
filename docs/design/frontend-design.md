@@ -640,6 +640,60 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - E2E **更新**：TC-114「共 30 种」→「共 50 种」+ `loadAllCards(page, 50)`；`sprint9.spec.js` TC-90 / TC-94 与 `sprint11.spec.js` TC-115~TC-117 同步由 30 改 50。
 - E2E **新增**：`sprint14.spec.js` **TC-130**（三板块扩容至 50，末位新增条目如「鸵鸟 / 小虾 / 翼手龙」可见）、**TC-131**（新增条目单图详情 + 音频喇叭）、**TC-132**（新增 60 图 HTTP 200）、**TC-133**（新增 120 音频 HTTP 200）。
 
+---
+
+# 前端开发设计文章 — Sprint 15（增量：v2.6 更名 + 两大组导航 + 启蒙板块适配）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-18 |
+| 依据 | docs/product/iteration-15-requirements.md（Q1~Q8 冻结）、PRD §20（v2.6） |
+
+## S15-1. 站点更名（`HomePage.jsx` + `index.html`）
+- 标题三行：`.site-title-pinyin` = `rèn zhī xiǎo tú jiàn`；`.site-title-zh` = `认知小图鉴`；`.site-title-en` = `Cognitive Guide`。
+- `index.html` `<title>` → `认知小图鉴 Cognitive Guide`。
+- 旧文案「自然小图鉴 / zì rán xiǎo tú jiàn / Nature Guide」全量清除（同步 README、AGENTS、前端单测 TC-79、E2E TC-89）。
+
+## S15-2. 两大组板块导航（`SectionNav.jsx`）
+- 结构由「4 个平铺按钮」改为**两组**：
+  - 组 1 `自然认知`：plant(植物) / animal(动物) / insect(昆虫) / dinosaur(恐龙)
+  - 组 2 `认知启蒙`：letter(英文字母) / pinyin(汉语拼音) / number(数字) / color(颜色)
+- 每个板块一个按钮（复用 `.filter-btn` 视觉与热区 ≥56px）；组标题用 `role="presentation"` 的 `.section-group-title`。
+- 容器仍为 `role="group" aria-label="板块导航"`（E2E TC-90 选择器不变），共 **8 个** `.filter-btn`。
+- 导出常量 `SECTIONS`（8 项，含 `group` 字段）与 `SECTION_GROUPS`（两组元数据），供 HomePage 派生 `sectionLabel` 与详情返回文案。
+- `number/color` 本迭代**无内容**：点击后走既有空态「这个板块还没有内容哦」，不报错。
+
+## S15-3. 首页板块/二级筛选（`HomePage.jsx`）
+- `sectionLabel` 由 `SECTIONS.find` 派生（含新 8 板块）。
+- `plantCategories` 过滤**不变**（仍 `c.section === 'plant'` → 4 钮）；二级筛选仅植物板块渲染。
+- 空态文案区分不变：「植物」→「这个分类还没有植物哦」，其余板块 →「这个板块还没有内容哦」。
+- 增量加载 / 「共 N 种」/ 回花园恢复逻辑**零改动**（数据驱动，自动适配 26 条）。
+
+## S15-4. 卡片名称条件渲染（`PlantCard.jsx`）
+- 主标题 `deriveCardTitle` 恒渲染（分类派生仅对植物分类生效；字母/拼音板块 `category='all'` → 原名）。
+- `.plant-card-pinyin` / `.plant-card-en`：**字段存在才渲染**（`plant.name.pinyin` / `plant.name.en` 为 null/undefined 时**不渲染该 div**），消除字母/拼音卡片的空白行（Q7）。
+
+## S15-5. 详情页启蒙板块适配（`PlantDetailPage.jsx`）
+- `SINGLE_IMAGE_KEYS` 由 `['animal','insect','dinosaur']` 扩为 `['animal','insect','dinosaur','letter','pinyin','number','color']`：字母/拼音走**单图分支**（无部位切换、无部位名行）。
+- 名称行条件渲染：
+  - `.detail-pinyin` 仅 `plant.name.pinyin` 存在时渲染；
+  - `.detail-en`（含 `.detail-ipa`）仅 `plant.name.en` 存在时渲染；`ipa` 仍单独条件渲染。
+- 喇叭：`zhAudio = plant.name.audioZh`，`enAudio = plant.name.en ? plant.name.audioEn : null` → **改为** `enAudio = plant.name.audioEn`（字母无 `en` 名但有 `audioEn`，须按实际音频字段渲染）；字母仅英文喇叭、拼音仅中文喇叭（Q7）。
+- `SECTION_HOME` 增 `letter:'字母乐园'`、`pinyin:'拼音角'`（Sprint 16 预留 `number:'数字屋'`、`color:'颜色屋'`）；未知 section 仍回退「花园」。
+- 键名 `id` → 「上一株 / 下一株」文案沿用（启蒙板块语义泛化由 Sprint 16 评估，本迭代不改）。
+
+## S15-6. 样式增量（`styles.css`）
+- 新增 `.section-group-title` 组标题（字号与次级文字一致、上间距 ≥16px）。
+- 两组之间间距 ≥16px；复用既有 `.section-nav` flex 布局（`.filter-btn` 字号 22px、热区 ≥56px 不变）。
+- 单图详情 `.detail-body.single-image` 横屏 64% 版式**沿用**，字母/拼音详情自动受益。
+
+## S15-7. 测试更新（配合 QA-33 / QA-34）
+- **更新** `HomePage.test.jsx`：TC-79 更名断言（三行新文案）；TC-80a 板块导航候选由 4 → 8 钮（两组），`CATEGORIES` mock 增 letter/pinyin 两条。
+- **更新** `e2e/sprint9.spec.js`：TC-89 站点标题三行新文案；TC-90 板块导航 `.filter-btn` 计数 4 → 8，并断言两组标题「自然认知 / 认知启蒙」存在。
+- **新增** `e2e/sprint15.spec.js`：TC-134（更名 + 两组 8 板块导航）、TC-135（切「英文字母」→ 26 卡 + `loadAllCards(page,26)` + 首卡 `Aa` + 「共 26 种」）、TC-136（切「汉语拼音」→ 26 卡 + 首卡 `a`）、TC-137（字母详情 `letter-a`：单图分支、无 `[role=tab]`、`.detail-zh` = `Aa`、无 `.detail-pinyin`/`.detail-en`、仅英文喇叭）、TC-138（拼音详情 `pinyin-a`：`.detail-zh` = `a`、仅中文喇叭）、TC-139（`letter`/`pinyin` 音频请求契约 `/audio/letter-a-en.m4a`、`/audio/pinyin-a-zh.m4a`）、TC-140（返回按钮文案「← 回字母乐园」「← 回拼音角」）、TC-141（字母/拼音 52 图 HTTP 200）、TC-142（52 音频 HTTP 200）。
+- 既有全部用例全量回归。
+
 
 
 

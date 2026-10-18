@@ -1,0 +1,29 @@
+{
+  "id": "letter-e",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ee",
+    "audioEn": "/audio/letter-e-en.m4a"
+  },
+  "sort": 5,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ee"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-e.jpg"
+        }
+      ],
+      "description": "大写 E 和小写 e，是字母表的第 5 个字母。Egg 蛋就是以 E 开头的。",
+      "allusion": {
+        "text": "字母 E 的肚子里有三条小横线。",
+        "explain": "一竖加上三横，就组成了 E。"
+      }
+    }
+  }
+}

@@ -22,6 +22,9 @@ const CATEGORIES = [
   { code: 'animal', nameZh: '动物', pinyin: 'dòng wù', nameEn: 'Animal', order: 4, section: 'animal' },
   { code: 'insect', nameZh: '昆虫', pinyin: 'kūn chóng', nameEn: 'Insect', order: 5, section: 'insect' },
   { code: 'dinosaur', nameZh: '恐龙', pinyin: 'kǒng lóng', nameEn: 'Dinosaur', order: 6, section: 'dinosaur' },
+  // Sprint 15：接口新增两个认知启蒙板块分类（二级植物筛选须继续过滤掉）
+  { code: 'letter', nameZh: '英文字母', pinyin: 'yīng wén zì mǔ', nameEn: 'Letter', order: 7, section: 'letter' },
+  { code: 'pinyin', nameZh: '汉语拼音', pinyin: 'hàn yǔ pīn yīn', nameEn: 'Pinyin', order: 8, section: 'pinyin' },
 ];
 
 // 与后端契约一致的卡片结构：{id, name, coverImage, parts}
@@ -189,29 +192,52 @@ describe('HomePage（TC-11 ~ TC-13）', () => {
 });
 
 describe('首页板块导航与站点改名（Sprint 9：TC-79 ~ TC-81、TC-80b、TC-25b）', () => {
-  it('TC-79 站点标题三行改名为「自然小图鉴 / zì rán xiǎo tú jiàn / Nature Guide」', async () => {
+  it('TC-79 站点标题三行改名为「认知小图鉴 / rèn zhī xiǎo tú jiàn / Cognitive Guide」', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD]);
     renderHome();
 
-    expect(await screen.findByText('zì rán xiǎo tú jiàn')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: '自然小图鉴' })).toBeInTheDocument();
-    expect(screen.getByText('Nature Guide')).toBeInTheDocument();
+    expect(await screen.findByText('rèn zhī xiǎo tú jiàn')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '认知小图鉴' })).toBeInTheDocument();
+    expect(screen.getByText('Cognitive Guide')).toBeInTheDocument();
     // 旧站名不再出现
-    expect(screen.queryByText('植物小花园')).not.toBeInTheDocument();
-    expect(screen.queryByText('Plant Garden')).not.toBeInTheDocument();
+    expect(screen.queryByText('自然小图鉴')).not.toBeInTheDocument();
+    expect(screen.queryByText('Nature Guide')).not.toBeInTheDocument();
   });
 
-  it('TC-80a 板块导航渲染植物/动物/昆虫/恐龙 4 个按钮', async () => {
+  it('TC-80a 板块导航渲染两组 8 个按钮（自然认知 / 认知启蒙）', async () => {
     getPlantsBySection.mockResolvedValue([SUNFLOWER_CARD]);
     renderHome();
 
     const nav = await screen.findByRole('group', { name: '板块导航' });
-    expect(nav.querySelectorAll('.filter-btn')).toHaveLength(4);
-    for (const label of ['植物', '动物', '昆虫', '恐龙']) {
+    expect(nav.querySelectorAll('.filter-btn')).toHaveLength(8);
+    for (const label of ['植物', '动物', '昆虫', '恐龙', '英文字母', '汉语拼音', '数字', '颜色']) {
       expect(within(nav).getByRole('button', { name: label })).toBeInTheDocument();
     }
+    // 两组组标题可见（Sprint 15）
+    const groupTitles = [...nav.querySelectorAll('.section-group-title')].map((el) => el.textContent);
+    expect(groupTitles).toEqual(['自然认知', '认知启蒙']);
     // 默认选中「植物」
     expect(within(nav).getByRole('button', { name: '植物' })).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('TC-146 字母卡片名称条件渲染：缺 pinyin/en 字段不渲染空白行（Sprint 15）', async () => {
+    const LETTER_CARD = card('letter-a', 'Aa', undefined, undefined, '/images/letters/letter-a.jpg', ['letter']);
+    getPlantsBySection.mockResolvedValue([LETTER_CARD]);
+    renderHome();
+
+    // 切到「英文字母」板块（该板块无二级筛选）
+    const user = userEvent.setup();
+    getPlantsBySection.mockImplementation((section) =>
+      section === 'letter' ? Promise.resolve([LETTER_CARD]) : Promise.resolve([])
+    );
+    await user.click(screen.getByRole('button', { name: '英文字母' }));
+
+    expect(await screen.findByText('Aa')).toBeInTheDocument();
+    const cardEl = document.querySelector('.plant-card');
+    // 主标题渲染，拼音 / 英文行缺失即不渲染（消除空白行）
+    expect(cardEl.querySelector('.plant-card-zh')).toHaveTextContent('Aa');
+    expect(cardEl.querySelector('.plant-card-pinyin')).toBeNull();
+    expect(cardEl.querySelector('.plant-card-en')).toBeNull();
   });
 
   it('TC-81 切换板块触发 section 请求；二级筛选仅植物板块渲染', async () => {

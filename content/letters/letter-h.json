@@ -1,0 +1,29 @@
+{
+  "id": "letter-h",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Hh",
+    "audioEn": "/audio/letter-h-en.m4a"
+  },
+  "sort": 8,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Hh"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-h.jpg"
+        }
+      ],
+      "description": "大写 H 和小写 h，是字母表的第 8 个字母。Hat 帽子就是以 H 开头的。",
+      "allusion": {
+        "text": "字母 H 像田边的一排篱笆。",
+        "explain": "两竖一横搭起来，就是篱笆一样的 H。"
+      }
+    }
+  }
+}

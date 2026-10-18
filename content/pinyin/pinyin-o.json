@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-o",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "o",
+    "audioZh": "/audio/pinyin-o-zh.m4a"
+  },
+  "sort": 15,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "o"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-o.jpg"
+        }
+      ],
+      "description": "o 是单韵母，嘴巴圆圆的读出「喔」。",
+      "allusion": {
+        "text": "o 像公鸡打鸣时张开的圆嘴巴。",
+        "explain": "嘴巴圆圆，就发出 o 的声音。"
+      }
+    }
+  }
+}

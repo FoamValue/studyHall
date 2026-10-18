@@ -1,0 +1,29 @@
+{
+  "id": "letter-t",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Tt",
+    "audioEn": "/audio/letter-t-en.m4a"
+  },
+  "sort": 20,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Tt"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-t.jpg"
+        }
+      ],
+      "description": "大写 T 和小写 t，是字母表的第 20 个字母。Tiger 老虎就是以 T 开头的。",
+      "allusion": {
+        "text": "字母 T 像一个十字记号。",
+        "explain": "横一横、竖一竖，就搭成了 T。"
+      }
+    }
+  }
+}

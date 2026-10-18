@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-m",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "m",
+    "audioZh": "/audio/pinyin-m-zh.m4a"
+  },
+  "sort": 13,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "m"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-m.jpg"
+        }
+      ],
+      "description": "m 是声母，像两个连在一起的小门洞。",
+      "allusion": {
+        "text": "m 像两个挨在一起的门洞。",
+        "explain": "两扇圆圆的门，就是 m。"
+      }
+    }
+  }
+}

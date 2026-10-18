@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-n",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "n",
+    "audioZh": "/audio/pinyin-n-zh.m4a"
+  },
+  "sort": 14,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "n"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-n.jpg"
+        }
+      ],
+      "description": "n 是声母，像一个小门洞。",
+      "allusion": {
+        "text": "n 像一个小小的门洞。",
+        "explain": "一扇圆圆的门洞，就是 n。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-y",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "y",
+    "audioZh": "/audio/pinyin-y-zh.m4a"
+  },
+  "sort": 25,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "y"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-y.jpg"
+        }
+      ],
+      "description": "y 是声母，读起来和 i 一样，像轻声的「衣」。",
+      "allusion": {
+        "text": "y 像一棵分叉的小树。",
+        "explain": "树枝分成两叉，就是 y。"
+      }
+    }
+  }
+}

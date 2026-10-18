@@ -19,8 +19,9 @@ import java.util.stream.Stream;
  */
 final class ContentSeed {
 
-    /** 四个内容子目录（Sprint 9 起：植物 + 动物/昆虫/恐龙试点）。 */
-    private static final List<String> PLANT_DIRS = List.of("plants", "animals", "insects", "dinosaurs");
+    /** 内容子目录（Sprint 9：植物 + 动物/昆虫/恐龙；Sprint 15：+ 字母/拼音）。 */
+    private static final List<String> PLANT_DIRS =
+            List.of("plants", "animals", "insects", "dinosaurs", "letters", "pinyin");
 
     private ContentSeed() {
     }

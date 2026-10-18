@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-g",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "g",
+    "audioZh": "/audio/pinyin-g-zh.m4a"
+  },
+  "sort": 7,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "g"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-g.jpg"
+        }
+      ],
+      "description": "g 是声母，读时舌根往上一抬。",
+      "allusion": {
+        "text": "g 像一只小板凳。",
+        "explain": "圆圈加上小钩，就搭成 g。"
+      }
+    }
+  }
+}

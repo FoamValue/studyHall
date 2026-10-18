@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-v",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "v",
+    "audioZh": "/audio/pinyin-v-zh.m4a"
+  },
+  "sort": 22,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "v"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-v.jpg"
+        }
+      ],
+      "description": "v 在汉语拼音里很少单独用，常用来代替 ü。",
+      "allusion": {
+        "text": "v 像小 ü 的替身，专门在键盘上帮忙。",
+        "explain": "键盘上没有 ü，就用 v 来顶替。"
+      }
+    }
+  }
+}

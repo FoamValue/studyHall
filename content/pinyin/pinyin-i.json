@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-i",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "i",
+    "audioZh": "/audio/pinyin-i-zh.m4a"
+  },
+  "sort": 9,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "i"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-i.jpg"
+        }
+      ],
+      "description": "i 是单韵母，读时嘴巴咧开笑一笑。",
+      "allusion": {
+        "text": "i 像一根点着的小蜡烛。",
+        "explain": "上面一个小点，像跳动的火苗。"
+      }
+    }
+  }
+}

@@ -27,9 +27,12 @@ import java.util.function.Supplier;
 @Service
 public class PlantService {
 
-    /** 部位固定顺序（植物三项在前），部位标签展示与封面回退都依赖此顺序。 */
+    /** 部位固定顺序（植物三项在前），部位标签展示与封面回退都依赖此顺序。
+     *  Sprint 15：尾部追加认知启蒙板块键（letter/pinyin/number/color），
+     *  使单图条目（含字母/拼音）的 partCodes 与封面回退正确。 */
     private static final List<String> PART_ORDER =
-            List.of("flower", "leaf", "fruit", "animal", "insect", "dinosaur");
+            List.of("flower", "leaf", "fruit", "animal", "insect", "dinosaur",
+                    "letter", "pinyin", "number", "color");
 
     /** 列表统一排序：sort 升序，其次 id 升序（空缺 sort 由 Mongo 升序排前）。 */
     private static final Sort LIST_SORT = Sort.by(Sort.Direction.ASC, "sort", "id");
@@ -69,7 +72,8 @@ public class PlantService {
         if (category != null && !category.isBlank()) {
             if (!categoryRepository.existsById(category)) {
                 throw new ApiException(40001,
-                        "没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫或恐龙吧".formatted(category));
+                        "没有「%s」这个分类哦，试试花朵、树叶、果实、动物、昆虫、恐龙、英文字母或汉语拼音吧"
+                                .formatted(category));
             }
             return cachedList(KEY_PLANT_LIST_PREFIX + category, PlantCard.class,
                     () -> plantRepository.findByCategoriesIn(List.of(category), LIST_SORT)

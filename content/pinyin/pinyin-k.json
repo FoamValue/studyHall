@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-k",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "k",
+    "audioZh": "/audio/pinyin-k-zh.m4a"
+  },
+  "sort": 11,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "k"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-k.jpg"
+        }
+      ],
+      "description": "k 是声母，像一竖加上两小撇。",
+      "allusion": {
+        "text": "k 像一棵张开的小树枝。",
+        "explain": "一竖加两撇，就是 k。"
+      }
+    }
+  }
+}

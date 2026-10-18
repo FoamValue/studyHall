@@ -1,0 +1,29 @@
+{
+  "id": "letter-p",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Pp",
+    "audioEn": "/audio/letter-p-en.m4a"
+  },
+  "sort": 16,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Pp"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-p.jpg"
+        }
+      ],
+      "description": "大写 P 和小写 p，是字母表的第 16 个字母。Pig 猪就是以 P 开头的。",
+      "allusion": {
+        "text": "字母 P 最早的样子像张开的嘴。",
+        "explain": "嘴巴的符号，后来变成了 P。"
+      }
+    }
+  }
+}

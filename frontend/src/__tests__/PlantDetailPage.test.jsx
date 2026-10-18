@@ -172,6 +172,36 @@ const TREX = {
   },
 };
 
+// 英文字母单图条目（Sprint 15）：名称仅符号本身，省略拼音/英文/音标，音频仅英文
+const LETTER_A = {
+  id: 'letter-a',
+  categories: ['letter'],
+  name: { zh: 'Aa', audioEn: '/audio/letter-a-en.m4a' },
+  parts: {
+    letter: {
+      name: { zh: 'Aa' },
+      images: [{ type: 'photo', url: '/images/letters/letter-a.jpg' }],
+      description: '大写 A 和小写 a，是字母表的第 1 个字母。Apple 苹果就是以 A 开头的。',
+      allusion: { text: '字母 A 最早的样子像一头牛的角。', explain: '古人画下牛头的符号，慢慢就变成了 A。' },
+    },
+  },
+};
+
+// 汉语拼音单图条目（Sprint 15）：名称仅小写字母，音频仅中文
+const PINYIN_A = {
+  id: 'pinyin-a',
+  categories: ['pinyin'],
+  name: { zh: 'a', audioZh: '/audio/pinyin-a-zh.m4a' },
+  parts: {
+    pinyin: {
+      name: { zh: 'a' },
+      images: [{ type: 'photo', url: '/images/pinyin/pinyin-a.jpg' }],
+      description: 'a 是单韵母，张大嘴巴就能读出「啊」。',
+      allusion: { text: 'a 像一位张大嘴巴唱歌的小朋友。', explain: '嘴巴张得大大的，声音就出来了。' },
+    },
+  },
+};
+
 const byId = {
   sunflower: SUNFLOWER,
   ginkgo: GINKGO,
@@ -181,6 +211,8 @@ const byId = {
   apple: APPLE,
   'giant-panda': PANDA,
   tyrannosaurus: TREX,
+  'letter-a': LETTER_A,
+  'pinyin-a': PINYIN_A,
 };
 
 // 列表卡片（后端契约：{id, name, coverImage, parts}）
@@ -671,7 +703,7 @@ describe('详情默认部位跟随入口分类（Sprint 8：TC-65 / TC-66）', (
   });
 });
 
-describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83）', () => {
+describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83；Sprint 15：TC-147）', () => {
   it('TC-82a 动物单图条目：不渲染 PartSwitcher，渲染大图与说明 + 小知识', async () => {
     renderDetail('giant-panda', { section: 'animal', list: [card(PANDA)] });
 
@@ -704,6 +736,41 @@ describe('单图板块详情分支（Sprint 9：TC-82a / TC-82b / TC-83）', () 
     expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
   });
+
+  it('TC-147a 英文字母单图详情：名称仅 Aa，无拼音/英文行，仅英文喇叭', async () => {
+    makeAudioMock();
+    renderDetail('letter-a', { section: 'letter', list: [card(LETTER_A)] });
+
+    // 大图以名称（Aa）作 alt，单图分支容器带 single-image
+    expect(await screen.findByAltText('Aa')).toBeInTheDocument();
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
+    expect(document.querySelector('.detail-zh').textContent).toBe('Aa');
+    // 不渲染部位切换
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    // 字母条目省略拼音/英文，故两行均不渲染
+    expect(document.querySelector('.detail-pinyin')).toBeNull();
+    expect(document.querySelector('.detail-en')).toBeNull();
+    // 音频仅英文 → 只渲染英文喇叭
+    expect(screen.getByRole('button', { name: '朗读英文名' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '朗读中文名' })).not.toBeInTheDocument();
+    // 说明与小知识卡片渲染
+    expect(screen.getByText('大写 A 和小写 a，是字母表的第 1 个字母。Apple 苹果就是以 A 开头的。')).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: '小知识' })).toBeInTheDocument();
+  });
+
+  it('TC-147b 汉语拼音单图详情：名称仅 a，无拼音/英文行，仅中文喇叭', async () => {
+    makeAudioMock();
+    renderDetail('pinyin-a', { section: 'pinyin', list: [card(PINYIN_A)] });
+
+    expect(await screen.findByAltText('a')).toBeInTheDocument();
+    expect(document.querySelector('.detail-body').className).toBe('detail-body single-image');
+    expect(document.querySelector('.detail-zh').textContent).toBe('a');
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(document.querySelector('.detail-pinyin')).toBeNull();
+    expect(document.querySelector('.detail-en')).toBeNull();
+    expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
+  });
 });
 
 describe('小知识卡片称谓（Sprint 9：TC-88）', () => {
@@ -722,7 +789,18 @@ describe('小知识卡片称谓（Sprint 9：TC-88）', () => {
 
 describe('PART_ORDER / PART_LABELS 扩展（Sprint 9：TC-84）', () => {
   it('TC-84a 板块部位尾部追加，植物顺序（flower,leaf,fruit）保持不变', () => {
-    expect(PART_ORDER).toEqual(['flower', 'leaf', 'fruit', 'animal', 'insect', 'dinosaur']);
+    expect(PART_ORDER).toEqual([
+      'flower',
+      'leaf',
+      'fruit',
+      'animal',
+      'insect',
+      'dinosaur',
+      'letter',
+      'pinyin',
+      'number',
+      'color',
+    ]);
     expect(PART_LABELS).toMatchObject({
       flower: '花',
       leaf: '叶',
@@ -730,6 +808,10 @@ describe('PART_ORDER / PART_LABELS 扩展（Sprint 9：TC-84）', () => {
       animal: '动物',
       insect: '昆虫',
       dinosaur: '恐龙',
+      letter: '字母',
+      pinyin: '拼音',
+      number: '数字',
+      color: '颜色',
     });
   });
 
@@ -737,6 +819,9 @@ describe('PART_ORDER / PART_LABELS 扩展（Sprint 9：TC-84）', () => {
     expect(getOrderedParts({ animal: {} })).toEqual(['animal']);
     expect(getOrderedParts({ insect: {}, animal: {} })).toEqual(['animal', 'insect']);
     expect(getOrderedParts({ flower: {}, leaf: {}, fruit: {} })).toEqual(['flower', 'leaf', 'fruit']);
+    // Sprint 15：字母 / 拼音单键部位同样按固定顺序返回
+    expect(getOrderedParts({ letter: {} })).toEqual(['letter']);
+    expect(getOrderedParts({ pinyin: {} })).toEqual(['pinyin']);
   });
 });
 

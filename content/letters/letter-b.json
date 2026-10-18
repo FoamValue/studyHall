@@ -1,0 +1,29 @@
+{
+  "id": "letter-b",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Bb",
+    "audioEn": "/audio/letter-b-en.m4a"
+  },
+  "sort": 2,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Bb"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-b.jpg"
+        }
+      ],
+      "description": "大写 B 和小写 b，是字母表的第 2 个字母。Ball 球就是以 B 开头的。",
+      "allusion": {
+        "text": "字母 B 最早的样子像一座小房子。",
+        "explain": "人们把房子的样子画下来，就变成了 B。"
+      }
+    }
+  }
+}

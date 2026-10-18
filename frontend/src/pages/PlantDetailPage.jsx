@@ -10,15 +10,19 @@ import SpeakButton from '../components/SpeakButton';
 // 水平滑动触发换株的最小位移（px）
 const SWIPE_THRESHOLD = 60;
 
-// 单图板块部位：动物/昆虫/恐龙条目 parts 恰 1 键且为该板块 code（Sprint 9）
-const SINGLE_IMAGE_KEYS = ['animal', 'insect', 'dinosaur'];
+// 单图板块部位：parts 恰 1 键且为该板块 code（Sprint 9；Sprint 15 增字母/拼音，预留数字/颜色）
+const SINGLE_IMAGE_KEYS = ['animal', 'insect', 'dinosaur', 'letter', 'pinyin', 'number', 'color'];
 
-// 返回入口文案按板块派生（Sprint 12 / EX-7）；未知板块回退「花园」
+// 返回入口文案按板块派生（Sprint 12 / EX-7；Sprint 15 增字母/拼音，预留数字/颜色）；未知板块回退「花园」
 const SECTION_HOME = {
   plant: '花园',
   animal: '动物世界',
   insect: '昆虫角',
   dinosaur: '恐龙园',
+  letter: '字母乐园',
+  pinyin: '拼音角',
+  number: '数字屋',
+  color: '颜色屋',
 };
 
 export default function PlantDetailPage() {
@@ -233,7 +237,8 @@ export default function PlantDetailPage() {
   const isSingleImage = ordered.length === 1 && SINGLE_IMAGE_KEYS.includes(ordered[0]);
 
   const zhAudio = plant.name.audioZh;
-  const enAudio = plant.name.en ? plant.name.audioEn : null;
+  // 喇叭按实际音频字段渲染：字母仅有 audioEn、拼音仅有 audioZh（Sprint 15 / Q7）
+  const enAudio = plant.name.audioEn;
 
   return (
     <main
@@ -279,7 +284,7 @@ export default function PlantDetailPage() {
 
       <div className={isSingleImage ? 'detail-body single-image' : 'detail-body'}>
         <header className="detail-header">
-          <p className="detail-pinyin">{plant.name.pinyin}</p>
+          {plant.name.pinyin ? <p className="detail-pinyin">{plant.name.pinyin}</p> : null}
           <div className="detail-name-row">
             <h1 className="detail-zh">{plant.name.zh}</h1>
             {zhAudio ? (
@@ -291,20 +296,24 @@ export default function PlantDetailPage() {
               />
             ) : null}
           </div>
-          <div className="detail-name-row">
-            <p className="detail-en">
-              {plant.name.en}
-              {plant.name.ipa ? <span className="detail-ipa">{plant.name.ipa}</span> : null}
-            </p>
-            {enAudio ? (
-              <SpeakButton
-                text={enAudio}
-                lang="en"
-                speaking={playingUrl === enAudio}
-                onToggle={togglePlay}
-              />
-            ) : null}
-          </div>
+          {plant.name.en || enAudio ? (
+            <div className="detail-name-row">
+              {plant.name.en ? (
+                <p className="detail-en">
+                  {plant.name.en}
+                  {plant.name.ipa ? <span className="detail-ipa">{plant.name.ipa}</span> : null}
+                </p>
+              ) : null}
+              {enAudio ? (
+                <SpeakButton
+                  text={enAudio}
+                  lang="en"
+                  speaking={playingUrl === enAudio}
+                  onToggle={togglePlay}
+                />
+              ) : null}
+            </div>
+          ) : null}
         </header>
 
         {isSingleImage ? null : (

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-d",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "d",
+    "audioZh": "/audio/pinyin-d-zh.m4a"
+  },
+  "sort": 4,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "d"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-d.jpg"
+        }
+      ],
+      "description": "d 是声母，读时舌尖顶住上牙床。",
+      "allusion": {
+        "text": "d 像一个半圆下面加一竖。",
+        "explain": "半圆加上一竖，就是 d。"
+      }
+    }
+  }
+}

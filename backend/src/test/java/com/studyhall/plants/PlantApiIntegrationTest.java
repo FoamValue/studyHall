@@ -89,11 +89,18 @@ class PlantApiIntegrationTest {
     @Autowired
     Environment environment;
 
-    /** 板块分类 code 对应的图片前缀（动物/昆虫/恐龙单图条目）。 */
+    /** 板块分类 code 对应的图片前缀（单图条目的图片目录）。Sprint 15 增字母/拼音。 */
     private static final Map<String, String> BOARD_IMAGE_PREFIX = Map.of(
             "animal", "/images/animals/",
             "insect", "/images/insects/",
-            "dinosaur", "/images/dinosaurs/");
+            "dinosaur", "/images/dinosaurs/",
+            "letter", "/images/letters/",
+            "pinyin", "/images/pinyin/");
+
+    /** 字形类启蒙板块（字母 / 拼音）：名称仅符号本身，省略 pinyin/en/ipa。 */
+    private static boolean isGlyphBoard(Plant p) {
+        return p.categories().stream().anyMatch(c -> c.equals("letter") || c.equals("pinyin"));
+    }
 
     List<Category> categories;
     List<Plant> plants;
@@ -156,7 +163,7 @@ class PlantApiIntegrationTest {
             assertThat(c.nameZh()).isNotBlank();
             assertThat(c.pinyin()).isNotBlank();
             assertThat(c.nameEn()).isNotBlank();
-            assertThat(c.section()).isIn("plant", "animal", "insect", "dinosaur");
+            assertThat(c.section()).isIn("plant", "animal", "insect", "dinosaur", "letter", "pinyin");
         });
     }
 
@@ -290,23 +297,29 @@ class PlantApiIntegrationTest {
                 .isEqualTo("http://localhost:5173");
     }
 
-    /** TC-11 内容 schema 全量合规（数据驱动，Sprint 9 起含动物/昆虫/恐龙）：categories = parts 键集合、
-     *  每部位 ≥1 图且图路径符合板块前缀、三语非空、allusion 有则三字段全。 */
+    /** TC-11 内容 schema 全量合规（数据驱动，Sprint 9 起含动物/昆虫/恐龙，Sprint 15 起含字母/拼音）：
+     *  categories = parts 键集合、每部位 ≥1 图且图路径符合板块前缀、三语非空（字形类板块省略 pinyin/en/ipa）、
+     *  allusion 有则文本与解释非空（source 可选）。 */
     @Test
     void tc11_allContentFilesShouldMatchSchema() {
         assertThat(plants).isNotEmpty();
         for (Plant p : plants) {
+            boolean glyph = isGlyphBoard(p);
             assertThat(p.id()).isNotBlank();
             assertThat(p.categories()).containsExactlyInAnyOrderElementsOf(p.parts().keySet());
             assertThat(p.name().zh()).isNotBlank();
-            assertThat(p.name().pinyin()).isNotBlank();
-            assertThat(p.name().en()).isNotBlank();
-            assertThat(p.name().ipa()).startsWith("/");
+            if (!glyph) {
+                assertThat(p.name().pinyin()).isNotBlank();
+                assertThat(p.name().en()).isNotBlank();
+                assertThat(p.name().ipa()).startsWith("/");
+            }
             assertThat(p.sort()).as("条目 %s 缺少 sort", p.id()).isNotNull();
             p.parts().forEach((partCode, part) -> {
                 assertThat(part.name().zh()).isNotBlank();
-                assertThat(part.name().pinyin()).isNotBlank();
-                assertThat(part.name().en()).isNotBlank();
+                if (!glyph) {
+                    assertThat(part.name().pinyin()).isNotBlank();
+                    assertThat(part.name().en()).isNotBlank();
+                }
                 assertThat(part.images()).isNotEmpty();
                 String boardPrefix = BOARD_IMAGE_PREFIX.get(partCode);
                 part.images().forEach(img -> {
@@ -357,19 +370,23 @@ class PlantApiIntegrationTest {
         assertThat(environment.getProperty("spring.data.mongodb.uri")).isNull();
     }
 
-    /** TC-24 低龄化文案（Sprint 3 新增）：每部位说明 ≤80 字且不含拉丁字母（拼音/英文名字段不在此列）。 */
+    /** TC-24 低龄化文案（Sprint 3 新增）：每部位说明 ≤80 字且不含拉丁字母（拼音/英文名字段不在此列）。
+     *  Sprint 15：字形类启蒙板块（字母/拼音）的说明按设计含英文示例词，豁免拉丁字母红线。 */
     @Test
     void tc24_descriptionsShouldBeToddlerFriendly() {
         assertThat(plants).isNotEmpty();
         for (Plant p : plants) {
+            boolean glyph = isGlyphBoard(p);
             p.parts().forEach((partCode, part) -> {
                 String desc = part.description();
                 assertThat(desc.codePointCount(0, desc.length()))
                         .as("植物 %s 部位 %s 说明超过 80 字", p.id(), partCode)
                         .isLessThanOrEqualTo(80);
-                assertThat(desc)
-                        .as("植物 %s 部位 %s 说明混入拉丁字母", p.id(), partCode)
-                        .doesNotContainPattern("[A-Za-z]");
+                if (!glyph) {
+                    assertThat(desc)
+                            .as("植物 %s 部位 %s 说明混入拉丁字母", p.id(), partCode)
+                            .doesNotContainPattern("[A-Za-z]");
+                }
             });
         }
     }
@@ -473,6 +490,55 @@ class PlantApiIntegrationTest {
                 .map(Plant::id)
                 .toList();
         assertThat(leaf.data()).extracting(PlantCard::id).containsExactlyElementsOf(expectedLeaf);
+    }
+
+    /** TC-143 字母板块（Sprint 15）：?section=letter 26 条、每条 parts 恰 [letter]、按 sort 升序首 letter-a 末 letter-z。 */
+    @Test
+    void tc143_letterSectionShouldReturn26GlyphCards() {
+        List<Plant> letters = plants.stream()
+                .filter(p -> p.categories().contains("letter"))
+                .sorted(Comparator.comparing(Plant::sort))
+                .toList();
+        assertThat(letters).hasSize(26);
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=letter", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .containsExactlyElementsOf(letters.stream().map(Plant::id).toList());
+        assertThat(resp.data()).allSatisfy(card -> assertThat(card.parts()).containsExactly("letter"));
+        assertThat(resp.data().getFirst().id()).isEqualTo("letter-a");
+        assertThat(resp.data().getLast().id()).isEqualTo("letter-z");
+    }
+
+    /** TC-144 拼音板块（Sprint 15）：?section=pinyin 26 条、每条 parts 恰 [pinyin]。 */
+    @Test
+    void tc144_pinyinSectionShouldReturn26GlyphCards() {
+        List<Plant> pinyin = plants.stream()
+                .filter(p -> p.categories().contains("pinyin"))
+                .sorted(Comparator.comparing(Plant::sort))
+                .toList();
+        assertThat(pinyin).hasSize(26);
+        ApiResponse<List<PlantCard>> resp = get("/api/plants?section=pinyin", listOf(PlantCard.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).extracting(PlantCard::id)
+                .containsExactlyElementsOf(pinyin.stream().map(Plant::id).toList());
+        assertThat(resp.data()).allSatisfy(card -> assertThat(card.parts()).containsExactly("pinyin"));
+        assertThat(resp.data().getFirst().id()).isEqualTo("pinyin-a");
+        assertThat(resp.data().getLast().id()).isEqualTo("pinyin-z");
+    }
+
+    /** TC-145 分类齐备（Sprint 15）：/api/categories 共 8 条，含 letter(英文字母)/pinyin(汉语拼音)。 */
+    @Test
+    void tc145_categoriesShouldIncludeGlyphBoards() {
+        ApiResponse<List<Category>> resp = get("/api/categories", listOf(Category.class));
+        assertThat(resp.code()).isZero();
+        assertThat(resp.data()).hasSize(8);
+        assertThat(resp.data()).extracting(Category::code).contains("letter", "pinyin");
+        Category letter = resp.data().stream().filter(c -> c.code().equals("letter")).findFirst().orElseThrow();
+        assertThat(letter.nameZh()).isEqualTo("英文字母");
+        assertThat(letter.section()).isEqualTo("letter");
+        Category pinyin = resp.data().stream().filter(c -> c.code().equals("pinyin")).findFirst().orElseThrow();
+        assertThat(pinyin.nameZh()).isEqualTo("汉语拼音");
+        assertThat(pinyin.section()).isEqualTo("pinyin");
     }
 
     /** 取分类 code 所属板块（无匹配返回 null）。 */

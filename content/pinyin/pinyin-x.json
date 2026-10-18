@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-x",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "x",
+    "audioZh": "/audio/pinyin-x-zh.m4a"
+  },
+  "sort": 24,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "x"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-x.jpg"
+        }
+      ],
+      "description": "x 是声母，像一个大大的叉号。",
+      "allusion": {
+        "text": "x 像两把小刀交叉在一起。",
+        "explain": "两笔交叉，就是 x。"
+      }
+    }
+  }
+}

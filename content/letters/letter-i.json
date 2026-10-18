@@ -1,0 +1,29 @@
+{
+  "id": "letter-i",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ii",
+    "audioEn": "/audio/letter-i-en.m4a"
+  },
+  "sort": 9,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ii"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-i.jpg"
+        }
+      ],
+      "description": "大写 I 和小写 i，是字母表的第 9 个字母。Ice 冰就是以 I 开头的。",
+      "allusion": {
+        "text": "字母 I 像一根细细的小棍子。",
+        "explain": "又细又直，就像小棍子一样。"
+      }
+    }
+  }
+}

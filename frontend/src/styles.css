@@ -64,9 +64,33 @@ body {
   justify-content: center;
 }
 
-/* 板块导航：一行 4 个板块按钮（一级），与二级植物分类筛选两行间距 ≥16px */
+/* 板块导航（Sprint 15）：两组纵向排列（自然认知 / 认知启蒙），组内 4 钮一行，
+   与二级植物分类筛选间距 ≥16px */
 .section-nav {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 24px;
+}
+
+.section-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-group-title {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-text-light);
+}
+
+.section-group-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 
 .filter-btn {

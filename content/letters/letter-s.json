@@ -1,0 +1,29 @@
+{
+  "id": "letter-s",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ss",
+    "audioEn": "/audio/letter-s-en.m4a"
+  },
+  "sort": 19,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ss"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-s.jpg"
+        }
+      ],
+      "description": "大写 S 和小写 s，是字母表的第 19 个字母。Sun 太阳就是以 S 开头的。",
+      "allusion": {
+        "text": "字母 S 像一条弯弯曲曲的小路。",
+        "explain": "弯来弯去的线条，就是 S。"
+      }
+    }
+  }
+}

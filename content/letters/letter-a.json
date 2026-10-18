@@ -1,0 +1,29 @@
+{
+  "id": "letter-a",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Aa",
+    "audioEn": "/audio/letter-a-en.m4a"
+  },
+  "sort": 1,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Aa"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-a.jpg"
+        }
+      ],
+      "description": "大写 A 和小写 a，是字母表的第 1 个字母。Apple 苹果就是以 A 开头的。",
+      "allusion": {
+        "text": "字母 A 最早的样子像一头牛的角。",
+        "explain": "古人画下牛头的符号，慢慢就变成了 A。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-q",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "q",
+    "audioZh": "/audio/pinyin-q-zh.m4a"
+  },
+  "sort": 17,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "q"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-q.jpg"
+        }
+      ],
+      "description": "q 是声母，像一只拖着线的小气球。",
+      "allusion": {
+        "text": "q 像一只拖着线的小气球。",
+        "explain": "圆圈加上一串小钩，就是 q。"
+      }
+    }
+  }
+}

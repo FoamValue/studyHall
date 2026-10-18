@@ -1,0 +1,29 @@
+{
+  "id": "letter-c",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Cc",
+    "audioEn": "/audio/letter-c-en.m4a"
+  },
+  "sort": 3,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Cc"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-c.jpg"
+        }
+      ],
+      "description": "大写 C 和小写 c，是字母表的第 3 个字母。Cat 猫就是以 C 开头的。",
+      "allusion": {
+        "text": "字母 C 最早的样子像骆驼弯弯的脖子。",
+        "explain": "弯弯的曲线，慢慢就变成了 C。"
+      }
+    }
+  }
+}

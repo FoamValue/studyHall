@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-u",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "u",
+    "audioZh": "/audio/pinyin-u-zh.m4a"
+  },
+  "sort": 21,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "u"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-u.jpg"
+        }
+      ],
+      "description": "u 是单韵母，嘴唇撮起来读出「呜」。",
+      "allusion": {
+        "text": "u 像一只圆圆的小鱼缸。",
+        "explain": "圆圆的小缸，就是 u。"
+      }
+    }
+  }
+}

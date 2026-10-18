@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-j",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "j",
+    "audioZh": "/audio/pinyin-j-zh.m4a"
+  },
+  "sort": 10,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "j"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-j.jpg"
+        }
+      ],
+      "description": "j 是声母，读时嘴巴轻轻撅起来。",
+      "allusion": {
+        "text": "j 像一根带钩的小鱼竿。",
+        "explain": "弯钩下面加个点，就是 j。"
+      }
+    }
+  }
+}

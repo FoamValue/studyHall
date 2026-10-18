@@ -1,0 +1,29 @@
+{
+  "id": "letter-q",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Qq",
+    "audioEn": "/audio/letter-q-en.m4a"
+  },
+  "sort": 17,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Qq"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-q.jpg"
+        }
+      ],
+      "description": "大写 Q 和小写 q，是字母表的第 17 个字母。Queen 王后就是以 Q 开头的。",
+      "allusion": {
+        "text": "字母 Q 是在字母 O 上加了条小尾巴。",
+        "explain": "圆圆的 O 加上小尾巴，就是 Q。"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-r",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "r",
+    "audioZh": "/audio/pinyin-r-zh.m4a"
+  },
+  "sort": 18,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "r"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-r.jpg"
+        }
+      ],
+      "description": "r 是声母，像一棵刚发芽的小苗。",
+      "allusion": {
+        "text": "r 像一棵刚冒头的小嫩芽。",
+        "explain": "小芽分出一根叶，就是 r。"
+      }
+    }
+  }
+}

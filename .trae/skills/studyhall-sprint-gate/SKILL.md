@@ -37,6 +37,33 @@ if(bad)process.exit(1);
 
 记下输出的 total/flower/leaf/fruit，后续 API 与 E2E 断言以此为准。注意 fruit 基线随内容变化（银杏含白果），不要照抄历史文档数字。
 
+四板块全量计数与资产普查（内容扩容类迭代必跑）：
+
+```bash
+node -e "
+const fs=require('fs');
+let t=0; const by={};
+for(const d of ['plants','animals','insects','dinosaurs']){
+  const n=fs.readdirSync('content/'+d).filter(f=>f.endsWith('.json')).length;
+  by[d]=n; t+=n;
+}
+const jpg=(d)=>fs.readdirSync('frontend/public/images/'+d).filter(f=>f.endsWith('.jpg')).length;
+const m4a=fs.readdirSync('frontend/public/audio').filter(f=>f.endsWith('.m4a')).length;
+console.log('total='+t, JSON.stringify(by));
+console.log('jpg='+(jpg('plants')+jpg('animals')+jpg('insects')+jpg('dinosaurs')), 'm4a='+m4a);
+console.log('expect m4a=', t*2);
+"
+du -sh frontend/public/images       # 体积基线，优化类迭代须与目标比对
+```
+
+**导入幂等预期值 = 当前 import_log 基线 + 2 × total**，先查基线再推：
+
+```bash
+docker exec studyhall-mysql mysql -uroot -proot studyhall -N -e "SELECT COUNT(*) FROM import_log;"
+```
+
+基线随每次迭代累加（历史：1700 → 1900 → 2260 → 2520 → 3290 …），**禁止写死**。
+
 ## 1. 后端测试（约 3–5 分钟，后台跑）
 
 ```bash
@@ -48,6 +75,17 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 ```
 
 关键约束：挂载必须是仓库根（`-v $(pwd):/project`），只挂 backend 会找不到 content 目录；判据是**退出码 0**（`-q` 成功时无 Tests run 输出，勿因无输出误判失败）。
+
+**后台并行与哨兵**：第 1 步（后端）与第 3 步（compose 重建 + 导入）互相独立，可同时后台跑，压缩总时长：
+
+```bash
+docker run ... mvn -q test 2>&1; echo "BACKEND_EXIT=$?"        # 后台 job A
+docker compose up -d --build && ...导入两次...; echo "IMPORT_OK"  # 后台 job B
+```
+
+- 每个后台 job 结尾必须带**唯一哨兵串**（`BACKEND_EXIT=` / `IMPORT_OK`），读日志时直接 grep 哨兵，不要靠肉眼扫长日志
+- 哨兵必须包住真实命令的退出码；写成 `cmd | tee log; echo EXIT=$?` 取到的是 `tee` 的码，会**误报成功**——先确认管道结构
+- 前台 meanwhile 跑第 2 步（vitest/build），等待期间不空转
 
 ## 2. 前端单测与构建
 
@@ -76,6 +114,17 @@ docker exec studyhall-mysql mysql -uroot -proot studyhall -N -e "SELECT COUNT(*)
 docker exec studyhall-redis redis-cli --scan --pattern "sh:*" | wc -l   # 导入后应为 0
 ```
 
+**资产类迭代追加核对**（图片 / 音频变更或扩容时必查）：
+
+```bash
+du -sh frontend/public/images          # 与优化目标比对（如 95.2MB → 54.9MB）
+find frontend/public/images -name '*.jpg' | wc -l
+find frontend/public/audio   -name '*.m4a' | wc -l   # 期望 = total × 2
+sips -g pixelWidth -g pixelHeight <抽查图>            # 尺寸口径与规范一致（如 1600×1600）
+```
+
+尺寸 / 格式口径若发生变化，**必须同步三处**：`docs/design/ui-style-guide.md` 资产规范、`README.md` 资源说明、`AGENTS.md` §5 交付记录。三者缺一即文档与实现脱节。
+
 MySQL 密码是 root/root（compose 配置），不是 studyhall。前端新增静态资源后必须 `--build` frontend 镜像，否则 nginx 容器里没有新 SVG。
 
 ## 4. E2E
@@ -94,7 +143,15 @@ cd frontend && npx playwright test
 1. `docs/qa/sprint-N-test-cases.md`：执行记录写实（各层通过数、导入幂等结果），所有用例状态「待执行」→「通过」。
 2. `docs/iterations/sprint-N.md`：状态改 ✅ 已完成；清单与实际内容不一致处顺手修正。
 3. `AGENTS.md` 第五节「项目当前状态」更新阶段、当前迭代、技术债。
-4. Conventional Commits，如 `feat(sprint-n): ...`，正文列出内容/测试/验证证据；只提交本 Sprint 相关文件。
+4. **资产规范同步**（仅资产类迭代）：`docs/design/ui-style-guide.md` 资产规格、`README.md` 资源说明。
+5. Conventional Commits，如 `feat(sprint-n): ...`，正文列出内容/测试/验证证据；只提交本 Sprint 相关文件。
+
+**提交前核对变更面**（防止误提交无关文件）：
+
+```bash
+git status --short | awk '{print $1}' | sort | uniq -c    # 变更类型统计
+git status --short | grep -v '\.jpg$'                     # 非图片变更，逐个人工确认
+```
 
 ## 6. 版本发布时追加洁净环境验收
 

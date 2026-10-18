@@ -1,0 +1,29 @@
+{
+  "id": "letter-y",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Yy",
+    "audioEn": "/audio/letter-y-en.m4a"
+  },
+  "sort": 25,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Yy"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-y.jpg"
+        }
+      ],
+      "description": "大写 Y 和小写 y，是字母表的第 25 个字母。Yellow 黄色就是以 Y 开头的。",
+      "allusion": {
+        "text": "字母 Y 像一根分叉的小树枝。",
+        "explain": "树枝分成两叉，慢慢变成了 Y。"
+      }
+    }
+  }
+}

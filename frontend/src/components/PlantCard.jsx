@@ -33,8 +33,8 @@ export default function PlantCard({ plant, category, list, section }) {
     >
       <img className="plant-card-img" src={plant.coverImage} alt={plant.name.zh} loading="lazy" />
       <div className="plant-card-zh">{deriveCardTitle(plant, category)}</div>
-      <div className="plant-card-pinyin">{plant.name.pinyin}</div>
-      <div className="plant-card-en">{plant.name.en}</div>
+      {plant.name.pinyin ? <div className="plant-card-pinyin">{plant.name.pinyin}</div> : null}
+      {plant.name.en ? <div className="plant-card-en">{plant.name.en}</div> : null}
     </Link>
   );
 }

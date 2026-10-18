@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-w",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "w",
+    "audioZh": "/audio/pinyin-w-zh.m4a"
+  },
+  "sort": 23,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "w"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-w.jpg"
+        }
+      ],
+      "description": "w 是声母，像两个连在一起的小屋顶。",
+      "allusion": {
+        "text": "w 像两个连在一起的小屋顶。",
+        "explain": "两个尖尖的小屋顶，就是 w。"
+      }
+    }
+  }
+}

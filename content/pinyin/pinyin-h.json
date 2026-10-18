@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-h",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "h",
+    "audioZh": "/audio/pinyin-h-zh.m4a"
+  },
+  "sort": 8,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "h"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-h.jpg"
+        }
+      ],
+      "description": "h 是声母，像一把小椅子。",
+      "allusion": {
+        "text": "h 像一把背靠背的小椅子。",
+        "explain": "竖一竖、弯一弯，就是 h。"
+      }
+    }
+  }
+}

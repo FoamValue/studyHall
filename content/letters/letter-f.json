@@ -1,0 +1,29 @@
+{
+  "id": "letter-f",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ff",
+    "audioEn": "/audio/letter-f-en.m4a"
+  },
+  "sort": 6,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ff"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-f.jpg"
+        }
+      ],
+      "description": "大写 F 和小写 f，是字母表的第 6 个字母。Fish 鱼就是以 F 开头的。",
+      "allusion": {
+        "text": "字母 F 最早的样子像一根木钉。",
+        "explain": "古人钉木头的钉子符号，后来变成了 F。"
+      }
+    }
+  }
+}

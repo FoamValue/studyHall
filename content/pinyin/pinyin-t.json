@@ -1,0 +1,29 @@
+{
+  "id": "pinyin-t",
+  "categories": [
+    "pinyin"
+  ],
+  "name": {
+    "zh": "t",
+    "audioZh": "/audio/pinyin-t-zh.m4a"
+  },
+  "sort": 20,
+  "parts": {
+    "pinyin": {
+      "name": {
+        "zh": "t"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/pinyin/pinyin-t.jpg"
+        }
+      ],
+      "description": "t 是声母，像一把撑开的小伞柄。",
+      "allusion": {
+        "text": "t 像一把撑开的小伞。",
+        "explain": "横一横、竖一竖，就是 t。"
+      }
+    }
+  }
+}

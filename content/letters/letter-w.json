@@ -1,0 +1,29 @@
+{
+  "id": "letter-w",
+  "categories": [
+    "letter"
+  ],
+  "name": {
+    "zh": "Ww",
+    "audioEn": "/audio/letter-w-en.m4a"
+  },
+  "sort": 23,
+  "parts": {
+    "letter": {
+      "name": {
+        "zh": "Ww"
+      },
+      "images": [
+        {
+          "type": "photo",
+          "url": "/images/letters/letter-w.jpg"
+        }
+      ],
+      "description": "大写 W 和小写 w，是字母表的第 23 个字母。Water 水就是以 W 开头的。",
+      "allusion": {
+        "text": "字母 W 的名字意思是「两个 U」。",
+        "explain": "两个 U 挨在一起，就成了 W。"
+      }
+    }
+  }
+}
