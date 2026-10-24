@@ -355,7 +355,7 @@ antd 主题定制：`token.colorPrimary=#4CAF50`，`borderRadius=16`。
 
 # UI 规范增量 — Sprint 16（v2.7：数字 / 颜色卡资产）
 
-## U16-1. 数字卡规范（`/images/numbers/number-{0..20}.jpg`）
+## U16-1. 数字卡规范（`/images/numbers/number-{0..20}.jpg`）— **已被 U20-1 取代（Sprint 20）**
 - 白底（`#FFFFFF`），构图 **1600×1600**，四周留白 ≥8%。
 - **上区**：大号阿拉伯数字（sans-serif 粗体，深色 `#2B2B2B`），字号随位数自适应（1 位 ≈ 560px，2 位 ≈ 480px）。
 - **下区**：**点数**——与数值等量的小圆点（实心圆，`#2B2B2B`），每行 ≤5 个换行排布；`0` 不排点（仅显示数字）。

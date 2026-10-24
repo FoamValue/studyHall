@@ -186,7 +186,7 @@ const NUMBER_1 = {
     number: {
       name: { zh: '一', pinyin: 'yī', en: 'One', ipa: '/wʌn/' },
       images: [{ type: 'photo', url: '/images/numbers/number-1.jpg' }],
-      description: '数一数，这里有 1 个小圆点，就是一。',
+      description: '数一数，这里有 1 个小苹果，就是一。',
       allusion: { text: '一，像一根直直的铅笔。', explain: '一表示只有一个。' },
     },
   },
@@ -883,7 +883,7 @@ describe('数字 / 颜色单图详情分支（Sprint 16：TC-159 / TC-160）', (
     expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '朗读英文名' })).toBeInTheDocument();
     // 说明与小知识卡片渲染
-    expect(screen.getByText('数一数，这里有 1 个小圆点，就是一。')).toBeInTheDocument();
+    expect(screen.getByText('数一数，这里有 1 个小苹果，就是一。')).toBeInTheDocument();
     expect(screen.getByRole('region', { name: '小知识' })).toBeInTheDocument();
   });
 
