@@ -659,6 +659,251 @@ antd 主题定制：`token.colorPrimary=#4CAF50`，`borderRadius=16`。
 
 - 加载态：分类接口失败显示「哎呀，出了点小问题，请稍后再试」（`.state-tip`，24px，复用）；未知 code「这本书还在路上哦」+「回书架」（`.back-btn` 视觉）；数量未就绪仅空出 20/22px 高度，不显示占位骨架、不显示 0。
 
+---
+
+# UI 规范增量 — Sprint 19 前置（v3.0 全站配色方案 + 路由过渡动画）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | UI |
+| 日期 | 2026-10-24 |
+| 适用 | 全站配色 token（`frontend/src/styles.css` 两处 `:root` 全量收敛）、antd 主题主色、封面 tile 墨色/底色（`scripts/generate-covers.mjs` 两个常量）、三层路由过渡动画；**不改**版式 / 字号 / 热区 / 列数 / 路由与接口契约 |
+| 依据 | 人工反馈「颜色搭配有些奇怪」（现状为绿 `#4CAF50` + 木棕 `#C9A876` + 奶油黄 `#FFF8DC / #F9A825` 三套色系混搭）；候选预览页 [color-schemes-v3.html](file:///Users/chenxinjie/Mirror/github/studyHall/docs/design/color-schemes-v3.html) |
+| 前置 | **P19-1 由 PO 三选一并冻结**；冻结前 R 不得改动 `styles.css` 与 `generate-covers.mjs` |
+
+## U19-1. 三套候选色板色值表
+
+**设计前提（三套共同）**
+- **单一主色系**：每套只有 1 个主调色（`--color-primary` / `--color-primary-dark`），其余全部是同族或中性承载色；木色 / 纸白 / 米色只作「书架与纸」的材质色，其明度与饱和度必须服从主色系的色温（暖方案用暖木、冷方案用灰木）。
+- **幼龄向（低饱和、柔和不刺眼）**：现状的「刺眼」主要来自小知识描边 `#F9A825`（HSL 饱和度 **95%**，接近满饱和的亮黄）与主色 `#4CAF50`（S 39% / L 49% 的高亮绿）并列。三套主色 HSL 实测：A `#B45B3E` **S 49% / L 48%**、B `#2F7F6A` **S 46% / L 34%**、C `#66738F` **S 17% / L 48%**——A / B 的饱和度与现状同档，但明度更低（尤其 B），所以是「变柔」而非「变灰」；C 靠低饱和取胜。共同点是：把「三色系并列」减为「1 个主色 + 一组中性承载色」，并彻底移除 S ≥ 90% 的点缀色（颜色板块 11 张纯色内容卡按内容本色，不在限制内）。**禁止**高饱和撞色与「荧光绿 + 土黄」类脏配。
+- **对比度**：正文 vs 背景 ≥ **4.5:1**（三套实测 10.82–13.46），次级正文 ≥ **4.5:1**（5.04–6.83），白字 vs 主色 ≥ **4.5:1**（**4.66–4.81，本方案最紧的一档**），非文本 UI（聚焦描边）≥ **3:1**（6.70–7.43），封面单墨 vs 封面纸白维持 U18-6 的 **1.4:1–1.8:1** 区间。数值均为 WCAG 2.x 相对亮度公式实测（sRGB 线性化，`0.2126R + 0.7152G + 0.0722B`），逐条结果见下表与预览页第 ⑤ 节。
+
+**现状基线（问题量化：不只是「看着怪」，而是两处真的不达标）**
+
+| 现状组合 | 对比度 | 判定 |
+|---|---|---|
+| 白字 / 主色：`#FFFFFF` on `#4CAF50` | **2.78** | **FAIL**（选中钮实底白字 22px/600，需 ≥4.5） |
+| 主色深 / 卡片底：`#388E3C` on `#FFFFFF` | **4.12** | **FAIL**（描边钮 20px/600 文字，需 ≥4.5） |
+| 小知识描边 / 卡底：`#F9A825` on `#FFF8DC` | 1.85 | 装饰，过弱且描边 S=95% 刺眼 |
+| 正文 / 页面底：`#3E2723` on `#FFFDF5` | 13.57 | PASS |
+| 文字次 / 页面底：`#6D4C41` on `#FFFDF5` | 7.47 | PASS |
+| 书脊木色 / 页面底：`#C9A876` on `#FFFDF5` | 2.21 | 装饰（三段渐变 + 投影承担辨识） |
+| 封面单墨 / 纸白：`#D9C9AE` on `#FDFBF6` | 1.57 | 区间内 |
+
+**三套定位**
+
+| 方案 | 定位 | 主色 / 主色深 | 与现状的关系 |
+|---|---|---|---|
+| **A 温润纸感** | 米纸 + 深棕墨 + 一点柔橙朱砂；最接近「纸质图画书」 | `#B45B3E` / `#8A3E27` | 保留现有暖纸底与深棕文字，把「绿 + 黄」两族并入唯一的暖橙主色，木色与主色同族 |
+| **B 清新自然** | 浅青绿 / 薄荷 + 暖白，木色弱化为灰调；干净、有呼吸感 | `#2F7F6A` / `#235F51` | 延续既有「自然绿」语义，但把饱和度从 62% 压到 41%，木色变灰不再抢戏 |
+| **C 柔雾莫兰迪** | 低饱和雾蓝 + 灰紫 + 奶白 + 淡灰木；安静、克制 | `#66738F` / `#4B5672` | 全新色相（冷调），与既有暖棕 + 绿完全脱钩，改造幅度最大 |
+
+**全量 token 色值（18 项）**
+
+| 用途 | CSS 变量 | A 温润纸感 | B 清新自然 | C 柔雾莫兰迪 |
+|---|---|---|---|---|
+| 页面底 | `--color-page-bg` | `#FAF5EC` | `#F3F9F6` | `#F6F5F2` |
+| 卡片底 | `--color-card-bg` | `#FFFDF8` | `#FFFFFF` | `#FFFFFF` |
+| 文字主 | `--color-text` | `#3A2A22` | `#1F3D37` | `#33313A` |
+| 文字次 | `--color-text-light` | `#6F5443` | `#557068` | `#686573` |
+| 主色 | `--color-primary` | `#B45B3E` | `#2F7F6A` | `#66738F` |
+| 主色深 | `--color-primary-dark` | `#8A3E27` | `#235F51` | `#4B5672` |
+| 封面纸白 | `--book-paper` | `#FCF7ED` | `#FBFDFB` | `#FAF9F6` |
+| 封面单墨 | `--book-ink` | `#D8C3A2` | `#C2D4C6` | `#D2CFC7` |
+| 书页堆（书口 / 底口） | `--book-stack` | `#F2E8D8` | `#EAF3EE` | `#EFEDE7` |
+| 书脊木色·中 | `--shelf-wood` | `#A87F55` | `#B9A892` | `#B0A79A` |
+| 书脊木色·深 | `--shelf-wood-dark` | `#8A6A47` | `#9C8A75` | `#948B80` |
+| 书脊木色·浅 | `--shelf-wood-light` | `#D3B48D` | `#D8CBB9` | `#D0C9BF` |
+| 小知识卡底 | `--color-accent-bg` | `#FBF0DE` | `#E9F4EF` | `#EFEFF4` |
+| 小知识卡描边 | `--color-accent-border` | `#B87A3D` | `#4F937B` | `#847D9B` |
+| 详情背景 | `--color-detail-bg`（**新增**） | `#F6EEE2` | `#EFF7F3` | `#F2F1F4` |
+| 聚焦描边 | `--color-focus`（**新增**） | `#8A3E27` | `#235F51` | `#4B5672` |
+| 分隔线 | `--color-divider`（**新增**） | `#E7DAC6` | `#DCEBE4` | `#E4E1DB` |
+| 书内页底 | `--book-page-bg` | `#FFFBF3` | `#FCFEFC` | `#FBFAF7` |
+
+**对比度实测（逐条，PASS = 达到门槛）**
+
+| 组合 | 门槛 | A | B | C |
+|---|---|---|---|---|
+| 正文 / 页面底 | ≥4.5 | **12.60** | **11.06** | **11.74** |
+| 正文 / 卡片底 | ≥4.5 | **13.46** | **11.79** | **12.80** |
+| 正文 / 详情背景 | ≥4.5 | **11.89** | **10.82** | **11.37** |
+| 文字次 / 卡片底 | ≥4.5 | **6.83** | **5.38** | **5.68** |
+| 文字次 / 页面底 | ≥4.5 | **6.39** | **5.04** | **5.21** |
+| 白字 / 主色（选中钮实底） | ≥4.5 | **4.66** | **4.81** | **4.76** |
+| 白字 / 主色深（播放中 / 下拉态） | ≥4.5 | 7.50 | 7.43 | 7.31 |
+| 主色深 / 卡片底（描边钮文字） | ≥4.5 | **7.38** | **7.43** | **7.31** |
+| 封面书名 / 封面纸白 | ≥4.5 | **12.82** | **11.54** | **12.15** |
+| 封面书名 / 封面单墨 | ≥4.5 | **7.98** | **7.60** | **8.22** |
+| 小知识正文 / 小知识卡底 | ≥4.5 | **12.14** | **10.47** | **11.16** |
+| 聚焦描边 / 页面底 | ≥3 | **6.91** | **6.97** | **6.70** |
+| 聚焦描边 / 卡片底 | ≥3 | **7.38** | **7.43** | **7.31** |
+| 小知识描边 / 小知识卡底（装饰） | 可辨 | 3.16 | 3.22 | 3.40 |
+| 封面单墨 / 封面纸白 | 1.4–1.8 | **1.61** | **1.52** | **1.48** |
+| 书脊木色·中 / 页面底（装饰） | 可辨 | 3.32 | 2.17 | 2.18 |
+| 书脊木色·深 / 页面底（装饰） | 可辨 | 4.57 | 3.12 | 3.08 |
+| 书脊木色·浅 / 页面底（高光端） | — | 1.81 | 1.50 | 1.51 |
+
+- **结论：三套全部达标，无 FAIL 项**。三处「弱」值均为装饰性分区，不适用 WCAG 文本门槛，但各自都有替代辨识手段，落地时必须保留：
+  - 小知识卡底 vs 详情背景仅 1.02–1.03:1 —— 卡底只作分区底色，**辨识由 2px 圆点描边承担**（描边 vs 卡底 3.16–3.40:1，与 U9-4 一致），不得去掉描边。
+  - 书页堆 vs 页面底 1.06–1.12:1 —— 页边轮廓由 `.book` 的 `box-shadow` 承担，阴影色随新 token 改（见 U19-3）。
+  - 书脊木色·中 对 B / C 仅 2.17–2.18:1（木色弱化的必然结果）—— 隔板 `.shelf-plank` 必须保留「浅→中→深」三段渐变 + `0 6px 10px` 投影，靠明暗梯度而非色差读形；若真机走查认为隔板「消失」，可把木色·中各下调一档（B `#AB9A83` / C `#A79E91`，对比度升至约 2.35:1），**不改**其余 token。
+- 计算说明：白字对主色是本方案最紧的一档（4.66 / 4.81 / 4.76），故主色**不得再提亮**；若 PO 认为主色偏暗，只能改为「浅主色作底 + 深主色作字」的反向组合（`#B45B3E` 作字于米纸底 6.6:1 级），不得直接提亮主色。
+
+## U19-2. 选定方案（P19-1 已冻结：A 温润纸感）
+
+- 状态：**已冻结**（2026-10-24，PO 裁决，记录 `P19-1`，待人工确认）。
+- **选定：方案 A「温润纸感」**——米纸 + 深棕墨 + 柔橙朱砂；主色 `#B45B3E` / 主色深 `#8A3E27`。
+- 裁决理由：① 图画书隐喻最贴合「书本集合」心智；② 木色与主色同属暖棕家族，「绿 + 木棕 + 奶油黄」三系并列彻底消失；③ 修复现状两处真实不达标（白字/#4CAF50 仅 2.78、#388E3C 对白卡 4.12），A 全程无 FAIL；④ 保留既有暖纸底与深棕文字，改造风险最小。
+- 落地 Sprint：**Sprint 19**（v3.0）。R 的 `styles.css` 改动须严格取 U19-1 / U19-3 的 **A 列**色值，**不得**混入 B / C 任一色值。
+- 配套：`generate-covers.mjs` 的 `PAPER = '#FCF7ED'`、`INK = '#D8C3A2'`（见 U19-4 A 列）。
+- 若人工复核要求「再调一版」，只允许在 A 方案内微调（±1 档明度），不得跨方案混色。
+
+## U19-3. 全站 token 落地清单（旧 token → 新 token 映射）
+
+**映射总表**（旧值取自当前 `styles.css`；R 落地时按选定方案列取值，**值必须与 U19-1 完全一致**）
+
+| 用途 | CSS 变量 | 旧值（现状） | A | B | C |
+|---|---|---|---|---|---|
+| 页面底 | `--color-page-bg` | `#FFFDF5` | `#FAF5EC` | `#F3F9F6` | `#F6F5F2` |
+| 卡片底 | `--color-card-bg` | `#FFFFFF` | `#FFFDF8` | `#FFFFFF` | `#FFFFFF` |
+| 文字主 | `--color-text` | `#3E2723` | `#3A2A22` | `#1F3D37` | `#33313A` |
+| 文字次 | `--color-text-light` | `#6D4C41` | `#6F5443` | `#557068` | `#686573` |
+| 主色 | `--color-primary` | `#4CAF50` | `#B45B3E` | `#2F7F6A` | `#66738F` |
+| 主色深 | `--color-primary-dark` | `#388E3C` | `#8A3E27` | `#235F51` | `#4B5672` |
+| 小知识卡底 | `--color-accent-bg` | `#FFF8DC` | `#FBF0DE` | `#E9F4EF` | `#EFEFF4` |
+| 小知识卡描边 | `--color-accent-border` | `#F9A825` | `#B87A3D` | `#4F937B` | `#847D9B` |
+| 书脊木色·中 | `--shelf-wood` | `#C9A876` | `#A87F55` | `#B9A892` | `#B0A79A` |
+| 书脊木色·深 | `--shelf-wood-dark` | `#A8825A` | `#8A6A47` | `#9C8A75` | `#948B80` |
+| 书脊木色·浅 | `--shelf-wood-light` | `#E3CBA5` | `#D3B48D` | `#D8CBB9` | `#D0C9BF` |
+| 封面纸白 | `--book-paper` | `#FDFBF6` | `#FCF7ED` | `#FBFDFB` | `#FAF9F6` |
+| 封面单墨 | `--book-ink` | `#D9C9AE` | `#D8C3A2` | `#C2D4C6` | `#D2CFC7` |
+| 书页堆 | `--book-stack` | `#F3EBDD` | `#F2E8D8` | `#EAF3EE` | `#EFEDE7` |
+| 书内页底 | `--book-page-bg` | `#FFFDF9` | `#FFFBF3` | `#FCFEFC` | `#FBFAF7` |
+| 详情背景 | `--color-detail-bg` | **（无，复用 page-bg）** | `#F6EEE2` | `#EFF7F3` | `#F2F1F4` |
+| 聚焦描边 | `--color-focus` | **（无，复用 primary-dark）** | `#8A3E27` | `#235F51` | `#4B5672` |
+| 分隔线 | `--color-divider` | **（无，散落硬编码）** | `#E7DAC6` | `#DCEBE4` | `#E4E1DB` |
+
+**除 token 外的 5 处硬编码色（必须一并替换，否则新色系会「脏」）**
+
+| 位置 | 现状硬编码 | 替换为 |
+|---|---|---|
+| `.book-pages` 书口条纹（1px 交替） | `#FFFDF5` / `#E8E0D2` | `var(--book-page-bg)` / `var(--color-divider)` |
+| 全站阴影色（`.plant-card` / `.book` / `.shelf-plank` / `.book-page-body` 等 `rgba(62,39,35,…)`） | 棕调 `62,39,35` | 统一改为「文字主 RGB + 原 alpha」：A `58,42,34` / B `31,61,55` / C `51,49,58`（新增 `--shadow-rgb` 变量承载三元组） |
+| `.shelf-row` 行背景渐变 | `rgba(227,203,165,0.28)` | `color-mix(in srgb, var(--shelf-wood-light) 22%, transparent)`（或等价 `rgba`，alpha 22%±4%） |
+| `.book-spine` 两道沟槽 / `inset` 阴影 | `rgba(62,39,35,0.28 / 0.18)` | 同「文字主 RGB」派生，alpha 不变 |
+| antd 主题 | `theme.token.colorPrimary = #4CAF50` | 选定方案 `--color-primary`；`borderRadius` 仍 16 |
+
+**落地顺序（R 按此执行，避免中间态半套色）**
+1. `:root` 第一处（1–11 行）替换 8 个旧变量 → 新值，新增 `--color-detail-bg` / `--color-focus` / `--color-divider` / `--shadow-rgb`。
+2. `:root` 第二处（Sprint 18 追加块）替换 7 个变量 → 新值。
+3. 按上表替换 5 处硬编码色（阴影 / 条纹 / 渐变 / 沟槽 / antd）。
+4. `.bookshelf-page` 与 `.detail-immersive` 的 `background` 改用 `var(--color-page-bg)` / `var(--color-detail-bg)`；`.book-page-body` 保留 `var(--book-page-bg)`。
+5. `scripts/generate-covers.mjs` 仅改 `INK` / `PAPER` 两常量（见 U19-4），重跑生成 8 张封面。
+6. `.back-btn` / `.filter-btn` / `.speak-btn` / `.book:focus-visible` 的描边色统一走 `var(--color-primary-dark)`；`:focus-visible` 用 `var(--color-focus)`，**不得**用主色作聚焦描边（主色对页面底仅 2.6–2.9:1）。
+
+- **红线**：不改任何尺寸 / 字号 / 圆角 / 内边距 / 列数 / 热区；不改 `<BookShelf>` / `<BookCard>` / `<PlantCard>` 的 DOM 与类名；不改语料、路由、接口。
+- 回归口径：`npx vitest run` 与 `npx playwright test` 全量复跑（配色不改变结构，预期零用例改动；若有快照或类名断言受影响，按「仅测试层对齐」记录缺陷号）。
+
+## U19-4. 封面 tile 新墨色 / 底色
+
+`scripts/generate-covers.mjs` 的两个常量按选定方案替换（其余参数 `SIZE=1200`、`CENTERS`、`SCALES`、`MOTIFS`、`cjpeg q82 -progressive` **一律不动**）：
+
+| 常量 | 现状 | A | B | C |
+|---|---|---|---|---|
+| `PAPER`（封面纸白底） | `#FDFBF6` | `#FCF7ED` | `#FBFDFB` | `#FAF9F6` |
+| `INK`（封面单墨） | `#D9C9AE` | `#D8C3A2` | `#C2D4C6` | `#D2CFC7` |
+| 实测 INK / PAPER 对比度 | 1.53 | **1.61** | **1.52** | **1.48** |
+
+- **区间红线不变**：U18-6 的 1.4:1–1.8:1 继续生效（低于 1.4 母题不可见，高于 1.8 抢书名）。三套均在区间内，无需改墨迹率上限。
+- **墨色与 `.book-paper` 必须同值**：封面 tile 底色 = `--book-paper`，墨色 = `--book-ink`，两者在 CSS 与生成器里必须成对同步，禁止只改一边（否则平铺接缝会露出色差）。
+- 封面仍需保留 `.book-title-zh` 的 `text-shadow: 0 1px 0 rgba(255,255,255,0.85)`；书名对本方案封面纸白的最低对比度为 B 11.54:1、对单墨最低为 B 7.60:1，均远超 4.5:1。
+- 重跑后须复核：8 张 tile 单母题占位 ≤5%、tile 留白 ≥80%、边界距 ≥96px（U18-6 算法不变，仅墨/纸换色不应改变墨迹率——若实测偏差 >0.3%，说明色差阈值判定需按新墨色重标定）。
+- 书内页卡片缩略图（`.plant-card-img`）不受影响（实拍照片，无配色依赖）。
+
+## U19-5. 动画规范（4 处路由过渡）
+
+**总则**：轻量渐变，**不做 3D 翻书 / 不做 `rotateY` / 不做逐项 stagger**；只动画 `opacity` 与 `transform`（禁止动画 `width/height/top/left/margin/box-shadow/filter/backdrop-filter`）；动画挂在页面根容器，列表卡片保持静态；所有过渡 `animation-delay: 0ms`，单次播放（`both`）。
+
+| # | 过渡 | 时长 | 缓动曲线 | opacity | scale | translateY | 标记（`data-*`） |
+|---|---|---|---|---|---|---|---|
+| 1 | 书架 → 书内页（**打开书本**） | **320ms** | `cubic-bezier(0.2, 0, 0, 1)` | 0 → 1 | 0.97 → 1 | **+10px → 0**（自下轻抬，模拟抽出书本） | `data-route-enter="shelf-to-book"` |
+| 2 | 书内页 → 书架（**关闭书本**） | **260ms** | `cubic-bezier(0.4, 0, 1, 1)` | 1 → 0 | 1 → 0.98 | **0 → -8px**（向上收拢，塞回书架） | `data-route-exit="book-to-shelf"` |
+| 3 | 书内页 → 详情页（**翻开一页**） | **340ms** | `cubic-bezier(0.2, 0, 0, 1)` | 0 → 1 | 0.98 → 1 | **+12px → 0**（由下轻推，≤12px 上限） | `data-route-enter="book-to-detail"` |
+| 4 | 详情页 → 书内页（**合上返回**） | **240ms** | `cubic-bezier(0.4, 0, 1, 1)` | 1 → 0 | 1 → 0.99 | **0 → -6px**（向上淡出） | `data-route-exit="detail-to-book"` |
+
+**参考实现（纯 CSS，无新增依赖）**
+
+```css
+@keyframes sh-enter-book {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes sh-exit-book {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-8px) scale(0.98); }
+}
+@keyframes sh-enter-page {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes sh-exit-page {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-6px) scale(0.99); }
+}
+/* 入场：R 在页面根容器上按进入来源挂 data-route-enter */
+[data-route-enter="shelf-to-book"]   { animation: sh-enter-book 320ms cubic-bezier(0.2, 0, 0, 1) both; }
+[data-route-enter="book-to-detail"] { animation: sh-enter-page 340ms cubic-bezier(0.2, 0, 0, 1) both; }
+/* 退出：需保留上一屏，见下方「实现约定」 */
+[data-route-exit="book-to-shelf"]   { animation: sh-exit-book 260ms cubic-bezier(0.4, 0, 1, 1) both; }
+[data-route-exit="detail-to-book"]  { animation: sh-exit-page 240ms cubic-bezier(0.4, 0, 1, 1) both; }
+```
+
+**实现约定（R 落地时遵守）**
+- **入场 2 处**（#1 / #3）成本最低：页面根容器（`.bookshelf-page` / `.book-page` / `.detail-immersive`）读 `location.state?.from` 派生 `data-route-enter`，无 state 时（直接输入 URL、刷新、书内页切换板块）**不挂动画**，避免每次进入都「莫名缩放」。
+- **退出 2 处**（#2 / #4）需要保留上一屏 240–260ms：仅允许用「约 20 行的 `<RouteFade>` 包装（记录 previous location → 卸载延迟）」或浏览器 View Transitions API 二选一，**不得**为此引入 framer-motion 等动画库（当前 `package.json` 无动画依赖，且不新增）。
+- 若本迭代判定退出动画成本过高，可**只落地入场 2 处、退出退化为 0ms 即时切换**；退出参数（#2 / #4）仍按上表冻结，留给后续迭代。此降级须写入 R 的开发设计文章并同步本节备注。
+- **containing block 红线**：`.detail-immersive` 自身 `position: fixed`，把动画挂它身上安全；但**禁止**在 `#root` 或 `<main>` 外层包装元素上加 `transform`，否则会让内部 `position: fixed` 失效（详情页整屏会退回文档流，直接破坏 U6-1「整屏不滚动」）。
+- 不用 `will-change` 常驻（仅在动画类命中时由浏览器自行提升）；动画结束后元素恢复 `transform: none`，避免残留层影响 `position: fixed` 子元素与滚动。
+- 时长纪律：入场 320 / 340ms，退出 240 / 260ms，全部落在 **200–400ms** 区间；同一时刻只允许一个页面级过渡（禁止叠加多重 keyframes）。
+- 性能红线：动画元素限页面根容器 **1 个**；不得对 `img` / 卡片网格 / 列表项加 `opacity` 动画（16 卡同时淡入会掉帧，且与增量加载竞态）。
+
+## U19-6. `prefers-reduced-motion: reduce` 降级规范
+
+**降级原则**：能减少就减少，但不牺牲「我知道页面换了」的反馈 —— 位移与缩放全部取消，只保留极短纯透明度淡入。
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  /* 1. 页面级过渡：取消位移/缩放，入场只留 120ms 纯淡入 */
+  [data-route-enter] { animation: sh-fade 120ms linear both; transform: none !important; }
+  [data-route-exit]  { animation: none !important; opacity: 1; transform: none !important; }
+
+  /* 2. 卡片 hover 抬升取消，保留阴影/颜色反馈 */
+  .book, .plant-card, .speak-btn, .filter-btn, .nav-btn { transition: none; }
+  .book:hover, .book:focus-visible,
+  .plant-card:hover, .plant-card:focus-visible { transform: none; }
+  .speak-btn:active { transform: none; }
+
+  /* 3. 平滑滚动取消（含返回书架/回列表的滚动恢复） */
+  * { scroll-behavior: auto !important; }
+}
+@keyframes sh-fade { from { opacity: 0; } to { opacity: 1; } }
+```
+
+| 项 | reduce 下的值 | 理由 |
+|---|---|---|
+| 入场（#1 / #3） | 120ms 纯 `opacity` 0→1，`transform: none` | 保留「页面已切换」的最低反馈，前庭敏感用户无位移感 |
+| 退出（#2 / #4） | **0ms 即时**（不做淡出） | 淡出会延长「旧屏残留」，反而更易晕 |
+| scale | 全部取消（无 0.97 / 0.98 / 0.99） | 缩放最易触发不适 |
+| translateY | 全部取消（无 ±6/8/10/12px） | 同上 |
+| hover 抬升 `-4px` | 取消，保留 `box-shadow` + 描边变化 | 触控为主，抬升非必要 |
+| `speak-btn:active` 0.94 缩放 | 取消 | 同上 |
+| 滚动行为 | `scroll-behavior: auto` | 恢复滚动不受动画干扰 |
+| 其他 | 不得再出现任何 `animation-duration > 150ms` 的动画 | 全局兜底纪律 |
+
+- 校验方式：Chrome DevTools → Rendering → `Emulate CSS media feature prefers-reduced-motion: reduce`，逐页走查 4 处路由过渡不得出现位移/缩放；`prefers-reduced-motion` 为 `no-preference` 时 4 处动画按 U19-5 表执行。
+- 本降级**只影响动效**，不得改变布局尺寸、热区（≥56px）、对比度与配色 token。
+
 
 
 

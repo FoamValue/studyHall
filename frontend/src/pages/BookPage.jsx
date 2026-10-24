@@ -14,7 +14,7 @@ function UnknownBook() {
     <main className="page book-page">
       <p className="state-tip">这本书还在路上哦</p>
       <p style={{ textAlign: 'center' }}>
-        <Link className="back-btn" to="/">回书架</Link>
+        <Link className="back-btn" to="/" state={{ from: 'book' }}>回书架</Link>
       </p>
     </main>
   );
@@ -116,11 +116,19 @@ function BookView({ code }) {
   }, [plants, visibleCount, code]);
 
   const title = SECTION_BOOK_TITLE[code];
+  // Sprint 19（M19-1）：入场方向由来源派生——从书架进入 = 打开书本，从详情返回 = 合上返回；
+  // 直接输入 URL / 刷新 / 书内切换无来源标记，不播动画。
+  const routeEnter =
+    location.state?.from === 'shelf'
+      ? 'shelf-to-book'
+      : location.state?.from === 'detail'
+        ? 'detail-to-book'
+        : undefined;
 
   return (
-    <main className="page book-page">
+    <main className="page book-page" data-route-enter={routeEnter}>
       <div className="book-topbar">
-        <Link className="back-btn" to="/">← 回书架</Link>
+        <Link className="back-btn" to="/" state={{ from: 'book' }}>← 回书架</Link>
         <h1 className="book-title">{title}</h1>
       </div>
 

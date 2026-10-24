@@ -1,13 +1,20 @@
-/* 视觉规范见 docs/design/ui-style-guide.md */
+/* 视觉规范见 docs/design/ui-style-guide.md
+   Sprint 19（v3.0 / U19-1 ~ U19-3）：全站色板收敛为「方案 A 温润纸感」单一主色系。
+   米纸底 + 深棕墨 + 柔橙朱砂；木色与主色同族。禁止混入 B / C 列色值。 */
 :root {
-  --color-primary: #4caf50;
-  --color-primary-dark: #388e3c;
-  --color-accent-bg: #fff8dc;
-  --color-accent-border: #f9a825;
-  --color-page-bg: #fffdf5;
-  --color-text: #3e2723;
-  --color-text-light: #6d4c41;
-  --color-card-bg: #ffffff;
+  --color-primary: #b45b3e;
+  --color-primary-dark: #8a3e27;
+  --color-accent-bg: #fbf0de;
+  --color-accent-border: #b87a3d;
+  --color-page-bg: #faf5ec;
+  --color-text: #3a2a22;
+  --color-text-light: #6f5443;
+  --color-card-bg: #fffdf8;
+  /* Sprint 19 新增：详情页背景 / 聚焦描边 / 分隔线 / 阴影 RGB（文字主同值三元组） */
+  --color-detail-bg: #f6eee2;
+  --color-focus: #8a3e27;
+  --color-divider: #e7dac6;
+  --shadow-rgb: 58, 42, 34;
 }
 
 * {
@@ -133,7 +140,7 @@ body {
   display: block;
   background: var(--color-card-bg);
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.1);
+  box-shadow: 0 4px 12px rgba(var(--shadow-rgb), 0.1);
   padding: 16px;
   text-align: center;
   text-decoration: none;
@@ -144,7 +151,7 @@ body {
 .plant-card:hover,
 .plant-card:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(62, 39, 35, 0.16);
+  box-shadow: 0 8px 20px rgba(var(--shadow-rgb), 0.16);
 }
 
 .plant-card-img {
@@ -319,7 +326,7 @@ body {
   overscroll-behavior: none;
   display: flex;
   padding: 68px 76px 16px;
-  background: var(--color-page-bg);
+  background: var(--color-detail-bg);
 }
 
 /* 顶部操作条：左上回花园 + 右上全屏 */
@@ -561,15 +568,15 @@ body {
 }
 
 /* ===== Sprint 18：书架 / 书本 / 封面 / 书内页（UI 规范 U18-1 ~ U18-5）===== */
-/* 追加设计变量（不改动既有 :root 变量） */
+/* 追加设计变量（Sprint 19：取值随方案 A 更新，与第一处 :root 同一色温） */
 :root {
-  --shelf-wood: #c9a876; /* 隔板 / 书脊主木色（8 本统一） */
-  --shelf-wood-dark: #a8825a; /* 木色深（描边 / 沟槽） */
-  --shelf-wood-light: #e3cba5; /* 木色浅（高光） */
-  --book-paper: #fdfbf6; /* 封面纸白底 */
-  --book-stack: #f3ebdd; /* 书页堆米白（书口 / 底口露出的页边） */
-  --book-page-bg: #fffdf9; /* 书内页纸感底 */
-  --book-ink: #d9c9ae; /* 封面母题单色 */
+  --shelf-wood: #a87f55; /* 隔板 / 书脊主木色（8 本统一） */
+  --shelf-wood-dark: #8a6a47; /* 木色深（描边 / 沟槽） */
+  --shelf-wood-light: #d3b48d; /* 木色浅（高光） */
+  --book-paper: #fcf7ed; /* 封面纸白底 */
+  --book-stack: #f2e8d8; /* 书页堆米白（书口 / 底口露出的页边） */
+  --book-page-bg: #fffbf3; /* 书内页纸感底 */
+  --book-ink: #d8c3a2; /* 封面母题单色 */
 }
 
 /* U18-1 书架页：一屏放下（严禁与 .page 共用，.page 的 padding-bottom 会吃掉预算） */
@@ -583,6 +590,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--color-page-bg);
 }
 
 /* 站头紧凑档：仅作用于书架页，不改全局 .site-title-* */
@@ -633,7 +641,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0;
-  background: linear-gradient(180deg, rgba(227, 203, 165, 0.28), rgba(227, 203, 165, 0));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--shelf-wood-light) 22%, transparent), transparent);
 }
 
 .shelf-title {
@@ -657,7 +665,7 @@ body {
     var(--shelf-wood) 55%,
     var(--shelf-wood-dark) 100%
   );
-  box-shadow: 0 6px 10px rgba(62, 39, 35, 0.12);
+  box-shadow: 0 6px 10px rgba(var(--shadow-rgb), 0.12);
 }
 
 /* U18-2 书本：书脊 + 书页厚度 + 封面（8 本视觉参数完全一致） */
@@ -671,7 +679,7 @@ body {
   height: var(--book-h);
   background: var(--book-stack);
   border-radius: 4px 14px 14px 4px;
-  box-shadow: 0 6px 14px rgba(62, 39, 35, 0.12);
+  box-shadow: 0 6px 14px rgba(var(--shadow-rgb), 0.12);
   text-decoration: none;
   color: inherit;
   transform: translateY(0);
@@ -681,7 +689,7 @@ body {
 .book:hover,
 .book:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 10px 22px rgba(62, 39, 35, 0.18);
+  box-shadow: 0 10px 22px rgba(var(--shadow-rgb), 0.18);
 }
 
 .book:active {
@@ -689,7 +697,7 @@ body {
 }
 
 .book:focus-visible {
-  outline: 3px solid var(--color-primary-dark);
+  outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -707,7 +715,7 @@ body {
     var(--shelf-wood) 45%,
     var(--shelf-wood-dark) 100%
   );
-  box-shadow: inset -2px 0 3px rgba(62, 39, 35, 0.18);
+  box-shadow: inset -2px 0 3px rgba(var(--shadow-rgb), 0.18);
 }
 
 /* 书脊两道 2px 深色沟槽（高度 18% / 82%） */
@@ -718,7 +726,7 @@ body {
   left: 2px;
   right: 2px;
   height: 2px;
-  background: rgba(62, 39, 35, 0.28);
+  background: rgba(var(--shadow-rgb), 0.28);
 }
 
 .book-spine::before {
@@ -737,7 +745,7 @@ body {
   width: var(--book-pages-w);
   border-radius: 0 4px 4px 0;
   z-index: 0;
-  background: repeating-linear-gradient(90deg, #fffdf5 0 1px, #e8e0d2 1px 2px);
+  background: repeating-linear-gradient(90deg, var(--book-page-bg) 0 1px, var(--color-divider) 1px 2px);
 }
 
 /* U18-3 封面：花纹仅作 background-image，文字一律 HTML */
@@ -756,7 +764,7 @@ body {
   background-size: calc(var(--book-h) - 2px) calc(var(--book-h) - 2px);
   background-position: center center;
   background-repeat: no-repeat; /* tile 尺寸 > 封面尺寸，不会出现接缝 */
-  box-shadow: inset 0 0 0 1px rgba(62, 39, 35, 0.1), inset 0 0 24px rgba(62, 39, 35, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(var(--shadow-rgb), 0.1), inset 0 0 24px rgba(var(--shadow-rgb), 0.06);
 }
 
 /* U18-4 封面文字层 */
@@ -825,7 +833,7 @@ body {
   border-left: 6px solid var(--shelf-wood);
   border-radius: 0 16px 16px 0;
   padding: 20px 12px 24px;
-  box-shadow: inset 12px 0 16px -12px rgba(62, 39, 35, 0.18), 0 2px 8px rgba(62, 39, 35, 0.06);
+  box-shadow: inset 12px 0 16px -12px rgba(var(--shadow-rgb), 0.18), 0 2px 8px rgba(var(--shadow-rgb), 0.06);
 }
 
 @media (min-width: 1100px) {
@@ -927,6 +935,132 @@ body {
   .book-page-body {
     padding: 16px 8px 20px;
     border-left-width: 4px;
+  }
+}
+
+/* ===== Sprint 19（v3.0 / U19-5）：4 处路由过渡 —— 目标页入场 keyframes =====
+   思路：不保留旧屏做退场（不用 View Transitions / 不引入动画库），
+   统一由「目标页入场动画」承载 4 个方向；方向由页面根容器上的
+   data-route-enter 标记（来源 location.state.from 派生）区分。
+   红线：动画只挂页面根容器，绝不在 #root / 外层包装上加 transform
+   （否则 .detail-immersive 的 position: fixed 会失效，破坏「整屏不滚动」）。
+   只动画 opacity / transform，animation-delay 固定 0ms，单次播放（both）。 */
+
+/* #1 书架 → 书内页（打开书本）：320ms，+10px → 0，scale 0.97 → 1 */
+@keyframes sh-enter-book {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* #2 书内页 → 书架（关闭书本）：目标页按 U19-5 退场参数反向入场，
+   260ms，-8px → 0，scale 0.98 → 1 */
+@keyframes sh-enter-shelf {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* #3 书内页 → 详情页（翻开一页）：340ms，+12px → 0，scale 0.98 → 1 */
+@keyframes sh-enter-page {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* #4 详情页 → 书内页（合上返回）：目标页按 U19-5 退场参数反向入场，
+   240ms，-6px → 0，scale 0.99 → 1 */
+@keyframes sh-enter-book-return {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 方向选择器：挂载即播放一次；无对应 state（刷新 / 直接输入 URL / 书内换株）不挂标记，不播动画 */
+[data-route-enter='shelf-to-book'] {
+  animation: sh-enter-book 320ms cubic-bezier(0.2, 0, 0, 1) 0ms both;
+}
+
+[data-route-enter='book-to-shelf'] {
+  animation: sh-enter-shelf 260ms cubic-bezier(0.4, 0, 1, 1) 0ms both;
+}
+
+[data-route-enter='book-to-detail'] {
+  animation: sh-enter-page 340ms cubic-bezier(0.2, 0, 0, 1) 0ms both;
+}
+
+[data-route-enter='detail-to-book'] {
+  animation: sh-enter-book-return 240ms cubic-bezier(0.4, 0, 1, 1) 0ms both;
+}
+
+/* ===== Sprint 19（U19-6）：prefers-reduced-motion 降级 =====
+   能减少就减少：位移与缩放全部取消，入场只留 120ms 纯淡入；
+   卡片 hover 抬升、喇叭按压缩放与平滑滚动一并取消。 */
+@keyframes sh-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* 1. 页面级过渡：入场只留 120ms 纯淡入，退出 0ms 即时 */
+  [data-route-enter] {
+    animation: sh-fade 120ms linear both;
+    transform: none !important;
+  }
+
+  [data-route-exit] {
+    animation: none !important;
+    opacity: 1;
+    transform: none !important;
+  }
+
+  /* 2. 卡片 / 按钮 hover 抬升与按压缩放取消，保留阴影 / 颜色反馈 */
+  .book,
+  .plant-card,
+  .speak-btn,
+  .filter-btn,
+  .nav-btn {
+    transition: none;
+  }
+
+  .book:hover,
+  .book:focus-visible,
+  .plant-card:hover,
+  .plant-card:focus-visible {
+    transform: none;
+  }
+
+  .speak-btn:active {
+    transform: none;
+  }
+
+  /* 3. 平滑滚动取消（含返回书架 / 回列表的滚动恢复） */
+  * {
+    scroll-behavior: auto !important;
   }
 }
 

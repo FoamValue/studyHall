@@ -9,6 +9,9 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost',
     screenshot: 'only-on-failure',
+    // Sprint 19（M19-3 / Q9）：统一 reducedMotion，4 处路由过渡降级为直切，
+    // 避免动画时序干扰既有 81 条用例；新动效用例在 vitest 断言样式值。
+    reducedMotion: 'reduce',
   },
   outputDir: './test-results',
 });

@@ -15,8 +15,8 @@ import { mkdirSync, rmSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { chromium } from '@playwright/test';
 
-const INK = '#D9C9AE';
-const PAPER = '#FDFBF6';
+const INK = '#D8C3A2';
+const PAPER = '#FCF7ED';
 const SIZE = 1200;
 const OUT_DIR = resolve('frontend/public/images/covers');
 

@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认知小图鉴 · 全站配色方案 v3（A / B / C 三选一）</title>
+<style>
+  :root {
+    --ui-bg: #ECEBE7;
+    --ui-card: #FFFFFF;
+    --ui-line: #DCDAD3;
+    --ui-line-soft: #E8E6E0;
+    --ui-text: #24242A;
+    --ui-muted: #6E6E77;
+    --ui-faint: #8E8E97;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 28px 64px;
+    background: var(--ui-bg);
+    color: var(--ui-text);
+    font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1560px; margin: 0 auto; }
+
+  /* ---------- 页头 ---------- */
+  .page-head { margin-bottom: 28px; }
+  .eyebrow {
+    margin: 0 0 8px;
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--ui-faint);
+  }
+  h1 { margin: 0 0 10px; font-size: 32px; font-weight: 700; letter-spacing: .5px; }
+  .lede { margin: 0; max-width: 900px; font-size: 14px; line-height: 1.75; color: var(--ui-muted); }
+  .callout {
+    margin: 20px 0 0;
+    padding: 16px 20px;
+    background: var(--ui-card);
+    border: 1px solid var(--ui-line);
+    border-left: 4px solid #B45B3E;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .callout b { color: #8A3E27; }
+  .baseline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 10px;
+    padding: 10px 12px;
+    background: #FBF3F0;
+    border: 1px dashed #E0C0B4;
+    border-radius: 8px;
+  }
+  .baseline span {
+    font-size: 11px;
+    color: #6F5443;
+    font-family: var(--mono);
+  }
+  .baseline span b { color: #A4361F; font-weight: 700; }
+  .baseline em { font-style: normal; color: #8E8E97; }
+  .legacy-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .legacy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: #F7F6F2;
+    border: 1px solid var(--ui-line-soft);
+    border-radius: 8px;
+    font-size: 11px;
+    color: var(--ui-muted);
+  }
+  .legacy i { display: block; width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); }
+  .legacy code { font-family: var(--mono); font-size: 10px; color: var(--ui-faint); }
+
+  /* ---------- 三栏 ---------- */
+  .grid3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 1240px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 860px) { .grid3 { grid-template-columns: 1fr; } }
+
+  .scheme {
+    background: var(--page-bg);
+    border: 1px solid var(--ui-line);
+    border-radius: 16px;
+    padding: 18px 16px 20px;
+    box-shadow: 0 2px 10px rgba(30, 30, 40, .05);
+  }
+  .scheme-head { margin-bottom: 14px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    background: var(--primary);
+  }
+  .scheme-head h2 {
+    margin: 8px 0 6px;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: .5px;
+  }
+  .scheme-head p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--text-light);
+  }
+  .chips { display: flex; gap: 6px; margin-top: 10px; }
+  .chips span {
+    height: 22px;
+    flex: 1;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+
+  .block { margin-top: 16px; }
+  .block h3 {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ---------- ① token ---------- */
+  .tokens { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+  .tok { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .tok i {
+    flex: 0 0 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.12);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+  }
+  .tok .meta { min-width: 0; line-height: 1.25; }
+  .tok .meta b {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tok .meta code {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-light);
+  }
+
+  /* ---------- ② 书架 mock ---------- */
+  .mock {
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,.07);
+    border-radius: 12px;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .m-shelf-head { text-align: center; margin-bottom: 8px; }
+  .m-shelf-head .py { display: block; font-size: 7px; letter-spacing: .4px; color: var(--text-light); }
+  .m-shelf-head .zh { display: block; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.2; }
+  .m-shelf-head .en { display: block; font-size: 7.5px; color: var(--text-light); }
+
+  .m-row + .m-row { margin-top: 10px; }
+  .m-row-title {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .m-books { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .m-book {
+    position: relative;
+    display: block;
+    height: 82px;
+    background: var(--book-stack);
+    border-radius: 2px 7px 7px 2px;
+    box-shadow: 0 3px 7px rgba(40, 30, 20, .18);
+  }
+  .m-spine {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+    border-radius: 2px 0 0 2px;
+    background: linear-gradient(90deg, var(--wood-dark) 0, var(--wood) 45%, var(--wood-dark) 100%);
+  }
+  .m-cover {
+    position: absolute;
+    inset: 2px 4px 4px 7px;
+    border-radius: 1px 6px 6px 1px;
+    background-color: var(--book-paper);
+    background-image:
+      radial-gradient(circle at 25% 25%, var(--book-ink) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 75% 25%, var(--book-ink) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 25% 75%, var(--book-ink) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 75% 75%, var(--book-ink) 0 4px, transparent 4.5px);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06), inset 0 0 14px rgba(40, 30, 20, .07);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  }
+  .m-cover .t { font-size: 10px; font-weight: 700; color: var(--text); letter-spacing: .2px; }
+  .m-cover .s { font-size: 6px; color: var(--text-light); }
+  .m-plank {
+    height: 6px;
+    margin-top: 0;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--wood-light) 0, var(--wood) 55%, var(--wood-dark) 100%);
+    box-shadow: 0 4px 7px rgba(40, 30, 20, .16);
+  }
+
+  /* ---------- ③ 书内页 mock ---------- */
+  .m-topbar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .m-back {
+    display: inline-flex; align-items: center;
+    padding: 4px 8px;
+    border-radius: 7px;
+    border: 1.5px solid var(--primary-dark);
+    color: var(--primary-dark);
+    background: var(--card-bg);
+    font-size: 8px; font-weight: 600;
+  }
+  .m-bt { font-size: 15px; font-weight: 700; color: var(--text); }
+  .m-count { margin-left: auto; font-size: 8px; color: var(--text-light); }
+  .m-body {
+    background: var(--book-page-bg);
+    border-left: 4px solid var(--wood);
+    border-radius: 0 10px 10px 0;
+    padding: 8px 6px 10px;
+    box-shadow: inset 8px 0 10px -8px rgba(40, 30, 20, .2);
+  }
+  .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .m-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 4px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(40, 30, 20, .1);
+  }
+  .m-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    background:
+      radial-gradient(circle at 50% 42%, var(--book-ink) 0 22%, transparent 23%),
+      linear-gradient(160deg, var(--book-stack), var(--page-bg));
+    border: 1px solid rgba(0,0,0,.05);
+  }
+  .m-card .n { margin-top: 3px; font-size: 8.5px; font-weight: 700; color: var(--text); line-height: 1.2; }
+  .m-card .n2 { font-size: 6px; color: var(--text-light); }
+
+  /* ---------- ④ 详情 mock ---------- */
+  .m-dtop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .m-fs {
+    padding: 3px 7px;
+    border-radius: 6px;
+    border: 1.5px solid var(--primary-dark);
+    color: var(--primary-dark);
+    font-size: 7.5px;
+  }
+  .m-dbody { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .m-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: var(--text-light);
+    background:
+      radial-gradient(circle at 50% 45%, var(--book-ink) 0 26%, transparent 27%),
+      linear-gradient(150deg, var(--book-stack), var(--book-page-bg));
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .m-dinfo { min-width: 0; }
+  .m-dpy { font-size: 8px; color: var(--text-light); }
+  .m-dzh { font-size: 19px; font-weight: 700; color: var(--text); line-height: 1.2; }
+  .m-den { font-size: 10px; font-weight: 600; color: var(--text); }
+  .m-dbuttons { display: flex; gap: 4px; margin: 6px 0; }
+  .pill {
+    padding: 3px 7px;
+    border-radius: 6px;
+    border: 1.5px solid var(--primary-dark);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 7px;
+    font-weight: 600;
+  }
+  .pill.sel { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .m-ddesc { margin: 0 0 6px; font-size: 8px; line-height: 1.6; color: var(--text); }
+  .m-allusion {
+    position: relative;
+    background: var(--accent-bg);
+    border: 1.5px dotted var(--accent-border);
+    border-radius: 8px;
+    padding: 7px 8px 7px 20px;
+  }
+  .m-allusion .q {
+    position: absolute; left: 6px; top: 1px;
+    font-size: 16px; line-height: 1; color: var(--accent-border);
+    font-family: Kaiti, STKaiti, serif;
+  }
+  .m-allusion .at { font-size: 7.5px; font-weight: 700; color: var(--text); }
+  .m-allusion .atext { font-size: 8.5px; line-height: 1.5; color: var(--text); font-family: Kaiti, STKaiti, serif; }
+  .m-allusion .asrc { font-size: 6.5px; color: var(--text-light); margin-top: 2px; }
+
+  /* ---------- ⑤ 对比度表 ---------- */
+  table.ratio { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+  table.ratio th, table.ratio td {
+    padding: 4px 3px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  table.ratio th {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    color: var(--text-light);
+    border-bottom: 1.5px solid rgba(0,0,0,.14);
+  }
+  table.ratio td.v { font-family: var(--mono); font-size: 10.5px; text-align: right; white-space: nowrap; }
+  table.ratio td.r { font-family: var(--mono); font-size: 10px; text-align: right; color: var(--text-light); white-space: nowrap; }
+  .ok { color: #2F7F6A; font-weight: 700; }
+  .ok, .warn { font-size: 9px; }
+  .warn { color: #8A5A2A; font-weight: 700; }
+  .pairdot { display: inline-block; width: 22px; height: 11px; border-radius: 3px; border: 1px solid rgba(0,0,0,.15); vertical-align: -1px; }
+
+  /* ---------- 底部：动画 / 推荐 ---------- */
+  .foot-card {
+    margin-top: 24px;
+    background: var(--ui-card);
+    border: 1px solid var(--ui-line);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .foot-card h2 { margin: 0 0 6px; font-size: 17px; }
+  .foot-card p { margin: 0 0 14px; font-size: 12.5px; line-height: 1.75; color: var(--ui-muted); }
+  table.anim { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.anim th, table.anim td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--ui-line-soft);
+  }
+  table.anim th { font-size: 10.5px; letter-spacing: .8px; text-transform: uppercase; color: var(--ui-faint); }
+  table.anim td code { font-family: var(--mono); font-size: 11px; background: #F5F4F0; padding: 1px 5px; border-radius: 4px; }
+  .reco {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: #FFFDF8;
+    border: 1px solid #E5DCCB;
+    border-left: 4px solid #B45B3E;
+  }
+  .reco h2 { margin: 0 0 8px; font-size: 17px; color: #3A2A22; }
+  .reco p { margin: 0 0 8px; font-size: 13px; line-height: 1.8; color: #6F5443; }
+  .reco p:last-child { margin-bottom: 0; }
+  .note { margin-top: 18px; font-size: 11.5px; line-height: 1.8; color: var(--ui-faint); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="eyebrow">认知小图鉴 · UI 规范提案 P19-1 · 供 PO 裁决</p>
+    <h1>全站配色方案 v3 — 单一主色系 · 三套候选</h1>
+    <p class="lede">
+      现状为「绿 + 木棕 + 奶油黄」三套色系混搭：主色绿 <b>#4CAF50</b> 与书架木色 <b>#C9A876</b>、小知识卡黄 <b>#FFF8DC / #F9A825</b>
+      三者色相、饱和度、明度互不隶属，页面因此显得「配色奇怪」。本方案把每套候选收敛为<b>一个主调色系</b>，
+      木色 / 纸白仅作中性承载色，并统一调整其明度与饱和度以贴合主色系。所有对比度均为 WCAG 相对亮度公式实测值。
+    </p>
+    <div class="callout">
+      <b>现状四族（待替换）</b>：主色绿系 · 木棕系 · 奶油黄系 · 纸白/深棕文字系。三套候选均把这四族收敛为「一个主色 + 一组同族中性色」。
+      <div class="baseline">
+        <span>白字 / 主色 #4CAF50 = <b>2.78</b> <em>FAIL（需 4.5）</em></span>
+        <span>主色深 #388E3C / 白卡 = <b>4.12</b> <em>FAIL（需 4.5）</em></span>
+        <span>小知识描边 #F9A825 / #FFF8DC = 1.85 <em>（S 95%，刺眼且不可辨）</em></span>
+      </div>
+      <div class="legacy-strip">
+        <span class="legacy"><i style="background:#4CAF50"></i>主色绿 <code>#4CAF50</code></span>
+        <span class="legacy"><i style="background:#388E3C"></i>深绿 <code>#388E3C</code></span>
+        <span class="legacy"><i style="background:#C9A876"></i>木色 <code>#C9A876</code></span>
+        <span class="legacy"><i style="background:#A8825A"></i>木深 <code>#A8825A</code></span>
+        <span class="legacy"><i style="background:#E3CBA5"></i>木浅 <code>#E3CBA5</code></span>
+        <span class="legacy"><i style="background:#FFF8DC"></i>小知识底 <code>#FFF8DC</code></span>
+        <span class="legacy"><i style="background:#F9A825"></i>小知识描边 <code>#F9A825</code></span>
+        <span class="legacy"><i style="background:#FFFDF5"></i>页面底 <code>#FFFDF5</code></span>
+        <span class="legacy"><i style="background:#3E2723"></i>正文 <code>#3E2723</code></span>
+        <span class="legacy"><i style="background:#D9C9AE"></i>封面墨 <code>#D9C9AE</code></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid3">
+
+    <!-- ================= 方案 A ================= -->
+    <article class="scheme" style="
+      --page-bg:#FAF5EC; --card-bg:#FFFDF8; --text:#3A2A22; --text-light:#6F5443;
+      --primary:#B45B3E; --primary-dark:#8A3E27;
+      --book-paper:#FCF7ED; --book-ink:#D8C3A2; --book-stack:#F2E8D8;
+      --wood:#A87F55; --wood-dark:#8A6A47; --wood-light:#D3B48D;
+      --accent-bg:#FBF0DE; --accent-border:#B87A3D;
+      --detail-bg:#F6EEE2; --focus:#8A3E27; --divider:#E7DAC6; --book-page-bg:#FFFBF3;">
+      <div class="scheme-head">
+        <span class="tag">方案 A</span>
+        <h2>温润纸感</h2>
+        <p>米纸 + 深棕墨 + 柔橙朱砂点缀。最接近纸质图画书：整体靠「纸的温度」而不是靠颜色跳出来，主色只用在少数据点。</p>
+        <div class="chips">
+          <span style="background:#FAF5EC"></span><span style="background:#FFFDF8"></span>
+          <span style="background:#B45B3E"></span><span style="background:#8A3E27"></span>
+          <span style="background:#A87F55"></span><span style="background:#FBF0DE"></span>
+        </div>
+      </div>
+
+      <section class="block">
+        <h3>① 色板 token（18 项）</h3>
+        <div class="tokens">
+          <div class="tok"><i style="background:#FAF5EC"></i><div class="meta"><b>页面底</b><code>#FAF5EC</code></div></div>
+          <div class="tok"><i style="background:#FFFDF8"></i><div class="meta"><b>卡片底</b><code>#FFFDF8</code></div></div>
+          <div class="tok"><i style="background:#3A2A22"></i><div class="meta"><b>文字主</b><code>#3A2A22</code></div></div>
+          <div class="tok"><i style="background:#6F5443"></i><div class="meta"><b>文字次</b><code>#6F5443</code></div></div>
+          <div class="tok"><i style="background:#B45B3E"></i><div class="meta"><b>主色</b><code>#B45B3E</code></div></div>
+          <div class="tok"><i style="background:#8A3E27"></i><div class="meta"><b>主色深</b><code>#8A3E27</code></div></div>
+          <div class="tok"><i style="background:#FCF7ED"></i><div class="meta"><b>封面纸白</b><code>#FCF7ED</code></div></div>
+          <div class="tok"><i style="background:#D8C3A2"></i><div class="meta"><b>封面单墨</b><code>#D8C3A2</code></div></div>
+          <div class="tok"><i style="background:#F2E8D8"></i><div class="meta"><b>书页堆</b><code>#F2E8D8</code></div></div>
+          <div class="tok"><i style="background:#A87F55"></i><div class="meta"><b>木色·中</b><code>#A87F55</code></div></div>
+          <div class="tok"><i style="background:#8A6A47"></i><div class="meta"><b>木色·深</b><code>#8A6A47</code></div></div>
+          <div class="tok"><i style="background:#D3B48D"></i><div class="meta"><b>木色·浅</b><code>#D3B48D</code></div></div>
+          <div class="tok"><i style="background:#FBF0DE"></i><div class="meta"><b>小知识卡底</b><code>#FBF0DE</code></div></div>
+          <div class="tok"><i style="background:#B87A3D"></i><div class="meta"><b>小知识描边</b><code>#B87A3D</code></div></div>
+          <div class="tok"><i style="background:#F6EEE2"></i><div class="meta"><b>详情背景</b><code>#F6EEE2</code></div></div>
+          <div class="tok"><i style="background:#8A3E27"></i><div class="meta"><b>聚焦描边</b><code>#8A3E27</code></div></div>
+          <div class="tok"><i style="background:#E7DAC6"></i><div class="meta"><b>分隔线</b><code>#E7DAC6</code></div></div>
+          <div class="tok"><i style="background:#FFFBF3"></i><div class="meta"><b>书内页底</b><code>#FFFBF3</code></div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>② 书架页（8 本 · 两层）</h3>
+        <div class="mock">
+          <div class="m-shelf-head">
+            <span class="py">rèn zhī xiǎo tú jiàn</span>
+            <span class="zh">认知小图鉴</span>
+            <span class="en">Cognitive Guide</span>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">自然认知</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">植物书</span><span class="s">zhí wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">动物书</span><span class="s">dòng wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">昆虫书</span><span class="s">kūn chóng shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">恐龙书</span><span class="s">kǒng lóng shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">认知启蒙</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">字母书</span><span class="s">zì mǔ shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">拼音书</span><span class="s">pīn yīn shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">数字书</span><span class="s">shù zì shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">颜色书</span><span class="s">yán sè shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>③ 书内页（顶栏 + 3×3 卡）</h3>
+        <div class="mock">
+          <div class="m-topbar">
+            <span class="m-back">← 回书架</span>
+            <span class="m-bt">动物书</span>
+            <span class="m-count">共 50 种</span>
+          </div>
+          <div class="m-body">
+            <div class="m-grid">
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小狗</div><div class="n2">xiǎo gǒu</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小猫</div><div class="n2">xiǎo māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">大象</div><div class="n2">dà xiàng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">老虎</div><div class="n2">lǎo hǔ</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">长颈鹿</div><div class="n2">cháng jǐng lù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">熊猫</div><div class="n2">xióng māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">白兔</div><div class="n2">bái tù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">绵羊</div><div class="n2">mián yáng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">斑马</div><div class="n2">bān mǎ</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>④ 详情页（左图右文 + 小知识）</h3>
+        <div class="mock">
+          <div class="m-dtop"><span class="m-back">← 回动物书</span><span class="m-fs">⛶ 全屏</span></div>
+          <div class="m-dbody">
+            <div class="m-photo">写实照片</div>
+            <div class="m-dinfo">
+              <div class="m-dpy">xiǎo gǒu</div>
+              <div class="m-dzh">小狗</div>
+              <div class="m-den">Dog</div>
+              <div class="m-dbuttons"><span class="pill sel">叫声</span><span class="pill">习性</span></div>
+              <p class="m-ddesc">小狗是人类最熟悉的朋友，鼻子很灵，能闻出很多我们闻不到的气味。</p>
+              <div class="m-allusion">
+                <span class="q">“</span>
+                <div class="at">小知识</div>
+                <div class="atext">狗吠深巷中，鸡鸣桑树颠。</div>
+                <div class="asrc">—— 陶渊明《归园田居》</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>⑤ 对比度校验（实测）</h3>
+        <table class="ratio">
+          <thead><tr><th>组合</th><th style="text-align:right">对比度</th><th style="text-align:right">判定</th></tr></thead>
+          <tbody>
+            <tr><td>正文 / 页面底</td><td class="r">12.60</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>正文 / 卡片底</td><td class="r">13.46</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 卡片底</td><td class="r">6.83</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 页面底</td><td class="r">6.39</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>白字 / 主色（选中钮）</td><td class="r">4.66</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>主色深 / 卡片底（描边钮）</td><td class="r">7.38</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面纸白</td><td class="r">12.82</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面单墨</td><td class="r">7.98</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>小知识正文 / 卡底</td><td class="r">12.14</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>聚焦描边 / 页面底</td><td class="r">6.91</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>封面单墨 / 纸白（区间 1.4–1.8）</td><td class="r">1.61</td><td class="r"><span class="ok">区间内</span></td></tr>
+            <tr><td>小知识描边 / 卡底（装饰）</td><td class="r">3.16</td><td class="r"><span class="ok">可辨</span></td></tr>
+            <tr><td>木色·中 / 页面底（装饰）</td><td class="r">3.32</td><td class="r"><span class="ok">可辨</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+    <!-- ================= 方案 B ================= -->
+    <article class="scheme" style="
+      --page-bg:#F3F9F6; --card-bg:#FFFFFF; --text:#1F3D37; --text-light:#557068;
+      --primary:#2F7F6A; --primary-dark:#235F51;
+      --book-paper:#FBFDFB; --book-ink:#C2D4C6; --book-stack:#EAF3EE;
+      --wood:#B9A892; --wood-dark:#9C8A75; --wood-light:#D8CBB9;
+      --accent-bg:#E9F4EF; --accent-border:#4F937B;
+      --detail-bg:#EFF7F3; --focus:#235F51; --divider:#DCEBE4; --book-page-bg:#FCFEFC;">
+      <div class="scheme-head">
+        <span class="tag">方案 B</span>
+        <h2>清新自然</h2>
+        <p>浅青绿薄荷 + 暖白，木色大幅弱化为灰调木。整体最「干净、透气」，与既有绿色语义延续性最好。</p>
+        <div class="chips">
+          <span style="background:#F3F9F6"></span><span style="background:#FFFFFF"></span>
+          <span style="background:#2F7F6A"></span><span style="background:#235F51"></span>
+          <span style="background:#B9A892"></span><span style="background:#E9F4EF"></span>
+        </div>
+      </div>
+
+      <section class="block">
+        <h3>① 色板 token（18 项）</h3>
+        <div class="tokens">
+          <div class="tok"><i style="background:#F3F9F6"></i><div class="meta"><b>页面底</b><code>#F3F9F6</code></div></div>
+          <div class="tok"><i style="background:#FFFFFF"></i><div class="meta"><b>卡片底</b><code>#FFFFFF</code></div></div>
+          <div class="tok"><i style="background:#1F3D37"></i><div class="meta"><b>文字主</b><code>#1F3D37</code></div></div>
+          <div class="tok"><i style="background:#557068"></i><div class="meta"><b>文字次</b><code>#557068</code></div></div>
+          <div class="tok"><i style="background:#2F7F6A"></i><div class="meta"><b>主色</b><code>#2F7F6A</code></div></div>
+          <div class="tok"><i style="background:#235F51"></i><div class="meta"><b>主色深</b><code>#235F51</code></div></div>
+          <div class="tok"><i style="background:#FBFDFB"></i><div class="meta"><b>封面纸白</b><code>#FBFDFB</code></div></div>
+          <div class="tok"><i style="background:#C2D4C6"></i><div class="meta"><b>封面单墨</b><code>#C2D4C6</code></div></div>
+          <div class="tok"><i style="background:#EAF3EE"></i><div class="meta"><b>书页堆</b><code>#EAF3EE</code></div></div>
+          <div class="tok"><i style="background:#B9A892"></i><div class="meta"><b>木色·中</b><code>#B9A892</code></div></div>
+          <div class="tok"><i style="background:#9C8A75"></i><div class="meta"><b>木色·深</b><code>#9C8A75</code></div></div>
+          <div class="tok"><i style="background:#D8CBB9"></i><div class="meta"><b>木色·浅</b><code>#D8CBB9</code></div></div>
+          <div class="tok"><i style="background:#E9F4EF"></i><div class="meta"><b>小知识卡底</b><code>#E9F4EF</code></div></div>
+          <div class="tok"><i style="background:#4F937B"></i><div class="meta"><b>小知识描边</b><code>#4F937B</code></div></div>
+          <div class="tok"><i style="background:#EFF7F3"></i><div class="meta"><b>详情背景</b><code>#EFF7F3</code></div></div>
+          <div class="tok"><i style="background:#235F51"></i><div class="meta"><b>聚焦描边</b><code>#235F51</code></div></div>
+          <div class="tok"><i style="background:#DCEBE4"></i><div class="meta"><b>分隔线</b><code>#DCEBE4</code></div></div>
+          <div class="tok"><i style="background:#FCFEFC"></i><div class="meta"><b>书内页底</b><code>#FCFEFC</code></div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>② 书架页（8 本 · 两层）</h3>
+        <div class="mock">
+          <div class="m-shelf-head">
+            <span class="py">rèn zhī xiǎo tú jiàn</span>
+            <span class="zh">认知小图鉴</span>
+            <span class="en">Cognitive Guide</span>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">自然认知</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">植物书</span><span class="s">zhí wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">动物书</span><span class="s">dòng wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">昆虫书</span><span class="s">kūn chóng shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">恐龙书</span><span class="s">kǒng lóng shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">认知启蒙</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">字母书</span><span class="s">zì mǔ shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">拼音书</span><span class="s">pīn yīn shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">数字书</span><span class="s">shù zì shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">颜色书</span><span class="s">yán sè shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>③ 书内页（顶栏 + 3×3 卡）</h3>
+        <div class="mock">
+          <div class="m-topbar">
+            <span class="m-back">← 回书架</span>
+            <span class="m-bt">动物书</span>
+            <span class="m-count">共 50 种</span>
+          </div>
+          <div class="m-body">
+            <div class="m-grid">
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小狗</div><div class="n2">xiǎo gǒu</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小猫</div><div class="n2">xiǎo māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">大象</div><div class="n2">dà xiàng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">老虎</div><div class="n2">lǎo hǔ</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">长颈鹿</div><div class="n2">cháng jǐng lù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">熊猫</div><div class="n2">xióng māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">白兔</div><div class="n2">bái tù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">绵羊</div><div class="n2">mián yáng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">斑马</div><div class="n2">bān mǎ</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>④ 详情页（左图右文 + 小知识）</h3>
+        <div class="mock">
+          <div class="m-dtop"><span class="m-back">← 回动物书</span><span class="m-fs">⛶ 全屏</span></div>
+          <div class="m-dbody">
+            <div class="m-photo">写实照片</div>
+            <div class="m-dinfo">
+              <div class="m-dpy">xiǎo gǒu</div>
+              <div class="m-dzh">小狗</div>
+              <div class="m-den">Dog</div>
+              <div class="m-dbuttons"><span class="pill sel">叫声</span><span class="pill">习性</span></div>
+              <p class="m-ddesc">小狗是人类最熟悉的朋友，鼻子很灵，能闻出很多我们闻不到的气味。</p>
+              <div class="m-allusion">
+                <span class="q">“</span>
+                <div class="at">小知识</div>
+                <div class="atext">狗吠深巷中，鸡鸣桑树颠。</div>
+                <div class="asrc">—— 陶渊明《归园田居》</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>⑤ 对比度校验（实测）</h3>
+        <table class="ratio">
+          <thead><tr><th>组合</th><th style="text-align:right">对比度</th><th style="text-align:right">判定</th></tr></thead>
+          <tbody>
+            <tr><td>正文 / 页面底</td><td class="r">11.06</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>正文 / 卡片底</td><td class="r">11.79</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 卡片底</td><td class="r">5.38</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 页面底</td><td class="r">5.04</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>白字 / 主色（选中钮）</td><td class="r">4.81</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>主色深 / 卡片底（描边钮）</td><td class="r">7.43</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面纸白</td><td class="r">11.54</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面单墨</td><td class="r">7.60</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>小知识正文 / 卡底</td><td class="r">10.47</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>聚焦描边 / 页面底</td><td class="r">6.97</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>封面单墨 / 纸白（区间 1.4–1.8）</td><td class="r">1.52</td><td class="r"><span class="ok">区间内</span></td></tr>
+            <tr><td>小知识描边 / 卡底（装饰）</td><td class="r">3.22</td><td class="r"><span class="ok">可辨</span></td></tr>
+            <tr><td>木色·中 / 页面底（装饰）</td><td class="r">2.17</td><td class="r"><span class="warn">弱</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+    <!-- ================= 方案 C ================= -->
+    <article class="scheme" style="
+      --page-bg:#F6F5F2; --card-bg:#FFFFFF; --text:#33313A; --text-light:#686573;
+      --primary:#66738F; --primary-dark:#4B5672;
+      --book-paper:#FAF9F6; --book-ink:#D2CFC7; --book-stack:#EFEDE7;
+      --wood:#B0A79A; --wood-dark:#948B80; --wood-light:#D0C9BF;
+      --accent-bg:#EFEFF4; --accent-border:#847D9B;
+      --detail-bg:#F2F1F4; --focus:#4B5672; --divider:#E4E1DB; --book-page-bg:#FBFAF7;">
+      <div class="scheme-head">
+        <span class="tag">方案 C</span>
+        <h2>柔雾莫兰迪</h2>
+        <p>低饱和雾蓝灰 + 灰紫 + 奶白，木色退为淡灰木。最安静、最「高级」，但也最不「儿童化」。</p>
+        <div class="chips">
+          <span style="background:#F6F5F2"></span><span style="background:#FFFFFF"></span>
+          <span style="background:#66738F"></span><span style="background:#4B5672"></span>
+          <span style="background:#B0A79A"></span><span style="background:#EFEFF4"></span>
+        </div>
+      </div>
+
+      <section class="block">
+        <h3>① 色板 token（18 项）</h3>
+        <div class="tokens">
+          <div class="tok"><i style="background:#F6F5F2"></i><div class="meta"><b>页面底</b><code>#F6F5F2</code></div></div>
+          <div class="tok"><i style="background:#FFFFFF"></i><div class="meta"><b>卡片底</b><code>#FFFFFF</code></div></div>
+          <div class="tok"><i style="background:#33313A"></i><div class="meta"><b>文字主</b><code>#33313A</code></div></div>
+          <div class="tok"><i style="background:#686573"></i><div class="meta"><b>文字次</b><code>#686573</code></div></div>
+          <div class="tok"><i style="background:#66738F"></i><div class="meta"><b>主色</b><code>#66738F</code></div></div>
+          <div class="tok"><i style="background:#4B5672"></i><div class="meta"><b>主色深</b><code>#4B5672</code></div></div>
+          <div class="tok"><i style="background:#FAF9F6"></i><div class="meta"><b>封面纸白</b><code>#FAF9F6</code></div></div>
+          <div class="tok"><i style="background:#D2CFC7"></i><div class="meta"><b>封面单墨</b><code>#D2CFC7</code></div></div>
+          <div class="tok"><i style="background:#EFEDE7"></i><div class="meta"><b>书页堆</b><code>#EFEDE7</code></div></div>
+          <div class="tok"><i style="background:#B0A79A"></i><div class="meta"><b>木色·中</b><code>#B0A79A</code></div></div>
+          <div class="tok"><i style="background:#948B80"></i><div class="meta"><b>木色·深</b><code>#948B80</code></div></div>
+          <div class="tok"><i style="background:#D0C9BF"></i><div class="meta"><b>木色·浅</b><code>#D0C9BF</code></div></div>
+          <div class="tok"><i style="background:#EFEFF4"></i><div class="meta"><b>小知识卡底</b><code>#EFEFF4</code></div></div>
+          <div class="tok"><i style="background:#847D9B"></i><div class="meta"><b>小知识描边</b><code>#847D9B</code></div></div>
+          <div class="tok"><i style="background:#F2F1F4"></i><div class="meta"><b>详情背景</b><code>#F2F1F4</code></div></div>
+          <div class="tok"><i style="background:#4B5672"></i><div class="meta"><b>聚焦描边</b><code>#4B5672</code></div></div>
+          <div class="tok"><i style="background:#E4E1DB"></i><div class="meta"><b>分隔线</b><code>#E4E1DB</code></div></div>
+          <div class="tok"><i style="background:#FBFAF7"></i><div class="meta"><b>书内页底</b><code>#FBFAF7</code></div></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>② 书架页（8 本 · 两层）</h3>
+        <div class="mock">
+          <div class="m-shelf-head">
+            <span class="py">rèn zhī xiǎo tú jiàn</span>
+            <span class="zh">认知小图鉴</span>
+            <span class="en">Cognitive Guide</span>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">自然认知</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">植物书</span><span class="s">zhí wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">动物书</span><span class="s">dòng wù shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">昆虫书</span><span class="s">kūn chóng shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">恐龙书</span><span class="s">kǒng lóng shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+          <div class="m-row">
+            <div class="m-row-title">认知启蒙</div>
+            <div class="m-books">
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">字母书</span><span class="s">zì mǔ shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">拼音书</span><span class="s">pīn yīn shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">数字书</span><span class="s">shù zì shū</span></span></div>
+              <div class="m-book"><span class="m-spine"></span><span class="m-cover"><span class="t">颜色书</span><span class="s">yán sè shū</span></span></div>
+            </div>
+            <div class="m-plank"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>③ 书内页（顶栏 + 3×3 卡）</h3>
+        <div class="mock">
+          <div class="m-topbar">
+            <span class="m-back">← 回书架</span>
+            <span class="m-bt">动物书</span>
+            <span class="m-count">共 50 种</span>
+          </div>
+          <div class="m-body">
+            <div class="m-grid">
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小狗</div><div class="n2">xiǎo gǒu</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">小猫</div><div class="n2">xiǎo māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">大象</div><div class="n2">dà xiàng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">老虎</div><div class="n2">lǎo hǔ</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">长颈鹿</div><div class="n2">cháng jǐng lù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">熊猫</div><div class="n2">xióng māo</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">白兔</div><div class="n2">bái tù</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">绵羊</div><div class="n2">mián yáng</div></div>
+              <div class="m-card"><div class="m-thumb"></div><div class="n">斑马</div><div class="n2">bān mǎ</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>④ 详情页（左图右文 + 小知识）</h3>
+        <div class="mock">
+          <div class="m-dtop"><span class="m-back">← 回动物书</span><span class="m-fs">⛶ 全屏</span></div>
+          <div class="m-dbody">
+            <div class="m-photo">写实照片</div>
+            <div class="m-dinfo">
+              <div class="m-dpy">xiǎo gǒu</div>
+              <div class="m-dzh">小狗</div>
+              <div class="m-den">Dog</div>
+              <div class="m-dbuttons"><span class="pill sel">叫声</span><span class="pill">习性</span></div>
+              <p class="m-ddesc">小狗是人类最熟悉的朋友，鼻子很灵，能闻出很多我们闻不到的气味。</p>
+              <div class="m-allusion">
+                <span class="q">“</span>
+                <div class="at">小知识</div>
+                <div class="atext">狗吠深巷中，鸡鸣桑树颠。</div>
+                <div class="asrc">—— 陶渊明《归园田居》</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>⑤ 对比度校验（实测）</h3>
+        <table class="ratio">
+          <thead><tr><th>组合</th><th style="text-align:right">对比度</th><th style="text-align:right">判定</th></tr></thead>
+          <tbody>
+            <tr><td>正文 / 页面底</td><td class="r">11.74</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>正文 / 卡片底</td><td class="r">12.80</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 卡片底</td><td class="r">5.68</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>次级 / 页面底</td><td class="r">5.21</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>白字 / 主色（选中钮）</td><td class="r">4.76</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>主色深 / 卡片底（描边钮）</td><td class="r">7.31</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面纸白</td><td class="r">12.15</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>书名 / 封面单墨</td><td class="r">8.22</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>小知识正文 / 卡底</td><td class="r">11.16</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>聚焦描边 / 页面底</td><td class="r">6.70</td><td class="r"><span class="ok">PASS</span></td></tr>
+            <tr><td>封面单墨 / 纸白（区间 1.4–1.8）</td><td class="r">1.48</td><td class="r"><span class="ok">区间内</span></td></tr>
+            <tr><td>小知识描边 / 卡底（装饰）</td><td class="r">3.40</td><td class="r"><span class="ok">可辨</span></td></tr>
+            <tr><td>木色·中 / 页面底（装饰）</td><td class="r">2.18</td><td class="r"><span class="warn">弱</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- 动画规范 -->
+  <section class="foot-card">
+    <h2>动画规范 — 4 处路由过渡（轻量渐变，不做 3D 翻书）</h2>
+    <p>只动画 <code style="font-family:var(--mono)">opacity</code> 与 <code style="font-family:var(--mono)">transform</code>；动画挂在页面根容器（<code style="font-family:var(--mono)">.bookshelf-page</code> / <code style="font-family:var(--mono)">.book-page</code> / <code style="font-family:var(--mono)">.detail-immersive</code>），列表卡片不逐项入场。</p>
+    <table class="anim">
+      <thead>
+        <tr><th>过渡</th><th>时长</th><th>缓动</th><th>opacity</th><th>scale</th><th>translateY</th><th>标记</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>书架 → 书内页（打开书本）</td>
+          <td>320ms</td>
+          <td><code>cubic-bezier(0.2,0,0,1)</code></td>
+          <td>0 → 1</td><td>0.97 → 1</td><td>+10px → 0（自下轻抬）</td>
+          <td><code>data-route-enter="shelf-to-book"</code></td>
+        </tr>
+        <tr>
+          <td>书内页 → 书架（关闭书本）</td>
+          <td>260ms</td>
+          <td><code>cubic-bezier(0.4,0,1,1)</code></td>
+          <td>1 → 0</td><td>1 → 0.98</td><td>0 → -8px（向上收拢）</td>
+          <td><code>data-route-exit="book-to-shelf"</code></td>
+        </tr>
+        <tr>
+          <td>书内页 → 详情页（翻开一页）</td>
+          <td>340ms</td>
+          <td><code>cubic-bezier(0.2,0,0,1)</code></td>
+          <td>0 → 1</td><td>0.98 → 1</td><td>+12px → 0</td>
+          <td><code>data-route-enter="book-to-detail"</code></td>
+        </tr>
+        <tr>
+          <td>详情页 → 书内页（合上返回）</td>
+          <td>240ms</td>
+          <td><code>cubic-bezier(0.4,0,1,1)</code></td>
+          <td>1 → 0</td><td>1 → 0.99</td><td>0 → -6px</td>
+          <td><code>data-route-exit="detail-to-book"</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      降级：<code style="font-family:var(--mono)">@media (prefers-reduced-motion: reduce)</code> 下取消全部位移与缩放（<code style="font-family:var(--mono)">transform: none</code>），
+      入场仅保留 120ms 纯 opacity 淡入（防闪烁），退出即时；卡片 hover 的 <code style="font-family:var(--mono)">translateY(-4px)</code> 同时取消，只保留阴影 / 颜色变化。
+    </p>
+  </section>
+
+  <section class="reco">
+    <h2>UI 推荐：方案 A（温润纸感）</h2>
+    <p>产品是给 3~6 岁的「图画书式图鉴」，书架 + 8 本书 + 书页 + 小知识卡，本质是把纸质绘本的体验搬到 iPad 上。A 的米纸底 + 深棕墨 + 一处柔橙朱砂，最贴合这个隐喻，也最容易让「木色书架」说服人：木色与主色同属暖棕色系家族，不再是与绿、黄并列的第三套色系。</p>
+    <p>B（清新自然）风险最低、与既有绿色语义衔接最顺，但木色被弱化后，「书架」的实体感会一起变弱；C（柔雾莫兰迪）最耐看，但低饱和雾蓝对幼儿的注意力牵引最弱，且与「图画书」气质偏离最远。</p>
+    <p class="note" style="margin-top:12px">三套方案全部满足正文 ≥4.5:1、大标题 ≥3:1、封面墨/纸区间 1.4–1.8:1 红线；选定后由 PO 于 P19-1 冻结，UI 再出 U19-2 定稿章节。</p>
+  </section>
+
+  <p class="note">
+    说明：本页为纯 CSS 示意，未引用任何外部资源与网络图片；书本、封面花纹、卡片、详情照片位均为 div 绘制，仅用于比较色板关系，不代表最终像素还原。
+    对比度按 WCAG 2.x 相对亮度公式（sRGB 线性化，0.2126R+0.7152G+0.0722B）逐对实测。
+  </p>
+
+</div>
+</body>
+</html>

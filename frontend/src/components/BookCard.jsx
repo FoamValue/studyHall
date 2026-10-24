@@ -11,6 +11,7 @@ export default function BookCard({ book, count }) {
     <Link
       className="book"
       to={`/books/${book.code}`}
+      state={{ from: 'shelf' }}
       aria-label={count == null ? title : `${title}，共 ${count} 种`}
     >
       <span className="book-spine" aria-hidden="true" />

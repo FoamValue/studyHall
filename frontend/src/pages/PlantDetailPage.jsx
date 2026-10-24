@@ -31,6 +31,12 @@ export default function PlantDetailPage() {
   const containerRef = useRef(null);
   const touchStart = useRef(null);
 
+  // Sprint 19（M19-1）：入场动画方向只在「首次进入」定一次（从书内页点卡片 = 翻开一页）；
+  // 详情页内「上一株 / 下一株」是同组件换 id，不得因此重播动画，故用 state 惰性初始化冻结。
+  const [routeEnter] = useState(() =>
+    location.state?.from === 'book' ? 'book-to-detail' : undefined
+  );
+
   const [list, setList] = useState(() => location.state?.list || null);
   const [plant, setPlant] = useState(null);
   const [part, setPart] = useState(null);
@@ -206,7 +212,9 @@ export default function PlantDetailPage() {
       <main className="page">
         <p className="state-tip">这株植物还没准备好哦</p>
         <p style={{ textAlign: 'center' }}>
-          <Link className="back-btn" to={bookPath}>回{bookTitle}看看</Link>
+          <Link className="back-btn" to={bookPath} state={{ from: 'detail', restoreScroll: true }}>
+            回{bookTitle}看看
+          </Link>
         </p>
       </main>
     );
@@ -234,6 +242,7 @@ export default function PlantDetailPage() {
     <main
       ref={containerRef}
       className="detail-immersive"
+      data-route-enter={routeEnter}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
@@ -241,7 +250,7 @@ export default function PlantDetailPage() {
         <Link
           className="back-btn"
           to={bookPath}
-          state={{ restoreScroll: true }}
+          state={{ from: 'detail', restoreScroll: true }}
           onClick={stop}
         >
           ← 回{bookTitle}

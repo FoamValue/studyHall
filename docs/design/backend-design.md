@@ -433,3 +433,14 @@ scripts/import-plants.mjs    # node:22 执行；读 content/ → upsert Mongo �
 - **分类数断言**（Sprint 15 TC-145）：`/api/categories` 由 **8 → 10**，追加 number（数字）/ color（颜色）码与 section 断言。
 - 新增：TC-156 `?section=number` = 21 且每条 `parts` = `["number"]`、首 `number-0` 末 `number-20`；TC-157 `?section=color` = 11 且每条 `parts` = `["color"]`、首 `color-black` 末 `color-grey`；TC-158 数字/颜色条目保留三语+音标。
 - 既有 24 用例作为回归基线，退出码必须为 0。
+
+# 后端开发设计文章 — Sprint 19（增量：v3.0 全站换肤 + 过渡动画，产品代码零改动）
+
+> 本迭代为**纯前端样式与动效迭代**（PRD §23 / 迭代需求 Q1~Q10）。后端**产品代码、接口契约、数据模型、语料、音频、图片资产口径全部零改动**。
+
+## S19-1. 零改动确认（J）
+- 接口：`GET /api/categories`、`GET /api/plants?section=`、`GET /api/plants/{id}` 请求/响应结构不变（验收 84 不回归，E2E TC-170 已覆盖字段与计数断言）。
+- 数据：Mongo 440 条目 / 8 分类不变；`import_log` 只随两次幂等导入增长（+880），无语料写入变更。
+- 缓存：Redis `sh:*` TTL 与 key 结构不变；排序仍 `Sort.by(ASC,"sort","id")`。
+- 资产：仅 `/images/covers/{code}.jpg` 8 张**封面花纹**按新墨色重出（`scripts/generate-covers.mjs` 的 `PAPER`/`INK` 两常量），属前端静态资源，不经后端导入通道；条目插图 440 张与音频 1028 个不动。
+- 结论：后端无需任何代码或配置调整；`mvn test` **28 用例**作为零改动回归基线，退出码必须为 0。

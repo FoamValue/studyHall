@@ -21,7 +21,7 @@ export default function PlantCard({ plant, list, section }) {
     <Link
       className="plant-card"
       to={`/plants/${plant.id}`}
-      state={{ section, list }}
+      state={{ section, list, from: 'book' }}
       onClick={rememberScroll}
     >
       <img className="plant-card-img" src={plant.coverImage} alt={plant.name.zh} loading="lazy" />

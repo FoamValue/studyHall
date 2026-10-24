@@ -1057,6 +1057,121 @@ export async function gotoBook(page, code) {
 3. **封面书名口径**：契约只说「书名（中）」。本文档定案封面用 `category.nameZh`（「植物」），书内页 h1 用 `SECTION_BOOK_TITLE`（「植物书」），理由是拼音/英文与 `nameZh` 同源。若 PO 要求封面即显示「植物书」，改一行即可。
 4. **`.section-nav` 样式**：契约未写其去留。本文档决定「保留 CSS、移除组件」，避免样式源断言与回滚面扩大；确认后由 UI 在 U18-x 中标注为「废弃待清理」。
 
+---
+
+# 前端开发设计文章 — Sprint 19（增量：v3.0 全站换肤 + 4 处路由过渡动画）
+
+| 项 | 内容 |
+|---|---|
+| 依据 | `docs/product/iteration-19-requirements.md`（Q1~Q10 / 验收 87~93）、`docs/design/ui-style-guide.md` **U19-1 ~ U19-6**、`docs/iterations/sprint-19.md` §二（M19-1~M19-5） |
+| 选定方案 | **P19-1 方案 A「温润纸感」**（主色 `#B45B3E` / 主色深 `#8A3E27`）；严格执行 A 列，未混入 B / C 任一色值 |
+| 类型 | 纯前端样式 + 动效；后端 / 语料 / 路由结构 / 接口契约零改动 |
+
+## S19-1. 换肤落地清单（旧 → 新，A 列）
+
+`frontend/src/styles.css` 两处 `:root` 全部取值替换（规则体一律改引用变量，不动任何尺寸 / 字号 / 圆角 / 间距 / 列数 / 热区）。
+
+| 用途 | 变量 | 旧值 | 新值（A） |
+|---|---|---|---|
+| 页面底 | `--color-page-bg` | `#fffdf5` | `#faf5ec` |
+| 卡片底 | `--color-card-bg` | `#ffffff` | `#fffdf8` |
+| 文字主 | `--color-text` | `#3e2723` | `#3a2a22` |
+| 文字次 | `--color-text-light` | `#6d4c41` | `#6f5443` |
+| 主色 | `--color-primary` | `#4caf50` | `#b45b3e` |
+| 主色深 | `--color-primary-dark` | `#388e3c` | `#8a3e27` |
+| 小知识卡底 | `--color-accent-bg` | `#fff8dc` | `#fbf0de` |
+| 小知识卡描边 | `--color-accent-border` | `#f9a825` | `#b87a3d` |
+| 书脊木色·中 | `--shelf-wood` | `#c9a876` | `#a87f55` |
+| 书脊木色·深 | `--shelf-wood-dark` | `#a8825a` | `#8a6a47` |
+| 书脊木色·浅 | `--shelf-wood-light` | `#e3cba5` | `#d3b48d` |
+| 封面纸白 | `--book-paper` | `#fdfbf6` | `#fcf7ed` |
+| 封面单墨 | `--book-ink` | `#d9c9ae` | `#d8c3a2` |
+| 书页堆 | `--book-stack` | `#f3ebdd` | `#f2e8d8` |
+| 书内页底 | `--book-page-bg` | `#fffdf9` | `#fffbf3` |
+| **新增** 详情背景 | `--color-detail-bg` | （复用 page-bg） | `#f6eee2` |
+| **新增** 聚焦描边 | `--color-focus` | （复用 primary-dark） | `#8a3e27` |
+| **新增** 分隔线 | `--color-divider` | （散落硬编码） | `#e7dac6` |
+| **新增** 阴影三元组 | `--shadow-rgb` | （硬编码 `62, 39, 35`） | `58, 42, 34` |
+
+- `.bookshelf-page` 显式补 `background: var(--color-page-bg)`（此前靠 `body` 继承）；`.detail-immersive` 底色 `var(--color-page-bg)` → **`var(--color-detail-bg)`**；`.book-page-body` 维持 `var(--book-page-bg)`。
+- 描边：`.back-btn` / `.filter-btn` / `.speak-btn` 沿用 `var(--color-primary-dark)`；`.book:focus-visible` 的 `outline` 由 primary-dark 改走 **`var(--color-focus)`**（U19-3 第 6 条：禁止用主色作聚焦描边）。
+- antd 主题（`src/main.jsx`）：`colorPrimary '#4CAF50' → '#B45B3E'`，同步 `colorText '#3A2A22'`、`colorBgContainer '#FFFDF8'`，`borderRadius` 仍 16（避免 Spin 等组件残留旧棕 / 纯白与米纸底不一致）。
+
+## S19-2. 除 token 外的硬编码色替换（5 处）
+
+| 位置 | 旧硬编码 | 新写法 |
+|---|---|---|
+| `.book-pages` 书口条纹 | `#fffdf5` / `#e8e0d2` | `var(--book-page-bg)` / `var(--color-divider)` |
+| 全站阴影（`.plant-card` / `.book` / `.shelf-plank` / `.book-spine` / `.book-cover` / `.book-page-body`，共 10 处） | `rgba(62, 39, 35, α)` | **统一** `rgba(var(--shadow-rgb), α)`，α 原值不变（全站只用这一种写法，未混用 `rgb(... / ...%)` 语法） |
+| `.shelf-row` 行背景渐变 | `rgba(227, 203, 165, 0.28)` | `color-mix(in srgb, var(--shelf-wood-light) 22%, transparent)`（终点 `transparent`），alpha 落 U19-3 的 22%±4% |
+| `.book-spine` 沟槽 / `inset` 阴影 | `rgba(62, 39, 35, 0.28 / 0.18)` | `rgba(var(--shadow-rgb), 0.28 / 0.18)` |
+| `.book:focus-visible` 描边 | `var(--color-primary-dark)` | `var(--color-focus)` |
+
+- 保留的白：`.filter-btn.selected` / `.speak-btn.is-speaking` 的 `color: #fff`、`.nav-btn` 的背景/文字阴影 `rgba(255,255,255,0.85)`（M19-4 的 `#fff` 豁免项）。
+- **不动的语义色**：`components/PartIcon.jsx` 的部位小图标（花/叶/果）是内容语义插画色（粉/绿/橙），不属主题 token 族，保持原样；该组件目前仅被已无入口的 `CategoryFilter` 与「非单图」`PartSwitcher` 分支引用（Sprint 17 起所有条目均为单键单图）。
+
+## S19-3. 4 处路由过渡：实现方式与方向映射
+
+**采用「目标页入场 keyframes」方案**（U19-5 明文允许的降级路径）：4 个方向全部由**目标页**的入场动画承载，不保留上一屏做退场。方向由页面根容器上的 `data-route-enter` 标记区分，标记值由 `useLocation().state?.from` 派生。
+
+| # | 过渡 | 目标页 / 标记 | 时长 | 曲线 | 入场参数 |
+|---|---|---|---|---|---|
+| 1 | 书架 → 书内页（打开书本） | `BookPage` / `shelf-to-book` | 320ms | `cubic-bezier(0.2, 0, 0, 1)` | `opacity 0→1`，`translateY(10px)→0`，`scale(0.97)→1` |
+| 2 | 书内页 → 书架（关闭书本） | `BookShelfPage` / `book-to-shelf` | 260ms | `cubic-bezier(0.4, 0, 1, 1)` | `opacity 0→1`，`translateY(-8px)→0`，`scale(0.98)→1`（取 U19-5 #2 退场参数反向） |
+| 3 | 书内页 → 详情页（翻开一页） | `PlantDetailPage` / `book-to-detail` | 340ms | `cubic-bezier(0.2, 0, 0, 1)` | `opacity 0→1`，`translateY(12px)→0`，`scale(0.98)→1` |
+| 4 | 详情页 → 书内页（合上返回） | `BookPage` / `detail-to-book` | 240ms | `cubic-bezier(0.4, 0, 1, 1)` | `opacity 0→1`，`translateY(-6px)→0`，`scale(0.99)→1`（取 U19-5 #4 退场参数反向） |
+
+**标记派生与 `state.from`（M19-1 允许的最小追加：只在既有根容器加 `data-*`，不改 DOM 结构 / 层级 / 文案 / 尺寸）**
+
+| 文件 | 改动 |
+|---|---|
+| `pages/BookShelfPage.jsx` | `<main className="bookshelf-page" data-route-enter={from==='book' ? 'book-to-shelf' : undefined}>`；其余（无 state / 刷新 / 直接输 URL）不挂 |
+| `pages/BookPage.jsx` | `BookView` 根容器：`from==='shelf' → 'shelf-to-book'`、`from==='detail' → 'detail-to-book'`，其余不挂；「← 回书架」与未知 code 兜底链接补 `state={{ from: 'book' }}` |
+| `pages/PlantDetailPage.jsx` | 根容器 `data-route-enter` 由 `useState(() => from === 'book' ? 'book-to-detail' : undefined)` **首次进入冻结**：详情页内「上一株 / 下一株」为同组件换 id（`navigate` 只带 `{section, list}`），标记不变即**不重播**；返回按钮与 40401 兜底补 `state={{ from: 'detail', restoreScroll: true }}` |
+| `components/BookCard.jsx` | 链接 → `/books/{code}` 补 `state={{ from: 'shelf' }}`（不改 `to`，既有 `href` 断言不受影响） |
+| `components/PlantCard.jsx` | 链接 → `/plants/{id}` 的 state 由 `{ section, list }` → `{ section, list, from: 'book' }`（邻居列表与原滚动记忆逻辑不变） |
+| `pages/BookPage.jsx` 滚动恢复 | 仍以 `location.state?.restoreScroll` 判定「从详情返回」，`from` 仅用于动画方向，两者互不替代 |
+
+- **containing block 红线**：动画只挂在页面根容器自身（`.bookshelf-page` / `.page.book-page` / `.detail-immersive`），**未在 `#root` / `<main>` 外层 / `App.jsx` 任何包装上加 `transform`**，`.detail-immersive` 的 `position: fixed` 与「整屏不滚动」（U6-1）不受影响；无常驻 `will-change`，keyframes 的 `to` 帧为 `transform: none`，动画结束无残留层。
+- 只动画 `opacity` / `transform`，`animation-delay: 0ms`、单次 `both`；不对 `img` / `.plant-grid` / 卡片加动画。
+
+**为何不用 View Transitions / 不引入动画库**：`document.startViewTransition` 会在快照期捕获「异步取数前的空列表 / Spin」画面，切页瞬间出现旧屏空态闪现；且书内页从缓存命中到列表渲染有 1~2 帧差，快照边界不可控。纯 CSS 入场只需给目标页根容器一个属性，无 API 特性检测、无旧屏留存、无额外 JS，`prefers-reduced-motion` 也能由媒体查询整体收口。当前 `package.json` 无任何动画依赖，本迭代未新增。
+
+**与 U19-5 的差异说明（按允许路径记录）**：U19-5 的 #2 / #4 原为「上一屏退场」（`data-route-exit`），需保留旧屏 240~260ms；本迭代判定保留旧屏成本高（需 `<RouteFade>` 记录 previous location 或 View Transitions），改以**目标页入场**承载这 2 个方向——参数取该表 exit 行的时长 / 曲线 / 位移 / 缩放反向值（260ms / -8px→0 / 0.98→1，240ms / -6px→0 / 0.99→1），验收 90 / 91「200~400ms 渐变、无跳动闪烁」口径不变。因此产物中**不存在 `data-route-exit` 选择器**（reduced-motion 段仍保留其兜底规则，供后续迭代使用）。
+
+## S19-4. `prefers-reduced-motion: reduce` 降级（U19-6）
+
+`styles.css` 末尾新增 `@media (prefers-reduced-motion: reduce)`：
+
+- `[data-route-enter]` → `sh-fade 120ms linear both` + `transform: none !important`（只留纯淡入，取消全部位移/缩放）；`[data-route-exit]` → `animation: none !important`（0ms 直切，本轮无使用）。
+- `.book` / `.plant-card` / `.speak-btn` / `.filter-btn` / `.nav-btn` `transition: none`；`.book:hover/:focus-visible`、`.plant-card:hover/:focus-visible`、`.speak-btn:active` 一律 `transform: none`。
+- `* { scroll-behavior: auto !important }`，保证返回书架 / 回列表的滚动恢复不受动画干扰。
+- 降级只影响动效，不改布局尺寸、热区、对比度与配色 token。
+
+## S19-5. 封面 tile 重出（S19-7 / U19-4）
+
+- `scripts/generate-covers.mjs` 仅改两个常量：`INK '#D9C9AE' → '#D8C3A2'`、`PAPER '#FDFBF6' → '#FCF7ED'`；`SIZE=1200`、`CENTERS`（x=377/823、y=300/900）、`SCALES`、`MOTIFS`、`cjpeg -quality 82 -progressive` 全部未动。
+- 运行方式沿用脚本头部注释：仓库根执行 `node scripts/generate-covers.mjs`（依赖根 `node_modules/@playwright/test` 的 chromium + 本机 `cjpeg`）。
+- 重出结果：**8 张**同名同路径 `frontend/public/images/covers/{plant,animal,insect,dinosaur,letter,pinyin,number,color}.jpg`，全部 `1200×1200` **progressive**，合计 **208KB**（基线 204KB，同量级）。
+- 墨迹率：脚本的墨迹判定基准色仍是旧纸白 `253/251/246`（本次按「只改两常量」未动该基准），新纸白与该基准仅差 14（< 阈值 18），判定口径不变；按 4 母题折算单母题墨迹率 0.38%~4.93%，仍满足 U18-6 的「单母题 ≤5%」。
+
+## S19-6. 自检结果（与 QA 门禁衔接）
+
+| 项 | 结果 |
+|---|---|
+| `npx vitest run` | **81/81 全绿**，3 文件（BookShelfPage 9 / BookPage 20 / PlantDetailPage 52）；**零测试改动**（配色与 `data-*` 追加未触发任何既有断言） |
+| `npx vite build` | 退出码 0（1486 modules，CSS 13.72 kB / JS 280.84 kB） |
+| 旧色清零 grep（`4CAF50 / 388E3C / F9A825 / FFF8DC / C9A876 / A8825A / E3CBA5 / D9C9AE / FDFBF6 / 62, 39, 35`） | `frontend/src` + `frontend/index.html` **零命中** |
+| `styles.css` 色值收敛 | 除 `:root` 的 19 个 token 定义与 `#fff` / `rgba(255,255,255,α)` 豁免项外，规则体内无 `#` 硬编码色（M19-4） |
+
+- 受影响断言评估：`TC-177` 仍命中 `.book-cover` 的 `background-color: var(--book-paper)`（底色单一）；`TC-178` 仍命中 base `.book:hover, .book:focus-visible { translateY(-4px) }`（reduced-motion 覆盖块在其后，不干扰首个匹配）；`TC-53/TC-54/TC-55` 的 `.detail-immersive` 首个块仍为 `position: fixed; inset: 0`，无 `100dvh`。
+- 新增断言建议（交 QA S19-13）：`:root` 新 token 与旧主色缺失、`[data-route-enter='…']` 四条选择器的 `animation-name` / 时长落在 200~400ms、`@media (prefers-reduced-motion: reduce)` 存在且入场降为 120ms、E2E 加 `use.reducedMotion: 'reduce'` 后 4 处过渡直切可交互。
+
+## S19-7. 「明确不做」
+
+不改 JSX 结构 / 组件层级 / 类名 / 文案 / 路由与 `to`；不改任何尺寸、字号、圆角、内边距、列数、热区；不改后端、语料、图片条目、音频；不引入动画库、**不使用 View Transitions**、不新增依赖；未在 `#root` 及外层加 `transform`。
+
+
 
 
 
