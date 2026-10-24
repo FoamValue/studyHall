@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 10 新增 E2E（TC-109 ~ TC-114，编号依 QA 手册 docs/qa/sprint-10-test-cases.md）=====
-// 覆盖：EX-6 首页首屏 + 滚动增量加载 / 「共 N 种」总量口径 / EX-4 小知识可见标题 / EX-5 单图横屏主图占比 / 植物版式不回归
+// 覆盖：EX-6 书内首屏 + 滚动增量加载 / 「共 N 种」总量口径 / EX-4 小知识可见标题 / EX-5 单图横屏主图占比 / 植物版式不回归
 
-// TC-109 植物板块首屏不满 204，滚动后累计全量 204，总量提示「共 204 种」
+// TC-109 植物书首屏不满 204，滚动后累计全量 204，总量提示「共 204 种」
 test('TC-109 植物增量加载至 204 且总量提示', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
 
   // 首屏卡片数明显少于全量（增量加载生效）
@@ -76,11 +76,8 @@ test('TC-113 植物详情单图版式（Sprint 17）', async ({ page }) => {
 // TC-114 板块总量提示：动物 / 昆虫 / 恐龙均「共 50 种」且滚动加载后各渲染 50 张卡
 // （Sprint 14 内容扩容：板块由 30 增至 50，断言同步更新）
 test('TC-114 板块总量提示「共 50 种」', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('group', { name: '板块导航' });
-
-  for (const label of ['动物', '昆虫', '恐龙']) {
-    await nav.getByRole('button', { name: label }).click();
+  for (const code of ['animal', 'insect', 'dinosaur']) {
+    await gotoBook(page, code);
     await expect(page.locator('.list-count')).toHaveText('共 50 种');
     await loadAllCards(page, 50);
   }

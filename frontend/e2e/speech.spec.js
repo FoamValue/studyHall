@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 9：详情页名称预生成音频（.m4a）播放 =====
 
 // 进入植物板块第一张卡片详情，返回该条目中文名
 async function enterFirstPlantDetail(page) {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   const cards = page.locator('.plant-card');
   await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
@@ -62,6 +62,6 @@ test('TC-47 点喇叭播放预生成音频，离开详情页时暂停', async ({
 
   // 播放中离开详情页 → 立即停止（pause）
   const pauseBefore = await page.evaluate(() => window.__pauseCount);
-  await page.getByRole('link', { name: /回花园/ }).click();
+  await page.getByRole('link', { name: /回植物书/ }).click();
   await expect.poll(() => page.evaluate(() => window.__pauseCount)).toBeGreaterThan(pauseBefore);
 });

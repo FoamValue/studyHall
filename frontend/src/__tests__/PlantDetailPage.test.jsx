@@ -381,7 +381,8 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
 
     expect(await screen.findByAltText('向日葵花')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '全屏' })).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /回花园/ })).toBeInTheDocument();
+    // Sprint 18：返回文案改为「← 回植物书」
+    expect(screen.getByRole('link', { name: /回植物书/ })).toBeInTheDocument();
     // Sprint 17：单图模式无部位切换
     expect(screen.queryByRole('tab')).not.toBeInTheDocument();
   });
@@ -399,11 +400,11 @@ describe('PlantDetailPage 连续浏览（Sprint 4：TC-28 ~ TC-34）', () => {
     expect(requestFullscreen).toHaveBeenCalledTimes(1);
   });
 
-  it('TC-33 沉浸式详情保留「← 回花园」入口并指向首页', async () => {
+  it('TC-33 沉浸式详情保留「← 回植物书」入口并指向该书', async () => {
     renderDetail('sunflower-flower', { category: 'all', list: [card(SUNFLOWER)] });
 
-    const back = await screen.findByRole('link', { name: /回花园/ });
-    expect(back).toHaveAttribute('href', '/');
+    const back = await screen.findByRole('link', { name: /回植物书/ });
+    expect(back).toHaveAttribute('href', '/books/plant');
   });
 
   it('TC-33b 键盘 → 换植物（ArrowRight）', async () => {
@@ -550,7 +551,7 @@ describe('PlantDetailPage 名称预生成音频播放（Sprint 9：TC-41 ~ TC-45
     expect(screen.queryByRole('button', { name: '朗读中文名' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '朗读英文名' })).not.toBeInTheDocument();
     expect(speak).not.toHaveBeenCalled(); // 绝不回退语音合成
-    expect(screen.getByRole('link', { name: /回花园/ })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /回植物书/ })).toBeInTheDocument();
   });
 
   it('TC-45d 有英文名但缺 audioEn 时不渲染英文喇叭，中文喇叭仍在', async () => {
@@ -824,36 +825,37 @@ describe('小知识可见标题与单图横屏版式（Sprint 10：TC-101 ~ TC-1
   });
 });
 
-describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Sprint 12：TC-119 ~ TC-122）', () => {
-  it('TC-119 返回文案按板块派生（植物/动物/昆虫/恐龙），href 仍为 /', async () => {
+describe('PlantDetailPage 返回文案按板块派生 + 横屏拼音字号（Sprint 12：TC-119 ~ TC-122；Sprint 18 文案改「回{板块名}书」）', () => {
+  it('TC-119 返回文案按板块派生（植物/动物/昆虫/恐龙）且指向对应书', async () => {
     const cases = [
-      ['plant', /回花园/],
-      ['animal', /回动物世界/],
-      ['insect', /回昆虫角/],
-      ['dinosaur', /回恐龙园/],
+      ['plant', /回植物书/, '/books/plant'],
+      ['animal', /回动物书/, '/books/animal'],
+      ['insect', /回昆虫书/, '/books/insect'],
+      ['dinosaur', /回恐龙书/, '/books/dinosaur'],
     ];
-    for (const [section, name] of cases) {
+    for (const [section, name, href] of cases) {
       const { unmount } = renderDetail('sunflower-flower', { section, category: 'all', list: [card(SUNFLOWER)] });
       const back = await screen.findByRole('link', { name });
-      expect(back).toHaveAttribute('href', '/');
+      expect(back).toHaveAttribute('href', href);
       // 反向校验：非本板块文案不得出现
       unmount();
     }
   });
 
-  it('TC-120 异常兜底文案按板块派生（动物 → 回动物世界看看）', async () => {
+  it('TC-120 异常兜底文案按板块派生（动物 → 回动物书看看）', async () => {
     getPlant.mockImplementation(() =>
       Promise.reject(Object.assign(new Error('not found'), { code: 40401 }))
     );
     renderDetail('__not_exist__', { section: 'animal', category: 'all' });
 
-    const back = await screen.findByRole('link', { name: /回动物世界看看/ });
-    expect(back).toHaveAttribute('href', '/');
+    const back = await screen.findByRole('link', { name: /回动物书看看/ });
+    expect(back).toHaveAttribute('href', '/books/animal');
   });
 
-  it('TC-121 未知 section 回退「花园」', async () => {
+  it('TC-121 未知 section 回退植物书', async () => {
     renderDetail('sunflower-flower', { section: 'xunknown', category: 'all', list: [card(SUNFLOWER)] });
-    expect(await screen.findByRole('link', { name: /回花园/ })).toBeInTheDocument();
+    const back = await screen.findByRole('link', { name: /回植物书/ });
+    expect(back).toHaveAttribute('href', '/books/plant');
   });
 
   it('TC-122 EX-8 横屏详情拼音字号 ≥20px（样式源断言）', () => {
@@ -897,5 +899,24 @@ describe('数字 / 颜色单图详情分支（Sprint 16：TC-159 / TC-160）', (
     expect(screen.queryByRole('tab')).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: '朗读中文名' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '朗读英文名' })).toBeInTheDocument();
+  });
+});
+
+// Sprint 18：原 HomePage.test.jsx 中与页面无关的样式断言迁入（随详情页样式一起保护）
+describe('触控目标与部位按钮字号（TC-25 / TC-124 迁入）', () => {
+  it('TC-25 样式表 .filter-btn 的 min-height ≥ 44px（部位/板块按钮共用）', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    const block = css.match(/\.filter-btn\s*\{[^}]*\}/s)[0];
+    const minHeight = Number(block.match(/min-height:\s*(\d+)px/)[1]);
+    expect(minHeight).toBeGreaterThanOrEqual(44);
+  });
+
+  it('TC-124 EX-9 不误伤详情部位按钮：.filter-btn 基础块仍 20px', () => {
+    const css = readFileSync('src/styles.css', 'utf-8');
+    // 基础块（不含后代选择器）字号保持 20px
+    const base = css.match(/\.filter-btn\s*\{[^}]*\}/s)[0];
+    expect(Number(base.match(/font-size:\s*(\d+)px/)[1])).toBe(20);
+    // 不存在 .part-switcher .filter-btn 的字号覆盖规则（保持继承基础 20px）
+    expect(css).not.toMatch(/\.part-switcher \.filter-btn\s*\{[^}]*font-size/s);
   });
 });

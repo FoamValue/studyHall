@@ -713,6 +713,350 @@ export const PART_LABELS = { flower:'花', leaf:'叶', fruit:'果', animal:'动�
 - **新增** `e2e/sprint16.spec.js`：TC-148（数字板块 21 卡 + 首 `number-0` 末 `number-20` + 「共 21 种」）、TC-149（颜色板块 11 卡 + 首 `color-black` 末 `color-grey` + 「共 11 种」）、TC-150（数字详情 `number-1` 单图分支、无 `[role=tab]`、名称含中文/拼音/英文行、中英喇叭各一）、TC-151（颜色详情 `color-red` 单图分支）、TC-152（返回文案「← 回数字屋」「← 回颜色屋」）、TC-153（`/audio/number-1-zh.m4a` + `/audio/number-1-en.m4a` + `/audio/color-red-zh.m4a` 请求契约）、TC-154（数字/颜色 32 图 HTTP 200）、TC-155（数字/颜色 64 音频 HTTP 200）。
 - 既有全部用例全量回归。
 
+---
+
+# 前端开发设计文章 — Sprint 18（增量：v2.9 书本集合：书架首页 + `/books/{code}` 书内页）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | R |
+| 日期 | 2026-10-24 |
+| 依据 | docs/product/iteration-18-requirements.md（Q1~Q14 冻结、验收 76~86）、docs/iterations/sprint-18.md §二 实现契约、docs/design/ui-style-guide.md（U18-x 由 UI 出规范，类名以 §2.1 契约为准） |
+| 范围 | 前端 IA 重构 + 样式 + 8 张封面资产接入 + 测试迁移；**不改**后端接口签名/响应结构、内容语料、详情页版式与字号 |
+
+## S18-0. 总体原则与「明确不做」
+
+- **迁移而非复制**：`frontend/src/pages/HomePage.jsx` **删除**，其列表逻辑（`PAGE_SIZE`、`plants`、`visibleCount`、哨兵 IO、滚动记忆、pendingScroll 恢复）**整体搬入** `frontend/src/pages/BookPage.jsx`。全仓不允许存在两份列表逻辑：不保留 `HomePage.jsx` 空壳、不做 `HomePage → BookPage` 的 re-export 别名、不保留 `import HomePage from '../pages/HomePage'`。
+- **不做**（避免虚假路径 / 重复实现）：
+  - 不新增 `/books` 索引路由、不新增 `*` 通配路由（未知 code 在 `BookPage` 内部兜底，不引入第二套 404 页面）。
+  - 不做书内真·翻页 / 章节目录 / 抽书翻书动画（Q2、Q7、Q9 冻结）。
+  - 不把 `visibleCount` / 滚动位置写进 URL query（书内页 URL 只有 `:code`）。
+  - 不给 8 本书硬编码一份 `BOOKS` 数组（书单唯一来源 `GET /api/categories`，见 S18-3）。
+  - 不保留旧滚动键 `sh:homeScroll` / `sh:homeVisibleCount` 的读写兼容层（新旧并存必然串味，一次性失效可接受）。
+  - 不删除 `CategoryFilter.jsx`（Sprint 17 起已无引用，属遗留死代码，清理不在本迭代范围，记入技术债）。
+  - 不改 `api/client.js` 的既有导出签名（`getPlantsBySection` 仍被 `bookCache` 复用；`getPlants` 已无调用方但保持不动）。
+
+## S18-1. 板块常量重构（`components/SectionNav.jsx`）
+
+**文件**：`frontend/src/components/SectionNav.jsx`（**保留文件名**，内容改为纯常量模块；改名另立事项，本迭代不做，以减少 diff 与 import 路径波动）。
+
+**改动**：
+1. `SECTIONS` 每项由 `{code,label,group}` 扩为 `{code,label,group,cover}`，`cover` 由统一模板生成，避免 8 处手写路径：
+```js
+export const COVER_DIR = '/images/covers/';
+export const coverPath = (code) => `${COVER_DIR}${code}.jpg`;
+
+export const SECTIONS = [
+  { code: 'plant',    label: '植物',     group: 'nature',        cover: coverPath('plant') },
+  { code: 'animal',   label: '动物',     group: 'nature',        cover: coverPath('animal') },
+  { code: 'insect',   label: '昆虫',     group: 'nature',        cover: coverPath('insect') },
+  { code: 'dinosaur', label: '恐龙',     group: 'nature',        cover: coverPath('dinosaur') },
+  { code: 'letter',   label: '英文字母', group: 'enlightenment', cover: coverPath('letter') },
+  { code: 'pinyin',   label: '汉语拼音', group: 'enlightenment', cover: coverPath('pinyin') },
+  { code: 'number',   label: '数字',     group: 'enlightenment', cover: coverPath('number') },
+  { code: 'color',    label: '颜色',     group: 'enlightenment', cover: coverPath('color') },
+];
+
+// 书内页标题 + 详情页返回文案的唯一来源（Sprint 18 取代 PlantDetailPage 内联 SECTION_HOME）
+export const SECTION_BOOK_TITLE = {
+  plant: '植物书', animal: '动物书', insect: '昆虫书', dinosaur: '恐龙书',
+  letter: '英文字母书', pinyin: '汉语拼音书', number: '数字书', color: '颜色书',
+};
+
+// 按 code 反查板块；未知 code 返回 null（统一 null 而非 undefined，调用方一律 if (!section) 判定）
+export const getSection = (code) => SECTIONS.find((s) => s.code === code) || null;
+```
+2. `SECTION_GROUPS` **原样保留**（`key/title/codes`），仍为书架两层的层序与层标题来源。
+3. **移除默认导出组件** `export default function SectionNav(...)`：板块按钮语义由 `/books/{code}` 取代，不再保留任何按钮渲染逻辑。
+
+**受影响 import（全量清单）**：
+
+| 文件 | 现状 | 处理 |
+|---|---|---|
+| `src/pages/HomePage.jsx` | `import SectionNav, { SECTIONS }` | 文件删除（见 S18-5） |
+| `src/pages/BookShelfPage.jsx`（新增） | — | 不 import `SectionNav`，只经 `BookShelf` 取书单 |
+| `src/components/BookShelf.jsx`（新增） | — | `import { SECTION_GROUPS, getSection } from './SectionNav'` |
+| `src/components/BookCard.jsx`（新增） | — | `import { SECTION_BOOK_TITLE } from './SectionNav'`（仅 aria-label / 备用标题用） |
+| `src/pages/BookPage.jsx`（新增） | — | `import { getSection, SECTION_BOOK_TITLE } from '../components/SectionNav'` |
+| `src/pages/PlantDetailPage.jsx` | 无 SectionNav 依赖（本地 `SECTION_HOME` 常量） | 删除本地 `SECTION_HOME`，改 `import { getSection, SECTION_BOOK_TITLE } from '../components/SectionNav'`（见 S18-6） |
+| `src/App.jsx` | `import HomePage` | 改 import `BookShelfPage` / `BookPage`（见 S18-2） |
+| `src/__tests__/HomePage.test.jsx` | 直接测 `HomePage` | 拆分/重写为 `BookShelfPage.test.jsx` + `BookPage.test.jsx`，原文件删除（见 S18-8） |
+| `src/__tests__/PlantDetailPage.test.jsx` | 断言 `回花园 / 回动物世界…` | 断言改为 `回{板块名}书` + `href="/books/{code}"`（见 S18-8） |
+
+**边界**：`getSection` 精确匹配、**不做大小写/别名归一**（`/books/PLANT` 视为未知 → 兜底）；`SECTIONS` 的书写顺序只作兜底，书架实际顺序由 `categories.order` 决定（S18-3）。
+
+**测试配合**：常量模块单测可并入 `BookShelfPage.test.jsx`（断言 8 项 `cover` 形如 `/images/covers/{code}.jpg`、`SECTION_BOOK_TITLE` 8 键齐备、`getSection('unknown') === null`）。
+
+## S18-2. 路由（`App.jsx`）
+
+**文件**：`frontend/src/App.jsx`。
+
+**改动**：三条路由，`/` 只放书架，`/plants/:id` 不动：
+```jsx
+<Routes>
+  <Route path="/" element={<BookShelfPage />} />
+  <Route path="/books/:code" element={<BookPage />} />
+  <Route path="/plants/:id" element={<PlantDetailPage />} />
+</Routes>
+```
+
+**数据结构**：`BookPage` 用 `useParams()` 取 `code`（react-router 已解码），`const section = getSection(code)`：
+
+- `section` 非空 → 正常书内页，标题 `SECTION_BOOK_TITLE[code]`，列表 `fetchBook(code)`。
+- `section` 为空 → **早退兜底 UI**（不进入列表分支）：`「这本书还在路上哦」` + `<Link className="back-btn" to="/">回书架</Link>`。**不发起** `/api/plants?section=` 请求（避免后端 40001 弹错）、**不读** sessionStorage、**不**建 IO 哨兵。
+
+**边界**：兜底 UI 复用 `.state-tip` 排版，不新增页面级错误页组件；`/books/`（缺 code）不匹配该路由 → 落到 React Router 默认 404 空页（与现状一致，本迭代不补，避免新增全站 404 页）；前端不做 `/books/{code}` 与 `/plants/{id}` 之间的互相 redirect。
+
+**测试配合**：单测断言「未知 code 不触发任何 `fetch` 且文案/href 正确」；E2E 验收 83（`/books/unknown` 不白屏、`回书架` 可点）。
+
+## S18-3. 书架数据流（`BookShelfPage.jsx` + `BookShelf.jsx` + `BookCard.jsx`）
+
+**文件**：
+- `frontend/src/pages/BookShelfPage.jsx`（新增）：站头三行（`.site-title-pinyin` `rèn zhī xiǎo tú jiàn` / `.site-title-zh` `认知小图鉴` / `.site-title-en` `Cognitive Guide`，与 HomePage 逐字一致）+ `<BookShelf />`。
+- `frontend/src/components/BookShelf.jsx`（新增）：两层书架。
+- `frontend/src/components/BookCard.jsx`（新增）：单本书。
+
+**数据流**：
+
+1. `getCategories()` 取书单（**唯一来源**，不硬编码 8 本）。归组规则（注意：`categories[].section` 存的是**板块 code**（如 `'plant'`），不是组名）：
+```js
+const meta = getSection(c.section) || getSection(c.code); // 兼容 section 缺失/新 code
+if (!meta) return;                                        // 未知板块 → 忽略，不崩溃
+bucket[meta.group].push(c);                               // group ∈ {nature, enlightenment}
+```
+2. 组序取 `SECTION_GROUPS` 顺序；组内 `order` **数值升序**，`order` 相同（或缺失）时按 `code` 字符串升序兜底，保证渲染稳定、不依赖接口顺序。
+3. 空组不渲染该层（不显示空层标题）；两层都有书时才出现两个 `.shelf-row`。
+4. 数量：书单就绪后**并发**取每本的数量，失败不影响书名：
+```js
+const results = await Promise.allSettled(books.map((b) => fetchBook(b.code)));
+// fulfilled → counts[b.code] = results[i].value.length；rejected → 不写入（保持「未知」）
+```
+5. `BookCard` 结构（封面花纹 + HTML 文字叠加，符合 Q5/Q13）：
+```jsx
+<Link className="book" to={`/books/${book.code}`}
+      aria-label={count == null ? book.nameZh : `${book.nameZh}，共 ${count} 种`}>
+  <span className="book-cover" style={{ backgroundImage: `url(${cover})` }}>
+    <span className="book-title-zh">{book.nameZh}</span>
+    {book.pinyin ? <span className="book-title-pinyin">{book.pinyin}</span> : null}
+    {book.nameEn ? <span className="book-title-en">{book.nameEn}</span> : null}
+    <span className="book-count">{count == null ? '' : `共 ${count} 种`}</span>
+  </span>
+  <span className="book-spine" aria-hidden="true" />
+  <span className="book-pages" aria-hidden="true" />
+</Link>
+```
+   - 封面**书名取 `category.nameZh`**（「植物」），书内页 h1 取 `SECTION_BOOK_TITLE`（「植物书」）：因 `pinyin/nameEn` 是 `nameZh` 的同源转写（`zhí wù` / `Plant`），封面若拼「书」会与拼音失配；此为 R 定案（PO 若要求封面也带「书」字，仅 `nameZh + '书'` 一行改动，不动数据）。
+   - 拼音 / 英文缺失时**不渲染该行**（沿用 S15-4 条件渲染口径，不出现空白行）。
+
+**三态**：
+| 态 | 判定 | 呈现 |
+|---|---|---|
+| 书单加载中 | `categories === null` | `.state-tip` + `Spin` + 「加载中…」 |
+| 书单失败 | `error` 非空 | `.state-tip`，文案 `error.message \|\| '哎呀，出了点小问题，请稍后再试'`（与现首页口径一致）；重进页面重试，不做自动重试 |
+| 数量未就绪 / 失败 | `counts[code] == null` | `.book-count` 高度固定占位（`min-height` 由 UI 定），内容为空字符串；书名/拼音/英文/可点击均正常 → 避免布局跳动（验收 77 的「N 种」在有数据后补显） |
+
+**数据驱动零改码**：新增一条分类（含 `order`，`section` 指向 8 个已知板块 code 之一，如 `{code:'plant2', section:'plant', order:2}`）→ 该层自动多一本书、封面走 `/images/covers/{新code}.jpg`，前端不改码（验收 85）。封面文件缺失时 `.book-cover` 以 CSS 底色兜底，不阻塞渲染。新 book code 的 `BookPage` 可读性依赖 S18-附 建议 1 的判定分支（`getSection` 未命中时回落 `getCategories()` 查证），否则「书架能上架、点进去却说还在路上」，请一并确认。
+
+**边界**：不做书本排序自定义、不做收藏/阅读进度（§六 非目标）；不做 `counts` 的持久化（会话内由 `bookCache` 承担）；`BookShelf` 不订阅路由变化。
+
+**测试配合**：单测 mock `CATEGORIES` 8 条验两层各 4 本、`order` 乱序输入仍按升序渲染、数量 mock 各不同长度验「共 N 种」、数量 reject 验书名仍在且无数字、`getCategories` reject 验错误文案、**新增第 9 条分类**验零改码上架；`clearBookCache()` 必须在该文件 `beforeEach` 调用。
+
+## S18-4. 缓存模块 `api/bookCache.js`
+
+**文件**：`frontend/src/api/bookCache.js`（新增，不改 `api/client.js`）。
+
+**数据结构**：模块级 `Map<code, Promise<Plant[]>>`（**存 Promise 而非数组** —— 并发 8 次 + 书内页天然共享同一个 in-flight 请求）。
+```js
+import { getPlantsBySection } from './client';
+
+const cache = new Map(); // code -> Promise<list>
+
+export function fetchBook(code) {
+  const hit = cache.get(code);
+  if (hit) return hit;
+  const p = getPlantsBySection(code).catch((err) => {
+    cache.delete(code); // 失败不缓存：下次进入可重试
+    throw err;
+  });
+  cache.set(code, p);
+  return p;
+}
+
+export function clearBookCache() { cache.clear(); } // 仅供测试隔离
+```
+
+**复用位置**：
+
+| 位置 | 用法 | 效果 |
+|---|---|---|
+| `BookShelf` 数量 | `Promise.allSettled(8 × fetchBook(code))` | 首屏并发 8 次，各板块仅 1 次网络请求 |
+| `BookPage` 列表 | `fetchBook(code)`（`code === section`） | 从书架点进书 → **命中缓存，零请求**，列表瞬时可达 |
+| `PlantDetailPage` 深链接邻居列表 | `fetchBook(section)`（替换现状 `getPlantsBySection`） | 详情页回书 / 连翻复用同一份列表 |
+
+**边界**：
+- 缓存粒度 = 「某板块全量列表」，**不缓存** `getCategories()`（书单轻量，每次进书架重新取，保证新增分类即时可见）与 `getPlant(id)`（详情现状不变）。
+- 不落 `sessionStorage` / `localStorage`（列表体积大：plant 204 条，序列化成本与陈旧风险不划算）；模块级 Map 随 SPA 刷新重建，内容更新自然可见。
+- `Plant` 数组按引用共享：调用方**不得原地修改**（现有 `BookPage` 只做 `slice` 渲染，满足该约束）。
+- 不改任何请求路径与响应解析，接口契约零变化（验收 84）。
+
+**测试配合**：单测断言「同 code 两次 `fetchBook` → `getPlantsBySection` 仅调用 1 次」；「reject 后再调一次 → 重新发起请求（调用次数 2）」、「`clearBookCache()` 后重新请求」；各测试文件 `beforeEach` 调 `clearBookCache()` 防止跨用例串数据。
+
+## S18-5. BookPage 列表逻辑（自 HomePage 迁移）
+
+**文件**：`frontend/src/pages/BookPage.jsx`（新增）；`frontend/src/pages/HomePage.jsx`（**删除**）。
+
+**迁移项（整体搬走，不复制）**：`PAGE_SIZE = 16`、`plants`（`null` = 加载中）、`error`、`visibleCount`、`sentinelRef` + `IntersectionObserver`（`rootMargin:'200px'`，`visibleCount >= plants.length` 时不渲染哨兵、`typeof IntersectionObserver === 'undefined'` 时降级全量）、`visibleCount → sessionStorage` 记录 effect、`pendingScroll` 恢复 effect（含「恢复条数不足则继续 +16」的兜底）。
+
+**丢弃项（书内页不再需要）**：`section` state（改由 URL `:code` 派生，只读）、`firstFilterRef`（无板块切换）、`handleSectionChange`、`<SectionNav />` 渲染、植物二级筛选相关分支。
+
+**新结构**：
+```jsx
+<main className="page book-page">
+  <div className="book-topbar">
+    <Link className="back-btn" to="/">← 回书架</Link>
+    <h1 className="book-title">{SECTION_BOOK_TITLE[code]}</h1>
+  </div>
+  <section className="page-block" aria-label={`${SECTION_BOOK_TITLE[code]}列表`}>
+    …（error / Spin / 空态「这个板块还没有内容哦」/ `.list-count` 共 N 种 / `.plant-grid` + PlantCard + `.load-sentinel`）
+  </section>
+</main>
+```
+- 空态**统一**为「这个板块还没有内容哦」（取消 `section === 'plant' ? '这里还没有植物哦'` 分支，书是容器，不再区分板块措辞）→ 既有 TC-13 断言按此更新。
+- 数据源 `fetchBook(code)`（S18-4 缓存），effect 依赖 `[code]` + `alive` 竞态守卫（`:code` 变化时同一组件实例复用，必须防陈旧回写）。
+
+**滚动键（按书隔离）**：`sh:bookScroll:{code}`、`sh:bookVisibleCount:{code}`。
+- 写入方两处：`BookPage` 的 `visibleCount` effect；`PlantCard` 的 `rememberScroll`（由写死 `sh:homeScroll` 改为 `sh:bookScroll:${section}`——`section` 已是 code，**这是 PlantCard 唯一改动**，类名与 `deriveCardTitle` 不动）。
+- 只读方：`BookPage` 初始化与恢复 effect。
+
+**恢复判定（关键，两态必须在同一份代码里显式区分）**：
+```js
+const key = (k) => `sh:${k}:${code}`;
+const readNum = (k) => { try { return Number(sessionStorage.getItem(key(k))) || 0; } catch { return 0; } };
+
+const fromDetail = Boolean(location.state?.restoreScroll); // 详情页返回
+// 条数：无论从详情还是从书架进入，都恢复该书已读条数（至少首屏 16）——契约 §2.2.4
+const [visibleCount, setVisibleCount] = useState(() => Math.max(PAGE_SIZE, readNum('bookVisibleCount')));
+
+const restoredRef = useRef(false);
+useEffect(() => {
+  if (plants === null || restoredRef.current) return;
+  const target = fromDetail ? readNum('bookScroll') : 0; // 从书架进入：滚动置顶
+  window.scrollTo(0, target);
+  // 兜底：目标位置超出已渲染高度 → 继续 +PAGE_SIZE 补加载后复位（沿用 Sprint 10 逻辑）
+  if (fromDetail && window.scrollY < target - 2 && visibleCount < plants.length) {
+    setVisibleCount((c) => Math.min(plants.length, c + PAGE_SIZE));
+    return;                       // 不复位 restoredRef，下轮继续
+  }
+  restoredRef.current = true;
+}, [plants, visibleCount]);
+```
+- 判定要点：**「是否从详情返回」只看 `location.state?.restoreScroll`**，不能用「sessionStorage 是否有值」推断（书架第二次进入时该键必然已有值）；「滚动置顶」用 `scrollTo(0, 0)` 显式执行，而非「不调用」——上一本书的滚动位置会残留到本页。
+- 多书隔离由 key 后缀保证：植物书滚到中段 → 切动物书（书架进入）→ 动物书 `scrollTo(0,0)`；分别返回时各自恢复（验收 82）。
+
+**边界**：不把 `visibleCount` 恢复与「从书架进入」混为一谈（见上代码）；不做书内章节/翻页；`BookPage` 不在书间做书籍导航（跨书只能回书架）；书内页不做 `category` 概念（Sprint 17 起已取消）。
+
+**测试配合**：`BookPage.test.jsx` 承接原 HomePage 列表用例（详见 S18-8），新增「两本书滚动/条数互不串味」「从书架进入 scrollY=0」「从详情带 `restoreScroll` 恢复条数与位置」「未知 code 不发请求」。
+
+## S18-6. 详情页返回改造（`PlantDetailPage.jsx`）
+
+**文件**：`frontend/src/pages/PlantDetailPage.jsx`（**只改返回相关与列表兜底，版式/字号/喇叭/沉浸/换株逻辑不动**）。
+
+**改动**：
+
+1. 删除本地 `SECTION_HOME`（`花园 / 动物世界 / 昆虫角 / 恐龙园 / 字母乐园 / 拼音角 / 数字屋 / 颜色屋`），改为从 `SectionNav.jsx` 取唯一来源：
+```js
+import { getSection, SECTION_BOOK_TITLE } from '../components/SectionNav';
+
+const rawSection = location.state?.section || 'plant';
+const code = getSection(rawSection) ? rawSection : 'plant'; // 未知 section 回退 plant（沿用现状语义）
+const bookTitle = SECTION_BOOK_TITLE[code];                // 「植物书 / 动物书 / …」
+```
+2. 正常态返回按钮：
+```jsx
+<Link className="back-btn" to={`/books/${code}`} state={{ restoreScroll: true }} onClick={stop}>
+  ← 回{bookTitle}
+</Link>
+```
+   - 目标由 `/` 改为 `/books/{code}`；`state` **只带 `restoreScroll: true`**（不再带 `section/category/list`：书内页以 URL `:code` 为准，避免 state 与 URL 不一致产生分叉真相）。
+3. 40401 兜底：文案 `回{bookTitle}看看`，`to={'/books/' + code}`（同步改造，不能只改正常态）。
+4. 深链接邻居列表：`list` 缺失时由 `getPlantsBySection(section)` 改为 `fetchBook(code)`（共享 S18-4 缓存，书内页 → 详情 → 回书不再重复请求）。
+5. `usePlantNavigation({ list, currentId: id, section: code })`：仅传参名归一，连翻依旧携带 `{ section: code, list }`，保证连翻后「回书」文案与目标仍正确。
+
+**边界**：详情 40401 文案「这株植物还没准备好哦」**不改**（非本迭代范围）；不改 `.detail-*` 任何样式；不改沉浸式/全屏/滑动/键盘换株；`code` 只用于返回目标与文案，不参与详情数据请求（详情仍按 `id`）。
+
+**测试配合**：`PlantDetailPage.test.jsx` 更新 TC-33 / TC-119 / TC-120 / TC-121 等返回断言为「← 回植物书」等，并断言 `href="/books/plant"`、`state.restoreScroll === true`；补 8 板块矩阵（含 `number/color`），断言本地不再有 `SECTION_HOME`（可用常量模块单测替代源码扫描）。
+
+## S18-7. 样式类名清单（与 UI 规范 U18-x 对齐）
+
+**文件**：`frontend/src/styles.css`（新增四组：书架 / 书本 / 封面 / 书内页容器；具体尺寸、字号、留白比例以 UI 规范 U18-x 为准，R 只锁定类名与 DOM 结构）。
+
+| 类名 | 归属组件 | 作用 | 关键约束 |
+|---|---|---|---|
+| `.bookshelf` | `BookShelf` | 书架容器（两层纵向） | 页内一屏放下：`1024×768` 与 `1180×820` 页面级纵向溢出 **0** |
+| `.shelf-row` | `BookShelf` | 一层（4 本） | 层内横向均分，`gap` 由 UI 定 |
+| `.shelf-title` | `BookShelf` | 层标题（自然认知 / 认知启蒙） | 沿用 S15 语义，不承担按钮功能 |
+| `.book` | `BookCard`（`<Link>`） | 单本书容器 | `role` 天然 `link`；热区 ≥56px；`hover/focus-visible` 上抬 ≤4px |
+| `.book-cover` | `BookCard` | 封面：花纹平铺底 | `background-image` / `background-repeat` / `background-size`；底色兜底 `#FDFBF6` |
+| `.book-spine` | `BookCard` | 木色书脊竖条 | 统一色系，非装饰图 |
+| `.book-pages` | `BookCard` | 书页厚度（CSS 拟真） | `aria-hidden` 纯装饰 |
+| `.book-title-zh` | `BookCard` | 封面书名（中，大） | 选择器写作 `.book-cover .book-title-zh`，避免与 `.book-title` 混淆 |
+| `.book-title-pinyin` | `BookCard` | 封面拼音（小） | 数据缺失时不渲染 |
+| `.book-title-en` | `BookCard` | 封面英文（小） | 数据缺失时不渲染 |
+| `.book-count` | `BookCard` | 「共 N 种」 | 固定 `min-height` 占位，防数量补显时布局跳动 |
+| `.book-page` | `BookPage` | 书内页容器（纸感底 + 书脊阴影） | 不改变卡片规格与字号 |
+| `.book-topbar` | `BookPage` | 顶栏（← 回书架 + 书名） | 复用 `.back-btn` |
+| `.book-title` | `BookPage` | 书内页 `<h1>` | 仅 `.book-topbar .book-title` 使用；不与封面书名类混用 |
+
+**明确不改（零回归红线）**：
+
+- `.plant-card` / `.plant-card-img` / `.plant-card-zh` / `.plant-card-pinyin` / `.plant-card-en` / `.plant-grid`：卡片规格与字号沿用；`.book-page` **不再加覆盖规则**，书内页直接复用同一网格。
+- `.list-count`、`.load-sentinel`、`.load-hint`：书内页照常复用，**不改行为**（E2E `loadAllCards` 依赖 `.load-sentinel` 消失判据）。
+- `.state-tip`、`.back-btn`、`.filter-btn` 基础块（20px）与 `.part-switcher .filter-btn`：不动。
+- `.section-nav` / `.section-group` / `.section-group-title` / `.category-filter` 规则：**保留不删、不再有渲染引用**（删除会连带影响 `styles.css` 源文件断言与潜在回滚，清理留给 UI 统一决定）；本迭代**不新增** `.section-nav` 用法。
+- 详情页 `.detail-*` 全系（含 Sprint 17 名称字号、Sprint 10 单图 64% 横屏版式）：不动。
+
+**测试配合**：样式源断言（读 `styles.css`）从「`.section-nav .filter-btn` 字号」迁移到 `.book-title` / `.book-title-zh` / `.book-count` 的实际规则（字号与占位高度按 UI U18-x 定稿后由 QA 落数）；`.filter-btn` 基础块 20px 的断言（TC-124）保留。
+
+## S18-8. 测试更新（配合 QA）
+
+**单测文件拆分（原 `HomePage.test.jsx` 删除，不双份维护）**：
+
+| 新文件 | 迁移/新增用例 |
+|---|---|
+| `src/__tests__/BookShelfPage.test.jsx` | TC-79（站头三行）、TC-80a 改造（两层 8 本 `.book`、层标题「自然认知 / 认知启蒙」、`aria-label` 含数量）、数量「共 N 种」与数量失败态、`getCategories` 失败文案、`order` 乱序排序、**新增第 9 条分类零改码上架**、`cover` 路径契约、`getSection` 未知返回 null |
+| `src/__tests__/BookPage.test.jsx` | TC-11（书内页 `queryByRole('button', {name:'全部'})` 等 4 钮均不存在；`.filter-btn` 计数 0）、TC-12（`getPlantsBySection('plant')` 仅 1 次 → 经 `fetchBook`）、TC-12b（卡片 `state` 含 `{section, list}`）、TC-13（空态改「这个板块还没有内容哦」）、TC-20（`loading="lazy"`）、TC-21（100 条全量降级）、TC-106（「共 N 种」）、TC-107（无 IO 降级无哨兵）、TC-108（16→32→40 追加）、TC-108b（按书恢复条数）、新增：从书架进入 `scrollTo(0,0)`、从详情 `restoreScroll` 恢复位置+条数、两书键隔离、未知 code 兜底（零请求 + `href="/"`）、顶栏「← 回书架」与 h1「植物书」 |
+| `src/__tests__/PlantDetailPage.test.jsx` | 返回文案矩阵 8 板块（植物书/动物书/昆虫书/恐龙书/英文字母书/汉语拼音书/数字书/颜色书）+ `href="/books/{code}"`；40401 兜底「回{板块名}书看看」；深链接走 `fetchBook`（mock 断言） |
+
+**受影响断言清单（R 主动提示 QA）**：
+
+1. 详情返回文案与目标（TC-33、TC-119~TC-121、sprint12 的「回花园 / 回动物世界 / 回昆虫角 / 回恐龙园」、sprint15 的「回字母乐园 / 回拼音角」、sprint16 的「回数字屋 / 回颜色屋」）→ 全部改为「回{板块名}书」+ `/books/{code}`。
+2. 滚动键：`sh:homeScroll` / `sh:homeVisibleCount` 断言 → `sh:bookScroll:{code}` / `sh:bookVisibleCount:{code}`。
+3. 板块按钮断言（TC-80a 8 钮、TC-81 切板块触发 `?section=`、TC-25b `.section-nav` 布局、TC-123 `.section-nav .filter-btn` 字号）→ 书架 `.book` 断言 / `gotoBook` 直进 / 新样式规则断言。
+4. 首页列表断言（TC-11/12/13/20/21/106/107/108/108b、TC-146、TC-59、TC-64）→ 迁入 `BookPage.test.jsx`（语义不变，路径变）。
+5. E2E 站点标题（TC-79 → TC-89 站头仍在 `/`）保留在书架页。
+
+**E2E helper 设计（`e2e/helpers.js`）**：
+```js
+// 直进某本书：书内页顶栏出现即视为就绪（避免与列表加载竞态混淆）
+export async function gotoBook(page, code) {
+  await page.goto(`/books/${code}`);
+  await expect(page.locator('.book-topbar')).toBeVisible({ timeout: 15000 });
+}
+// loadAllCards 保持独立（不改签名、不改「哨兵消失 且 条数达标」双条件、保留开头 scrollTo(0,0) 的 D17-1 修复）
+```
+- 迁移口径：11 个 spec、约 35 处 `page.goto('/')` 中，凡断言 `.plant-card` / `loadAllCards` / 板块内容的改为 `gotoBook(page, code)`；跨书场景一律「回书架再点书」或直接 `gotoBook`（书内页不提供书间导航，不能沿用「点板块按钮」）。
+- 新增 `e2e/sprint18.spec.js`（TC-162~TC-170，编号交 QA 定稿）：书架 8 本两层 + 1024×768 / 1180×820 页面级零溢出（验收 76）、封面花纹与文字（77/78）、点击进书 + 顶栏（79）、书内列表与 206 全量加载（80）、详情返回文案 + 回书恢复（81）、多书滚动隔离（82）、未知 code 兜底（83）、接口契约与总量未变（84）、数据驱动新增分类（85，用 `page.route` 拦截 `/api/categories` 追加一条）、8 张封面 HTTP 200。
+- **不写重复断言**：单测已覆盖纯派生/排序/缓存逻辑，E2E 只做跨页链路与真实数据量；不保留 `HomePage.test.jsx` 及其用例编号的「影子副本」。
+
+---
+
+## S18-附：对契约的补充与修正建议（仅记录，不修改 sprint-18 契约文本）
+
+1. **建议补齐「未知 code」判定的数据驱动分支**：契约 §2.2.5 以 `getSection(code)` 为空即判「这本书还在路上」。但验收 85 要求「新增一条分类即零改码上架」——若新增分类的 code 不在 `SECTIONS`（现实是 `categories[].section === 自身 code`），书架会出现一本书，点进去却被判未知。建议实现为「`getSection(code)` 命中 ∪ `getCategories()` 中存在该 code」，命中后者时标题取 `SECTION_BOOK_TITLE[code] || `${category.nameZh}书``，内容仍 `fetchBook(code)`（后端 section 校验自 Sprint 15 起数据驱动，`?section={code}` 可直接用）。该分支仅未知 code 时多发 1 次 `getCategories()`；本节按此实现，并请 PO/Master 对本条口径确认（若确认「仅 8 个已知板块才可上架」，则删去该分支，`BookCard` 也只渲染已知板块分类）。
+2. **契约 §2.2.4 措辞歧义**：「从书架进入恢复条数」与「从详情返回恢复条数」在本文档中统一为「**始终** `max(16, sh:bookVisibleCount:{code})`，仅**滚动位置**分两态（详情返回 → 恢复；书架进入 → 置顶 0）」，避免出现「从书架进入条数也不同」的第三种解释。
+3. **封面书名口径**：契约只说「书名（中）」。本文档定案封面用 `category.nameZh`（「植物」），书内页 h1 用 `SECTION_BOOK_TITLE`（「植物书」），理由是拼音/英文与 `nameZh` 同源。若 PO 要求封面即显示「植物书」，改一行即可。
+4. **`.section-nav` 样式**：契约未写其去留。本文档决定「保留 CSS、移除组件」，避免样式源断言与回滚面扩大；确认后由 UI 在 U18-x 中标注为「废弃待清理」。
+
 
 
 

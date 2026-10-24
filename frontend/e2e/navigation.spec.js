@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 4 新增 E2E（TC-35 ~ TC-40）：沉浸式详情 / 连续换株 / 全屏 / 状态记忆 =====
 // Sprint 17：植物取消二级分类，所有部位条目同属 plant 板块（204 条展示，2 条废弃不展示）
 
 // 进入植物板块第一张卡片详情，返回该条目中文名
 async function enterFirstPlantDetail(page) {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   const cards = page.locator('.plant-card');
   await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
@@ -59,7 +59,7 @@ test('TC-35 按钮 / 键盘 / 左滑三种方式换到同一株', async ({ page 
 
 // TC-36 首尾循环：植物列表首张的「上一株」= 末张；末张的「下一株」= 首张
 test('TC-36 首尾循环（植物板块）', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   const cards = page.locator('.plant-card');
   await loadAllCards(page, 204);
   const firstName = await cards.first().locator('img').getAttribute('alt');
@@ -73,7 +73,7 @@ test('TC-36 首尾循环（植物板块）', async ({ page }) => {
   await expect(page.locator('.detail-zh')).toHaveText(lastName);
 
   // 末张 → 下一株 → 应循环回首张
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
   await cards.last().click();
   await expect(page.locator('.detail-zh')).toHaveText(lastName);
@@ -116,10 +116,10 @@ test('TC-38 沉浸式无页面级滚动条且图片完整', async ({ page }) => 
   expect(await img.evaluate((el) => getComputedStyle(el).objectFit)).toBe('contain');
 });
 
-// TC-39 返回首页保住列表滚动位置（Sprint 17：无分类筛选，仅保滚动）
-test('TC-39 回花园保住滚动位置', async ({ page }) => {
+// TC-39 返回植物书保住列表滚动位置（Sprint 18：返回目标为 /books/plant）
+test('TC-39 回植物书保住滚动位置', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   const cards = page.locator('.plant-card');
   await loadAllCards(page, 204);
 
@@ -127,8 +127,9 @@ test('TC-39 回花园保住滚动位置', async ({ page }) => {
   await cards.nth(12).click();
   await expect(page.locator('.detail-zh')).toBeVisible();
 
-  await page.getByRole('link', { name: /回花园/ }).click();
+  await page.getByRole('link', { name: /回植物书/ }).click();
   await expect(cards.first()).toBeVisible({ timeout: 15000 });
+  await expect(page).toHaveURL(/\/books\/plant$/);
 
   // 列表滚动位置已恢复（未回到顶部）
   const scrollY = await page.evaluate(() => window.scrollY);
@@ -153,7 +154,7 @@ for (const viewport of [
     expect(navHeight).toBeGreaterThanOrEqual(56);
 
     const backHeight = await page
-      .getByRole('link', { name: /回花园/ })
+      .getByRole('link', { name: /回植物书/ })
       .evaluate((el) => el.getBoundingClientRect().height);
     expect(backHeight).toBeGreaterThanOrEqual(56);
 

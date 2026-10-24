@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 6 新增 E2E（TC-48 ~ TC-52）：详情页整屏不滚动（iPad 为基准设备） =====
 
 // 进入植物板块第一张卡片详情（先滚动加载全量，再点首张）
 async function enterFirstPlantDetail(page) {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.locator('.plant-card').first().click();

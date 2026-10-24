@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { getPlant, getPlantsBySection } from '../api/client';
+import { getPlant } from '../api/client';
+import { fetchBook } from '../api/bookCache';
 import usePlantNavigation from '../hooks/usePlantNavigation';
 import useAudio from '../hooks/useAudio';
 import PartSwitcher, { PART_LABELS, getOrderedParts } from '../components/PartSwitcher';
 import AllusionCard from '../components/AllusionCard';
 import SpeakButton from '../components/SpeakButton';
+import { getSection, SECTION_BOOK_TITLE } from '../components/SectionNav';
 
 // 水平滑动触发换株的最小位移（px）
 const SWIPE_THRESHOLD = 60;
@@ -16,25 +18,15 @@ function isSingleImageParts(parts) {
   return parts && Object.keys(parts).length === 1;
 }
 
-// 返回入口文案按板块派生（Sprint 12 / EX-7；Sprint 15 增字母/拼音，预留数字/颜色）；未知板块回退「花园」
-const SECTION_HOME = {
-  plant: '花园',
-  animal: '动物世界',
-  insect: '昆虫角',
-  dinosaur: '恐龙园',
-  letter: '字母乐园',
-  pinyin: '拼音角',
-  number: '数字屋',
-  color: '颜色屋',
-};
-
+// Sprint 18：返回目标改为该书 /books/{code}，文案「← 回{板块名}书」；未知板块回退「植物书」
 export default function PlantDetailPage() {
   const { id } = useParams();
   const location = useLocation();
-  // 路由 state 携带当前板块与列表快照；深链接进入时兜底为「植物」
-  const section = location.state?.section || 'plant';
-  // 返回文案随板块派生（Sprint 12 / EX-7）
-  const homeLabel = SECTION_HOME[section] || '花园';
+  // 路由 state 携带当前书（板块 code）与列表快照；深链接进入时兜底为『植物』
+  const rawSection = location.state?.section || 'plant';
+  const section = getSection(rawSection) ? rawSection : 'plant';
+  const bookTitle = SECTION_BOOK_TITLE[section];
+  const bookPath = `/books/${section}`;
 
   const containerRef = useRef(null);
   const touchStart = useRef(null);
@@ -75,11 +67,11 @@ export default function PlantDetailPage() {
     };
   }, [id]);
 
-  // 深链接兜底：无路由 state 时按当前板块拉一次列表得到邻居
+  // 深链接兜底：无路由 state 时按当前书拉一次列表得到邻居（共享 bookCache）
   useEffect(() => {
     if (list) return;
     let alive = true;
-    getPlantsBySection(section)
+    fetchBook(section)
       .then((data) => {
         if (alive) setList(data || []);
       })
@@ -214,7 +206,7 @@ export default function PlantDetailPage() {
       <main className="page">
         <p className="state-tip">这株植物还没准备好哦</p>
         <p style={{ textAlign: 'center' }}>
-          <Link className="back-btn" to="/">回{homeLabel}看看</Link>
+          <Link className="back-btn" to={bookPath}>回{bookTitle}看看</Link>
         </p>
       </main>
     );
@@ -248,11 +240,11 @@ export default function PlantDetailPage() {
       <div className="imm-topbar">
         <Link
           className="back-btn"
-          to="/"
-          state={{ section, restoreScroll: true }}
+          to={bookPath}
+          state={{ restoreScroll: true }}
           onClick={stop}
         >
-          ← 回{homeLabel}
+          ← 回{bookTitle}
         </Link>
         {canFullscreen ? (
           <button type="button" className="back-btn fullscreen-btn" onClick={toggleFullscreen}>

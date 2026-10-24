@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 14 新增 E2E（TC-130 ~ TC-133，编号依 QA 手册 docs/qa/sprint-14-test-cases.md）=====
 // 覆盖：动物/昆虫/恐龙三板块扩容至 50 的可浏览性、新增条目单图详情与音频、新图片/音频资产契约
@@ -19,17 +19,15 @@ const NEW_DINOSAUR_IDS = [
 
 // TC-130 三板块扩容至 50：各「共 50 种」→ 滚动加载至 50 卡 → 末位新增条目可见
 test('TC-130 三板块扩容至 50 且末位新增条目可见', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('group', { name: '板块导航' });
-  // first = 该板块首屏（sort 升序首条）专属卡片：切换板块后先等它出现，
-  // 避免「上一板块仍渲染 50 卡 + 总量文案同为『共 50 种』」导致 loadAllCards 早退。
+  // first = 该板块首屏（sort 升序首条）专属卡片：进入每本书后先等它出现，
+  // 避免残留竞态导致 loadAllCards 早退。
   const cases = [
-    ['动物', '大熊猫', '鸵鸟'],
-    ['昆虫', '蝴蝶', '小虾'],
-    ['恐龙', '霸王龙', '翼手龙'],
+    ['animal', '大熊猫', '鸵鸟'],
+    ['insect', '蝴蝶', '小虾'],
+    ['dinosaur', '霸王龙', '翼手龙'],
   ];
-  for (const [label, first, last] of cases) {
-    await nav.getByRole('button', { name: label }).click();
+  for (const [code, first, last] of cases) {
+    await gotoBook(page, code);
     await expect(page.locator('.list-count')).toHaveText('共 50 种');
     await expect(page.locator('.plant-card-zh', { hasText: first }).first()).toBeVisible();
     await loadAllCards(page, 50);

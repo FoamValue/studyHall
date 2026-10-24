@@ -7,11 +7,11 @@ export function deriveCardTitle(plant) {
 }
 
 // 植物网格卡片：缩略图 + 中文名 + 拼音 + 英文名，整卡可点进详情
-// 进详情时携带当前板块与列表快照（供详情页算相邻植物），并记录首页滚动位置供返回恢复
+// 进详情时携带当前书（板块 code）与列表快照（供详情页算相邻植物），并记录书内滚动位置供返回恢复
 export default function PlantCard({ plant, list, section }) {
   const rememberScroll = () => {
     try {
-      sessionStorage.setItem('sh:homeScroll', String(window.scrollY || 0));
+      sessionStorage.setItem(`sh:bookScroll:${section}`, String(window.scrollY || 0));
     } catch {
       /* 无 sessionStorage 环境忽略 */
     }

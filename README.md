@@ -47,12 +47,17 @@
 - **三步到达**：从打开首页到看到任意条目详情，操作不超过 3 次点击。
 - **平板优先响应式**：以 iPad 横屏（1024×768）为基准设计，兼顾 1180×820 与常见平板尺寸。
 
+### 📚 书架式入口（v2.9）
+- 首页是一座**书架**：自然认知 4 本（植物 / 动物 / 昆虫 / 恐龙）+ 认知启蒙 4 本（英文字母 / 汉语拼音 / 数字 / 颜色），两层 8 本一屏放下。
+- 书单**数据驱动**：数量取自 `GET /api/categories`，封面为统一的纸白 + 单色墨花纹 tile（每本一个母题，无每本主色）。
+- 点一本书进入 `/books/{code}` 书内列表，点卡片进详情；滚动位置与已加载条数**按书隔离记忆**，回书架再进同一本书可精确恢复。
+
 ### 🖼 沉浸式详情浏览（v1.1）
 - 详情页默认**沉浸式全屏**：图片占满视口、隐藏站点标题与多余留白，无页面级滚动条。
 - **左右滑动 / 两侧大按钮 / 键盘 ← →** 三种通道切换上一条目 / 下一条目，行为完全一致，支持**首尾循环**。
-- 点部位按钮切换花 / 叶 / 果（仅植物板块），**同一手势不承担两种语义**。
+- 点部位按钮切换花 / 叶 / 果（仅植物书），**同一手势不承担两种语义**。
 - 另设「全屏」按钮触发系统 Fullscreen API，Esc 或退出按钮返回沉浸式态且浏览位置不丢。
-- 返回首页后**精确恢复**此前的板块 / 分类筛选与列表滚动位置。
+- 返回**书内列表**后精确恢复该书此前的列表滚动位置与已加载条数；返回文案按书派生（「← 回植物书」等）。
 
 ### 🔊 预生成语音朗读（v1.2 → v2.0）
 - 详情页中文名、英文名各一个朗读喇叭，只读名称本身，帮助孩子跟读。
@@ -63,9 +68,8 @@
 - 原「典故」卡片升级为 **「小知识」**：植物沿用古诗典故 + 白话解释；动物 / 昆虫 / 恐龙使用冷知识、习性、分布位置等。
 - 卡片带用户可见的「小知识」标题，正文与解释均限长，保证低龄可读。
 
-### 🔄 名实一致（v1.4 → v1.5）
-- 卡片封面、卡片标题、详情默认部位**三者同时跟随入口分类**。
-- 在「树叶」分类点苹果 → 卡片显示「苹果叶」、封面是叶、详情默认展示叶子图，不会出现「名字说苹果、图是叶子、点进去却是花」的混乱。
+### 🔄 名实一致（v1.4 → v2.8）
+- 植物按部位拆成独立条目（如「苹果花 / 苹果叶 / 苹果果」），卡片标题、封面、详情**始终指向同一条目**，不会出现「名字说苹果、图是叶子、点进去却是花」。命名冲突条目以 `deprecated: true` 废弃（不物理删除、页面不展示）。
 
 ### 📥 AI 接管的内容扩容通道（零后台）
 - 不开发管理后台、不设管理员账号。内容由 AI 依照约定 schema 生产，通过**导入脚本**灌入内容库。
@@ -116,8 +120,8 @@
 ```
 studyHall/
 ├── content/                       # 内容语料（产品即数据）
-│   ├── categories.json            # 10 个分类（含 section 板块归属 + order）
-│   ├── plants/    (100 条)        # 植物：多部位（flower/leaf/fruit）
+│   ├── categories.json            # 8 个分类（含 section 板块归属 + group 分组 + order）
+│   ├── plants/    (206 条)        # 植物部位条目：单键 parts.flower|leaf|fruit（oldId-part 命名）
 │   ├── animals/   ( 50 条)        # 动物：单键 parts.animal
 │   ├── insects/   ( 50 条)        # 昆虫：单键 parts.insect
 │   ├── dinosaurs/ ( 50 条)        # 恐龙：单键 parts.dinosaur（骨架化石图）
@@ -133,23 +137,24 @@ studyHall/
 │   │   ├── model/                 # Plant/PlantCard/Category/I18nName/PlantImage...
 │   │   ├── mysql/                 # ImportLog 审计写入
 │   │   └── config/                # CORS、全局异常、ApiException
-│   ├── src/test/java/             # 27 个用例（Testcontainers 起真实中间件）
+│   ├── src/test/java/             # 28 个用例（Testcontainers 起真实中间件）
 │   └── Dockerfile                 # 多阶段：maven:3.9-temurin-26 构建 → temurin-26-jre 运行
 ├── frontend/                      # React 前端 + nginx
 │   ├── src/
-│   │   ├── pages/                 # HomePage（板块/分类 + 增量加载）、PlantDetailPage（沉浸式）
-│   │   ├── components/            # PlantCard / CategoryFilter / SectionNav / PartSwitcher /
-│   │   │                          # AllusionCard（小知识）/ SpeakButton / PartIcon
+│   │   ├── pages/                 # BookShelfPage（书架两层 8 本）、BookPage（书内列表 + 增量加载）、PlantDetailPage（沉浸式）
+│   │   ├── components/            # BookShelf / BookCard / PlantCard / PartSwitcher /
+│   │   │                          # AllusionCard（小知识）/ SpeakButton / PartIcon；SectionNav 为板块常量模块
 │   │   ├── hooks/                 # useAudio（预生成音频）/ usePlantNavigation / useSpeech
-│   │   ├── api/client.js          # 统一 fetch 封装
+│   │   ├── api/                   # client.js（统一 fetch）+ bookCache.js（按书缓存 Promise + 失败清除）
 │   │   └── __tests__/             # Vitest 组件测试
 │   ├── e2e/                       # Playwright E2E（smoke/navigation/responsive/speech/sprint*）
-│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 四板块各 50 jpg / letters·pinyin 各 26 jpg / numbers 21 + colors 11；合计 440 jpg）
-│   ├── public/audio/              # 预生成音频（616 个 .m4a：自然认知 250 条 × zh/en + 字母 en 26 + 拼音 zh 26 + 数字 zh/en 42 + 颜色 zh/en 22）
+│   ├── public/images/             # 图片资产（plants 206 jpg + 206 svg 回滚备份 / 四板块各 50 jpg / letters·pinyin 各 26 jpg / numbers 21 + colors 11 / covers 8；合计 448 jpg）
+│   ├── public/audio/              # 预生成音频（1028 个 .m4a：8 板块条目 zh/en 各一，含植物部位 206×2；Sprint 17 前植物级 200 个保留未删）
 │   ├── nginx.conf                 # SPA 路由回退 + /api 反代
 │   └── Dockerfile                 # 多阶段：node:22-alpine 构建 → nginx:alpine 运行
 ├── scripts/
 │   ├── import-plants.mjs          # 内容导入通道（校验 → UPSERT Mongo → 清 Redis → 写审计）
+│   ├── generate-covers.mjs        # 书架封面花纹 tile 生成（8 本，1200×1200 单墨纸白）
 │   └── generate-svgs.mjs          # 早期 SVG 资产生成脚本（保留）
 ├── docs/                          # 项目文档（见第十节）
 ├── docker-compose.yml             # 五容器编排
@@ -258,7 +263,7 @@ node scripts/import-plants.mjs
   "nameEn": "Animal", "order": 4, "section": "animal" }
 ```
 
-十个分类：`flower`/`leaf`/`fruit`（同属 `plant` 板块，有二级筛选）+ `animal`/`insect`/`dinosaur`/`letter`/`pinyin`/`number`/`color`（板块即粒度）。
+八个分类（对应 8 本书）：`plant`（自然认知·植物书）+ `animal`/`insect`/`dinosaur`（自然认知）+ `letter`/`pinyin`/`number`/`color`（认知启蒙）；书架与书内页均由该文件 + `section`/`group` 字段数据驱动。
 
 ### 8.2 条目（以 `content/animals/cat.json` 为例）
 
@@ -298,9 +303,10 @@ node scripts/import-plants.mjs
 | 植物部位图 | `/images/plants/{id}-{part}.jpg`（旧 `.svg` 保留作回滚备份） |
 | 动物 / 昆虫 / 恐龙图 | `/images/{animals\|insects\|dinosaurs}/{id}.jpg` |
 | 字母 / 拼音 / 数字 / 颜色图 | `/images/{letters\|pinyin\|numbers\|colors}/{id}.jpg` |
+| 书架封面 tile | `/images/covers/{code}.jpg`（8 张，1200×1200，纸白底 + 单色墨 2×2 花纹） |
 | 语音 | `/audio/{id}-zh.m4a`、`/audio/{id}-en.m4a`（AAC，中 / 英各一） |
 
-> 图片统一 1600×1600（mozjpeg q82 渐进式）；恐龙一律为**完整骨架化石**照片（博物馆陈列风格）。
+> 条目图片统一 1600×1600（mozjpeg q82 渐进式）；恐龙一律为**完整骨架化石**照片（博物馆陈列风格）。封面 tile 由 `scripts/generate-covers.mjs` 生成，规范见 `docs/design/ui-style-guide.md` U18-6。
 
 ---
 
@@ -325,10 +331,10 @@ node scripts/import-plants.mjs
 
 | 项 | 规模 |
 |---|---|
-| 条目总数 | **334**（植物 100 / 动物 50 / 昆虫 50 / 恐龙 50 / 英文字母 26 / 汉语拼音 26 / 数字 21 / 颜色 11） |
-| 分类 | 10（flower / leaf / fruit / animal / insect / dinosaur / letter / pinyin / number / color） |
-| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、四板块各 50 张、字母 / 拼音各 26 张、数字 21 张、颜色 11 张 = **440** 张 `.jpg` |
-| 音频 | **616** 个 `.m4a`（自然认知 250 条 × 中文 / 英文 + 字母 en 26 + 拼音 zh 26 + 数字中 / 英各 21 + 颜色中 / 英各 11） |
+| 条目总数 | **440**（植物部位 206，含废弃 2 / 动物 50 / 昆虫 50 / 恐龙 50 / 英文字母 26 / 汉语拼音 26 / 数字 21 / 颜色 11），线上可见 **438** |
+| 分类 | **8**（plant / animal / insect / dinosaur / letter / pinyin / number / color） |
+| 图片 | 植物 206 张 `.jpg`（+ 206 张 `.svg` 回滚备份）、四板块各 50 张、字母 / 拼音各 26 张、数字 21 张、颜色 11 张 = **440** 张；另书架封面 **8** 张，合计 **448** 张 `.jpg` |
+| 音频 | **1028** 个 `.m4a`（8 板块条目中 / 英各一，含植物部位 206×2；Sprint 17 前植物级 200 个保留未删） |
 | 后端源码 | 486 行（Java 459 + 配置 27） |
 | 前端源码 | 1,524 行（非测试部分） |
 | 测试代码 | 2,665 行（后端 559 / 前端单元 1,185 / E2E 921） |
@@ -395,6 +401,8 @@ node scripts/import-plants.mjs
 | v2.5 | Sprint 14 | 内容扩容（二）：动物 / 昆虫 / 恐龙各 30 → 50（纯内容，零代码改动；图片总数 356、音频 500） |
 | v2.6 | Sprint 15 | 更名「认知小图鉴」+ 首页两大组 8 板块导航 + 英文字母 A–Z、汉语拼音 a–z 各 26（能力迭代） |
 | v2.7 | Sprint 16 | 认知启蒙（二）：数字 0–20（21 条）+ 基础 11 色，认知启蒙四板块内容补齐（内容产线，前后端产品代码零改动；图片总数 440、音频 616） |
+| v2.8 | Sprint 17 | 植物板块重构：部位拆条 100 → 206、单图详情、取消二级筛选、名称字号加大、命名冲突废弃机制 |
+| v2.9 | Sprint 18 | 书本集合：书架首页（两层 8 本、数据驱动）+ 书内列表页 `/books/:code`、详情返回改「回{书名}」、滚动记忆按书隔离、8 张封面花纹 tile |
 
 ---
 

@@ -373,6 +373,292 @@ antd 主题定制：`token.colorPrimary=#4CAF50`，`borderRadius=16`。
 ## U16-4. 热区红线（增量复核）
 - 本迭代不新增可点元素、不改既有元素尺寸；8 板块钮与植物二级筛选 4 钮热区仍 **≥56px**；横屏 1024×768 / 1180×820 页面级溢出须为 0（E2E 复跑确认）。
 
+---
+
+# UI 规范增量 — Sprint 18（v2.9：书架首页 + 书本 + 书内页）
+
+| 项 | 内容 |
+|---|---|
+| 作者 | UI |
+| 日期 | 2026-10-24 |
+| 适用 | 书架页 `/`（`.bookshelf`）、书本 `.book`、封面 `.book-cover` 与文字层、书内页 `/books/:code`、封面 tile 资产；**不改**详情页版式与 `.plant-card` 规格 |
+| 依据 | [iteration-18-requirements.md](file:///Users/chenxinjie/Mirror/github/studyHall/docs/product/iteration-18-requirements.md)（Q1~Q14 冻结、验收 76~86）、[sprint-18.md](file:///Users/chenxinjie/Mirror/github/studyHall/docs/iterations/sprint-18.md) §二 / §三 |
+
+## U18-1. 书架页整体（`.bookshelf-page` / `.bookshelf` / `.shelf-row` / `.shelf-title` / `.bookshelf-grid`）
+
+**结构（先选书，再看书）**
+```
+┌──────────────────────────────────────────────┐
+│   rèn zhī xiǎo tú jiàn                       │ ← 站头（紧凑档 92px）
+│               认知小图鉴                      │
+│             Cognitive Guide                   │
+│               自然认知                        │ ← .shelf-title（32px 含间距）
+│   [书]  [书]  [书]  [书]                      │ ← .bookshelf-grid（4 列）
+│  ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔                  │ ← .shelf-plank（木色隔板 10px）
+│               认知启蒙                        │
+│   [书]  [书]  [书]  [书]                      │
+│  ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔                  │
+└──────────────────────────────────────────────┘
+```
+
+**新增设计变量（不修改既有 `:root` 变量，只追加）**
+```css
+:root {
+  --shelf-wood: #C9A876;        /* 隔板 / 书脊主木色（8 本统一） */
+  --shelf-wood-dark: #A8825A;   /* 木色深（描边 / 沟槽） */
+  --shelf-wood-light: #E3CBA5;  /* 木色浅（高光） */
+  --book-paper: #FDFBF6;        /* 封面纸白底 */
+  --book-stack: #F3EBDD;        /* 书页堆米白（右侧书口 / 底口露出的页边） */
+  --book-page-bg: #FFFDF9;      /* 书内页纸感底 */
+  --book-ink: #D9C9AE;          /* 封面母题单色 */
+}
+```
+
+**尺寸（两档，全部为实测基准值）**
+
+| 项 | 1024×768（基准档） | 1180×820（大档） |
+|---|---|---|
+| `.bookshelf-page` 内边距 | `16px 16px 12px` | `20px 24px 16px` |
+| 站头（`.site-header` 书架页紧凑档） | 拼音 16 / 中文 40 / 英文 18，行盒合计 **92px** | 同左（**92px**） |
+| 站头下间距 | `12px` | `14px` |
+| `.shelf-title` | 20px / 行高 1.2 = 24px + `margin-bottom: 8px` → **32px** | 22px / 1.2 ≈ 27 + 8 → **35px** |
+| 书本 `.book` | **210 × 252** | **228 × 272** |
+| `.bookshelf-grid` 列间距 | `column-gap: 24px` | `column-gap: 28px` |
+| 网格总宽 | 4×210 + 3×24 = **912px** | 4×228 + 3×28 = **996px** |
+| `.shelf-plank` | `height: 10px` | `height: 12px` |
+| 书架行间距（`.bookshelf` gap，共 1 处） | `12px` | `12px` |
+| 单个书架行块高（标题 + 书 + 隔板） | 32 + 252 + 10 = **294px** | 35 + 272 + 12 = **319px** |
+
+**纵向尺寸预算（页面级纵向溢出 = 0 的依据）**
+
+| 组件 | 1024×768 | 1180×820 |
+|---|---|---|
+| 上内边距 | 16 | 20 |
+| 站头 + 下间距 | 92 + 12 = 104 | 92 + 14 = 106 |
+| 书架行 1（标题 + 书 + 隔板） | 294 | 319 |
+| 行间距（两行之间） | 12 | 12 |
+| 书架行 2（标题 + 书 + 隔板） | 294 | 319 |
+| 下内边距 | 12 | 16 |
+| **合计** | **732（余量 36px）** | **792（余量 28px）** |
+
+- 水平：1024 → `16 + 912 + 16 = 944`，余 80px（居中每侧 40px）；1180 → `24 + 996 + 24 = 1044`，余 136px（每侧 68px）。**两档均无水平溢出**。
+- 机制：`.bookshelf-page { height: 100vh; height: 100dvh; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; }`，`.bookshelf { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: space-evenly; gap: 12px; }`。余量由 `space-evenly` 均匀吸收，**不允许**用增大书本尺寸的方式消耗余量。
+
+```css
+.bookshelf-page { max-width: 1024px; margin: 0 auto; padding: 16px 16px 12px;
+  height: 100vh; height: 100dvh; overflow: hidden;
+  display: flex; flex-direction: column; }
+.bookshelf { --book-w: 210px; --book-h: 252px;
+  flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+  justify-content: space-evenly; gap: 12px; }
+.bookshelf-grid { display: grid; grid-template-columns: repeat(4, var(--book-w));
+  column-gap: 24px; justify-content: center; align-items: end;
+  max-width: 912px; margin: 0 auto; }
+.shelf-row { display: flex; flex-direction: column; padding: 0;
+  background: linear-gradient(180deg, rgba(227,203,165,0.28), rgba(227,203,165,0)); }
+.shelf-title { margin: 0 0 8px; font-size: 20px; font-weight: 700; line-height: 1.2;
+  color: var(--color-text-light); text-align: center; }
+.shelf-plank { height: 10px; max-width: 912px; width: 100%; margin: 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--shelf-wood-light) 0, var(--shelf-wood) 55%, var(--shelf-wood-dark) 100%);
+  box-shadow: 0 6px 10px rgba(62,39,35,0.12); }
+@media (min-width: 1100px) {
+  .bookshelf-page { max-width: 1180px; padding: 20px 24px 16px; }
+  .bookshelf { --book-w: 228px; --book-h: 272px; }
+  .bookshelf-grid { column-gap: 28px; max-width: 996px; }
+  .shelf-title { font-size: 22px; }
+  .shelf-plank { height: 12px; max-width: 996px; }
+}
+```
+
+- **红线**：`.bookshelf-page` **不得与 `.page` 共用**（`.page` 的 `padding-bottom: 64px` 会直接吃掉预算）；站头紧凑档仅作用于 `.bookshelf-page .site-header` 作用域，不改全局 `.site-title-*`。
+- 站头紧凑档：`.bookshelf-page .site-header { margin: 0 0 12px; }`、`.site-title-pinyin { font-size:16px; line-height:1.2; margin:0 0 2px }`、`.site-title-zh { font-size:40px; line-height:1.15; margin:0 0 2px }`、`.site-title-en { font-size:18px; line-height:1.2; margin:0 }`。
+- **竖屏 768×1024（可展示不崩，非零溢出）**：`@media (max-width: 900px)` 下 `.bookshelf-page { height:auto; min-height:100dvh; overflow:visible; padding:16px }`、`.bookshelf-grid { grid-template-columns: repeat(2, 180px); column-gap: 24px; row-gap: 16px; max-width:none }`、`.bookshelf { --book-w:180px; --book-h:216px; justify-content:flex-start }`；同时文字层降档（书名 22px / 拼音 13px / 英文 12px / 数量 12px 且高度 18px），封面外框 156 宽 → 文字可用宽 156 − 24 = 132px，5 字 × 22 = 110px ✓；允许页面纵向滚动，但**不得出现水平溢出**。
+
+## U18-2. 书本（`.book` / `--book-*` 变量 / `.book-spine` / `.book-pages` / hover）
+
+**DOM 契约（R 按此实现类名）**：`a.book`（或 `button.book`）> `.book-spine` + `.book-pages` + `.book-cover`（内含 `.book-title-zh` / `.book-title-pinyin` / `.book-title-en` / `.book-count`）。
+
+```css
+.book { --book-spine-w: 16px; --book-pages-w: 8px;
+  --book-cover-inset: 4px 8px 6px 16px;   /* top right bottom left */
+  position: relative; display: block;
+  width: var(--book-w); height: var(--book-h);
+  background: var(--book-stack); border-radius: 4px 14px 14px 4px;
+  box-shadow: 0 6px 14px rgba(62,39,35,0.12);
+  text-decoration: none; color: inherit;
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.book:hover, .book:focus-visible { transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(62,39,35,0.18); }
+.book:active { transform: translateY(-1px); }
+.book:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 3px; }
+.book-spine { position: absolute; left: 0; top: 0; bottom: 0; width: var(--book-spine-w);
+  border-radius: 4px 0 0 4px; z-index: 2;
+  background: linear-gradient(90deg, var(--shelf-wood-dark) 0, var(--shelf-wood) 45%, var(--shelf-wood-dark) 100%);
+  box-shadow: inset -2px 0 3px rgba(62,39,35,0.18); }
+.book-pages { position: absolute; right: 0; top: 4px; bottom: 6px; width: var(--book-pages-w);
+  border-radius: 0 4px 4px 0; z-index: 0;
+  background: repeating-linear-gradient(90deg, #FFFDF5 0 1px, #E8E0D2 1px 2px); }
+```
+
+| 项 | 值 |
+|---|---|
+| 书脊 | 宽 **16px** 竖直木色条（`--shelf-wood` 系，8 本完全一致），左圆角 4px，两道 2px 深色沟槽（`::before/::after` 横线，位于高度 18% / 82%） |
+| 书页厚度 | 右侧书口 **8px** 条纹（1px 纸白 `#FFFDF5` / 1px 米灰 `#E8E0D2` 交替）；底部 6px 由 `.book-cover` 内缩露出 `.book` 页堆色 `--book-stack #F3EBDD`，形成下口页边 |
+| 圆角 | 书脊侧 4px / 书口侧 14px（上右下三处） |
+| 阴影 | 静置 `0 6px 14px rgba(62,39,35,0.12)`；hover `0 10px 22px rgba(62,39,35,0.18)` |
+| hover 抬升 | `translateY(-4px)`（**≤4px 硬上限**），过渡 `0.2s ease`（与 `.plant-card` 一致）；`:active` 回落到 `-1px` |
+| 热区 | **210×252 / 228×272 ≫ 56px**；`:focus-visible` 3px 主色深描边 + 3px offset |
+
+- **红线**：8 本书除封面母题外**视觉参数完全一致**；禁止引入 `--book-accent` 一类「每本一个主色」的色相变量（Q12）。
+- 书本在网格内 `align-items: end` 对齐，底边贴住 `.shelf-plank`（书本与隔板间距 0，隔板上沿即书底）。
+
+## U18-3. 封面（`.book-cover`）
+
+```css
+.book-cover {
+  position: absolute; inset: var(--book-cover-inset);
+  border-radius: 2px 12px 12px 2px;
+  padding: 12px 12px 14px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+  background-color: var(--book-paper);
+  background-image: var(--book-cover-image, none);   /* R 内联注入 url('/images/covers/{code}.jpg') */
+  background-size: calc(var(--book-h) - 2px) calc(var(--book-h) - 2px);
+  background-position: center center;
+  background-repeat: no-repeat;   /* tile 尺寸 > 封面尺寸，不会出现接缝 */
+  box-shadow: inset 0 0 0 1px rgba(62,39,35,0.10), inset 0 0 24px rgba(62,39,35,0.06);
+}
+```
+
+| 项 | 1024×768 档 | 1180×820 档 |
+|---|---|---|
+| 书本外框 | 210 × 252 | 228 × 272 |
+| 封面外框（外框 − 书脊 16 − 书口 8；− 上 4 / 下 6） | **186 × 242** | **204 × 262** |
+| `background-size`（= 书高 − 2px） | **250px × 250px** | **270px × 270px** |
+| 裁切窗口 / 单 tile 面积比 ρ | 186×242 ÷ 250² = **0.720** | 204×262 ÷ 270² = **0.733** |
+| 可见母题数 | **4**（2×2 全在窗口内） | **4** |
+| 封面留白率 | `1 − 0.20/0.720` = **≥72.2%** | `1 − 0.20/0.733` = **≥72.7%** |
+
+**240×300 参考书封下的计算过程（备查 / 后续放大版式复用）**
+- 若书本 240×300 → 封面外框 = 240−16−8 = **216 宽** × 300−4−6 = **290 高**。
+- `background-size` 取「书高 − 2px」= **288 × 288**；裁切窗口 / tile 面积比 ρ = 216×290 ÷ 288² = **0.755**。
+- 单 tile 4 个母题、单母题墨迹 ≤5%（tile 留白 ≥80%）→ 封面墨迹 ≤ 20% ÷ 0.755 = 26.5%，**封面留白 ≥73.5%**，可见母题 **4 个**（≤12）。结论：该尺寸同样满足 Q11/验收 78，但 240×300 在 1024×768 与 1180×820 的两层书架下均超出纵向预算，**本迭代不采用**。
+
+- 纸白底 `--book-paper #FDFBF6`；轻微纹理用内阴影 24px / 6% 棕，**不叠加**额外渐变纹理层（避免与 tile 花纹抢视觉）。
+- **红线**：封面只用 `background-image` 承载花纹，书名/拼音/英文/数量一律 HTML 文字（Q13）；未知 code 无图时 `--book-cover-image: none` 也应显示纯净纸白封面，不出现破图或纯色块。
+
+## U18-4. 封面文字层（`.book-title-zh` / `.book-title-pinyin` / `.book-title-en` / `.book-count`）
+
+| 类名 | 1024×768 | 1180×820 | 字重 / 颜色 | 约束 |
+|---|---|---|---|---|
+| `.book-title-zh` | **26px** / 行高 1.2（31.2） | **28px** / 行高 1.2（33.6） | 700 / `--color-text` | `white-space: nowrap`；letter-spacing 0.5px |
+| `.book-title-pinyin` | **14px** / 1.2（16.8） | **15px** / 1.2（18） | 400 / `--color-text-light` | `nowrap` |
+| `.book-title-en` | **13px** / 1.2（15.6） | **14px** / 1.2（16.8） | 500 / `--color-text-light` | `nowrap` |
+| `.book-count` | **13px** / 行高固定 **20px** | **14px** / 行高固定 **22px** | 600 / `--color-text-light` | 固定高度占位，`margin-top: 6px` |
+
+**横向不溢出验算**（文字可用宽 = 封面宽 − 左右 padding 24px）
+- 1024 档：186 − 24 = **162px**。最长书名「英文字母书 / 汉语拼音书」5 字 × 26 + 0.5px×4 = **132px ≤ 162px** ✓；最长拼音「yīng wén zì mǔ」14 字符 × ≈7.4 = **≈104px** ✓；最长英文「Dinosaur」≈**55px** ✓。
+- 1180 档：204 − 24 = **180px**。5 字 × 28 + 2 = **142px ≤ 180px** ✓。
+- 红线：书名 **≤5 字**用上表字号；若后续新增板块书名 ≥6 字，必须降档到 22px（1024）/ 24px（1180）并复核 ≤162 / ≤180。**禁止** `text-overflow: ellipsis`（不允许截断书名）。
+
+**纵向占位**
+- 1024 档文字块 = 31.2 + 4 + 16.8 + 2 + 15.6 + 6 + 20 = **95.6px**，占封面高 242 的 39.5%（**≤45% 上限**）✓；1180 档 = 33.6 + 4 + 18 + 2 + 16.8 + 6 + 22 = **102.4px** / 262 = 39.1% ✓。
+- 母题中心位于 tile 的 25% / 75% 象限 → 对应封面高度约 46–98px 与 144–196px 两带，文字块（约 73–169px）与母题最小间距 ≥ 4px（视觉上文字落在中央留白带）。
+- `.book-count` 数量未就绪/失败时渲染空文本但**保留高度**（1024: `height:20px`；1180: `height:22px`），就绪后补「N 种」，**禁止条件卸载该元素**（避免 4 本高度跳动 / CLS）。文案口径「204 种」，`aria-label="{书名}，共 N 种"`。
+- 文本分离度：书名加 `text-shadow: 0 1px 0 rgba(255,255,255,0.85)`；正文色 `#3E2723` 对纸白 `#FDFBF6` 对比度 ≈11.7:1，对母题色 `#D9C9AE` 仍 ≥8:1（红线 ≥4.5:1）。
+
+## U18-5. 书内页（`.book-page` / `.book-topbar` / `.book-title` / `.book-page-body`）
+
+```css
+.book-page { max-width: 1200px; margin: 0 auto; padding: 20px 16px 32px; }
+.book-topbar { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.book-title { margin: 0; font-size: 32px; font-weight: 700; line-height: 1.2; color: var(--color-text); }
+.book-page-body {
+  background: var(--book-page-bg);
+  border-left: 6px solid var(--shelf-wood);
+  border-radius: 0 16px 16px 0;
+  padding: 20px 12px 24px;
+  box-shadow: inset 12px 0 16px -12px rgba(62,39,35,0.18), 0 2px 8px rgba(62,39,35,0.06);
+}
+@media (min-width: 1100px) { .book-title { font-size: 36px; } .book-page { padding: 24px 24px 40px; } }
+@media (max-width: 900px) { .book-page { padding: 16px 12px 24px; }
+  .book-page-body { padding: 16px 8px 20px; border-left-width: 4px; } }
+```
+
+| 项 | 规格 |
+|---|---|
+| 顶栏 | `← 回书架`（复用 `.back-btn`：`min-height:56px`、20px、16px 圆角、主色深描边）+ 标题 `{板块名}书`，左对齐同一行，间距 16px |
+| 标题 | 32px / 700（1024）× 36px（1180）；不显示「第几本」编号（Q5） |
+| 内页容器 | 纸感底 `#FFFDF9` + 左侧 6px 木色书脊条 + 内阴影（12px 16px -12px），右侧 16px 圆角 |
+| 页边距 | 20px 上 / 32px 下；左右 16px（1024）→ 24px（1180） |
+| 列表 | 「共 N 种」`.list-count` 18px、右对齐、`margin-bottom:12px`；卡片网格 `.plant-grid`（`auto-fill minmax(220px,1fr)`）、首屏 16 / 步进 16、哨兵 `.load-sentinel` 56px 全部**原样沿用** |
+| 滚动 | 书内页**允许页面纵向滚动**（列表很长），不与书架页的零溢出冲突；滚动记忆按书隔离（`sh:bookScroll:{code}`）由 R 负责 |
+
+- **列数不回归验算**（红线：`.plant-card` 规格与字号、列数规则不变）
+  - 1024：1024 − 32（页边距）− 24（内页左右 padding）− 6（书脊条）= **962** → (962 + 24)/244 = 4.04 → **4 列**（与改版前一致）。
+  - 1180：1180 − 48 − 24 − 6 = 1102 → 4.61 → **4 列** ✓。
+  - 768 竖屏：768 − 24 − 16 − 4 = 724 → 3.06 → **3 列**（与改版前一致）。
+- **红线**：不得修改 `.plant-card`（圆角 20 / padding 16 / 阴影）、`.plant-card-zh` 24px、`.plant-card-pinyin|en` 16px、`.list-count` 18px、`.plant-grid` minmax(220px,1fr)；不得给内页容器再加额外左右 padding（会掉列）。
+
+## U18-6. 封面 tile 资产规范（`/images/covers/{code}.jpg`）
+
+| code | 母题（单一，重复） | 画法（最终参数） | 单母题外接盒（@1200） | 实测 tile 墨迹（8 张成品） |
+|---|---|---|---|---|
+| plant | 一片叶子 + 主脉 | 单色线描，主轮廓线宽 24px、叶脉 12px | 236 × 370 | **8.04%** |
+| animal | 四趾爪印 | 扁平剪影（1 掌垫 + 4 趾），整体 `scale(0.93)` | 320 × 320 | **18.45%** |
+| insect | 蝴蝶（左右对称） | 单色线描，线宽 22px，整体 `scale(0.68)` | 245 × 205 | **4.87%** |
+| dinosaur | 三趾脚印 | 扁平剪影，整体 `scale(0.92)` | 300 × 340 | **18.93%** |
+| letter | 「Aa」字形 | 单色字形，font-size **200px** + letter-spacing **-5** | 280 × 200 | **2.86%** |
+| pinyin | 「a」字形 | 单色字形，font-size **220px** | 230 × 220 | **1.49%** |
+| number | 「1 2 3」字形组（组内 3 字符 = 1 个母题） | 单色字形，font-size **140px** + letter-spacing **8** | 250 × 140 | **1.84%** |
+| color | 实心圆点 | 单色实心，r=150（φ300） | φ300 | **19.70%** |
+
+- **单母题占位**恒为 tile 墨迹的 1/4（2×2 四复制），故全部 ≤5% 硬上限：最大 color 4.93% / animal 4.61% / dinosaur 4.73%，余量最小但合规；字形类（letter / pinyin / number）远低于上限，不再放大（再放大将被封面窗口裁切，见下条）。
+- 生成器：`scripts/generate-covers.mjs`（Playwright 渲染 SVG → `cjpeg -quality 82 -progressive`），参数改动须同步本表与实测值。
+
+**统一规格**
+| 项 | 值 |
+|---|---|
+| 画布 | **1200 × 1200**，`.jpg` 渐进式（`cjpeg -quality 82 -progressive`），单张 ≤180KB（纯色面，压缩率高） |
+| 底色 | 纸白 `#FDFBF6`（全 8 张一致，Q12：无每本主色） |
+| 墨色 | 单色 `#D9C9AE`（与底色对比 ≈1.53:1；**区间红线 1.4:1–1.8:1**，低于则不可见，高于则抢书名） |
+| 母题数量 | 每 tile **2×2 = 4 个**，中心实际坐标 x=**377 / 823**、y=**300 / 900**（px @1200），旋转 -12° / 10° / 14° / -8° 轻微错落 |
+| 中心内移原因 | 封面窗口 `.book-cover`（1024 档 186×242）只露出 tile 中间约 74% 宽度（左右各裁 32/250），x 取 377/823 恰好映射到**可见窗口**的 25% / 75%，母题不被左右裁切；y 映射 25% / 75% |
+| 边距 | 母题外接盒距 tile 四边 ≥ **96px（8%）**，任何母题不跨 tile 边界 → 可无缝平铺（实测最紧为 dinosaur 上沿 99px） |
+| 单母题占位 | **≤5%** 面积（Q11 上限 10%，此处取更严值，以保封面留白）：5% × 1200² = 72,000 px² 为硬上限 |
+| 线宽 | 线描类 **22–24px**（plant 24 / insect 22；缩放到 250/270 显示宽后约 4.6–5px，保证不糊不掉线） |
+| 禁止 | 填色渐变、投影、描边双层、>1 种母题、文字、边框、水印 |
+
+**显示映射**：tile 以 `background-size: calc(var(--book-h) - 2px)` 缩放 → 1024 档 **250×250**、1180 档 **270×270**；母题显示尺寸约 **29–77px**（剪影 / 线描 42–77px，字形 29–46px），缩略密度适中、不显拥挤。
+
+**验收算法（QA/R 可直接实现）**
+1. **单母题占位率**（原图）：`area_motif / 1200² ≤ 5%`，逐个母题（`number` 的「1 2 3」整组计 1 个）。
+2. **tile 留白率**：`inkRate_tile = 非纸白像素 / 1200² ≤ 20%`（即留白 ≥80%，与 sprint-18 §三一致）。
+3. **封面留白率**（验收 78 的 ≥60%）：`ρ = (coverW × coverH) / (tileW × tileH)`（1024 档 0.720 / 1180 档 0.733），`whitespace_cover = 1 − inkRate_tile / ρ`，要求 **≥60%**（本规范值 ≥72%）。
+4. **可见母题数**：在封面区域内做墨色连通域计数，**只有连通域面积 ≥ 单母题面积的 30% 才计 1 个**（`number` 的「1 2 3」整组计 1），要求 **≤12**（本规范预期 **4**）。
+5. 判定口径：以 1200×1200 原图计算 2/3，以 `background-size` 实际渲染尺寸采图计算 4；文字层（书名等 HTML）**不计入**墨迹统计。
+
+## U18-7. 热区与溢出红线（增量复核）
+
+| 项 | 红线 | 校验方式 |
+|---|---|---|
+| 书本 `.book` 热区 | 210×252 / 228×272，**≥56px** ✓ | `getBoundingClientRect` |
+| 「← 回书架」`.back-btn` | `min-height:56px`、`padding:8px 20px`（复用既有） | 同上 |
+| 详情页「← 回{板块名}书」 | 沿用 `.back-btn`，文案最长 7 字（「← 回英文字母书」）在 1024 下宽约 200px，不压 `.nav-btn`（76px 侧边留白内） | 同 Sprint 6 口径 |
+| 分页 / 哨兵 `.load-sentinel` | 非可点元素，但保持 **56px** 高度占位（不设「加载更多」按钮） | DOM 检查 |
+| 书架页页面级纵向溢出 | 1024×768 **0**（预算 732 ≤ 768）、1180×820 **0**（792 ≤ 820） | `documentElement.scrollHeight ≤ clientHeight` |
+| 书架页水平溢出 | 944 ≤ 1024 / 1044 ≤ 1180，**0** | `scrollWidth ≤ clientWidth` |
+| 竖屏 768×1024 | 允许纵向滚动；**水平溢出 0**；8 本分 4 行（2 列）完整可读，书本 180×216 ≥56px | 同上 |
+| 对比度 | 书名 / 数量文字对纸白与母题均 **≥4.5:1** | 计算校验 |
+| 键盘可达 | `.book` 支持 Tab 聚焦 + Enter 进入；`:focus-visible` 3px 主色深描边 | 手工 / E2E |
+| 配色红线 | 8 本书**仅母题不同**，书脊 / 底 / 文字色完全统一，无每本主色（Q12） | 视觉走查 |
+| 不回归 | `.plant-card` 规格 / 字号、`.list-count`、`.plant-grid` 列数、详情页版式与字号均不变 | E2E 复跑 |
+
+- 加载态：分类接口失败显示「哎呀，出了点小问题，请稍后再试」（`.state-tip`，24px，复用）；未知 code「这本书还在路上哦」+「回书架」（`.back-btn` 视觉）；数量未就绪仅空出 20/22px 高度，不显示占位骨架、不显示 0。
+
 
 
 

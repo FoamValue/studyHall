@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 11 新增 E2E（TC-115 ~ TC-118，编号依 QA 手册 docs/qa/sprint-11-test-cases.md）=====
 // 覆盖：动物/昆虫/恐龙三板块扩容至 30 的可浏览性、新增条目单图详情与音频、恐龙骨架图可加载、新图片资产契约
@@ -19,9 +19,7 @@ const DINOSAUR_IDS = [
 
 // TC-115 动物板块扩容：可滚动加载至 50 卡 → 新增条目「鲸鱼」详情（单图分支 + 音频喇叭）
 test('TC-115 动物板块扩容至 50 且新增条目详情正常', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('group', { name: '板块导航' });
-  await nav.getByRole('button', { name: '动物' }).click();
+  await gotoBook(page, 'animal');
   await expect(page.locator('.list-count')).toHaveText('共 50 种');
   await loadAllCards(page, 50);
 
@@ -39,9 +37,7 @@ test('TC-115 动物板块扩容至 50 且新增条目详情正常', async ({ pag
 
 // TC-116 昆虫板块扩容：含并入的常见「小虫」（蜘蛛/蜗牛/蚯蚓/蜈蚣）
 test('TC-116 昆虫板块扩容至 50 且「小虫」并入', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('group', { name: '板块导航' });
-  await nav.getByRole('button', { name: '昆虫' }).click();
+  await gotoBook(page, 'insect');
   await expect(page.locator('.list-count')).toHaveText('共 50 种');
   await loadAllCards(page, 50);
 
@@ -58,9 +54,7 @@ test('TC-116 昆虫板块扩容至 50 且「小虫」并入', async ({ page }) =
 
 // TC-117 恐龙板块扩容：完整骨架化石图可真实加载
 test('TC-117 恐龙板块扩容至 50 且骨架图可加载', async ({ page }) => {
-  await page.goto('/');
-  const nav = page.getByRole('group', { name: '板块导航' });
-  await nav.getByRole('button', { name: '恐龙' }).click();
+  await gotoBook(page, 'dinosaur');
   await expect(page.locator('.list-count')).toHaveText('共 50 种');
   await loadAllCards(page, 50);
 

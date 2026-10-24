@@ -1,5 +1,13 @@
 import { expect } from '@playwright/test';
 
+// Sprint 18（v2.9 书本集合）：首页改为书架，板块内容移入书内页 /books/:code。
+// 进入指定书内页并等首卡出现、滚动回顶，便于后续 loadAllCards 判定。
+export async function gotoBook(page, code) {
+  await page.goto(`/books/${code}`);
+  await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+}
+
 // Sprint 10（EX-6）：首页植物板块（全部 / 各级分类）改为「首屏 + 滚动增量加载」。
 // 断言全量条数或定位靠后卡片前，先滚动把哨兵加载完（哨兵消失 = 全量渲染）。
 //

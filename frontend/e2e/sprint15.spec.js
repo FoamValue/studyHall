@@ -1,31 +1,29 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // ===== Sprint 15 新增 E2E（TC-134 ~ TC-142，编号依 QA 手册 docs/qa/sprint-15-test-cases.md）=====
-// 覆盖：站点更名 + 两大组 8 板块导航 / 字母·拼音各 26 卡 / 单图详情 / 单语音频请求契约 / 返回文案派生 / 新增 52 图 52 音频契约
+// 覆盖：站点更名 + 书架两层八本 / 字母·拼音各 26 卡 / 单图详情 / 单语音频请求契约 / 返回文案派生 / 新增 52 图 52 音频契约
 
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const PINYINS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-// TC-134 更名「认知小图鉴」+ 两组 8 板块导航
-test('TC-134 站点更名与两组八板块导航', async ({ page }) => {
+// TC-134 更名「认知小图鉴」+ 书架两层八本（Sprint 18 迁移）
+test('TC-134 站点更名与书架两层八本', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.site-title-pinyin')).toHaveText('rèn zhī xiǎo tú jiàn');
   await expect(page.locator('.site-title-zh')).toHaveText('认知小图鉴');
   await expect(page.locator('.site-title-en')).toHaveText('Cognitive Guide');
 
-  const nav = page.getByRole('group', { name: '板块导航' });
-  await expect(nav.locator('.section-group-title')).toHaveText(['自然认知', '认知启蒙']);
-  await expect(nav.locator('.filter-btn')).toHaveCount(8);
-  await expect(nav.getByRole('button', { name: '英文字母', exact: true })).toBeVisible();
-  await expect(nav.getByRole('button', { name: '汉语拼音', exact: true })).toBeVisible();
+  const shelf = page.locator('.bookshelf');
+  await expect(shelf.locator('.shelf-title')).toHaveText(['自然认知', '认知启蒙']);
+  await expect(page.locator('.book')).toHaveCount(8);
+  await expect(page.locator('.book-title-zh', { hasText: '英文字母书' })).toHaveCount(1);
+  await expect(page.locator('.book-title-zh', { hasText: '汉语拼音书' })).toHaveCount(1);
 });
 
-// TC-135 英文字母板块：26 张卡，首 Aa 末 Zz
+// TC-135 英文字母书：26 张卡，首 Aa 末 Zz
 test('TC-135 英文字母板块 26 张卡', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('group', { name: '板块导航' }).getByRole('button', { name: '英文字母', exact: true }).click();
-  // 切板块后先等该板块专属首卡出现，规避上一板块残留竞态（同 D14-1）
+  await gotoBook(page, 'letter');
   await expect(page.locator('.plant-card-zh').first()).toHaveText('Aa');
 
   await loadAllCards(page, 26);
@@ -36,10 +34,9 @@ test('TC-135 英文字母板块 26 张卡', async ({ page }) => {
   expect(zh[zh.length - 1]).toBe('Zz');
 });
 
-// TC-136 汉语拼音板块：26 张卡，首 a 末 z
+// TC-136 汉语拼音书：26 张卡，首 a 末 z
 test('TC-136 汉语拼音板块 26 张卡', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('group', { name: '板块导航' }).getByRole('button', { name: '汉语拼音', exact: true }).click();
+  await gotoBook(page, 'pinyin');
   await expect(page.locator('.plant-card-zh').first()).toHaveText('a');
 
   await loadAllCards(page, 26);
@@ -93,20 +90,25 @@ test('TC-139 单语音频请求契约', async ({ page }) => {
   await zhReq;
 });
 
-// TC-140 返回按钮文案按板块派生：字母→回字母乐园，拼音→回拼音角
+// TC-140 返回按钮文案按板块派生：字母→回英文字母书，拼音→回汉语拼音书（Sprint 18 迁移）
 test('TC-140 返回文案派生（字母/拼音）', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('group', { name: '板块导航' }).getByRole('button', { name: '英文字母', exact: true }).click();
-  await expect(page.locator('.plant-card-zh').first()).toHaveText('Aa');
+  await gotoBook(page, 'letter');
   await page.locator('.plant-card').first().click();
-  await expect(page.locator('.imm-topbar .back-btn').first()).toHaveText(/回字母乐园/);
+  const letterBack = page.locator('.imm-topbar .back-btn').first();
+  await expect(letterBack).toHaveText(/回英文字母书/);
+  await expect(letterBack).toHaveAttribute('href', '/books/letter');
 
-  // 回首页再进拼音板块（详情页无板块导航）
-  await page.locator('.imm-topbar .back-btn').first().click();
-  await page.getByRole('group', { name: '板块导航' }).getByRole('button', { name: '汉语拼音', exact: true }).click();
-  await expect(page.locator('.plant-card-zh').first()).toHaveText('a');
+  // 点返回回字母书，再点「← 回书架」回书架
+  await letterBack.click();
+  await expect(page).toHaveURL('/books/letter');
+  await page.getByRole('link', { name: '← 回书架' }).click();
+  await expect(page).toHaveURL('/');
+
+  await gotoBook(page, 'pinyin');
   await page.locator('.plant-card').first().click();
-  await expect(page.locator('.imm-topbar .back-btn').first()).toHaveText(/回拼音角/);
+  const pinyinBack = page.locator('.imm-topbar .back-btn').first();
+  await expect(pinyinBack).toHaveText(/回汉语拼音书/);
+  await expect(pinyinBack).toHaveAttribute('href', '/books/pinyin');
 });
 
 // TC-141 新增 52 张图片契约可取（HTTP 200）

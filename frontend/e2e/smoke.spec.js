@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { loadAllCards } from './helpers';
+import { gotoBook, loadAllCards } from './helpers';
 
 // TC-22 浏览主流程冒烟（Sprint 17：植物单图，204 条展示）：首页 → 点桃花卡片 → 详情单图
 // 期望：详情显示桃花内容，全程无控制台错误（PRD §7-1/§7-2：无登录、2 次点击到达详情）
@@ -10,11 +10,11 @@ test('TC-22 首页→桃花→详情（单图无部位切换）', async ({ page 
   });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
-  // 1. 首页加载，无登录/注册元素（§7-1）
-  await page.goto('/');
+  // 1. 进入植物书，无登录/注册元素（§7-1）
+  await gotoBook(page, 'plant');
   await expect(page.getByText(/登录|注册/)).toHaveCount(0);
 
-  // 2. 植物板块 204 条展示（无二级分类筛选）
+  // 2. 植物书 204 条展示（无二级分类筛选）
   await loadAllCards(page, 204);
 
   // 3. 点桃花卡片进详情
@@ -38,7 +38,7 @@ test('TC-23 植物板块 204 条（含桃花/枫叶/白果）', async ({ page })
   });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   // 花朵条目（精确匹配卡片标题）
@@ -59,7 +59,7 @@ test('TC-26 植物部位条目命名独立', async ({ page }) => {
   });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   // 桃的三个部位：桃子（果）、桃花（花）、桃花叶（叶）
@@ -73,7 +73,7 @@ test('TC-26 植物部位条目命名独立', async ({ page }) => {
 // TC-27 平板横屏布局（1024×768）：网格一行 ≥4 张卡片
 test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
-  await page.goto('/');
+  await gotoBook(page, 'plant');
 
   // 等首屏卡片出现
   await expect(page.locator('.plant-card').first()).toBeVisible({ timeout: 15000 });
@@ -87,7 +87,7 @@ test('TC-27 平板横屏网格与触控目标', async ({ page }) => {
 
 // TC-63 枫树花叶条目封面即枫叶图
 test('TC-63 枫树花叶条目封面即枫叶图', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   const mapleLeafCard = page.locator('.plant-card', { has: page.getByText('枫树花叶', { exact: true }) });
@@ -98,7 +98,7 @@ test('TC-63 枫树花叶条目封面即枫叶图', async ({ page }) => {
 
 // TC-67 苹果花条目：卡片标题「苹果花」，详情单图为苹果花图
 test('TC-67 苹果花条目标题与详情图一致', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   const appleFlowerCard = page.locator('.plant-card', { has: page.getByText('苹果花', { exact: true }) });
@@ -114,7 +114,7 @@ test('TC-67 苹果花条目标题与详情图一致', async ({ page }) => {
 
 // TC-68 苹果叶条目：卡片标题「苹果花叶」（不叫「树叶」）
 test('TC-68 苹果叶条目命名「苹果花叶」', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   await expect(page.locator('.plant-card', { has: page.getByText('苹果花叶', { exact: true }) }).locator('.plant-card-zh')).toHaveText(
@@ -124,7 +124,7 @@ test('TC-68 苹果叶条目命名「苹果花叶」', async ({ page }) => {
 
 // TC-69 银杏果条目：标题「白果」（惯用果名特例）
 test('TC-69 银杏果条目标题「白果」', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   await expect(page.locator('.plant-card', { has: page.getByText('白果', { exact: true }) }).locator('.plant-card-zh')).toHaveText(
@@ -134,7 +134,7 @@ test('TC-69 银杏果条目标题「白果」', async ({ page }) => {
 
 // TC-70 详情名称字号调大（Sprint 17 新增需求：方便幼儿识字）
 test('TC-70 详情页名称字号加大', async ({ page }) => {
-  await page.goto('/');
+  await gotoBook(page, 'plant');
   await loadAllCards(page, 204);
 
   const peachCard = page.locator('.plant-card', { has: page.getByText('桃花', { exact: true }) });
