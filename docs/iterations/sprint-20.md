@@ -3,7 +3,7 @@
 | 项 | 内容 |
 |---|---|
 | 迭代目标 | 解决人工投诉「数字详情页的小黑点太丑」：21 张数字卡片（`frontend/public/images/numbers/number-0.jpg … number-20.jpg`）按冻结规格重绘——纸白底 `#FCF7ED` + 深棕墨大号数字 `#3A2A22` + 朱砂小苹果计数物（数量=数值，按 5 分组排列），脚本确定性绘制（SVG→JPG），数量 100% 准确。 |
-| 状态 | **已交付**（2026-10-24 门禁全绿、QA 放行，Master commit `见提交记录`，不 push） |
+| 状态 | **已交付**（2026-10-24 门禁全绿、QA 放行，Master commit `5fd5fd3`，不 push） |
 | 依据 | [PRD.md §24](file:///Users/chenxinjie/Mirror/github/studyHall/docs/product/PRD.md)（v3.1 增量，US-31）；[iteration-20-requirements.md](file:///Users/chenxinjie/Mirror/github/studyHall/docs/product/iteration-20-requirements.md)（Q1~Q6 已冻结、验收 94~97）；PF 报告 [number-dots-review.md](file:///Users/chenxinjie/Mirror/github/studyHall/docs/experience/number-dots-review.md)（方案①获选） |
 | 类型 | **纯资产重绘**（前后端产品代码 / 语料 JSON / 路由 / 接口契约 / 音频**零改动**；仅 21 张图片同名同路径覆盖 + 新增生成脚本） |
 | 基线（Sprint 19 交付后） | 语料 440（plant 206，含 deprecated 2）/ 分类 8；API plant=204、all=438；图片 `.jpg` 448 / 音频 `.m4a` 1028；后端 28 用例 / vitest 90 / E2E 86 |
